@@ -214,10 +214,10 @@ export function Header() {
             </Link>
 
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-300">
-              <div className="text-right">
+              <div className="text-center">
                 <a
                   href="tel:+18126101657"
-                  className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors"
+                  className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors text-center"
                 >
                   (812) 610-1657
                 </a>
