@@ -58,11 +58,11 @@ export function PricingCalculator() {
   return (
     <Card className="w-full max-w-2xl mx-auto">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
+        <CardTitle className="text-xl sm:text-2xl font-bold flex items-center justify-center gap-2">
           <Calculator className="w-6 h-6 text-blue-600" />
           Pricing Calculator
         </CardTitle>
-        <p className="text-gray-600">Get an instant estimate for your project</p>
+        <p className="text-gray-600 text-sm sm:text-base">Get an instant estimate for your project</p>
       </CardHeader>
 
       <CardContent className="space-y-6">
@@ -98,7 +98,7 @@ export function PricingCalculator() {
         <div>
           <Label className="text-sm font-medium text-gray-700 mb-2 block">Project Size: {loadSize[0]}%</Label>
           <Slider value={loadSize} onValueChange={setLoadSize} max={100} min={10} step={5} className="w-full" />
-          <div className="flex justify-between text-xs text-gray-500 mt-1">
+          <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
             <span>Small</span>
             <span>Medium</span>
             <span>Large</span>
@@ -144,19 +144,19 @@ export function PricingCalculator() {
         {service && (
           <Card className="bg-blue-50 border-blue-200">
             <CardContent className="p-6 text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Estimated Price Range</h3>
-              <div className="text-4xl font-bold text-blue-600 mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Estimated Price Range</h3>
+              <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-4">
                 ${price.min} - ${price.max}
               </div>
-              <div className="flex items-center justify-center gap-2 text-sm text-gray-600 mb-4">
+              <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-600 mb-4">
                 <Info className="w-4 h-4" />
                 <span>Final price determined on-site after inspection</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild className="bg-red-600 hover:bg-red-700">
+                <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700">
                   <Link href="/quote">Get Exact Quote</Link>
                 </Button>
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="w-full sm:w-auto">
                   <a href="tel:+18126101657">Call for Confirmation</a>
                 </Button>
               </div>
@@ -164,7 +164,7 @@ export function PricingCalculator() {
           </Card>
         )}
 
-        <div className="text-xs text-gray-500 text-center space-y-1">
+        <div className="text-[11px] sm:text-xs text-gray-500 text-center space-y-1">
           <p>
             * Estimates are approximate and may vary based on actual items, accessibility, and disposal requirements.
           </p>

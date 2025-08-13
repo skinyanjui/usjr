@@ -64,9 +64,9 @@ export function PricingGrid() {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Transparent Pricing - No Surprises</h2>
-          <p className="text-xl text-gray-600 mb-2">Unlike other companies, we show you exactly what you'll pay</p>
-          <p className="text-lg text-gray-500">All prices include labor, hauling, and dump fees</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Transparent Pricing - No Surprises</h2>
+          <p className="text-lg sm:text-xl text-gray-600 mb-2">Unlike other companies, we show you exactly what you'll pay</p>
+          <p className="text-base sm:text-lg text-gray-500">All prices include labor, hauling, and dump fees</p>
           <div className="flex items-center justify-center gap-2 mt-4">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
@@ -75,7 +75,7 @@ export function PricingGrid() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
           {pricingTiers.map((tier) => (
             <PricingCard
               key={tier.id}
@@ -91,9 +91,9 @@ export function PricingGrid() {
           ))}
         </div>
 
-        <GlassCard variant="colored" color="red" className="p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Choose Our Transparent Pricing?</h3>
-          <div className="grid md:grid-cols-3 gap-6 text-left">
+        <GlassCard variant="colored" color="red" className="p-6 md:p-8 text-center">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Why Choose Our Transparent Pricing?</h3>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-left">
             <div className="flex items-start gap-3">
               <IconContainer icon={Check} color="red" size="sm" />
               <div>
@@ -126,10 +126,10 @@ export function PricingGrid() {
           <div className="mt-8 pt-6 border-t border-red-200">
             <p className="text-gray-700 font-medium mb-4">Ready to see exactly what your project will cost?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ThemedButton theme="red" className="px-8 py-3 font-semibold">
+              <ThemedButton theme="red" className="w-full sm:w-auto px-6 py-3 font-semibold">
                 📞 Call (812) 610-1657
               </ThemedButton>
-              <ThemedButton variant="outline" theme="red" className="px-8 py-3 font-semibold">
+              <ThemedButton variant="outline" theme="red" className="w-full sm:w-auto px-6 py-3 font-semibold">
                 Text Photos for Instant Quote
               </ThemedButton>
             </div>
