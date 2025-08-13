@@ -186,9 +186,9 @@ export default function BlogPage() {
                         alt={post.title}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 1200px"
-                        quality={60}
-                        priority={index < 1}
+                                              sizes="(max-width: 768px) 100vw, 1200px"
+                      quality={55}
+                      priority={index < 1}
                       />
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-green-600 text-white">
@@ -252,7 +252,7 @@ export default function BlogPage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={60}
+                      quality={55}
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">

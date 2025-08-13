@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import heroImage from "@/public/junk-removal-evansville.png"
@@ -20,7 +18,7 @@ export function HeroSection() {
         fill
         priority
         sizes="100vw"
-        quality={70}
+        quality={60}
         placeholder="blur"
         className="object-cover"
       />
