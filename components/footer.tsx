@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Star } from "lucide-react"
 import Link from "next/link"
+import { StructuredData } from "@/components/structured-data"
 
 export function Footer() {
   return (
@@ -244,31 +245,7 @@ export function Footer() {
       </div>
 
       {/* Additional Local SEO Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Uncle Sam Junk Removal",
-            alternateName: "Uncle Sam Junk Removal & Cleaning",
-            url: "https://unclesamjunkremoval.com",
-            logo: "https://unclesamjunkremoval.com/logo.png",
-            contactPoint: {
-              "@type": "ContactPoint",
-              telephone: "(812) 610-1657",
-              contactType: "customer service",
-              areaServed: "US-IN",
-              availableLanguage: "English",
-            },
-            sameAs: [
-              "https://www.facebook.com/unclesamjunkremoval",
-              "https://www.instagram.com/unclesamjunkremoval",
-              "https://www.twitter.com/unclesamjunkremoval",
-            ],
-          }),
-        }}
-      />
+      <StructuredData type="LocalBusiness" />
     </footer>
   )
 }

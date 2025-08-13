@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Leaf, Users, Clock, Shield, Star } from "lucide-react"
 import Link from "next/link"
+import { StructuredData } from "@/components/structured-data"
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -211,45 +212,7 @@ export default function CleaningHub() {
       </section>
 
       {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Uncle Sam Junk Removal",
-            description: "Professional residential and commercial cleaning services in Evansville, IN",
-            url: "https://unclesamjunkremoval.com/cleaning",
-            telephone: "(812) 610-1657",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Evansville",
-              addressRegion: "IN",
-              addressCountry: "US",
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: "37.9747",
-              longitude: "-87.5558",
-            },
-            serviceArea: [
-              "Evansville, IN",
-              "Newburgh, IN",
-              "Henderson, KY",
-              "Owensboro, KY",
-              "Boonville, IN",
-              "Princeton, IN",
-            ],
-            services: [
-              "Residential Cleaning",
-              "Commercial Cleaning",
-              "Deep Cleaning",
-              "Move-in/Move-out Cleaning",
-              "Recurring Cleaning",
-            ],
-          }),
-        }}
-      />
+      <StructuredData type="LocalBusiness" />
     </div>
   )
 }
