@@ -72,7 +72,7 @@ export default function NewburghPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Newburgh Pickup
                 </Button>

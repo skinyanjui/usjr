@@ -53,7 +53,7 @@ export default function QuotePage() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-blue-700 text-blue-700 hover:bg-blue-50 px-6 sm:px-8 py-3 bg-transparent"
+              className="w-full sm:w-auto border-blue-800 text-blue-800 hover:bg-blue-100 px-6 sm:px-8 py-3 bg-transparent"
             >
               <Camera className="w-5 h-5 mr-2" />
               Text Photos for Instant Quote
@@ -110,7 +110,7 @@ export default function QuotePage() {
                 <Link href="/services/junk-removal">
                   <Button
                     variant="outline"
-                    className="w-full border-blue-700 text-blue-700 hover:bg-blue-50 bg-transparent"
+                    className="w-full border-blue-800 text-blue-800 hover:bg-blue-100 bg-transparent"
                   >
                     Learn More About Junk Removal
                   </Button>
@@ -166,7 +166,7 @@ export default function QuotePage() {
                 <Link href="/services/dumpster-rental">
                   <Button
                     variant="outline"
-                    className="w-full border-orange-700 text-orange-700 hover:bg-orange-50 bg-transparent"
+                    className="w-full border-orange-800 text-orange-800 hover:bg-orange-100 bg-transparent"
                   >
                     Learn More About Dumpsters
                   </Button>
@@ -222,7 +222,7 @@ export default function QuotePage() {
                 <Link href="/cleaning">
                   <Button
                     variant="outline"
-                    className="w-full border-green-700 text-green-700 hover:bg-green-50 bg-transparent"
+                    className="w-full border-green-800 text-green-800 hover:bg-green-100 bg-transparent"
                   >
                     Learn More About Cleaning
                   </Button>

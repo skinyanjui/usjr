@@ -214,7 +214,7 @@ export default function JunkRemovalCostPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-red-700 text-red-700 hover:bg-red-700 hover:text-white px-6 py-3 font-semibold bg-transparent"
+                  className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent"
                 >
                   Text Photos for Instant Quote
                 </Button>

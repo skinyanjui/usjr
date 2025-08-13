@@ -34,7 +34,7 @@ export function ServiceCard({
         bg: "bg-red-50",
         text: "text-red-600",
         textStrong: "text-red-700",
-        button: "bg-red-600 hover:bg-red-700",
+        button: "bg-red-700 hover:bg-red-800",
         icon: "text-red-600",
       },
       orange: {
@@ -42,7 +42,7 @@ export function ServiceCard({
         bg: "bg-orange-50",
         text: "text-orange-600",
         textStrong: "text-orange-700",
-        button: "bg-orange-600 hover:bg-orange-700",
+        button: "bg-orange-700 hover:bg-orange-800",
         icon: "text-orange-600",
       },
       green: {
@@ -50,7 +50,7 @@ export function ServiceCard({
         bg: "bg-green-50",
         text: "text-green-600",
         textStrong: "text-green-700",
-        button: "bg-green-600 hover:bg-green-700",
+        button: "bg-green-700 hover:bg-green-800",
         icon: "text-green-600",
       },
       blue: {
@@ -58,7 +58,7 @@ export function ServiceCard({
         bg: "bg-blue-50",
         text: "text-blue-600",
         textStrong: "text-blue-700",
-        button: "bg-blue-600 hover:bg-blue-700",
+        button: "bg-blue-700 hover:bg-blue-800",
         icon: "text-blue-600",
       },
       purple: {
@@ -66,7 +66,7 @@ export function ServiceCard({
         bg: "bg-purple-50",
         text: "text-purple-600",
         textStrong: "text-purple-700",
-        button: "bg-purple-600 hover:bg-purple-700",
+        button: "bg-purple-700 hover:bg-purple-800",
         icon: "text-purple-600",
       },
       teal: {
@@ -74,7 +74,7 @@ export function ServiceCard({
         bg: "bg-teal-50",
         text: "text-teal-600",
         textStrong: "text-teal-700",
-        button: "bg-teal-600 hover:bg-teal-700",
+        button: "bg-teal-700 hover:bg-teal-800",
         icon: "text-teal-600",
       },
     }

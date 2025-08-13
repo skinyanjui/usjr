@@ -70,7 +70,7 @@ export default function OwensboroPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Owensboro Service
                 </Button>

@@ -88,7 +88,7 @@ export default function CleaningHub() {
             <Button
               size="lg"
               variant="outline"
-              className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 bg-transparent"
+              className="border-green-800 text-green-800 hover:bg-green-100 px-8 py-3 bg-transparent"
             >
               Get Free Quote
             </Button>
@@ -152,7 +152,7 @@ export default function CleaningHub() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-green-700 text-green-700 hover:bg-green-50 bg-transparent"
+                      className="border-green-800 text-green-800 hover:bg-green-100 bg-transparent"
                     >
                       Quote
                     </Button>
@@ -200,11 +200,11 @@ export default function CleaningHub() {
             <Button
               size="lg"
               variant="outline"
-              className="border-green-700 text-green-700 hover:bg-green-50 px-8 py-3 bg-transparent"
+              className="border-green-800 text-green-800 hover:bg-green-100 px-8 py-3 bg-transparent"
             >
               Get Free Quote
             </Button>
-            <Button size="lg" variant="ghost" className="text-green-600 hover:bg-green-50 px-8 py-3">
+            <Button size="lg" variant="ghost" className="text-green-800 hover:bg-green-100 px-8 py-3">
               Call (812) 610-1657
             </Button>
           </div>

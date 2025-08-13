@@ -285,7 +285,7 @@ export default function FAQPage() {
               </Link>
               <Link
                 href="/quote"
-                className="inline-flex items-center justify-center gap-2 border border-red-600 text-red-600 hover:bg-red-50 px-6 py-3 rounded-lg font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 border border-red-800 text-red-800 hover:bg-red-100 px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 Get Free Quote
               </Link>

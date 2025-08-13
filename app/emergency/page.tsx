@@ -41,7 +41,7 @@ export default function EmergencyPage() {
                 <MessageSquare className="w-12 h-12 text-red-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Text Photos</h3>
                 <p className="text-gray-600 mb-4">Send photos for immediate assessment</p>
-                <Button asChild size="lg" variant="outline" className="border-red-700 text-red-700 bg-transparent">
+                <Button asChild size="lg" variant="outline" className="border-red-800 text-red-800 bg-transparent">
                   <a href="sms:+18126101657">Text (812) 610-1657</a>
                 </Button>
                 <p className="text-sm text-gray-500 mt-2">Get instant quote via text</p>

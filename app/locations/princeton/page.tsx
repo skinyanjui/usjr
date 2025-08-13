@@ -72,7 +72,7 @@ export default function PrincetonPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Princeton Service
                 </Button>

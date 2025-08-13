@@ -48,7 +48,7 @@ export function AboutSection() {
               </Button>
               <Button
                 variant="outline"
-                className="w-full sm:w-auto border-red-700 text-red-700 hover:bg-red-50 px-6 sm:px-8 py-3 rounded-full font-semibold bg-transparent"
+                className="w-full sm:w-auto border-red-800 text-red-800 hover:bg-red-100 px-6 sm:px-8 py-3 rounded-full font-semibold bg-transparent"
               >
                 Learn More
               </Button>
