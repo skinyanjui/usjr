@@ -4,6 +4,7 @@ import { IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="en" className={`${ibmPlexSans.variable} antialiased`}>
       <body className="font-sans">
         <Header />
+        <ScrollToTopOnRouteChange />
         <main>{children}</main>
         <Footer />
       </body>
