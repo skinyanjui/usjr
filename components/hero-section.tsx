@@ -26,8 +26,8 @@ export function HeroSection() {
 			<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
 
 			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
-				<div className="text-center text-white mb-12">
-					<h2 className="text-xl md:text-3xl font-semibold mb-4 text-red-400">
+				<div className="text-center text-white mb-6">
+					<h2 className="text-xl md:text-3xl font-semibold mb-2 text-red-400">
 						Same-Day Junk Removal & Professional Cleaning
 					</h2>
 					<p className="text-lg md:text-xl text-gray-200">Serving Evansville, Newburgh & Southern Indiana</p>
@@ -37,7 +37,7 @@ export function HeroSection() {
 					<ThemedButton theme="red" className="w-full sm:w-auto px-6 py-3 md:px-12 md:py-4 rounded-full font-bold text-lg md:text-xl" asChild>
 						<Link href="/quote" prefetch={false}>GET FREE INSTANT QUOTE</Link>
 					</ThemedButton>
-					<p className="text-gray-200 mt-4">No zipcode verification required • Same-day service available</p>
+					<p className="text-gray-200 mt-2">No zipcode verification required • Same-day service available</p>
 				</div>
 
 				<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
