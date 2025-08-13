@@ -42,7 +42,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">
       <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-3 items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Link
@@ -54,7 +54,8 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-6">
+          {/* Centered desktop nav */}
+          <div className="hidden lg:flex items-center justify-center space-x-6">
             <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               HOME
             </Link>
@@ -277,32 +278,33 @@ export function Header() {
             <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               FAQ
             </Link>
+          </div>
 
-            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-300">
-              <div className="text-center">
-                <a
-                  href="tel:+18126101657"
-                  className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors text-center"
-                >
-                  (812) 610-1657
-                </a>
-                <div className="text-xs text-gray-600">Text photos for quote</div>
-              </div>
-              <Button
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"
-                onClick={() => setIsQuoteModalOpen(true)}
-                aria-haspopup="dialog"
-                aria-expanded={isQuoteModalOpen}
-                aria-controls="quote-form-modal"
+          {/* Right desktop actions */}
+          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 pl-4 border-l border-gray-300">
+            <div className="text-center">
+              <a
+                href="tel:+18126101657"
+                className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors text-center"
               >
-                GET FREE QUOTE
-              </Button>
+                (812) 610-1657
+              </a>
+              <div className="text-xs text-gray-600">Text photos for quote</div>
             </div>
+            <Button
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"
+              onClick={() => setIsQuoteModalOpen(true)}
+              aria-haspopup="dialog"
+              aria-expanded={isQuoteModalOpen}
+              aria-controls="quote-form-modal"
+            >
+              GET FREE QUOTE
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden"
+            className="lg:hidden justify-self-end"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
@@ -314,18 +316,26 @@ export function Header() {
 
         {isMenuOpen && (
           <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-3 pt-4">
-              <div className="text-center py-4 bg-red-50 rounded-lg mb-4">
-                <a
-                  href="tel:+18126101657"
-                  className="text-base font-bold text-red-600 hover:text-red-700 transition-colors"
-                >
-                  (812) 610-1657
-                </a>
-                <div className="text-xs text-gray-600">Text photos for instant quote</div>
+            <div className="flex flex-col space-y-2 pt-4">
+              <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+                HOME
+              </Link>
+              <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+                ABOUT
+              </Link>
+              <Link href="/services" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+                SERVICES
+              </Link>
+              <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+                BLOG
+              </Link>
+              <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+                FAQ
+              </Link>
+              <div className="pt-4">
                 <Button
                   size="sm"
-                  className="bg-red-600 hover:bg-red-700 text-white text-xs mt-3"
+                  className="bg-red-600 hover:bg-red-700 text-white text-xs"
                   onClick={() => setIsQuoteModalOpen(true)}
                   aria-haspopup="dialog"
                   aria-expanded={isQuoteModalOpen}
@@ -334,75 +344,6 @@ export function Header() {
                   Get Free Quote
                 </Button>
               </div>
-
-              <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                HOME
-              </Link>
-              <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                ABOUT
-              </Link>
-
-              <div className="text-red-600 font-bold text-xs py-1">JUNK REMOVAL</div>
-              <Link href="/services/junk-removal" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm">
-                General Junk Removal
-              </Link>
-              <Link
-                href="/services/dumpster-rental"
-                prefetch={false}
-                className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm"
-              >
-                Dumpster Rental
-              </Link>
-              <Link
-                href="/services/hot-tub-removal"
-                prefetch={false}
-                className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm"
-              >
-                Hot Tub Removal
-              </Link>
-
-              <div className="text-green-600 font-bold text-xs py-1">CLEANING</div>
-              <Link
-                href="/cleaning/residential"
-                prefetch={false}
-                className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm"
-              >
-                Residential
-              </Link>
-              <Link href="/cleaning/commercial" prefetch={false} className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
-                Commercial
-              </Link>
-              <Link href="/cleaning/deep-clean" prefetch={false} className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
-                Deep Clean
-              </Link>
-
-              <div className="text-blue-600 font-bold text-xs py-1">LOCATIONS</div>
-              <Link href="/locations/evansville" prefetch={false} className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
-                Evansville
-              </Link>
-              <Link href="/locations/newburgh" prefetch={false} className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
-                Newburgh
-              </Link>
-              <Link
-                href="/locations/henderson-ky"
-                prefetch={false}
-                className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm"
-              >
-                Henderson, KY
-              </Link>
-
-              <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                BLOG
-              </Link>
-              <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                FAQ
-              </Link>
-              <Link href="/emergency" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                EMERGENCY SERVICE
-              </Link>
-              <Link href="/compare" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                COMPARE SERVICES
-              </Link>
             </div>
           </div>
         )}
