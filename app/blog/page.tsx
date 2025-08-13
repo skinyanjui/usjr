@@ -141,7 +141,7 @@ export default function BlogPage() {
     },
   ]
 
-  const featuredPosts = blogPosts.filter((post) => post.featured)
+  const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 1)
   const regularPosts = blogPosts.filter((post) => !post.featured)
 
   return (
