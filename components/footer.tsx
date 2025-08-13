@@ -77,7 +77,7 @@ export function Footer() {
                   aria-label="Google"
                   className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
                 >
-                  <Twitter className="h-5 w-5 text-gray-300" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-gray-300" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm7.938 9h-3.27a15.94 15.94 0 0 0-1.033-5.102A8.014 8.014 0 0 1 19.938 11ZM12 4c1.38 0 2.652 2.074 3.27 5h-6.54C9.348 6.074 10.621 4 12 4ZM8.364 13h7.272a14.3 14.3 0 0 1-.615 3H8.98a14.3 14.3 0 0 1-.615-3Zm0-2a14.3 14.3 0 0 1 .615-3h6.042a14.3 14.3 0 0 1 .615 3H8.364Zm3.333 9c-1.38 0-2.652-2.074-3.27-5h6.54c-.618 2.926-1.89 5-3.27 5ZM8.365 4.898A15.94 15.94 0 0 0 7.333 10H4.062a8.014 8.014 0 0 1 4.303-5.102ZM4.062 13h3.27c.235 1.776.687 3.53 1.372 5.102A8.014 8.014 0 0 1 4.062 13Zm15.876 0a8.014 8.014 0 0 1-4.303 5.102A15.94 15.94 0 0 0 16.667 13h3.27Z"/></svg>
                 </a>
               )}
             </div>
