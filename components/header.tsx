@@ -209,9 +209,7 @@ export function Header() {
               FAQ
             </Link>
 
-            <Link href="#contact" className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
-              CONTACT
-            </Link>
+
 
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-300">
               <div className="text-center">
@@ -322,9 +320,7 @@ export function Header() {
               <Link href="/compare" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 COMPARE SERVICES
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
-                CONTACT
-              </Link>
+
             </div>
           </div>
         )}

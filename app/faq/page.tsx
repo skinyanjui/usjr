@@ -38,6 +38,16 @@ export default function FAQPage() {
           answer:
             "Our pricing is based on the volume of items, type of materials, labor required, and disposal fees. We provide upfront, transparent pricing with no hidden fees.",
         },
+        {
+          question: "What is your cancellation or rescheduling policy?",
+          answer:
+            "You can cancel or reschedule up to 24 hours before your appointment at no charge. Same-day cancellations may incur a $25 dispatch fee to cover route planning.",
+        },
+        {
+          question: "Do you provide arrival windows?",
+          answer:
+            "Yes. We provide a 2-hour arrival window and will send a text when we are 30 minutes away. If we're delayed due to traffic, we'll keep you updated.",
+        },
       ],
     },
     {
@@ -64,7 +74,12 @@ export default function FAQPage() {
         {
           question: "What happens to my junk after removal?",
           answer:
-            "We prioritize eco-friendly disposal. Items are donated when possible, recycled when appropriate, and only sent to landfills as a last resort. We provide disposal receipts upon request.",
+            "We prioritize eco-friendly disposal. Items are donated when possible, recycled when appropriate, and only sent to landfills as a last resort. We provide donation receipts upon request when available from our partners.",
+        },
+        {
+          question: "Do you remove hazardous materials?",
+          answer:
+            "No. We cannot accept paint, chemicals, oils, fuels, asbestos, biohazards, or pressurized tanks. We can refer you to local hazardous waste programs for proper disposal.",
         },
       ],
     },
@@ -94,6 +109,11 @@ export default function FAQPage() {
           answer:
             "Permits are typically required for street placement but not for private property. We can help coordinate permits if needed, though permit fees are additional.",
         },
+        {
+          question: "Do you protect driveways and surfaces?",
+          answer:
+            "Yes. We place protective boards under roll-offs to minimize surface contact and recommend a flat, sturdy placement area.",
+        },
       ],
     },
     {
@@ -122,6 +142,11 @@ export default function FAQPage() {
           answer:
             "Yes, all our cleaning staff undergo thorough background checks and are bonded and insured for your peace of mind.",
         },
+        {
+          question: "Do you offer move-in/move-out cleaning?",
+          answer:
+            "Yes. We provide detailed move-in/move-out cleaning including inside appliances, cabinets, and hard-to-reach areas. Quotes are free and customized to your space.",
+        },
       ],
     },
     {
@@ -149,6 +174,11 @@ export default function FAQPage() {
           question: "Are there any hidden fees?",
           answer:
             "No hidden fees ever. Our pricing includes labor, hauling, disposal fees, and cleanup. The price we quote is the price you pay.",
+        },
+        {
+          question: "Should I tip the crew?",
+          answer:
+            "Tips are never required but always appreciated for exceptional service. If you'd like to tip, you can do so in cash or add it to your card payment.",
         },
       ],
     },
