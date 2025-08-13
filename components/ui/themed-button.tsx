@@ -14,23 +14,23 @@ export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
 
       if (variant === "outline") {
         const outlineMap = {
-          red: "border-red-700 text-red-700 hover:bg-red-700 hover:text-white bg-transparent",
-          orange: "border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white bg-transparent",
-          green: "border-green-700 text-green-700 hover:bg-green-700 hover:text-white bg-transparent",
-          blue: "border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white bg-transparent",
-          purple: "border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white bg-transparent",
-          teal: "border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white bg-transparent",
+          red: "border-red-800 text-red-800 hover:bg-red-800 hover:text-white bg-transparent",
+          orange: "border-orange-800 text-orange-800 hover:bg-orange-800 hover:text-white bg-transparent",
+          green: "border-green-800 text-green-800 hover:bg-green-800 hover:text-white bg-transparent",
+          blue: "border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white bg-transparent",
+          purple: "border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white bg-transparent",
+          teal: "border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white bg-transparent",
         }
         return `${baseClasses} ${outlineMap[theme] || outlineMap.red}`
       }
 
       const solidMap = {
-        red: "bg-red-600 hover:bg-red-700 text-white",
-        orange: "bg-orange-600 hover:bg-orange-700 text-white",
-        green: "bg-green-600 hover:bg-green-700 text-white",
-        blue: "bg-blue-600 hover:bg-blue-700 text-white",
-        purple: "bg-purple-600 hover:bg-purple-700 text-white",
-        teal: "bg-teal-600 hover:bg-teal-700 text-white",
+        red: "bg-red-700 hover:bg-red-800 text-white",
+        orange: "bg-orange-700 hover:bg-orange-800 text-white",
+        green: "bg-green-700 hover:bg-green-800 text-white",
+        blue: "bg-blue-700 hover:bg-blue-800 text-white",
+        purple: "bg-purple-700 hover:bg-purple-800 text-white",
+        teal: "bg-teal-700 hover:bg-teal-800 text-white",
       }
       return `${baseClasses} ${solidMap[theme] || solidMap.red}`
     }
