@@ -43,7 +43,7 @@ export function PricingCard({
   }
 
   return (
-    <Card className={cn("glass relative", popular && "ring-2 ring-offset-2", getColorClasses(color), className)}>
+    <Card className={cn("glass relative pricing-card", popular && "ring-2 ring-offset-2", getColorClasses(color), className)}>
       {popular && (
         <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-600 text-white">
           Most Popular
