@@ -283,7 +283,7 @@ export function ContactSection() {
             <Card className="glass bg-blue-600 text-white">
               <CardContent className="p-8 text-center">
                 <h3 className="text-xl font-bold mb-4">Why Evansville Chooses Uncle Sam Junk Removal</h3>
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div>✓ 15+ Years Experience</div>
                   <div>✓ Locally Owned & Operated</div>
                   <div>✓ Upfront Pricing</div>
