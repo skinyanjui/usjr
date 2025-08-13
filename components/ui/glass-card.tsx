@@ -3,7 +3,7 @@ import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
 
 interface GlassCardProps extends CardProps {
-  variant?: "default" | "colored"
+  variant?: "default" | "colored" | "white"
   color?: "red" | "orange" | "green" | "blue" | "purple" | "teal"
   hover?: boolean
 }
@@ -22,7 +22,7 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       return colorMap[color] || colorMap.red
     }
 
-    const baseClasses = "glass px-6 py-6 space-y-4"
+    const baseClasses = cn(variant === "white" ? "bg-white" : "glass", "px-6 py-6 space-y-4")
     const hoverClasses = hover ? "hover:shadow-xl transition-all duration-300" : ""
     const colorClasses = variant === "colored" ? getColorClasses(color) : ""
 

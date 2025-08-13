@@ -42,10 +42,10 @@ export function HeroSection() {
 				</div>
 
 				<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-					<GlassCard className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
+					<GlassCard variant="white" className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
 						<IconContainer icon={Truck} color="red" className="mx-auto mb-4 md:mb-6" />
-						<h3 className="text-xl md:text-2xl font-bold mb-4">Junk Removal</h3>
-						<ul className="text-left space-y-2 mb-6 text-gray-200">
+						<h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Junk Removal</h3>
+						<ul className="text-left space-y-2 mb-6 text-gray-700">
 							<li>✓ Free Estimates Given</li>
 							<li>✓ Same Day Service Available</li>
 							<li>✓ Eco-Friendly Disposal</li>
@@ -56,10 +56,10 @@ export function HeroSection() {
 						</ThemedButton>
 					</GlassCard>
 
-					<GlassCard className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
+					<GlassCard variant="white" className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
 						<IconContainer icon={Container} color="red" className="mx-auto mb-4 md:mb-6" />
-						<h3 className="text-xl md:text-2xl font-bold mb-4">Dumpster Rental</h3>
-						<ul className="text-left space-y-2 mb-6 text-gray-200">
+						<h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Dumpster Rental</h3>
+						<ul className="text-left space-y-2 mb-6 text-gray-700">
 							<li>✓ Delivery & Pick Up | 7 Days</li>
 							<li>✓ Residential & Commercial</li>
 							<li>✓ All Inclusive Pricing</li>
@@ -70,10 +70,10 @@ export function HeroSection() {
 						</ThemedButton>
 					</GlassCard>
 
-					<GlassCard className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
+					<GlassCard variant="white" className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300">
 						<IconContainer icon={Lightbulb} color="green" className="mx-auto mb-4 md:mb-6" />
-						<h3 className="text-xl md:text-2xl font-bold mb-4">Cleaning Services</h3>
-						<ul className="text-left space-y-2 mb-6 text-gray-200">
+						<h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Cleaning Services</h3>
+						<ul className="text-left space-y-2 mb-6 text-gray-700">
 							<li>✓ Natural Products Used</li>
 							<li>✓ Residential & Commercial</li>
 							<li>✓ Woman-Owned Business</li>
@@ -85,9 +85,9 @@ export function HeroSection() {
 					</GlassCard>
 				</div>
 
-				<GlassCard className="mt-16 p-6 md:p-8 max-w-2xl mx-auto">
-					<h3 className="text-xl md:text-2xl font-bold mb-4">Ready to Get Started?</h3>
-					<p className="text-base md:text-lg mb-6 text-gray-200">
+				<GlassCard variant="white" className="mt-16 p-6 md:p-8 max-w-2xl mx-auto">
+					<h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
+					<p className="text-base md:text-lg mb-6 text-gray-700">
 						Call now for your free estimate and same-day service in Evansville and surrounding areas!
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
