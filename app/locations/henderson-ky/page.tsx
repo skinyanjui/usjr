@@ -70,7 +70,7 @@ export default function HendersonPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Henderson Pickup
                 </Button>

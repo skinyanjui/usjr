@@ -339,7 +339,7 @@ export default function PropertyManagerPlaybookPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-6 py-3 font-semibold bg-transparent"
+                  className="border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white px-6 py-3 font-semibold bg-transparent"
                 >
                   Get Property Management Rates
                 </Button>

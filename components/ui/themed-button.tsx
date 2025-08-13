@@ -14,12 +14,12 @@ export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
 
       if (variant === "outline") {
         const outlineMap = {
-          red: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white bg-transparent",
-          orange: "border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white bg-transparent",
-          green: "border-green-600 text-green-600 hover:bg-green-600 hover:text-white bg-transparent",
-          blue: "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white bg-transparent",
-          purple: "border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white bg-transparent",
-          teal: "border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white bg-transparent",
+          red: "border-red-700 text-red-700 hover:bg-red-700 hover:text-white bg-transparent",
+          orange: "border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white bg-transparent",
+          green: "border-green-700 text-green-700 hover:bg-green-700 hover:text-white bg-transparent",
+          blue: "border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white bg-transparent",
+          purple: "border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white bg-transparent",
+          teal: "border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white bg-transparent",
         }
         return `${baseClasses} ${outlineMap[theme] || outlineMap.red}`
       }

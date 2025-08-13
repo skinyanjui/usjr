@@ -62,7 +62,7 @@ const themeClasses = {
   red: {
     gradient: "from-red-50 to-white",
     primary: "bg-red-600 hover:bg-red-700",
-    secondary: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white",
+    secondary: "border-red-700 text-red-700 hover:bg-red-700 hover:text-white",
     accent: "text-red-600",
     icon: "bg-red-600",
     badge: "bg-red-100 text-red-800 border-red-200",
@@ -70,7 +70,7 @@ const themeClasses = {
   blue: {
     gradient: "from-blue-50 to-white",
     primary: "bg-blue-600 hover:bg-blue-700",
-    secondary: "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+    secondary: "border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white",
     accent: "text-blue-600",
     icon: "bg-blue-600",
     badge: "bg-blue-100 text-blue-800 border-blue-200",
@@ -78,7 +78,7 @@ const themeClasses = {
   green: {
     gradient: "from-green-50 to-white",
     primary: "bg-green-600 hover:bg-green-700",
-    secondary: "border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
+    secondary: "border-green-700 text-green-700 hover:bg-green-700 hover:text-white",
     accent: "text-green-600",
     icon: "bg-green-600",
     badge: "bg-green-100 text-green-800 border-green-200",
@@ -86,7 +86,7 @@ const themeClasses = {
   orange: {
     gradient: "from-orange-50 to-white",
     primary: "bg-orange-600 hover:bg-orange-700",
-    secondary: "border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white",
+    secondary: "border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white",
     accent: "text-orange-600",
     icon: "bg-orange-600",
     badge: "bg-orange-100 text-orange-800 border-orange-200",
@@ -94,7 +94,7 @@ const themeClasses = {
   purple: {
     gradient: "from-purple-50 to-white",
     primary: "bg-purple-600 hover:bg-purple-700",
-    secondary: "border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white",
+    secondary: "border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white",
     accent: "text-purple-600",
     icon: "bg-purple-600",
     badge: "bg-purple-100 text-purple-800 border-purple-200",
@@ -102,7 +102,7 @@ const themeClasses = {
   teal: {
     gradient: "from-teal-50 to-white",
     primary: "bg-teal-600 hover:bg-teal-700",
-    secondary: "border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white",
+    secondary: "border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white",
     accent: "text-teal-600",
     icon: "bg-teal-600",
     badge: "bg-teal-100 text-teal-800 border-teal-200",

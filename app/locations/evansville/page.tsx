@@ -85,7 +85,7 @@ export default function EvansvillePage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-red-700 text-red-700 hover:bg-red-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Text Photos for Quote
                 </Button>

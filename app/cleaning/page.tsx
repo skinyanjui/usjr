@@ -147,12 +147,12 @@ export default function CleaningHub() {
                   </ul>
                   <div className="flex gap-2">
                     <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
-                      <Link href={service.href}>Learn More</Link>
+                      <Link href={service.href} aria-label={`Learn more about ${service.title}`}>Learn More</Link>
                     </Button>
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent"
+                      className="border-green-700 text-green-700 hover:bg-green-50 bg-transparent"
                     >
                       Quote
                     </Button>
@@ -200,7 +200,7 @@ export default function CleaningHub() {
             <Button
               size="lg"
               variant="outline"
-              className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 bg-transparent"
+              className="border-green-700 text-green-700 hover:bg-green-50 px-8 py-3 bg-transparent"
             >
               Get Free Quote
             </Button>

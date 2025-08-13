@@ -121,7 +121,7 @@ export default function MattressRemovalPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Pickup
                 </Button>

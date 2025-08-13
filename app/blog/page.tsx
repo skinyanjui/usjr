@@ -226,7 +226,7 @@ export default function BlogPage() {
                       <Link href={`/blog/${post.slug}`}>
                         <Button
                           variant="outline"
-                          className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white group bg-transparent"
+                          className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white group bg-transparent"
                         >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -291,8 +291,8 @@ export default function BlogPage() {
                         variant="outline"
                         className={`${
                           post.category.includes("Cleaning")
-                            ? "border-green-600 text-green-600 hover:bg-green-600"
-                            : "border-red-600 text-red-600 hover:bg-red-600"
+                            ? "border-green-700 text-green-700 hover:bg-green-700"
+                            : "border-red-700 text-red-700 hover:bg-red-700"
                         } hover:text-white group bg-transparent`}
                       >
                         Read More
@@ -320,7 +320,7 @@ export default function BlogPage() {
                 <Link href="/quote">
                   <Button
                     variant="outline"
-                    className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 font-semibold bg-transparent"
+                    className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white px-8 py-3 font-semibold bg-transparent"
                   >
                     Get Free Quote
                   </Button>

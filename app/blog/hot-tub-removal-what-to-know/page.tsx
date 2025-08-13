@@ -292,7 +292,7 @@ export default function HotTubRemovalPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 font-semibold bg-transparent"
+                  className="border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white px-6 py-3 font-semibold bg-transparent"
                 >
                   Get Hot Tub Removal Quote
                 </Button>
