@@ -54,7 +54,7 @@ export default function HotTubRemovalPage() {
             <div className="mb-4">
               <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Service Guide</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Hot tub removal: what to know before we arrive
             </h1>
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">

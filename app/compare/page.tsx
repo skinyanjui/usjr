@@ -89,8 +89,8 @@ export default function ComparePage() {
     <div className="min-h-screen pt-24 pb-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Compare Our Services</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Compare Our Services</h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Not sure which service is right for you? Compare features, pricing, and benefits to make the best choice for
             your project.
           </p>
