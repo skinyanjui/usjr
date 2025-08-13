@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import { useEffect, useRef, useState } from "react"
 
 const PricingCalculator = dynamic(() => import("@/components/pricing-calculator").then((m) => m.PricingCalculator), {
 	ssr: false,
@@ -28,6 +29,30 @@ const ContactSection = dynamic(() => import("@/components/contact-section").then
 })
 
 export default function HomeClient() {
+	const pricingRef = useRef<HTMLDivElement | null>(null)
+	const contactRef = useRef<HTMLDivElement | null>(null)
+	const [showPricing, setShowPricing] = useState(false)
+	const [showContact, setShowContact] = useState(false)
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						if (entry.target === pricingRef.current) setShowPricing(true)
+						if (entry.target === contactRef.current) setShowContact(true)
+					}
+				}
+			},
+			{ rootMargin: "200px 0px" }
+		)
+
+		if (pricingRef.current) observer.observe(pricingRef.current)
+		if (contactRef.current) observer.observe(contactRef.current)
+
+		return () => observer.disconnect()
+	}, [])
+
 	return (
 		<>
 			<section className="py-12 sm:py-16 md:py-20 bg-white">
@@ -38,10 +63,19 @@ export default function HomeClient() {
 							Use our interactive calculator to get an immediate estimate for your project. No personal information required.
 						</p>
 					</div>
-					<PricingCalculator />
+					<div ref={pricingRef}>
+						{showPricing ? (
+							<PricingCalculator />
+						) : (
+							<div className="mt-8 animate-pulse">
+								<div className="h-6 w-48 bg-gray-200 rounded mb-4" />
+								<div className="h-40 bg-gray-100 rounded" />
+							</div>
+						)}
+					</div>
 				</div>
 			</section>
-			<ContactSection />
+			<div ref={contactRef}>{showContact ? <ContactSection /> : null}</div>
 		</>
 	)
 }

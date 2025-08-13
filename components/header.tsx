@@ -408,9 +408,11 @@ export function Header() {
         )}
       </nav>
 
-      <div id="quote-form-modal" aria-hidden={!isQuoteModalOpen}>
-        <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
-      </div>
+      {isQuoteModalOpen && (
+        <div id="quote-form-modal" aria-hidden={!isQuoteModalOpen}>
+          <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
+        </div>
+      )}
     </header>
   )
 }
