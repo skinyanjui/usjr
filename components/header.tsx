@@ -47,6 +47,7 @@ export function Header() {
           <div className="flex items-center">
             <Link
               href="/"
+              prefetch={false}
               className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-base hover:bg-red-700 transition-colors"
             >
               UNCLE SAM JUNK REMOVAL
@@ -54,11 +55,11 @@ export function Header() {
           </div>
 
           <div className="hidden lg:flex items-center space-x-6">
-            <Link href="/" className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               HOME
             </Link>
 
-            <Link href="/about" className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               ABOUT
             </Link>
 
@@ -97,6 +98,7 @@ export function Header() {
                       <h4 className="font-bold text-red-600 mb-3 text-sm">JUNK REMOVAL</h4>
                       <Link
                         href="/services/junk-removal"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -104,6 +106,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/dumpster-rental"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -111,6 +114,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/hot-tub-removal"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -118,6 +122,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/appliance-removal"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -125,6 +130,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/garage-cleanout"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -132,6 +138,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/estate-cleanouts"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -140,6 +147,7 @@ export function Header() {
                       <div className="border-t border-gray-200 mt-3 pt-3">
                         <Link
                           href="/compare"
+                          prefetch={false}
                           className="block py-1 text-blue-600 hover:text-blue-700 transition-colors text-xs font-medium"
                           role="menuitem"
                         >
@@ -147,6 +155,7 @@ export function Header() {
                         </Link>
                         <Link
                           href="/emergency"
+                          prefetch={false}
                           className="block py-1 text-red-600 hover:text-red-700 transition-colors text-xs font-medium"
                           role="menuitem"
                         >
@@ -158,6 +167,7 @@ export function Header() {
                       <h4 className="font-bold text-green-600 mb-3 text-sm">CLEANING</h4>
                       <Link
                         href="/cleaning/residential"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -165,6 +175,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/cleaning/commercial"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -172,6 +183,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/cleaning/deep-clean"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -179,6 +191,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/cleaning/recurring"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -186,6 +199,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/cleaning/move-in-move-out"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -193,6 +207,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/cleaning/specialty"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -203,6 +218,7 @@ export function Header() {
                       <h4 className="font-bold text-blue-600 mb-3 text-sm">LOCATIONS</h4>
                       <Link
                         href="/locations/evansville"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -210,6 +226,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/locations/newburgh"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -217,6 +234,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/locations/henderson-ky"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -224,6 +242,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/locations/owensboro-ky"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -231,6 +250,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/locations/boonville"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -238,6 +258,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/locations/princeton"
+                        prefetch={false}
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
                         role="menuitem"
                       >
@@ -249,11 +270,11 @@ export function Header() {
               )}
             </div>
 
-            <Link href="/blog" className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               BLOG
             </Link>
 
-            <Link href="/faq" className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
               FAQ
             </Link>
 
@@ -314,25 +335,27 @@ export function Header() {
                 </Button>
               </div>
 
-              <Link href="/" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 HOME
               </Link>
-              <Link href="/about" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 ABOUT
               </Link>
 
               <div className="text-red-600 font-bold text-xs py-1">JUNK REMOVAL</div>
-              <Link href="/services/junk-removal" className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm">
+              <Link href="/services/junk-removal" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm">
                 General Junk Removal
               </Link>
               <Link
                 href="/services/dumpster-rental"
+                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm"
               >
                 Dumpster Rental
               </Link>
               <Link
                 href="/services/hot-tub-removal"
+                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium pl-4 text-sm"
               >
                 Hot Tub Removal
@@ -341,41 +364,43 @@ export function Header() {
               <div className="text-green-600 font-bold text-xs py-1">CLEANING</div>
               <Link
                 href="/cleaning/residential"
+                prefetch={false}
                 className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm"
               >
                 Residential
               </Link>
-              <Link href="/cleaning/commercial" className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
+              <Link href="/cleaning/commercial" prefetch={false} className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
                 Commercial
               </Link>
-              <Link href="/cleaning/deep-clean" className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
+              <Link href="/cleaning/deep-clean" prefetch={false} className="text-gray-700 hover:text-green-600 font-medium pl-4 text-sm">
                 Deep Clean
               </Link>
 
               <div className="text-blue-600 font-bold text-xs py-1">LOCATIONS</div>
-              <Link href="/locations/evansville" className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
+              <Link href="/locations/evansville" prefetch={false} className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
                 Evansville
               </Link>
-              <Link href="/locations/newburgh" className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
+              <Link href="/locations/newburgh" prefetch={false} className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm">
                 Newburgh
               </Link>
               <Link
                 href="/locations/henderson-ky"
+                prefetch={false}
                 className="text-gray-700 hover:text-blue-600 font-medium pl-4 text-sm"
               >
                 Henderson, KY
               </Link>
 
-              <Link href="/blog" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 BLOG
               </Link>
-              <Link href="/faq" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 FAQ
               </Link>
-              <Link href="/emergency" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/emergency" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 EMERGENCY SERVICE
               </Link>
-              <Link href="/compare" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
+              <Link href="/compare" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 COMPARE SERVICES
               </Link>
             </div>
