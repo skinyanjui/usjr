@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
-import { QuoteFormStandalone } from "@/components/quote-form-standalone"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Leaf, Shield, Clock, Star, CheckCircle, Truck, Trash2, Sparkles, Phone, Camera } from "lucide-react"
 import Link from "next/link"
+import QuoteFormClient from "./QuoteFormClient"
 
 export const metadata: Metadata = {
   title: "Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Dumpster Rental & Cleaning",
@@ -241,7 +241,7 @@ export default function QuotePage() {
               your detailed estimate.
             </p>
           </div>
-          <QuoteFormStandalone />
+          <QuoteFormClient />
         </div>
 
         {/* Why Choose Us Section */}
