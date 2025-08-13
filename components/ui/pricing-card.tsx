@@ -32,12 +32,12 @@ export function PricingCard({
 }: PricingCardProps) {
   const getColorClasses = (color: string) => {
     const colorMap = {
-      red: "border-red-200 text-red-600",
-      orange: "border-orange-200 text-orange-600",
-      green: "border-green-200 text-green-600",
-      blue: "border-blue-200 text-blue-600",
-      purple: "border-purple-200 text-purple-600",
-      teal: "border-teal-200 text-teal-600",
+      red: "border-red-300 text-red-600",
+      orange: "border-orange-300 text-orange-600",
+      green: "border-green-300 text-green-600",
+      blue: "border-blue-300 text-blue-600",
+      purple: "border-purple-300 text-purple-600",
+      teal: "border-teal-300 text-teal-600",
     }
     return colorMap[color] || colorMap.red
   }

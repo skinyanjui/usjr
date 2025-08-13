@@ -27,7 +27,6 @@ export function HeroSection() {
 
 			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
 				<div className="text-center text-white mb-12">
-					<h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">Uncle Sam Junk Removal</h1>
 					<h2 className="text-xl md:text-3xl font-semibold mb-4 text-red-400">
 						Same-Day Junk Removal & Professional Cleaning
 					</h2>
