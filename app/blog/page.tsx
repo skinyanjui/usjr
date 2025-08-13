@@ -94,6 +94,51 @@ export default function BlogPage() {
       category: "Property Management",
       image: "/rental-turnover-cleanup.png",
     },
+    // New posts
+    {
+      slug: "mattress-disposal-evansville",
+      title: "Mattress disposal in Evansville: recycling, costs, and pickup options",
+      excerpt:
+        "What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.",
+      author: "Uncle Sam Team",
+      date: "January 20, 2025",
+      readTime: "6 min read",
+      category: "Mattress Removal",
+      image: "/mattress-removal-evansville.png",
+    },
+    {
+      slug: "shed-removal-guide-evansville",
+      title: "Shed removal in Evansville: permit tips, pricing, and timeline",
+      excerpt:
+        "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
+      author: "Uncle Sam Team",
+      date: "January 22, 2025",
+      readTime: "7 min read",
+      category: "Light Demolition",
+      image: "/shed-removal-evansville.png",
+    },
+    {
+      slug: "estate-cleanout-guide",
+      title: "Estate cleanout guide: compassionate planning and donation options",
+      excerpt:
+        "A step-by-step guide to planning an estate cleanout with sensitivity, including donation and recycling strategies.",
+      author: "Uncle Sam Team",
+      date: "January 24, 2025",
+      readTime: "9 min read",
+      category: "Estate Cleanouts",
+      image: "/estate-cleanout-evansville.png",
+    },
+    {
+      slug: "yard-waste-disposal-evansville",
+      title: "Yard waste disposal in Evansville: composting and pickup basics",
+      excerpt:
+        "Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.",
+      author: "Uncle Sam Team",
+      date: "January 26, 2025",
+      readTime: "6 min read",
+      category: "Yard Waste",
+      image: "/yard-waste-removal-evansville.png",
+    },
   ]
 
   const featuredPosts = blogPosts.filter((post) => post.featured)
@@ -193,7 +238,7 @@ export default function BlogPage() {
           {/* Regular Posts */}
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">All Articles</h2>
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {regularPosts.map((post, index) => (
                 <Card key={post.slug} className="glass hover:scale-105 transition-all duration-300 overflow-hidden">
                   <div className="aspect-video bg-gray-200 relative overflow-hidden">
