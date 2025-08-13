@@ -187,7 +187,7 @@ export default function BlogPage() {
                         fill
                         className="object-cover"
                                               sizes="(max-width: 768px) 100vw, 1200px"
-                      quality={55}
+                      quality={50}
                       priority={index < 1}
                       />
                       <div className="absolute top-4 left-4">
@@ -252,7 +252,7 @@ export default function BlogPage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={55}
+                      quality={50}
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
