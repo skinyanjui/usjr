@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -20,7 +21,7 @@ export default function ServicesPage() {
       description: "Complete household and office junk removal with eco-friendly disposal",
       image: "/junk-removal-evansville.png",
       price: "Starting at $99",
-      href: "/services/junk-removal",
+      link: "/services/junk-removal",
       icon: Truck,
     },
     {
@@ -28,7 +29,7 @@ export default function ServicesPage() {
       description: "Professional hot tub dismantling and removal service",
       image: "/hot-tub-removal-evansville.png",
       price: "Starting at $299",
-      href: "/services/hot-tub-removal",
+      link: "/services/hot-tub-removal",
       icon: Home,
     },
     {
@@ -36,7 +37,7 @@ export default function ServicesPage() {
       description: "Safe removal and recycling of old appliances",
       image: "/appliance-removal-evansville.png",
       price: "Starting at $75",
-      href: "/services/appliance-removal",
+      link: "/services/appliance-removal",
       icon: Wrench,
     },
     {
@@ -44,7 +45,7 @@ export default function ServicesPage() {
       description: "Complete garage cleaning and organization service",
       image: "/garage-cleanout-evansville.png",
       price: "Starting at $199",
-      href: "/services/garage-cleanout",
+      link: "/services/garage-cleanout",
       icon: Building2,
     },
     {
@@ -52,7 +53,7 @@ export default function ServicesPage() {
       description: "Compassionate and thorough estate cleanout services",
       image: "/estate-cleanout-evansville.png",
       price: "Starting at $399",
-      href: "/services/estate-cleanouts",
+      link: "/services/estate-cleanouts",
       icon: Home,
     },
     {
@@ -60,7 +61,7 @@ export default function ServicesPage() {
       description: "Eco-friendly mattress disposal and recycling",
       image: "/mattress-removal-evansville.png",
       price: "Starting at $49",
-      href: "/services/mattress-removal",
+      link: "/services/mattress-removal",
       icon: Trash2,
     },
   ]
@@ -71,7 +72,7 @@ export default function ServicesPage() {
       description: "Flexible dumpster rental for projects of all sizes",
       image: "/dumpster-rental-evansville.png",
       price: "Starting at $299/week",
-      href: "/services/dumpster-rental",
+      link: "/services/dumpster-rental",
       icon: Truck,
     },
     {
@@ -79,7 +80,7 @@ export default function ServicesPage() {
       description: "Safe demolition services for small structures",
       image: "/light-demolition-evansville.png",
       price: "Starting at $499",
-      href: "/services/light-demolition",
+      link: "/services/light-demolition",
       icon: Wrench,
     },
     {
@@ -87,7 +88,7 @@ export default function ServicesPage() {
       description: "Complete shed dismantling and removal",
       image: "/shed-removal-evansville.png",
       price: "Starting at $199",
-      href: "/services/shed-removal",
+      link: "/services/shed-removal",
       icon: Building2,
     },
     {
@@ -95,7 +96,7 @@ export default function ServicesPage() {
       description: "Seasonal yard cleanup and debris removal",
       image: "/yard-waste-removal-evansville.png",
       price: "Starting at $149",
-      href: "/services/yard-waste-removal",
+      link: "/services/yard-waste-removal",
       icon: Recycle,
     },
   ]
@@ -106,7 +107,7 @@ export default function ServicesPage() {
       description: "Professional home cleaning with natural products",
       image: "/natural-cleaning-service.png",
       price: "Starting at $89",
-      href: "/cleaning/residential",
+      link: "/cleaning/residential",
       icon: Home,
     },
     {
@@ -114,7 +115,7 @@ export default function ServicesPage() {
       description: "After-hours business cleaning services",
       image: "/commercial-office-cleaning.png",
       price: "Starting at $149",
-      href: "/cleaning/commercial",
+      link: "/cleaning/commercial",
       icon: Building2,
     },
     {
@@ -122,7 +123,7 @@ export default function ServicesPage() {
       description: "Comprehensive deep cleaning for homes and offices",
       image: "/natural-deep-cleaning.png",
       price: "Starting at $199",
-      href: "/cleaning/deep-clean",
+      link: "/cleaning/deep-clean",
       icon: Recycle,
     },
   ]
@@ -135,15 +136,14 @@ export default function ServicesPage() {
           <SectionHeader
             title="Professional Services in Evansville"
             subtitle="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"
-            theme="blue"
           />
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="blue" size="lg" href="/quote">
-              Get Free Quote
+            <ThemedButton theme="blue" size="lg" asChild>
+              <Link href="/quote">Get Free Quote</Link>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" href="tel:812-555-0123">
-              Call (812) 555-0123
+            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+              <Link href="tel:812-555-0123">Call (812) 555-0123</Link>
             </ThemedButton>
           </div>
         </div>
@@ -155,7 +155,6 @@ export default function ServicesPage() {
           <SectionHeader
             title="Junk Removal Services"
             subtitle="Professional removal services for homes and businesses"
-            theme="red"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -166,9 +165,10 @@ export default function ServicesPage() {
                 description={service.description}
                 image={service.image}
                 price={service.price}
-                href={service.href}
+                link={service.link}
                 icon={service.icon}
-                theme="red"
+                color="red"
+                category="Junk Removal"
               />
             ))}
           </div>
@@ -181,7 +181,6 @@ export default function ServicesPage() {
           <SectionHeader
             title="Dumpster & Demolition Services"
             subtitle="Rental and demolition solutions for larger projects"
-            theme="orange"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
@@ -192,10 +191,11 @@ export default function ServicesPage() {
                 description={service.description}
                 image={service.image}
                 price={service.price}
-                href={service.href}
+                link={service.link}
                 icon={service.icon}
-                theme="orange"
-                size="sm"
+                color="orange"
+                category="Dumpster & Demo"
+                size="small"
               />
             ))}
           </div>
@@ -208,7 +208,6 @@ export default function ServicesPage() {
           <SectionHeader
             title="Professional Cleaning Services"
             subtitle="Eco-friendly cleaning with natural products"
-            theme="green"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -219,9 +218,10 @@ export default function ServicesPage() {
                 description={service.description}
                 image={service.image}
                 price={service.price}
-                href={service.href}
+                link={service.link}
                 icon={service.icon}
-                theme="green"
+                color="green"
+                category="Cleaning"
               />
             ))}
           </div>
@@ -234,7 +234,6 @@ export default function ServicesPage() {
           <SectionHeader
             title="Service Areas"
             subtitle="Proudly serving Southern Indiana and Western Kentucky"
-            theme="blue"
           />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-12">
@@ -247,8 +246,8 @@ export default function ServicesPage() {
               { name: "Princeton", href: "/locations/princeton" },
             ].map((location, index) => (
               <GlassCard key={index} className="text-center p-4 hover:scale-105 transition-transform">
-                <ThemedButton theme="blue" variant="ghost" href={location.href} className="w-full">
-                  {location.name}
+                <ThemedButton theme="blue" variant="ghost" asChild className="w-full">
+                  <Link href={location.href}>{location.name}</Link>
                 </ThemedButton>
               </GlassCard>
             ))}
@@ -266,11 +265,11 @@ export default function ServicesPage() {
               eco-friendly service guaranteed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ThemedButton theme="red" size="lg" href="/quote">
-                Get Free Quote
+              <ThemedButton theme="red" size="lg" asChild>
+                <Link href="/quote">Get Free Quote</Link>
               </ThemedButton>
-              <ThemedButton theme="blue" variant="outline" size="lg" href="tel:812-555-0123">
-                Call Now: (812) 555-0123
+              <ThemedButton theme="blue" variant="outline" size="lg" asChild>
+                <Link href="tel:812-555-0123">Call Now: (812) 555-0123</Link>
               </ThemedButton>
             </div>
           </GlassCard>
