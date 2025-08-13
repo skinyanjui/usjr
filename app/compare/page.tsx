@@ -170,7 +170,7 @@ export default function ComparePage() {
                       {isSelected ? "Selected for Comparison" : "Select for Comparison"}
                     </Button>
                     <Button asChild variant="outline" className="w-full bg-transparent">
-                      <Link href={service.id === "cleaning" ? "/cleaning" : `/services/${service.id}`}>Learn More</Link>
+                      <Link href={service.id === "cleaning" ? "/cleaning" : `/services/${service.id}`}>Learn more about {service.name}</Link>
                     </Button>
                   </div>
                 </CardContent>
