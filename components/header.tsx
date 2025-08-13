@@ -1,16 +1,19 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
 import Link from "next/link"
-import { QuoteFormModal } from "./quote-form-modal"
+import dynamic from "next/dynamic"
+
+const QuoteFormModal = dynamic(() => import("./quote-form-modal").then((m) => m.QuoteFormModal), { ssr: false })
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const servicesMenuId = "services-menu"
 
   const handleDropdownEnter = (dropdown: string) => {
     if (timeoutRef.current) {
@@ -25,6 +28,16 @@ export function Header() {
       setActiveDropdown(null)
     }, 150) // 150ms delay
   }
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveDropdown(null)
+      }
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">
@@ -54,13 +67,28 @@ export function Header() {
               onMouseEnter={() => handleDropdownEnter("services")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm">
+              <button
+                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                aria-haspopup="menu"
+                aria-expanded={activeDropdown === "services"}
+                aria-controls={servicesMenuId}
+                onClick={() => setActiveDropdown((prev) => (prev === "services" ? null : "services"))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setActiveDropdown((prev) => (prev === "services" ? null : "services"))
+                  }
+                }}
+              >
                 SERVICES
-                <ChevronDown className="w-3 h-3" />
+                <ChevronDown className="w-3 h-3" aria-hidden="true" />
               </button>
               {activeDropdown === "services" && (
                 <div
-                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-[500px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
+                  id={servicesMenuId}
+                  role="menu"
+                  aria-labelledby={servicesMenuId}
+                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w:[500px] w-[500px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
                   onMouseEnter={() => handleDropdownEnter("services")}
                   onMouseLeave={handleDropdownLeave}
                 >
@@ -70,36 +98,42 @@ export function Header() {
                       <Link
                         href="/services/junk-removal"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         General Junk Removal
                       </Link>
                       <Link
                         href="/services/dumpster-rental"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Dumpster Rental
                       </Link>
                       <Link
                         href="/services/hot-tub-removal"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Hot Tub Removal
                       </Link>
                       <Link
                         href="/services/appliance-removal"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Appliance Removal
                       </Link>
                       <Link
                         href="/services/garage-cleanout"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Garage Cleanouts
                       </Link>
                       <Link
                         href="/services/estate-cleanouts"
                         className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Estate Cleanouts
                       </Link>
@@ -107,12 +141,14 @@ export function Header() {
                         <Link
                           href="/compare"
                           className="block py-1 text-blue-600 hover:text-blue-700 transition-colors text-xs font-medium"
+                          role="menuitem"
                         >
                           Compare Services
                         </Link>
                         <Link
                           href="/emergency"
                           className="block py-1 text-red-600 hover:text-red-700 transition-colors text-xs font-medium"
+                          role="menuitem"
                         >
                           Emergency Service
                         </Link>
@@ -123,36 +159,42 @@ export function Header() {
                       <Link
                         href="/cleaning/residential"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Residential Cleaning
                       </Link>
                       <Link
                         href="/cleaning/commercial"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Commercial Cleaning
                       </Link>
                       <Link
                         href="/cleaning/deep-clean"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Deep Cleaning
                       </Link>
                       <Link
                         href="/cleaning/recurring"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Recurring Cleaning
                       </Link>
                       <Link
                         href="/cleaning/move-in-move-out"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Move-In/Move-Out
                       </Link>
                       <Link
                         href="/cleaning/specialty"
                         className="block py-1 text-gray-600 hover:text-green-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Specialty Cleaning
                       </Link>
@@ -162,36 +204,42 @@ export function Header() {
                       <Link
                         href="/locations/evansville"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Evansville, IN
                       </Link>
                       <Link
                         href="/locations/newburgh"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Newburgh, IN
                       </Link>
                       <Link
                         href="/locations/henderson-ky"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Henderson, KY
                       </Link>
                       <Link
                         href="/locations/owensboro-ky"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Owensboro, KY
                       </Link>
                       <Link
                         href="/locations/boonville"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Boonville, IN
                       </Link>
                       <Link
                         href="/locations/princeton"
                         className="block py-1 text-gray-600 hover:text-blue-600 transition-colors text-xs"
+                        role="menuitem"
                       >
                         Princeton, IN
                       </Link>
@@ -209,8 +257,6 @@ export function Header() {
               FAQ
             </Link>
 
-
-
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-300">
               <div className="text-center">
                 <a
@@ -224,6 +270,9 @@ export function Header() {
               <Button
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"
                 onClick={() => setIsQuoteModalOpen(true)}
+                aria-haspopup="dialog"
+                aria-expanded={isQuoteModalOpen}
+                aria-controls="quote-form-modal"
               >
                 GET FREE QUOTE
               </Button>
@@ -231,13 +280,19 @@ export function Header() {
           </div>
 
           {/* Mobile menu button */}
-          <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+          <button
+            className="lg:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
+          >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3 pt-4">
               <div className="text-center py-4 bg-red-50 rounded-lg mb-4">
                 <a
@@ -251,6 +306,9 @@ export function Header() {
                   size="sm"
                   className="bg-red-600 hover:bg-red-700 text-white text-xs mt-3"
                   onClick={() => setIsQuoteModalOpen(true)}
+                  aria-haspopup="dialog"
+                  aria-expanded={isQuoteModalOpen}
+                  aria-controls="quote-form-modal"
                 >
                   Get Free Quote
                 </Button>
@@ -320,13 +378,14 @@ export function Header() {
               <Link href="/compare" className="text-gray-700 hover:text-red-600 font-medium text-sm py-2">
                 COMPARE SERVICES
               </Link>
-
             </div>
           </div>
         )}
       </nav>
 
-      <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
+      <div id="quote-form-modal" aria-hidden={!isQuoteModalOpen}>
+        <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
+      </div>
     </header>
   )
 }

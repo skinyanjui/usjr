@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Search, HelpCircle, Truck, Container, Sparkles, DollarSign, Phone } from "lucide-react"
 import Link from "next/link"
+import { StructuredData } from "@/components/structured-data"
 
 export default function FAQPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -184,16 +185,18 @@ export default function FAQPage() {
     },
   ]
 
-  const filteredFAQs = faqCategories
-    .map((category) => ({
-      ...category,
-      faqs: category.faqs.filter(
-        (faq) =>
-          faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          faq.answer.toLowerCase().includes(searchTerm.toLowerCase()),
-      ),
-    }))
-    .filter((category) => category.faqs.length > 0)
+  const filteredFAQs = useMemo(() => {
+    return faqCategories
+      .map((category) => ({
+        ...category,
+        faqs: category.faqs.filter(
+          (faq) =>
+            faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            faq.answer.toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
+      }))
+      .filter((category) => category.faqs.length > 0)
+  }, [faqCategories, searchTerm])
 
   const getColorClasses = (color: string) => {
     const colors = {
@@ -208,6 +211,12 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen pt-24 pb-16 bg-gray-50">
+      <StructuredData
+        type="FAQPage"
+        data={{
+          faqs: faqCategories.flatMap((c) => c.faqs),
+        }}
+      />
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
@@ -220,9 +229,10 @@ export default function FAQPage() {
         <Card className="mb-8">
           <CardContent className="p-6">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" aria-hidden="true" />
               <Input
                 placeholder="Search frequently asked questions..."
+                aria-label="Search FAQs"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
