@@ -67,9 +67,9 @@ export function PricingCalculator() {
 
       <CardContent className="space-y-6">
         <div>
-          <Label className="text-sm font-medium text-gray-700 mb-2 block">Service Type</Label>
+          <Label htmlFor="pc-service-type" className="text-sm font-medium text-gray-700 mb-2 block">Service Type</Label>
           <Select value={service} onValueChange={setService}>
-            <SelectTrigger>
+            <SelectTrigger id="pc-service-type" aria-label="Service Type">
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
             <SelectContent>
@@ -96,8 +96,8 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-gray-700 mb-2 block">Project Size: {loadSize[0]}%</Label>
-          <Slider value={loadSize} onValueChange={setLoadSize} max={100} min={10} step={5} className="w-full" />
+          <Label id="pc-project-size-label" htmlFor="pc-project-size" className="text-sm font-medium text-gray-700 mb-2 block">Project Size: {loadSize[0]}%</Label>
+          <Slider id="pc-project-size" labelId="pc-project-size-label" thumbLabel="Project Size" value={loadSize} onValueChange={setLoadSize} max={100} min={10} step={5} className="w-full" />
           <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
             <span>Small</span>
             <span>Medium</span>
@@ -107,14 +107,14 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-gray-700 mb-2 block">Number of Items: {itemCount[0]}</Label>
-          <Slider value={itemCount} onValueChange={setItemCount} max={50} min={1} step={1} className="w-full" />
+          <Label id="pc-item-count-label" htmlFor="pc-item-count" className="text-sm font-medium text-gray-700 mb-2 block">Number of Items: {itemCount[0]}</Label>
+          <Slider id="pc-item-count" labelId="pc-item-count-label" thumbLabel="Number of Items" value={itemCount} onValueChange={setItemCount} max={50} min={1} step={1} className="w-full" />
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-gray-700 mb-2 block">Location</Label>
+          <Label htmlFor="pc-location" className="text-sm font-medium text-gray-700 mb-2 block">Location</Label>
           <Select value={location} onValueChange={setLocation}>
-            <SelectTrigger>
+            <SelectTrigger id="pc-location" aria-label="Location">
               <SelectValue placeholder="Select your location" />
             </SelectTrigger>
             <SelectContent>
@@ -127,9 +127,9 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label className="text-sm font-medium text-gray-700 mb-2 block">Service Timeline</Label>
+          <Label htmlFor="pc-service-timeline" className="text-sm font-medium text-gray-700 mb-2 block">Service Timeline</Label>
           <Select value={urgency} onValueChange={setUrgency}>
-            <SelectTrigger>
+            <SelectTrigger id="pc-service-timeline" aria-label="Service Timeline">
               <SelectValue placeholder="When do you need service?" />
             </SelectTrigger>
             <SelectContent>

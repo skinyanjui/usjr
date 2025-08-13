@@ -200,12 +200,12 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               {segment === "residential" ? (
                 <>
                   <div>
-                    <Label htmlFor="bedrooms">Bedrooms</Label>
+                    <Label htmlFor="qfm-bedrooms">Bedrooms</Label>
                     <Select
                       value={formData.bedrooms}
                       onValueChange={(value) => setFormData({ ...formData, bedrooms: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="qfm-bedrooms" aria-label="Bedrooms">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -218,12 +218,12 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="bathrooms">Bathrooms</Label>
+                    <Label htmlFor="qfm-bathrooms">Bathrooms</Label>
                     <Select
                       value={formData.bathrooms}
                       onValueChange={(value) => setFormData({ ...formData, bathrooms: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="qfm-bathrooms" aria-label="Bathrooms">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -239,12 +239,12 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               ) : (
                 <>
                   <div>
-                    <Label htmlFor="businessType">Business Type</Label>
+                    <Label htmlFor="qfm-business-type">Business Type</Label>
                     <Select
                       value={formData.businessType}
                       onValueChange={(value) => setFormData({ ...formData, businessType: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="qfm-business-type" aria-label="Business Type">
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -273,13 +273,13 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
 
           {/* Service Selection */}
           <div>
-            <Label htmlFor="service">Service Needed *</Label>
+            <Label htmlFor="qfm-service">Service Needed *</Label>
             <Select
               value={formData.service}
               onValueChange={(value) => setFormData({ ...formData, service: value })}
               required
             >
-              <SelectTrigger>
+              <SelectTrigger id="qfm-service" aria-label="Service Needed">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
@@ -304,12 +304,12 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               />
             </div>
             <div>
-              <Label htmlFor="preferredTime">Preferred Time</Label>
+              <Label htmlFor="qfm-preferred-time">Preferred Time</Label>
               <Select
                 value={formData.preferredTime}
                 onValueChange={(value) => setFormData({ ...formData, preferredTime: value })}
               >
-                <SelectTrigger>
+                <SelectTrigger id="qfm-preferred-time" aria-label="Preferred Time">
                   <SelectValue placeholder="Select time" />
                 </SelectTrigger>
                 <SelectContent>

@@ -120,7 +120,7 @@ export function ServiceCard({
           <Icon className={`h-6 w-6 ${colors.icon}`} />
         </div>
         <div
-          className={`absolute top-3 right-3 px-2 py-1 rounded-full ${colors.bg} ${colors.text} text-xs font-semibold`}
+          className={`absolute top-3 right-3 px-2 py-1 rounded-full ${colors.bg} ${colors.text.replace("text-","text-700 ")} text-xs font-semibold`}
         >
           {category}
         </div>
@@ -128,7 +128,7 @@ export function ServiceCard({
       <CardContent className={sizes.content}>
         <div className="flex items-center justify-between">
           <h3 className={`${sizes.title} text-gray-900`}>{title}</h3>
-          <span className={`${sizes.price} font-semibold px-2 py-1 rounded-full ${colors.bg} ${colors.text}`}>
+          <span className={`${sizes.price} font-semibold px-2 py-1 rounded-full ${colors.bg} ${colors.text.replace("text-","text-700 ")}`}>
             {price}
           </span>
         </div>
@@ -136,7 +136,7 @@ export function ServiceCard({
 
         <div className="flex gap-2 pt-2">
           <Button asChild size="sm" className={`flex-1 ${colors.button} text-white text-xs`}>
-            <Link href={link}>Learn More</Link>
+            <Link href={link} aria-label={`Learn more about ${title}`}>Learn More</Link>
           </Button>
           <Button asChild variant="outline" size="sm" className="text-xs bg-transparent">
             <Link href="/quote">Quote</Link>
