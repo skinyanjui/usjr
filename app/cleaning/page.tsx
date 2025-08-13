@@ -147,7 +147,7 @@ export default function CleaningHub() {
                   </ul>
                   <div className="flex gap-2">
                     <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
-                      <Link href={service.href} aria-label={`Learn more about ${service.title}`}>Learn More</Link>
+                      <Link href={service.href} aria-label={`Learn more about ${service.title}`}>Learn more about {service.title}</Link>
                     </Button>
                     <Button
                       size="sm"

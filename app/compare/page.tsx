@@ -170,7 +170,7 @@ export default function ComparePage() {
                       {isSelected ? "Selected for Comparison" : "Select for Comparison"}
                     </Button>
                     <Button asChild variant="outline" className={`w-full bg-transparent ${service.color === "red" ? "border-red-700 text-red-700" : service.color === "orange" ? "border-orange-700 text-orange-700" : service.color === "green" ? "border-green-700 text-green-700" : ""}`}>
-                      <Link href={service.id === "cleaning" ? "/cleaning" : `/services/${service.id}`} aria-label={`Learn more about ${service.name}`}>Learn More</Link>
+                      <Link href={service.id === "cleaning" ? "/cleaning" : `/services/${service.id}`} aria-label={`Learn more about ${service.name}`}>Learn more about {service.name}</Link>
                     </Button>
                   </div>
                 </CardContent>

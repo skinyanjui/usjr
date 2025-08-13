@@ -150,7 +150,7 @@ export function ServiceCard({
 
         <div className="flex gap-2 pt-2">
           <Button asChild size="sm" className={`flex-1 ${colors.button} text-white text-xs`}>
-            <Link href={link} aria-label={`Learn more about ${title}`}>Learn More</Link>
+            <Link href={link} aria-label={`Learn more about ${title}`}>{`Learn more about ${title}`}</Link>
           </Button>
           <Button asChild variant="outline" size="sm" className="text-xs bg-transparent">
             <Link href="/quote">Quote</Link>
