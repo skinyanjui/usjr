@@ -33,6 +33,7 @@ export function ServiceCard({
         border: "border-red-200",
         bg: "bg-red-50",
         text: "text-red-600",
+        textStrong: "text-red-700",
         button: "bg-red-600 hover:bg-red-700",
         icon: "text-red-600",
       },
@@ -40,6 +41,7 @@ export function ServiceCard({
         border: "border-orange-200",
         bg: "bg-orange-50",
         text: "text-orange-600",
+        textStrong: "text-orange-700",
         button: "bg-orange-600 hover:bg-orange-700",
         icon: "text-orange-600",
       },
@@ -47,6 +49,7 @@ export function ServiceCard({
         border: "border-green-200",
         bg: "bg-green-50",
         text: "text-green-600",
+        textStrong: "text-green-700",
         button: "bg-green-600 hover:bg-green-700",
         icon: "text-green-600",
       },
@@ -54,6 +57,7 @@ export function ServiceCard({
         border: "border-blue-200",
         bg: "bg-blue-50",
         text: "text-blue-600",
+        textStrong: "text-blue-700",
         button: "bg-blue-600 hover:bg-blue-700",
         icon: "text-blue-600",
       },
@@ -61,6 +65,7 @@ export function ServiceCard({
         border: "border-purple-200",
         bg: "bg-purple-50",
         text: "text-purple-600",
+        textStrong: "text-purple-700",
         button: "bg-purple-600 hover:bg-purple-700",
         icon: "text-purple-600",
       },
@@ -68,6 +73,7 @@ export function ServiceCard({
         border: "border-teal-200",
         bg: "bg-teal-50",
         text: "text-teal-600",
+        textStrong: "text-teal-700",
         button: "bg-teal-600 hover:bg-teal-700",
         icon: "text-teal-600",
       },
@@ -120,7 +126,7 @@ export function ServiceCard({
           <Icon className={`h-6 w-6 ${colors.icon}`} />
         </div>
         <div
-          className={`absolute top-3 right-3 px-2 py-1 rounded-full ${colors.bg} ${colors.text.replace("text-","text-700 ")} text-xs font-semibold`}
+          className={`absolute top-3 right-3 px-2 py-1 rounded-full ${colors.bg} ${colors.textStrong} text-xs font-semibold`}
         >
           {category}
         </div>
@@ -128,7 +134,7 @@ export function ServiceCard({
       <CardContent className={sizes.content}>
         <div className="flex items-center justify-between">
           <h3 className={`${sizes.title} text-gray-900`}>{title}</h3>
-          <span className={`${sizes.price} font-semibold px-2 py-1 rounded-full ${colors.bg} ${colors.text.replace("text-","text-700 ")}`}>
+          <span className={`${sizes.price} font-semibold px-2 py-1 rounded-full ${colors.bg} ${colors.textStrong}`}>
             {price}
           </span>
         </div>
