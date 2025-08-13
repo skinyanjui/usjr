@@ -6,7 +6,7 @@ import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from "lucide-r
 import Link from "next/link"
 
 export const metadata = {
-  title: "Hot Tub Removal: What to Know Before We Arrive | Bulls of Indiana",
+  title: "Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal",
   description:
     "Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.",
   keywords: "hot tub removal preparation, spa removal Evansville, hot tub disposal, jacuzzi removal Indiana",
@@ -277,7 +277,7 @@ export default function HotTubRemovalPage() {
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Ready for Hot Tub Removal?</h3>
               <p className="text-gray-700 mb-4">
-                Bulls of Indiana makes hot tub removal safe and hassle-free. We handle everything from electrical
+                Uncle Sam Junk Removal makes hot tub removal safe and hassle-free. We handle everything from electrical
                 disconnection to final cleanup, so you can focus on enjoying your newly reclaimed space.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

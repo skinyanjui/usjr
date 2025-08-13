@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Princeton IN | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Princeton IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Princeton, Indiana. Serving Gibson County. Same-day service available. Call (812) 610-1657",
   keywords: "junk removal Princeton, Princeton junk removal, Gibson County junk pickup, trash removal Princeton IN",

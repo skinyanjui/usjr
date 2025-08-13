@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Boonville IN | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call (812) 610-1657",
   keywords: "junk removal Boonville, Boonville junk removal, Warrick County junk pickup, trash removal Boonville IN",

@@ -1,6 +1,6 @@
 # Component Documentation
 
-This document provides comprehensive documentation for all reusable UI components in the Bulls of Indiana website.
+This document provides comprehensive documentation for all reusable UI components in the Uncle Sam Junk Removal website.
 
 ## Design System
 

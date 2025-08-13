@@ -3,7 +3,7 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Refrigerator, Package, Sparkles, CheckCircle, Users, Star } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Specialty Cleaning Services in Evansville, IN | Bulls of Indiana",
+  title: "Specialty Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Specialized cleaning services in Evansville: refrigerator cleaning, oven cleaning, organizing, and decluttering. Natural products and professional results.",
   keywords:

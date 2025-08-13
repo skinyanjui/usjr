@@ -226,7 +226,7 @@ export default function GarageCleanoutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">When to Call the Professionals</h2>
 
             <p className="text-gray-700 mb-4">
-              Sometimes the best 48-hour garage cleanout includes professional help. Consider calling Bulls of Indiana
+              Sometimes the best 48-hour garage cleanout includes professional help. Consider calling Uncle Sam Junk Removal
               if you have:
             </p>
 
@@ -241,7 +241,7 @@ export default function GarageCleanoutPage() {
             <div className="bg-red-50 rounded-lg p-6 mb-8">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Garage Cleanout Service</h3>
               <p className="text-gray-700 mb-4">
-                Let Bulls of Indiana handle the heavy lifting while you focus on organizing. We'll remove all unwanted
+                Let Uncle Sam Junk Removal handle the heavy lifting while you focus on organizing. We'll remove all unwanted
                 items, coordinate donations, and leave your garage spotless.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Owensboro KY | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Owensboro KY | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Owensboro, Kentucky. Extended service area from Indiana. Same-day pickup when possible. Call (812) 610-1657",
   keywords: "junk removal Owensboro KY, Owensboro Kentucky junk removal, Daviess County junk pickup",

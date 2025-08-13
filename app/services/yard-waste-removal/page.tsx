@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
 
 export const metadata = {
-  title: "Yard Waste Removal Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Yard Waste Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional yard waste removal in Evansville, Indiana. Brush, leaves, tree limbs, landscaping debris. Same-day service available. Call (812) 610-1657",
   keywords: "yard waste removal Evansville, brush removal Indiana, tree limb removal, landscaping debris Evansville",

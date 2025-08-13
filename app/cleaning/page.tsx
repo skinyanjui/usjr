@@ -217,9 +217,9 @@ export default function CleaningHub() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Bulls of Indiana Cleaning Services",
+            name: "Uncle Sam Junk Removal",
             description: "Professional residential and commercial cleaning services in Evansville, IN",
-            url: "https://bullsofindianacleaningservices.com/cleaning",
+            url: "https://unclesamjunkremoval.com/cleaning",
             telephone: "(812) 610-1657",
             address: {
               "@type": "PostalAddress",

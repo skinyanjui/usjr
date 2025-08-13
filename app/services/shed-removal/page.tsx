@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
 
 export const metadata = {
-  title: "Shed Removal Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Shed Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional shed and outbuilding removal in Evansville, Indiana. Complete demolition and cleanup. Same-day service available. Call (812) 610-1657",
   keywords: "shed removal Evansville, outbuilding removal Indiana, shed demolition, storage building removal",

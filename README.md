@@ -1,6 +1,6 @@
-# Bulls of Indiana Cleaning Services Website
+# Uncle Sam Junk Removal Website
 
-A comprehensive Next.js website for Bulls of Indiana, featuring both junk removal and professional cleaning services in Evansville, IN and surrounding areas.
+A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk removal and professional cleaning services in Evansville, IN and surrounding areas.
 
 ## Features
 
@@ -254,7 +254,7 @@ When creating new reusable components:
 ### Required Variables
 \`\`\`env
 SQUARE_BOOKING_URL=https://square.site/book/YOUR_BOOKING_URL
-NEXT_PUBLIC_SITE_URL=https://bullsofindianacleaningservices.com
+NEXT_PUBLIC_SITE_URL=https://unclesamjunkremoval.com
 \`\`\`
 
 ### Optional Variables
@@ -336,4 +336,4 @@ For technical support or customization requests, contact the development team or
 
 ## License
 
-This project is proprietary software developed for Bulls of Indiana Cleaning Services.
+This project is proprietary software developed for Uncle Sam Junk Removal.

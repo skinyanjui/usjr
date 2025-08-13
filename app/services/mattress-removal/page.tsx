@@ -89,7 +89,7 @@ export default function MattressRemovalPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Why Choose Bulls of Indiana for Mattress Removal?
+                Why Choose Uncle Sam Junk Removal for Mattress Removal?
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
