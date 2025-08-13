@@ -173,12 +173,11 @@ export default function BlogPage() {
           {featuredPosts.length > 0 && (
             <div className="mb-16">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Articles</h2>
-              <div className="grid lg:grid-cols-2 gap-8">
+              <div className="space-y-8">
                 {featuredPosts.map((post, index) => (
                   <Card
                     key={post.slug}
                     className="glass hover:scale-105 transition-all duration-300 overflow-hidden border-2 border-green-200"
-                  >
                     <div className="aspect-video bg-gray-200 relative overflow-hidden">
                       <img
                         src={post.image || "/placeholder.svg"}
