@@ -4,8 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Leaf, Shield, Clock, Star, CheckCircle, Truck, Trash2, Sparkles, Phone, Camera } from "lucide-react"
 import Link from "next/link"
-import { EvansvilleQuoteForm } from "@/components/evansville-quote-form"
-import { EvansvilleContactSidebar } from "@/components/evansville-contact-sidebar"
+import QuoteFormClient from "./QuoteFormClient"
 
 export const metadata: Metadata = {
   title: "Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Dumpster Rental & Cleaning",
@@ -242,14 +241,7 @@ export default function QuotePage() {
               your detailed estimate.
             </p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <EvansvilleQuoteForm />
-            </div>
-            <div>
-              <EvansvilleContactSidebar />
-            </div>
-          </div>
+          <QuoteFormClient />
         </div>
 
         {/* Why Choose Us Section */}

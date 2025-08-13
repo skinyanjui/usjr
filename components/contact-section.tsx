@@ -296,50 +296,6 @@ export function ContactSection() {
           </div>
         </div>
 
-        {/* Local SEO Schema Markup */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Uncle Sam Junk Removal",
-              description: "Professional junk removal and dumpster rental services in Evansville, Indiana",
-              url: "https://unclesamjunkremoval.com",
-              telephone: "(812) 610-1657",
-              email: "info@unclesamjunkremoval.com",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Evansville",
-                addressRegion: "IN",
-                addressCountry: "US",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "37.9716",
-                longitude: "-87.5710",
-              },
-              areaServed: [
-                "Evansville, IN",
-                "Newburgh, IN",
-                "Boonville, IN",
-                "Mount Vernon, IN",
-                "Henderson, KY",
-                "Vanderburgh County, IN",
-                "Warrick County, IN",
-                "Posey County, IN",
-              ],
-              serviceType: ["Junk Removal", "Dumpster Rental", "Waste Management"],
-              priceRange: "$99-$599",
-              openingHours: "Mo-Su 08:00-20:00",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                reviewCount: "200",
-              },
-            }),
-          }}
-        />
       </div>
     </section>
   )
