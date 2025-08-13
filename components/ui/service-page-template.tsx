@@ -134,8 +134,8 @@ export function ServicePageTemplate({
       <section className={`pt-32 pb-16 bg-gradient-to-b ${classes.gradient}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
-            <p className="text-xl text-gray-600 mb-6">{description}</p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6">{description}</p>
 
             {badges.length > 0 && (
               <div className="flex items-center justify-center gap-4 text-gray-700">
@@ -151,7 +151,7 @@ export function ServicePageTemplate({
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal?</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal?</h2>
               <div className="space-y-4">
                 {features.map((feature, index) => {
                   const IconComponent = feature.icon
@@ -167,13 +167,13 @@ export function ServicePageTemplate({
                 })}
               </div>
 
-              <div className="mt-8">
-                <Button className={`${classes.primary} text-white px-8 py-4 text-lg font-semibold mr-4`}>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button className={`${classes.primary} w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold`}>
                   {ctaPrimary}
                 </Button>
                 <Button
                   variant="outline"
-                  className={`${classes.secondary} px-8 py-4 text-lg font-semibold bg-transparent`}
+                  className={`${classes.secondary} w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent`}
                 >
                   {ctaSecondary}
                 </Button>
@@ -206,8 +206,8 @@ export function ServicePageTemplate({
       {steps.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {steps.map((step, index) => {
                 const IconComponent = step.icon
                 return (
@@ -237,8 +237,8 @@ export function ServicePageTemplate({
       {/* Related Articles Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Related Articles</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">Related Articles</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             <Card className="glass hover:scale-105 transition-transform duration-300">
               <CardHeader>
                 <CardTitle className="text-lg font-bold text-gray-900">
@@ -291,7 +291,7 @@ export function ServicePageTemplate({
       {faqs.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
             <div className="space-y-6">
               {faqs.map((faq, index) => (
                 <Card key={index} className="glass">

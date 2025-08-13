@@ -53,8 +53,8 @@ export function ContactSection() {
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get Your Free Quote</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get Your Free Quote</h2>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Ready to get rid of your junk in Evansville? Contact Uncle Sam Junk Removal today for a free, no-obligation quote.
             We'll beat any written estimate!
           </p>

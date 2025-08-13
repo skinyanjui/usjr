@@ -219,8 +219,8 @@ export default function FAQPage() {
       />
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Find answers to common questions about our junk removal, dumpster rental, and cleaning services in
             Evansville and Southern Indiana.
           </p>

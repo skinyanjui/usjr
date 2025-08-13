@@ -70,8 +70,8 @@ export default function MattressRemovalPage() {
       <section className="pt-32 pb-16 bg-gradient-to-b from-purple-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Mattress Removal in Evansville</h1>
-            <p className="text-xl text-gray-600 mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Mattress Removal in Evansville</h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Fast, professional mattress and box spring removal with eco-friendly disposal
             </p>
             <div className="flex items-center justify-center gap-4 text-gray-700">
@@ -115,13 +115,13 @@ export default function MattressRemovalPage() {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg font-semibold mr-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
                   📞 Call (812) 610-1657
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 text-lg font-semibold bg-transparent"
+                  className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Pickup
                 </Button>

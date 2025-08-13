@@ -39,21 +39,21 @@ export default function QuotePage() {
             </Badge>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Get Your Free Quote Today</h1>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">Get Your Free Quote Today</h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto mb-8">
             Professional junk removal, dumpster rental, and cleaning services in Evansville and Southern Indiana. Choose
             your service below for instant pricing and same-day availability.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+            <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3">
               <Phone className="w-5 h-5 mr-2" />
               Call (812) 610-1657
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 bg-transparent"
+              className="w-full sm:w-auto border-blue-600 text-blue-600 hover:bg-blue-50 px-6 sm:px-8 py-3 bg-transparent"
             >
               <Camera className="w-5 h-5 mr-2" />
               Text Photos for Instant Quote
@@ -62,7 +62,7 @@ export default function QuotePage() {
         </div>
 
         {/* Service Selection Cards */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {/* Junk Removal Service */}
           <Card className="glass border-2 border-blue-200 hover:border-blue-400 transition-all duration-300">
             <CardContent className="p-8">

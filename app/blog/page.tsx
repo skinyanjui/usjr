@@ -160,11 +160,11 @@ export default function BlogPage() {
               </Badge>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Cleaning & Junk Removal Blog</h1>
-            <p className="text-xl text-gray-600 mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Cleaning & Junk Removal Blog</h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Expert tips, guides, and insights from Uncle Sam Junk Removal's professional team
             </p>
-            <p className="text-lg text-gray-500">
+            <p className="text-base sm:text-lg text-gray-500">
               Natural cleaning solutions and professional advice for Evansville homeowners and businesses
             </p>
           </div>

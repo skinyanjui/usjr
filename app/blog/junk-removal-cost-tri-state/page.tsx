@@ -52,7 +52,7 @@ export default function JunkRemovalCostPage() {
             <div className="mb-4">
               <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Pricing Guide</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               How much does junk removal cost in the Tri-State? (full breakdown)
             </h1>
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">

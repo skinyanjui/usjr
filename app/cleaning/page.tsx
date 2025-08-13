@@ -73,13 +73,13 @@ export default function CleaningHub() {
           <Badge className="mb-6 bg-green-100 text-green-800 border-green-200">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Professional Cleaning Services
             <span className="block text-green-600">in Evansville, IN</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Veteran-led, spotless results using natural products. Serving Evansville, Newburgh, Henderson KY, and
-            surrounding areas with reliable, insured cleaning services.
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Veteran-led residential and commercial cleaning using natural, eco-friendly products. Flexible scheduling
+            and satisfaction guaranteed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">

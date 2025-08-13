@@ -30,24 +30,24 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
-            <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
               We are a locally owned and operated junk removal and dumpster rental company serving Austin, Texas and
               surrounding areas. Our mission is to provide reliable, professional, and eco-friendly waste removal
               services.
             </p>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
               With over 15 years of experience, we've built our reputation on honest pricing, punctual service, and
               exceptional customer care. We're not just removing junk – we're helping our community stay clean and
               organized.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold">
+              <Button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
                 Get Free Quote
               </Button>
               <Button
                 variant="outline"
-                className="border-red-600 text-red-600 hover:bg-red-50 px-8 py-3 rounded-full font-semibold bg-transparent"
+                className="w-full sm:w-auto border-red-600 text-red-600 hover:bg-red-50 px-6 sm:px-8 py-3 rounded-full font-semibold bg-transparent"
               >
                 Learn More
               </Button>

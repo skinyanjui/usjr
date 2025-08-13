@@ -29,8 +29,8 @@ export default function NewburghPage() {
       <section className="pt-32 pb-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Newburgh, Indiana</h1>
-            <p className="text-xl text-gray-600 mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Newburgh, Indiana</h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Trusted junk removal service for Newburgh and Warrick County residents
             </p>
             <div className="flex items-center justify-center gap-2 text-gray-700">
@@ -66,13 +66,13 @@ export default function NewburghPage() {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold mr-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
                   📞 Call (812) 610-1657
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold bg-transparent"
+                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
                   Schedule Newburgh Pickup
                 </Button>
