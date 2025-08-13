@@ -1,0 +1,139 @@
+import { settings, getActiveServices } from "@/lib/cms-content"
+
+interface StructuredDataProps {
+  type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList"
+  data?: any
+}
+
+export function StructuredData({ type, data }: StructuredDataProps) {
+  let structuredData: any = {}
+
+  switch (type) {
+    case "LocalBusiness":
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://unclesamjunkremoval.com/#organization",
+        name: "Uncle Sam Junk Removal",
+        description:
+          "Professional residential and commercial cleaning services in Evansville, IN using natural, eco-friendly products. Veteran-owned business.",
+        url: "https://unclesamjunkremoval.com",
+        telephone: settings.phone,
+        email: settings.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Evansville",
+          addressRegion: "IN",
+          addressCountry: "US",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "37.9747",
+          longitude: "-87.5558",
+        },
+        openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00", "Su closed"],
+        serviceArea: settings.serviceAreas.map((area) => ({
+          "@type": "City",
+          name: area,
+        })),
+        services: getActiveServices().map((service) => service.name),
+        priceRange: "$80-$200",
+        paymentAccepted: ["Cash", "Credit Card", "Check"],
+        currenciesAccepted: "USD",
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Cleaning Services",
+          itemListElement: getActiveServices().map((service, index) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.name,
+              description: service.description,
+            },
+            price: service.price,
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            validFrom: new Date().toISOString(),
+          })),
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "200",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        sameAs: [settings.socialMedia.facebook, settings.socialMedia.instagram, settings.socialMedia.google].filter(
+          Boolean,
+        ),
+      }
+      break
+
+    case "Service":
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: data?.name || "Cleaning Service",
+        description: data?.description || "Professional cleaning service",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Uncle Sam Junk Removal",
+          telephone: settings.phone,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Evansville",
+            addressRegion: "IN",
+            addressCountry: "US",
+          },
+        },
+        serviceArea: settings.serviceAreas,
+        offers: {
+          "@type": "Offer",
+          priceRange: data?.price || "$80+",
+          availability: "https://schema.org/InStock",
+          validFrom: new Date().toISOString(),
+        },
+        category: data?.category || "Cleaning Service",
+      }
+      break
+
+    case "FAQPage":
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity:
+          data?.faqs?.map((faq: any) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })) || [],
+      }
+      break
+
+    case "BreadcrumbList":
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement:
+          data?.breadcrumbs?.map((crumb: any, index: number) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: crumb.name,
+            item: crumb.url,
+          })) || [],
+      }
+      break
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData),
+      }}
+    />
+  )
+}

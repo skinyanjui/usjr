@@ -1,0 +1,312 @@
+import type React from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Clock } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+
+export interface ServiceStep {
+  icon: LucideIcon
+  title: string
+  description: string
+}
+
+export interface FAQ {
+  question: string
+  answer: string
+}
+
+export interface PricingTier {
+  name: string
+  price: string
+  description?: string
+}
+
+export interface ServicePageTemplateProps {
+  // Hero section
+  title: string
+  description: string
+  badges?: string[]
+  heroImage?: string
+
+  // Theme
+  theme: "red" | "blue" | "green" | "orange" | "purple" | "teal"
+
+  // Features section
+  features: Array<{
+    icon: LucideIcon
+    title: string
+    description: string
+  }>
+
+  // Steps/Process section
+  steps: ServiceStep[]
+  stepsTitle?: string
+
+  // Pricing section
+  pricing: PricingTier[]
+  pricingTitle?: string
+  pricingNote?: string
+
+  // FAQ section
+  faqs: FAQ[]
+
+  // CTA section
+  ctaPrimary?: string
+  ctaSecondary?: string
+
+  // Additional content
+  children?: React.ReactNode
+}
+
+const themeClasses = {
+  red: {
+    gradient: "from-red-50 to-white",
+    primary: "bg-red-600 hover:bg-red-700",
+    secondary: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white",
+    accent: "text-red-600",
+    icon: "bg-red-600",
+    badge: "bg-red-100 text-red-800 border-red-200",
+  },
+  blue: {
+    gradient: "from-blue-50 to-white",
+    primary: "bg-blue-600 hover:bg-blue-700",
+    secondary: "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+    accent: "text-blue-600",
+    icon: "bg-blue-600",
+    badge: "bg-blue-100 text-blue-800 border-blue-200",
+  },
+  green: {
+    gradient: "from-green-50 to-white",
+    primary: "bg-green-600 hover:bg-green-700",
+    secondary: "border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
+    accent: "text-green-600",
+    icon: "bg-green-600",
+    badge: "bg-green-100 text-green-800 border-green-200",
+  },
+  orange: {
+    gradient: "from-orange-50 to-white",
+    primary: "bg-orange-600 hover:bg-orange-700",
+    secondary: "border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white",
+    accent: "text-orange-600",
+    icon: "bg-orange-600",
+    badge: "bg-orange-100 text-orange-800 border-orange-200",
+  },
+  purple: {
+    gradient: "from-purple-50 to-white",
+    primary: "bg-purple-600 hover:bg-purple-700",
+    secondary: "border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white",
+    accent: "text-purple-600",
+    icon: "bg-purple-600",
+    badge: "bg-purple-100 text-purple-800 border-purple-200",
+  },
+  teal: {
+    gradient: "from-teal-50 to-white",
+    primary: "bg-teal-600 hover:bg-teal-700",
+    secondary: "border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white",
+    accent: "text-teal-600",
+    icon: "bg-teal-600",
+    badge: "bg-teal-100 text-teal-800 border-teal-200",
+  },
+}
+
+export function ServicePageTemplate({
+  title,
+  description,
+  badges = [],
+  heroImage,
+  theme,
+  features = [], // Added default empty array
+  steps = [], // Added default empty array
+  stepsTitle = "How It Works",
+  pricing = [], // Added default empty array
+  pricingTitle = "Pricing",
+  pricingNote,
+  faqs = [], // Added default empty array
+  ctaPrimary = "📞 Call (812) 555-0123",
+  ctaSecondary = "Get Free Quote",
+  children,
+}: ServicePageTemplateProps) {
+  const classes = themeClasses[theme]
+
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className={`pt-32 pb-16 bg-gradient-to-b ${classes.gradient}`}>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
+            <p className="text-xl text-gray-600 mb-6">{description}</p>
+
+            {badges.length > 0 && (
+              <div className="flex items-center justify-center gap-4 text-gray-700">
+                {badges.map((badge, index) => (
+                  <div key={index} className="flex items-center gap-1">
+                    <Clock className={`w-5 h-5 ${classes.accent}`} />
+                    <span>{badge}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal?</h2>
+              <div className="space-y-4">
+                {features.map((feature, index) => {
+                  const IconComponent = feature.icon
+                  return (
+                    <div key={index} className="flex items-start gap-3">
+                      <IconComponent className={`w-6 h-6 ${classes.accent} mt-1`} />
+                      <div>
+                        <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                        <p className="text-gray-600">{feature.description}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="mt-8">
+                <Button className={`${classes.primary} text-white px-8 py-4 text-lg font-semibold mr-4`}>
+                  {ctaPrimary}
+                </Button>
+                <Button
+                  variant="outline"
+                  className={`${classes.secondary} px-8 py-4 text-lg font-semibold bg-transparent`}
+                >
+                  {ctaSecondary}
+                </Button>
+              </div>
+            </div>
+
+            {/* Pricing Card */}
+            {pricing.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">{pricingTitle}</h3>
+                <div className="space-y-4">
+                  {pricing.map((tier, index) => (
+                    <div key={index} className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <div>
+                        <span className="font-medium text-gray-900">{tier.name}</span>
+                        {tier.description && <div className="text-sm text-gray-600">{tier.description}</div>}
+                      </div>
+                      <span className={`${classes.accent} font-bold`}>{tier.price}</span>
+                    </div>
+                  ))}
+                </div>
+                {pricingNote && <p className="text-sm text-gray-600 mt-4">{pricingNote}</p>}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Steps Section */}
+      {steps.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {steps.map((step, index) => {
+                const IconComponent = step.icon
+                return (
+                  <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
+                    <CardHeader>
+                      <div
+                        className={`${classes.icon} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
+                      >
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Additional Content */}
+      {children}
+
+      {/* Related Articles Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Related Articles</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="glass hover:scale-105 transition-transform duration-300">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold text-gray-900">
+                  <a href="/blog/spring-cleaning-checklist-southern-indiana" className={`hover:${classes.accent}`}>
+                    Spring Cleaning Guide for Southern Indiana
+                  </a>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm">
+                  Complete room-by-room checklist with eco-friendly tips for your seasonal cleaning needs.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass hover:scale-105 transition-transform duration-300">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold text-gray-900">
+                  <a href="/blog/appliance-disposal-recycling-guide" className={`hover:${classes.accent}`}>
+                    Appliance Disposal & Recycling Guide
+                  </a>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm">
+                  Learn proper appliance disposal methods and environmental benefits of professional recycling.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass hover:scale-105 transition-transform duration-300">
+              <CardHeader>
+                <CardTitle className="text-lg font-bold text-gray-900">
+                  <a href="/blog/dumpster-rental-guide-evansville" className={`hover:${classes.accent}`}>
+                    Dumpster Rental Guide for Evansville
+                  </a>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm">
+                  Everything you need to know about dumpster sizes, pricing, and permits in Evansville.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      {faqs.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <Card key={index} className="glass">
+                  <CardHeader>
+                    <CardTitle className="text-lg font-semibold text-gray-900">{faq.question}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </main>
+  )
+}
