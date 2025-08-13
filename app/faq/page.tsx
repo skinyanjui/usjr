@@ -198,6 +198,16 @@ export default function FAQPage() {
       .filter((category) => category.faqs.length > 0)
   }, [faqCategories, searchTerm])
 
+  const allFaqs = useMemo(() => {
+    const flat = [] as { question: string; answer: string }[]
+    for (const category of faqCategories) {
+      for (const faq of category.faqs) {
+        flat.push(faq)
+      }
+    }
+    return flat
+  }, [faqCategories])
+
   const getColorClasses = (color: string) => {
     const colors = {
       blue: "text-blue-600",
@@ -214,7 +224,7 @@ export default function FAQPage() {
       <StructuredData
         type="FAQPage"
         data={{
-          faqs: faqCategories.flatMap((c) => c.faqs),
+          faqs: allFaqs,
         }}
       />
       <div className="max-w-4xl mx-auto px-4">

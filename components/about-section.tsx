@@ -63,7 +63,7 @@ export function AboutSection() {
                 fill
                 className="object-cover rounded-2xl shadow-2xl"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                quality={60}
+                quality={55}
                 loading="lazy"
               />
             </div>
