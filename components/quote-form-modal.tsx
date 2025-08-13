@@ -111,19 +111,19 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">Get Your Free Cleaning Quote</DialogTitle>
+          <DialogTitle className="text-xl sm:text-2xl font-bold">Get Your Free Cleaning Quote</DialogTitle>
           <DialogDescription>
             Fill out the form below and we'll provide a detailed estimate within 2 hours
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           {/* Segment Toggle */}
           <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
             <button
               type="button"
               onClick={() => setSegment("residential")}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 sm:py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
                 segment === "residential" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -132,7 +132,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <button
               type="button"
               onClick={() => setSegment("commercial")}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 sm:py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
                 segment === "commercial" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -141,7 +141,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           </div>
 
           {/* Contact Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <Label htmlFor="name">Full Name *</Label>
               <Input
@@ -174,7 +174,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           </div>
 
           {/* Property Information */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div>
               <Label htmlFor="address">Property Address *</Label>
               <Input
@@ -186,7 +186,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <Label htmlFor="sqft">Square Footage</Label>
                 <Input
@@ -293,7 +293,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           </div>
 
           {/* Scheduling */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <Label htmlFor="preferredDate">Preferred Date</Label>
               <Input
@@ -326,13 +326,11 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div>
             <Label>Photos (Optional - Up to 6 images)</Label>
             <div className="mt-2">
-              <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="w-8 h-8 mb-2 text-gray-400" />
-                  <p className="mb-2 text-sm text-gray-500">
-                    <span className="font-semibold">Click to upload</span> or drag and drop
-                  </p>
-                  <p className="text-xs text-gray-500">PNG, JPG up to 10MB each</p>
+              <label className="flex flex-col items-center justify-center w-full h-28 sm:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                <div className="flex flex-col items-center justify-center pt-4 pb-5">
+                  <Upload className="w-7 h-7 sm:w-8 sm:h-8 mb-2 text-gray-400" />
+                  <p className="mb-1 text-xs text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500">PNG, JPG up to 10MB each</p>
                 </div>
                 <input
                   type="file"
@@ -346,11 +344,11 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             </div>
 
             {uploadedFiles.length > 0 && (
-              <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2">
+              <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
                     <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Camera className="w-6 h-6 text-gray-400" />
+                      <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
                     </div>
                     <button
                       type="button"
@@ -359,7 +357,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     >
                       <X className="w-3 h-3" />
                     </button>
-                    <p className="text-xs text-gray-500 mt-1 truncate">{file.name}</p>
+                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1 truncate">{file.name}</p>
                   </div>
                 ))}
               </div>
@@ -391,13 +389,9 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           </div>
 
           {/* Submit Button */}
-          <div className="flex gap-3">
-            <Button type="submit" className="flex-1 bg-green-600 hover:bg-green-700 text-white">
-              Get Free Quote
-            </Button>
-            <Button type="button" variant="outline" onClick={onClose}>
-              Cancel
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">Submit Request</Button>
+            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto">Cancel</Button>
           </div>
         </form>
       </DialogContent>
