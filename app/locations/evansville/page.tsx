@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Clock, Truck, Recycle, Building2, Home } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Evansville, Indiana. Same-day service, transparent pricing, eco-friendly disposal. Serving all Evansville neighborhoods. Call (812) 610-1657",
   keywords:
@@ -54,7 +54,7 @@ export default function EvansvillePage() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Bulls of Indiana in Evansville?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal in Evansville?</h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Clock className="w-6 h-6 text-red-600 mt-1" />
@@ -172,7 +172,7 @@ export default function EvansvillePage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Ready to Clean Up Evansville?</h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join hundreds of satisfied Evansville customers who trust Bulls of Indiana for their junk removal needs.
+            Join hundreds of satisfied Evansville customers who trust Uncle Sam Junk Removal for their junk removal needs.
           </p>
 
           <div className="bg-red-50 rounded-2xl p-8">

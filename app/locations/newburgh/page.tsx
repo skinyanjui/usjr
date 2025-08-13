@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Newburgh IN | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Newburgh IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Newburgh, Indiana. Same-day service, transparent pricing. Serving Newburgh and Warrick County. Call (812) 610-1657",
   keywords: "junk removal Newburgh, Newburgh junk removal, trash removal Newburgh IN, Warrick County junk removal",

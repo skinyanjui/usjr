@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
 
 export const metadata = {
-  title: "Mattress Removal Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional mattress and box spring removal in Evansville, Indiana. Eco-friendly disposal and recycling. Same-day service available. Call (812) 610-1657",
   keywords: "mattress removal Evansville, box spring removal Indiana, bed disposal, mattress recycling Evansville",

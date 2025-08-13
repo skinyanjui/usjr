@@ -57,7 +57,7 @@ export default function JunkRemovalCostPage() {
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
               <div className="flex items-center gap-1">
                 <User className="w-4 h-4" />
-                <span>Bulls of Indiana Team</span>
+                <span>Uncle Sam Team</span>
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -217,8 +217,7 @@ export default function JunkRemovalCostPage() {
 
             <p className="text-gray-700">
               <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs between $89-649 depending
-              on your project size. With transparent pricing, professional service, and eco-friendly disposal, Bulls of
-              Indiana makes cleanup projects simple and affordable for Evansville and Henderson area residents.
+              on your project size. With transparent pricing, professional service, and eco-friendly disposal, Uncle Sam Junk Removal makes cleanup projects simple and affordable for Evansville and Henderson area residents.
             </p>
           </div>
         </div>

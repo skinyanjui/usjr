@@ -143,7 +143,7 @@ export default function ServicesPage() {
               <Link href="/quote">Get Free Quote</Link>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
-              <Link href="tel:812-555-0123">Call (812) 555-0123</Link>
+              <Link href="tel:+18126101657">Call (812) 610-1657</Link>
             </ThemedButton>
           </div>
         </div>
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                 <Link href="/quote">Get Free Quote</Link>
               </ThemedButton>
               <ThemedButton theme="blue" variant="outline" size="lg" asChild>
-                <Link href="tel:812-555-0123">Call Now: (812) 555-0123</Link>
+                <Link href="tel:+18126101657">Call Now: (812) 610-1657</Link>
               </ThemedButton>
             </div>
           </GlassCard>

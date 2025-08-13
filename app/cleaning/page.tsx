@@ -6,7 +6,7 @@ import { CheckCircle, Leaf, Users, Clock, Shield, Star } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Professional Cleaning Services in Evansville, IN | Bulls of Indiana",
+  title: "Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Veteran-led residential and commercial cleaning services in Evansville. Natural products, flexible scheduling, and spotless results. Book your cleaning today!",
   keywords:

@@ -6,7 +6,7 @@ import { Calendar, Clock, User, CheckCircle, DollarSign, Timer, Building2 } from
 import Link from "next/link"
 
 export const metadata = {
-  title: "Property Manager Turnover Playbook: Trash-Out to Broom Clean | Bulls of Indiana",
+  title: "Property Manager Turnover Playbook: Trash-Out to Broom Clean | Uncle Sam Junk Removal",
   description:
     "Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.",
   keywords:
@@ -70,7 +70,7 @@ export default function PropertyManagerPlaybookPage() {
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
               <div className="flex items-center gap-1">
                 <User className="w-4 h-4" />
-                <span>Bulls of Indiana Team</span>
+                <span>Uncle Sam Team</span>
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default function PropertyManagerPlaybookPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Days 2-3: Professional Trash-Out</h2>
 
             <p className="text-gray-700 mb-4">
-              This is where Bulls of Indiana saves you time and money. Instead of multiple trips to the dump and
+              This is where Uncle Sam Junk Removal saves you time and money. Instead of multiple trips to the dump and
               donation centers, we handle everything in one efficient sweep.
             </p>
 
@@ -315,7 +315,7 @@ export default function PropertyManagerPlaybookPage() {
             </div>
 
             <div className="bg-purple-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Partner with Bulls of Indiana</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Partner with Uncle Sam Junk Removal</h3>
               <p className="text-gray-700 mb-4">
                 We understand the property management business. Fast turnovers mean higher profits, and we're here to
                 help you achieve both. Our property management services include:
@@ -341,9 +341,7 @@ export default function PropertyManagerPlaybookPage() {
             </div>
 
             <p className="text-gray-700">
-              <strong>Bottom Line:</strong> Professional property management means professional partnerships. Let Bulls
-              of Indiana handle the heavy lifting while you focus on finding great tenants and maximizing your rental
-              income.
+              <strong>Bottom Line:</strong> Professional property management means professional partnerships. Let Uncle Sam Junk Removal handle the heavy lifting while you focus on finding great tenants and maximizing your rental income.
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Junk Removal Services in Evansville, IN | Bulls of Indiana",
+  title: "Junk Removal Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Professional junk removal services in Evansville and Southern Indiana. Same-day service, eco-friendly disposal, free estimates. Licensed and insured.",
   keywords:
@@ -80,7 +80,7 @@ export default function JunkRemovalPage() {
         },
         {
           question: "Are you licensed and insured?",
-          answer: "Yes, Bulls of Indiana is fully licensed and insured for your protection and peace of mind.",
+          answer: "Yes, Uncle Sam Junk Removal is fully licensed and insured for your protection and peace of mind.",
         },
         {
           question: "What areas do you serve?",

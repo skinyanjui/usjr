@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Truck, Clock, DollarSign, Package, Phone, Calendar, Trash2, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Dumpster Rental Services in Evansville, IN | Bulls of Indiana",
+  title: "Dumpster Rental Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Affordable dumpster rental in Evansville and Southern Indiana. Multiple sizes available, same-day delivery, all-inclusive pricing. Perfect for construction, renovation, and cleanout projects.",
   keywords:

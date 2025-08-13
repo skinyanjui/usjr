@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
 
 export const metadata = {
-  title: "Light Demolition Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Light Demolition Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional light demolition services in Evansville, Indiana. Interior demo, deck removal, fence removal. Same-day service available. Call (812) 610-1657",
   keywords: "light demolition Evansville, interior demolition Indiana, deck removal, fence removal Evansville",

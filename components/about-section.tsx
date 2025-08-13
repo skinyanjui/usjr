@@ -30,7 +30,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Bulls of Texas</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
               We are a locally owned and operated junk removal and dumpster rental company serving Austin, Texas and
               surrounding areas. Our mission is to provide reliable, professional, and eco-friendly waste removal
@@ -55,7 +55,7 @@ export function AboutSection() {
           </div>
 
           <div className="relative">
-            <img src="/placeholder-q941w.png" alt="Bulls of Texas team" className="rounded-2xl shadow-2xl" />
+            <img src="/placeholder-q941w.png" alt="Uncle Sam Junk Removal team" className="rounded-2xl shadow-2xl" />
             <div className="absolute -bottom-8 -left-8 bg-red-600 text-white p-6 rounded-2xl glass">
               <h3 className="text-2xl font-bold mb-2">Locally Owned</h3>
               <p className="text-red-100">Serving Austin since 2008</p>

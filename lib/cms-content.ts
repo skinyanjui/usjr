@@ -240,7 +240,7 @@ export const testimonials: Testimonial[] = [
     location: "Evansville, IN",
     service: "Deep Cleaning",
     rating: 5,
-    text: "Bulls of Indiana did an amazing job with our deep cleaning! They were thorough, professional, and used natural products that didn't irritate my allergies. Highly recommend!",
+    text: "Uncle Sam Junk Removal did an amazing job with our deep cleaning! They were thorough, professional, and used natural products that didn't irritate my allergies. Highly recommend!",
     date: "2024-01-15",
     verified: true,
     active: true,
@@ -337,7 +337,7 @@ export const galleryImages: GalleryImage[] = [
 
 export const settings: Settings = {
   phone: "(812) 610-1657",
-  email: "info@bullsofindianacleaningservices.com",
+  email: "info@unclesamjunkremoval.com",
   squareBookingUrl: "https://square.site/book/PLACEHOLDER_BOOKING_URL",
   businessHours: {
     monday: "8:00 AM - 6:00 PM",
@@ -350,9 +350,9 @@ export const settings: Settings = {
   },
   serviceAreas: ["Evansville, IN", "Newburgh, IN", "Henderson, KY", "Owensboro, KY", "Boonville, IN", "Princeton, IN"],
   socialMedia: {
-    facebook: "https://facebook.com/bullsofindianacleaningservices",
-    instagram: "https://instagram.com/bullsofindianacleaningservices",
-    google: "https://g.page/bullsofindianacleaningservices",
+    facebook: "https://facebook.com/unclesamjunkremoval",
+    instagram: "https://instagram.com/unclesamjunkremoval",
+    google: "https://g.page/unclesamjunkremoval",
   },
 }
 

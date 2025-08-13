@@ -7,11 +7,11 @@ import { Leaf, Shield, Clock, Star, CheckCircle, Truck, Trash2, Sparkles, Phone,
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Get Your Free Quote | Bulls of Indiana - Junk Removal, Dumpster Rental & Cleaning",
+  title: "Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Dumpster Rental & Cleaning",
   description:
     "Get free quotes for junk removal, dumpster rental, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.",
   keywords:
-    "free quote Evansville, junk removal quote, dumpster rental quote, cleaning quote, Bulls of Indiana pricing",
+    "free quote Evansville, junk removal quote, dumpster rental quote, cleaning quote, Uncle Sam Junk Removal pricing",
 }
 
 export default function QuotePage() {
@@ -48,7 +48,7 @@ export default function QuotePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
               <Phone className="w-5 h-5 mr-2" />
-              Call (812) 555-0123
+              Call (812) 610-1657
             </Button>
             <Button
               size="lg"
@@ -247,7 +247,7 @@ export default function QuotePage() {
         {/* Why Choose Us Section */}
         <Card className="glass">
           <CardContent className="p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Bulls of Indiana?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Uncle Sam Junk Removal?</h2>
 
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">

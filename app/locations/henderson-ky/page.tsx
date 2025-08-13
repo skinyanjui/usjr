@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 
 export const metadata = {
-  title: "Junk Removal Henderson KY | Same-Day Service | Bulls of Indiana",
+  title: "Junk Removal Henderson KY | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional junk removal in Henderson, Kentucky. Cross-state service from Indiana. Same-day pickup available. Call (812) 610-1657",
   keywords: "junk removal Henderson KY, Henderson Kentucky junk removal, trash removal Henderson, Kentucky junk pickup",

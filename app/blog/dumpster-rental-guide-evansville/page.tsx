@@ -166,8 +166,8 @@ export default function DumpsterRentalGuidePage() {
             <ThemedButton theme="orange" size="lg" href="/quote">
               Get Free Quote
             </ThemedButton>
-            <ThemedButton theme="blue" variant="outline" size="lg" href="tel:812-555-0123">
-              Call (812) 555-0123
+            <ThemedButton theme="blue" variant="outline" size="lg" href="tel:+18126101657">
+              Call (812) 610-1657
             </ThemedButton>
           </div>
         </GlassCard>

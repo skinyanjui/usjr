@@ -3,7 +3,7 @@ import { Warehouse, SortAsc, Gift, Clock } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Garage Cleanout Evansville IN | Same-Day Service | Bulls of Indiana",
+  title: "Garage Cleanout Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     "Professional garage cleanout services in Evansville, Indiana. Complete garage cleaning and junk removal. Same-day service available. Call (812) 610-1657",
   keywords: "garage cleanout Evansville, garage cleaning Indiana, garage junk removal, storage cleanout Evansville",

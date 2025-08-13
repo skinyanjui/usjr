@@ -3,7 +3,7 @@ import { Heart, Home, Gift, Users } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Estate Cleanouts Evansville IN | Compassionate Service | Bulls of Indiana",
+  title: "Estate Cleanouts Evansville IN | Compassionate Service | Uncle Sam Junk Removal",
   description:
     "Compassionate estate cleanout services in Evansville, Indiana. Full house cleanouts, donation coordination, sensitive handling. Call (812) 610-1657",
   keywords: "estate cleanouts Evansville, house cleanouts Indiana, estate sale cleanup, probate cleanouts Evansville",

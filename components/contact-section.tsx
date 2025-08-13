@@ -55,7 +55,7 @@ export function ContactSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get Your Free Quote</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to get rid of your junk in Evansville? Contact Bulls of Indiana today for a free, no-obligation quote.
+            Ready to get rid of your junk in Evansville? Contact Uncle Sam Junk Removal today for a free, no-obligation quote.
             We'll beat any written estimate!
           </p>
           <div className="flex items-center justify-center gap-2 mt-4">
@@ -212,7 +212,7 @@ export function ContactSection() {
                   </Button>
 
                   <p className="text-sm text-gray-500 text-center">
-                    By submitting this form, you agree to receive text messages and calls from Bulls of Indiana.
+                    By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
                   </p>
                 </form>
               )}
@@ -223,14 +223,13 @@ export function ContactSection() {
           <div className="space-y-8">
             <Card className="glass">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Bulls of Indiana</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Uncle Sam Junk Removal</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <Phone className="h-6 w-6 text-red-600 mt-1" />
                     <div>
                       <h4 className="font-semibold text-gray-900">Phone</h4>
-                      <p className="text-gray-600 text-lg font-semibold">(812) 555-BULL</p>
-                      <p className="text-gray-600">(812) 555-2855</p>
+                      <p className="text-gray-600 text-lg font-semibold">(812) 610-1657</p>
                       <p className="text-sm text-gray-500">Call or text for fastest response</p>
                     </div>
                   </div>
@@ -238,8 +237,8 @@ export function ContactSection() {
                     <Mail className="h-6 w-6 text-red-600 mt-1" />
                     <div>
                       <h4 className="font-semibold text-gray-900">Email</h4>
-                      <p className="text-gray-600">info@bullsofindiana.com</p>
-                      <p className="text-gray-600">quotes@bullsofindiana.com</p>
+                      <p className="text-gray-600">info@unclesamjunkremoval.com</p>
+                      <p className="text-gray-600">quotes@unclesamjunkremoval.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -271,7 +270,7 @@ export function ContactSection() {
                   Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
                 </p>
                 <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold mb-4">
-                  Call Now: (812) 555-BULL
+                  Call Now: (812) 610-1657
                 </Button>
                 <div className="flex items-center justify-center gap-4 text-sm text-red-600">
                   <span>✓ Licensed & Insured</span>
@@ -283,7 +282,7 @@ export function ContactSection() {
 
             <Card className="glass bg-blue-600 text-white">
               <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-bold mb-4">Why Evansville Chooses Bulls of Indiana</h3>
+                <h3 className="text-xl font-bold mb-4">Why Evansville Chooses Uncle Sam Junk Removal</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>✓ 15+ Years Experience</div>
                   <div>✓ Locally Owned & Operated</div>
@@ -304,11 +303,11 @@ export function ContactSection() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "Bulls of Indiana",
+              name: "Uncle Sam Junk Removal",
               description: "Professional junk removal and dumpster rental services in Evansville, Indiana",
-              url: "https://bullsofindiana.com",
-              telephone: "(812) 555-2855",
-              email: "info@bullsofindiana.com",
+              url: "https://unclesamjunkremoval.com",
+              telephone: "(812) 610-1657",
+              email: "info@unclesamjunkremoval.com",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Evansville",

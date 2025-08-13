@@ -58,7 +58,7 @@ export default function GarageCleanoutPage() {
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
               <div className="flex items-center gap-1">
                 <User className="w-4 h-4" />
-                <span>Bulls of Indiana Team</span>
+                <span>Uncle Sam Team</span>
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
