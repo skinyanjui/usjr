@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
@@ -180,11 +181,14 @@ export default function BlogPage() {
                     className="glass hover:scale-105 transition-all duration-300 overflow-hidden border-2 border-green-200"
                   >
                     <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                      <img
+                      <Image
                         src={post.image || "/placeholder.svg"}
                         alt={post.title}
-                        className="w-full h-full object-cover"
-                        loading={index < 2 ? "eager" : "lazy"}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 1200px"
+                        quality={60}
+                        priority={index < 1}
                       />
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-green-600 text-white">
@@ -239,13 +243,16 @@ export default function BlogPage() {
           <div className="mb-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">All Articles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {regularPosts.map((post, index) => (
+              {regularPosts.map((post) => (
                 <Card key={post.slug} className="glass hover:scale-105 transition-all duration-300 overflow-hidden">
                   <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                    <img
+                    <Image
                       src={post.image || "/placeholder.svg"}
                       alt={post.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={60}
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">

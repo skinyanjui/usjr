@@ -121,7 +121,15 @@ export function ServiceCard({
       className={`glass hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card}`}
     >
       <div className={`relative ${sizes.image} w-full`}>
-        <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        <Image
+          src={image || "/placeholder.svg"}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          quality={60}
+          loading="lazy"
+        />
         <div className={`absolute top-3 left-3 p-2 rounded-full ${colors.bg} shadow-lg`}>
           <Icon className={`h-6 w-6 ${colors.icon}`} />
         </div>

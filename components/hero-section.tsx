@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
+import heroImage from "@/public/junk-removal-evansville.png"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
@@ -10,11 +12,18 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/junk-removal-evansville.png')`,
-      }}
+      className="relative min-h-screen flex items-center justify-center"
     >
+      <Image
+        src={heroImage}
+        alt="Junk removal crew in Evansville, IN"
+        fill
+        priority
+        sizes="100vw"
+        quality={70}
+        placeholder="blur"
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">

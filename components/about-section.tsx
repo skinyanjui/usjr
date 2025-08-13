@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
+import Image from "next/image"
 
 export function AboutSection() {
   const stats = [
@@ -55,7 +56,17 @@ export function AboutSection() {
           </div>
 
           <div className="relative">
-            <img src="/placeholder-q941w.png" alt="Uncle Sam Junk Removal team" className="rounded-2xl shadow-2xl" />
+            <div className="relative w-full h-80 md:h-[28rem]">
+              <Image
+                src="/placeholder-q941w.png"
+                alt="Uncle Sam Junk Removal team"
+                fill
+                className="object-cover rounded-2xl shadow-2xl"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={60}
+                loading="lazy"
+              />
+            </div>
             <div className="absolute -bottom-8 -left-8 bg-red-600 text-white p-6 rounded-2xl glass">
               <h3 className="text-2xl font-bold mb-2">Locally Owned</h3>
               <p className="text-red-100">Serving Austin since 2008</p>
