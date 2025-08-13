@@ -3,6 +3,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock, CheckCircle } from "lucide-react"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Ultimate Spring Cleaning Checklist for Southern Indiana Homes | Uncle Sam Junk Removal",
@@ -40,11 +41,16 @@ export default function SpringCleaningChecklistPage() {
         </header>
 
         <GlassCard className="p-8 mb-8">
-          <img
-            src="/spring-cleaning-natural.png"
-            alt="Spring cleaning with natural products"
-            className="w-full h-64 object-cover rounded-lg mb-6"
-          />
+          <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6">
+            <Image
+              src="/spring-cleaning-natural.png"
+              alt="Spring cleaning with natural products"
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+              priority
+            />
+          </div>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

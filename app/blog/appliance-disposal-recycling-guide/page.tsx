@@ -3,6 +3,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock, Recycle, AlertTriangle } from "lucide-react"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Appliance Disposal & Recycling Guide for Evansville Residents | Uncle Sam Junk Removal",
@@ -40,11 +41,16 @@ export default function ApplianceDisposalGuidePage() {
         </header>
 
         <GlassCard className="p-8 mb-8">
-          <img
-            src="/appliance-removal-evansville.png"
-            alt="Professional appliance removal and recycling"
-            className="w-full h-64 object-cover rounded-lg mb-6"
-          />
+          <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6">
+            <Image
+              src="/appliance-removal-evansville.png"
+              alt="Professional appliance removal and recycling"
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+              priority
+            />
+          </div>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-gray-700 mb-6">

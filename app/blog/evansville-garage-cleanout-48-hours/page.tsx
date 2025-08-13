@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
   title: "Evansville Garage Cleanout in 48 Hours: Complete Checklist & Timeline",
@@ -69,11 +70,16 @@ export default function GarageCleanoutPage() {
                 <span>6 min read</span>
               </div>
             </div>
-            <img
-              src="/organized-garage-cleanout.png"
-              alt="Garage cleanout before and after"
-              className="w-full h-64 object-cover rounded-lg mb-8"
-            />
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+              <Image
+                src="/organized-garage-cleanout.png"
+                alt="Garage cleanout before and after"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+            </div>
           </header>
 
           <div className="prose prose-lg max-w-none">

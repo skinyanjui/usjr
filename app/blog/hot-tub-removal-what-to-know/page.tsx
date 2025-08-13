@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
   title: "Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal",
@@ -70,11 +71,16 @@ export default function HotTubRemovalPage() {
                 <span>5 min read</span>
               </div>
             </div>
-            <img
-              src="/hot-tub-removal-checklist.png"
-              alt="Hot tub removal preparation"
-              className="w-full h-64 object-cover rounded-lg mb-8"
-            />
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+              <Image
+                src="/hot-tub-removal-checklist.png"
+                alt="Hot tub removal preparation"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+            </div>
           </header>
 
           <div className="prose prose-lg max-w-none">

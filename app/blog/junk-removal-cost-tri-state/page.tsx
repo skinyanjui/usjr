@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, DollarSign, Truck, Home } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
   title: "Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide",
@@ -68,11 +69,16 @@ export default function JunkRemovalCostPage() {
                 <span>8 min read</span>
               </div>
             </div>
-            <img
-              src="/junk-removal-pricing.png"
-              alt="Junk removal pricing guide"
-              className="w-full h-64 object-cover rounded-lg mb-8"
-            />
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+              <Image
+                src="/junk-removal-pricing.png"
+                alt="Junk removal pricing guide"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+            </div>
           </header>
 
           <div className="prose prose-lg max-w-none">
