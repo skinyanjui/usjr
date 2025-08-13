@@ -114,7 +114,7 @@ export function ServicesSection() {
   ]
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeader
           title="Our Services"
@@ -140,7 +140,7 @@ export function ServicesSection() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           <GlassCard className="p-6 text-center border-blue-200 bg-blue-50">
-            <Calculator className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+            <Calculator className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 mb-2">Compare Services</h3>
             <p className="text-gray-600 mb-4">
               Not sure which service is right for you? Compare features, pricing, and benefits side-by-side.
@@ -151,7 +151,7 @@ export function ServicesSection() {
           </GlassCard>
 
           <GlassCard className="p-6 text-center border-red-200 bg-red-50">
-            <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+            <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 text-red-600 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 mb-2">Emergency Service</h3>
             <p className="text-gray-600 mb-4">
               Need immediate junk removal? We provide 24/7 emergency response with 2-hour arrival time.
@@ -162,8 +162,8 @@ export function ServicesSection() {
           </GlassCard>
         </div>
 
-        <GlassCard className="p-8 text-center">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
+        <GlassCard className="p-6 sm:p-8 text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
           <p className="text-gray-600 mb-6">
             Serving Evansville and Southern Indiana with reliable, professional service since day one.
           </p>

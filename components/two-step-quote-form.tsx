@@ -96,11 +96,11 @@ export function TwoStepQuoteForm() {
       {step === 1 ? (
         <Card className="glass">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
-              <MapPin className="w-6 h-6 text-red-600" />
+            <CardTitle className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
               Get Your Free Quote
             </CardTitle>
-            <p className="text-gray-600">Enter your ZIP code to get started</p>
+            <p className="text-sm sm:text-base text-gray-600">Enter your ZIP code to get started</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleZipSubmit} className="space-y-4">
@@ -129,18 +129,18 @@ export function TwoStepQuoteForm() {
       ) : (
         <Card className="glass">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
-              <Truck className="w-6 h-6 text-red-600" />
+            <CardTitle className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
+              <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
               What needs to be removed?
             </CardTitle>
-            <p className="text-gray-600">Select items and load size for accurate pricing</p>
+            <p className="text-sm sm:text-base text-gray-600">Select items and load size for accurate pricing</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleFinalSubmit} className="space-y-6">
               {/* Item Selection */}
               <div>
                 <Label className="text-sm font-medium text-gray-700 mb-3 block">Select Items to Remove</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                   {itemCategories.map((item) => {
                     const Icon = item.icon
                     return (
@@ -154,7 +154,7 @@ export function TwoStepQuoteForm() {
                             : "border-gray-200 hover:border-red-300"
                         }`}
                       >
-                        <Icon className="w-6 h-6 mx-auto mb-1" />
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1" />
                         <div className="text-xs font-medium">{item.label}</div>
                       </button>
                     )
@@ -169,7 +169,7 @@ export function TwoStepQuoteForm() {
                   {loadSizes.map((size) => (
                     <label
                       key={size.id}
-                      className={`flex items-center justify-between p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                      className={`flex items-center justify-between p-2 sm:p-3 rounded-lg border-2 cursor-pointer transition-all ${
                         loadSize === size.id ? "border-red-600 bg-red-50" : "border-gray-200 hover:border-red-300"
                       }`}
                     >
@@ -238,13 +238,13 @@ export function TwoStepQuoteForm() {
                 <p className="text-xs text-gray-500 mt-1">Photos help us provide more accurate quotes</p>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <Button type="button" variant="outline" onClick={() => setStep(1)} className="flex-1">
                   Back
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3"
+                  className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 sm:py-3"
                   disabled={!loadSize || selectedItems.length === 0}
                 >
                   Get My Quote

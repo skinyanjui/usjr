@@ -33,10 +33,6 @@ export const metadata: Metadata = {
     type: "website",
   },
     generator: 'v0.app',
-  other: {
-    "link:preconnect:https://fonts.googleapis.com": "",
-    "link:preconnect:https://fonts.gstatic.com": "",
-  },
 }
 
 export default function RootLayout({
