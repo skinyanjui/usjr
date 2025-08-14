@@ -5,6 +5,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -35,12 +36,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} antialiased`}>
+    <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
       <body className="font-sans">
-        <Header />
-        <ScrollToTopOnRouteChange />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <Header />
+          <ScrollToTopOnRouteChange />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

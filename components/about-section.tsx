@@ -33,7 +33,7 @@ export function AboutSection() {
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
-              We are a locally owned and operated junk removal and dumpster rental company serving Austin, Texas and
+              We are a locally owned and operated junk removal and dumpster rental company serving Evansville, Indiana and
               surrounding areas. Our mission is to provide reliable, professional, and eco-friendly waste removal
               services.
             </p>

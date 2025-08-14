@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://unclesamjunkremoval.com/sitemap.xml",
-    host: "https://unclesamjunkremoval.com",
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"}/sitemap.xml`,
+    host: process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com",
   }
 }

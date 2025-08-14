@@ -1,12 +1,19 @@
 import { settings, getActiveServices } from "@/lib/cms-content"
 
+type FaqItem = { question: string; answer: string }
+
+interface BreadcrumbItem { name: string; url: string }
+
 interface StructuredDataProps {
   type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList"
-  data?: any
+  data?:
+    | { name?: string; description?: string; price?: string; category?: string }
+    | { faqs?: FaqItem[] }
+    | { breadcrumbs?: BreadcrumbItem[] }
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
-  let structuredData: any = {}
+  let structuredData: Record<string, unknown> = {}
 
   switch (type) {
     case "LocalBusiness":
@@ -102,7 +109,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity:
-          data?.faqs?.map((faq: any) => ({
+          (data as { faqs?: FaqItem[] })?.faqs?.map((faq) => (
             "@type": "Question",
             name: faq.question,
             acceptedAnswer: {
@@ -118,7 +125,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement:
-          data?.breadcrumbs?.map((crumb: any, index: number) => ({
+          (data as { breadcrumbs?: BreadcrumbItem[] })?.breadcrumbs?.map((crumb, index) => (
             "@type": "ListItem",
             position: index + 1,
             name: crumb.name,

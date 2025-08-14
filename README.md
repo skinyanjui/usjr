@@ -21,9 +21,10 @@ A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk 
 - CMS-like content management system
 - **Reusable UI component library** for consistent design patterns
 - **Template components** for rapid page development with 40-70% code reduction
+- Includes `LocationPageTemplate`, `FAQSection`, and shared quote form utilities
 
 ### Technical Features
-- Next.js 14 with App Router
+- Next.js 15 with App Router
 - TypeScript for type safety
 - Tailwind CSS for styling
 - shadcn/ui component library
