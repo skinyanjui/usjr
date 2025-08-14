@@ -22,7 +22,7 @@ export function HeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
         <div className="text-center text-white mb-6">
-          <h2 className="text-xl md:text-3xl font-semibold mb-2 text-red-400">
+          <h2 className="text-xl md:text-3xl font-semibold text-white my-1.5 py-0 mx-0 px-0 border-0">
             Same-Day Junk Removal & Professional Cleaning
           </h2>
           <p className="text-lg md:text-xl text-gray-200">Serving Evansville, Newburgh & Southern Indiana</p>

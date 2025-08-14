@@ -46,7 +46,7 @@ export function Header() {
       <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
         <div className="max-w-7xl mx-auto grid grid-cols-3 items-center">
           {/* Logo */}
-          <div className="flex items-center col-span-2 lg:col-span-1 min-w-0">
+          <div className="flex col-span-2 lg:col-span-1 min-w-0 items-end text-center">
             <Link
               href="/"
               prefetch={false}
