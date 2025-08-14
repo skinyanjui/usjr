@@ -282,7 +282,7 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-4 items-center">
             <div className="text-gray-400">
               <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
-              <p className="text-sm">Licensed & Insured | Indiana Waste Hauler License #WH-2024-001</p>
+              
             </div>
             <div className="text-right text-gray-400">
               <div className="flex items-center justify-end gap-4 text-sm">

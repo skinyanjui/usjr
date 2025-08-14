@@ -49,7 +49,7 @@ export function Header() {
             <Link
               href="/"
               prefetch={false}
-              className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-sm md:text-base hover:bg-red-700 transition-colors whitespace-nowrap max-w-full truncate"
+              className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-xs md:text-base hover:bg-red-700 transition-colors whitespace-nowrap max-w-full truncate"
             >
               UNCLE SAM JUNK REMOVAL
             </Link>
@@ -57,11 +57,19 @@ export function Header() {
 
           {/* Centered desktop nav */}
           <div className="hidden lg:flex items-center justify-center space-x-6">
-            <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link
+              href="/"
+              prefetch={false}
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+            >
               HOME
             </Link>
 
-            <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link
+              href="/about"
+              prefetch={false}
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+            >
               ABOUT
             </Link>
 
@@ -95,11 +103,19 @@ export function Header() {
               )}
             </div>
 
-            <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link
+              href="/blog"
+              prefetch={false}
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+            >
               BLOG
             </Link>
 
-            <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm">
+            <Link
+              href="/faq"
+              prefetch={false}
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+            >
               FAQ
             </Link>
           </div>
@@ -141,19 +157,44 @@ export function Header() {
         {isMenuOpen && (
           <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-2 pt-4">
-              <Link href="/" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="/"
+                prefetch={false}
+                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 HOME
               </Link>
-              <Link href="/about" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="/about"
+                prefetch={false}
+                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 ABOUT
               </Link>
-              <Link href="/services" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="/services"
+                prefetch={false}
+                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 SERVICES
               </Link>
-              <Link href="/blog" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="/blog"
+                prefetch={false}
+                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 BLOG
               </Link>
-              <Link href="/faq" prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm py-2" onClick={() => setIsMenuOpen(false)}>
+              <Link
+                href="/faq"
+                prefetch={false}
+                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 FAQ
               </Link>
               <div className="pt-4">
