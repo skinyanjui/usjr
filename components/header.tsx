@@ -45,11 +45,11 @@ export function Header() {
       <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
         <div className="max-w-7xl mx-auto grid grid-cols-3 items-center">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center col-span-2 lg:col-span-1 min-w-0">
             <Link
               href="/"
               prefetch={false}
-              className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-base hover:bg-red-700 transition-colors"
+              className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-sm md:text-base hover:bg-red-700 transition-colors whitespace-nowrap max-w-full truncate"
             >
               UNCLE SAM JUNK REMOVAL
             </Link>
