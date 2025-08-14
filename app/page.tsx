@@ -1,21 +1,11 @@
 import { HeroSection } from "@/components/hero-section"
-import { PricingGrid } from "@/components/pricing-grid"
-import { ServicesSection } from "@/components/services-section"
-import HomeClient from "./pageClient"
-import { HowItWorks } from "@/components/how-it-works"
-import { ServiceSelectionWizard } from "@/components/service-selection-wizard"
-import { ServiceArea } from "@/components/service-area"
+import { BentoGrid } from "@/components/bento-grid"
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
       <HeroSection />
-      <PricingGrid />
-      <HowItWorks />
-      <ServiceSelectionWizard />
-      <HomeClient />
-      <ServiceArea />
-      <ServicesSection />
+      <BentoGrid />
     </main>
   )
 }

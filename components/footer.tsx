@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
 import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
+import { PhoneButton } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
 
 export function Footer() {
@@ -12,22 +13,21 @@ export function Footer() {
         <div className="rounded-lg p-6 mb-8 bg-red-500">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="flex-1">
-              <h3 className="text-2xl md:text-3xl font-bold">Ready to reclaim your space?</h3>
-              <p className="text-red-50/90 mt-1">Same-day service, 7 days a week. Locally owned and insured.</p>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Ready to reclaim your space?</h3>
+              <p className="text-red-50/90 mt-1 text-sm sm:text-base">
+                Same-day service, 7 days a week. Locally owned and insured.
+              </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-5 py-2.5 shadow hover:bg-red-50 transition-colors rounded-lg"
+                className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-4 sm:px-5 py-2.5 shadow hover:bg-red-50 transition-colors rounded-lg text-sm sm:text-base justify-center"
               >
                 Get Free Quote
               </Link>
-              <a
-                href={`tel:${phoneDigits}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors"
-              >
+              <PhoneButton href={`tel:${phoneDigits}`} size="default" className="justify-center">
                 <Phone className="h-4 w-4" /> Call {settings.phone}
-              </a>
+              </PhoneButton>
             </div>
           </div>
         </div>
@@ -35,8 +35,8 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 text-white">
           {/* Services */}
           <nav aria-label="Our services">
-            <h3 className="text-lg font-semibold mb-3">Our Services</h3>
-            <ul className="space-y-2 text-sm text-white">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Our Services</h3>
+            <ul className="space-y-2 text-xs sm:text-sm text-white">
               <li>
                 <Link href="/services/junk-removal" className="text-red-100 hover:text-white transition-colors">
                   Junk Removal
@@ -72,8 +72,8 @@ export function Footer() {
 
           {/* Service Areas */}
           <nav aria-label="Service areas">
-            <h3 className="text-lg font-semibold mb-3">Service Areas</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Service Areas</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/locations/evansville" className="text-red-100 hover:text-white transition-colors">
                   Evansville, IN
@@ -109,21 +109,21 @@ export function Footer() {
 
           {/* Company Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Uncle Sam Junk Removal</h3>
-            <p className="text-red-100 text-sm mb-3">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Uncle Sam Junk Removal</h3>
+            <p className="text-red-100 text-xs sm:text-sm mb-3">
               Evansville's premier junk removal service. Locally owned and operated.
             </p>
-            <div className="flex items-center gap-2 text-sm text-red-100 mb-2">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-red-100 mb-2">
               <Clock className="h-4 w-4" />
               <span>Same Day Service</span>
             </div>
-            <div className="text-sm text-red-100">Available 7 Days a Week</div>
+            <div className="text-xs sm:text-sm text-red-100">Available 7 Days a Week</div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Quick Links</h3>
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <Link href="/about" className="text-red-100 hover:text-white transition-colors">
                   About Us
@@ -154,7 +154,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-red-600 pt-6 mb-6">
-          <div className="grid md:grid-cols-3 gap-4 text-sm">
+          <div className="grid md:grid-cols-3 gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
               <div>
@@ -176,7 +176,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-red-600 pt-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-sm text-red-100">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-xs sm:text-sm text-red-100">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <div className="flex gap-4">
               <Link href="/privacy" className="hover:text-white transition-colors">

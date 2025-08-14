@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -19,18 +19,36 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        xs: "h-8 px-2.5 py-1.5 text-xs has-[>svg]:px-2",
-        sm: "h-9 px-3 py-2 text-sm has-[>svg]:px-2.5",
-        default: "h-10 px-4 py-2.5 text-sm has-[>svg]:px-3",
-        lg: "h-11 px-6 py-3 text-base has-[>svg]:px-4",
-        xl: "h-12 px-8 py-3.5 text-lg has-[>svg]:px-6",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-11",
+        xs: "h-8 px-2.5 py-1.5 text-xs sm:text-xs has-[>svg]:px-2 [&_svg]:size-3",
+        sm: "h-9 px-3 py-2 text-xs sm:text-sm has-[>svg]:px-2.5 [&_svg]:size-3.5",
+        default: "h-10 px-4 py-2.5 text-sm sm:text-sm md:text-base has-[>svg]:px-3 [&_svg]:size-4",
+        lg: "h-11 px-6 py-3 text-sm sm:text-base md:text-lg has-[>svg]:px-4 [&_svg]:size-4",
+        xl: "h-12 px-8 py-3.5 text-base sm:text-lg md:text-xl has-[>svg]:px-6 [&_svg]:size-5",
+        icon: "size-9 text-sm [&_svg]:size-4",
+        "icon-sm": "size-8 text-xs [&_svg]:size-3.5",
+        "icon-lg": "size-11 text-base [&_svg]:size-5",
       },
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
+    },
+  },
+)
+
+const phoneButtonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors bg-red-700/35 text-white ring-1 ring-white/30 hover:bg-red-700/45",
+  {
+    variants: {
+      size: {
+        xs: "h-8 px-3 py-1.5 text-xs [&_svg]:size-3",
+        sm: "h-9 px-4 py-2 text-xs sm:text-sm [&_svg]:size-3.5",
+        default: "h-10 px-5 py-2.5 text-sm sm:text-base [&_svg]:size-4",
+        lg: "h-11 px-6 py-3 text-sm sm:text-base md:text-lg [&_svg]:size-4",
+        xl: "h-12 px-8 py-3.5 text-base sm:text-lg md:text-xl [&_svg]:size-5",
+      },
+    },
+    defaultVariants: {
       size: "default",
     },
   },
@@ -49,8 +67,25 @@ function Button({
   const Comp = asChild ? Slot : "button"
 
   return (
-    <Comp data-slot="button" className={cn(buttonVariants({ variant, size }), className, "rounded-lg")} {...props} />
+    <Comp data-slot="button" className={cn(buttonVariants({ variant, size }), className, "rounded-lg leading-7")} {...props} />
   )
 }
 
-export { Button, buttonVariants }
+function PhoneButton({
+  className,
+  size,
+  children,
+  href,
+  ...props
+}: React.ComponentProps<"a"> &
+  VariantProps<typeof phoneButtonVariants> & {
+    href: string
+  }) {
+  return (
+    <a href={href} className={cn(phoneButtonVariants({ size }), className)} {...props}>
+      {children}
+    </a>
+  )
+}
+
+export { Button, buttonVariants, PhoneButton, phoneButtonVariants }

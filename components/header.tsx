@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { Button, PhoneButton } from "@/components/ui/button"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
@@ -120,18 +120,25 @@ export function Header() {
               FAQ
             </Link>
 
-            <PriceMatchTerms trigger={<button className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">Price Match</button>} />
+            <PriceMatchTerms
+              trigger={
+                <button className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">
+                  Price Match
+                </button>
+              }
+            />
           </div>
 
           {/* Right desktop actions */}
           <div className="hidden lg:flex items-center justify-end gap-4 ml-4 border-l border-gray-300 pl-4">
             <div className="text-center">
-              <a
+              <PhoneButton
                 href="tel:+18126101657"
-                className="inline-flex items-center justify-center gap-2 rounded-lg ring-1 ring-white/30 h-8 px-3 hover:bg-red-700/45 transition-colors text-xs font-semibold bg-transparent text-black"
+                size="xs"
+                className="bg-transparent text-black ring-1 ring-gray-300 hover:bg-red-700/10"
               >
                 <Phone className="h-3 w-3" /> (812) 610-1657
-              </a>
+              </PhoneButton>
               <div className="text-xs text-black mt-0">Text photos for quote</div>
             </div>
             <Button
