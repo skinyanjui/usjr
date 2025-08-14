@@ -5,18 +5,18 @@ import { Button, PhoneButton } from "@/components/ui/button"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
-import { PriceMatchTerms } from "@/components/price-match-terms"
 import { settings } from "@/lib/cms-content"
+import { NAV, CTAS } from "@/lib/nav"
 
-const QuoteFormModal = dynamic(() => import("./quote-form-modal").then((m) => m.QuoteFormModal), { ssr: false })
 const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
+const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), { ssr: false })
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const servicesMenuId = "services-menu"
+  const locationsMenuId = "locations-menu"
 
   const handleDropdownEnter = (dropdown: string) => {
     if (timeoutRef.current) {
@@ -29,7 +29,7 @@ export function Header() {
   const handleDropdownLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null)
-    }, 150) // 150ms delay
+    }, 150)
   }
 
   useEffect(() => {
@@ -105,6 +105,36 @@ export function Header() {
               )}
             </div>
 
+            <div
+              className="relative group"
+              onMouseEnter={() => handleDropdownEnter("locations")}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <button
+                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                aria-haspopup="menu"
+                aria-expanded={activeDropdown === "locations"}
+                aria-controls={locationsMenuId}
+                onClick={() => setActiveDropdown((prev) => (prev === "locations" ? null : "locations"))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setActiveDropdown((prev) => (prev === "locations" ? null : "locations"))
+                  }
+                }}
+              >
+                LOCATIONS
+                <ChevronDown className="w-3 h-3" aria-hidden="true" />
+              </button>
+              {activeDropdown === "locations" && (
+                <LocationsDropdown
+                  locationsMenuId={locationsMenuId}
+                  onMouseEnter={() => handleDropdownEnter("locations")}
+                  onMouseLeave={handleDropdownLeave}
+                />
+              )}
+            </div>
+
             <Link
               href="/blog"
               prefetch={false}
@@ -121,13 +151,9 @@ export function Header() {
               FAQ
             </Link>
 
-            <PriceMatchTerms
-              trigger={
-                <button className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">
-                  Price Match
-                </button>
-              }
-            />
+            <Link href={CTAS.priceMatch.href} prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">
+              {CTAS.priceMatch.label}
+            </Link>
           </div>
 
           {/* Right desktop actions */}
@@ -140,17 +166,12 @@ export function Header() {
               >
                 <Phone className="h-3 w-3" /> {settings.phone}
               </PhoneButton>
-              <div className="text-xs text-black mt-0">Text photos for quote</div>
+              <div className="text-xs mt-0">
+                <a href={`sms:${settings.phoneE164}`} className="text-black hover:text-red-600">Text photos for quote</a>
+              </div>
             </div>
-            <Button
-              size="xs"
-              className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold"
-              onClick={() => setIsQuoteModalOpen(true)}
-              aria-haspopup="dialog"
-              aria-expanded={isQuoteModalOpen}
-              aria-controls="quote-form-modal"
-            >
-              GET FREE QUOTE
+            <Button asChild size="xs" className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold">
+              <Link href="/quote">GET FREE QUOTE</Link>
             </Button>
           </div>
 
@@ -185,14 +206,37 @@ export function Header() {
               >
                 ABOUT
               </Link>
-              <Link
-                href="/services"
-                prefetch={false}
-                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                SERVICES
-              </Link>
+
+              <div className="pt-2">
+                <div className="text-gray-500 text-xs mb-1">SERVICES</div>
+                {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    prefetch={false}
+                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <div className="text-gray-500 text-xs mb-1">LOCATIONS</div>
+                {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    prefetch={false}
+                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
               <Link
                 href="/blog"
                 prefetch={false}
@@ -210,23 +254,13 @@ export function Header() {
                 FAQ
               </Link>
               <div className="pt-4">
-                <Button
-                  size="sm"
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                  onClick={() => setIsQuoteModalOpen(true)}
-                  aria-haspopup="dialog"
-                  aria-expanded={isQuoteModalOpen}
-                  aria-controls="quote-form-modal"
-                >
-                  Get Free Quote
+                <Button asChild size="sm" className="bg-red-600 hover:bg-red-700 text-white w-full">
+                  <Link href="/quote">Get Free Quote</Link>
                 </Button>
               </div>
             </div>
           </div>
         )}
-
-        {/* Quote modal */}
-        <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
       </nav>
     </header>
   )

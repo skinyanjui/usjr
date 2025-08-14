@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Clock } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -115,13 +116,13 @@ export function ServicePageTemplate({
   badges = [],
   heroImage,
   theme,
-  features = [], // Added default empty array
-  steps = [], // Added default empty array
+  features = [],
+  steps = [],
   stepsTitle = "How It Works",
-  pricing = [], // Added default empty array
+  pricing = [],
   pricingTitle = "Pricing",
   pricingNote,
-  faqs = [], // Added default empty array
+  faqs = [],
   ctaPrimary = "📞 Call Now",
   ctaSecondary = "Get Free Quote",
   children,
@@ -168,8 +169,8 @@ export function ServicePageTemplate({
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button className={`${classes.primary} w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold`}>
-                  {ctaPrimary}
+                <Button asChild className={`${classes.primary} w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold`}>
+                  <a href={`tel:${settings.phoneE164}`}>{ctaPrimary}</a>
                 </Button>
                 <Button
                   variant="outline"
@@ -199,114 +200,29 @@ export function ServicePageTemplate({
               </div>
             )}
           </div>
-        </div>
-      </section>
 
-      {/* Steps Section */}
-      {steps.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {steps.map((step, index) => {
-                const IconComponent = step.icon
-                return (
-                  <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
-                    <CardHeader>
-                      <div
-                        className={`${classes.icon} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
-                      >
-                        <IconComponent className="w-8 h-8 text-white" />
-                      </div>
-                      <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">{step.description}</p>
-                    </CardContent>
-                  </Card>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Additional Content */}
-      {children}
-
-      {/* Related Articles Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">Related Articles</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <Card className="glass hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <CardTitle className="text-lg font-bold text-gray-900">
-                  <a href="/blog/spring-cleaning-checklist-southern-indiana" className={`hover:${classes.accent}`}>
-                    Spring Cleaning Guide for Southern Indiana
-                  </a>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  Complete room-by-room checklist with eco-friendly tips for your seasonal cleaning needs.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="glass hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <CardTitle className="text-lg font-bold text-gray-900">
-                  <a href="/blog/appliance-disposal-recycling-guide" className={`hover:${classes.accent}`}>
-                    Appliance Disposal & Recycling Guide
-                  </a>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  Learn proper appliance disposal methods and environmental benefits of professional recycling.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="glass hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <CardTitle className="text-lg font-bold text-gray-900">
-                  <a href="/blog/dumpster-rental-guide-evansville" className={`hover:${classes.accent}`}>
-                    Dumpster Rental Guide for Evansville
-                  </a>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 text-sm">
-                  Everything you need to know about dumpster sizes, pricing, and permits in Evansville.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {children}
         </div>
       </section>
 
       {/* FAQ Section */}
-      {faqs.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
-                <Card key={index} className="glass">
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold text-gray-900">{faq.question}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <Card key={index} className="glass">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold text-gray-900">{faq.question}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </main>
   )
 }

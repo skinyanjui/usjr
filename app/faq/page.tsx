@@ -261,7 +261,7 @@ export default function FAQPage() {
           {filteredFAQs.map((category) => {
             const Icon = category.icon
             return (
-              <Card key={category.id}>
+              <Card key={category.id} id={category.id === "pricing" ? "price-match" : undefined}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <Icon className={`w-6 h-6 ${getColorClasses(category.color)}`} />
@@ -272,7 +272,7 @@ export default function FAQPage() {
                 <CardContent>
                   <Accordion type="single" collapsible className="w-full">
                     {category.faqs.map((faq, index) => (
-                      <AccordionItem key={index} value={`${category.id}-${index}`}>
+                      <AccordionItem key={index} value={`${category.id}-${index}`} id={faq.question.includes("Price Match") ? "price-match" : undefined}>
                         <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
                         <AccordionContent className="text-gray-600">{faq.answer}</AccordionContent>
                       </AccordionItem>

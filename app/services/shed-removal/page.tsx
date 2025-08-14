@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
@@ -66,8 +64,6 @@ export default function ShedRemovalPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <section className="pt-32 pb-16 bg-gradient-to-b from-green-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -82,34 +78,34 @@ export default function ShedRemovalPage() {
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <span>Complete cleanup included</span>
+                <span>Licensed & Insured</span>
               </div>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Professional Shed Removal Services</h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">All Shed Types</h3>
-                    <p className="text-gray-600">Storage sheds, barns, gazebos, and custom outbuildings</p>
+                    <h3 className="font-semibold text-gray-900">Free Assessment</h3>
+                    <p className="text-gray-600">We evaluate your shed size, materials, and access for accurate pricing.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Foundation Removal</h3>
-                    <p className="text-gray-600">Concrete pads, gravel bases, and ground preparation</p>
+                    <h3 className="font-semibold text-gray-900">Preparation & Safety</h3>
+                    <p className="text-gray-600">Clear contents, disconnect utilities, and set up safety perimeter.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Material Recycling</h3>
-                    <p className="text-gray-600">Maximum recycling of metal, wood, and other materials</p>
+                    <h3 className="font-semibold text-gray-900">Careful Demolition</h3>
+                    <p className="text-gray-600">Systematic dismantling starting from roof down to foundation.</p>
                   </div>
                 </div>
               </div>
@@ -122,7 +118,7 @@ export default function ShedRemovalPage() {
                   variant="outline"
                   className="border-green-800 text-green-800 hover:bg-green-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
-                  Get Free Estimate
+                  Schedule Shed Removal
                 </Button>
               </div>
             </div>
@@ -131,50 +127,20 @@ export default function ShedRemovalPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Shed Removal Pricing</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Small Shed (8x10 or smaller)</span>
+                  <span className="font-medium text-gray-900">Small Shed (up to 8x10)</span>
                   <span className="text-green-600 font-bold">$289-389</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Medium Shed (10x12 to 12x16)</span>
-                  <span className="text-green-600 font-bold">$389-489</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Large Shed/Barn (16x20+)</span>
-                  <span className="text-green-600 font-bold">$489-649</span>
+                  <span className="font-medium text-gray-900">Medium Shed (10x12)</span>
+                  <span className="text-green-600 font-bold">$389-549</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
-                  <span className="font-medium text-gray-900">Foundation Removal</span>
-                  <span className="text-green-600 font-bold">+$200-400</span>
+                  <span className="font-medium text-gray-900">Large Shed / Barn</span>
+                  <span className="text-green-600 font-bold">$549-649</span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mt-4">
-                *All prices include demolition, hauling, disposal, and site cleanup
-              </p>
+              <p className="text-sm text-gray-600 mt-4">*Final pricing depends on materials and access</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How Shed Removal Works</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
-                  <CardHeader>
-                    <div className="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{step.description}</p>
-                  </CardContent>
-                </Card>
-              )
-            })}
           </div>
         </div>
       </section>
@@ -196,8 +162,6 @@ export default function ShedRemovalPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }

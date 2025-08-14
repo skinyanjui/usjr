@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
 import { Calculator, Truck, Container, Sparkles, Info, Phone } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
@@ -106,111 +105,100 @@ export function PricingCalculator() {
           >
             Project Size: {loadSize[0]}%
           </Label>
-          <Slider
+          <input
             id="pc-project-size"
-            labelId="pc-project-size-label"
-            thumbLabel="Project Size"
-            value={loadSize}
-            onValueChange={setLoadSize}
-            max={100}
+            aria-labelledby="pc-project-size-label"
+            type="range"
             min={10}
+            max={100}
             step={5}
-            className="w-full"
+            value={loadSize[0]}
+            onChange={(e) => setLoadSize([Number(e.target.value)])}
+            className="w-full accent-red-600"
           />
           <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
-            <span>Small</span>
-            <span>Medium</span>
-            <span>Large</span>
-            <span>Full Load</span>
+            <span>10%</span>
+            <span>50%</span>
+            <span>100%</span>
           </div>
         </div>
 
         <div>
-          <Label
-            id="pc-item-count-label"
-            htmlFor="pc-item-count"
-            className="text-sm font-medium text-gray-700 mb-2 block"
-          >
-            Number of Items: {itemCount[0]}
+          <Label id="pc-item-count-label" htmlFor="pc-item-count" className="text-sm font-medium text-gray-700 mb-2 block">
+            Item Count: {itemCount[0]}
           </Label>
-          <Slider
+          <input
             id="pc-item-count"
-            labelId="pc-item-count-label"
-            thumbLabel="Number of Items"
-            value={itemCount}
-            onValueChange={setItemCount}
-            max={50}
+            aria-labelledby="pc-item-count-label"
+            type="range"
             min={1}
+            max={40}
             step={1}
-            className="w-full"
+            value={itemCount[0]}
+            onChange={(e) => setItemCount([Number(e.target.value)])}
+            className="w-full accent-red-600"
           />
+          <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
+            <span>1</span>
+            <span>20</span>
+            <span>40</span>
+          </div>
         </div>
 
-        <div>
-          <Label htmlFor="pc-location" className="text-sm font-medium text-gray-700 mb-2 block">
-            Location
-          </Label>
-          <Select value={location} onValueChange={setLocation}>
-            <SelectTrigger id="pc-location" aria-label="Location">
-              <SelectValue placeholder="Select your location" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="evansville">Evansville, IN</SelectItem>
-              <SelectItem value="newburgh">Newburgh, IN</SelectItem>
-              <SelectItem value="henderson">Henderson, KY</SelectItem>
-              <SelectItem value="outside-evansville">Outside Primary Area (+15%)</SelectItem>
-            </SelectContent>
-          </Select>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="pc-location" className="text-sm font-medium text-gray-700 mb-2 block">
+              Location
+            </Label>
+            <Select value={location} onValueChange={setLocation}>
+              <SelectTrigger id="pc-location" aria-label="Location">
+                <SelectValue placeholder="Select location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="evansville">Evansville</SelectItem>
+                <SelectItem value="outside-evansville">Outside Evansville</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor="pc-urgency" className="text-sm font-medium text-gray-700 mb-2 block">
+              Urgency
+            </Label>
+            <Select value={urgency} onValueChange={setUrgency}>
+              <SelectTrigger id="pc-urgency" aria-label="Urgency">
+                <SelectValue placeholder="Select urgency" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="standard">Standard</SelectItem>
+                <SelectItem value="same-day">Same-Day</SelectItem>
+                <SelectItem value="emergency">Emergency</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
-        <div>
-          <Label htmlFor="pc-service-timeline" className="text-sm font-medium text-gray-700 mb-2 block">
-            Service Timeline
-          </Label>
-          <Select value={urgency} onValueChange={setUrgency}>
-            <SelectTrigger id="pc-service-timeline" aria-label="Service Timeline">
-              <SelectValue placeholder="When do you need service?" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="flexible">Flexible (Standard Rate)</SelectItem>
-              <SelectItem value="within-week">Within a Week</SelectItem>
-              <SelectItem value="same-day">Same Day (+25%)</SelectItem>
-              <SelectItem value="emergency">Emergency (+50%)</SelectItem>
-            </SelectContent>
-          </Select>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="flex items-center gap-2 text-red-800 font-semibold">
+            <Info className="w-4 h-4" /> Estimated Price Range
+          </div>
+          <div className="mt-2 text-gray-800">
+            {price.min === 0 ? (
+              <span>Select options to see pricing</span>
+            ) : (
+              <span className="font-bold text-red-700">${price.min} - ${price.max}</span>
+            )}
+          </div>
         </div>
 
-        {service && (
-          <Card className="bg-blue-50 border-blue-200">
-            <CardContent className="p-6 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Estimated Price Range</h3>
-              <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-4">
-                ${price.min} - ${price.max}
-              </div>
-              <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-600 mb-4">
-                <Info className="w-4 h-4" />
-                <span>Final price determined on-site after inspection</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700">
-                  <Link href="/quote">Get Exact Quote</Link>
-                </Button>
-                <a
-                  href={`tel:${settings.phoneE164}`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center"
-                >
-                  <Phone className="h-4 w-4" /> Call for Confirmation
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        <div className="text-[11px] sm:text-xs text-gray-500 text-center space-y-1">
-          <p>
-            * Estimates are approximate and may vary based on actual items, accessibility, and disposal requirements.
-          </p>
-          <p>* All prices include labor, hauling, and eco-friendly disposal fees.</p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button asChild className="bg-red-700 hover:bg-red-800 text-white">
+            <a href={`tel:${settings.phoneE164}`}>
+              <Phone className="w-4 h-4" /> Call {settings.phone}
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white bg-transparent">
+            <Link href="/quote">Get Free Quote</Link>
+          </Button>
         </div>
       </CardContent>
     </Card>

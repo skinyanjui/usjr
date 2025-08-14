@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
@@ -25,8 +23,6 @@ export default function BoonvillePage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <section className="pt-32 pb-16 bg-gradient-to-b from-orange-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -100,8 +96,6 @@ export default function BoonvillePage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }
