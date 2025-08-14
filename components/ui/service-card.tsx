@@ -147,7 +147,9 @@ export function ServiceCard({
         <p className={`${sizes.description} text-gray-600`}>{description}</p>
         <div className="pt-2">
           <Button asChild className={`${colors.button} text-white`}>
-            <Link href={link}>Learn More</Link>
+            <Link href={link} aria-label={`Learn more about ${title}`} title={`Learn more about ${title}`}>
+              Learn more about {title}
+            </Link>
           </Button>
         </div>
       </CardContent>
