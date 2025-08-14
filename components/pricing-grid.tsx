@@ -127,14 +127,18 @@ export function PricingGrid() {
 
           <div className="mt-8 pt-6 border-t border-red-200">
             <p className="text-gray-700 font-medium mb-4">Ready to see exactly what your project will cost?</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-row gap-4 justify-center">
               <a
                 href="tel:+18126101657"
-                className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-6 py-3 hover:bg-red-700/45 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-lg text-white ring-1 ring-white/30 px-6 hover:bg-red-700/45 transition-colors font-semibold flex-1 sm:flex-initial min-w-0 text-center py-2 bg-red-700"
               >
                 <Phone className="h-4 w-4" /> Call (812) 610-1657
               </a>
-              <ThemedButton variant="outline" theme="red" className="w-full sm:w-auto px-6 py-3 font-semibold">
+              <ThemedButton
+                variant="outline"
+                theme="red"
+                className="flex-1 sm:flex-initial px-6 py-3 font-semibold min-w-0"
+              >
                 Text Photos for Instant Quote
               </ThemedButton>
             </div>

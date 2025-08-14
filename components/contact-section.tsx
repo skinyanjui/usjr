@@ -277,7 +277,7 @@ export default function ContactSection() {
                   </p>
                   <a
                     href="tel:+18126101657"
-                    className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-6 sm:px-8 py-3 hover:bg-red-700/45 transition-colors font-semibold w-full sm:w-auto justify-center"
+                    className="inline-flex items-center gap-2 rounded-lg ring-1 ring-white/30 px-6 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold w-full sm:w-auto justify-center py-2 bg-red-500"
                   >
                     <Phone className="h-4 w-4" /> Call Now: (812) 610-1657
                   </a>
@@ -293,8 +293,8 @@ export default function ContactSection() {
             <div>
               <Card className="glass bg-blue-600 text-white">
                 <CardContent className="p-6 sm:p-8 text-center">
-                  <h3 className="text-lg sm:text-xl font-bold mb-4">Why Evansville Chooses Uncle Sam Junk Removal</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-black">Why Evansville Chooses Uncle Sam Junk Removal</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-black">
                     <div>✓ 15+ Years Experience</div>
                     <div>✓ Locally Owned & Operated</div>
                     <div>✓ Upfront Pricing</div>

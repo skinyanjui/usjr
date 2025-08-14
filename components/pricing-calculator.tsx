@@ -196,7 +196,7 @@ export function PricingCalculator() {
                 </Button>
                 <a
                   href="tel:+18126101657"
-                  className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center"
+                  className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center"
                 >
                   <Phone className="h-4 w-4" /> Call for Confirmation
                 </a>

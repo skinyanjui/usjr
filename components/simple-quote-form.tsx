@@ -47,7 +47,7 @@ export function SimpleQuoteForm() {
           <div className="space-y-4">
             <a
               href="tel:+18126101657"
-              className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center w-full max-w-sm"
+              className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center w-full max-w-sm"
             >
               <Phone className="h-4 w-4" /> Call (812) 610-1657 for Immediate Service
             </a>

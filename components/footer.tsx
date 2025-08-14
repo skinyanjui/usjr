@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Star, ArrowRight } from "lucide-react"
+import { Facebook, Instagram, Mail, Phone, MapPin, Star, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
 import { settings } from "@/lib/cms-content"
@@ -16,11 +16,17 @@ export function Footer() {
               <h3 className="text-2xl md:text-3xl font-bold">Ready to reclaim your space?</h3>
               <p className="text-red-50/90 mt-1">Same-day service, 7 days a week. Locally owned and insured.</p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/quote" className="inline-flex items-center gap-2 rounded-full bg-white text-red-700 font-semibold px-5 py-2.5 shadow hover:bg-red-50 transition-colors">
+            <div className="flex gap-3 rounded-sm">
+              <Link
+                href="/quote"
+                className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-5 py-2.5 shadow hover:bg-red-50 transition-colors rounded-md"
+              >
                 Get a free quote <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href={`tel:${phoneDigits}`} className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors">
+              <a
+                href={`tel:${phoneDigits}`}
+                className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors"
+              >
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </a>
             </div>
@@ -77,7 +83,15 @@ export function Footer() {
                   aria-label="Google"
                   className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-gray-300" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm7.938 9h-3.27a15.94 15.94 0 0 0-1.033-5.102A8.014 8.014 0 0 1 19.938 11ZM12 4c1.38 0 2.652 2.074 3.27 5h-6.54C9.348 6.074 10.621 4 12 4ZM8.364 13h7.272a14.3 14.3 0 0 1-.615 3H8.98a14.3 14.3 0 0 1-.615-3Zm0-2a14.3 14.3 0 0 1 .615-3h6.042a14.3 14.3 0 0 1 .615 3H8.364Zm3.333 9c-1.38 0-2.652-2.074-3.27-5h6.54c-.618 2.926-1.89 5-3.27 5ZM8.365 4.898A15.94 15.94 0 0 0 7.333 10H4.062a8.014 8.014 0 0 1 4.303-5.102ZM4.062 13h3.27c.235 1.776.687 3.53 1.372 5.102A8.014 8.014 0 0 1 4.062 13Zm15.876 0a8.014 8.014 0 0 1-4.303 5.102A15.94 15.94 0 0 0 16.667 13h3.27Z"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-5 w-5 text-gray-300"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm7.938 9h-3.27a15.94 15.94 0 0 0-1.033-5.102A8.014 8.014 0 0 1 19.938 11ZM12 4c1.38 0 2.652 2.074 3.27 5h-6.54C9.348 6.074 10.621 4 12 4ZM8.364 13h7.272a14.3 14.3 0 0 1-.615 3H8.98a14.3 14.3 0 0 1-.615-3Zm0-2a14.3 14.3 0 0 1 .615-3h6.042a14.3 14.3 0 0 1 .615 3H8.364Zm3.333 9c-1.38 0-2.652-2.074-3.27-5h6.54c-.618 2.926-1.89 5-3.27 5ZM8.365 4.898A15.94 15.94 0 0 0 7.333 10H4.062a8.014 8.014 0 0 1 4.303-5.102ZM4.062 13h3.27c.235 1.776.687 3.53 1.372 5.102A8.014 8.014 0 0 1 4.062 13Zm15.876 0a8.014 8.014 0 0 1-4.303 5.102A15.94 15.94 0 0 0 16.667 13h3.27Z" />
+                  </svg>
                 </a>
               )}
             </div>
@@ -282,7 +296,6 @@ export function Footer() {
           <div className="grid md:grid-cols-2 gap-4 items-center">
             <div className="text-gray-400">
               <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
-              
             </div>
             <div className="text-right text-gray-400">
               <div className="flex items-center justify-end gap-4 text-sm">

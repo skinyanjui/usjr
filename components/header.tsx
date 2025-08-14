@@ -121,15 +121,15 @@ export function Header() {
           </div>
 
           {/* Right desktop actions */}
-          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 pl-4 border-l border-gray-300">
+          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 border-l border-gray-300 pl-4">
             <div className="text-center">
               <a
                 href="tel:+18126101657"
-                className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-3 py-1.5 hover:bg-red-700/45 transition-colors text-xs font-semibold"
+                className="inline-flex items-center gap-2 rounded-lg ring-1 ring-white/30 px-3 py-1.5 hover:bg-red-700/45 transition-colors text-xs font-semibold bg-transparent text-black"
               >
                 <Phone className="h-3 w-3" /> (812) 610-1657
               </a>
-              <div className="text-xs text-gray-600 mt-1">Text photos for quote</div>
+              <div className="text-xs text-black mt-0">Text photos for quote</div>
             </div>
             <Button
               className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"

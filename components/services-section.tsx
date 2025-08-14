@@ -103,14 +103,15 @@ export function ServicesSection() {
   ]
 
   return (
-    <section id="services" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeader
-          title="Our Services"
-          description="Professional junk removal, dumpster rental, and cleaning services in Evansville, Indiana. Choose from our comprehensive range of specialized services."
+          title="Complete Property Services"
+          subtitle="From junk removal to deep cleaning - we handle it all"
+          description="Professional, licensed, and insured services for residential and commercial properties in Evansville and surrounding areas."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -122,31 +123,34 @@ export function ServicesSection() {
               color={service.color}
               link={service.link}
               category={service.category}
-              size="small"
             />
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <GlassCard className="p-6 text-center border-blue-200 bg-blue-50">
-            <Calculator className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Compare Services</h3>
-            <p className="text-gray-600 mb-4">
-              Not sure which service is right for you? Compare features, pricing, and benefits side-by-side.
+        <div className="grid md:grid-cols-2 gap-8">
+          <GlassCard className="p-6 sm:p-8 text-center">
+            <Calculator className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Compare Our Services</h3>
+            <p className="text-gray-600 mb-6">
+              See side-by-side comparisons of all our services to find the perfect solution for your needs.
             </p>
-            <ThemedButton theme="blue" asChild>
-              <Link href="/compare">Compare All Services</Link>
+            <ThemedButton theme="blue" fullWidth asChild>
+              <Link href="/compare" prefetch={false}>
+                Compare Services
+              </Link>
             </ThemedButton>
           </GlassCard>
 
-          <GlassCard className="p-6 text-center border-red-200 bg-red-50">
-            <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 text-red-600 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Emergency Service</h3>
-            <p className="text-gray-600 mb-4">
-              Need immediate junk removal? We provide 24/7 emergency response with 2-hour arrival time.
+          <GlassCard className="p-6 sm:p-8 text-center">
+            <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Emergency Service</h3>
+            <p className="text-gray-600 mb-6">
+              Need immediate help? Our emergency service team is available 24/7 for urgent situations.
             </p>
-            <ThemedButton theme="red" asChild>
-              <Link href="/emergency">Emergency Service</Link>
+            <ThemedButton theme="red" fullWidth asChild>
+              <Link href="/emergency" prefetch={false}>
+                Emergency Service
+              </Link>
             </ThemedButton>
           </GlassCard>
         </div>
