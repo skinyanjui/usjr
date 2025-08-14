@@ -63,7 +63,6 @@ export default function HomeClient() {
               Use our interactive calculator to get an immediate estimate for your project. No personal information
               required.
             </p>
-            <p className="text-sm text-gray-500 mt-2">Text photos after for an exact quote—often confirmed in minutes.</p>
           </div>
           <div ref={pricingRef}>
             {showPricing ? (

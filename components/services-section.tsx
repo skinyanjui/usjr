@@ -105,11 +105,11 @@ export function ServicesSection() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-                 <SectionHeader
-           title="Explore Our Services"
-           subtitle="Find the right solution fast"
-           description="Use the service cards below to go straight to what you need. Most Popular services are highlighted."
-         />
+        <SectionHeader
+          title="Complete Property Services"
+          subtitle="From junk removal to deep cleaning - we handle it all"
+          description="Professional, licensed, and insured services for residential and commercial properties in Evansville and surrounding areas."
+        />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (

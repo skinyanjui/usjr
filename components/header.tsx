@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
-import { PriceMatchTerms } from "@/components/price-match-terms"
 
 const QuoteFormModal = dynamic(() => import("./quote-form-modal").then((m) => m.QuoteFormModal), { ssr: false })
 const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
@@ -119,8 +118,6 @@ export function Header() {
             >
               FAQ
             </Link>
-
-            <PriceMatchTerms trigger={<button className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">Price Match</button>} />
           </div>
 
           {/* Right desktop actions */}

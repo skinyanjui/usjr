@@ -4,7 +4,6 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Check } from "lucide-react"
-import { PriceMatchTerms } from "@/components/price-match-terms"
 
 export function PricingGrid() {
   const pricingTiers = [
@@ -70,16 +69,11 @@ export function PricingGrid() {
             Unlike other companies, we show you exactly what you'll pay
           </p>
           <p className="text-base sm:text-lg text-gray-500">All prices include labor, hauling, and dump fees</p>
-          <div className="flex flex-col items-center justify-center gap-2 mt-4">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-              ))}
-            </div>
-            <span className="text-gray-600">4.9/5 from 200+ customers</span>
-            <p className="text-sm text-gray-500 max-w-2xl">
-              Prices shown are typical ranges. Photos help confirm your exact price and can save you money.
-            </p>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+            ))}
+            <span className="text-gray-600 ml-2">4.9/5 from 200+ customers</span>
           </div>
         </div>
 
@@ -125,7 +119,7 @@ export function PricingGrid() {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-1">Price Match Guarantee</h4>
                 <p className="text-gray-600 text-sm">
-                  Find a lower written quote for the same service? We’ll match it. <PriceMatchTerms trigger={<span className="underline text-red-700 font-semibold cursor-pointer">See terms</span>} />
+                  Find a lower price? We'll match it and beat it by 10% on comparable service.
                 </p>
               </div>
             </div>
