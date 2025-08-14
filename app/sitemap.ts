@@ -1,48 +1,12 @@
 import type { MetadataRoute } from "next"
-import fs from "node:fs"
-import path from "node:path"
 
 const baseUrl = "https://unclesamjunkremoval.com"
-
-function pathExists(p: string): boolean {
-  try {
-    fs.accessSync(p, fs.constants.F_OK)
-    return true
-  } catch {
-    return false
-  }
-}
-
-function getDirMtime(filePath: string): Date {
-  try {
-    const stat = fs.statSync(filePath)
-    return stat.mtime
-  } catch {
-    return new Date()
-  }
-}
-
-function listRouteSlugs(segment: string): { slug: string; lastModified: Date }[] {
-  const dir = path.join(process.cwd(), "app", segment)
-  if (!pathExists(dir)) return []
-
-  const entries = fs.readdirSync(dir, { withFileTypes: true })
-  return entries
-    .filter((e) => e.isDirectory())
-    .map((e) => {
-      const pageFile = path.join(dir, e.name, "page.tsx")
-      return {
-        slug: e.name,
-        lastModified: getDirMtime(pageFile),
-      }
-    })
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  // Top-level pages
-  const topLevel: MetadataRoute.Sitemap = [
+  return [
+    // Top-level pages
     { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/quote`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
@@ -54,39 +18,96 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${baseUrl}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+
+    // Services pages
+    { url: `${baseUrl}/services/junk-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/dumpster-rental`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/hot-tub-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/appliance-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/garage-cleanout`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/estate-cleanouts`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/shed-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/mattress-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/light-demolition`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/yard-waste-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+
+    // Cleaning pages
+    { url: `${baseUrl}/cleaning/residential`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/cleaning/commercial`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/cleaning/deep-clean`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/cleaning/recurring`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/cleaning/move-in-move-out`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/cleaning/specialty`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+
+    // Location pages
+    { url: `${baseUrl}/locations/evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/newburgh`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/henderson-ky`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/owensboro-ky`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/boonville`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/princeton`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+
+    // Blog posts
+    {
+      url: `${baseUrl}/blog/junk-removal-cost-tri-state`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/evansville-garage-cleanout-48-hours`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/hot-tub-removal-what-to-know`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/property-manager-turnover-playbook`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/dumpster-rental-guide-evansville`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/appliance-disposal-recycling-guide`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    { url: `${baseUrl}/blog/estate-cleanout-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    {
+      url: `${baseUrl}/blog/mattress-disposal-evansville`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/construction-debris-removal-guide`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/yard-waste-removal-seasonal-guide`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ]
-
-  // Services subpages
-  const services = listRouteSlugs("services").map((s) => ({
-    url: `${baseUrl}/services/${s.slug}`,
-    lastModified: s.lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.85,
-  }))
-
-  // Cleaning subpages
-  const cleaning = listRouteSlugs("cleaning").map((s) => ({
-    url: `${baseUrl}/cleaning/${s.slug}`,
-    lastModified: s.lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }))
-
-  // Location pages
-  const locations = listRouteSlugs("locations").map((s) => ({
-    url: `${baseUrl}/locations/${s.slug}`,
-    lastModified: s.lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.75,
-  }))
-
-  // Blog posts
-  const blog = listRouteSlugs("blog").map((s) => ({
-    url: `${baseUrl}/blog/${s.slug}`,
-    lastModified: s.lastModified,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
-
-  return [...topLevel, ...services, ...cleaning, ...locations, ...blog]
 }

@@ -63,8 +63,6 @@
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next-themes": "latest",
-    "node:fs": "latest",
-    "node:path": "latest",
     "react-day-picker": "9.8.0",
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^2.1.7",
