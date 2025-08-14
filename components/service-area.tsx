@@ -76,16 +76,36 @@ export function ServiceArea() {
             <div className="bg-white">
               <div className="flex items-center gap-2 px-4 py-3 border-b">
                 <MapPin className="w-4 h-4 text-red-600" />
-                <span className="text-sm font-semibold">Coverage Map (approximate)</span>
+                <span className="text-sm font-semibold">Coverage Map (OpenStreetMap)</span>
               </div>
-              <div className="p-4">
-                <svg viewBox="0 0 300 200" className="w-full h-auto">
-                  <rect x="0" y="0" width="300" height="200" fill="#f9fafb" />
-                  <circle cx="150" cy="100" r="80" fill="#fecaca" />
-                  <circle cx="150" cy="100" r="50" fill="#fca5a5" />
-                  <circle cx="150" cy="100" r="20" fill="#ef4444" />
-                  <text x="150" y="104" textAnchor="middle" className="fill-white text-sm">Evansville</text>
-                </svg>
+              <div className="p-0">
+                {/* OpenStreetMap embed centered on Evansville, IN */}
+                <div className="aspect-[3/2] w-full">
+                  <iframe
+                    title="Service Area Map"
+                    className="w-full h-full border-0"
+                    src={
+                      "https://www.openstreetmap.org/export/embed.html?bbox=" +
+                      encodeURIComponent([
+                        -88.1, // min lon
+                        37.6,  // min lat
+                        -87.0, // max lon
+                        38.3,  // max lat
+                      ].join(",")) +
+                      "&layer=mapnik&marker=" + encodeURIComponent([37.9716, -87.5711].join(","))
+                    }
+                  />
+                </div>
+                <div className="px-4 py-2 text-xs text-gray-500">
+                  <a
+                    className="underline"
+                    href="https://www.openstreetmap.org/?mlat=37.9716&mlon=-87.5711#map=11/37.9716/-87.5711"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View larger map on OpenStreetMap
+                  </a>
+                </div>
               </div>
             </div>
           </GlassCard>
