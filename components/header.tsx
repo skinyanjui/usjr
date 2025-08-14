@@ -125,14 +125,15 @@ export function Header() {
             <div className="text-center">
               <a
                 href="tel:+18126101657"
-                className="inline-flex items-center gap-2 rounded-lg ring-1 ring-white/30 px-3 py-1.5 hover:bg-red-700/45 transition-colors text-xs font-semibold bg-transparent text-black"
+                className="inline-flex items-center justify-center gap-2 rounded-lg ring-1 ring-white/30 h-8 px-3 hover:bg-red-700/45 transition-colors text-xs font-semibold bg-transparent text-black"
               >
                 <Phone className="h-3 w-3" /> (812) 610-1657
               </a>
               <div className="text-xs text-black mt-0">Text photos for quote</div>
             </div>
             <Button
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"
+              size="xs"
+              className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold"
               onClick={() => setIsQuoteModalOpen(true)}
               aria-haspopup="dialog"
               aria-expanded={isQuoteModalOpen}
@@ -200,7 +201,7 @@ export function Header() {
               <div className="pt-4">
                 <Button
                   size="sm"
-                  className="bg-red-600 hover:bg-red-700 text-white text-xs"
+                  className="bg-red-600 hover:bg-red-700 text-white"
                   onClick={() => setIsQuoteModalOpen(true)}
                   aria-haspopup="dialog"
                   aria-expanded={isQuoteModalOpen}

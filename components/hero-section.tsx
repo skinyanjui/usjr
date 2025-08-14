@@ -29,11 +29,7 @@ export function HeroSection() {
         </div>
 
         <div className="text-center mb-16">
-          <ThemedButton
-            theme="red"
-            className="w-full sm:w-auto px-6 py-3 md:px-12 md:py-4 rounded-full font-bold text-lg md:text-xl"
-            asChild
-          >
+          <ThemedButton theme="red" size="xl" className="w-full sm:w-auto rounded-full font-bold" asChild>
             <Link href="/quote" prefetch={false}>
               GET FREE INSTANT QUOTE
             </Link>
@@ -108,14 +104,15 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+18126101657"
-              className="inline-flex items-center gap-2 rounded-lg text-white ring-1 ring-white/30 px-6 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold text-base sm:text-lg py-1 bg-red-600"
+              className="inline-flex items-center justify-center gap-2 rounded-lg text-white ring-1 ring-white/30 h-11 px-6 hover:bg-red-700/45 transition-colors font-semibold bg-red-600"
             >
               <Phone className="h-4 w-4" /> (812) 610-1657
             </a>
             <ThemedButton
               variant="outline"
               theme="red"
-              className="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-full font-semibold text-base sm:text-lg"
+              size="lg"
+              className="w-full sm:w-auto rounded-full font-semibold"
               asChild
             >
               <Link href="/quote" prefetch={false}>
