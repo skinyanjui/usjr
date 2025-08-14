@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
-import { Truck, Container, Lightbulb, Phone } from "lucide-react"
+import { Truck, Container, Lightbulb } from "lucide-react"
 
 export function HeroSection() {
   return (
@@ -34,7 +34,9 @@ export function HeroSection() {
               GET FREE INSTANT QUOTE
             </Link>
           </ThemedButton>
-          <p className="text-gray-200 mt-2">See price range, text photos, get exact quote • Same-day service available</p>
+          <p className="text-gray-200 mt-2">
+            See price range, text photos, get exact quote • Same-day service available
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -95,32 +97,6 @@ export function HeroSection() {
             </ThemedButton>
           </GlassCard>
         </div>
-
-        <GlassCard variant="white" className="mt-16 p-6 md:p-8 max-w-2xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
-          <p className="text-base md:text-lg mb-6 text-gray-700">
-            Call now for your free estimate and same-day service in Evansville and surrounding areas!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+18126101657"
-              className="inline-flex items-center justify-center gap-2 rounded-lg text-white ring-1 ring-white/30 h-11 px-6 hover:bg-red-700/45 transition-colors font-semibold bg-red-600"
-            >
-              <Phone className="h-4 w-4" /> (812) 610-1657
-            </a>
-            <ThemedButton
-              variant="outline"
-              theme="red"
-              size="lg"
-              className="w-full sm:w-auto rounded-full font-semibold"
-              asChild
-            >
-              <Link href="/quote" prefetch={false}>
-                GET FREE QUOTE
-              </Link>
-            </ThemedButton>
-          </div>
-        </GlassCard>
       </div>
     </section>
   )
