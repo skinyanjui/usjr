@@ -14,11 +14,11 @@ export default function ServicesDropdown({ servicesMenuId, onMouseEnter, onMouse
 			id={servicesMenuId}
 			role="menu"
 			aria-labelledby={servicesMenuId}
-			className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w:[500px] w-[500px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
+			className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-[500px] max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
 			onMouseEnter={onMouseEnter}
 			onMouseLeave={onMouseLeave}
 		>
-			<div className="grid grid-cols-3 gap-6 px-6">
+			<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-6">
 				<div>
 					<h4 className="font-bold text-red-600 mb-3 text-sm">JUNK REMOVAL</h4>
 					<Link href="/services/junk-removal" prefetch={false} className="block py-1 text-gray-600 hover:text-red-600 transition-colors text-xs" role="menuitem">
