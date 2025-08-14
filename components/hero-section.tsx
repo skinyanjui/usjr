@@ -108,7 +108,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+18126101657"
-              className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-6 py-3 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold text-base sm:text-lg"
+              className="inline-flex items-center gap-2 rounded-lg text-white ring-1 ring-white/30 px-6 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold text-base sm:text-lg py-1 bg-red-600"
             >
               <Phone className="h-4 w-4" /> (812) 610-1657
             </a>
