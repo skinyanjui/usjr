@@ -34,7 +34,7 @@ export function HeroSection() {
               GET FREE INSTANT QUOTE
             </Link>
           </ThemedButton>
-          <p className="text-gray-200 mt-2">No zipcode verification required • Same-day service available</p>
+          <p className="text-gray-200 mt-2">See price range, text photos, get exact quote • Same-day service available</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

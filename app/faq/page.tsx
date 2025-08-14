@@ -30,9 +30,9 @@ export default function FAQPage() {
             "Yes, Uncle Sam Junk Removal is fully licensed and insured. We carry general liability insurance and workers' compensation to protect both our team and your property.",
         },
         {
-          question: "Do you offer same-day service?",
+          question: "Do you offer same-day or emergency service?",
           answer:
-            "Yes! We offer same-day service throughout our service area, subject to availability. For emergency situations, we provide 2-hour response time.",
+            "Yes. Same-day service is available in most cases. For emergencies (storm damage, last-minute move-outs, illegal dumping), we target a 2-hour response when possible. After-hours fees may apply.",
         },
         {
           question: "How do you determine pricing?",
@@ -160,6 +160,11 @@ export default function FAQPage() {
           question: "How much do your services cost?",
           answer:
             "Junk removal: $89-$649, Dumpster rental: $299-$599, Cleaning: $99-$399. Final pricing depends on specific requirements. We provide free estimates for all services.",
+        },
+        {
+          question: "Do you offer a Price Match Guarantee?",
+          answer:
+            "Yes. We match any written local competitor’s quote for the same service and scope. Text a photo or PDF of the quote to (812) 610-1657 with your address and preferred date for verification.",
         },
         {
           question: "What payment methods do you accept?",
