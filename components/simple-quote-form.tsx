@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import { CheckCircle, Phone } from "lucide-react"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
 
 export function SimpleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -46,9 +45,12 @@ export function SimpleQuoteForm() {
             Thank you for your request. We'll contact you shortly with your free estimate and same-day service options.
           </p>
           <div className="space-y-4">
-            <Button asChild className="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white">
-              <a href="tel:+18126101657">Call (812) 610-1657 for Immediate Service</a>
-            </Button>
+            <a
+              href="tel:+18126101657"
+              className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center w-full max-w-sm"
+            >
+              <Phone className="h-4 w-4" /> Call (812) 610-1657 for Immediate Service
+            </a>
           </div>
         </CardContent>
       </Card>

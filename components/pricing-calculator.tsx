@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
-import { Calculator, Truck, Container, Sparkles, Info } from "lucide-react"
+import { Calculator, Truck, Container, Sparkles, Info, Phone } from "lucide-react"
 import Link from "next/link"
 
 export function PricingCalculator() {
@@ -67,7 +67,9 @@ export function PricingCalculator() {
 
       <CardContent className="space-y-6">
         <div>
-          <Label htmlFor="pc-service-type" className="text-sm font-medium text-gray-700 mb-2 block">Service Type</Label>
+          <Label htmlFor="pc-service-type" className="text-sm font-medium text-gray-700 mb-2 block">
+            Service Type
+          </Label>
           <Select value={service} onValueChange={setService}>
             <SelectTrigger id="pc-service-type" aria-label="Service Type">
               <SelectValue placeholder="Select a service" />
@@ -96,8 +98,24 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label id="pc-project-size-label" htmlFor="pc-project-size" className="text-sm font-medium text-gray-700 mb-2 block">Project Size: {loadSize[0]}%</Label>
-          <Slider id="pc-project-size" labelId="pc-project-size-label" thumbLabel="Project Size" value={loadSize} onValueChange={setLoadSize} max={100} min={10} step={5} className="w-full" />
+          <Label
+            id="pc-project-size-label"
+            htmlFor="pc-project-size"
+            className="text-sm font-medium text-gray-700 mb-2 block"
+          >
+            Project Size: {loadSize[0]}%
+          </Label>
+          <Slider
+            id="pc-project-size"
+            labelId="pc-project-size-label"
+            thumbLabel="Project Size"
+            value={loadSize}
+            onValueChange={setLoadSize}
+            max={100}
+            min={10}
+            step={5}
+            className="w-full"
+          />
           <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
             <span>Small</span>
             <span>Medium</span>
@@ -107,12 +125,30 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label id="pc-item-count-label" htmlFor="pc-item-count" className="text-sm font-medium text-gray-700 mb-2 block">Number of Items: {itemCount[0]}</Label>
-          <Slider id="pc-item-count" labelId="pc-item-count-label" thumbLabel="Number of Items" value={itemCount} onValueChange={setItemCount} max={50} min={1} step={1} className="w-full" />
+          <Label
+            id="pc-item-count-label"
+            htmlFor="pc-item-count"
+            className="text-sm font-medium text-gray-700 mb-2 block"
+          >
+            Number of Items: {itemCount[0]}
+          </Label>
+          <Slider
+            id="pc-item-count"
+            labelId="pc-item-count-label"
+            thumbLabel="Number of Items"
+            value={itemCount}
+            onValueChange={setItemCount}
+            max={50}
+            min={1}
+            step={1}
+            className="w-full"
+          />
         </div>
 
         <div>
-          <Label htmlFor="pc-location" className="text-sm font-medium text-gray-700 mb-2 block">Location</Label>
+          <Label htmlFor="pc-location" className="text-sm font-medium text-gray-700 mb-2 block">
+            Location
+          </Label>
           <Select value={location} onValueChange={setLocation}>
             <SelectTrigger id="pc-location" aria-label="Location">
               <SelectValue placeholder="Select your location" />
@@ -127,7 +163,9 @@ export function PricingCalculator() {
         </div>
 
         <div>
-          <Label htmlFor="pc-service-timeline" className="text-sm font-medium text-gray-700 mb-2 block">Service Timeline</Label>
+          <Label htmlFor="pc-service-timeline" className="text-sm font-medium text-gray-700 mb-2 block">
+            Service Timeline
+          </Label>
           <Select value={urgency} onValueChange={setUrgency}>
             <SelectTrigger id="pc-service-timeline" aria-label="Service Timeline">
               <SelectValue placeholder="When do you need service?" />
@@ -156,9 +194,12 @@ export function PricingCalculator() {
                 <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700">
                   <Link href="/quote">Get Exact Quote</Link>
                 </Button>
-                <Button asChild variant="outline" className="w-full sm:w-auto">
-                  <a href="tel:+18126101657">Call for Confirmation</a>
-                </Button>
+                <a
+                  href="tel:+18126101657"
+                  className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center"
+                >
+                  <Phone className="h-4 w-4" /> Call for Confirmation
+                </a>
               </div>
             </CardContent>
           </Card>

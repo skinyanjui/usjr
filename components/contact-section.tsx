@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle } from "lucide-react"
 
-export function ContactSection() {
+export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,10 +23,8 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log("Form submitted:", formData)
     setIsSubmitted(true)
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({
@@ -52,6 +49,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
+        {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4">Get Your Free Quote</h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
@@ -68,7 +66,8 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 text-left">
+        {/* Main Content */}
+        <div className="space-y-12">
           {/* Contact Form */}
           <div>
             <Card className="glass">
@@ -83,7 +82,7 @@ export function ContactSection() {
                   <div className="text-center py-8">
                     <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-500 mx-auto mb-4" />
                     <h3 className="text-xl sm:text-2xl font-bold text-green-600 mb-2">Thank You!</h3>
-                    <p className="text-gray-600">We'll contact you within 30 minutes with your free quote.</p>
+                    <p className="text-gray-600">{"We'll contact you within 30 minutes with your free quote."}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -223,7 +222,7 @@ export function ContactSection() {
             </Card>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Information Cards */}
           <div className="space-y-8">
             <div>
               <Card className="glass">
@@ -276,9 +275,12 @@ export function ContactSection() {
                   <p className="mb-6 text-red-500 text-sm sm:text-base">
                     Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
                   </p>
-                  <Button className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 rounded-full font-semibold mb-4">
-                    Call Now: (812) 610-1657
-                  </Button>
+                  <a
+                    href="tel:+18126101657"
+                    className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-6 sm:px-8 py-3 hover:bg-red-700/45 transition-colors font-semibold w-full sm:w-auto justify-center"
+                  >
+                    <Phone className="h-4 w-4" /> Call Now: (812) 610-1657
+                  </a>
                   <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-red-600">
                     <span>✓ Licensed & Insured</span>
                     <span>✓ Free Estimates</span>

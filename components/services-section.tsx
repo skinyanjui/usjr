@@ -1,15 +1,4 @@
-import {
-  Truck,
-  Container,
-  Sparkles,
-  Home,
-  Building2,
-  Sofa,
-  Hammer,
-  Phone,
-  Calculator,
-  AlertTriangle,
-} from "lucide-react"
+import { Truck, Container, Sparkles, Home, Building2, Sofa, Hammer, Calculator, AlertTriangle } from "lucide-react"
 import Link from "next/link"
 import { ServiceCard } from "@/components/ui/service-card"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -161,25 +150,6 @@ export function ServicesSection() {
             </ThemedButton>
           </GlassCard>
         </div>
-
-        <GlassCard className="p-6 sm:p-8 text-center">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
-          <p className="text-gray-600 mb-6">
-            Serving Evansville and Southern Indiana with reliable, professional service since day one.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <ThemedButton theme="red" size="lg" asChild>
-              <Link href="tel:+18126101657">
-                <Phone className="h-5 w-5 mr-2" />
-                (812) 610-1657
-              </Link>
-            </ThemedButton>
-            <ThemedButton variant="outline" theme="red" size="lg" asChild>
-              <Link href="/quote">Get Free Quote Online</Link>
-            </ThemedButton>
-          </div>
-        </GlassCard>
       </div>
     </section>
   )

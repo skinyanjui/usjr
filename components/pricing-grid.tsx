@@ -1,4 +1,4 @@
-import { Star } from "lucide-react"
+import { Star, Phone } from "lucide-react"
 import { PricingCard } from "@/components/ui/pricing-card"
 import { GlassCard } from "@/components/ui/glass-card"
 import { ThemedButton } from "@/components/ui/themed-button"
@@ -65,7 +65,9 @@ export function PricingGrid() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Transparent Pricing - No Surprises</h2>
-          <p className="text-lg sm:text-xl text-gray-600 mb-2">Unlike other companies, we show you exactly what you'll pay</p>
+          <p className="text-lg sm:text-xl text-gray-600 mb-2">
+            Unlike other companies, we show you exactly what you'll pay
+          </p>
           <p className="text-base sm:text-lg text-gray-500">All prices include labor, hauling, and dump fees</p>
           <div className="flex items-center justify-center gap-2 mt-4">
             {[...Array(5)].map((_, i) => (
@@ -126,9 +128,12 @@ export function PricingGrid() {
           <div className="mt-8 pt-6 border-t border-red-200">
             <p className="text-gray-700 font-medium mb-4">Ready to see exactly what your project will cost?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ThemedButton theme="red" className="w-full sm:w-auto px-6 py-3 font-semibold">
-                📞 Call (812) 610-1657
-              </ThemedButton>
+              <a
+                href="tel:+18126101657"
+                className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-6 py-3 hover:bg-red-700/45 transition-colors font-semibold"
+              >
+                <Phone className="h-4 w-4" /> Call (812) 610-1657
+              </a>
               <ThemedButton variant="outline" theme="red" className="w-full sm:w-auto px-6 py-3 font-semibold">
                 Text Photos for Instant Quote
               </ThemedButton>

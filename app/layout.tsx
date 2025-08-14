@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       "Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.",
     type: "website",
   },
-    generator: 'v0.app',
+  generator: "v0.app",
 }
 
 export default function RootLayout({

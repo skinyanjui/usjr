@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
-import { Truck, Container, Lightbulb } from "lucide-react"
+import { Truck, Container, Lightbulb, Phone } from "lucide-react"
 
 export function HeroSection() {
   return (
@@ -106,13 +106,12 @@ export function HeroSection() {
             Call now for your free estimate and same-day service in Evansville and surrounding areas!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton
-              theme="red"
-              className="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-full font-semibold text-base sm:text-lg"
-              asChild
+            <a
+              href="tel:+18126101657"
+              className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-6 py-3 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold text-base sm:text-lg"
             >
-              <a href="tel:+18126101657">📞 (812) 610-1657</a>
-            </ThemedButton>
+              <Phone className="h-4 w-4" /> (812) 610-1657
+            </a>
             <ThemedButton
               variant="outline"
               theme="red"

@@ -68,17 +68,17 @@ export default function PropertyManagerPlaybookPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Property manager turnover playbook: trash-out to broom clean
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+            <div className="flex items-center gap-2 text-xs text-gray-500 mb-6">
               <div className="flex items-center gap-1">
-                <User className="w-4 h-4" />
+                <User className="w-3 h-3" />
                 <span>Uncle Sam Team</span>
               </div>
               <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-3 h-3" />
                 <span>January 8, 2025</span>
               </div>
               <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-3 h-3" />
                 <span>10 min read</span>
               </div>
             </div>
@@ -347,7 +347,9 @@ export default function PropertyManagerPlaybookPage() {
             </div>
 
             <p className="text-gray-700">
-              <strong>Bottom Line:</strong> Professional property management means professional partnerships. Let Uncle Sam Junk Removal handle the heavy lifting while you focus on finding great tenants and maximizing your rental income.
+              <strong>Bottom Line:</strong> Professional property management means professional partnerships. Let Uncle
+              Sam Junk Removal handle the heavy lifting while you focus on finding great tenants and maximizing your
+              rental income.
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 
@@ -125,11 +125,11 @@ export function Header() {
             <div className="text-center">
               <a
                 href="tel:+18126101657"
-                className="text-sm font-bold text-red-600 hover:text-red-700 transition-colors text-center"
+                className="inline-flex items-center gap-2 rounded-full bg-red-700/35 text-white ring-1 ring-white/30 px-3 py-1.5 hover:bg-red-700/45 transition-colors text-xs font-semibold"
               >
-                (812) 610-1657
+                <Phone className="h-3 w-3" /> (812) 610-1657
               </a>
-              <div className="text-xs text-gray-600">Text photos for quote</div>
+              <div className="text-xs text-gray-600 mt-1">Text photos for quote</div>
             </div>
             <Button
               className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-full font-semibold text-xs"
