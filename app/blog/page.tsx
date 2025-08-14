@@ -227,8 +227,10 @@ export default function BlogPage() {
                         <Button
                           variant="outline"
                           className="border-green-800 text-green-800 hover:bg-green-800 hover:text-white group bg-transparent"
+                          aria-label={`Read ${post.title}`}
+                          title={`Read ${post.title}`}
                         >
-                          Read More
+                          Read: {post.title}
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </Link>
@@ -294,8 +296,10 @@ export default function BlogPage() {
                             ? "border-green-700 text-green-700 hover:bg-green-700"
                             : "border-red-700 text-red-700 hover:bg-red-700"
                         } hover:text-white group bg-transparent`}
+                        aria-label={`Read ${post.title}`}
+                        title={`Read ${post.title}`}
                       >
-                        Read More
+                        Read: {post.title}
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>

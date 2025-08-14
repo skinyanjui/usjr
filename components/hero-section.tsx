@@ -53,8 +53,8 @@ export function HeroSection() {
               <li>✓ Licensed & Insured</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/junk-removal" prefetch={false} aria-label="Learn more about Junk Removal">
-                Learn more about Junk Removal
+              <Link href="/services/junk-removal" prefetch={false} aria-label="Junk Removal services in Evansville">
+                View Junk Removal services
               </Link>
             </ThemedButton>
           </GlassCard>
@@ -72,8 +72,8 @@ export function HeroSection() {
               <li>✓ Multiple Sizes Available</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/dumpster-rental" prefetch={false} aria-label="Learn more about Dumpster Rental">
-                Learn more about Dumpster Rental
+              <Link href="/services/dumpster-rental" prefetch={false} aria-label="Dumpster Rental options in Evansville">
+                Explore Dumpster Rental options
               </Link>
             </ThemedButton>
           </GlassCard>
@@ -91,8 +91,8 @@ export function HeroSection() {
               <li>✓ Flexible Scheduling</li>
             </ul>
             <ThemedButton theme="green" fullWidth asChild>
-              <Link href="/cleaning" prefetch={false} aria-label="Learn more about Cleaning Services">
-                Learn more about Cleaning Services
+              <Link href="/cleaning" prefetch={false} aria-label="Professional Cleaning Services in Evansville">
+                View Cleaning Services
               </Link>
             </ThemedButton>
           </GlassCard>

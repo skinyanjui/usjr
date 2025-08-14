@@ -47,10 +47,13 @@ export function AboutSection() {
                 Get Free Quote
               </Button>
               <Button
+                asChild
                 variant="outline"
                 className="w-full sm:w-auto border-red-800 text-red-800 hover:bg-red-100 px-6 sm:px-8 py-3 rounded-full font-semibold bg-transparent"
               >
-                Learn More
+                <a href="/about" aria-label="About Uncle Sam Junk Removal in Evansville" title="About Uncle Sam Junk Removal in Evansville">
+                  About our company
+                </a>
               </Button>
             </div>
           </div>
