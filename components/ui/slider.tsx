@@ -2,58 +2,45 @@
 
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
+
 import { cn } from "@/lib/utils"
 
-export interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
-	value?: number[]
-	onValueChange?: (values: number[]) => void
-	max?: number
-	min?: number
-	step?: number
-	className?: string
-	id?: string
-	labelId?: string
-	thumbLabel?: string
+type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root> & {
+  labelId?: string
+  thumbLabel?: string
 }
 
-export const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
-	(
-		{
-			className,
-			value,
-			onValueChange,
-			max = 100,
-			min = 0,
-			step = 1,
-			id,
-			labelId,
-			thumbLabel,
-			...props
-		},
-		ref
-	) => {
-		return (
-			<SliderPrimitive.Root
-				ref={ref}
-				id={id}
-				aria-labelledby={labelId}
-				value={value}
-				onValueChange={onValueChange}
-				max={max}
-				min={min}
-				step={step}
-				className={cn("relative flex w-full touch-none select-none items-center", className)}
-				{...props}
-			>
-				<SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-gray-200">
-					<SliderPrimitive.Range className="absolute h-full bg-red-600" />
-				</SliderPrimitive.Track>
-				<SliderPrimitive.Thumb
-					className="block h-5 w-5 rounded-full border-2 border-white bg-red-600 ring-2 ring-red-300 transition-colors focus:outline-none focus:ring-4 disabled:pointer-events-none disabled:opacity-50"
-					aria-label={thumbLabel}
-				/>
-			</SliderPrimitive.Root>
-		)
-	}
-)
-Slider.displayName = "Slider"
+function Slider({ className, labelId, thumbLabel, ...props }: SliderProps) {
+  return (
+    <SliderPrimitive.Root
+      data-slot="slider"
+      aria-labelledby={labelId}
+      className={cn(
+        "relative flex w-full touch-none select-none items-center",
+        className,
+      )}
+      {...props}
+    >
+      <SliderPrimitive.Track
+        data-slot="slider-track"
+        className={cn(
+          "bg-input/30 relative h-2 w-full grow overflow-hidden rounded-full",
+        )}
+      >
+        <SliderPrimitive.Range
+          data-slot="slider-range"
+          className="bg-primary absolute h-full"
+        />
+      </SliderPrimitive.Track>
+      <SliderPrimitive.Thumb
+        data-slot="slider-thumb"
+        aria-label={thumbLabel}
+        className={cn(
+          "bg-background border-input focus-visible:border-ring focus-visible:ring-ring/50 block size-5 rounded-full border shadow-xs outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
+        )}
+      />
+    </SliderPrimitive.Root>
+  )
+}
+
+export { Slider }
