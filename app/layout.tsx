@@ -14,6 +14,8 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex-sans",
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+
 export const metadata: Metadata = {
   title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
   description:
@@ -21,11 +23,23 @@ export const metadata: Metadata = {
   keywords:
     "junk removal, dumpster rental, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County",
   authors: [{ name: "Uncle Sam Junk Removal" }],
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: siteUrl },
   openGraph: {
     title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
     description:
       "Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.",
     type: "website",
+    url: siteUrl,
+    siteName: "Uncle Sam Junk Removal",
+    images: ["/junk-removal-evansville.png"],
+  },
+  twitter: {
+    card: "summary",
+    title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
+    description:
+      "Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.",
+    images: ["/junk-removal-evansville.png"],
   },
   generator: "v0.app",
 }
