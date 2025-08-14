@@ -16,7 +16,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
   let structuredData: Record<string, unknown> = {}
 
   switch (type) {
-    case "LocalBusiness":
+    case "LocalBusiness": {
       structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -75,13 +75,15 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         ),
       }
       break
+    }
 
-    case "Service":
+    case "Service": {
+      const svc = (data as { name?: string; description?: string; price?: string; category?: string }) || {}
       structuredData = {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: data?.name || "Cleaning Service",
-        description: data?.description || "Professional cleaning service",
+        name: svc.name || "Cleaning Service",
+        description: svc.description || "Professional cleaning service",
         provider: {
           "@type": "LocalBusiness",
           name: "Uncle Sam Junk Removal",
@@ -96,20 +98,22 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         serviceArea: settings.serviceAreas,
         offers: {
           "@type": "Offer",
-          priceRange: data?.price || "$80+",
+          priceRange: svc.price || "$80+",
           availability: "https://schema.org/InStock",
           validFrom: new Date().toISOString(),
         },
-        category: data?.category || "Cleaning Service",
+        category: svc.category || "Cleaning Service",
       }
       break
+    }
 
-    case "FAQPage":
+    case "FAQPage": {
+      const f = (data as { faqs?: FaqItem[] }) || {}
       structuredData = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity:
-          (data as { faqs?: FaqItem[] })?.faqs?.map((faq) => (
+          f?.faqs?.map((faq) => ({
             "@type": "Question",
             name: faq.question,
             acceptedAnswer: {
@@ -119,13 +123,15 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           })) || [],
       }
       break
+    }
 
-    case "BreadcrumbList":
+    case "BreadcrumbList": {
+      const b = (data as { breadcrumbs?: BreadcrumbItem[] }) || {}
       structuredData = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement:
-          (data as { breadcrumbs?: BreadcrumbItem[] })?.breadcrumbs?.map((crumb, index) => (
+          b?.breadcrumbs?.map((crumb, index) => ({
             "@type": "ListItem",
             position: index + 1,
             name: crumb.name,
@@ -133,6 +139,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           })) || [],
       }
       break
+    }
   }
 
   return (

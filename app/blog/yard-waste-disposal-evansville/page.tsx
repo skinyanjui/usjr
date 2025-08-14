@@ -15,7 +15,6 @@ export default function YardWasteDisposalBlog() {
         <SectionHeader
           title="Yard waste disposal in Evansville: composting and pickup basics"
           subtitle="Seasonal cleanup made simple"
-          theme="green"
         />
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">

@@ -9,7 +9,7 @@ interface ThemedButtonProps extends ButtonProps {
 
 export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
   ({ className, theme = "red", fullWidth = false, variant = "default", ...props }, ref) => {
-    const getThemeClasses = (theme: string, variant: string) => {
+    const getThemeClasses = (theme: NonNullable<ThemedButtonProps["theme"]>, variant: string) => {
       const baseClasses = "font-semibold transition-all duration-200"
 
       if (variant === "outline") {
@@ -20,8 +20,8 @@ export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
           blue: "border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white bg-transparent",
           purple: "border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white bg-transparent",
           teal: "border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white bg-transparent",
-        }
-        return `${baseClasses} ${outlineMap[theme] || outlineMap.red}`
+        } as const
+        return `${baseClasses} ${outlineMap[theme]}`
       }
 
       const solidMap = {
@@ -31,13 +31,13 @@ export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
         blue: "bg-blue-700 hover:bg-blue-800 text-white",
         purple: "bg-purple-700 hover:bg-purple-800 text-white",
         teal: "bg-teal-700 hover:bg-teal-800 text-white",
-      }
-      return `${baseClasses} ${solidMap[theme] || solidMap.red}`
+      } as const
+      return `${baseClasses} ${solidMap[theme]}`
     }
 
     return (
       <Button
-        className={cn(getThemeClasses(theme, variant), fullWidth && "w-full", className)}
+        className={cn(getThemeClasses(theme, (variant as string) || "default"), fullWidth && "w-full", className)}
         variant={variant}
         ref={ref}
         {...props}

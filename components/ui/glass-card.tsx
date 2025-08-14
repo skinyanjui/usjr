@@ -10,7 +10,7 @@ interface GlassCardProps extends CardProps {
 
 export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
   ({ className, variant = "default", color = "red", hover = true, ...props }, ref) => {
-    const getColorClasses = (color: string) => {
+    const getColorClasses = (color: NonNullable<GlassCardProps["color"]>) => {
       const colorMap = {
         red: "border-red-200 bg-red-50/50",
         orange: "border-orange-200 bg-orange-50/50",
@@ -18,8 +18,8 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
         blue: "border-blue-200 bg-blue-50/50",
         purple: "border-purple-200 bg-purple-50/50",
         teal: "border-teal-200 bg-teal-50/50",
-      }
-      return colorMap[color] || colorMap.red
+      } as const
+      return colorMap[color]
     }
 
     const baseClasses = cn(variant === "white" ? "bg-white" : "glass", "px-6 py-6 space-y-4")

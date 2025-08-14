@@ -17,11 +17,10 @@ export default function DumpsterRentalGuidePage() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-12">
-          <SectionHeader
-            title="Complete Dumpster Rental Guide for Evansville Residents"
-            subtitle="Everything you need to know about choosing the right dumpster for your project"
-            theme="orange"
-          />
+                      <SectionHeader
+              title="Complete Dumpster Rental Guide for Evansville Residents"
+              subtitle="Everything you need to know about choosing the right dumpster for your project"
+            />
 
           <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-600">
             <div className="flex items-center gap-2">
@@ -169,11 +168,11 @@ export default function DumpsterRentalGuidePage() {
             Get your free quote today and let us help you choose the perfect dumpster size for your Evansville project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="orange" size="lg" href="/quote">
-              Get Free Quote
+            <ThemedButton asChild theme="orange" size="lg">
+              <a href="/quote">Get Free Quote</a>
             </ThemedButton>
-            <ThemedButton theme="blue" variant="outline" size="lg" href="tel:+18126101657">
-              Call (812) 610-1657
+            <ThemedButton asChild theme="blue" variant="outline" size="lg">
+              <a href="tel:+18126101657">Call (812) 610-1657</a>
             </ThemedButton>
           </div>
         </GlassCard>

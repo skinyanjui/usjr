@@ -9,7 +9,7 @@ interface IconContainerProps {
 }
 
 export function IconContainer({ icon: Icon, color = "red", size = "md", className }: IconContainerProps) {
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color: NonNullable<IconContainerProps["color"]>) => {
     const colorMap = {
       red: "bg-red-600 text-white",
       orange: "bg-orange-600 text-white",
@@ -17,26 +17,26 @@ export function IconContainer({ icon: Icon, color = "red", size = "md", classNam
       blue: "bg-blue-600 text-white",
       purple: "bg-purple-600 text-white",
       teal: "bg-teal-600 text-white",
-    }
-    return colorMap[color] || colorMap.red
+    } as const
+    return colorMap[color]
   }
 
-  const getSizeClasses = (size: string) => {
+  const getSizeClasses = (size: NonNullable<IconContainerProps["size"]>) => {
     const sizeMap = {
       sm: "w-12 h-12",
       md: "w-16 h-16",
       lg: "w-20 h-20",
-    }
-    return sizeMap[size] || sizeMap.md
+    } as const
+    return sizeMap[size]
   }
 
-  const getIconSize = (size: string) => {
+  const getIconSize = (size: NonNullable<IconContainerProps["size"]>) => {
     const iconSizeMap = {
       sm: "h-5 w-5",
       md: "h-8 w-8",
       lg: "h-10 w-10",
-    }
-    return iconSizeMap[size] || iconSizeMap.md
+    } as const
+    return iconSizeMap[size]
   }
 
   return (

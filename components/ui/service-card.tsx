@@ -27,7 +27,7 @@ export function ServiceCard({
   category,
   size = "medium",
 }: ServiceCardProps) {
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color: ServiceCardProps["color"]) => {
     const colorMap = {
       red: {
         border: "border-red-200",
@@ -77,8 +77,8 @@ export function ServiceCard({
         button: "bg-teal-700 hover:bg-teal-800",
         icon: "text-teal-600",
       },
-    }
-    return colorMap[color] || colorMap.red
+    } as const
+    return colorMap[color]
   }
 
   const getSizeClasses = (size: string) => {
@@ -134,26 +134,20 @@ export function ServiceCard({
           <Icon className={`h-6 w-6 ${colors.icon}`} />
         </div>
         <div
-          className={`absolute top-3 right-3 px-2 py-1 rounded-full ${colors.bg} ${colors.textStrong} text-xs font-semibold`}
+          className={`absolute top-3 right-3 px-1.5 py-0.5 rounded-full ${colors.bg} ${colors.textStrong} text-[10px] sm:text-xs font-semibold`}
         >
           {category}
         </div>
       </div>
-      <CardContent className={sizes.content}>
-        <div className="flex items-center justify-between">
+      <CardContent className={`${sizes.content}`}>
+        <div className="flex items-start justify-between">
           <h3 className={`${sizes.title} text-gray-900`}>{title}</h3>
-          <span className={`${sizes.price} font-semibold px-2 py-1 rounded-full ${colors.bg} ${colors.textStrong}`}>
-            {price}
-          </span>
+          <div className={`${sizes.price} ${colors.text}`}>{price}</div>
         </div>
-        <p className={`text-gray-600 ${sizes.description} leading-relaxed`}>{description}</p>
-
-        <div className="flex gap-2 pt-2">
-          <Button asChild size="sm" className={`flex-1 ${colors.button} text-white text-xs`}>
-            <Link href={link} aria-label={`Learn more about ${title}`}>{`Learn more about ${title}`}</Link>
-          </Button>
-          <Button asChild variant="outline" size="sm" className="text-xs bg-transparent">
-            <Link href="/quote">Quote</Link>
+        <p className={`${sizes.description} text-gray-600`}>{description}</p>
+        <div className="pt-2">
+          <Button asChild className={`${colors.button} text-white`}>
+            <Link href={link}>Learn More</Link>
           </Button>
         </div>
       </CardContent>

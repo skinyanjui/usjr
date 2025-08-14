@@ -21,7 +21,6 @@ export default function SpringCleaningChecklistPage() {
           <SectionHeader
             title="Ultimate Spring Cleaning Checklist for Southern Indiana Homes"
             subtitle="Transform your home with our comprehensive room-by-room cleaning guide"
-            theme="green"
           />
 
           <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-600">
@@ -199,11 +198,11 @@ export default function SpringCleaningChecklistPage() {
             Let our professional cleaning team handle the heavy lifting while you focus on what matters most.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="green" size="lg" href="/cleaning/deep-clean">
-              Book Deep Cleaning
+            <ThemedButton asChild theme="green" size="lg">
+              <a href="/cleaning/deep-clean">Book Deep Cleaning</a>
             </ThemedButton>
-            <ThemedButton theme="red" variant="outline" size="lg" href="/services/junk-removal">
-              Schedule Junk Removal
+            <ThemedButton asChild theme="red" variant="outline" size="lg">
+              <a href="/services/junk-removal">Schedule Junk Removal</a>
             </ThemedButton>
           </div>
         </GlassCard>

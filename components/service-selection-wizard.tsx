@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Truck, Container, Home, Broom, Hammer, Sparkles } from "lucide-react"
+import { Truck, Container, Home, Hammer, Sparkles } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 
 const OPTIONS = [

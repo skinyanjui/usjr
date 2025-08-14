@@ -14,8 +14,7 @@ export default function ResidentialCleaning() {
   return (
     <ServicePageTemplate
       title="Residential Cleaning Services"
-      subtitle="Veteran-led, spotless results using natural products."
-      description="Professional residential cleaning services in Evansville and surrounding areas. We use only natural, eco-friendly products to keep your home spotless and your family safe."
+      description="Veteran-led, spotless results using natural products. Professional residential cleaning services in Evansville and surrounding areas. We use only natural, eco-friendly products to keep your home spotless and your family safe."
       heroImage="/natural-cleaning-service.png"
       theme="green"
       badges={["From $80", "Natural Products", "Veteran-Led"]}
@@ -39,32 +38,6 @@ export default function ResidentialCleaning() {
           icon: Shield,
           title: "Attention to Detail",
           description: "Thorough, consistent results every time",
-        },
-      ]}
-      services={[
-        {
-          title: "Deep Cleaning",
-          description: "Comprehensive one-time cleaning for your entire home",
-          price: "From $150",
-          href: "/cleaning/deep-clean",
-        },
-        {
-          title: "Recurring Cleaning",
-          description: "Weekly, bi-weekly, or monthly maintenance",
-          price: "From $80",
-          href: "/cleaning/recurring",
-        },
-        {
-          title: "Move-In/Move-Out",
-          description: "Complete property cleaning for transitions",
-          price: "From $200",
-          href: "/cleaning/move-in-move-out",
-        },
-        {
-          title: "Specialty Cleaning",
-          description: "Organizing, decluttering, and specialized tasks",
-          price: "From $100",
-          href: "/cleaning/specialty",
         },
       ]}
       steps={[

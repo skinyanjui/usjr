@@ -14,8 +14,7 @@ export default function SpecialtyCleaningPage() {
   return (
     <ServicePageTemplate
       title="Specialty Cleaning Services"
-      subtitle="Specialized cleaning and organizing services."
-      description="Professional specialty cleaning services in Evansville including refrigerator cleaning, oven deep cleaning, home organizing, and decluttering using natural, eco-friendly products."
+      description="Specialized cleaning and organizing services. Professional specialty cleaning services in Evansville including refrigerator cleaning, oven deep cleaning, home organizing, and decluttering using natural, eco-friendly products."
       heroImage="/natural-cleaning-organizing.png"
       theme="orange"
       badges={["From $75", "Natural Products", "Professional Results"]}
@@ -39,32 +38,6 @@ export default function SpecialtyCleaningPage() {
           icon: CheckCircle,
           title: "Natural Products",
           description: "Food-safe, eco-friendly cleaning solutions",
-        },
-      ]}
-      services={[
-        {
-          title: "Refrigerator Deep Clean",
-          description: "Complete interior and exterior refrigerator cleaning",
-          price: "From $75",
-          href: "/cleaning/specialty",
-        },
-        {
-          title: "Oven Deep Clean",
-          description: "Professional oven cleaning inside and out",
-          price: "From $85",
-          href: "/cleaning/specialty",
-        },
-        {
-          title: "Home Organizing",
-          description: "Professional organizing and space optimization",
-          price: "From $100",
-          href: "/cleaning/specialty",
-        },
-        {
-          title: "Decluttering Service",
-          description: "Comprehensive decluttering and donation coordination",
-          price: "From $120",
-          href: "/cleaning/specialty",
         },
       ]}
       steps={[

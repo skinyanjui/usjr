@@ -15,7 +15,6 @@ export default function MattressDisposalBlog() {
         <SectionHeader
           title="Mattress disposal in Evansville: recycling, costs, and pickup options"
           subtitle="How to handle old mattresses the right way"
-          theme="green"
         />
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">

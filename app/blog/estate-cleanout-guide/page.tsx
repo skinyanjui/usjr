@@ -15,7 +15,6 @@ export default function EstateCleanoutGuideBlog() {
         <SectionHeader
           title="Estate cleanout guide: compassionate planning and donation options"
           subtitle="Supportive steps during a difficult time"
-          theme="red"
         />
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">

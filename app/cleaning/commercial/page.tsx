@@ -13,11 +13,10 @@ export const metadata: Metadata = {
 export default function CommercialCleaningPage() {
   return (
     <ServicePageTemplate
-      title="Commercial Cleaning Services"
-      subtitle="Reliable, insured, after-hours business cleaning."
-      description="Professional commercial cleaning services in Evansville and surrounding areas. We provide reliable, after-hours cleaning for offices, retail spaces, medical facilities, and more using eco-friendly products."
-      heroImage="/commercial-office-cleaning.png"
-      theme="blue"
+        title="Commercial Cleaning Services"
+        description="Reliable, insured, after-hours business cleaning. Professional commercial cleaning services in Evansville and surrounding areas. We provide reliable, after-hours cleaning for offices, retail spaces, medical facilities, and more using eco-friendly products."
+        heroImage="/commercial-office-cleaning.png"
+        theme="blue"
       badges={["From $120", "After-Hours Available", "Fully Insured"]}
       features={[
         {
@@ -39,32 +38,6 @@ export default function CommercialCleaningPage() {
           icon: Users,
           title: "Trusted Team",
           description: "Background-checked, trained professionals",
-        },
-      ]}
-      services={[
-        {
-          title: "Office Cleaning",
-          description: "Regular cleaning for professional office environments",
-          price: "From $120",
-          href: "/cleaning/commercial",
-        },
-        {
-          title: "Retail Cleaning",
-          description: "Specialized cleaning for retail and customer-facing spaces",
-          price: "From $150",
-          href: "/cleaning/commercial",
-        },
-        {
-          title: "Medical Office Cleaning",
-          description: "Healthcare facility cleaning with enhanced sanitization",
-          price: "From $180",
-          href: "/cleaning/commercial",
-        },
-        {
-          title: "Restaurant Cleaning",
-          description: "Food service establishment cleaning and sanitization",
-          price: "From $200",
-          href: "/cleaning/commercial",
         },
       ]}
       steps={[

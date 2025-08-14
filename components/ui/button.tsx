@@ -88,4 +88,6 @@ function PhoneButton({
   )
 }
 
+export type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants> & { asChild?: boolean }
+
 export { Button, buttonVariants, PhoneButton, phoneButtonVariants }

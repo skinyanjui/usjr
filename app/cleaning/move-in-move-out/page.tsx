@@ -13,8 +13,7 @@ export default function MoveInMoveOutPage() {
   return (
     <ServicePageTemplate
       title="Move-In/Move-Out Cleaning"
-      subtitle="Complete property cleaning for life transitions."
-      description="Professional move-in and move-out cleaning services in Evansville. Deep cleaning for fresh starts and maximum deposit returns using natural, eco-friendly products."
+      description="Complete property cleaning for life transitions. Professional move-in and move-out cleaning services in Evansville. Deep cleaning for fresh starts and maximum deposit returns using natural, eco-friendly products."
       heroImage="/natural-cleaning-service.png"
       theme="purple"
       badges={["From $200", "4-6 Hours", "Natural Products"]}
@@ -38,26 +37,6 @@ export default function MoveInMoveOutPage() {
           icon: CheckCircle,
           title: "Complete Service",
           description: "All deep cleaning services included",
-        },
-      ]}
-      services={[
-        {
-          title: "Move-In Cleaning",
-          description: "Start fresh in your new home with complete sanitization",
-          price: "From $200",
-          href: "/cleaning/move-in-move-out",
-        },
-        {
-          title: "Move-Out Cleaning",
-          description: "Maximize deposit return with thorough property cleaning",
-          price: "From $200",
-          href: "/cleaning/move-in-move-out",
-        },
-        {
-          title: "Same-Day Service",
-          description: "Coordinate with your moving schedule for convenience",
-          price: "Available",
-          href: "/cleaning/move-in-move-out",
         },
       ]}
       steps={[

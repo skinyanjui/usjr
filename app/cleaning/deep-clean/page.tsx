@@ -13,8 +13,7 @@ export default function DeepCleaningPage() {
   return (
     <ServicePageTemplate
       title="Deep Cleaning Services"
-      subtitle="Comprehensive deep cleaning for your entire home."
-      description="Our thorough deep cleaning service covers every corner of your home using natural, eco-friendly products. Perfect for spring cleaning, move-ins, or when you need a fresh start."
+      description="Comprehensive deep cleaning for your entire home. Our thorough deep cleaning service covers every corner of your home using natural, eco-friendly products. Perfect for spring cleaning, move-ins, or when you need a fresh start."
       heroImage="/natural-deep-cleaning.png"
       theme="green"
       badges={["From $150", "3-5 Hours", "Natural Products"]}
@@ -38,32 +37,6 @@ export default function DeepCleaningPage() {
           icon: CheckCircle,
           title: "Quality Guarantee",
           description: "48-hour re-clean guarantee",
-        },
-      ]}
-      services={[
-        {
-          title: "Kitchen Deep Clean",
-          description: "Counters, cabinets, appliances, and all surfaces",
-          price: "Included",
-          href: "/cleaning/deep-clean",
-        },
-        {
-          title: "Bathroom Sanitization",
-          description: "Toilet, shower, tub, mirrors, and fixtures",
-          price: "Included",
-          href: "/cleaning/deep-clean",
-        },
-        {
-          title: "Bedroom Cleaning",
-          description: "Dusting, bed making, and floor care",
-          price: "Included",
-          href: "/cleaning/deep-clean",
-        },
-        {
-          title: "Living Areas",
-          description: "High-to-low dusting and detailed cleaning",
-          price: "Included",
-          href: "/cleaning/deep-clean",
         },
       ]}
       steps={[

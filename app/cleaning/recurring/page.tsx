@@ -13,8 +13,7 @@ export default function RecurringCleaningPage() {
   return (
     <ServicePageTemplate
       title="Recurring Cleaning Services"
-      subtitle="Consistent, reliable home cleaning service."
-      description="Weekly, bi-weekly, or monthly cleaning services with the same trusted team. Natural products, flexible scheduling, and consistent results you can count on."
+      description="Consistent, reliable home cleaning service. Weekly, bi-weekly, or monthly cleaning services with the same trusted team. Natural products, flexible scheduling, and consistent results you can count on."
       heroImage="/natural-cleaning-service.png"
       theme="green"
       badges={["From $80", "Same Team", "Natural Products"]}
@@ -38,26 +37,6 @@ export default function RecurringCleaningPage() {
           icon: CheckCircle,
           title: "Natural Products",
           description: "Safe, eco-friendly cleaning solutions only",
-        },
-      ]}
-      services={[
-        {
-          title: "Weekly Cleaning",
-          description: "Perfect for busy families and high-traffic homes",
-          price: "From $80",
-          href: "/cleaning/recurring",
-        },
-        {
-          title: "Bi-Weekly Cleaning",
-          description: "Most popular option for regular maintenance",
-          price: "From $100",
-          href: "/cleaning/recurring",
-        },
-        {
-          title: "Monthly Cleaning",
-          description: "Great for maintaining already clean homes",
-          price: "From $120",
-          href: "/cleaning/recurring",
         },
       ]}
       steps={[

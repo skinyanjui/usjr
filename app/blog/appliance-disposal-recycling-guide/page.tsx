@@ -18,11 +18,10 @@ export default function ApplianceDisposalGuidePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-12">
-          <SectionHeader
-            title="Complete Appliance Disposal & Recycling Guide"
-            subtitle="Eco-friendly appliance removal and recycling in Evansville and Southern Indiana"
-            theme="blue"
-          />
+                      <SectionHeader
+              title="Complete Appliance Disposal & Recycling Guide"
+              subtitle="Eco-friendly appliance removal and recycling in Evansville and Southern Indiana"
+            />
 
           <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-600">
             <div className="flex items-center gap-2">
@@ -274,11 +273,11 @@ export default function ApplianceDisposalGuidePage() {
             Let Uncle Sam Junk Removal handle your appliance disposal with guaranteed eco-friendly recycling.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="blue" size="lg" href="/services/appliance-removal">
-              Schedule Appliance Removal
+            <ThemedButton asChild theme="blue" size="lg">
+              <a href="/services/appliance-removal">Schedule Appliance Removal</a>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" href="/quote">
-              Get Free Quote
+            <ThemedButton asChild theme="green" variant="outline" size="lg">
+              <a href="/quote">Get Free Quote</a>
             </ThemedButton>
           </div>
         </GlassCard>

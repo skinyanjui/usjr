@@ -15,7 +15,6 @@ export default function ShedRemovalGuideBlog() {
         <SectionHeader
           title="Shed removal in Evansville: permit tips, pricing, and timeline"
           subtitle="Plan your project with confidence"
-          theme="orange"
         />
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">

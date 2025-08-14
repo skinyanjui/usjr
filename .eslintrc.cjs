@@ -23,5 +23,8 @@ module.exports = {
       { selector: "CallExpression[callee.name='getComputedStyle']", message: "Avoid forced synchronous layout: batch reads in requestAnimationFrame or cache measurements." },
       { selector: "CallExpression[callee.property.name='getComputedStyle']", message: "Avoid forced synchronous layout: batch reads in requestAnimationFrame or cache measurements." },
     ],
+    // Allow natural language content strings and raw <img> where acceptable
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
   },
 }
