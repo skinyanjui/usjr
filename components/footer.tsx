@@ -280,12 +280,12 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="grid md:grid-cols-2 gap-4 items-center">
-            <div className="text-gray-400 text-center md:text-left">
+            <div className="text-gray-400">
               <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
               
             </div>
-            <div className="text-center md:text-right text-gray-400">
-              <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-2 md:gap-4 text-sm">
+            <div className="text-right text-gray-400">
+              <div className="flex items-center justify-end gap-4 text-sm">
                 <Link href="/privacy" className="hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
