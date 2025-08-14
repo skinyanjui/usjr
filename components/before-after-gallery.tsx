@@ -48,6 +48,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   size="sm"
                   onClick={() => setSelectedImage(image)}
                   className="bg-white/90 text-gray-900 hover:bg-white"
+                  aria-label={`Open before/after view for ${image.title}`}
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   View Before/After
@@ -80,7 +81,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
             <DialogHeader>
               <DialogTitle className="flex items-center justify-between">
                 <span>{selectedImage.title}</span>
-                <Button variant="ghost" size="sm" onClick={() => setSelectedImage(null)}>
+                <Button variant="ghost" size="sm" onClick={() => setSelectedImage(null)} aria-label="Close dialog">
                   <X className="w-4 h-4" />
                 </Button>
               </DialogTitle>

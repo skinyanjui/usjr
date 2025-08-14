@@ -52,13 +52,13 @@ export function EvansvilleContactSidebar() {
       <Card className="glass bg-red-600 text-white">
         <CardContent className="p-6 sm:p-8 text-center">
           <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 text-black">Same Day Service in Evansville!</h3>
-          <p className="mb-5 sm:mb-6 text-red-50 text-sm sm:text-base">
+          <p className="mb-5 sm:mb-6 text-white text-sm sm:text-base">
             Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
           </p>
           <Button className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 font-semibold mb-4">
             Call Now: (812) 610-1657
           </Button>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-red-50/90">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-white">
             <span>✓ Licensed & Insured</span>
             <span>✓ Free Estimates</span>
             <span>✓ Eco-Friendly</span>

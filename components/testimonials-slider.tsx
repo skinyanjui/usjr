@@ -92,7 +92,7 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
       {/* Navigation */}
       {showNavigation && testimonials.length > 1 && (
         <div className="flex justify-center items-center gap-4 mt-6">
-          <Button variant="outline" size="sm" onClick={prevTestimonial} className="bg-white/80">
+          <Button variant="outline" size="sm" onClick={prevTestimonial} className="bg-white/80" aria-label="Previous testimonial">
             <ChevronLeft className="w-4 h-4" />
           </Button>
 
@@ -110,7 +110,7 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
             ))}
           </div>
 
-          <Button variant="outline" size="sm" onClick={nextTestimonial} className="bg-white/80">
+          <Button variant="outline" size="sm" onClick={nextTestimonial} className="bg-white/80" aria-label="Next testimonial">
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
