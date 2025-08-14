@@ -1,7 +1,7 @@
 import { settings, getActiveServices } from "@/lib/cms-content"
 
 interface StructuredDataProps {
-  type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList"
+  type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList" | "Custom"
   data?: any
 }
 
@@ -125,6 +125,10 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             item: crumb.url,
           })) || [],
       }
+      break
+
+    case "Custom":
+      structuredData = data || {}
       break
   }
 
