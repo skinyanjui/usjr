@@ -5,7 +5,7 @@ import { PhoneButton } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
 
 export function Footer() {
-  const phoneDigits = settings.phone.replace(/\D/g, "")
+  const phoneHref = settings.phoneE164
 
   return (
     <footer role="contentinfo" className="bg-red-700 text-white">
@@ -25,7 +25,7 @@ export function Footer() {
               >
                 Get Free Quote
               </Link>
-              <PhoneButton href={`tel:${phoneDigits}`} size="default" className="justify-center">
+              <PhoneButton href={`tel:${phoneHref}`} size="default" className="justify-center">
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </PhoneButton>
             </div>

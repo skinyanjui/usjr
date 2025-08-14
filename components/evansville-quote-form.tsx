@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function EvansvilleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ export function EvansvilleQuoteForm() {
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Thanks! We received your request.</h3>
           <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto">
-            We'll text or call you shortly with your free estimate. For fastest service, call or text (812) 610-1657.
+            We'll text or call you shortly with your free estimate. For fastest service, call or text {settings.phone}.
           </p>
         </CardContent>
       </Card>

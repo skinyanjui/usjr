@@ -71,6 +71,7 @@ export interface Settings {
     instagram?: string
     google?: string
   }
+  phoneE164: string
 }
 
 // Mock CMS data - in production, this would come from a CMS or database
@@ -337,6 +338,7 @@ export const galleryImages: GalleryImage[] = [
 
 export const settings: Settings = {
   phone: "(812) 610-1657",
+  phoneE164: "+18126101657",
   email: "info@unclesamjunkremoval.com",
   squareBookingUrl: "https://square.site/book/PLACEHOLDER_BOOKING_URL",
   businessHours: {

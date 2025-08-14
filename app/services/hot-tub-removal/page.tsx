@@ -1,11 +1,12 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Zap, Wrench, Recycle, Clock } from "lucide-react"
 import type { Metadata } from "next"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Hot Tub Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional hot tub and spa removal in Evansville, Indiana. Safe disconnection, eco-friendly disposal. Same-day service available. Call (812) 610-1657",
+    `Professional hot tub and spa removal in Evansville, Indiana. Safe disconnection, eco-friendly disposal. Same-day service available. Call ${settings.phone}`,
   keywords: "hot tub removal Evansville, spa removal Indiana, jacuzzi removal, hot tub disposal Evansville",
 }
 

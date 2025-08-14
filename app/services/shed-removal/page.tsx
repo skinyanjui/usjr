@@ -3,11 +3,12 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Shed Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional shed and outbuilding removal in Evansville, Indiana. Complete demolition and cleanup. Same-day service available. Call (812) 610-1657",
+    `Professional shed and outbuilding removal in Evansville, Indiana. Complete demolition and cleanup. Same-day service available. Call ${settings.phone}`,
   keywords: "shed removal Evansville, outbuilding removal Indiana, shed demolition, storage building removal",
 }
 
@@ -115,7 +116,7 @@ export default function ShedRemovalPage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

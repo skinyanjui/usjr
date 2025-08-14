@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, DollarSign, Truck, Home } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide",
@@ -210,7 +211,7 @@ export default function JunkRemovalCostPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

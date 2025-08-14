@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Check, X, Truck, Container, Sparkles, Clock, DollarSign, Users } from "lucide-react"
 import Link from "next/link"
+import { settings } from "@/lib/cms-content"
  
 export default function ComparePage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([])
@@ -193,7 +194,7 @@ export default function ComparePage() {
                   <Link href="/quote">Get Free Quote</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <a href="tel:+18126101657">Call (812) 610-1657</a>
+                  <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
                 </Button>
               </div>
             </CardContent>

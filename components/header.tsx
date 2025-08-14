@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { PriceMatchTerms } from "@/components/price-match-terms"
+import { settings } from "@/lib/cms-content"
 
 const QuoteFormModal = dynamic(() => import("./quote-form-modal").then((m) => m.QuoteFormModal), { ssr: false })
 const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
@@ -133,11 +134,11 @@ export function Header() {
           <div className="hidden lg:flex items-center justify-end gap-4 ml-4 border-l border-gray-300 pl-4">
             <div className="text-center">
               <PhoneButton
-                href="tel:+18126101657"
+                href={`tel:${settings.phoneE164}`}
                 size="xs"
                 className="bg-transparent text-black ring-1 ring-gray-300 hover:bg-red-700/10"
               >
-                <Phone className="h-3 w-3" /> (812) 610-1657
+                <Phone className="h-3 w-3" /> {settings.phone}
               </PhoneButton>
               <div className="text-xs text-black mt-0">Text photos for quote</div>
             </div>
@@ -223,13 +224,10 @@ export function Header() {
             </div>
           </div>
         )}
-      </nav>
 
-      {isQuoteModalOpen && (
-        <div id="quote-form-modal" aria-hidden={!isQuoteModalOpen}>
-          <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
-        </div>
-      )}
+        {/* Quote modal */}
+        <QuoteFormModal isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
+      </nav>
     </header>
   )
 }

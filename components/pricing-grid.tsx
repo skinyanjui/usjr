@@ -5,6 +5,7 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Check } from "lucide-react"
 import { PriceMatchTerms } from "@/components/price-match-terms"
+import { settings } from "@/lib/cms-content"
 
 export function PricingGrid() {
   const pricingTiers = [
@@ -135,10 +136,10 @@ export function PricingGrid() {
             <p className="text-gray-700 font-medium mb-4">Ready to see exactly what your project will cost?</p>
             <div className="flex flex-row gap-4 justify-center">
               <a
-                href="tel:+18126101657"
+                href={`tel:${settings.phoneE164}`}
                 className="inline-flex items-center justify-center gap-2 rounded-lg text-white ring-1 ring-white/30 h-11 px-6 hover:bg-red-700/45 transition-colors font-semibold flex-1 sm:flex-initial min-w-0 text-center bg-red-700"
               >
-                <Phone className="h-4 w-4" /> Call (812) 610-1657
+                <Phone className="h-4 w-4" /> Call {settings.phone}
               </a>
               <ThemedButton
                 variant="outline"

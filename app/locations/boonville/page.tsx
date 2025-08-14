@@ -2,11 +2,12 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call (812) 610-1657",
+    `Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call ${settings.phone}`,
   keywords: "junk removal Boonville, Boonville junk removal, Warrick County junk pickup, trash removal Boonville IN",
 }
 
@@ -66,7 +67,7 @@ export default function BoonvillePage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button className="bg-orange-600 hover:bg-orange-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

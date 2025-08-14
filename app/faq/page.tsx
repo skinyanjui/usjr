@@ -8,6 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Search, HelpCircle, Truck, Container, Sparkles, DollarSign, Phone } from "lucide-react"
 import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
+import { settings } from "@/lib/cms-content"
 
 export default function FAQPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -164,7 +165,7 @@ export default function FAQPage() {
         {
           question: "Do you offer a Price Match Guarantee?",
           answer:
-            "Yes. We match any written local competitor’s quote for the same service and scope. Text a photo or PDF of the quote to (812) 610-1657 with your address and preferred date for verification.",
+            `Yes. We match any written local competitor’s quote for the same service and scope. Text a photo or PDF of the quote to ${settings.phone} with your address and preferred date for verification.`,
         },
         {
           question: "What payment methods do you accept?",
@@ -292,11 +293,11 @@ export default function FAQPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="tel:+18126101657"
+                href={`tel:${settings.phoneE164}`}
                 className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                Call (812) 610-1657
+                Call {settings.phone}
               </Link>
               <Link
                 href="/quote"

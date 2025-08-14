@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Evansville Garage Cleanout in 48 Hours: Complete Checklist & Timeline",
@@ -252,7 +253,7 @@ export default function GarageCleanoutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

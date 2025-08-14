@@ -4,6 +4,7 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock } from "lucide-react"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Complete Dumpster Rental Guide for Evansville Residents | Uncle Sam Junk Removal",
@@ -172,7 +173,7 @@ export default function DumpsterRentalGuidePage() {
               <a href="/quote">Get Free Quote</a>
             </ThemedButton>
             <ThemedButton asChild theme="blue" variant="outline" size="lg">
-              <a href="tel:+18126101657">Call (812) 610-1657</a>
+              <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </ThemedButton>
           </div>
         </GlassCard>

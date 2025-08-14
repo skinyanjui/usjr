@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
@@ -319,7 +320,7 @@ export default function BlogPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Link href="/quote">
                   <Button

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, CheckCircle, DollarSign, Timer, Building2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Property Manager Turnover Playbook: Trash-Out to Broom Clean | Uncle Sam Junk Removal",
@@ -335,7 +336,7 @@ export default function PropertyManagerPlaybookPage() {
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

@@ -1,4 +1,5 @@
 import { AlertTriangle, Clock, Phone } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function EmergencyBanner() {
   return (
@@ -11,8 +12,8 @@ export function EmergencyBanner() {
           <p className="text-sm text-red-800">
             Storm damage, last-minute move-outs, illegal dumping, flooded basements. Availability varies by service. After-hours fee may apply.
           </p>
-          <a href="tel:+18126101657" className="ml-auto inline-flex items-center gap-1 text-red-800 font-semibold">
-            <Phone className="w-4 h-4" /> Call (812) 610-1657
+          <a href={`tel:${settings.phoneE164}`} className="ml-auto inline-flex items-center gap-1 text-red-800 font-semibold">
+            <Phone className="w-4 h-4" /> Call {settings.phone}
           </a>
         </div>
       </div>

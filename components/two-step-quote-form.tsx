@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Camera, Truck, Package, Home, Building2 } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function TwoStepQuoteForm() {
   const [step, setStep] = useState(1)
@@ -71,7 +72,7 @@ export function TwoStepQuoteForm() {
     if (serviceAreas.includes(zipCode)) {
       setStep(2)
     } else {
-      alert("Sorry, we don't currently service that area. Please call (812) 610-1657 for assistance.")
+      alert(`Sorry, we don't currently service that area. Please call ${settings.phone} for assistance.`)
     }
   }
 

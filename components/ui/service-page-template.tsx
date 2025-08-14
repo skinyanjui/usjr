@@ -122,7 +122,7 @@ export function ServicePageTemplate({
   pricingTitle = "Pricing",
   pricingNote,
   faqs = [], // Added default empty array
-  ctaPrimary = "📞 Call (812) 555-0123",
+  ctaPrimary = "📞 Call Now",
   ctaSecondary = "Get Free Quote",
   children,
 }: ServicePageTemplateProps) {

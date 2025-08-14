@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { Calculator, Truck, Container, Sparkles, Info, Phone } from "lucide-react"
 import Link from "next/link"
+import { settings } from "@/lib/cms-content"
 
 export function PricingCalculator() {
   const [service, setService] = useState("")
@@ -195,7 +196,7 @@ export function PricingCalculator() {
                   <Link href="/quote">Get Exact Quote</Link>
                 </Button>
                 <a
-                  href="tel:+18126101657"
+                  href={`tel:${settings.phoneE164}`}
                   className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center"
                 >
                   <Phone className="h-4 w-4" /> Call for Confirmation

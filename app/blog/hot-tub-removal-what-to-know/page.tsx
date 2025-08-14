@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal",
@@ -288,7 +289,7 @@ export default function HotTubRemovalPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

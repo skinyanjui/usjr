@@ -3,11 +3,12 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Yard Waste Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional yard waste removal in Evansville, Indiana. Brush, leaves, tree limbs, landscaping debris. Same-day service available. Call (812) 610-1657",
+    `Professional yard waste removal in Evansville, Indiana. Brush, leaves, tree limbs, landscaping debris. Same-day service available. Call ${settings.phone}`,
   keywords: "yard waste removal Evansville, brush removal Indiana, tree limb removal, landscaping debris Evansville",
 }
 
@@ -115,7 +116,7 @@ export default function YardWasteRemovalPage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

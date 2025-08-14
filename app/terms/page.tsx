@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Terms of Service | Uncle Sam Junk Removal",
@@ -180,7 +181,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Contact</h2>
           <p className="text-gray-700">
-            Questions about these Terms? Email info@unclesamjunkremoval.com or call (812) 610-1657. Mail: Uncle Sam
+            Questions about these Terms? Email info@unclesamjunkremoval.com or call {settings.phone}. Mail: Uncle Sam
             Junk Removal, Evansville, IN.
           </p>
         </section>

@@ -1,11 +1,12 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Truck, Shield, Wrench, Recycle } from "lucide-react"
 import type { Metadata } from "next"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Appliance Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional appliance removal in Evansville, Indiana. Refrigerators, washers, dryers, stoves. Eco-friendly disposal. Same-day service. Call (812) 610-1657",
+    `Professional appliance removal in Evansville, Indiana. Refrigerators, washers, dryers, stoves. Eco-friendly disposal. Same-day service. Call ${settings.phone}`,
   keywords:
     "appliance removal Evansville, refrigerator removal Indiana, washer dryer removal, stove removal Evansville",
 }

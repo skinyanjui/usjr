@@ -5,6 +5,7 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
 import Link from "next/link"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -143,7 +144,7 @@ export default function ServicesPage() {
               <Link href="/quote">Get Free Quote</Link>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
-              <Link href="tel:+18126101657">Call (812) 610-1657</Link>
+              <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>
         </div>
@@ -269,7 +270,7 @@ export default function ServicesPage() {
                 <Link href="/quote">Get Free Quote</Link>
               </ThemedButton>
               <ThemedButton theme="blue" variant="outline" size="lg" asChild>
-                <Link href="tel:+18126101657">Call Now: (812) 610-1657</Link>
+                <Link href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</Link>
               </ThemedButton>
             </div>
           </GlassCard>

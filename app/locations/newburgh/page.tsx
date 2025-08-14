@@ -2,11 +2,12 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Junk Removal Newburgh IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional junk removal in Newburgh, Indiana. Same-day service, transparent pricing. Serving Newburgh and Warrick County. Call (812) 610-1657",
+    `Professional junk removal in Newburgh, Indiana. Same-day service, transparent pricing. Serving Newburgh and Warrick County. Call ${settings.phone}`,
   keywords: "junk removal Newburgh, Newburgh junk removal, trash removal Newburgh IN, Warrick County junk removal",
 }
 
@@ -68,7 +69,7 @@ export default function NewburghPage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

@@ -3,6 +3,7 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Info } from "lucide-react"
 import { ReactNode, useState } from "react"
+import { settings } from "@/lib/cms-content"
 
 interface PriceMatchTermsProps {
   trigger?: ReactNode
@@ -50,7 +51,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
           <div>
             <h3 className="font-semibold text-gray-900 mb-1">How to submit</h3>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Text a photo or PDF of the competitor’s quote to (812) 610-1657</li>
+              <li>Text a photo or PDF of the competitor’s quote to {settings.phone}</li>
               <li>Include your address and preferred service date</li>
               <li>We’ll verify and reply with a matched quote—often within minutes</li>
             </ul>

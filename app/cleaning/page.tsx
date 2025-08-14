@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Leaf, Users, Clock, Shield, Star } from "lucide-react"
 import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -207,7 +208,7 @@ export default function CleaningHub() {
               Get Free Quote
             </Button>
             <Button size="lg" variant="ghost" className="text-green-800 hover:bg-green-100 px-8 py-3">
-              Call (812) 610-1657
+              Call {settings.phone}
             </Button>
           </div>
         </div>

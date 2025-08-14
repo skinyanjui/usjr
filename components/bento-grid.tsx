@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle, Shield, Leaf, Award } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function BentoGrid() {
   const [formData, setFormData] = useState({
@@ -116,7 +117,7 @@ export function BentoGrid() {
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-700" />
                 <div>
-                  <p className="font-semibold text-sm">(812) 610-1657</p>
+                  <p className="font-semibold text-sm">{settings.phone}</p>
                   <p className="text-xs text-gray-600">Call or text for fastest response</p>
                 </div>
               </div>
@@ -153,7 +154,7 @@ export function BentoGrid() {
               </p>
               <Button variant="secondary" size="sm" className="w-full mb-3">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now: (812) 610-1657
+                Call Now: {settings.phone}
               </Button>
               <div className="space-y-1">
                 <div className="flex items-center gap-2">

@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { X, Upload, Camera, CheckCircle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 interface QuoteFormModalProps {
   isOpen: boolean
@@ -95,7 +96,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <div className="space-y-3 mb-6">
               <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Schedule Call - Calendar Link</Button>
               <p className="text-sm text-gray-500">
-                Or text us at <span className="font-semibold">(812) 610-1657</span> for immediate assistance
+                Or text us at <span className="font-semibold">{settings.phone}</span> for immediate assistance
               </p>
             </div>
             <Button variant="outline" onClick={onClose} className="w-full bg-transparent">

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-react"
+import { settings } from "@/lib/cms-content"
  
 export default function EmergencyPage() {
   return (
@@ -30,7 +31,7 @@ export default function EmergencyPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Call Now</h3>
                 <p className="text-gray-600 mb-4">Speak directly with our emergency dispatch team</p>
                 <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white">
-                  <a href="tel:+18126101657">(812) 610-1657</a>
+                  <a href={`tel:${settings.phoneE164}`}>{settings.phone}</a>
                 </Button>
                 <p className="text-sm text-gray-500 mt-2">Available 24/7 for emergencies</p>
               </div>
@@ -40,7 +41,7 @@ export default function EmergencyPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Text Photos</h3>
                 <p className="text-gray-600 mb-4">Send photos for immediate assessment</p>
                 <Button asChild size="lg" variant="outline" className="border-red-800 text-red-800 bg-transparent">
-                  <a href="sms:+18126101657">Text (812) 610-1657</a>
+                  <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>
                 <p className="text-sm text-gray-500 mt-2">Get instant quote via text</p>
               </div>
@@ -149,7 +150,7 @@ export default function EmergencyPage() {
               </div>
             </div>
             <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-              <a href="tel:+18126101657">Get Emergency Quote Now</a>
+              <a href={`tel:${settings.phoneE164}`}>Get Emergency Quote Now</a>
             </Button>
           </CardContent>
         </Card>

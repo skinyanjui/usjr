@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
 import Link from "next/link"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
@@ -213,7 +214,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold text-lg">
-              📞 (812) 610-1657
+              📞 {settings.phone}
             </Button>
             <Link href="/quote">
               <Button

@@ -3,11 +3,12 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Clock, Truck, Recycle, Building2, Home } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata = {
   title: "Junk Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    "Professional junk removal in Evansville, Indiana. Same-day service, transparent pricing, eco-friendly disposal. Serving all Evansville neighborhoods. Call (812) 610-1657",
+    `Professional junk removal in Evansville, Indiana. Same-day service, transparent pricing, eco-friendly disposal. Serving all Evansville neighborhoods. Call ${settings.phone}`,
   keywords:
     "junk removal Evansville, Evansville junk removal, trash removal Evansville IN, furniture removal Evansville, appliance removal Evansville",
 }
@@ -81,7 +82,7 @@ export default function EvansvillePage() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button className="bg-red-600 hover:bg-red-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call (812) 610-1657
+                  📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"

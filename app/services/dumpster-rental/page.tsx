@@ -1,6 +1,7 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import type { Metadata } from "next"
 import { Truck, Clock, DollarSign, Package, Phone, Calendar, Trash2, CheckCircle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export const metadata: Metadata = {
   title: "Dumpster Rental Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -96,7 +97,7 @@ export default function DumpsterRentalPage() {
             "Our pricing is all-inclusive with delivery, pickup, and disposal fees included. Additional fees only apply for extended rental periods or overweight loads.",
         },
       ]}
-      ctaPrimary="📞 Call (812) 610-1657"
+      ctaPrimary={`📞 Call ${settings.phone}`}
       ctaSecondary="Get Free Quote"
     />
   )

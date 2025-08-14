@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -233,7 +234,7 @@ export default function ContactSection() {
                       <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
                       <div>
                         <h4 className="font-semibold text-gray-900">Phone</h4>
-                        <p className="text-gray-600 text-base sm:text-lg font-semibold">(812) 610-1657</p>
+                        <p className="text-gray-600 text-base sm:text-lg font-semibold">{settings.phone}</p>
                         <p className="text-sm text-gray-500">Call or text for fastest response</p>
                       </div>
                     </div>
@@ -276,10 +277,10 @@ export default function ContactSection() {
                     Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
                   </p>
                   <a
-                    href="tel:+18126101657"
+                    href={`tel:${settings.phoneE164}`}
                     className="inline-flex items-center gap-2 rounded-lg ring-1 ring-white/30 px-6 sm:px-8 hover:bg-red-700/45 transition-colors font-semibold w-full sm:w-auto justify-center py-2 bg-red-500"
                   >
-                    <Phone className="h-4 w-4" /> Call Now: (812) 610-1657
+                    <Phone className="h-4 w-4" /> Call Now: {settings.phone}
                   </a>
                   <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-white">
                     <span>✓ Licensed & Insured</span>

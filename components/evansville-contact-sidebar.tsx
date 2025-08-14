@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function EvansvilleContactSidebar() {
   return (
@@ -15,7 +16,7 @@ export function EvansvilleContactSidebar() {
               <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
               <div>
                 <h4 className="font-semibold text-gray-900">Phone</h4>
-                <p className="text-gray-800 text-base sm:text-lg font-semibold">(812) 610-1657</p>
+                <p className="text-gray-800 text-base sm:text-lg font-semibold">{settings.phone}</p>
                 <p className="text-xs sm:text-sm text-gray-500">Call or text for fastest response</p>
               </div>
             </div>
@@ -56,7 +57,7 @@ export function EvansvilleContactSidebar() {
             Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
           </p>
           <Button className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 font-semibold mb-4">
-            Call Now: (812) 610-1657
+            Call Now: {settings.phone}
           </Button>
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-white">
             <span>✓ Licensed & Insured</span>

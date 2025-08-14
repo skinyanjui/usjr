@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from "lucide-react"
+import { settings } from "@/lib/cms-content"
 
 export function QuoteFormStandalone() {
   const [segment, setSegment] = useState<"residential" | "commercial">("residential")
@@ -94,7 +95,7 @@ export function QuoteFormStandalone() {
             </Button>
             <div className="text-center">
               <p className="text-sm text-gray-500 mb-2">Need immediate assistance?</p>
-              <p className="text-lg font-semibold text-gray-900">Text us at (812) 610-1657</p>
+              <p className="text-lg font-semibold text-gray-900">Text us at {settings.phone}</p>
             </div>
           </div>
 

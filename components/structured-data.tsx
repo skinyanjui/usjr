@@ -25,7 +25,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         description:
           "Professional residential and commercial cleaning services in Evansville, IN using natural, eco-friendly products. Veteran-owned business.",
         url: "https://unclesamjunkremoval.com",
-        telephone: settings.phone,
+        telephone: settings.phoneE164,
         email: settings.email,
         address: {
           "@type": "PostalAddress",
@@ -87,7 +87,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         provider: {
           "@type": "LocalBusiness",
           name: "Uncle Sam Junk Removal",
-          telephone: settings.phone,
+          telephone: settings.phoneE164,
           address: {
             "@type": "PostalAddress",
             addressLocality: "Evansville",
