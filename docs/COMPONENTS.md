@@ -65,8 +65,8 @@ import { Truck } from 'lucide-react'
 - Responsive image with overlay icon and category badge
 - Color-coded theming with hover effects
 - Glassmorphic styling with scale animation
-- Dual call-to-action buttons (Learn More + Quote)
-
+- Dual call-to-action buttons (Descriptive link text helps search engines understand your content. + Quote)
+ 
 ### ThemedButton
 
 Consistent button component with theme support and variants.
