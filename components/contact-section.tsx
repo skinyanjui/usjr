@@ -272,7 +272,7 @@ export default function ContactSection() {
               <Card className="glass bg-red-600 text-white">
                 <CardContent className="p-6 sm:p-8 text-center">
                   <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black">Same Day Service in Evansville!</h3>
-                  <p className="mb-6 text-red-500 text-sm sm:text-base">
+                  <p className="mb-6 text-white text-sm sm:text-base">
                     Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
                   </p>
                   <a
@@ -281,7 +281,7 @@ export default function ContactSection() {
                   >
                     <Phone className="h-4 w-4" /> Call Now: (812) 610-1657
                   </a>
-                  <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-red-600">
+                  <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-white">
                     <span>✓ Licensed & Insured</span>
                     <span>✓ Free Estimates</span>
                     <span>✓ Eco-Friendly</span>

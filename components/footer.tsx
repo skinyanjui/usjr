@@ -14,7 +14,7 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="flex-1">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Ready to reclaim your space?</h3>
-              <p className="text-red-50/90 mt-1 text-sm sm:text-base">
+              <p className="text-white mt-1 text-sm sm:text-base">
                 Same-day service, 7 days a week. Locally owned and insured.
               </p>
             </div>
