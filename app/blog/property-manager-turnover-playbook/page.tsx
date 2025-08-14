@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, CheckCircle, DollarSign, Timer, Building2 } from "lucide-react"
@@ -50,8 +48,6 @@ export default function PropertyManagerPlaybookPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <article className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="mb-8">
@@ -123,10 +119,10 @@ export default function PropertyManagerPlaybookPage() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2 text-gray-700">
                         {phase.tasks.map((task, taskIndex) => (
-                          <li key={taskIndex} className="flex items-center gap-2 text-gray-700">
-                            <CheckCircle className="w-4 h-4 text-purple-600" />
+                          <li key={taskIndex} className="flex items-center gap-2">
+                            <CheckCircle className="w-4 h-4 text-green-600" />
                             {task}
                           </li>
                         ))}
@@ -352,11 +348,25 @@ export default function PropertyManagerPlaybookPage() {
               Sam Junk Removal handle the heavy lifting while you focus on finding great tenants and maximizing your
               rental income.
             </p>
+
+            <div className="bg-red-50 rounded-lg p-6 mb-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Need turnover help fast?</h3>
+              <p className="text-gray-700 mb-4">
+                We handle full trash-out, hauling, and broom-clean so your unit can list sooner. Call or text for a
+                priority quote.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
+                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
+                </Button>
+                <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent">
+                  <a href={`sms:${settings.phoneE164}`}>Text Photos for Instant Quote</a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </article>
-
-      <Footer />
     </main>
   )
 }

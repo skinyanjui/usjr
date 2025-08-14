@@ -3,9 +3,12 @@ import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
 import { PhoneButton } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
+import { NAV } from "@/lib/nav"
 
 export function Footer() {
   const phoneHref = settings.phoneE164
+  const services = NAV.find((i) => i.label === "Services")?.children ?? []
+  const locations = NAV.find((i) => i.label === "Locations")?.children ?? []
 
   return (
     <footer role="contentinfo" className="bg-red-700 text-white">
@@ -37,36 +40,13 @@ export function Footer() {
           <nav aria-label="Our services">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Our Services</h3>
             <ul className="space-y-2 text-xs sm:text-sm text-white">
-              <li>
-                <Link href="/services/junk-removal" className="text-red-100 hover:text-white transition-colors">
-                  Junk Removal
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/dumpster-rental" className="text-red-100 hover:text-white transition-colors">
-                  Dumpster Rental
-                </Link>
-              </li>
-              <li>
-                <Link href="/cleaning/residential" className="text-red-100 hover:text-white transition-colors">
-                  Residential Cleaning
-                </Link>
-              </li>
-              <li>
-                <Link href="/cleaning/commercial" className="text-red-100 hover:text-white transition-colors">
-                  Commercial Cleaning
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/estate-cleanouts" className="text-red-100 hover:text-white transition-colors">
-                  Estate Cleanouts
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/appliance-removal" className="text-red-100 hover:text-white transition-colors">
-                  Appliance Removal
-                </Link>
-              </li>
+              {services.map((s) => (
+                <li key={s.href}>
+                  <Link href={s.href!} className="text-red-100 hover:text-white transition-colors">
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -74,36 +54,13 @@ export function Footer() {
           <nav aria-label="Service areas">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Service Areas</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
-              <li>
-                <Link href="/locations/evansville" className="text-red-100 hover:text-white transition-colors">
-                  Evansville, IN
-                </Link>
-              </li>
-              <li>
-                <Link href="/locations/newburgh" className="text-red-100 hover:text-white transition-colors">
-                  Newburgh, IN
-                </Link>
-              </li>
-              <li>
-                <Link href="/locations/henderson-ky" className="text-red-100 hover:text-white transition-colors">
-                  Henderson, KY
-                </Link>
-              </li>
-              <li>
-                <Link href="/locations/owensboro-ky" className="text-red-100 hover:text-white transition-colors">
-                  Owensboro, KY
-                </Link>
-              </li>
-              <li>
-                <Link href="/locations/boonville" className="text-red-100 hover:text-white transition-colors">
-                  Boonville, IN
-                </Link>
-              </li>
-              <li>
-                <Link href="/locations/princeton" className="text-red-100 hover:text-white transition-colors">
-                  Princeton, IN
-                </Link>
-              </li>
+              {locations.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href!} className="text-red-100 hover:text-white transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -145,8 +102,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/sitemap" className="text-red-100 hover:text-white transition-colors">
+                  Sitemap (HTML)
+                </Link>
+              </li>
+              <li>
                 <Link href="/sitemap.xml" className="text-red-100 hover:text-white transition-colors">
-                  Sitemap
+                  Sitemap (XML)
                 </Link>
               </li>
             </ul>

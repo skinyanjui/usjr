@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from "lucide-react"
@@ -40,8 +38,6 @@ export default function GarageCleanoutPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <article className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="mb-8">
@@ -252,28 +248,17 @@ export default function GarageCleanoutPage() {
                 items, coordinate donations, and leave your garage spotless.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
-                  📞 Call {settings.phone}
+                <Button asChild className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
+                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
                 </Button>
-                <Button
-                  variant="outline"
-                  className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent"
-                >
-                  Get Garage Cleanout Quote
+                <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent">
+                  <a href={`sms:${settings.phoneE164}`}>Text Photos for Instant Quote</a>
                 </Button>
               </div>
             </div>
-
-            <p className="text-gray-700">
-              <strong>Success Tip:</strong> The key to a successful 48-hour garage cleanout is commitment and the right
-              plan. Stick to the timeline, be ruthless with the sorting, and don't be afraid to ask for help when you
-              need it. Your future self (and your car) will thank you!
-            </p>
           </div>
         </div>
       </article>
-
-      <Footer />
     </main>
   )
 }

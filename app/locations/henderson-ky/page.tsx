@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
@@ -25,8 +23,6 @@ export default function HendersonPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <section className="pt-32 pb-16 bg-gradient-to-b from-green-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -59,8 +55,8 @@ export default function HendersonPage() {
                 <div className="flex items-start gap-3">
                   <Recycle className="w-6 h-6 text-green-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Local Partnerships</h3>
-                    <p className="text-gray-600">Working with Henderson recycling and donation centers</p>
+                    <h3 className="font-semibold text-gray-900">Eco-Friendly Disposal</h3>
+                    <p className="text-gray-600">We recycle whenever possible to reduce landfill impact</p>
                   </div>
                 </div>
               </div>
@@ -73,35 +69,22 @@ export default function HendersonPage() {
                   variant="outline"
                   className="border-green-800 text-green-800 hover:bg-green-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
-                  Schedule Henderson Pickup
+                  Text Photos for Quote
                 </Button>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Henderson Service Areas</h3>
-              <div className="grid grid-cols-1 gap-3">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Henderson Service Landmarks</h3>
+              <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
                 {landmarks.map((landmark) => (
-                  <div key={landmark} className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-green-600" />
-                    <span className="text-gray-700">{landmark}</span>
-                  </div>
+                  <div key={landmark}>• {landmark}</div>
                 ))}
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <h4 className="font-semibold text-gray-900 mb-3">Kentucky Disposal Guidelines</h4>
-                <p className="text-sm text-gray-600">
-                  We comply with all Kentucky environmental regulations and work with Henderson County Solid Waste for
-                  proper disposal.
-                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }

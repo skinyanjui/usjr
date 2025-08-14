@@ -1,7 +1,6 @@
 import { Star, Phone } from "lucide-react"
-import { PricingCard } from "@/components/ui/pricing-card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GlassCard } from "@/components/ui/glass-card"
-import { ThemedButton } from "@/components/ui/themed-button"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Check } from "lucide-react"
 import { PriceMatchTerms } from "@/components/price-match-terms"
@@ -86,17 +85,22 @@ export function PricingGrid() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
           {pricingTiers.map((tier) => (
-            <PricingCard
-              key={tier.id}
-              title={tier.name}
-              price={tier.price}
-              description={`${tier.description} • ${tier.examples}`}
-              features={tier.features}
-              popular={tier.popular}
-              color="red"
-              ctaText="Get Quote"
-              ctaLink="/quote"
-            />
+            <Card key={tier.id} className={`glass ${tier.popular ? "ring-2 ring-red-600" : ""}`}>
+              <CardHeader>
+                <CardTitle className="text-lg font-bold text-gray-900 flex items-center justify-between">
+                  <span>{tier.name}</span>
+                  <span className="text-red-700">{tier.price}</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600 mb-3">{tier.description} • {tier.examples}</p>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  {tier.features.map((f) => (
+                    <li key={f}>• {f}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
@@ -141,14 +145,12 @@ export function PricingGrid() {
               >
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </a>
-              <ThemedButton
-                variant="outline"
-                theme="red"
-                size="lg"
-                className="flex-1 sm:flex-initial font-semibold min-w-0"
+              <a
+                href={`sms:${settings.phoneE164}`}
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-800 text-red-800 hover:bg-red-800 hover:text-white h-11 px-6 transition-colors font-semibold flex-1 sm:flex-initial min-w-0 text-center bg-transparent"
               >
                 Text Photos for Instant Quote
-              </ThemedButton>
+              </a>
             </div>
           </div>
         </GlassCard>

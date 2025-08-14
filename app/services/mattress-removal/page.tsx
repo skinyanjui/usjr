@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
@@ -57,74 +55,65 @@ export default function MattressRemovalPage() {
       answer:
         "We partner with local recycling facilities to break down mattresses into component materials. Springs, foam, and fabric are recycled when possible. Unusable materials go to certified disposal facilities.",
     },
-    {
-      question: "Do you offer same-day mattress removal?",
-      answer:
-        "Yes, we offer same-day service for mattress removal when you call before 2 PM. This is perfect for furniture deliveries or urgent cleanouts.",
-    },
   ]
 
   return (
     <main className="min-h-screen">
-      <Header />
-
-      <section className="pt-32 pb-16 bg-gradient-to-b from-purple-50 to-white">
+      <section className="pt-32 pb-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Mattress Removal in Evansville</h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-6">
-              Fast, professional mattress and box spring removal with eco-friendly disposal
+              Professional mattress and box spring removal with eco-friendly disposal
             </p>
             <div className="flex items-center justify-center gap-4 text-gray-700">
               <div className="flex items-center gap-1">
-                <Clock className="w-5 h-5 text-purple-600" />
+                <Clock className="w-5 h-5 text-blue-600" />
                 <span>Same-day service available</span>
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <span>Eco-friendly recycling</span>
+                <CheckCircle className="w-5 h-5 text-blue-600" />
+                <span>Licensed & Insured</span>
               </div>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Why Choose Uncle Sam Junk Removal for Mattress Removal?
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Mattress Removal Services</h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-purple-600 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-blue-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Any Condition Accepted</h3>
-                    <p className="text-gray-600">Stained, torn, or water-damaged mattresses welcome</p>
+                    <h3 className="font-semibold text-gray-900">Quick Scheduling</h3>
+                    <p className="text-gray-600">Call or text for same-day pickup. No need to bag or wrap mattresses.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-purple-600 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-blue-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">From Any Location</h3>
-                    <p className="text-gray-600">Upstairs, basements, tight spaces - we handle it all</p>
+                    <h3 className="font-semibold text-gray-900">Professional Pickup</h3>
+                    <p className="text-gray-600">Our team handles all lifting and loading from any location in your home.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-purple-600 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-blue-600 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900">Recycling Partners</h3>
-                    <p className="text-gray-600">Working with local facilities to maximize recycling</p>
+                    <h3 className="font-semibold text-gray-900">Eco-Friendly Processing</h3>
+                    <p className="text-gray-600">Materials are recycled or donated when possible, never just dumped.</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
                   📞 Call {settings.phone}
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
+                  className="border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
-                  Schedule Pickup
+                  Get Mattress Removal Quote
                 </Button>
               </div>
             </div>
@@ -134,51 +123,19 @@ export default function MattressRemovalPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Single Mattress</span>
-                  <span className="text-purple-600 font-bold">$89</span>
+                  <span className="text-blue-600 font-bold">$89-129</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Box Spring (with mattress)</span>
-                  <span className="text-purple-600 font-bold">+$25</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Bed Frame (with set)</span>
-                  <span className="text-purple-600 font-bold">+$35</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-200">
-                  <span className="font-medium text-gray-900">Complete Bedroom Set</span>
-                  <span className="text-purple-600 font-bold">$149-179</span>
+                  <span className="font-medium text-gray-900">Mattress + Box Spring</span>
+                  <span className="text-blue-600 font-bold">$119-179</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
-                  <span className="font-medium text-gray-900">Multiple Mattresses</span>
-                  <span className="text-purple-600 font-bold">10% Discount</span>
+                  <span className="font-medium text-gray-900">Full Bedroom Set</span>
+                  <span className="text-blue-600 font-bold">$149-229</span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mt-4">*All prices include pickup, hauling, and disposal fees</p>
+              <p className="text-sm text-gray-600 mt-4">*Final pricing depends on access and item condition</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How Mattress Removal Works</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
-                  <CardHeader>
-                    <div className="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{step.description}</p>
-                  </CardContent>
-                </Card>
-              )
-            })}
           </div>
         </div>
       </section>
@@ -200,8 +157,6 @@ export default function MattressRemovalPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }

@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
@@ -66,8 +64,6 @@ export default function LightDemolitionPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <section className="pt-32 pb-16 bg-gradient-to-b from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -200,8 +196,6 @@ export default function LightDemolitionPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }

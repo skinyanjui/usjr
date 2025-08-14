@@ -47,17 +47,16 @@ export default function QuotePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3">
-              <Phone className="w-5 h-5 mr-2" />
-              Call {settings.phone}
+            <Button asChild size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3">
+              <a href={`tel:${settings.phoneE164}`}><Phone className="w-5 h-5 mr-2" />Call {settings.phone}</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="w-full sm:w-auto border-blue-800 text-blue-800 hover:bg-blue-100 px-6 sm:px-8 py-3 bg-transparent"
             >
-              <Camera className="w-5 h-5 mr-2" />
-              Text Photos for Instant Quote
+              <a href={`sms:${settings.phoneE164}`}><Camera className="w-5 h-5 mr-2" />Text Photos for Instant Quote</a>
             </Button>
           </div>
         </div>

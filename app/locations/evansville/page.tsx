@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Clock, Truck, Recycle, Building2, Home } from "lucide-react"
@@ -38,8 +36,6 @@ export default function EvansvillePage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
-
       <section className="pt-32 pb-16 bg-gradient-to-b from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -85,10 +81,11 @@ export default function EvansvillePage() {
                   📞 Call {settings.phone}
                 </Button>
                 <Button
+                  asChild
                   variant="outline"
                   className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
-                  Text Photos for Quote
+                  <a href={`sms:${settings.phoneE164}`}>Text Photos for Quote</a>
                 </Button>
               </div>
             </div>
@@ -196,16 +193,8 @@ export default function EvansvillePage() {
               </div>
             </div>
           </div>
-
-          <div className="mt-8">
-            <Button className="bg-red-600 hover:bg-red-700 text-white px-12 py-4 text-xl font-semibold">
-              Get Your Free Evansville Quote Now
-            </Button>
-          </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }
