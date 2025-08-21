@@ -78,7 +78,7 @@ export default function ApplianceRemovalPage() {
         {
           question: "How much does appliance removal cost in Evansville?",
           answer:
-            "Single appliances start at $89 (small) to $149 (large). Multiple appliances get volume discounts. Refrigerators and washers are $119-149 depending on size and access.",
+            "Single appliances from $89 (small) to $149 (large). Multiple appliances get volume discounts. Refrigerators and washers are $119-149 depending on size and access.",
         },
         {
           question: "Can you remove built-in appliances?",

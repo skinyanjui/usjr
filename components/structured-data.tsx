@@ -44,7 +44,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           name: area,
         })),
         services: getActiveServices().map((service) => service.name),
-        priceRange: "$80-$200",
+        priceRange: "From $80-$200",
         paymentAccepted: ["Cash", "Credit Card", "Check"],
         currenciesAccepted: "USD",
         hasOfferCatalog: {
@@ -98,7 +98,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         serviceArea: settings.serviceAreas,
         offers: {
           "@type": "Offer",
-          priceRange: svc.price || "$80+",
+          priceRange: svc.price || "From $80+",
           availability: "https://schema.org/InStock",
           validFrom: new Date().toISOString(),
         },
