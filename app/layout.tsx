@@ -4,6 +4,7 @@ import { IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { HomeMap } from "@/components/home-map"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -56,6 +57,7 @@ export default function RootLayout({
           <Header />
           <ScrollToTopOnRouteChange />
           <main>{children}</main>
+          <HomeMap />
           <Footer />
         </ThemeProvider>
       </body>

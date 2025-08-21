@@ -2,7 +2,6 @@ import { HeroSection } from "@/components/hero-section"
 import { BentoGrid } from "@/components/bento-grid"
 import { HomeServiceCards } from "@/components/home-service-cards"
 import { ReviewsRow } from "@/components/reviews-row"
-import { HomeMap } from "@/components/home-map"
 
 export default function HomePage() {
   return (
@@ -10,7 +9,6 @@ export default function HomePage() {
       <HeroSection />
       <HomeServiceCards />
       <ReviewsRow />
-      <HomeMap />
       <BentoGrid />
     </main>
   )

@@ -35,9 +35,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 text-white">
+        <div className="flex flex-wrap gap-6 mb-6 text-white">
           {/* Services */}
-          <nav aria-label="Our services">
+          <nav aria-label="Our services" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Our Services</h3>
             <ul className="space-y-2 text-xs sm:text-sm text-white">
               {services.map((s) => (
@@ -51,7 +51,7 @@ export function Footer() {
           </nav>
 
           {/* Service Areas */}
-          <nav aria-label="Service areas">
+          <nav aria-label="Service areas" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Service Areas</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
               {locations.map((l) => (
@@ -65,7 +65,7 @@ export function Footer() {
           </nav>
 
           {/* Company Info */}
-          <div>
+          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Uncle Sam Junk Removal</h3>
             <p className="text-red-100 text-xs sm:text-sm mb-3">
               Evansville's premier junk removal service. Locally owned and operated.
@@ -78,7 +78,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Quick Links</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
@@ -116,21 +116,21 @@ export function Footer() {
         </div>
 
         <div className="border-t border-red-600 pt-6 mb-6">
-          <div className="grid md:grid-cols-3 gap-4 text-xs sm:text-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap gap-4 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
               <Phone className="h-4 w-4" />
               <div>
                 <div className="font-semibold">{settings.phone}</div>
                 <div className="text-red-100">Call or Text</div>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
               <Mail className="h-4 w-4" />
               <a href={`mailto:${settings.email}`} className="text-red-100 hover:text-white transition-colors">
                 {settings.email}
               </a>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
               <MapPin className="h-4 w-4" />
               <div className="text-red-100">Evansville, Indiana & Southern Indiana</div>
             </div>
