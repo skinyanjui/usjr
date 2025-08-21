@@ -44,7 +44,7 @@ export function ReviewsRow() {
         {/* Review cards carousel */}
         <div className="mt-4 flex gap-4 overflow-x-auto no-scrollbar [-ms-overflow-style:none] [scrollbar-width:none]">
           {[1, 2, 3, 4, 5, 6].map((id) => (
-            <div key={id} className="shrink-0 w-72 glass rounded-lg border border-gray-200 p-3">
+            <div key={id} className="shrink-0 w-72 rounded-lg border border-gray-300 bg-white/85 backdrop-blur-sm shadow-sm p-3">
               <div className="flex items-center gap-1 mb-1">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className={`w-3.5 h-3.5 ${i < 5 ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />

@@ -11,8 +11,9 @@ export function Footer() {
   const locations = NAV.find((i) => i.label === "Locations")?.children ?? []
 
   return (
-    <footer role="contentinfo" className="bg-red-700 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-6 bg-slate-900">
+    <footer role="contentinfo" className="text-white">
+      <div className="bg-gradient-to-b from-slate-900 via-red-800 to-red-700">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="rounded-lg p-4 mb-6 bg-red-500">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex-1">
@@ -115,7 +116,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-600 pt-4 mb-4">
+        <div className="border-t border-red-500/60 pt-4 mb-4">
           <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
             <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-0.75rem)]">
               <Phone className="h-4 w-4" />
@@ -137,7 +138,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-600 pt-3">
+        <div className="border-t border-red-500/60 pt-3">
           <div className="flex flex-col md:flex-row justify-between items-center gap-1 text-xs sm:text-sm text-red-100">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <div className="flex gap-4">
@@ -150,6 +151,7 @@ export function Footer() {
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       <StructuredData type="LocalBusiness" />
