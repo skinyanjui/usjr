@@ -22,10 +22,10 @@ export function BentoGrid() {
   return (
     <section className="py-8 sm:py-10 lg:py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           {/* Get Your Free Quote - Large Card */}
-          <div className="w-full md:w-full lg:w-1/2 order-1">
-          <Card className="flex flex-col h-full p-0">
+          <div className="w-full md:w-full lg:w-1/2 order-1 flex justify-center">
+          <Card className="flex flex-col h-full p-0 w-full max-w-2xl">
             <CardHeader className="pb-3 sm:pb-4">
               <CardTitle className="text-lg sm:text-xl font-bold text-gray-900">Get Your Free Quote</CardTitle>
               <p className="text-gray-600 text-sm">
