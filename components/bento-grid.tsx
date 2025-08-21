@@ -6,8 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, MapPin, Clock, Star, CheckCircle, Shield, Leaf, Award } from "lucide-react"
-import { settings } from "@/lib/cms-content"
+import { Star } from "lucide-react"
 
 export function BentoGrid() {
   const [formData, setFormData] = useState({
@@ -110,42 +109,7 @@ export function BentoGrid() {
           </Card>
           </div>
 
-          {/* Contact Info */}
-          <div className="w-full md:w-1/2 lg:w-1/2 order-2">
-          <Card className="flex flex-col h-full p-0">
-            <CardHeader className="pb-2 sm:pb-3">
-              <CardTitle className="text-lg font-bold">Contact Us</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 sm:space-y-3 pb-2 sm:pb-3">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-red-700" />
-                <div>
-                  <p className="font-semibold text-sm">{settings.phone}</p>
-                  <p className="text-xs text-gray-600">Call or text for fastest response</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-red-700" />
-                <div>
-                  <p className="text-sm">info@unclesamjunkremoval.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-red-700" />
-                <div>
-                  <p className="text-sm">Evansville, IN & Southern Indiana</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-red-700" />
-                <div>
-                  <p className="text-sm">Monday - Sunday</p>
-                  <p className="text-xs text-gray-600">8:00 AM - 8:00 PM</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          </div>
+          {/* Removed: Contact Info card */}
 
           {/* Removed: Same Day Service and Why Evansville cards */}
         </div>
