@@ -64,17 +64,17 @@ export default function MoveInMoveOutPage() {
       pricing={[
         {
           name: "Small Property",
-          price: "$200-300",
+          price: "From $200-300",
           description: "1-2 bedrooms, 1-2 bathrooms",
         },
         {
           name: "Medium Property",
-          price: "$300-450",
+          price: "From $300-450",
           description: "3-4 bedrooms, 2-3 bathrooms",
         },
         {
           name: "Large Property",
-          price: "$450-650",
+          price: "From $450-650",
           description: "5+ bedrooms, 3+ bathrooms",
         },
       ]}

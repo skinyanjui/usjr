@@ -43,7 +43,7 @@ export default function LightDemolitionPage() {
     {
       question: "How much does light demolition cost in Evansville?",
       answer:
-        "Light demolition costs $389-899 depending on project size and complexity. Interior room demo starts at $389, while deck or fence removal ranges from $289-649.",
+        "Light demolition costs from $389-899 depending on project size and complexity. Interior room demo from $389, while deck or fence removal ranges from $289-649.",
     },
     {
       question: "Do you handle permits for demolition projects?",
@@ -128,23 +128,23 @@ export default function LightDemolitionPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Interior Room Demo</span>
-                  <span className="text-red-600 font-bold">$389-549</span>
+                  <span className="text-red-600 font-bold">From $389-549</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Deck Removal</span>
-                  <span className="text-red-600 font-bold">$289-649</span>
+                  <span className="text-red-600 font-bold">From $289-649</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Fence Removal</span>
-                  <span className="text-red-600 font-bold">$289-489</span>
+                  <span className="text-red-600 font-bold">From $289-489</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Kitchen/Bath Demo</span>
-                  <span className="text-red-600 font-bold">$549-899</span>
+                  <span className="text-red-600 font-bold">From $549-899</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-medium text-gray-900">Flooring Removal</span>
-                  <span className="text-red-600 font-bold">$3-8/sq ft</span>
+                  <span className="text-red-600 font-bold">From $3-8/sq ft</span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">

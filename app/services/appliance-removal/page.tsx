@@ -42,9 +42,9 @@ export default function ApplianceRemovalPage() {
         },
       ]}
       pricing={[
-        { name: "Small Appliances", price: "$89", description: "Microwave, etc." },
-        { name: "Washer or Dryer", price: "$119", description: "Standard size" },
-        { name: "Refrigerator or Stove", price: "$149", description: "Large appliances" },
+        { name: "Small Appliances", price: "From $89", description: "Microwave, etc." },
+        { name: "Washer or Dryer", price: "From $119", description: "Standard size" },
+        { name: "Refrigerator or Stove", price: "From $149", description: "Large appliances" },
         { name: "Multiple Appliances", price: "15% Discount", description: "Volume pricing" },
       ]}
       steps={[

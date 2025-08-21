@@ -60,11 +60,11 @@ export function TwoStepQuoteForm() {
   ]
 
   const loadSizes = [
-    { id: "single", label: "Single Item", description: "1-2 items", price: "$89-149" },
-    { id: "quarter", label: "¼ Truck Load", description: "Small pickup load", price: "$179-249" },
-    { id: "half", label: "½ Truck Load", description: "Half pickup load", price: "$289-389" },
-    { id: "three-quarter", label: "¾ Truck Load", description: "Large pickup load", price: "$389-489" },
-    { id: "full", label: "Full Truck Load", description: "Complete truck load", price: "$489-649" },
+    { id: "single", label: "Single Item", description: "1-2 items", price: "From $89-149" },
+    { id: "quarter", label: "¼ Truck Load", description: "Small pickup load", price: "From $179-249" },
+    { id: "half", label: "½ Truck Load", description: "Half pickup load", price: "From $289-389" },
+    { id: "three-quarter", label: "¾ Truck Load", description: "Large pickup load", price: "From $389-489" },
+    { id: "full", label: "Full Truck Load", description: "Complete truck load", price: "From $489-649" },
   ]
 
   const handleZipSubmit = (e: React.FormEvent) => {

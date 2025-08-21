@@ -52,7 +52,7 @@ import { Truck } from 'lucide-react'
   title="Junk Removal"
   description="Professional junk removal service"
   image="/service-image.jpg"
-  price="Starting at $99"
+  price="From $99"
   icon={Truck}
   color="red"
   link="/services/junk-removal"
@@ -243,7 +243,7 @@ import { PricingCard } from "@/components/ui/pricing-card"
 
 <PricingCard
   title="Standard Service"
-  price="$199-299"
+  price="From $199-299"
   description="Perfect for most projects"
   features={["Feature 1", "Feature 2", "Feature 3"]}
   popular
@@ -318,7 +318,7 @@ import { Phone, Camera, Truck, Recycle } from 'lucide-react'
   pricing={[
     {
       name: "Standard Hot Tub (6-8 person)",
-      price: "$389-489"
+      price: "From $389-489"
     }
   ]}
   faqs={[

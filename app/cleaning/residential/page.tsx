@@ -65,17 +65,17 @@ export default function ResidentialCleaning() {
       pricing={[
         {
           name: "Recurring Cleaning",
-          price: "$80-120",
+          price: "From $80-120",
           description: "Weekly, bi-weekly, or monthly maintenance cleaning",
         },
         {
           name: "Deep Cleaning",
-          price: "$150-250",
+          price: "From $150-250",
           description: "Comprehensive one-time cleaning for entire home",
         },
         {
           name: "Move-In/Out",
-          price: "$200-300",
+          price: "From $200-300",
           description: "Complete property cleaning for transitions",
         },
       ]}

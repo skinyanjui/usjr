@@ -42,10 +42,10 @@ export default function DumpsterRentalPage() {
         },
       ]}
       pricing={[
-        { name: "10 Yard Dumpster", price: "$299", description: "Perfect for small projects (12' L × 8' W × 4' H)" },
-        { name: "20 Yard Dumpster", price: "$399", description: "Great for medium projects (22' L × 8' W × 4' H)" },
-        { name: "30 Yard Dumpster", price: "$499", description: "Ideal for large projects (22' L × 8' W × 6' H)" },
-        { name: "40 Yard Dumpster", price: "$599", description: "Maximum capacity (22' L × 8' W × 8' H)" },
+        { name: "10 Yard Dumpster", price: "From $299", description: "Perfect for small projects (12' L × 8' W × 4' H)" },
+        { name: "20 Yard Dumpster", price: "From $399", description: "Great for medium projects (22' L × 8' W × 4' H)" },
+        { name: "30 Yard Dumpster", price: "From $499", description: "Ideal for large projects (22' L × 8' W × 6' H)" },
+        { name: "40 Yard Dumpster", price: "From $599", description: "Maximum capacity (22' L × 8' W × 8' H)" },
       ]}
       pricingNote="All prices include delivery, pickup, and disposal fees. 7-day rental period included."
       steps={[

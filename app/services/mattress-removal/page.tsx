@@ -43,7 +43,7 @@ export default function MattressRemovalPage() {
     {
       question: "How much does mattress removal cost in Evansville?",
       answer:
-        "Single mattress removal starts at $89, with box springs adding $25. Full bedroom sets (mattress, box spring, frame) start at $149. We offer volume discounts for multiple items.",
+        "Single mattress removal from $89, with box springs adding $25. Full bedroom sets (mattress, box spring, frame) from $149. We offer volume discounts for multiple items.",
     },
     {
       question: "Can you remove stained or damaged mattresses?",
@@ -123,15 +123,15 @@ export default function MattressRemovalPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Single Mattress</span>
-                  <span className="text-blue-600 font-bold">$89-129</span>
+                  <span className="text-blue-600 font-bold">From $89-129</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Mattress + Box Spring</span>
-                  <span className="text-blue-600 font-bold">$119-179</span>
+                  <span className="text-blue-600 font-bold">From $119-179</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-medium text-gray-900">Full Bedroom Set</span>
-                  <span className="text-blue-600 font-bold">$149-229</span>
+                  <span className="text-blue-600 font-bold">From $149-229</span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">*Final pricing depends on access and item condition</p>
