@@ -22,7 +22,13 @@ function Card({ className, ...props }: CardProps) {
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="card-header" className={cn("flex flex-col space-y-1.5 px-6 py-4", className)} {...props} />
+  return (
+    <div
+      data-slot="card-header"
+      className={cn("flex flex-col space-y-1 sm:space-y-1.5 px-4 py-3 sm:px-6 sm:py-4", className)}
+      {...props}
+    />
+  )
 }
 
 function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
@@ -40,7 +46,13 @@ function CardDescription({ className, ...props }: React.ComponentProps<"p">) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="card-content" className={cn("px-6 py-4 space-y-4", className)} {...props} />
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-4 py-2 space-y-2 sm:px-6 sm:py-4 sm:space-y-4", className)}
+      {...props}
+    />
+  )
 }
 
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
