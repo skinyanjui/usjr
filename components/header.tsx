@@ -155,7 +155,7 @@ export function Header() {
           </div>
 
           {/* Right desktop actions */}
-          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 border-l border-gray-300 pl-4">
+          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 pl-4">
             <div className="text-center">
               <PhoneButton
                 href={`tel:${settings.phoneE164}`}
