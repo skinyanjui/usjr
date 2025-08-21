@@ -78,10 +78,10 @@ export default function QuotePage() {
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-blue-900 mb-2">Starting Prices:</h3>
                   <ul className="text-sm text-blue-800 space-y-1">
-                    <li>• Single item: $75-$150</li>
-                    <li>• 1/4 truck load: $200-$300</li>
-                    <li>• 1/2 truck load: $350-$450</li>
-                    <li>• Full truck load: $500-$650</li>
+                    <li>• Single item: From $75-$150</li>
+                    <li>• 1/4 truck load: From $200-$300</li>
+                    <li>• 1/2 truck load: From $350-$450</li>
+                    <li>• Full truck load: From $500-$650</li>
                   </ul>
                 </div>
 
@@ -134,10 +134,10 @@ export default function QuotePage() {
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-orange-900 mb-2">Rental Prices:</h3>
                   <ul className="text-sm text-orange-800 space-y-1">
-                    <li>• 10-yard: $350/week</li>
-                    <li>• 20-yard: $450/week</li>
-                    <li>• 30-yard: $550/week</li>
-                    <li>• 40-yard: $650/week</li>
+                    <li>• 10-yard: From $350/week</li>
+                    <li>• 20-yard: From $450/week</li>
+                    <li>• 30-yard: From $550/week</li>
+                    <li>• 40-yard: From $650/week</li>
                   </ul>
                 </div>
 
@@ -190,9 +190,9 @@ export default function QuotePage() {
                 <div className="bg-green-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-green-900 mb-2">Service Prices:</h3>
                   <ul className="text-sm text-green-800 space-y-1">
-                    <li>• Deep clean: $150-$400</li>
-                    <li>• Recurring: $80-$200</li>
-                    <li>• Move-in/out: $200-$500</li>
+                    <li>• Deep clean: From $150-$400</li>
+                    <li>• Recurring: From $80-$200</li>
+                    <li>• Move-in/out: From $200-$500</li>
                     <li>• Commercial: Custom quote</li>
                   </ul>
                 </div>

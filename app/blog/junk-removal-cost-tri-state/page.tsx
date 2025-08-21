@@ -18,7 +18,7 @@ export default function JunkRemovalCostPage() {
     {
       icon: Truck,
       title: "Load Size",
-      description: "Single items start at $89, while full truck loads can reach $649",
+      description: "Single items from $89, while full truck loads can reach $649",
       impact: "High Impact",
     },
     {
@@ -113,7 +113,7 @@ export default function JunkRemovalCostPage() {
             </div>
 
             <p className="text-gray-700">
-              <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs between $89-649 depending
+              <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs from $89-649 depending
               on your project size. With transparent pricing, professional service, and eco-friendly disposal, Uncle Sam Junk Removal makes cleanup projects simple and affordable for Evansville and Henderson area residents.
             </p>
           </div>

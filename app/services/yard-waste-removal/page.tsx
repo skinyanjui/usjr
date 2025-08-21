@@ -43,7 +43,7 @@ export default function YardWasteRemovalPage() {
     {
       question: "How much does yard waste removal cost in Evansville?",
       answer:
-        "Yard waste removal starts at $179 for small loads and goes up to $489 for large volumes. Tree limbs and brush may require additional fees based on size and quantity.",
+        "Yard waste removal from $179 for small loads and up to $489 for large volumes. Tree limbs and brush may require additional fees based on size and quantity.",
     },
     {
       question: "Do you remove large tree limbs and branches?",
@@ -128,15 +128,15 @@ export default function YardWasteRemovalPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Small Load</span>
-                  <span className="text-green-600 font-bold">$179-289</span>
+                  <span className="text-green-600 font-bold">From $179-289</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Medium Load</span>
-                  <span className="text-green-600 font-bold">$289-389</span>
+                  <span className="text-green-600 font-bold">From $289-389</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-medium text-gray-900">Large Load</span>
-                  <span className="text-green-600 font-bold">$389-489</span>
+                  <span className="text-green-600 font-bold">From $389-489</span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">*Final pricing depends on volume and access</p>

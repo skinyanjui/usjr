@@ -33,10 +33,10 @@ export default function GarageCleanoutPage() {
         { icon: Clock, title: "Same-Day Service Available", description: "Quick response for urgent cleanouts" },
       ]}
       pricing={[
-        { name: "Single Car Garage", price: "$289-389", description: "Standard single garage" },
-        { name: "Two Car Garage", price: "$389-549", description: "Most common size" },
-        { name: "Large/Workshop Garage", price: "$549-649", description: "Oversized garages" },
-        { name: "Partial Cleanout", price: "$179-289", description: "Selective removal" },
+        { name: "Single Car Garage", price: "From $289-389", description: "Standard single garage" },
+        { name: "Two Car Garage", price: "From $389-549", description: "Most common size" },
+        { name: "Large/Workshop Garage", price: "From $549-649", description: "Oversized garages" },
+        { name: "Partial Cleanout", price: "From $179-289", description: "Selective removal" },
       ]}
       steps={[
         {
@@ -69,7 +69,7 @@ export default function GarageCleanoutPage() {
         {
           question: "How much does a garage cleanout cost in Evansville?",
           answer:
-            "Garage cleanouts typically cost $289-649 depending on the amount of items and garage size. Single-car garages start at $289, while large two-car garages can cost up to $649.",
+            "Garage cleanouts typically cost from $289-649 depending on the amount of items and garage size. Single-car garages start from $289, while large two-car garages can cost up to $649.",
         },
         {
           question: "Can you remove hazardous materials from garages?",

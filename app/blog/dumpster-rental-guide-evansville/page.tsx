@@ -65,7 +65,7 @@ export default function DumpsterRentalGuidePage() {
               <li>Perfect for: Small bathroom renovations, garage cleanouts, minor landscaping</li>
               <li>Holds: 3-5 pickup truck loads</li>
               <li>Dimensions: 12' L x 8' W x 3.5' H</li>
-              <li>Price: Starting at $299/week</li>
+              <li>Price: From $299/week</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">20-Yard Dumpster</h3>
@@ -73,7 +73,7 @@ export default function DumpsterRentalGuidePage() {
               <li>Perfect for: Kitchen renovations, flooring projects, deck removal</li>
               <li>Holds: 6-8 pickup truck loads</li>
               <li>Dimensions: 22' L x 8' W x 4.5' H</li>
-              <li>Price: Starting at $399/week</li>
+              <li>Price: From $399/week</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">30-Yard Dumpster</h3>
@@ -81,7 +81,7 @@ export default function DumpsterRentalGuidePage() {
               <li>Perfect for: Whole home cleanouts, large renovations, new construction</li>
               <li>Holds: 9-12 pickup truck loads</li>
               <li>Dimensions: 22' L x 8' W x 6' H</li>
-              <li>Price: Starting at $499/week</li>
+              <li>Price: From $499/week</li>
             </ul>
 
             <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">40-Yard Dumpster</h3>
@@ -89,7 +89,7 @@ export default function DumpsterRentalGuidePage() {
               <li>Perfect for: Commercial projects, large construction sites</li>
               <li>Holds: 12-16 pickup truck loads</li>
               <li>Dimensions: 22' L x 8' W x 8' H</li>
-              <li>Price: Starting at $599/week</li>
+              <li>Price: From $599/week</li>
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Evansville Permit Requirements</h2>

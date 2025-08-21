@@ -11,7 +11,7 @@ export function PricingGrid() {
     {
       id: "single",
       name: "Single Item",
-      price: "$89-149",
+      price: "From $89-149",
       description: "Perfect for 1-2 items",
       features: ["1-2 items removal", "Labor included", "Hauling & disposal", "Same-day service", "No hidden fees"],
       popular: false,
@@ -20,7 +20,7 @@ export function PricingGrid() {
     {
       id: "quarter",
       name: "¼ Truck Load",
-      price: "$179-249",
+      price: "From $179-249",
       description: "Small pickup truck load",
       features: [
         "¼ truck capacity",
@@ -35,7 +35,7 @@ export function PricingGrid() {
     {
       id: "half",
       name: "½ Truck Load",
-      price: "$289-389",
+      price: "From $289-389",
       description: "Half pickup truck load",
       features: ["½ truck capacity", "2-person crew", "Labor included", "Hauling & disposal", "Same-day service"],
       popular: true,
@@ -44,7 +44,7 @@ export function PricingGrid() {
     {
       id: "three-quarter",
       name: "¾ Truck Load",
-      price: "$389-489",
+      price: "From $389-489",
       description: "Large pickup truck load",
       features: ["¾ truck capacity", "2-person crew", "Labor included", "Hauling & disposal", "Free estimates"],
       popular: false,
@@ -53,7 +53,7 @@ export function PricingGrid() {
     {
       id: "full",
       name: "Full Truck Load",
-      price: "$489-649",
+      price: "From $489-649",
       description: "Complete truck load",
       features: ["Full truck capacity", "2-3 person crew", "Labor included", "Hauling & disposal", "Volume discounts"],
       popular: false,

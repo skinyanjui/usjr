@@ -29,10 +29,10 @@ export default function EstateCleanoutsPage() {
         { icon: Users, title: "Compassionate Service", description: "Trained team sensitive to family emotions" },
       ]}
       pricing={[
-        { name: "Small Home", price: "$649-899", description: "1-2 bedrooms" },
-        { name: "Medium Home", price: "$899-1,299", description: "3-4 bedrooms" },
-        { name: "Large Home", price: "$1,299-1,899", description: "4+ bedrooms" },
-        { name: "Partial Cleanout", price: "$389-649", description: "Selective rooms" },
+        { name: "Small Home", price: "From $649-899", description: "1-2 bedrooms" },
+        { name: "Medium Home", price: "From $899-1,299", description: "3-4 bedrooms" },
+        { name: "Large Home", price: "From $1,299-1,899", description: "4+ bedrooms" },
+        { name: "Partial Cleanout", price: "From $389-649", description: "Selective rooms" },
       ]}
       steps={[
         {

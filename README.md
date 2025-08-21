@@ -151,7 +151,7 @@ import { Phone, Camera, Truck, Recycle } from 'lucide-react'
   pricing={[
     {
       name: "Service Tier",
-      price: "$199-299"
+      price: "From $199-299"
     }
   ]}
   faqs={[

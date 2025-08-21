@@ -37,9 +37,9 @@ export default function HotTubRemovalPage() {
         { icon: Clock, title: "Same-Day Service Available", description: "Quick response for urgent removals" },
       ]}
       pricing={[
-        { name: "Standard Hot Tub", price: "$389-489", description: "6-8 person hot tubs" },
-        { name: "Large Hot Tub", price: "$489-649", description: "8+ person hot tubs" },
-        { name: "Swim Spa", price: "$649-899", description: "Large swim spas" },
+        { name: "Standard Hot Tub", price: "From $389-489", description: "6-8 person hot tubs" },
+        { name: "Large Hot Tub", price: "From $489-649", description: "8+ person hot tubs" },
+        { name: "Swim Spa", price: "From $649-899", description: "Large swim spas" },
         { name: "Difficult Access", price: "+$100-200", description: "Additional surcharge" },
       ]}
       steps={[
@@ -73,7 +73,7 @@ export default function HotTubRemovalPage() {
         {
           question: "How much does hot tub removal cost in Evansville?",
           answer:
-            "Hot tub removal typically costs $389-649 depending on size, access difficulty, and disconnection needs. We provide upfront pricing with no hidden fees.",
+            "Hot tub removal typically costs from $389-649 depending on size, access difficulty, and disconnection needs. We provide upfront pricing with no hidden fees.",
         },
         {
           question: "Can you remove hot tubs from tight spaces or decks?",

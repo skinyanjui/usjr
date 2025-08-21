@@ -64,17 +64,17 @@ export default function RecurringCleaningPage() {
       pricing={[
         {
           name: "Weekly Cleaning",
-          price: "$80-100",
+          price: "From $80-100",
           description: "Perfect for busy families and high-traffic homes",
         },
         {
           name: "Bi-Weekly Cleaning",
-          price: "$100-140",
+          price: "From $100-140",
           description: "Most popular option for regular maintenance",
         },
         {
           name: "Monthly Cleaning",
-          price: "$120-180",
+          price: "From $120-180",
           description: "Great for maintaining already clean homes",
         },
       ]}

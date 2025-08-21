@@ -64,17 +64,17 @@ export default function DeepCleaningPage() {
       pricing={[
         {
           name: "Small Home",
-          price: "$150-200",
+          price: "From $150-200",
           description: "1-2 bedrooms, 1-2 bathrooms",
         },
         {
           name: "Medium Home",
-          price: "$200-300",
+          price: "From $200-300",
           description: "3-4 bedrooms, 2-3 bathrooms",
         },
         {
           name: "Large Home",
-          price: "$300-450",
+          price: "From $300-450",
           description: "5+ bedrooms, 3+ bathrooms",
         },
       ]}

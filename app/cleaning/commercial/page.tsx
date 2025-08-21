@@ -65,17 +65,17 @@ export default function CommercialCleaningPage() {
       pricing={[
         {
           name: "Office Cleaning",
-          price: "$120-200",
+          price: "From $120-200",
           description: "Regular cleaning for professional office environments",
         },
         {
           name: "Retail Cleaning",
-          price: "$150-250",
+          price: "From $150-250",
           description: "Specialized cleaning for customer-facing spaces",
         },
         {
           name: "Medical Cleaning",
-          price: "$180-300",
+          price: "From $180-300",
           description: "Healthcare facility cleaning with enhanced sanitization",
         },
       ]}

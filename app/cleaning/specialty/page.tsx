@@ -65,17 +65,17 @@ export default function SpecialtyCleaningPage() {
       pricing={[
         {
           name: "Appliance Cleaning",
-          price: "$75-85",
+          price: "From $75-85",
           description: "Refrigerator or oven deep cleaning service",
         },
         {
           name: "Home Organizing",
-          price: "$100-150",
+          price: "From $100-150",
           description: "Professional organizing and space optimization",
         },
         {
           name: "Decluttering",
-          price: "$120-200",
+          price: "From $120-200",
           description: "Comprehensive decluttering with donation coordination",
         },
       ]}

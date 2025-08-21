@@ -43,7 +43,7 @@ export default function ShedRemovalPage() {
     {
       question: "How much does shed removal cost in Evansville?",
       answer:
-        "Shed removal costs $289-649 depending on size and materials. Small storage sheds start at $289, while large barns can cost up to $649. We provide free estimates.",
+        "Shed removal costs from $289-649 depending on size and materials. Small storage sheds from $289, while large barns can cost up to $649. We provide free estimates.",
     },
     {
       question: "Can you remove sheds with concrete foundations?",
@@ -128,15 +128,15 @@ export default function ShedRemovalPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Small Shed (up to 8x10)</span>
-                  <span className="text-green-600 font-bold">$289-389</span>
+                  <span className="text-green-600 font-bold">From $289-389</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-200">
                   <span className="font-medium text-gray-900">Medium Shed (10x12)</span>
-                  <span className="text-green-600 font-bold">$389-549</span>
+                  <span className="text-green-600 font-bold">From $389-549</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-medium text-gray-900">Large Shed / Barn</span>
-                  <span className="text-green-600 font-bold">$549-649</span>
+                  <span className="text-green-600 font-bold">From $549-649</span>
                 </div>
               </div>
               <p className="text-sm text-gray-600 mt-4">*Final pricing depends on materials and access</p>
