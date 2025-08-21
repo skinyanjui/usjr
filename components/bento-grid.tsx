@@ -21,13 +21,13 @@ export function BentoGrid() {
   })
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-8 sm:py-10 lg:py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-fr">
           {/* Get Your Free Quote - Large Card */}
           <Card className="md:col-span-2 lg:col-span-2 lg:row-span-2">
-            <CardHeader className="pb-4">
-              <CardTitle className="text-2xl font-bold text-gray-900">Get Your Free Quote</CardTitle>
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-lg sm:text-xl font-bold text-gray-900">Get Your Free Quote</CardTitle>
               <p className="text-gray-600 text-sm">
                 Ready to get rid of your junk in Evansville? Contact Uncle Sam Junk Removal today for a free,
                 no-obligation quote. We'll beat any written estimate!
@@ -41,7 +41,7 @@ export function BentoGrid() {
                 <span className="text-sm font-medium">4.9/5 from 200+ Evansville customers</span>
               </div>
             </CardHeader>
-            <CardContent className="space-y-3 pb-3">
+            <CardContent className="space-y-2 sm:space-y-3 pb-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Input
                   placeholder="Your full name"
@@ -110,10 +110,10 @@ export function BentoGrid() {
 
           {/* Contact Info */}
           <Card>
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Contact Us</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 pb-3">
+            <CardContent className="space-y-2 sm:space-y-3 pb-3">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-700" />
                 <div>
@@ -145,11 +145,11 @@ export function BentoGrid() {
 
           {/* Same Day Service */}
           <Card className="bg-red-700 text-white">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Same Day Service!</CardTitle>
             </CardHeader>
             <CardContent className="pb-3">
-              <p className="text-sm mb-4">
+              <p className="text-sm mb-3 sm:mb-4">
                 Need your junk removed today? We offer same-day service throughout Evansville.
               </p>
               <Button variant="secondary" size="sm" className="w-full mb-3">
@@ -175,11 +175,11 @@ export function BentoGrid() {
 
           {/* Why Choose Us */}
           <Card className="md:col-span-2 lg:col-span-2">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Why Evansville Chooses Uncle Sam Junk Removal</CardTitle>
             </CardHeader>
             <CardContent className="pb-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-red-700" />
                   <span className="text-sm">15+ Years Experience</span>
