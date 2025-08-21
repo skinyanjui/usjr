@@ -7,7 +7,7 @@ import { Truck, Container, Lightbulb } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center">
+    <section id="home" className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center">
       <Image
         src="/junk-removal-evansville.png"
         alt="Junk removal crew in Evansville, IN"
@@ -16,7 +16,7 @@ export function HeroSection() {
         fetchPriority="high"
         sizes="100vw"
         quality={40}
-        className="object-cover"
+        className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
 
