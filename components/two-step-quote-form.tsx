@@ -82,13 +82,10 @@ export function TwoStepQuoteForm() {
 
   const handleFinalSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log({
-      zipCode,
-      selectedItems,
-      loadSize,
-      contactInfo,
-    })
+    // Handle form submission (disabled in production)
+    if (process.env.NODE_ENV !== "production") {
+      console.log({ zipCode, selectedItems, loadSize, contactInfo })
+    }
     alert("Thank you! We'll contact you within 15 minutes with your quote.")
   }
 

@@ -76,7 +76,9 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the form data to your backend
-    console.log("Form submitted:", { formData, uploadedFiles, segment })
+    if (process.env.NODE_ENV !== "production") {
+      console.log("Form submitted:", { formData, uploadedFiles, segment })
+    }
     setIsSubmitted(true)
   }
 

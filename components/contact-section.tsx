@@ -24,7 +24,9 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    if (process.env.NODE_ENV !== "production") {
+      console.log("Form submitted:", formData)
+    }
     setIsSubmitted(true)
     setTimeout(() => {
       setIsSubmitted(false)

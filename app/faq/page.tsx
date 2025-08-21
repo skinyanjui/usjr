@@ -13,7 +13,7 @@ import { settings } from "@/lib/cms-content"
 export default function FAQPage() {
   const [searchTerm, setSearchTerm] = useState("")
 
-  const faqCategories = [
+  const faqCategories = useMemo(() => ([
     {
       id: "general",
       name: "General Questions",
@@ -189,7 +189,7 @@ export default function FAQPage() {
         },
       ],
     },
-  ]
+  ]), [])
 
   const filteredFAQs = useMemo(() => {
     return faqCategories

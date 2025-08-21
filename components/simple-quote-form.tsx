@@ -26,7 +26,9 @@ export function SimpleQuoteForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle form submission logic here
-    console.log("Form submitted:", formData)
+    if (process.env.NODE_ENV !== "production") {
+      console.log("Form submitted:", formData)
+    }
     setIsSubmitted(true)
   }
 
