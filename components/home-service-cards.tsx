@@ -13,7 +13,7 @@ export function HomeServiceCards() {
       price: "Free quotes",
       icon: Trash2,
       color: "red" as const,
-      link: "/services/junk-removal",
+      link: "/services",
       category: "Residential",
     },
     {
@@ -23,7 +23,7 @@ export function HomeServiceCards() {
       price: "Free quotes",
       icon: Trash2,
       color: "red" as const,
-      link: "/services/junk-removal",
+      link: "/services",
       category: "Commercial",
     },
     {
@@ -33,7 +33,7 @@ export function HomeServiceCards() {
       price: "Free quotes",
       icon: Trash2,
       color: "red" as const,
-      link: "/services/junk-removal",
+      link: "/services",
       category: "Property Mgmt",
     },
 
@@ -45,7 +45,7 @@ export function HomeServiceCards() {
       price: "Flat-rate pricing",
       icon: Truck,
       color: "blue" as const,
-      link: "/services/dumpster-rental",
+      link: "/services",
       category: "Residential",
     },
     {
@@ -55,7 +55,7 @@ export function HomeServiceCards() {
       price: "Flat-rate pricing",
       icon: Truck,
       color: "blue" as const,
-      link: "/services/dumpster-rental",
+      link: "/services",
       category: "Commercial",
     },
     {
@@ -65,7 +65,7 @@ export function HomeServiceCards() {
       price: "Flat-rate pricing",
       icon: Truck,
       color: "blue" as const,
-      link: "/services/dumpster-rental",
+      link: "/services",
       category: "Property Mgmt",
     },
 
@@ -77,7 +77,7 @@ export function HomeServiceCards() {
       price: "Free estimates",
       icon: Sparkles,
       color: "green" as const,
-      link: "/cleaning",
+      link: "/services",
       category: "Residential",
     },
     {
@@ -87,7 +87,7 @@ export function HomeServiceCards() {
       price: "Free estimates",
       icon: Sparkles,
       color: "green" as const,
-      link: "/cleaning",
+      link: "/services",
       category: "Commercial",
     },
     {
@@ -97,7 +97,7 @@ export function HomeServiceCards() {
       price: "Free estimates",
       icon: Sparkles,
       color: "green" as const,
-      link: "/cleaning",
+      link: "/services",
       category: "Property Mgmt",
     },
   ]
