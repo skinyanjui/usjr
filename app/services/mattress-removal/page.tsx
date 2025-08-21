@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
+import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 
 export const metadata = {
@@ -11,29 +11,6 @@ export const metadata = {
 }
 
 export default function MattressRemovalPage() {
-  const steps = [
-    {
-      icon: Phone,
-      title: "Quick Scheduling",
-      description: "Call or text for same-day pickup. No need to bag or wrap mattresses.",
-    },
-    {
-      icon: Camera,
-      title: "Professional Pickup",
-      description: "Our team handles all lifting and loading from any location in your home.",
-    },
-    {
-      icon: Truck,
-      title: "Safe Transport",
-      description: "Secure transport in covered trucks to prevent contamination.",
-    },
-    {
-      icon: Recycle,
-      title: "Eco-Friendly Processing",
-      description: "Materials are recycled or donated when possible, never just dumped.",
-    },
-  ]
-
   const faqs = [
     {
       question: "Do you remove mattresses from upstairs bedrooms?",

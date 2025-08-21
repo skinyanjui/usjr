@@ -25,19 +25,31 @@ export function PricingCalculator() {
     // Base pricing by service
     switch (service) {
       case "junk-removal":
-        basePrice = loadSize[0] <= 25 ? 89 : loadSize[0] <= 50 ? 179 : loadSize[0] <= 75 ? 289 : 489
+        {
+          const size = loadSize?.[0] ?? 25
+          basePrice = size <= 25 ? 89 : size <= 50 ? 179 : size <= 75 ? 289 : 489
+        }
         break
       case "dumpster-rental":
-        basePrice = loadSize[0] <= 25 ? 299 : loadSize[0] <= 50 ? 399 : loadSize[0] <= 75 ? 499 : 599
+        {
+          const size = loadSize?.[0] ?? 25
+          basePrice = size <= 25 ? 299 : size <= 50 ? 399 : size <= 75 ? 499 : 599
+        }
         break
       case "cleaning":
-        basePrice = loadSize[0] <= 25 ? 99 : loadSize[0] <= 50 ? 149 : loadSize[0] <= 75 ? 199 : 299
+        {
+          const size = loadSize?.[0] ?? 25
+          basePrice = size <= 25 ? 99 : size <= 50 ? 149 : size <= 75 ? 199 : 299
+        }
         break
     }
 
     // Item count adjustment
-    if (itemCount[0] > 10) multiplier += 0.2
-    if (itemCount[0] > 20) multiplier += 0.3
+    {
+      const count = itemCount?.[0] ?? 0
+      if (count > 10) multiplier += 0.2
+      if (count > 20) multiplier += 0.3
+    }
 
     // Location adjustment
     if (location === "outside-evansville") multiplier += 0.15

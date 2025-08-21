@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
+import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 
 export const metadata = {
@@ -11,29 +11,6 @@ export const metadata = {
 }
 
 export default function YardWasteRemovalPage() {
-  const steps = [
-    {
-      icon: Phone,
-      title: "Quick Scheduling",
-      description: "Call for same-day pickup of yard waste and landscaping debris.",
-    },
-    {
-      icon: Camera,
-      title: "Efficient Collection",
-      description: "Our team collects all yard waste from anywhere on your property.",
-    },
-    {
-      icon: Truck,
-      title: "Proper Loading",
-      description: "Specialized equipment for handling large volumes of organic waste.",
-    },
-    {
-      icon: Recycle,
-      title: "Eco-Friendly Processing",
-      description: "All yard waste is composted or processed into mulch and soil amendments.",
-    },
-  ]
-
   const faqs = [
     {
       question: "What types of yard waste do you remove?",

@@ -50,7 +50,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Cleaning Services",
-          itemListElement: getActiveServices().map((service, index) => ({
+          itemListElement: getActiveServices().map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",

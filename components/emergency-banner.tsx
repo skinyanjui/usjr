@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, Phone } from "lucide-react"
+import { AlertTriangle, Phone } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 
 export function EmergencyBanner() {

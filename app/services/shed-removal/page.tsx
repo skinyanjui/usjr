@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Phone, Camera, Truck, Recycle, Clock } from "lucide-react"
+import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 
 export const metadata = {
@@ -11,29 +11,6 @@ export const metadata = {
 }
 
 export default function ShedRemovalPage() {
-  const steps = [
-    {
-      icon: Phone,
-      title: "Free Assessment",
-      description: "We evaluate your shed size, materials, and access for accurate pricing.",
-    },
-    {
-      icon: Camera,
-      title: "Preparation & Safety",
-      description: "Clear contents, disconnect utilities, and set up safety perimeter.",
-    },
-    {
-      icon: Truck,
-      title: "Careful Demolition",
-      description: "Systematic dismantling starting from roof down to foundation.",
-    },
-    {
-      icon: Recycle,
-      title: "Complete Cleanup",
-      description: "Remove all debris, recycle materials, and leave area clean.",
-    },
-  ]
-
   const faqs = [
     {
       question: "Do I need to empty my shed before removal?",

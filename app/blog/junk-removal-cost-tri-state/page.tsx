@@ -1,8 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, User, DollarSign, Truck, Home } from "lucide-react"
+import { Calendar, Clock, User } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { settings } from "@/lib/cms-content"
 
 export const metadata = {
@@ -14,27 +12,6 @@ export const metadata = {
 }
 
 export default function JunkRemovalCostPage() {
-  const pricingFactors = [
-    {
-      icon: Truck,
-      title: "Load Size",
-      description: "Single items from $89, while full truck loads can reach $649",
-      impact: "High Impact",
-    },
-    {
-      icon: Home,
-      title: "Location Access",
-      description: "Ground floor pickup vs. upstairs or basement removal",
-      impact: "Medium Impact",
-    },
-    {
-      icon: DollarSign,
-      title: "Item Type",
-      description: "Electronics and appliances may have disposal fees",
-      impact: "Low Impact",
-    },
-  ]
-
   return (
     <main className="min-h-screen">
       <article className="pt-32 pb-16">

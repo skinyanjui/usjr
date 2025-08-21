@@ -43,6 +43,7 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
   }
 
   const currentTestimonial = testimonials[currentIndex]
+  if (!currentTestimonial) return null
 
   return (
     <div className="relative max-w-4xl mx-auto">
