@@ -85,7 +85,7 @@ export function ServiceCard({
     switch (size) {
       case "small":
         return {
-          card: "h-auto",
+          card: "h-full",
           image: "h-24",
           content: "px-4 py-4 space-y-3",
           title: "text-sm font-bold",
@@ -118,7 +118,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`glass hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card}`}
+      className={`glass hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
     >
       <div className={`relative ${sizes.image} w-full`}>
         <Image
@@ -146,7 +146,7 @@ export function ServiceCard({
         </div>
         <p className={`${sizes.description} text-gray-600`}>{description}</p>
         <div className="pt-2">
-          <Button asChild className={`${colors.button} text-white`}>
+          <Button asChild size="xs" className={`${colors.button} text-white`}>
             <Link href={link} aria-label={`View ${title} details`} title={`View ${title} details`}>
               View {title} details
             </Link>

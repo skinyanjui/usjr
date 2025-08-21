@@ -117,7 +117,7 @@ export function HomeServiceCards() {
               color={card.color}
               link={card.link}
               category={card.category}
-              size="medium"
+              size="small"
             />
           ))}
         </div>
