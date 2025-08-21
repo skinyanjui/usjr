@@ -86,7 +86,7 @@ export function ServiceCard({
       case "small":
         return {
           card: "h-full",
-          image: "h-24",
+          image: "h-36",
           content: "px-4 py-4 space-y-3",
           title: "text-sm font-bold",
           description: "text-xs",
