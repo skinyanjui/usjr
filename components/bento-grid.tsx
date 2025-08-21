@@ -41,7 +41,7 @@ export function BentoGrid() {
                 <span className="text-sm font-medium">4.9/5 from 200+ Evansville customers</span>
               </div>
             </CardHeader>
-            <CardContent className="space-y-2 sm:space-y-3 pb-3">
+            <CardContent className="space-y-2 sm:space-y-3 pb-2 sm:pb-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Input
                   placeholder="Your full name"
@@ -113,7 +113,7 @@ export function BentoGrid() {
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Contact Us</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 sm:space-y-3 pb-3">
+            <CardContent className="space-y-2 sm:space-y-3 pb-2 sm:pb-3">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-700" />
                 <div>
@@ -148,11 +148,11 @@ export function BentoGrid() {
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Same Day Service!</CardTitle>
             </CardHeader>
-            <CardContent className="pb-3">
+            <CardContent className="pb-2 sm:pb-3">
               <p className="text-sm mb-3 sm:mb-4">
                 Need your junk removed today? We offer same-day service throughout Evansville.
               </p>
-              <Button variant="secondary" size="sm" className="w-full mb-3">
+              <Button variant="secondary" size="sm" className="w-full mb-2 sm:mb-3">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now: {settings.phone}
               </Button>
@@ -178,7 +178,7 @@ export function BentoGrid() {
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Why Evansville Chooses Uncle Sam Junk Removal</CardTitle>
             </CardHeader>
-            <CardContent className="pb-2">
+            <CardContent className="pb-1 sm:pb-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-red-700" />
