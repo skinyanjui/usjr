@@ -68,7 +68,7 @@ export function BentoGrid() {
                 onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                 className="text-sm"
               />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 <Select
                   value={formData.service}
                   onValueChange={(value) => setFormData({ ...formData, service: value })}
