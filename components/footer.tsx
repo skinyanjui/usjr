@@ -12,32 +12,32 @@ export function Footer() {
 
   return (
     <footer role="contentinfo" className="bg-red-700 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-8 bg-slate-900">
-        <div className="rounded-lg p-6 mb-8 bg-red-500">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 py-6 bg-slate-900">
+        <div className="rounded-lg p-4 mb-6 bg-red-500">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex-1">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">Ready to reclaim your space?</h3>
-              <p className="text-white mt-1 text-sm sm:text-base">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold">Ready to reclaim your space?</h3>
+              <p className="text-white mt-1 text-sm">
                 Same-day service, 7 days a week. Locally owned and insured.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-4 sm:px-5 py-2.5 shadow hover:bg-red-50 transition-colors rounded-lg text-sm sm:text-base justify-center"
+                className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-4 sm:px-5 py-2 shadow hover:bg-red-50 transition-colors rounded-lg text-sm justify-center"
               >
                 Get Free Quote
               </Link>
-              <PhoneButton href={`tel:${phoneHref}`} size="default" className="justify-center">
+              <PhoneButton href={`tel:${phoneHref}`} size="sm" className="justify-center">
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </PhoneButton>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-6 mb-6 text-white">
+        <div className="flex flex-wrap gap-4 mb-4 text-white">
           {/* Services */}
-          <nav aria-label="Our services" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
+          <nav aria-label="Our services" className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Our Services</h3>
             <ul className="space-y-2 text-xs sm:text-sm text-white">
               {services.map((s) => (
@@ -51,7 +51,7 @@ export function Footer() {
           </nav>
 
           {/* Service Areas */}
-          <nav aria-label="Service areas" className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
+          <nav aria-label="Service areas" className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Service Areas</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
               {locations.map((l) => (
@@ -65,7 +65,7 @@ export function Footer() {
           </nav>
 
           {/* Company Info */}
-          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
+          <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Uncle Sam Junk Removal</h3>
             <p className="text-red-100 text-xs sm:text-sm mb-3">
               Evansville's premier junk removal service. Locally owned and operated.
@@ -78,7 +78,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1rem)]">
+          <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Quick Links</h3>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
@@ -115,30 +115,30 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-600 pt-6 mb-6">
-          <div className="flex flex-wrap gap-4 text-xs sm:text-sm">
-            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
+        <div className="border-t border-red-600 pt-4 mb-4">
+          <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-0.75rem)]">
               <Phone className="h-4 w-4" />
               <div>
                 <div className="font-semibold">{settings.phone}</div>
                 <div className="text-red-100">Call or Text</div>
               </div>
             </div>
-            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-0.75rem)]">
               <Mail className="h-4 w-4" />
               <a href={`mailto:${settings.email}`} className="text-red-100 hover:text-white transition-colors">
                 {settings.email}
               </a>
             </div>
-            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-1rem)]">
+            <div className="flex items-center gap-2 w-full sm:w-[calc(33.333%-0.75rem)]">
               <MapPin className="h-4 w-4" />
               <div className="text-red-100">Evansville, Indiana & Southern Indiana</div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-red-600 pt-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-xs sm:text-sm text-red-100">
+        <div className="border-t border-red-600 pt-3">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-1 text-xs sm:text-sm text-red-100">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <div className="flex gap-4">
               <Link href="/privacy" className="hover:text-white transition-colors">
