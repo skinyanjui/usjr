@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { settings } from "@/lib/cms-content"
-import { NAV, CTAS } from "@/lib/nav"
+import { NAV } from "@/lib/nav"
 
 const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
 const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), { ssr: false })
@@ -151,9 +151,7 @@ export function Header() {
               FAQ
             </Link>
 
-            <Link href={CTAS.priceMatch.href} prefetch={false} className="text-gray-700 hover:text-red-600 font-medium text-sm underline underline-offset-2">
-              {CTAS.priceMatch.label}
-            </Link>
+            {/* Price Match link removed */}
           </div>
 
           {/* Right desktop actions */}
