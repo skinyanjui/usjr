@@ -23,10 +23,10 @@ export function BentoGrid() {
   return (
     <section className="py-8 sm:py-10 lg:py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap gap-3 sm:gap-4">
+        <div className="flex flex-wrap gap-4">
           {/* Get Your Free Quote - Large Card */}
-          <div className="w-full md:w-1/2 lg:w-1/2 lg:order-1">
-          <Card className="flex flex-col h-full">
+          <div className="w-full md:w-full lg:w-1/2 order-1">
+          <Card className="flex flex-col h-full p-0">
             <CardHeader className="pb-3 sm:pb-4">
               <CardTitle className="text-lg sm:text-xl font-bold text-gray-900">Get Your Free Quote</CardTitle>
               <p className="text-gray-600 text-sm">
@@ -111,8 +111,8 @@ export function BentoGrid() {
           </div>
 
           {/* Contact Info */}
-          <div className="w-full md:w-1/2 lg:w-1/4 lg:order-3">
-          <Card className="flex flex-col h-full">
+          <div className="w-full md:w-1/2 lg:w-1/4 order-2">
+          <Card className="flex flex-col h-full p-0">
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Contact Us</CardTitle>
             </CardHeader>
@@ -148,8 +148,8 @@ export function BentoGrid() {
           </div>
 
           {/* Same Day Service */}
-          <div className="w-full md:w-1/2 lg:w-1/4 lg:order-4">
-          <Card className="bg-red-700 text-white flex flex-col h-full">
+          <div className="w-full md:w-1/2 lg:w-1/4 order-3">
+          <Card className="bg-red-700 text-white flex flex-col h-full p-0">
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Same Day Service!</CardTitle>
             </CardHeader>
@@ -180,8 +180,8 @@ export function BentoGrid() {
           </div>
 
           {/* Why Choose Us */}
-          <div className="w-full md:w-1/2 lg:w-1/2 lg:order-2">
-          <Card className="flex flex-col h-full">
+          <div className="w-full lg:w-full order-4">
+          <Card className="flex flex-col h-full p-0">
             <CardHeader className="pb-1 sm:pb-2">
               <CardTitle className="text-lg font-bold">Why Evansville Chooses Uncle Sam Junk Removal</CardTitle>
             </CardHeader>
