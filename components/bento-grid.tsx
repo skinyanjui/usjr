@@ -111,7 +111,7 @@ export function BentoGrid() {
           </div>
 
           {/* Contact Info */}
-          <div className="w-full md:w-1/2 lg:w-1/4 order-2">
+          <div className="w-full md:w-1/2 lg:w-1/2 order-2">
           <Card className="flex flex-col h-full p-0">
             <CardHeader className="pb-2 sm:pb-3">
               <CardTitle className="text-lg font-bold">Contact Us</CardTitle>
@@ -147,74 +147,7 @@ export function BentoGrid() {
           </Card>
           </div>
 
-          {/* Same Day Service */}
-          <div className="w-full md:w-1/2 lg:w-1/4 order-3">
-          <Card className="bg-red-700 text-white flex flex-col h-full p-0">
-            <CardHeader className="pb-2 sm:pb-3">
-              <CardTitle className="text-lg font-bold">Same Day Service!</CardTitle>
-            </CardHeader>
-            <CardContent className="pb-2 sm:pb-3">
-              <p className="text-sm mb-3 sm:mb-4">
-                Need your junk removed today? We offer same-day service throughout Evansville.
-              </p>
-              <Button variant="secondary" size="sm" className="w-full mb-2 sm:mb-3">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Now: {settings.phone}
-              </Button>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3 h-3" />
-                  <span className="text-xs">Licensed & Insured</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3 h-3" />
-                  <span className="text-xs">Free Estimates</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-3 h-3" />
-                  <span className="text-xs">Eco-Friendly</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          </div>
-
-          {/* Why Choose Us */}
-          <div className="w-full lg:w-full order-4">
-          <Card className="flex flex-col h-full p-0">
-            <CardHeader className="pb-1 sm:pb-2">
-              <CardTitle className="text-lg font-bold">Why Evansville Chooses Uncle Sam Junk Removal</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-1 pb-0 sm:pt-2 sm:pb-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">15+ Years Experience</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">Locally Owned & Operated</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">Upfront Pricing</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">Same Day Service</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Leaf className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">Eco-Friendly Disposal</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-red-700" />
-                  <span className="text-sm">100% Satisfaction Guarantee</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          </div>
+          {/* Removed: Same Day Service and Why Evansville cards */}
         </div>
       </div>
     </section>
