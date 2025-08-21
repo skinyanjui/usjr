@@ -175,10 +175,10 @@ export function BentoGrid() {
 
           {/* Why Choose Us */}
           <Card className="md:col-span-2 lg:col-span-2">
-            <CardHeader className="pb-2 sm:pb-3">
+            <CardHeader className="pb-1 sm:pb-2">
               <CardTitle className="text-lg font-bold">Why Evansville Chooses Uncle Sam Junk Removal</CardTitle>
             </CardHeader>
-            <CardContent className="pb-1 sm:pb-2">
+            <CardContent className="pt-1 pb-0 sm:pt-2 sm:pb-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-red-700" />
