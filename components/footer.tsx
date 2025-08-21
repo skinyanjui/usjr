@@ -12,7 +12,7 @@ export function Footer() {
 
   return (
     <footer role="contentinfo" className="text-white">
-      <div className="bg-gradient-to-b from-slate-900 via-red-800 to-red-700">
+      <div className="bg-red-800">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="rounded-lg p-4 mb-6 bg-red-500">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
@@ -116,7 +116,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-500/60 pt-4 mb-4">
+        <div className="border-t border-red-600/60 pt-4 mb-4">
           <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
             <div className="flex items-center gap-2 w-1/2 sm:w-[calc(33.333%-0.75rem)]">
               <Phone className="h-4 w-4" />
@@ -138,7 +138,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-red-500/60 pt-3">
+        <div className="border-t border-red-600/60 pt-3">
           <div className="flex flex-col md:flex-row justify-between items-center gap-1 text-xs sm:text-sm text-red-100">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <div className="flex gap-4">
