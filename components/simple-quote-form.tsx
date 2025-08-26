@@ -134,7 +134,7 @@ export function SimpleQuoteForm() {
                 value={formData.serviceNeeded}
                 onValueChange={(value) => handleInputChange("serviceNeeded", value)}
               >
-                <SelectTrigger id="serviceNeeded" className="mt-1" aria-label="Service Needed">
+                <SelectTrigger id="serviceNeeded" className="mt-1" aria-label="Service Needed" fit>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
@@ -151,7 +151,7 @@ export function SimpleQuoteForm() {
                 Project Size
               </Label>
               <Select value={formData.projectSize} onValueChange={(value) => handleInputChange("projectSize", value)}>
-                <SelectTrigger id="projectSize" className="mt-1" aria-label="Project Size">
+                <SelectTrigger id="projectSize" className="mt-1" aria-label="Project Size" fit>
                   <SelectValue placeholder="Select size" />
                 </SelectTrigger>
                 <SelectContent>

@@ -208,7 +208,7 @@ export function QuoteFormStandalone() {
           <div className="max-w-md w-full">
             <Label htmlFor="sector" className="mb-1 block text-sm">Service Sector</Label>
             <Select value={sector} onValueChange={(value) => setSector(value as typeof sector)}>
-              <SelectTrigger id="sector" aria-label="Service Sector">
+              <SelectTrigger id="sector" aria-label="Service Sector" fit>
                 <SelectValue placeholder="Select sector" />
               </SelectTrigger>
               <SelectContent>
@@ -315,7 +315,7 @@ export function QuoteFormStandalone() {
                       value={formData.bedrooms}
                       onValueChange={(value) => setFormData({ ...formData, bedrooms: value })}
                     >
-                      <SelectTrigger id="qfs-bedrooms" aria-label="Bedrooms">
+                      <SelectTrigger id="qfs-bedrooms" aria-label="Bedrooms" fit>
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -333,7 +333,7 @@ export function QuoteFormStandalone() {
                       value={formData.bathrooms}
                       onValueChange={(value) => setFormData({ ...formData, bathrooms: value })}
                     >
-                      <SelectTrigger id="qfs-bathrooms" aria-label="Bathrooms">
+                      <SelectTrigger id="qfs-bathrooms" aria-label="Bathrooms" fit>
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -354,7 +354,7 @@ export function QuoteFormStandalone() {
                       value={formData.businessType}
                       onValueChange={(value) => setFormData({ ...formData, businessType: value })}
                     >
-                      <SelectTrigger id="qfs-business-type" aria-label="Business Type">
+                      <SelectTrigger id="qfs-business-type" aria-label="Business Type" fit>
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
                       <SelectContent>
@@ -393,7 +393,7 @@ export function QuoteFormStandalone() {
                 onValueChange={(value) => setFormData({ ...formData, service: value })}
                 required
               >
-                <SelectTrigger id="qfs-service" aria-label="Service Needed">
+                <SelectTrigger id="qfs-service" aria-label="Service Needed" fit>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
@@ -422,7 +422,7 @@ export function QuoteFormStandalone() {
                   value={formData.preferredTime}
                   onValueChange={(value) => setFormData({ ...formData, preferredTime: value })}
                 >
-                  <SelectTrigger id="qfs-preferred-time" aria-label="Preferred Time Window">
+                  <SelectTrigger id="qfs-preferred-time" aria-label="Preferred Time Window" fit>
                     <SelectValue placeholder="Select time" />
                   </SelectTrigger>
                   <SelectContent>
@@ -447,7 +447,7 @@ export function QuoteFormStandalone() {
                     value={formData.loadSize}
                     onValueChange={(value) => setFormData({ ...formData, loadSize: value })}
                   >
-                    <SelectTrigger id="jr-load-size" aria-label="Estimated Load Size">
+                    <SelectTrigger id="jr-load-size" aria-label="Estimated Load Size" fit>
                       <SelectValue placeholder="Select size" />
                     </SelectTrigger>
                     <SelectContent>
@@ -483,7 +483,7 @@ export function QuoteFormStandalone() {
                     value={formData.rentalDuration}
                     onValueChange={(value) => setFormData({ ...formData, rentalDuration: value })}
                   >
-                    <SelectTrigger id="dr-duration" aria-label="Rental Duration">
+                    <SelectTrigger id="dr-duration" aria-label="Rental Duration" fit>
                       <SelectValue placeholder="Select duration" />
                     </SelectTrigger>
                     <SelectContent>
@@ -499,7 +499,7 @@ export function QuoteFormStandalone() {
                     value={formData.dumpsterMaterial}
                     onValueChange={(value) => setFormData({ ...formData, dumpsterMaterial: value })}
                   >
-                    <SelectTrigger id="dr-material" aria-label="Material Type">
+                    <SelectTrigger id="dr-material" aria-label="Material Type" fit>
                       <SelectValue placeholder="Select material" />
                     </SelectTrigger>
                     <SelectContent>
@@ -541,7 +541,7 @@ export function QuoteFormStandalone() {
                     value={formData.structureType}
                     onValueChange={(value) => setFormData({ ...formData, structureType: value })}
                   >
-                    <SelectTrigger id="ld-structure" aria-label="Structure Type">
+                    <SelectTrigger id="ld-structure" aria-label="Structure Type" fit>
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -567,7 +567,7 @@ export function QuoteFormStandalone() {
                     value={formData.demolitionMaterial}
                     onValueChange={(value) => setFormData({ ...formData, demolitionMaterial: value })}
                   >
-                    <SelectTrigger id="ld-material" aria-label="Primary Material">
+                    <SelectTrigger id="ld-material" aria-label="Primary Material" fit>
                       <SelectValue placeholder="Select material" />
                     </SelectTrigger>
                     <SelectContent>
@@ -608,7 +608,7 @@ export function QuoteFormStandalone() {
                     value={formData.estatePropertyType}
                     onValueChange={(value) => setFormData({ ...formData, estatePropertyType: value })}
                   >
-                    <SelectTrigger id="ec-type" aria-label="Property Type">
+                    <SelectTrigger id="ec-type" aria-label="Property Type" fit>
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -625,7 +625,7 @@ export function QuoteFormStandalone() {
                     value={formData.estateRooms}
                     onValueChange={(value) => setFormData({ ...formData, estateRooms: value })}
                   >
-                    <SelectTrigger id="ec-rooms" aria-label="Rooms/Areas">
+                    <SelectTrigger id="ec-rooms" aria-label="Rooms/Areas" fit>
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent>
@@ -650,7 +650,7 @@ export function QuoteFormStandalone() {
                     value={formData.estateTimeline}
                     onValueChange={(value) => setFormData({ ...formData, estateTimeline: value })}
                   >
-                    <SelectTrigger id="ec-timeline" aria-label="Timeline/Urgency">
+                    <SelectTrigger id="ec-timeline" aria-label="Timeline/Urgency" fit>
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent>
