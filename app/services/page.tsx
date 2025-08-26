@@ -6,6 +6,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -141,7 +142,13 @@ export default function ServicesPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <ThemedButton theme="blue" size="lg" asChild>
-              <Link href="/quote">Get Free Quote</Link>
+              <Link
+                href="/quote"
+                prefetch
+                onClick={() => trackQuoteClick({ location: "services-hero", label: "Get Free Quote", destination: "/quote" })}
+              >
+                Get Free Quote
+              </Link>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
@@ -267,7 +274,13 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ThemedButton theme="red" size="lg" asChild>
-                <Link href="/quote">Get Free Quote</Link>
+                <Link
+                  href="/quote"
+                  prefetch
+                  onClick={() => trackQuoteClick({ location: "services-cta", label: "Get Free Quote", destination: "/quote" })}
+                >
+                  Get Free Quote
+                </Link>
               </ThemedButton>
               <ThemedButton theme="blue" variant="outline" size="lg" asChild>
                 <Link href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</Link>

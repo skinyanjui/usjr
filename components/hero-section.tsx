@@ -4,6 +4,7 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Truck, Container, Lightbulb } from "lucide-react"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function HeroSection() {
   return (
@@ -30,8 +31,12 @@ export function HeroSection() {
 
         <div className="text-center mb-16">
           <ThemedButton theme="red" size="xl" className="w-full sm:w-auto rounded-full font-bold" asChild>
-            <Link href="/quote" prefetch={false}>
-              GET FREE INSTANT QUOTE
+            <Link
+              href="/quote"
+              prefetch
+              onClick={() => trackQuoteClick({ location: "hero", label: "Get Free Quote", destination: "/quote" })}
+            >
+              Get Free Quote
             </Link>
           </ThemedButton>
           <p className="text-gray-200 mt-2">

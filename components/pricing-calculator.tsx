@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calculator, Truck, Container, Sparkles, Info, Phone } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function PricingCalculator() {
   const [service, setService] = useState("")
@@ -209,7 +210,13 @@ export function PricingCalculator() {
             </a>
           </Button>
           <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white bg-transparent">
-            <Link href="/quote">Get Free Quote</Link>
+            <Link
+              href="/quote"
+              prefetch
+              onClick={() => trackQuoteClick({ location: "pricing-calculator", label: "Get Free Quote", destination: "/quote" })}
+            >
+              Get Free Quote
+            </Link>
           </Button>
         </div>
       </CardContent>

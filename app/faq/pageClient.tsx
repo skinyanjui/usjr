@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Search, HelpCircle, Truck, Container, Sparkles, DollarSign, Phone } from "lucide-react"
 import { faqCategories } from "./data"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export default function FAQClient() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -123,6 +124,8 @@ export default function FAQClient() {
             </Link>
             <Link
               href="/quote"
+              prefetch
+              onClick={() => trackQuoteClick({ location: "faq", label: "Get Free Quote", destination: "/quote" })}
               className="inline-flex items-center justify-center gap-2 border border-red-800 text-red-800 hover:bg-red-100 px-6 py-3 rounded-lg font-semibold transition-colors"
             >
               Get Free Quote

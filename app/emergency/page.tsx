@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import Link from "next/link"
+import { trackQuoteClick } from "@/lib/quoteTracking"
  
 export default function EmergencyPage() {
   return (
@@ -151,7 +152,13 @@ export default function EmergencyPage() {
               </div>
             </div>
             <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-              <Link href="/quote">Get Emergency Quote Now</Link>
+              <Link
+                href="/quote"
+                prefetch
+                onClick={() => trackQuoteClick({ location: "emergency", label: "Get Emergency Quote Now", destination: "/quote" })}
+              >
+                Get Emergency Quote Now
+              </Link>
             </Button>
           </CardContent>
         </Card>

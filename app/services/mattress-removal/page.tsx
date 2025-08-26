@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import Link from "next/link"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export const metadata = {
   title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -92,7 +93,13 @@ export default function MattressRemovalPage() {
                   variant="outline"
                   className="border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
                 >
-                  <Link href="/quote">Get Mattress Removal Quote</Link>
+                  <Link
+                    href="/quote"
+                    prefetch
+                    onClick={() => trackQuoteClick({ location: "mattress-removal", label: "Get Mattress Removal Quote", destination: "/quote" })}
+                  >
+                    Get Mattress Removal Quote
+                  </Link>
                 </Button>
               </div>
             </div>
