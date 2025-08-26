@@ -101,12 +101,14 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
           <div className="flex gap-2">
             {testimonials.map((_, index) => (
               <button
+                type="button"
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
                   index === currentIndex ? "bg-green-600" : "bg-gray-300"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
+                aria-pressed={index === currentIndex}
               />
             ))}
           </div>

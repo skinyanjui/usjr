@@ -81,6 +81,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                type="button"
                 className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "services"}
@@ -111,6 +112,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                type="button"
                 className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "locations"}
@@ -175,6 +177,7 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
+            type="button"
             className="lg:hidden justify-self-end"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}

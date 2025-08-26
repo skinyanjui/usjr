@@ -96,7 +96,9 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               detailed estimate.
             </p>
             <div className="space-y-3 mb-6">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Schedule Call - Calendar Link</Button>
+              <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
+              </Button>
               <p className="text-sm text-gray-500">
                 Or text us at <span className="font-semibold">{settings.phone}</span> for immediate assistance
               </p>
@@ -357,6 +359,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                       type="button"
                       onClick={() => removeFile(index)}
                       className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs"
+                      aria-label={`Remove file ${file.name}`}
                     >
                       <X className="w-3 h-3" />
                     </button>

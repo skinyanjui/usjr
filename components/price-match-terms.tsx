@@ -17,7 +17,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <button className={className ?? "text-red-700 underline underline-offset-2"}>
+          <button type="button" className={className ?? "text-red-700 underline underline-offset-2"}>
             Price Match Terms
           </button>
         )}
