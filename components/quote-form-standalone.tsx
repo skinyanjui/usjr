@@ -195,7 +195,7 @@ export function QuoteFormStandalone() {
   return (
     <Card className="max-w-4xl mx-auto flex flex-col">
       <CardHeader className="p-6 sm:p-8 pb-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-3">
           <div>
             <CardTitle className="text-xl sm:text-2xl font-bold">Request Your Free Quote</CardTitle>
             <CardDescription className="text-sm sm:text-base">Detailed form for accurate pricing - we'll respond within 2 hours</CardDescription>
@@ -204,7 +204,7 @@ export function QuoteFormStandalone() {
         </div>
 
         {/* Sector + Segment Toggle */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-md w-full">
             <Label htmlFor="sector" className="mb-1 block text-sm">Service Sector</Label>
             <Select value={sector} onValueChange={(value) => setSector(value as typeof sector)}>
@@ -247,9 +247,9 @@ export function QuoteFormStandalone() {
       <CardContent className="p-6 sm:p-8 pt-0">
         <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           {/* Contact Information */}
-          <div className="space-y-4">
+          <div className="space-y-5 sm:space-y-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Contact Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               <div>
                 <Label htmlFor="name">Full Name *</Label>
                 <Input
@@ -283,7 +283,7 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Property Information */}
-          <div className="space-y-4">
+          <div className="space-y-5 sm:space-y-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Property Details</h3>
             <div>
               <Label htmlFor="address">Property Address *</Label>
@@ -296,7 +296,7 @@ export function QuoteFormStandalone() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
               <div>
                 <Label htmlFor="sqft">Square Footage (Optional)</Label>
                 <Input
@@ -384,7 +384,7 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Service Selection */}
-          <div className="space-y-4">
+          <div className="space-y-5 sm:space-y-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Service Details</h3>
             <div>
               <Label htmlFor="qfs-service">Service Needed *</Label>
@@ -406,7 +406,7 @@ export function QuoteFormStandalone() {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               <div>
                 <Label htmlFor="preferredDate">Preferred Date</Label>
                 <Input
@@ -438,9 +438,9 @@ export function QuoteFormStandalone() {
 
           {/* Sector-specific Details */}
           {sector === "junk-removal" && (
-            <div className="space-y-4">
+            <div className="space-y-5 sm:space-y-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900">Junk Removal Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <Label htmlFor="jr-load-size">Estimated Load Size</Label>
                   <Select
@@ -474,9 +474,9 @@ export function QuoteFormStandalone() {
           )}
 
           {sector === "dumpster-rental" && (
-            <div className="space-y-4">
+            <div className="space-y-5 sm:space-y-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900">Dumpster Rental Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <Label htmlFor="dr-duration">Rental Duration</Label>
                   <Select
@@ -532,9 +532,9 @@ export function QuoteFormStandalone() {
           )}
 
           {sector === "light-demolition" && (
-            <div className="space-y-4">
+            <div className="space-y-5 sm:space-y-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900">Demolition Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <Label htmlFor="ld-structure">Structure Type</Label>
                   <Select
@@ -599,9 +599,9 @@ export function QuoteFormStandalone() {
           )}
 
           {sector === "estate-cleanouts" && (
-            <div className="space-y-4">
+            <div className="space-y-5 sm:space-y-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900">Estate Cleanout Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <Label htmlFor="ec-type">Property Type</Label>
                   <Select
@@ -665,7 +665,7 @@ export function QuoteFormStandalone() {
           )}
 
           {/* Photo Upload */}
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4 sm:space-y-5">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Photos for Accurate Pricing</h3>
             <p className="text-xs sm:text-sm text-gray-600">
               Upload up to 6 photos of the areas/items for the job to help us provide the most accurate estimate
@@ -692,7 +692,7 @@ export function QuoteFormStandalone() {
             </div>
 
             {uploadedFiles.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
                     <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center border">
@@ -715,7 +715,7 @@ export function QuoteFormStandalone() {
 
           {/* Preferences (cleaning only) */}
           {sector === "cleaning" && (
-            <div className="space-y-4">
+            <div className="space-y-5 sm:space-y-6">
               <h3 className="text-lg font-semibold text-gray-900">Preferences</h3>
               <div className="flex items-center space-x-3">
                 <Checkbox
@@ -732,7 +732,7 @@ export function QuoteFormStandalone() {
           )}
 
           {/* Additional Message */}
-          <div className="space-y-4">
+          <div className="space-y-5 sm:space-y-6">
             <h3 className="text-lg font-semibold text-gray-900">Additional Information</h3>
             <div>
               <Label htmlFor="message">Special Requirements or Questions</Label>
@@ -747,11 +747,11 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-6 border-t">
+          <div className="pt-8 border-t">
             <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg">
               Get My Free Quote
             </Button>
-            <p className="text-center text-sm text-gray-500 mt-3">
+            <p className="text-center text-sm text-gray-500 mt-4">
               We'll review your request and respond within 2 hours with a detailed estimate
             </p>
           </div>
