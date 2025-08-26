@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function AboutSection() {
   const stats = [
@@ -43,8 +44,8 @@ export function AboutSection() {
               organized.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
-                Get Free Quote
+              <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
+                <Link href="/quote">Get Free Quote</Link>
               </Button>
               <Button
                 asChild

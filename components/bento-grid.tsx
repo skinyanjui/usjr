@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Star } from "lucide-react"
+import Link from "next/link"
 
 export function BentoGrid() {
   const [formData, setFormData] = useState({
@@ -99,8 +100,8 @@ export function BentoGrid() {
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                 className="text-sm min-h-[60px]"
               />
-              <Button className="w-full bg-red-700 hover:bg-red-800 text-sm">
-                Get Free Quote - Same Day Service Available
+              <Button asChild className="w-full bg-red-700 hover:bg-red-800 text-sm">
+                <Link href="/quote">Get Free Quote - Same Day Service Available</Link>
               </Button>
               <p className="text-xs text-gray-500">
                 By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
