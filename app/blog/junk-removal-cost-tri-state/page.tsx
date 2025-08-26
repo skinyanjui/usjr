@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import Image from "next/image"
 
 export const metadata = {
   title: "Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide",
@@ -42,6 +43,16 @@ export default function JunkRemovalCostPage() {
                 <User className="w-4 h-4" />
                 <span>Uncle Sam Team</span>
               </div>
+            </div>
+            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+              <Image
+                src="/junk-removal-pricing.png"
+                alt="Junk removal cost ranges and factors"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
             </div>
           </header>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Shed Removal in Evansville: Permit Tips, Pricing, and Timeline | Uncle Sam Junk Removal",
@@ -16,6 +17,16 @@ export default function ShedRemovalGuideBlog() {
           title="Shed removal in Evansville: permit tips, pricing, and timeline"
           subtitle="Plan your project with confidence"
         />
+        <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+          <Image
+            src="/shed-removal-evansville.png"
+            alt="Shed removal process and planning"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+          />
+        </div>
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">
             Most small sheds under 200 sq ft don't require permits in many jurisdictions, but always check local rules.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Mattress Disposal in Evansville: Recycling, Costs, and Pickup Options | Uncle Sam Junk Removal",
@@ -16,6 +17,16 @@ export default function MattressDisposalBlog() {
           title="Mattress disposal in Evansville: recycling, costs, and pickup options"
           subtitle="How to handle old mattresses the right way"
         />
+        <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+          <Image
+            src="/mattress-removal-evansville.png"
+            alt="Mattress disposal and recycling options"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+          />
+        </div>
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">
             Old mattresses are bulky, hard to haul, and often not accepted by regular trash pickup. In Evansville, you

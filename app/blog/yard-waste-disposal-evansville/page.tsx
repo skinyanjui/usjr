@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Yard Waste Disposal in Evansville: Composting and Pickup Basics | Uncle Sam Junk Removal",
@@ -16,6 +17,16 @@ export default function YardWasteDisposalBlog() {
           title="Yard waste disposal in Evansville: composting and pickup basics"
           subtitle="Seasonal cleanup made simple"
         />
+        <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+          <Image
+            src="/yard-waste-removal-evansville.png"
+            alt="Yard waste disposal and composting"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+          />
+        </div>
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">
             Evansville yard waste can be composted, mulched, or hauled away. For brush and limbs up to 6 inches in

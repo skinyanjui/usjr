@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Clock, Truck, Recycle, Building2, Home } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Junk Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -36,19 +37,10 @@ export default function EvansvillePage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-red-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Evansville, Indiana</h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">
-              Same-day junk removal service throughout Evansville and surrounding areas
-            </p>
-            <div className="flex items-center justify-center gap-2 text-gray-700">
-              <MapPin className="w-5 h-5 text-red-600" />
-              <span>Proudly serving Evansville since 2020</span>
-            </div>
-          </div>
+      <PageHero title="Junk Removal in Evansville, Indiana" description="Same-day junk removal service throughout Evansville and surrounding areas" imageSrc="/junk-removal-evansville.png" priority />
 
+      <section className="py-16 bg-gradient-to-b from-red-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal in Evansville?</h2>
@@ -110,58 +102,6 @@ export default function EvansvillePage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Evansville Disposal Guidelines & Regulations
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="glass">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-green-600" />
-                  What We Accept in Evansville
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-gray-700">
-                  <li>✓ Furniture and appliances</li>
-                  <li>✓ Electronics and computers</li>
-                  <li>✓ Construction debris (non-hazardous)</li>
-                  <li>✓ Yard waste and landscaping materials</li>
-                  <li>✓ Hot tubs and exercise equipment</li>
-                  <li>✓ Mattresses and box springs</li>
-                  <li>✓ Office furniture and equipment</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="glass">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Home className="w-5 h-5 text-red-600" />
-                  Evansville Disposal Restrictions
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-gray-700">
-                  <li>✗ Hazardous chemicals and paint</li>
-                  <li>✗ Asbestos-containing materials</li>
-                  <li>✗ Medical waste and pharmaceuticals</li>
-                  <li>✗ Automotive fluids and batteries</li>
-                  <li>✗ Propane tanks and compressed gases</li>
-                  <li>✗ Tires (contact Vanderburgh County)</li>
-                </ul>
-                <p className="text-sm text-gray-600 mt-4">
-                  For hazardous waste disposal, contact Vanderburgh County Solid Waste District at (812) 435-5624
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>

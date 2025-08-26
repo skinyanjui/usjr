@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Estate Cleanout Guide: Compassionate Planning and Donation Options | Uncle Sam Junk Removal",
@@ -16,6 +17,16 @@ export default function EstateCleanoutGuideBlog() {
           title="Estate cleanout guide: compassionate planning and donation options"
           subtitle="Supportive steps during a difficult time"
         />
+        <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+          <Image
+            src="/estate-cleanout-evansville.png"
+            alt="Estate cleanout planning and donation options"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+          />
+        </div>
         <GlassCard className="p-8">
           <p className="text-gray-700 mb-4">
             Estate cleanouts require careful planning and empathy. Start with important documents, identify items with
