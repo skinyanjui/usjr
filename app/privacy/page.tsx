@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Uncle Sam Junk Removal",
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen pt-24 pb-16 bg-gray-50">
-      <div className="max-w-3xl mx-auto px-4">
+    <main className="min-h-screen bg-gray-50">
+      <PageHero title="Privacy Policy" description="How we collect, use, and protect your information" imageSrc="/natural-cleaning-service.png" priority />
+      <div className="max-w-3xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
         <p className="text-gray-600 mb-8">Effective: January 1, 2025</p>
 

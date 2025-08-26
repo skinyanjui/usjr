@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Junk Removal Owensboro KY | Same-Day Service | Uncle Sam Junk Removal",
@@ -23,17 +24,10 @@ export default function OwensboroPage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-purple-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Owensboro, Kentucky</h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">Extended service area to Owensboro and Daviess County</p>
-            <div className="flex items-center justify-center gap-2 text-gray-700">
-              <MapPin className="w-5 h-5 text-purple-600" />
-              <span>Bringing Indiana service quality to Owensboro</span>
-            </div>
-          </div>
+      <PageHero title="Junk Removal in Owensboro, Kentucky" description="Extended service area to Owensboro and Daviess County" imageSrc="/junk-removal-evansville.png" priority />
 
+      <section className="py-16 bg-gradient-to-b from-purple-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Owensboro Junk Removal Service</h2>

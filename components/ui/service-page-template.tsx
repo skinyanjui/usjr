@@ -5,6 +5,7 @@ import { Clock } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import Link from "next/link"
+import { PageHero } from "@/components/ui/page-hero"
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -127,29 +128,35 @@ export function ServicePageTemplate({
   ctaPrimary = "📞 Call Now",
   ctaSecondary = "Get Free Quote",
   children,
+  heroImage,
 }: ServicePageTemplateProps) {
   const classes = themeClasses[theme]
 
   return (
     <main className="min-h-screen">
+      {heroImage && (
+        <PageHero title={title} description={description} imageSrc={heroImage} priority />
+      )}
       {/* Hero Section */}
       <section className={`pt-32 pb-16 bg-gradient-to-b ${classes.gradient}`}>
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">{description}</p>
+          {!heroImage && (
+            <div className="text-center mb-12">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
+              <p className="text-lg sm:text-xl text-gray-600 mb-6">{description}</p>
 
-            {badges.length > 0 && (
-              <div className="flex items-center justify-center gap-4 text-gray-700">
-                {badges.map((badge, index) => (
-                  <div key={index} className="flex items-center gap-1">
-                    <Clock className={`w-5 h-5 ${classes.accent}`} />
-                    <span>{badge}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+              {badges.length > 0 && (
+                <div className="flex items-center justify-center gap-4 text-gray-700">
+                  {badges.map((badge, index) => (
+                    <div key={index} className="flex items-center gap-1">
+                      <Clock className={`w-5 h-5 ${classes.accent}`} />
+                      <span>{badge}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>

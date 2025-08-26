@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -23,17 +24,10 @@ export default function BoonvillePage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-orange-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Boonville, Indiana</h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">Reliable junk removal service for Boonville and Warrick County</p>
-            <div className="flex items-center justify-center gap-2 text-gray-700">
-              <MapPin className="w-5 h-5 text-orange-600" />
-              <span>Serving Warrick County's county seat</span>
-            </div>
-          </div>
+      <PageHero title="Junk Removal in Boonville, Indiana" description="Reliable junk removal service for Boonville and Warrick County" imageSrc="/junk-removal-evansville.png" priority />
 
+      <section className="py-16 bg-gradient-to-b from-orange-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Boonville's Local Junk Removal Team</h2>

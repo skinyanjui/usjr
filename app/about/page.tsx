@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
@@ -14,19 +15,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-20">
-      {/* Hero Section */}
-      <section className="pt-12 pb-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">About Uncle Sam Junk Removal</h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-red-100 max-w-3xl mx-auto">
-              Evansville's trusted partner for junk removal, dumpster rental, and professional cleaning services since
-              2010
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      <PageHero title="About Uncle Sam Junk Removal" description="Evansville's trusted partner for junk removal, dumpster rental, and professional cleaning services since 2010" imageSrc="/junk-removal-evansville.png" priority />
 
       {/* Our Story */}
       <section className="py-16">

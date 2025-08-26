@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Junk Removal Princeton IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -23,19 +24,10 @@ export default function PrincetonPage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-teal-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Junk Removal in Princeton, Indiana</h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">
-              Professional junk removal service for Princeton and Gibson County
-            </p>
-            <div className="flex items-center justify-center gap-2 text-gray-700">
-              <MapPin className="w-5 h-5 text-teal-600" />
-              <span>Serving Gibson County's largest city</span>
-            </div>
-          </div>
+      <PageHero title="Junk Removal in Princeton, Indiana" description="Professional junk removal service for Princeton and Gibson County" imageSrc="/junk-removal-evansville.png" priority />
 
+      <section className="py-16 bg-gradient-to-b from-teal-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Princeton's Trusted Junk Removal Service</h2>
