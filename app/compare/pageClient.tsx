@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Check, X, Truck, Container, Sparkles, Clock, DollarSign, Users } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 const services = [
   {
@@ -207,7 +208,13 @@ export default function CompareClient() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="bg-red-600 hover:bg-red-700">
-                <Link href="/quote">Get Free Quote</Link>
+                <Link
+                  href="/quote"
+                  prefetch
+                  onClick={() => trackQuoteClick({ location: "compare-selected", label: "Get Free Quote", destination: "/quote" })}
+                >
+                  Get Free Quote
+                </Link>
               </Button>
               <Button asChild variant="outline">
                 <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
@@ -226,7 +233,13 @@ export default function CompareClient() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="bg-green-600 hover:bg-green-700">
-              <Link href="/quote">Get Personalized Quote</Link>
+              <Link
+                href="/quote"
+                prefetch
+                onClick={() => trackQuoteClick({ location: "compare-bottom", label: "Get Personalized Quote", destination: "/quote" })}
+              >
+                Get Personalized Quote
+              </Link>
             </Button>
             <Button asChild variant="outline">
               <Link href="/faq">View FAQ</Link>

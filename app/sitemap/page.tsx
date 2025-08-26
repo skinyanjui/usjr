@@ -2,7 +2,7 @@ import Link from "next/link"
 import { NAV } from "@/lib/nav"
 
 export default function HtmlSitemapPage() {
-	const topLevel = NAV.filter((i) => i.href && !["Get Quote"].includes(i.label))
+	const topLevel = NAV.filter((i) => i.href && !["Get Quote", "Get Free Quote"].includes(i.label))
 	const services = NAV.find((i) => i.label === "Services")?.children ?? []
 	const locations = NAV.find((i) => i.label === "Locations")?.children ?? []
 
@@ -20,7 +20,7 @@ export default function HtmlSitemapPage() {
 						</li>
 					))}
 					<li>
-						<Link href="/quote" className="text-red-700 hover:underline">Get Quote</Link>
+						<Link href="/quote" className="text-red-700 hover:underline">Get Free Quote</Link>
 					</li>
 				</ul>
 			</section>

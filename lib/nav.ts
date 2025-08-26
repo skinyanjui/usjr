@@ -27,7 +27,7 @@ export const NAV: NavItem[] = [
   },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
-  { label: "Get Quote", href: "/quote" },
+  { label: "Get Free Quote", href: "/quote" },
 ]
 
 export const CTAS = {

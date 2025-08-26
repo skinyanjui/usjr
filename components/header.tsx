@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 import { NAV } from "@/lib/nav"
 
 const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
@@ -171,7 +172,13 @@ export function Header() {
               </div>
             </div>
             <Button asChild size="xs" className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold">
-              <Link href="/quote">GET FREE QUOTE</Link>
+              <Link
+                href="/quote"
+                prefetch
+                onClick={() => trackQuoteClick({ location: "header-desktop", label: "Get Free Quote", destination: "/quote" })}
+              >
+                Get Free Quote
+              </Link>
             </Button>
           </div>
 
@@ -256,7 +263,13 @@ export function Header() {
               </Link>
               <div className="pt-4">
                 <Button asChild size="sm" className="bg-red-600 hover:bg-red-700 text-white w-full">
-                  <Link href="/quote">Get Free Quote</Link>
+                  <Link
+                    href="/quote"
+                    prefetch
+                    onClick={() => trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })}
+                  >
+                    Get Free Quote
+                  </Link>
                 </Button>
               </div>
             </div>

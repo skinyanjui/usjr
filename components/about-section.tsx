@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function AboutSection() {
   const stats = [
@@ -45,7 +46,13 @@ export function AboutSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
-                <Link href="/quote">Get Free Quote</Link>
+                <Link
+                  href="/quote"
+                  prefetch
+                  onClick={() => trackQuoteClick({ location: "about-section", label: "Get Free Quote", destination: "/quote" })}
+                >
+                  Get Free Quote
+                </Link>
               </Button>
               <Button
                 asChild

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
@@ -216,14 +217,15 @@ export default function AboutPage() {
             <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold text-lg">
               📞 {settings.phone}
             </Button>
-            <Link href="/quote">
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-full font-semibold text-lg bg-transparent"
+            <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-full font-semibold text-lg bg-transparent">
+              <Link
+                href="/quote"
+                prefetch
+                onClick={() => trackQuoteClick({ location: "about-page-cta", label: "Get Free Quote", destination: "/quote" })}
               >
-                GET FREE QUOTE
-              </Button>
-            </Link>
+                Get Free Quote
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
