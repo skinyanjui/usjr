@@ -106,7 +106,9 @@ export default function QuotePage() {
               </div>
 
               <div className="space-y-3">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">Get Junk Removal Quote</Button>
+                <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  <Link href="/services/junk-removal">Get Junk Removal Quote</Link>
+                </Button>
                 <Link href="/services/junk-removal">
                   <Button
                     variant="outline"
@@ -162,7 +164,9 @@ export default function QuotePage() {
               </div>
 
               <div className="space-y-3">
-                <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white">Get Dumpster Quote</Button>
+                <Button asChild className="w-full bg-orange-600 hover:bg-orange-700 text-white">
+                  <Link href="/services/dumpster-rental">Get Dumpster Quote</Link>
+                </Button>
                 <Link href="/services/dumpster-rental">
                   <Button
                     variant="outline"
@@ -218,7 +222,9 @@ export default function QuotePage() {
               </div>
 
               <div className="space-y-3">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">Get Cleaning Quote</Button>
+                <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-white">
+                  <Link href="/cleaning">Get Cleaning Quote</Link>
+                </Button>
                 <Link href="/cleaning">
                   <Button
                     variant="outline"

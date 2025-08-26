@@ -84,8 +84,8 @@ export default function MattressRemovalPage() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call {settings.phone}
+                <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
+                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
                 </Button>
                 <Button
                   asChild
