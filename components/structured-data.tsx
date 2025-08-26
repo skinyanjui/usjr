@@ -17,6 +17,32 @@ export function StructuredData({ type, data }: StructuredDataProps) {
 
   switch (type) {
     case "LocalBusiness": {
+      const hours = settings.businessHours
+      const openingHours = [
+        `Mo ${hours.monday.replace(/\s/g, '')}`,
+        `Tu ${hours.tuesday.replace(/\s/g, '')}`,
+        `We ${hours.wednesday.replace(/\s/g, '')}`,
+        `Th ${hours.thursday.replace(/\s/g, '')}`,
+        `Fr ${hours.friday.replace(/\s/g, '')}`,
+        `Sa ${hours.saturday.replace(/\s/g, '')}`,
+        `Su ${hours.sunday.toLowerCase().includes("closed") ? "closed" : hours.sunday.replace(/\s/g, '')}`,
+      ]
+
+      const activeServices = getActiveServices()
+      const priceRange = (() => {
+        const prices = activeServices
+          .map((s) => s.price.match(/\$?\d+/g))
+          .filter(Boolean)
+          .flat()
+          .map((p) => Number(String(p).replace(/[^\d]/g, '')))
+          .filter((n) => !Number.isNaN(n))
+          .sort((a, b) => a - b)
+        if (prices.length === 0) return undefined
+        const min = prices[0]
+        const max = prices[prices.length - 1]
+        return `$${min}${max && max !== min ? `-$${max}` : '+'}`
+      })()
+
       structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -38,19 +64,19 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           latitude: "37.9747",
           longitude: "-87.5558",
         },
-        openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00", "Su closed"],
+        openingHours,
         serviceArea: settings.serviceAreas.map((area) => ({
           "@type": "City",
           name: area,
         })),
-        services: getActiveServices().map((service) => service.name),
-        priceRange: "From $80-$200",
+        services: activeServices.map((service) => service.name),
+        priceRange: priceRange || undefined,
         paymentAccepted: ["Cash", "Credit Card", "Check"],
         currenciesAccepted: "USD",
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Cleaning Services",
-          itemListElement: getActiveServices().map((service) => ({
+          itemListElement: activeServices.map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
