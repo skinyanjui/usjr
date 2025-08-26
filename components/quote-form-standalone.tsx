@@ -152,8 +152,8 @@ export function QuoteFormStandalone() {
 
   if (isSubmitted) {
     return (
-      <Card className="max-w-2xl mx-auto">
-        <CardContent className="text-center py-12">
+      <Card className="max-w-2xl mx-auto flex flex-col">
+        <CardContent className="text-center p-6 sm:p-12">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
@@ -193,9 +193,9 @@ export function QuoteFormStandalone() {
   }
 
   return (
-    <Card className="max-w-4xl mx-auto">
-      <CardHeader>
-        <div className="flex items-center justify-between mb-4">
+    <Card className="max-w-4xl mx-auto flex flex-col">
+      <CardHeader className="p-6 sm:p-8 pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-2">
           <div>
             <CardTitle className="text-xl sm:text-2xl font-bold">Request Your Free Quote</CardTitle>
             <CardDescription className="text-sm sm:text-base">Detailed form for accurate pricing - we'll respond within 2 hours</CardDescription>
@@ -244,7 +244,7 @@ export function QuoteFormStandalone() {
         </div>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="p-6 sm:p-8 pt-0">
         <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           {/* Contact Information */}
           <div className="space-y-4">
