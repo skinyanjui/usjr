@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Leaf, Shield, Clock, Star, Phone, Camera } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import QuoteFormClient from "@/app/quote/QuoteFormClient"
 
 export default function HomePage() {
   return (
@@ -15,7 +16,7 @@ export default function HomePage() {
       {/* Quote CTA Section (mirrors quote page header) */}
       <section className="bg-gradient-to-br from-blue-50 via-green-50 to-orange-50 py-12 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center gap-2 mb-6">
+          <div className="flex justify-center gap-3 sm:gap-4 mb-8">
             <Badge className="bg-green-100 text-green-800 border-green-200">
               <Leaf className="w-3 h-3 mr-1" />
               Eco-Friendly
@@ -34,12 +35,12 @@ export default function HomePage() {
             </Badge>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get Your Free Quote Today</h2>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get Your Free Quote Today</h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto mb-8">
             Professional junk removal, dumpster rental, cleaning, estate cleanouts, and light demolition in Evansville and Southern Indiana.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 justify-center items-center">
             <Button asChild size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3">
               <a href={`tel:${settings.phoneE164}`}><Phone className="w-5 h-5 mr-2" />Call {settings.phone}</a>
             </Button>
@@ -52,6 +53,19 @@ export default function HomePage() {
               <a href={`sms:${settings.phoneE164}`}><Camera className="w-5 h-5 mr-2" />Text Photos for Instant Quote</a>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Embedded Quote Form (reuses the quote page component) */}
+      <section className="py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Get Your Detailed Quote</h3>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+              Fill out the form below or upload photos for the most accurate pricing. We'll respond within 2 hours with your detailed estimate.
+            </p>
+          </div>
+          <QuoteFormClient />
         </div>
       </section>
 
