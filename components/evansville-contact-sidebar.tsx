@@ -56,8 +56,8 @@ export function EvansvilleContactSidebar() {
           <p className="mb-5 sm:mb-6 text-white text-sm sm:text-base">
             Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
           </p>
-          <Button className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 font-semibold mb-4">
-            Call Now: {settings.phone}
+          <Button asChild className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 font-semibold mb-4">
+            <a href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</a>
           </Button>
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-white">
             <span>✓ Licensed & Insured</span>

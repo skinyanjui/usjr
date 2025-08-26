@@ -164,8 +164,8 @@ export function QuoteFormStandalone() {
           </p>
 
           <div className="space-y-4 mb-8">
-            <Button className="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white">
-              Schedule Call - Calendar Link
+            <Button asChild className="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white">
+              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
             </Button>
             <div className="text-center">
               <p className="text-sm text-gray-500 mb-2">Need immediate assistance?</p>

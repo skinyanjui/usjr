@@ -66,7 +66,7 @@ export function ServiceArea() {
                 aria-label="ZIP code"
                 className="px-3 py-2 border border-gray-300 rounded-md w-32"
               />
-              <button onClick={handleCheck} className="px-4 py-2 bg-red-600 text-white rounded-md font-semibold">Check</button>
+              <button type="button" onClick={handleCheck} className="px-4 py-2 bg-red-600 text-white rounded-md font-semibold">Check</button>
             </div>
             <p className="text-sm text-gray-600 mt-2">{message}</p>
             <p className="text-xs text-gray-500 mt-1">Some services may be location-limited (e.g., dumpsters).</p>
