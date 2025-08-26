@@ -16,6 +16,13 @@ import { settings } from "@/lib/cms-content"
 
 export function QuoteFormStandalone() {
   const [segment, setSegment] = useState<"residential" | "commercial">("residential")
+  const [sector, setSector] = useState<
+    | "junk-removal"
+    | "dumpster-rental"
+    | "cleaning"
+    | "light-demolition"
+    | "estate-cleanouts"
+  >("junk-removal")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -58,6 +65,39 @@ export function QuoteFormStandalone() {
     "After-Hours Cleaning",
   ]
 
+  const junkRemovalServices = [
+    "Single Item Pickup",
+    "Furniture Removal",
+    "Appliance Removal",
+    "Garage Cleanout",
+    "Estate Cleanout",
+    "Construction Debris",
+    "Yard Waste",
+    "Hot Tub Removal",
+    "Shed Removal",
+    "Light Demolition",
+  ]
+
+  const dumpsterRentalServices = [
+    "10-yard Dumpster",
+    "20-yard Dumpster",
+    "30-yard Dumpster",
+    "40-yard Dumpster",
+  ]
+
+  const estateCleanoutServices = [
+    "Estate Cleanout - Partial",
+    "Estate Cleanout - Full",
+    "Hoarding Cleanup",
+  ]
+
+  const lightDemolitionServices = [
+    "Interior Demolition",
+    "Deck Removal",
+    "Fence Removal",
+    "Shed Tear-Down",
+  ]
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || [])
     if (uploadedFiles.length + files.length <= 6) {
@@ -73,9 +113,25 @@ export function QuoteFormStandalone() {
     e.preventDefault()
     // Here you would typically send the form data to your backend
     if (process.env.NODE_ENV !== "production") {
-      console.log("Form submitted:", { formData, uploadedFiles, segment })
+      console.log("Form submitted:", { formData, uploadedFiles, segment, sector })
     }
     setIsSubmitted(true)
+  }
+
+  const getSectorServiceOptions = () => {
+    switch (sector) {
+      case "junk-removal":
+        return junkRemovalServices
+      case "dumpster-rental":
+        return dumpsterRentalServices
+      case "estate-cleanouts":
+        return estateCleanoutServices
+      case "light-demolition":
+        return lightDemolitionServices
+      case "cleaning":
+      default:
+        return segment === "residential" ? residentialServices : commercialServices
+    }
   }
 
   if (isSubmitted) {
@@ -131,26 +187,44 @@ export function QuoteFormStandalone() {
           <Badge className="bg-green-100 text-green-800 border-green-200">Free Estimate</Badge>
         </div>
 
-        {/* Segment Toggle */}
-        <div className="flex gap-2 p-1 bg-gray-100 rounded-lg max-w-md">
-          <button
-            type="button"
-            onClick={() => setSegment("residential")}
-            className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
-              segment === "residential" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Residential
-          </button>
-          <button
-            type="button"
-            onClick={() => setSegment("commercial")}
-            className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
-              segment === "commercial" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Commercial
-          </button>
+        {/* Sector + Segment Toggle */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="max-w-md w-full">
+            <Label htmlFor="sector" className="mb-1 block text-sm">Service Sector</Label>
+            <Select value={sector} onValueChange={(value) => setSector(value as typeof sector)}>
+              <SelectTrigger id="sector" aria-label="Service Sector">
+                <SelectValue placeholder="Select sector" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="junk-removal">Junk Removal</SelectItem>
+                <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
+                <SelectItem value="cleaning">Cleaning</SelectItem>
+                <SelectItem value="estate-cleanouts">Estate Cleanouts</SelectItem>
+                <SelectItem value="light-demolition">Light Demolition</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex gap-2 p-1 bg-gray-100 rounded-lg max-w-md w-full">
+            <button
+              type="button"
+              onClick={() => setSegment("residential")}
+              className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
+                segment === "residential" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Residential
+            </button>
+            <button
+              type="button"
+              onClick={() => setSegment("commercial")}
+              className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
+                segment === "commercial" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Commercial
+            </button>
+          </div>
         </div>
       </CardHeader>
 
@@ -217,7 +291,7 @@ export function QuoteFormStandalone() {
                 />
               </div>
 
-              {segment === "residential" ? (
+              {sector === "cleaning" && segment === "residential" ? (
                 <>
                   <div>
                     <Label htmlFor="qfs-bedrooms">Bedrooms</Label>
@@ -256,7 +330,7 @@ export function QuoteFormStandalone() {
                     </Select>
                   </div>
                 </>
-              ) : (
+              ) : segment === "commercial" ? (
                 <>
                   <div>
                     <Label htmlFor="qfs-business-type">Business Type</Label>
@@ -287,6 +361,8 @@ export function QuoteFormStandalone() {
                     />
                   </div>
                 </>
+              ) : (
+                <></>
               )}
             </div>
           </div>
@@ -305,7 +381,7 @@ export function QuoteFormStandalone() {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {(segment === "residential" ? residentialServices : commercialServices).map((service) => (
+                  {getSectorServiceOptions().map((service) => (
                     <SelectItem key={service} value={service}>
                       {service}
                     </SelectItem>
@@ -348,7 +424,7 @@ export function QuoteFormStandalone() {
           <div className="space-y-3 sm:space-y-4">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Photos for Accurate Pricing</h3>
             <p className="text-xs sm:text-sm text-gray-600">
-              Upload up to 6 photos of the areas to be cleaned for the most accurate estimate
+              Upload up to 6 photos of the areas/items for the job to help us provide the most accurate estimate
             </p>
 
             <div>
@@ -393,21 +469,23 @@ export function QuoteFormStandalone() {
             )}
           </div>
 
-          {/* Eco-Friendly Option */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Cleaning Preferences</h3>
-            <div className="flex items-center space-x-3">
-              <Checkbox
-                id="ecoFriendly"
-                checked={formData.ecoFriendly}
-                onCheckedChange={(checked) => setFormData({ ...formData, ecoFriendly: checked as boolean })}
-              />
-              <Label htmlFor="ecoFriendly" className="text-sm flex items-center gap-2">
-                <Leaf className="w-4 h-4 text-green-600" />
-                Use eco-friendly, natural products only (recommended)
-              </Label>
+          {/* Preferences (cleaning only) */}
+          {sector === "cleaning" && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900">Preferences</h3>
+              <div className="flex items-center space-x-3">
+                <Checkbox
+                  id="ecoFriendly"
+                  checked={formData.ecoFriendly}
+                  onCheckedChange={(checked) => setFormData({ ...formData, ecoFriendly: checked as boolean })}
+                />
+                <Label htmlFor="ecoFriendly" className="text-sm flex items-center gap-2">
+                  <Leaf className="w-4 h-4 text-green-600" />
+                  Use eco-friendly, natural products only (recommended)
+                </Label>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Additional Message */}
           <div className="space-y-4">
@@ -418,7 +496,7 @@ export function QuoteFormStandalone() {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Any specific cleaning requirements, areas of concern, pets, allergies, or questions you'd like to discuss..."
+                placeholder="Any specific requirements, access details, hazards, or questions you'd like to discuss..."
                 rows={4}
               />
             </div>
