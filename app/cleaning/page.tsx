@@ -6,6 +6,7 @@ import { CheckCircle, Leaf, Users, Clock, Shield, Star } from "lucide-react"
 import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -68,20 +69,14 @@ export default function CleaningHub() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-      {/* Hero Section */}
-      <section className="pt-16 pb-16 px-4">
+      <PageHero title="Professional Cleaning Services in Evansville, IN" description="Veteran-led residential and commercial cleaning using natural products" imageSrc="/natural-cleaning-service.png" priority />
+
+      {/* Subheader badges/CTAs */}
+      <section className="pt-8 pb-8 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <Badge className="mb-6 bg-green-100 text-green-800 border-green-200">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Professional Cleaning Services
-            <span className="block text-green-600">in Evansville, IN</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Veteran-led residential and commercial cleaning using natural, eco-friendly products. Flexible scheduling
-            and satisfaction guaranteed.
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
               Book Now

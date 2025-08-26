@@ -6,6 +6,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -131,15 +132,12 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <SectionHeader
-            title="Professional Services in Evansville"
-            subtitle="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"
-          />
+      <PageHero title="Professional Services in Evansville" description="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana" imageSrc="/junk-removal-evansville.png" priority />
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      {/* Top CTAs */}
+      <section className="py-8 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="mt-2 flex flex-col sm:flex-row gap-4 justify-center">
             <ThemedButton theme="blue" size="lg" asChild>
               <Link href="/quote">Get Free Quote</Link>
             </ThemedButton>
@@ -259,21 +257,18 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <GlassCard className="p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Get your free estimate today and experience the Uncle Sam difference. Professional, reliable, and
-              eco-friendly service guaranteed.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ThemedButton theme="red" size="lg" asChild>
-                <Link href="/quote">Get Free Quote</Link>
-              </ThemedButton>
-              <ThemedButton theme="blue" variant="outline" size="lg" asChild>
-                <Link href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</Link>
-              </ThemedButton>
-            </div>
-          </GlassCard>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Book your service today or get a free, no-obligation quote.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ThemedButton theme="blue" size="lg" asChild>
+              <Link href="/quote">Get Free Quote</Link>
+            </ThemedButton>
+            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+              <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
+            </ThemedButton>
+          </div>
         </div>
       </section>
     </div>
