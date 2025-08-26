@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-react"
 import { settings } from "@/lib/cms-content"
-import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
  
 export default function EmergencyPage() {
   return (
@@ -152,13 +151,7 @@ export default function EmergencyPage() {
               </div>
             </div>
             <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-              <Link
-                href="/quote"
-                prefetch
-                onClick={() => trackQuoteClick({ location: "emergency", label: "Get Emergency Quote Now", destination: "/quote" })}
-              >
-                Get Emergency Quote Now
-              </Link>
+              <QuoteCtaLink location="emergency" label="Get Emergency Quote Now">Get Emergency Quote Now</QuoteCtaLink>
             </Button>
           </CardContent>
         </Card>

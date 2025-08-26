@@ -6,8 +6,8 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 import { PageHero } from "@/components/ui/page-hero"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -140,13 +140,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mt-2 flex flex-col sm:flex-row gap-4 justify-center">
             <ThemedButton theme="blue" size="lg" asChild>
-              <Link
-                href="/quote"
-                prefetch
-                onClick={() => trackQuoteClick({ location: "services-hero", label: "Get Free Quote", destination: "/quote" })}
-              >
-                Get Free Quote
-              </Link>
+              <QuoteCtaLink location="services-hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
@@ -270,13 +264,7 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ThemedButton theme="blue" size="lg" asChild>
-              <Link
-                href="/quote"
-                prefetch
-                onClick={() => trackQuoteClick({ location: "services-cta", label: "Get Free Quote", destination: "/quote" })}
-              >
-                Get Free Quote
-              </Link>
+              <QuoteCtaLink location="services-cta" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>

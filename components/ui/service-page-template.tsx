@@ -4,9 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Clock } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { settings } from "@/lib/cms-content"
-import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 import { PageHero } from "@/components/ui/page-hero"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -186,13 +185,7 @@ export function ServicePageTemplate({
                   variant="outline"
                   className={`${classes.secondary} w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent`}
                 >
-                  <Link
-                    href="/quote"
-                    prefetch
-                    onClick={() => trackQuoteClick({ location: "service-template", label: ctaSecondary, destination: "/quote" })}
-                  >
-                    {ctaSecondary}
-                  </Link>
+                  <QuoteCtaLink location="service-template" label={ctaSecondary}>{ctaSecondary}</QuoteCtaLink>
                 </Button>
               </div>
             </div>
