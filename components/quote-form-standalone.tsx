@@ -38,6 +38,22 @@ export function QuoteFormStandalone() {
     preferredTime: "",
     ecoFriendly: true,
     message: "",
+    // Sector-specific fields
+    loadSize: "",
+    itemsDescription: "",
+    rentalDuration: "",
+    dumpsterPlacement: "",
+    dumpsterMaterial: "",
+    drivewayProtection: false,
+    structureType: "",
+    approxSize: "",
+    utilitiesDisconnected: false,
+    demolitionMaterial: "",
+    haulAway: false,
+    estatePropertyType: "",
+    estateRooms: "",
+    estateAccess: "",
+    estateTimeline: "",
   })
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -419,6 +435,234 @@ export function QuoteFormStandalone() {
               </div>
             </div>
           </div>
+
+          {/* Sector-specific Details */}
+          {sector === "junk-removal" && (
+            <div className="space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Junk Removal Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="jr-load-size">Estimated Load Size</Label>
+                  <Select
+                    value={formData.loadSize}
+                    onValueChange={(value) => setFormData({ ...formData, loadSize: value })}
+                  >
+                    <SelectTrigger id="jr-load-size" aria-label="Estimated Load Size">
+                      <SelectValue placeholder="Select size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="single">Single Item</SelectItem>
+                      <SelectItem value="quarter">¼ Truck Load</SelectItem>
+                      <SelectItem value="half">½ Truck Load</SelectItem>
+                      <SelectItem value="three-quarter">¾ Truck Load</SelectItem>
+                      <SelectItem value="full">Full Truck Load</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="md:col-span-2">
+                  <Label htmlFor="jr-items">Items or Areas to Clear</Label>
+                  <Textarea
+                    id="jr-items"
+                    rows={3}
+                    placeholder="List items or rooms to clear (e.g., sofa, fridge, garage, attic)"
+                    value={formData.itemsDescription}
+                    onChange={(e) => setFormData({ ...formData, itemsDescription: e.target.value })}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {sector === "dumpster-rental" && (
+            <div className="space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Dumpster Rental Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="dr-duration">Rental Duration</Label>
+                  <Select
+                    value={formData.rentalDuration}
+                    onValueChange={(value) => setFormData({ ...formData, rentalDuration: value })}
+                  >
+                    <SelectTrigger id="dr-duration" aria-label="Rental Duration">
+                      <SelectValue placeholder="Select duration" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="3-days">1-3 days</SelectItem>
+                      <SelectItem value="7-days">7 days</SelectItem>
+                      <SelectItem value="14-days">14 days</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="dr-material">Material Type</Label>
+                  <Select
+                    value={formData.dumpsterMaterial}
+                    onValueChange={(value) => setFormData({ ...formData, dumpsterMaterial: value })}
+                  >
+                    <SelectTrigger id="dr-material" aria-label="Material Type">
+                      <SelectValue placeholder="Select material" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="household">Household/General</SelectItem>
+                      <SelectItem value="construction">Construction/Demo</SelectItem>
+                      <SelectItem value="yard">Yard Waste</SelectItem>
+                      <SelectItem value="mixed">Mixed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="md:col-span-2">
+                  <Label htmlFor="dr-placement">Placement Instructions</Label>
+                  <Input
+                    id="dr-placement"
+                    placeholder="Driveway, street (if permitted), side yard, etc."
+                    value={formData.dumpsterPlacement}
+                    onChange={(e) => setFormData({ ...formData, dumpsterPlacement: e.target.value })}
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="dr-driveway-protect"
+                    checked={formData.drivewayProtection}
+                    onCheckedChange={(checked) => setFormData({ ...formData, drivewayProtection: checked as boolean })}
+                  />
+                  <Label htmlFor="dr-driveway-protect" className="text-sm">Add driveway protection boards</Label>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {sector === "light-demolition" && (
+            <div className="space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Demolition Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="ld-structure">Structure Type</Label>
+                  <Select
+                    value={formData.structureType}
+                    onValueChange={(value) => setFormData({ ...formData, structureType: value })}
+                  >
+                    <SelectTrigger id="ld-structure" aria-label="Structure Type">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="shed">Shed</SelectItem>
+                      <SelectItem value="deck">Deck</SelectItem>
+                      <SelectItem value="fence">Fence</SelectItem>
+                      <SelectItem value="interior">Interior Wall/Room</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="ld-size">Approximate Size</Label>
+                  <Input
+                    id="ld-size"
+                    placeholder="e.g., 10x12, 200 sq ft"
+                    value={formData.approxSize}
+                    onChange={(e) => setFormData({ ...formData, approxSize: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="ld-material">Primary Material</Label>
+                  <Select
+                    value={formData.demolitionMaterial}
+                    onValueChange={(value) => setFormData({ ...formData, demolitionMaterial: value })}
+                  >
+                    <SelectTrigger id="ld-material" aria-label="Primary Material">
+                      <SelectValue placeholder="Select material" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="wood">Wood</SelectItem>
+                      <SelectItem value="metal">Metal</SelectItem>
+                      <SelectItem value="masonry">Masonry/Drywall</SelectItem>
+                      <SelectItem value="mixed">Mixed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="ld-utilities"
+                    checked={formData.utilitiesDisconnected}
+                    onCheckedChange={(checked) => setFormData({ ...formData, utilitiesDisconnected: checked as boolean })}
+                  />
+                  <Label htmlFor="ld-utilities" className="text-sm">Utilities disconnected (electric/water/gas)</Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="ld-haulaway"
+                    checked={formData.haulAway}
+                    onCheckedChange={(checked) => setFormData({ ...formData, haulAway: checked as boolean })}
+                  />
+                  <Label htmlFor="ld-haulaway" className="text-sm">Include debris haul-away</Label>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {sector === "estate-cleanouts" && (
+            <div className="space-y-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Estate Cleanout Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="ec-type">Property Type</Label>
+                  <Select
+                    value={formData.estatePropertyType}
+                    onValueChange={(value) => setFormData({ ...formData, estatePropertyType: value })}
+                  >
+                    <SelectTrigger id="ec-type" aria-label="Property Type">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="house">House</SelectItem>
+                      <SelectItem value="apartment">Apartment</SelectItem>
+                      <SelectItem value="storage">Storage Unit</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="ec-rooms">Rooms/Areas</Label>
+                  <Select
+                    value={formData.estateRooms}
+                    onValueChange={(value) => setFormData({ ...formData, estateRooms: value })}
+                  >
+                    <SelectTrigger id="ec-rooms" aria-label="Rooms/Areas">
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="few">1-3</SelectItem>
+                      <SelectItem value="several">4-6</SelectItem>
+                      <SelectItem value="many">7+</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="md:col-span-2">
+                  <Label htmlFor="ec-access">Access Constraints</Label>
+                  <Input
+                    id="ec-access"
+                    placeholder="Stairs only, limited parking, narrow hallways, etc."
+                    value={formData.estateAccess}
+                    onChange={(e) => setFormData({ ...formData, estateAccess: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="ec-timeline">Timeline/Urgency</Label>
+                  <Select
+                    value={formData.estateTimeline}
+                    onValueChange={(value) => setFormData({ ...formData, estateTimeline: value })}
+                  >
+                    <SelectTrigger id="ec-timeline" aria-label="Timeline/Urgency">
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="flexible">Flexible</SelectItem>
+                      <SelectItem value="this-week">This Week</SelectItem>
+                      <SelectItem value="next-48h">Next 24-48 Hours</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Photo Upload */}
           <div className="space-y-3 sm:space-y-4">
