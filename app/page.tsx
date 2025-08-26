@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Leaf, Shield, Clock, Star, Phone, Camera } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import QuoteFormClient from "@/app/quote/QuoteFormClient"
 
 export default function HomePage() {
   return (
@@ -52,6 +53,19 @@ export default function HomePage() {
               <a href={`sms:${settings.phoneE164}`}><Camera className="w-5 h-5 mr-2" />Text Photos for Instant Quote</a>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Embedded Quote Form (reuses the quote page component) */}
+      <section className="py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Get Your Detailed Quote</h3>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+              Fill out the form below or upload photos for the most accurate pricing. We'll respond within 2 hours with your detailed estimate.
+            </p>
+          </div>
+          <QuoteFormClient />
         </div>
       </section>
 
