@@ -14,6 +14,8 @@ const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileLocationsOpen, setIsMobileLocationsOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const servicesMenuId = "services-menu"
@@ -186,7 +188,16 @@ export function Header() {
           <button
             type="button"
             className="lg:hidden justify-self-end"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() =>
+              setIsMenuOpen((prev) => {
+                const next = !prev
+                if (!next) {
+                  setIsMobileServicesOpen(false)
+                  setIsMobileLocationsOpen(false)
+                }
+                return next
+              })
+            }
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -216,33 +227,59 @@ export function Header() {
               </Link>
 
               <div className="pt-2">
-                <div className="text-gray-500 text-xs mb-1">SERVICES</div>
-                {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href!}
-                    prefetch={false}
-                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  aria-expanded={isMobileServicesOpen}
+                  aria-controls="mobile-services-panel"
+                  onClick={() => setIsMobileServicesOpen((v) => !v)}
+                >
+                  <span>SERVICES</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                </button>
+                {isMobileServicesOpen && (
+                  <div id="mobile-services-panel" className="pl-3">
+                    {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href!}
+                        prefetch={false}
+                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="pt-2">
-                <div className="text-gray-500 text-xs mb-1">LOCATIONS</div>
-                {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href!}
-                    prefetch={false}
-                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  aria-expanded={isMobileLocationsOpen}
+                  aria-controls="mobile-locations-panel"
+                  onClick={() => setIsMobileLocationsOpen((v) => !v)}
+                >
+                  <span>LOCATIONS</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileLocationsOpen ? "rotate-180" : ""}`} />
+                </button>
+                {isMobileLocationsOpen && (
+                  <div id="mobile-locations-panel" className="pl-3">
+                    {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href!}
+                        prefetch={false}
+                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <Link
