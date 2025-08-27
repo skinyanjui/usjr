@@ -45,6 +45,12 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [])
 
+  const closeMobileMenuAndSections = () => {
+    setIsMenuOpen(false)
+    setIsMobileServicesOpen(false)
+    setIsMobileLocationsOpen(false)
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">
       <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
@@ -213,7 +219,7 @@ export function Header() {
                 href="/"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 HOME
               </Link>
@@ -221,7 +227,7 @@ export function Header() {
                 href="/about"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 ABOUT
               </Link>
@@ -245,7 +251,7 @@ export function Header() {
                         href={item.href!}
                         prefetch={false}
                         className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
                       </Link>
@@ -273,7 +279,7 @@ export function Header() {
                         href={item.href!}
                         prefetch={false}
                         className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
                       </Link>
@@ -286,7 +292,7 @@ export function Header() {
                 href="/blog"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 BLOG
               </Link>
@@ -294,7 +300,7 @@ export function Header() {
                 href="/faq"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 FAQ
               </Link>
@@ -303,7 +309,10 @@ export function Header() {
                   <Link
                     href="/quote"
                     prefetch
-                    onClick={() => trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })}
+                    onClick={() => {
+                      trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })
+                      closeMobileMenuAndSections()
+                    }}
                   >
                     Get Free Quote
                   </Link>
