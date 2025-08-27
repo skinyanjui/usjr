@@ -6,7 +6,6 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { Truck, Recycle, Home, Building2, Trash2, Wrench } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
@@ -143,7 +142,6 @@ export default function ServicesPage() {
               <Link
                 href="/quote"
                 prefetch
-                onClick={() => trackQuoteClick({ location: "services-hero", label: "Get Free Quote", destination: "/quote" })}
               >
                 Get Free Quote
               </Link>
@@ -273,7 +271,6 @@ export default function ServicesPage() {
               <Link
                 href="/quote"
                 prefetch
-                onClick={() => trackQuoteClick({ location: "services-cta", label: "Get Free Quote", destination: "/quote" })}
               >
                 Get Free Quote
               </Link>

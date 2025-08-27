@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
@@ -211,7 +210,6 @@ export default function AboutPage() {
               <Link
                 href="/quote"
                 prefetch
-                onClick={() => trackQuoteClick({ location: "about-page-cta", label: "Get Free Quote", destination: "/quote" })}
               >
                 Get Free Quote
               </Link>

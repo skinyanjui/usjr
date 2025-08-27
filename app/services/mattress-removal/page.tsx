@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export const metadata = {
   title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -96,7 +95,6 @@ export default function MattressRemovalPage() {
                   <Link
                     href="/quote"
                     prefetch
-                    onClick={() => trackQuoteClick({ location: "mattress-removal", label: "Get Mattress Removal Quote", destination: "/quote" })}
                   >
                     Get Mattress Removal Quote
                   </Link>

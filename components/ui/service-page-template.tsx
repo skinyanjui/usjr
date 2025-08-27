@@ -5,7 +5,6 @@ import { Clock } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 import { PageHero } from "@/components/ui/page-hero"
 
 export interface ServiceStep {
@@ -189,7 +188,6 @@ export function ServicePageTemplate({
                   <Link
                     href="/quote"
                     prefetch
-                    onClick={() => trackQuoteClick({ location: "service-template", label: ctaSecondary, destination: "/quote" })}
                   >
                     {ctaSecondary}
                   </Link>
