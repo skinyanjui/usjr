@@ -24,15 +24,15 @@ export function ReviewsRow() {
           {SOURCES.map((item) => (
             <div
               key={item.source}
-              className="glass rounded-lg border border-gray-200 px-3 py-2 flex items-center gap-2 min-w-[180px] justify-center shrink-0"
+              className="glass rounded-lg border border-gray-200 px-3.5 py-2.5 flex items-center gap-2.5 min-w-[200px] justify-center shrink-0"
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`w-3.5 h-3.5 ${i < Math.round(item.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
+                  <Star key={i} className={`w-4 h-4 ${i < Math.round(item.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
                 ))}
               </div>
-              <div className="text-[12px] sm:text-[13px]">
+              <div className="text-[13px] sm:text-[14px]">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on {" "}
                 <span className="font-semibold">{item.source}</span>
                 <span className="text-gray-500"> ({item.count}+)</span>
@@ -44,16 +44,16 @@ export function ReviewsRow() {
         {/* Review cards carousel */}
         <div className="mt-4 flex gap-4 overflow-x-auto no-scrollbar [-ms-overflow-style:none] [scrollbar-width:none]">
           {[1, 2, 3, 4, 5, 6].map((id) => (
-            <div key={id} className="shrink-0 w-72 rounded-lg border border-gray-300 bg-white/85 backdrop-blur-sm shadow-sm p-3">
-              <div className="flex items-center gap-1 mb-1">
+            <div key={id} className="shrink-0 w-80 rounded-lg border border-gray-300 bg-white/90 backdrop-blur-sm shadow-sm p-4">
+              <div className="flex items-center gap-1.5 mb-2">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`w-3.5 h-3.5 ${i < 5 ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
+                  <Star key={i} className={`w-4 h-4 ${i < 5 ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
                 ))}
               </div>
-              <p className="text-[12px] text-gray-700">
+              <p className="text-[13px] text-gray-700">
                 "Fantastic service! They arrived on time, worked quickly, and left everything spotless. Highly recommend!"
               </p>
-              <div className="mt-2 text-[12px] text-gray-500">— Evansville Customer</div>
+              <div className="mt-2 text-[12.5px] text-gray-500">— Evansville Customer</div>
             </div>
           ))}
         </div>
