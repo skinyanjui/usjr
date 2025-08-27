@@ -4,7 +4,6 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Truck, Container, Lightbulb } from "lucide-react"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function HeroSection() {
   return (
@@ -34,7 +33,6 @@ export function HeroSection() {
             <Link
               href="/quote"
               prefetch
-              onClick={() => trackQuoteClick({ location: "hero", label: "Get Free Quote", destination: "/quote" })}
             >
               Get Free Quote
             </Link>

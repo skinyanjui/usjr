@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function AboutSection() {
   const stats = [
@@ -49,7 +48,6 @@ export function AboutSection() {
                 <Link
                   href="/quote"
                   prefetch
-                  onClick={() => trackQuoteClick({ location: "about-section", label: "Get Free Quote", destination: "/quote" })}
                 >
                   Get Free Quote
                 </Link>

@@ -4,7 +4,6 @@ import { StructuredData } from "@/components/structured-data"
 import { Button, PhoneButton } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
 import { NAV } from "@/lib/nav"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function Footer() {
   const phoneHref = settings.phoneE164
@@ -28,7 +27,6 @@ export function Footer() {
                 <Link
                   href="/quote"
                   prefetch
-                  onClick={() => trackQuoteClick({ location: "footer-primary", label: "Get Free Quote", destination: "/quote" })}
                 >
                   Get Free Quote
                 </Link>

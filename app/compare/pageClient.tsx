@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Check, X, Truck, Container, Sparkles, Clock, DollarSign, Users } from "lucide-react"
 import { settings } from "@/lib/cms-content"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 const services = [
   {
@@ -211,7 +210,6 @@ export default function CompareClient() {
                 <Link
                   href="/quote"
                   prefetch
-                  onClick={() => trackQuoteClick({ location: "compare-selected", label: "Get Free Quote", destination: "/quote" })}
                 >
                   Get Free Quote
                 </Link>
@@ -236,7 +234,6 @@ export default function CompareClient() {
               <Link
                 href="/quote"
                 prefetch
-                onClick={() => trackQuoteClick({ location: "compare-bottom", label: "Get Personalized Quote", destination: "/quote" })}
               >
                 Get Personalized Quote
               </Link>

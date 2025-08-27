@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { MapPin, Clock, Truck, Recycle } from "lucide-react"
+import { Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 

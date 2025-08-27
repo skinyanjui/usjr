@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Star } from "lucide-react"
 import Link from "next/link"
-import { trackQuoteClick } from "@/lib/quoteTracking"
 
 export function BentoGrid() {
   const [formData, setFormData] = useState({
@@ -105,7 +104,6 @@ export function BentoGrid() {
                 <Link
                   href="/quote"
                   prefetch
-                  onClick={() => trackQuoteClick({ location: "bento-grid", label: "Get Free Quote", destination: "/quote" })}
                 >
                   Get Free Quote
                 </Link>
