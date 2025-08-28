@@ -1,4 +1,4 @@
-import { settings, getActiveServices } from "@/lib/cms-content"
+import { settings, getActiveServices, getAggregateTestimonialStats } from "@/lib/cms-content"
 
 type FaqItem = { question: string; answer: string }
 
@@ -42,6 +42,8 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         const max = prices[prices.length - 1]
         return `$${min}${max && max !== min ? `-$${max}` : '+'}`
       })()
+
+      const agg = getAggregateTestimonialStats()
 
       structuredData = {
         "@context": "https://schema.org",
@@ -89,13 +91,13 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             validFrom: new Date().toISOString(),
           })),
         },
-        aggregateRating: {
+        aggregateRating: agg.reviewCount > 0 ? {
           "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "200",
+          ratingValue: String(agg.averageRating),
+          reviewCount: String(agg.reviewCount),
           bestRating: "5",
           worstRating: "1",
-        },
+        } : undefined,
         sameAs: [settings.socialMedia.facebook, settings.socialMedia.instagram, settings.socialMedia.google].filter(
           Boolean,
         ),
