@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Loader } from "@googlemaps/js-api-loader"
 
 type LocationPin = {
@@ -28,14 +28,21 @@ export default function GoogleMap() {
 
   const center: [number, number] = [37.99, -87.5]
   const mapRef = useRef<HTMLDivElement | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
     let map: any
     let infoWindow: any
 
+    const apiKey = process.env.NEXT_PUBLIC_GMAPS_API_KEY || ""
+    if (!apiKey) {
+      setErrorMessage("Map unavailable: missing Google Maps API key.")
+      return
+    }
+
     const loader = new Loader({
-      apiKey: process.env.NEXT_PUBLIC_GMAPS_API_KEY || "",
+      apiKey,
       version: "weekly",
     })
 
@@ -70,12 +77,23 @@ export default function GoogleMap() {
           })
         })
       })
-      .catch(() => {})
+      .catch(() => {
+        if (!isMounted) return
+        setErrorMessage("Failed to load map. Please check your API key and network.")
+      })
 
     return () => {
       isMounted = false
     }
   }, [locations])
+
+  if (errorMessage) {
+    return (
+      <div className="w-full h-full flex items-center justify-center text-sm text-red-700 bg-red-50">
+        {errorMessage}
+      </div>
+    )
+  }
 
   return <div ref={mapRef} className="w-full h-full" />
 }
