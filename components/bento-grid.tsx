@@ -75,7 +75,7 @@ export function BentoGrid() {
                   value={formData.service}
                   onValueChange={(value) => setFormData({ ...formData, service: value })}
                 >
-                  <SelectTrigger className="text-sm">
+                  <SelectTrigger className="text-sm" aria-label="Service Needed">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
@@ -85,7 +85,7 @@ export function BentoGrid() {
                   </SelectContent>
                 </Select>
                 <Select value={formData.size} onValueChange={(value) => setFormData({ ...formData, size: value })}>
-                  <SelectTrigger className="text-sm">
+                  <SelectTrigger className="text-sm" aria-label="Project Size">
                     <SelectValue placeholder="Select size" />
                   </SelectTrigger>
                   <SelectContent>
