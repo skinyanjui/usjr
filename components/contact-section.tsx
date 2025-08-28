@@ -21,15 +21,24 @@ export default function ContactSection() {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (process.env.NODE_ENV !== "production") {
-      console.log("Form submitted:", formData)
-    }
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setIsSubmitted(false)
+    setErrorMessage(null)
+    setIsSubmitting(true)
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, source: "contact-section" }),
+      })
+      if (!res.ok) {
+        const text = await res.text()
+        throw new Error(text || "Failed to submit")
+      }
+      setIsSubmitted(true)
       setFormData({
         name: "",
         email: "",
@@ -39,7 +48,14 @@ export default function ContactSection() {
         projectSize: "",
         message: "",
       })
-    }, 3000)
+    } catch (err) {
+      if (process.env.NODE_ENV !== "production") {
+        console.error(err)
+      }
+      setErrorMessage("Something went wrong. Please try again or call us.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -209,11 +225,15 @@ export default function ContactSection() {
                       />
                     </div>
 
+                    {errorMessage && (
+                      <p className="text-sm text-red-600 text-center">{errorMessage}</p>
+                    )}
                     <Button
                       type="submit"
-                      className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold text-base sm:text-lg"
+                      disabled={isSubmitting}
+                      className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-base sm:text-lg"
                     >
-                      Get Free Quote - Same Day Service Available
+                      {isSubmitting ? "Submitting..." : "Get Free Quote"}
                     </Button>
 
                     <p className="text-sm text-gray-500 text-center">

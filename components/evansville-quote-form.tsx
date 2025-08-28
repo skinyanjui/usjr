@@ -21,12 +21,50 @@ export function EvansvilleQuoteForm() {
     details: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Integrate API or email service as needed
-    // For now, we just simulate success
-    setIsSubmitted(true)
+    setErrorMessage(null)
+    setIsSubmitting(true)
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          address: formData.address,
+          service: formData.service,
+          projectSize: formData.projectSize,
+          details: formData.details,
+          source: "evansville-quote-form",
+        }),
+      })
+      if (!res.ok) {
+        const text = await res.text()
+        throw new Error(text || "Failed to submit")
+      }
+      setIsSubmitted(true)
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        service: "",
+        projectSize: "",
+        details: "",
+      })
+    } catch (err) {
+      if (process.env.NODE_ENV !== "production") {
+        console.error(err)
+      }
+      setErrorMessage("Something went wrong. Please try again or call us.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -146,8 +184,15 @@ export function EvansvilleQuoteForm() {
           </div>
 
           <div className="space-y-3">
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-base sm:text-lg">
-              Get Free Quote - Same Day Service Available
+            {errorMessage && (
+              <p className="text-sm text-red-600 text-center">{errorMessage}</p>
+            )}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3 text-base sm:text-lg"
+            >
+              {isSubmitting ? "Submitting..." : "Get Free Quote"}
             </Button>
             <p className="text-xs sm:text-sm text-gray-500">
               By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
