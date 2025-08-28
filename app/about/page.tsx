@@ -9,9 +9,9 @@ import { QuoteCtaLink } from "@/components/quote-cta-link"
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
   description:
-    "Uncle Sam Junk Removal is a veteran-owned junk removal and dumpster rental company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Professional cleaning by women-owned Cleaning by Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.",
+    "Uncle Sam Junk Removal is a veteran-owned junk removal and dumpster rental company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Professional cleaning by women-owned Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.",
   keywords:
-    "evansville junk removal, evansville dumpster rental, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, cleaning by karcher cleaners",
+    "evansville junk removal, evansville dumpster rental, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners",
 }
 
 export default function AboutPage() {
@@ -28,7 +28,7 @@ export default function AboutPage() {
           url: "https://unclesamjunkremoval.com",
           telephone: settings.phoneE164,
           description:
-            "Veteran-owned junk removal and dumpster rental in Evansville, IN. Professional cleaning by women-owned Cleaning by Karcher Cleaners.",
+            "Veteran-owned junk removal and dumpster rental in Evansville, IN. Professional cleaning by women-owned Karcher Cleaners.",
           foundingDate: "2025",
           founder: {
             "@type": "Person",
@@ -63,7 +63,7 @@ export default function AboutPage() {
                   service.
                 </p>
                 <p>
-                  Our professional cleaning services are provided by <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer"><strong>Cleaning by Karcher Cleaners</strong></a> — a
+                  Our professional cleaning services are provided by <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer"><strong>Karcher Cleaners</strong></a> — a
                   women-owned company led by <strong>Chelsey Karcher</strong>. Together, we deliver spotless homes and
                   businesses with eco-conscious products and consistent, high-quality results.
                 </p>
@@ -242,7 +242,7 @@ export default function AboutPage() {
 
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold mb-2">Chelsey Karcher</h3>
-              <p className="text-green-600 font-medium mb-3">Owner, <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="underline">Cleaning by Karcher Cleaners</a></p>
+              <p className="text-green-600 font-medium mb-3">Owner, <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="underline">Karcher Cleaners</a></p>
               <p className="text-gray-600 text-sm">
                 Leads our women-owned cleaning partner, delivering professional cleaning services with exceptional
                 attention to detail.
