@@ -22,8 +22,8 @@ export function AboutSection() {
     },
     {
       icon: <Award className="h-8 w-8 text-red-600" />,
-      number: "15+",
-      label: "Years Experience",
+      number: "2025",
+      label: "Founded",
     },
   ]
 
@@ -34,14 +34,13 @@ export function AboutSection() {
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
-              We are a locally owned and operated junk removal and dumpster rental company serving Evansville, Indiana and
-              surrounding areas. Our mission is to provide reliable, professional, and eco-friendly waste removal
-              services.
+              Founded in 2025 by <strong>Samuel Kinyanjui</strong>, a United States Marine Corps veteran, we are a
+              locally owned junk removal and dumpster rental company serving Evansville and surrounding areas.
             </p>
             <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
-              With over 15 years of experience, we've built our reputation on honest pricing, punctual service, and
-              exceptional customer care. We're not just removing junk – we're helping our community stay clean and
-              organized.
+              Our professional cleaning services are provided by <strong>Cleaning by Karcher Cleaners</strong> — a
+              women-owned company led by <strong>Chelsey Karcher</strong>. Together, we deliver reliable, eco-conscious
+              service with honest pricing and punctuality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
@@ -72,8 +71,8 @@ export function AboutSection() {
               />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-red-600 text-white p-6 rounded-2xl glass">
-              <h3 className="text-2xl font-bold mb-2">Locally Owned</h3>
-              <p className="text-red-100">Serving Austin since 2008</p>
+              <h3 className="text-2xl font-bold mb-2">Veteran-Owned</h3>
+              <p className="text-red-100">Founded in 2025 in Evansville</p>
             </div>
           </div>
         </div>
