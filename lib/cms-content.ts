@@ -232,6 +232,30 @@ export const locations: Location[] = [
     landmarks: ["Henderson County Courthouse", "Audubon State Park", "Ellis Park Racing", "Henderson Riverfront"],
     active: true,
   },
+  {
+    id: "mount-carmel-il",
+    name: "Mount Carmel",
+    state: "IL",
+    zipCodes: ["62863"],
+    landmarks: ["Wabash River", "Wabash Valley College", "Mount Carmel City Park", "Downtown Mount Carmel"],
+    active: true,
+  },
+  {
+    id: "mount-vernon-in",
+    name: "Mount Vernon",
+    state: "IN",
+    zipCodes: ["47620"],
+    landmarks: ["Posey County Courthouse", "Hovey Lake", "Mount Vernon Riverfront", "Alex Karras Park"],
+    active: true,
+  },
+  {
+    id: "new-harmony-in",
+    name: "New Harmony",
+    state: "IN",
+    zipCodes: ["47631"],
+    landmarks: ["Harmonie State Park", "Roofless Church", "Atheneum Visitor Center", "Historic District"],
+    active: true,
+  },
 ]
 
 export const testimonials: Testimonial[] = [
@@ -350,7 +374,17 @@ export const settings: Settings = {
     saturday: "9:00 AM - 4:00 PM",
     sunday: "Closed",
   },
-  serviceAreas: ["Evansville, IN", "Newburgh, IN", "Henderson, KY", "Owensboro, KY", "Boonville, IN", "Princeton, IN"],
+  serviceAreas: [
+    "Evansville, IN",
+    "Newburgh, IN",
+    "Henderson, KY",
+    "Owensboro, KY",
+    "Boonville, IN",
+    "Princeton, IN",
+    "Mount Carmel, IL",
+    "Mount Vernon, IN",
+    "New Harmony, IN",
+  ],
   socialMedia: {
     facebook: "https://facebook.com/unclesamjunkremoval",
     instagram: "https://instagram.com/unclesamjunkremoval",

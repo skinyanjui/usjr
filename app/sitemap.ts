@@ -46,6 +46,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/locations/owensboro-ky`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseUrl}/locations/boonville`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseUrl}/locations/princeton`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/locations/mount-carmel-il`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/locations/mount-vernon-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/locations/new-harmony-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
     // Blog posts
     {

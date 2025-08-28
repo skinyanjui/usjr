@@ -11,6 +11,9 @@ const SUPPORTED_ZIPS = [
   "47601", // Boonville
   "47670", // Princeton
   "42301", // Owensboro, KY
+  "62863", // Mount Carmel, IL
+  "47620", // Mount Vernon, IN
+  "47631", // New Harmony, IN
 ]
 
 export function ServiceArea() {
@@ -57,6 +60,9 @@ export function ServiceArea() {
               <li>• Boonville, IN</li>
               <li>• Owensboro, KY</li>
               <li>• Princeton, IN</li>
+              <li>• Mount Carmel, IL</li>
+              <li>• Mount Vernon, IN</li>
+              <li>• New Harmony, IN</li>
             </ul>
             <div className="flex gap-2">
               <input
