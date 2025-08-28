@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import dynamic from "next/dynamic"
 import { MapPin } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 
@@ -85,22 +86,9 @@ export function ServiceArea() {
                 <span className="text-sm font-semibold">Coverage Map (OpenStreetMap)</span>
               </div>
               <div className="p-0">
-                {/* OpenStreetMap embed centered on Evansville, IN */}
                 <div className="aspect-[3/2] w-full">
-                  <iframe
-                    title="Service Area Map"
-                    className="w-full h-full border-0"
-                    src={
-                      "https://www.openstreetmap.org/export/embed.html?bbox=" +
-                      encodeURIComponent([
-                        -88.1, // min lon
-                        37.6,  // min lat
-                        -87.0, // max lon
-                        38.3,  // max lat
-                      ].join(",")) +
-                      "&layer=mapnik&marker=" + encodeURIComponent([37.9716, -87.5711].join(","))
-                    }
-                  />
+                  {/** Client-only Leaflet map for interactivity */}
+                  <ClientLeafletMap />
                 </div>
                 <div className="px-4 py-2 text-xs text-gray-500">
                   <a
