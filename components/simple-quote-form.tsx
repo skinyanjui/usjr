@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
+import { getServiceOptions } from "@/lib/service-options"
 
 export function SimpleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -174,11 +175,9 @@ export function SimpleQuoteForm() {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="junk-removal">Junk Removal</SelectItem>
-                  <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-                  <SelectItem value="both-services">Both Services</SelectItem>
-                  <SelectItem value="estate-cleanout">Estate Cleanout</SelectItem>
-                  <SelectItem value="construction-debris">Construction Debris</SelectItem>
+                  {getServiceOptions().map((option) => (
+                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { getServiceOptions } from "@/lib/service-options"
 
 export function EvansvilleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -140,15 +141,9 @@ export function EvansvilleQuoteForm() {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="junk-removal">Junk Removal</SelectItem>
-                  <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-                  <SelectItem value="furniture-removal">Furniture Removal</SelectItem>
-                  <SelectItem value="appliance-removal">Appliance Removal</SelectItem>
-                  <SelectItem value="garage-cleanout">Garage Cleanout</SelectItem>
-                  <SelectItem value="yard-waste">Yard Waste Removal</SelectItem>
-                  <SelectItem value="construction-debris">Construction Debris</SelectItem>
-                  <SelectItem value="light-demo">Light Demolition</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  {getServiceOptions().map((option) => (
+                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
