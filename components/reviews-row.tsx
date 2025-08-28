@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
+import { getActiveTestimonials, type Testimonial } from "@/lib/cms-content"
 
 type ReviewSource = {
   source: string
@@ -10,16 +11,21 @@ type ReviewSource = {
 }
 
 const SOURCES: ReviewSource[] = [
-  { source: "Google", rating: 4.9, count: 200 },
-  { source: "Facebook", rating: 4.8, count: 120 },
-  { source: "Yelp", rating: 4.7, count: 60 },
-  { source: "Thumbtack", rating: 4.9, count: 90 },
+  { source: "Google", rating: 4.8, count: 46 },
+  { source: "Facebook", rating: 4.9, count: 18 },
+  { source: "Yelp", rating: 4.6, count: 7 },
+  { source: "Thumbtack", rating: 4.8, count: 12 },
 ]
 
 export function ReviewsRow() {
   const carouselRef = useRef<HTMLDivElement | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [reviews, setReviews] = useState<Testimonial[]>([])
+
+  useEffect(() => {
+    setReviews(getActiveTestimonials(12))
+  }, [])
 
   // Compute and cache card offsets for reliable snapping across responsive widths
   const getCardOffsets = (): number[] => {
@@ -114,17 +120,15 @@ export function ReviewsRow() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {[1, 2, 3, 4, 5, 6].map((id) => (
-              <div key={id} className="shrink-0 w-64 sm:w-72 md:w-80 lg:w-96 rounded-lg border border-gray-300 bg-white/90 backdrop-blur-sm shadow-sm p-3 sm:p-4 md:p-5 snap-start">
+            {reviews.map((t) => (
+              <div key={t.id} className="shrink-0 w-64 sm:w-72 md:w-80 lg:w-96 rounded-lg border border-gray-300 bg-white/90 backdrop-blur-sm shadow-sm p-3 sm:p-4 md:p-5 snap-start">
                 <div className="flex items-center gap-1 sm:gap-1.5 mb-1 sm:mb-2">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < 5 ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
+                    <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`} />
                   ))}
                 </div>
-                <p className="text-[12px] sm:text-[13px] md:text-sm text-gray-700">
-                  "Fantastic service! They arrived on time, worked quickly, and left everything spotless. Highly recommend!"
-                </p>
-                <div className="mt-2 text-[12px] sm:text-[12.5px] md:text-[13px] text-gray-500">— Evansville Customer</div>
+                <p className="text-[12px] sm:text-[13px] md:text-sm text-gray-700">"{t.text}"</p>
+                <div className="mt-2 text-[12px] sm:text-[12.5px] md:text-[13px] text-gray-500">— {t.name} • {t.location}</div>
               </div>
             ))}
           </div>

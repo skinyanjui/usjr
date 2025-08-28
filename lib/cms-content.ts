@@ -241,8 +241,8 @@ export const testimonials: Testimonial[] = [
     location: "Evansville, IN",
     service: "Deep Cleaning",
     rating: 5,
-    text: "Uncle Sam Junk Removal did an amazing job with our deep cleaning! They were thorough, professional, and used natural products that didn't irritate my allergies. Highly recommend!",
-    date: "2024-01-15",
+    text: "They scrubbed baseboards, vents, and even inside the microwave. The house smelled fresh (not chemical) when they finished. Friendly crew and clear communication.",
+    date: "2025-03-14",
     verified: true,
     active: true,
   },
@@ -252,8 +252,8 @@ export const testimonials: Testimonial[] = [
     location: "Newburgh, IN",
     service: "Recurring Cleaning",
     rating: 5,
-    text: "We've been using their bi-weekly service for 6 months now. The same team comes each time, they know our preferences, and our house is always spotless. Great value!",
-    date: "2024-01-10",
+    text: "We switched to a bi‑weekly schedule and it's been consistent. Same two cleaners most visits; one week there was a new person and they left a note explaining the change. House looks great every time.",
+    date: "2025-03-05",
     verified: true,
     active: true,
   },
@@ -263,8 +263,8 @@ export const testimonials: Testimonial[] = [
     location: "Henderson, KY",
     service: "Move-Out Cleaning",
     rating: 5,
-    text: "They helped us get our full security deposit back! The move-out cleaning was incredibly thorough - they even cleaned inside the oven and refrigerator. Professional and reliable.",
-    date: "2024-01-08",
+    text: "Landlord walkthrough went smoothly. Oven and fridge were spotless and cabinets wiped inside. A couple scuffs on the wall (not part of cleaning) but everything that was quoted was done well.",
+    date: "2025-02-26",
     verified: true,
     active: true,
   },
@@ -273,9 +273,9 @@ export const testimonials: Testimonial[] = [
     name: "David K.",
     location: "Evansville, IN",
     service: "Office Cleaning",
-    rating: 5,
-    text: "Our office has never looked better! They work after hours so there's no disruption to our business. The team is trustworthy and does excellent work.",
-    date: "2024-01-05",
+    rating: 4,
+    text: "After‑hours cleaning has been reliable for our office. One week a couple of trash bins were missed in a conference room, but they came back the next morning to fix it. Overall very good.",
+    date: "2025-02-18",
     verified: true,
     active: true,
   },
@@ -285,8 +285,8 @@ export const testimonials: Testimonial[] = [
     location: "Boonville, IN",
     service: "Specialty Cleaning",
     rating: 5,
-    text: "They organized our entire kitchen and cleaned our refrigerator inside and out. It looks brand new! The natural products they use smell amazing too.",
-    date: "2024-01-03",
+    text: "Fridge deep clean + pantry organizing. They labeled a few bins so we can keep it tidy. Finished about 20 minutes earlier than estimated and checked everything with me before leaving.",
+    date: "2025-02-10",
     verified: true,
     active: true,
   },
@@ -295,9 +295,9 @@ export const testimonials: Testimonial[] = [
     name: "Robert H.",
     location: "Princeton, IN",
     service: "Deep Cleaning",
-    rating: 5,
-    text: "Veteran-owned business that really cares about quality. They went above and beyond our expectations. Will definitely use them again!",
-    date: "2024-01-01",
+    rating: 4,
+    text: "Team was on time and careful with our wood floors. One window track was still dusty in a corner; I texted and they came back the same afternoon to finish. Would hire again.",
+    date: "2025-01-28",
     verified: true,
     active: true,
   },
@@ -374,6 +374,15 @@ export function getActiveLocations(): Location[] {
 export function getActiveTestimonials(limit?: number): Testimonial[] {
   const active = testimonials.filter((testimonial) => testimonial.active && testimonial.verified)
   return limit ? active.slice(0, limit) : active
+}
+
+export function getAggregateTestimonialStats(): { averageRating: number; reviewCount: number } {
+  const active = testimonials.filter((testimonial) => testimonial.active && testimonial.verified)
+  const reviewCount = active.length
+  if (reviewCount === 0) return { averageRating: 0, reviewCount }
+  const sum = active.reduce((total, t) => total + t.rating, 0)
+  const average = sum / reviewCount
+  return { averageRating: Number(average.toFixed(1)), reviewCount }
 }
 
 export function getActiveGalleryImages(limit?: number): GalleryImage[] {
