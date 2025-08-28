@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Star, Users, Truck, Award } from "lucide-react"
-import Image from "next/image"
+import { Star, Users, Truck, Award, Shield, MapPin } from "lucide-react"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export function AboutSection() {
@@ -22,8 +21,8 @@ export function AboutSection() {
     },
     {
       icon: <Award className="h-8 w-8 text-red-600" />,
-      number: "15+",
-      label: "Years Experience",
+      number: "2025",
+      label: "Founded",
     },
   ]
 
@@ -34,14 +33,16 @@ export function AboutSection() {
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Uncle Sam Junk Removal</h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">
-              We are a locally owned and operated junk removal and dumpster rental company serving Evansville, Indiana and
-              surrounding areas. Our mission is to provide reliable, professional, and eco-friendly waste removal
-              services.
+              Veteran-owned and locally operated in <strong>Evansville, IN</strong>, we handle junk removal and dumpster
+              rentals with same-day availability and honest, upfront pricing.
+            </p>
+            <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
+              Founded in 2025 by <strong>Samuel Kinyanjui</strong> (United States Marine Corps), our team brings
+              dependable service to Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton.
             </p>
             <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
-              With over 15 years of experience, we've built our reputation on honest pricing, punctual service, and
-              exceptional customer care. We're not just removing junk – we're helping our community stay clean and
-              organized.
+              Professional cleaning is provided by <strong>Cleaning by Karcher Cleaners</strong> — women-owned and led by
+              <strong> Chelsey Karcher</strong> — ensuring spotless homes and offices with eco-conscious products.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
@@ -60,20 +61,20 @@ export function AboutSection() {
           </div>
 
           <div className="relative">
-            <div className="relative w-full h-80 md:h-[28rem]">
-              <Image
-                src="/placeholder-q941w.png"
-                alt="Uncle Sam Junk Removal team"
-                fill
-                className="object-cover rounded-2xl shadow-2xl"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                quality={50}
-                loading="lazy"
-              />
+            <div className="bg-red-600 text-white p-6 rounded-2xl glass inline-flex items-center gap-3">
+              <Shield className="h-6 w-6" />
+              <div>
+                <h3 className="text-2xl font-bold">Veteran-Owned</h3>
+                <p className="text-red-100">Founded in 2025 in Evansville</p>
+              </div>
             </div>
-            <div className="absolute -bottom-8 -left-8 bg-red-600 text-white p-6 rounded-2xl glass">
-              <h3 className="text-2xl font-bold mb-2">Locally Owned</h3>
-              <p className="text-red-100">Serving Austin since 2008</p>
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Evansville, IN</div>
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Newburgh, IN</div>
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Henderson, KY</div>
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Owensboro, KY</div>
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Boonville, IN</div>
+              <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-red-600" /> Princeton, IN</div>
             </div>
           </div>
         </div>

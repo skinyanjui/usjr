@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Button } from "@/components/ui/button"
-import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
+import { Star, Shield, Truck, Users, Award, Clock, MapPin, Leaf, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
@@ -8,15 +9,45 @@ import { QuoteCtaLink } from "@/components/quote-cta-link"
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
   description:
-    "Learn about Uncle Sam Junk Removal, Evansville's trusted junk removal and professional cleaning company. Family-owned, licensed & insured since 2010.",
+    "Uncle Sam Junk Removal is a veteran-owned junk removal and dumpster rental company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Professional cleaning by women-owned Cleaning by Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.",
   keywords:
-    "about uncle sam junk removal, evansville junk removal company, local cleaning service, family owned business",
+    "evansville junk removal, evansville dumpster rental, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, cleaning by karcher cleaners",
 }
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <PageHero title="About Uncle Sam Junk Removal" description="Evansville's trusted partner for junk removal, dumpster rental, and professional cleaning services since 2010" imageSrc="/junk-removal-evansville.png" priority />
+      <PageHero title="About Uncle Sam Junk Removal" description="Veteran-owned junk removal, dumpster rental, and professional cleaning in Evansville, IN and the Tri-State." imageSrc="/junk-removal-evansville.png" priority />
+
+      {/* SEO: LocalBusiness JSON-LD */}
+      <Script id="jsonld-localbusiness" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Uncle Sam Junk Removal",
+          url: "https://unclesamjunkremoval.com",
+          telephone: settings.phoneE164,
+          description:
+            "Veteran-owned junk removal and dumpster rental in Evansville, IN. Professional cleaning by women-owned Cleaning by Karcher Cleaners.",
+          foundingDate: "2025",
+          founder: {
+            "@type": "Person",
+            name: "Samuel Kinyanjui",
+          },
+          areaServed: settings.serviceAreas,
+          sameAs: Object.values(settings.socialMedia || {}),
+          knowsAbout: [
+            "junk removal",
+            "dumpster rental",
+            "appliance removal",
+            "estate cleanouts",
+            "yard waste removal",
+            "trash removal",
+            "residential cleaning",
+            "commercial cleaning",
+          ],
+        })}
+      </Script>
 
       {/* Our Story */}
       <section className="py-16">
@@ -26,34 +57,83 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2010, Uncle Sam Junk Removal began as a small family-owned junk removal service with a
-                  simple mission: to help our neighbors in Evansville and Southern Indiana reclaim their spaces with
-                  reliable, professional service.
+                  Founded in 2025 by <strong>Samuel Kinyanjui</strong> — a United States Marine Corps veteran — Uncle Sam
+                  Junk Removal serves <strong>Evansville, IN</strong> and the Tri-State with dependable, same-day junk
+                  removal and dumpster rental. We built this company on Marine Corps values: integrity, respect, and
+                  service.
                 </p>
                 <p>
-                  What started as a single truck operation has grown into the region's most trusted waste removal and
-                  cleaning company, serving thousands of satisfied customers across Indiana and Kentucky.
+                  Our professional cleaning services are provided by <strong>Cleaning by Karcher Cleaners</strong> — a
+                  women-owned company led by <strong>Chelsey Karcher</strong>. Together, we deliver spotless homes and
+                  businesses with eco-conscious products and consistent, high-quality results.
                 </p>
                 <p>
-                  In 2023, we expanded our services to include professional cleaning with natural products, becoming a
-                  woman-owned business committed to eco-friendly practices and exceptional customer service.
+                  Whether you need a single item picked up, a full estate cleanout, or recurring office cleaning, we make
+                  it easy with clear communication, honest pricing, and friendly, local professionals.
                 </p>
               </div>
             </div>
             <div className="glass rounded-2xl p-8">
-              <img
-                src="/placeholder-bd22o.png"
-                alt="Uncle Sam Junk Removal team and trucks"
-                className="w-full h-64 object-cover rounded-lg mb-6"
-              />
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="bg-red-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-red-600">14+</div>
-                  <div className="text-gray-600">Years Serving</div>
+                  <div className="text-2xl font-bold text-red-600">2025</div>
+                  <div className="text-gray-600">Founded</div>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
                   <div className="text-2xl font-bold text-green-600">10,000+</div>
                   <div className="text-gray-600">Jobs Completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Service Areas */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Proudly Serving Evansville & The Tri-State</h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                We’re based in Evansville and serve nearby communities across Southern Indiana and Western Kentucky.
+                Expect on-time arrivals, friendly crews, and efficient service—every time.
+              </p>
+              <ul className="grid sm:grid-cols-2 gap-3 text-gray-700">
+                {settings.serviceAreas.map((area) => (
+                  <li key={area} className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-red-600" />
+                    <span>{area}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">What We Do</h3>
+              <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
+                <div className="flex items-start gap-3">
+                  <Truck className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <span>Full-service junk removal & curbside pick-ups</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Truck className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <span>Small dumpster rental options</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Shield className="w-5 h-5 text-red-600 mt-0.5" />
+                  <span>Estate, garage, attic, and hoarding cleanouts</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-green-600 mt-0.5" />
+                  <span>Commercial, office, and rental turnovers</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Recycle className="w-5 h-5 text-yellow-600 mt-0.5" />
+                  <span>Appliance, mattress, and furniture recycling</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Leaf className="w-5 h-5 text-emerald-600 mt-0.5" />
+                  <span>Eco-friendly residential and office cleaning</span>
                 </div>
               </div>
             </div>
@@ -152,42 +232,28 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="glass rounded-2xl p-8 text-center">
-              <img
-                src="/professional-business-owner.png"
-                alt="Mike Johnson, Owner"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2">Mike Johnson</h3>
+              <h3 className="text-xl font-bold mb-2">Samuel Kinyanjui</h3>
               <p className="text-red-600 font-medium mb-3">Founder & Owner</p>
               <p className="text-gray-600 text-sm">
-                14 years of experience in waste management and customer service. Mike ensures every job meets our high
-                standards.
+                United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel leads with integrity and a
+                commitment to reliable, professional service.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-8 text-center">
-              <img
-                src="/professional-woman-business-owner.png"
-                alt="Sarah Johnson, Cleaning Services Manager"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2">Sarah Johnson</h3>
-              <p className="text-green-600 font-medium mb-3">Cleaning Services Manager</p>
+              <h3 className="text-xl font-bold mb-2">Chelsey Karcher</h3>
+              <p className="text-green-600 font-medium mb-3">Owner, Cleaning by Karcher Cleaners</p>
               <p className="text-gray-600 text-sm">
-                Leads our cleaning division with a focus on natural products and exceptional attention to detail.
+                Leads our women-owned cleaning partner, delivering professional cleaning services with exceptional
+                attention to detail.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-8 text-center">
-              <img
-                src="/placeholder-4la9z.png"
-                alt="Tom Wilson, Operations Manager"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2">Tom Wilson</h3>
-              <p className="text-blue-600 font-medium mb-3">Operations Manager</p>
+              <h3 className="text-xl font-bold mb-2">Our Local Team</h3>
+              <p className="text-blue-600 font-medium mb-3">Operations</p>
               <p className="text-gray-600 text-sm">
-                Coordinates our fleet and ensures timely, efficient service across all of Southern Indiana.
+                Friendly professionals serving Evansville and surrounding areas with efficient, respectful service.
               </p>
             </div>
           </div>
