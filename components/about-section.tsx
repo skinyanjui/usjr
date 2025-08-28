@@ -41,7 +41,7 @@ export function AboutSection() {
               dependable service to Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton.
             </p>
             <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
-              Professional cleaning is provided by <strong>Cleaning by Karcher Cleaners</strong> — women-owned and led by
+              Professional cleaning is provided by <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer"><strong>Cleaning by Karcher Cleaners</strong></a> — women-owned and led by
               <strong> Chelsey Karcher</strong> — ensuring spotless homes and offices with eco-conscious products.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

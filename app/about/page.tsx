@@ -63,7 +63,7 @@ export default function AboutPage() {
                   service.
                 </p>
                 <p>
-                  Our professional cleaning services are provided by <strong>Cleaning by Karcher Cleaners</strong> — a
+                  Our professional cleaning services are provided by <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer"><strong>Cleaning by Karcher Cleaners</strong></a> — a
                   women-owned company led by <strong>Chelsey Karcher</strong>. Together, we deliver spotless homes and
                   businesses with eco-conscious products and consistent, high-quality results.
                 </p>
@@ -242,7 +242,7 @@ export default function AboutPage() {
 
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="text-xl font-bold mb-2">Chelsey Karcher</h3>
-              <p className="text-green-600 font-medium mb-3">Owner, Cleaning by Karcher Cleaners</p>
+              <p className="text-green-600 font-medium mb-3">Owner, <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="underline">Cleaning by Karcher Cleaners</a></p>
               <p className="text-gray-600 text-sm">
                 Leads our women-owned cleaning partner, delivering professional cleaning services with exceptional
                 attention to detail.

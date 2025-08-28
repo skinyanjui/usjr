@@ -96,6 +96,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="text-red-100 hover:text-white transition-colors">
+                  Karcher Cleaners
+                </a>
+              </li>
+              <li>
                 <Link href="/quote" className="text-red-100 hover:text-white transition-colors">
                   Get Free Quote
                 </Link>
