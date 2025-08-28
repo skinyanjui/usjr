@@ -23,10 +23,10 @@ export function HeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
         <div className="text-center text-white mb-6">
-          <h2 className="text-xl md:text-3xl font-semibold text-white my-1.5 py-0 mx-0 px-0 border-0">
-            Same-Day Junk Removal & Professional Cleaning
-          </h2>
-          <p className="text-lg md:text-xl text-gray-200">Serving Evansville, Newburgh & Southern Indiana</p>
+          <h1 className="text-xl md:text-3xl font-semibold text-white my-1.5 py-0 mx-0 px-0 border-0">
+            Same-Day Junk Removal, Dumpster Rental & Cleaning in Evansville, IN
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200">Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana</p>
         </div>
 
         <div className="text-center mb-16">
@@ -34,7 +34,7 @@ export function HeroSection() {
             <QuoteCtaLink location="hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
           </ThemedButton>
           <p className="text-gray-200 mt-2">
-            See price range, text photos, get exact quote • Same-day service available
+            See pricing, text photos, and get an exact quote — same-day service available
           </p>
         </div>
 
