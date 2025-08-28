@@ -80,7 +80,10 @@ export function BentoGrid() {
                   <SelectContent>
                     <SelectItem value="junk-removal">Junk Removal</SelectItem>
                     <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-                    <SelectItem value="both">Both Services</SelectItem>
+                    <SelectItem value="cleaning">Cleaning</SelectItem>
+                    <SelectItem value="estate-cleanouts">Estate Cleanouts</SelectItem>
+                    <SelectItem value="appliance-removal">Appliance Removal</SelectItem>
+                    <SelectItem value="light-demolition">Light Demolition</SelectItem>
                   </SelectContent>
                 </Select>
                 <Select value={formData.size} onValueChange={(value) => setFormData({ ...formData, size: value })}>
