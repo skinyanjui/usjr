@@ -11,12 +11,10 @@
   },
   "browserslist": {
     "production": [
-      "last 2 Chrome versions",
-      "last 2 Firefox versions",
-      "last 2 Safari versions",
-      "last 2 Edge versions",
-      "not IE 11",
-      "not op_mini all"
+      "Chrome >= 115",
+      "Firefox >= 115",
+      "Safari >= 16.4",
+      "Edge >= 115"
     ],
     "development": [
       "last 1 chrome version",
@@ -25,6 +23,7 @@
     ]
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "1.1.4",
