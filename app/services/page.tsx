@@ -139,7 +139,7 @@ export default function ServicesPage() {
       <section className="py-8 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mt-2 flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="blue" size="lg" asChild>
+            <ThemedButton theme="red" size="lg" asChild>
               <QuoteCtaLink location="services-hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
@@ -263,7 +263,7 @@ export default function ServicesPage() {
             Book your service today or get a free, no-obligation quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <ThemedButton theme="blue" size="lg" asChild>
+            <ThemedButton theme="red" size="lg" asChild>
               <QuoteCtaLink location="services-cta" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </ThemedButton>
             <ThemedButton theme="green" variant="outline" size="lg" asChild>
