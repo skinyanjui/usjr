@@ -30,6 +30,9 @@ export default function LeafletMap() {
       { name: "Owensboro, KY", href: "/locations/owensboro-ky", latitude: 37.7742, longitude: -87.1133 },
       { name: "Boonville, IN", href: "/locations/boonville", latitude: 38.0495, longitude: -87.2739 },
       { name: "Princeton, IN", href: "/locations/princeton", latitude: 38.3556, longitude: -87.5675 },
+      { name: "Mount Carmel, IL", href: "/locations/mount-carmel-il", latitude: 38.4106, longitude: -87.7617 },
+      { name: "Mount Vernon, IN", href: "/locations/mount-vernon-in", latitude: 37.9334, longitude: -87.8956 },
+      { name: "New Harmony, IN", href: "/locations/new-harmony-in", latitude: 38.1292, longitude: -87.9334 },
     ],
     []
   )
