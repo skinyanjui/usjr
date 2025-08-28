@@ -5,6 +5,7 @@ import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
@@ -148,7 +149,13 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
+      <PageHero
+        title="Cleaning & Junk Removal Blog"
+        description="Expert tips, guides, and professional insights for Evansville homeowners"
+        imageSrc="/spring-cleaning-natural.png"
+        priority
+      />
+      <section className="pt-16 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center gap-2 mb-4">

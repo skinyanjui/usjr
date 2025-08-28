@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Clock } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Yard Waste Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -41,7 +42,13 @@ export default function YardWasteRemovalPage() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-green-50 to-white">
+      <PageHero
+        title="Yard Waste Removal in Evansville"
+        description="Brush, leaves, and landscaping debris removal with eco-friendly processing"
+        imageSrc="/yard-waste-removal-evansville.png"
+        priority
+      />
+      <section className="pt-16 pb-16 bg-gradient-to-b from-green-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Yard Waste Removal in Evansville</h1>
