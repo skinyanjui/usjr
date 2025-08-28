@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
 import Image from "next/image"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
-import Link from "next/link"
 
 export function AboutSection() {
   const stats = [
