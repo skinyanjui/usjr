@@ -4,6 +4,7 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Truck, Container, Lightbulb } from "lucide-react"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export function HeroSection() {
   return (
@@ -30,12 +31,7 @@ export function HeroSection() {
 
         <div className="text-center mb-16">
           <ThemedButton theme="red" size="xl" className="w-full sm:w-auto rounded-full font-bold" asChild>
-            <Link
-              href="/quote"
-              prefetch
-            >
-              Get Free Quote
-            </Link>
+            <QuoteCtaLink location="hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
           </ThemedButton>
           <p className="text-gray-200 mt-2">
             See price range, text photos, get exact quote • Same-day service available

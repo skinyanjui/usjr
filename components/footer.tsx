@@ -4,6 +4,7 @@ import { StructuredData } from "@/components/structured-data"
 import { Button, PhoneButton } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
 import { NAV } from "@/lib/nav"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export function Footer() {
   const phoneHref = settings.phoneE164
@@ -24,12 +25,7 @@ export function Footer() {
             </div>
             <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
               <Button asChild className="inline-flex items-center gap-2 bg-white text-red-700 font-semibold px-4 sm:px-5 py-2 shadow hover:bg-red-50 transition-colors rounded-lg text-sm justify-center">
-                <Link
-                  href="/quote"
-                  prefetch
-                >
-                  Get Free Quote
-                </Link>
+                <QuoteCtaLink location="footer-primary" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
               </Button>
               <PhoneButton href={`tel:${phoneHref}`} size="sm" className="justify-center">
                 <Phone className="h-4 w-4" /> Call {settings.phone}

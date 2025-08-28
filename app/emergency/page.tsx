@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-react"
 import { settings } from "@/lib/cms-content"
-import Link from "next/link"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 import { PageHero } from "@/components/ui/page-hero"
  
 export default function EmergencyPage() {
@@ -157,13 +157,8 @@ export default function EmergencyPage() {
                 <p className="text-sm text-gray-600">Full property, immediate</p>
               </div>
             </div>
-            <Button asChild className="bg-red-600 hover:bg-red-700 text:white">
-              <Link
-                href="/quote"
-                prefetch
-              >
-                Get Emergency Quote Now
-              </Link>
+            <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
+              <QuoteCtaLink location="emergency" label="Get Emergency Quote Now">Get Emergency Quote Now</QuoteCtaLink>
             </Button>
           </CardContent>
         </Card>

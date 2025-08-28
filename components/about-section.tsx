@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Star, Users, Truck, Award } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export function AboutSection() {
   const stats = [
@@ -45,12 +45,7 @@ export function AboutSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 rounded-full font-semibold">
-                <Link
-                  href="/quote"
-                  prefetch
-                >
-                  Get Free Quote
-                </Link>
+                <QuoteCtaLink location="about-section" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
               </Button>
               <Button
                 asChild

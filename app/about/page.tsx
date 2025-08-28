@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { Star, Shield, Truck, Users, Award, Clock } from "lucide-react"
-import Link from "next/link"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
+import { QuoteCtaLink } from "@/components/quote-cta-link"
 
 export const metadata: Metadata = {
   title: "About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services",
@@ -207,12 +207,7 @@ export default function AboutPage() {
               📞 {settings.phone}
             </Button>
             <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-full font-semibold text-lg bg-transparent">
-              <Link
-                href="/quote"
-                prefetch
-              >
-                Get Free Quote
-              </Link>
+              <QuoteCtaLink location="about-page-cta" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </Button>
           </div>
         </div>
