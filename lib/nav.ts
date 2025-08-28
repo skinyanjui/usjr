@@ -12,6 +12,11 @@ export const NAV: NavItem[] = [
       { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
       { label: "Appliance Removal", href: "/services/appliance-removal" },
       { label: "Light Demolition", href: "/services/light-demolition" },
+      { label: "Garage Cleanout", href: "/services/garage-cleanout" },
+      { label: "Hot Tub Removal", href: "/services/hot-tub-removal" },
+      { label: "Mattress Removal", href: "/services/mattress-removal" },
+      { label: "Shed Removal", href: "/services/shed-removal" },
+      { label: "Yard Waste Removal", href: "/services/yard-waste-removal" },
     ],
   },
   {

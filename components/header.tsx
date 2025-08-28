@@ -71,7 +71,7 @@ export function Header() {
             <Link
               href="/"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               HOME
             </Link>
@@ -79,7 +79,7 @@ export function Header() {
             <Link
               href="/about"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               ABOUT
             </Link>
@@ -91,7 +91,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "services"}
                 aria-controls={servicesMenuId}
@@ -122,7 +122,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "locations"}
                 aria-controls={locationsMenuId}
@@ -149,7 +149,7 @@ export function Header() {
             <Link
               href="/blog"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               BLOG
             </Link>
@@ -157,7 +157,7 @@ export function Header() {
             <Link
               href="/faq"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               FAQ
             </Link>
@@ -213,7 +213,7 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"

@@ -83,27 +83,27 @@ export default function CommercialCleaningPage() {
         {
           question: "Do you offer after-hours cleaning?",
           answer:
-            "Yes! We specialize in after-hours cleaning to minimize disruption to your business operations. We can work evenings, weekends, or any schedule that works best for your business.",
+            "Yes! We specialize in after-hours cleaning to minimize disruption to your business operations. We can work evenings, weekends, or any schedule that works best for your business. Our teams follow your site-specific security protocols and access requirements.",
         },
         {
           question: "Are you insured and bonded?",
           answer:
-            "Absolutely. We carry comprehensive general liability insurance and are fully bonded. We can provide certificates of insurance to your business as needed.",
+            "Absolutely. We carry comprehensive general liability insurance and are fully bonded. We can provide certificates of insurance to your business as needed, including adding your business as a certificate holder.",
         },
         {
           question: "How do you ensure security during cleaning?",
           answer:
-            "All team members undergo background checks and security training. We work with your existing security systems and can provide detailed access logs and cleaning reports.",
+            "All team members undergo background checks and security training. We work with your existing security systems and can provide detailed access logs and cleaning reports. Key control and alarm procedures are documented for each client site.",
         },
         {
           question: "What cleaning products do you use in commercial settings?",
           answer:
-            "We use professional-grade, eco-friendly cleaning products that are effective yet safe for employees and customers. All products meet or exceed industry standards for commercial use.",
+            "We use professional-grade, eco-friendly cleaning products that are effective yet safe for employees and customers. All products meet or exceed industry standards for commercial use. SDS sheets are available upon request for all products used on-site.",
         },
         {
           question: "Can you customize cleaning schedules for our business?",
           answer:
-            "Yes! We offer flexible scheduling including daily, weekly, bi-weekly, or monthly service. We'll work with you to create a cleaning schedule that fits your business needs and budget.",
+            "Yes! We offer flexible scheduling including daily, weekly, bi-weekly, or monthly service. We'll work with you to create a cleaning schedule that fits your business needs and budget, with scope-of-work checklists tailored to each area.",
         },
       ]}
     />

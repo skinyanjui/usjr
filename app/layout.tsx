@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { HomeMap } from "@/components/home-map"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ export default function RootLayout({
           <HomeMap />
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

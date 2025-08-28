@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Star } from "lucide-react"
+import { getServiceOptions } from "@/lib/service-options"
 import Link from "next/link"
 
 export function BentoGrid() {
@@ -78,12 +79,9 @@ export function BentoGrid() {
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="junk-removal">Junk Removal</SelectItem>
-                    <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-                    <SelectItem value="cleaning">Cleaning</SelectItem>
-                    <SelectItem value="estate-cleanouts">Estate Cleanouts</SelectItem>
-                    <SelectItem value="appliance-removal">Appliance Removal</SelectItem>
-                    <SelectItem value="light-demolition">Light Demolition</SelectItem>
+                    {getServiceOptions().map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <Select value={formData.size} onValueChange={(value) => setFormData({ ...formData, size: value })}>

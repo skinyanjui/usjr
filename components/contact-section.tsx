@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { getServiceOptions } from "@/lib/service-options"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -183,11 +184,9 @@ export default function ContactSection() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                         >
                           <option value="">Select a service</option>
-                          <option value="junk-removal">Junk Removal</option>
-                          <option value="dumpster-rental">Dumpster Rental</option>
-                          <option value="both">Both Services</option>
-                          <option value="estate-cleanout">Estate Cleanout</option>
-                          <option value="construction-debris">Construction Debris</option>
+                          {getServiceOptions().map((option) => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                          ))}
                         </select>
                       </div>
                       <div>

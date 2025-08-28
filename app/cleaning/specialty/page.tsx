@@ -83,27 +83,27 @@ export default function SpecialtyCleaningPage() {
         {
           question: "How long do specialty cleaning services take?",
           answer:
-            "Service time varies by task: refrigerator cleaning takes 1-2 hours, oven cleaning 2-3 hours, organizing 3-4 hours, and decluttering 4-6 hours depending on the scope.",
+            "Service time varies by task: refrigerator cleaning takes 1-2 hours, oven cleaning 2-3 hours, organizing 3-4 hours, and decluttering 4-6 hours depending on the scope. We’ll provide a time estimate with your quote and adjust as needed on-site.",
         },
         {
           question: "Do you provide organizing supplies?",
           answer:
-            "We bring basic organizing supplies like labels and small containers. For larger storage solutions, we can recommend products or you can provide specific items you prefer.",
+            "We bring basic organizing supplies like labels and small containers. For larger storage solutions, we can recommend products or you can provide specific items you prefer. We can also help source bins and shelving if requested in advance.",
         },
         {
           question: "What happens to items during decluttering?",
           answer:
-            "We sort items into keep, donate, and discard categories. We can coordinate donation pickups with local charities and provide documentation for tax purposes.",
+            "We sort items into keep, donate, and discard categories. We can coordinate donation pickups with local charities and provide documentation for tax purposes. Sensitive documents or items are handled per your instructions with secure disposal options available.",
         },
         {
           question: "Are your cleaning products safe for food areas?",
           answer:
-            "We use only food-safe, natural cleaning products for refrigerator and oven cleaning. All products are non-toxic and leave no harmful residues.",
+            "We use only food-safe, natural cleaning products for refrigerator and oven cleaning. All products are non-toxic and leave no harmful residues. SDS sheets are available upon request for all products used.",
         },
         {
           question: "Can I combine specialty services?",
           answer:
-            "Yes! Many clients combine services like refrigerator cleaning with organizing, or oven cleaning with kitchen decluttering. We offer package discounts for multiple services.",
+            "Yes! Many clients combine services like refrigerator cleaning with organizing, or oven cleaning with kitchen decluttering. We offer package discounts for multiple services and can schedule them consecutively for minimal disruption.",
         },
       ]}
     />
