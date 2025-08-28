@@ -82,27 +82,27 @@ export default function RecurringCleaningPage() {
         {
           question: "Can I change my cleaning frequency?",
           answer:
-            "You can adjust your cleaning frequency at any time. Many clients start with weekly service and switch to bi-weekly once their home reaches a maintenance level.",
+            "You can adjust your cleaning frequency at any time. Many clients start with weekly service and switch to bi-weekly once their home reaches a maintenance level. We'll review your schedule every few visits to ensure it still fits your needs.",
         },
         {
           question: "What if I need to reschedule a cleaning?",
           answer:
-            "We offer flexible rescheduling with 24-hour notice. We understand life happens and will work with you to find a convenient alternative time.",
+            "We offer flexible rescheduling with 24-hour notice. We understand life happens and will work with you to find a convenient alternative time. Same-day reschedules are accommodated when availability allows.",
         },
         {
           question: "Will I have the same cleaning team each time?",
           answer:
-            "Yes! We assign a consistent team to your home so they become familiar with your preferences and cleaning needs. This ensures better results and builds trust.",
+            "Yes! We assign a consistent team to your home so they become familiar with your preferences and cleaning needs. This ensures better results and builds trust. If a team member is out, we brief replacements using your documented preferences.",
         },
         {
           question: "What happens if I'm not home during cleaning?",
           answer:
-            "Many of our recurring clients provide us with access and aren't home during cleaning. We're fully insured and bonded, and you can track our progress remotely.",
+            "Many of our recurring clients provide us with access and aren't home during cleaning. We're fully insured and bonded, and you can track our progress remotely. We can use door codes, lockboxes, or pick up keys at your leasing office if approved.",
         },
         {
           question: "Do you offer discounts for recurring service?",
           answer:
-            "Yes! Recurring cleaning services are priced lower than one-time cleanings. The more frequent your service, the better the rate since maintenance cleaning is more efficient.",
+            "Yes! Recurring cleaning services are priced lower than one-time cleanings. The more frequent your service, the better the rate since maintenance cleaning is more efficient. Ask about bundled discounts when combining with specialty services.",
         },
       ]}
     />

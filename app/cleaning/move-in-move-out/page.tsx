@@ -82,27 +82,27 @@ export default function MoveInMoveOutPage() {
         {
           question: "How far in advance should I book move-in/move-out cleaning?",
           answer:
-            "We recommend booking 1-2 weeks in advance, especially during peak moving seasons (summer months). However, we can often accommodate last-minute requests with 24-48 hours notice.",
+            "We recommend booking 1-2 weeks in advance, especially during peak moving seasons (summer months). However, we can often accommodate last-minute requests with 24-48 hours notice. For same-day move-outs, call early for priority scheduling.",
         },
         {
           question: "Do you clean inside appliances?",
           answer:
-            "Yes! Move-in/move-out cleaning includes deep cleaning inside the oven, refrigerator, and other appliances. We also clean cabinet interiors when they're empty.",
+            "Yes! Move-in/move-out cleaning includes deep cleaning inside the oven, refrigerator, and other appliances. We also clean cabinet interiors when they're empty. If requested, we can provide photos of cleaned areas for documentation.",
         },
         {
           question: "What if the property isn't completely empty?",
           answer:
-            "We can work around remaining items, but for the most thorough cleaning, we recommend the property be as empty as possible. We'll discuss specific needs during your quote.",
+            "We can work around remaining items, but for the most thorough cleaning, we recommend the property be as empty as possible. We'll discuss specific needs during your quote and can coordinate with your movers to avoid overlap.",
         },
         {
           question: "Do you provide cleaning documentation for landlords?",
           answer:
-            "Yes! We provide detailed cleaning checklists and can coordinate with property managers or landlords to ensure all requirements are met for deposit returns.",
+            "Yes! We provide detailed cleaning checklists and can coordinate with property managers or landlords to ensure all requirements are met for deposit returns. We can also complete any required move-out forms if provided in advance.",
         },
         {
           question: "How long does move-in/move-out cleaning take?",
           answer:
-            "Typically 4-6 hours depending on property size and condition. We'll provide an accurate time estimate during your quote based on specific property details.",
+            "Typically 4-6 hours depending on property size and condition. We'll provide an accurate time estimate during your quote based on specific property details. Larger properties can be split across multiple cleaners for faster turnaround.",
         },
       ]}
     />
