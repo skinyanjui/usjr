@@ -78,15 +78,18 @@ export default function CleaningHub() {
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-              Book Now
+            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Book Now</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-green-800 text-green-800 hover:bg-green-100 px-8 py-3 bg-transparent"
             >
-              Get Free Quote
+              <Link href="/quote" prefetch>
+                Get Free Quote
+              </Link>
             </Button>
           </div>
         </div>
@@ -148,11 +151,14 @@ export default function CleaningHub() {
                       </Link>
                     </Button>
                     <Button
+                      asChild
                       size="sm"
                       variant="outline"
                       className="border-green-800 text-green-800 hover:bg-green-100 bg-transparent"
                     >
-                      Quote
+                      <Link href="/quote" prefetch>
+                        Quote
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -192,18 +198,21 @@ export default function CleaningHub() {
             Book your cleaning service today or get a free, no-obligation quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-              Book Now - Square Link
+            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Book Now</a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-green-800 text-green-800 hover:bg-green-100 px-8 py-3 bg-transparent"
             >
-              Get Free Quote
+              <Link href="/quote" prefetch>
+                Get Free Quote
+              </Link>
             </Button>
-            <Button size="lg" variant="ghost" className="text-green-800 hover:bg-green-100 px-8 py-3">
-              Call {settings.phone}
+            <Button asChild size="lg" variant="ghost" className="text-green-800 hover:bg-green-100 px-8 py-3">
+              <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </Button>
           </div>
         </div>
