@@ -14,6 +14,8 @@ const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileLocationsOpen, setIsMobileLocationsOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const servicesMenuId = "services-menu"
@@ -43,6 +45,12 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [])
 
+  const closeMobileMenuAndSections = () => {
+    setIsMenuOpen(false)
+    setIsMobileServicesOpen(false)
+    setIsMobileLocationsOpen(false)
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">
       <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
@@ -63,7 +71,7 @@ export function Header() {
             <Link
               href="/"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               HOME
             </Link>
@@ -71,7 +79,7 @@ export function Header() {
             <Link
               href="/about"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               ABOUT
             </Link>
@@ -83,7 +91,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "services"}
                 aria-controls={servicesMenuId}
@@ -114,7 +122,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 font-medium transition-colors flex items-center gap-1 text-sm"
+                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === "locations"}
                 aria-controls={locationsMenuId}
@@ -141,7 +149,7 @@ export function Header() {
             <Link
               href="/blog"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               BLOG
             </Link>
@@ -149,7 +157,7 @@ export function Header() {
             <Link
               href="/faq"
               prefetch={false}
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors text-sm"
+              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               FAQ
             </Link>
@@ -186,7 +194,16 @@ export function Header() {
           <button
             type="button"
             className="lg:hidden justify-self-end"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() =>
+              setIsMenuOpen((prev) => {
+                const next = !prev
+                if (!next) {
+                  setIsMobileServicesOpen(false)
+                  setIsMobileLocationsOpen(false)
+                }
+                return next
+              })
+            }
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -196,13 +213,13 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 HOME
               </Link>
@@ -210,46 +227,72 @@ export function Header() {
                 href="/about"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 ABOUT
               </Link>
 
               <div className="pt-2">
-                <div className="text-gray-500 text-xs mb-1">SERVICES</div>
-                {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href!}
-                    prefetch={false}
-                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  aria-expanded={isMobileServicesOpen}
+                  aria-controls="mobile-services-panel"
+                  onClick={() => setIsMobileServicesOpen((v) => !v)}
+                >
+                  <span>SERVICES</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                </button>
+                {isMobileServicesOpen && (
+                  <div id="mobile-services-panel" className="pl-3">
+                    {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href!}
+                        prefetch={false}
+                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        onClick={closeMobileMenuAndSections}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="pt-2">
-                <div className="text-gray-500 text-xs mb-1">LOCATIONS</div>
-                {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href!}
-                    prefetch={false}
-                    className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  aria-expanded={isMobileLocationsOpen}
+                  aria-controls="mobile-locations-panel"
+                  onClick={() => setIsMobileLocationsOpen((v) => !v)}
+                >
+                  <span>LOCATIONS</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileLocationsOpen ? "rotate-180" : ""}`} />
+                </button>
+                {isMobileLocationsOpen && (
+                  <div id="mobile-locations-panel" className="pl-3">
+                    {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href!}
+                        prefetch={false}
+                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        onClick={closeMobileMenuAndSections}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <Link
                 href="/blog"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 BLOG
               </Link>
@@ -257,7 +300,7 @@ export function Header() {
                 href="/faq"
                 prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMobileMenuAndSections}
               >
                 FAQ
               </Link>
@@ -266,7 +309,10 @@ export function Header() {
                   <Link
                     href="/quote"
                     prefetch
-                    onClick={() => trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })}
+                    onClick={() => {
+                      trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })
+                      closeMobileMenuAndSections()
+                    }}
                   >
                     Get Free Quote
                   </Link>

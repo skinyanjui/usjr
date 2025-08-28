@@ -4,10 +4,17 @@ import { Badge } from "@/components/ui/badge"
 import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
+import { PageHero } from "@/components/ui/page-hero"
  
 export default function EmergencyPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16 bg-red-50">
+    <div className="min-h-screen pt-0 pb-16 bg-red-50">
+      <PageHero
+        title="Emergency Junk Removal"
+        description="24/7 emergency response throughout Evansville and Southern Indiana"
+        imageSrc="/junk-removal-evansville.png"
+        priority
+      />
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6">

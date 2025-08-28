@@ -82,27 +82,27 @@ export default function DeepCleaningPage() {
         {
           question: "How long does a deep cleaning take?",
           answer:
-            "Deep cleaning typically takes 3-5 hours depending on the size of your home and its current condition. We'll provide an accurate time estimate during your quote.",
+            "Deep cleaning typically takes 3-5 hours depending on the size of your home and its current condition. We'll provide an accurate time estimate during your quote and can split service over two visits for large homes if preferred.",
         },
         {
           question: "What's the difference between deep cleaning and regular cleaning?",
           answer:
-            "Deep cleaning is more thorough and includes areas not covered in regular cleaning like baseboards, ceiling fans, inside appliances, and detailed sanitization of all surfaces.",
+            "Deep cleaning is more thorough and includes areas not covered in regular cleaning like baseboards, ceiling fans, inside appliances, and detailed sanitization of all surfaces. We follow a detailed checklist and can prioritize rooms based on your goals.",
         },
         {
           question: "Do I need to prepare anything before you arrive?",
           answer:
-            "Just clear personal items from surfaces and ensure we have access to all areas. We bring all cleaning supplies and equipment needed for the job.",
+            "Just clear personal items from surfaces and ensure we have access to all areas. We bring all cleaning supplies and equipment needed for the job. If you have pets, please secure them for their comfort while we clean.",
         },
         {
           question: "How often should I get a deep cleaning?",
           answer:
-            "We recommend deep cleaning 2-4 times per year, or when moving into a new home. Many clients start with deep cleaning then switch to our recurring service.",
+            "We recommend deep cleaning 2-4 times per year, or when moving into a new home. Many clients start with deep cleaning then switch to our recurring service. Seasonal deep cleans help keep recurring visits efficient and cost-effective.",
         },
         {
           question: "Are your cleaning products safe for pets and children?",
           answer:
-            "Yes! We exclusively use natural, non-toxic cleaning products that are completely safe for your family and pets. All products are eco-friendly and biodegradable.",
+            "Yes! We exclusively use natural, non-toxic cleaning products that are completely safe for your family and pets. All products are eco-friendly and biodegradable. We also offer fragrance-free options upon request.",
         },
       ]}
     />

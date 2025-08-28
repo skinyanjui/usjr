@@ -5,6 +5,7 @@ import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
@@ -145,10 +146,19 @@ export default function BlogPage() {
 
   const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 1)
   const regularPosts = blogPosts.filter((post) => !post.featured)
+  const dumpsterPosts = blogPosts.filter(
+    (post) => post.category.toLowerCase().includes("dumpster") || post.slug.includes("dumpster")
+  )
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
+      <PageHero
+        title="Cleaning & Junk Removal Blog"
+        description="Expert tips, guides, and professional insights for Evansville homeowners"
+        imageSrc="/spring-cleaning-natural.png"
+        priority
+      />
+      <section className="pt-16 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center gap-2 mb-4">
@@ -228,6 +238,68 @@ export default function BlogPage() {
                         <Button
                           variant="outline"
                           className="border-green-800 text-green-800 hover:bg-green-800 hover:text-white group bg-transparent"
+                          aria-label={`Read ${post.title}`}
+                          title={`Read ${post.title}`}
+                        >
+                          Read: {post.title}
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Dumpster Blogs */}
+          {dumpsterPosts.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Dumpster Blogs</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {dumpsterPosts.map((post) => (
+                  <Card key={post.slug} className="glass hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div className="aspect-video bg-gray-200 relative overflow-hidden">
+                      <Image
+                        src={post.image || "/placeholder.svg"}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        quality={50}
+                        loading="lazy"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-orange-600 text-white">Dumpster</Badge>
+                      </div>
+                    </div>
+
+                    <CardHeader>
+                      <CardTitle className="text-xl font-bold text-gray-900 line-clamp-2 hover:text-green-600 transition-colors">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </CardTitle>
+                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{post.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent>
+                      <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                      <Link href={`/blog/${post.slug}`}>
+                        <Button
+                          variant="outline"
+                          className="border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white group bg-transparent"
                           aria-label={`Read ${post.title}`}
                           title={`Read ${post.title}`}
                         >

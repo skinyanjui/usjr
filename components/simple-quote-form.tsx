@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { settings } from "@/lib/cms-content"
+import { getServiceOptions } from "@/lib/service-options"
 
 export function SimpleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -22,14 +23,50 @@ export function SimpleQuoteForm() {
     projectDetails: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here
-    if (process.env.NODE_ENV !== "production") {
-      console.log("Form submitted:", formData)
+    setErrorMessage(null)
+    setIsSubmitting(true)
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          phoneNumber: formData.phoneNumber,
+          emailAddress: formData.emailAddress,
+          serviceAddress: formData.serviceAddress,
+          serviceNeeded: formData.serviceNeeded,
+          projectSize: formData.projectSize,
+          projectDetails: formData.projectDetails,
+          source: "simple-quote-form",
+        }),
+      })
+      if (!res.ok) {
+        const text = await res.text()
+        throw new Error(text || "Failed to submit")
+      }
+      setIsSubmitted(true)
+      setFormData({
+        fullName: "",
+        phoneNumber: "",
+        emailAddress: "",
+        serviceAddress: "",
+        serviceNeeded: "",
+        projectSize: "",
+        projectDetails: "",
+      })
+    } catch (err) {
+      if (process.env.NODE_ENV !== "production") {
+        console.error(err)
+      }
+      setErrorMessage("Something went wrong. Please try again or call us.")
+    } finally {
+      setIsSubmitting(false)
     }
-    setIsSubmitted(true)
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -138,11 +175,9 @@ export function SimpleQuoteForm() {
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="junk-removal">Junk Removal</SelectItem>
-                  <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-                  <SelectItem value="both-services">Both Services</SelectItem>
-                  <SelectItem value="estate-cleanout">Estate Cleanout</SelectItem>
-                  <SelectItem value="construction-debris">Construction Debris</SelectItem>
+                  {getServiceOptions().map((option) => (
+                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -179,8 +214,13 @@ export function SimpleQuoteForm() {
           </div>
 
           <div className="space-y-4">
-            <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-3 text-lg font-semibold">
-              Get Free Quote - Same Day Service Available
+            {errorMessage && <p className="text-sm text-red-600 text-center">{errorMessage}</p>}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3 text-lg font-semibold"
+            >
+              {isSubmitting ? "Submitting..." : "Get Free Quote"}
             </Button>
             <p className="text-sm text-gray-500 text-center">
               By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.

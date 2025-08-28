@@ -83,27 +83,27 @@ export default function ResidentialCleaning() {
         {
           question: "What cleaning products do you use?",
           answer:
-            "We exclusively use natural, eco-friendly cleaning products that are safe for your family and pets. All our products are non-toxic and biodegradable.",
+            "We exclusively use natural, eco-friendly cleaning products that are safe for your family and pets. All our products are non-toxic and biodegradable. We can also accommodate fragrance-free requests and note any product sensitivities on your account.",
         },
         {
           question: "Do I need to be home during the cleaning?",
           answer:
-            "No, you don't need to be home. Many of our clients provide us with access and go about their day. We're fully insured and bonded for your peace of mind.",
+            "No, you don't need to be home. Many of our clients provide us with access and go about their day. We're fully insured and bonded for your peace of mind. We can text before arrival and after completion with photos upon request.",
         },
         {
           question: "How long does a typical cleaning take?",
           answer:
-            "Deep cleaning typically takes 3-5 hours depending on home size. Recurring cleanings are usually 1.5-3 hours. We'll provide an accurate estimate during your quote.",
+            "Deep cleaning typically takes 3-5 hours depending on home size. Recurring cleanings are usually 1.5-3 hours. We'll provide an accurate estimate during your quote and adjust future visits based on your preferences and feedback.",
         },
         {
           question: "What if I'm not satisfied with the cleaning?",
           answer:
-            "We offer a 48-hour re-clean guarantee. If you're not completely satisfied, we'll return within 48 hours to make it right at no additional cost.",
+            "We offer a 48-hour re-clean guarantee. If you're not completely satisfied, we'll return within 48 hours to make it right at no additional cost. We document feedback in your profile so future visits reflect your preferences.",
         },
         {
           question: "Do you bring your own supplies and equipment?",
           answer:
-            "Yes, we bring all necessary cleaning supplies and equipment. Our natural products and professional-grade tools ensure the best results for your home.",
+            "Yes, we bring all necessary cleaning supplies and equipment. Our natural products and professional-grade tools ensure the best results for your home. If you have preferred products, we can use them—just let us know during booking.",
         },
       ]}
     />

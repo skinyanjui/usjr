@@ -118,9 +118,8 @@ export function ServicePageTemplate({
   badges = [],
   theme,
   features = [],
-  // Steps unused in current template; keep props for future but do not bind
-  steps: _unusedSteps = [],
-  stepsTitle: _unusedStepsTitle = "How It Works",
+  steps = [],
+  stepsTitle = "How It Works",
   pricing = [],
   pricingTitle = "Pricing",
   pricingNote,
@@ -213,6 +212,33 @@ export function ServicePageTemplate({
           {children}
         </div>
       </section>
+
+      {/* Steps Section */}
+      {steps.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {steps.map((step, index) => {
+                const IconComponent = step.icon
+                return (
+                  <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
+                    <CardHeader>
+                      <div className={`${classes.icon} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}>
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
