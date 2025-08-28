@@ -213,7 +213,7 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
