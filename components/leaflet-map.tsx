@@ -2,7 +2,6 @@
 
 import { useMemo } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 
 ;(L.Icon.Default.prototype as any)._getIconUrl = function () {
