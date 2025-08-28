@@ -5,6 +5,11 @@ import dynamic from "next/dynamic"
 import { MapPin } from "lucide-react"
 import { GlassCard } from "@/components/ui/glass-card"
 
+const ClientLeafletMap = dynamic(() => import("./leaflet-map"), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gray-100" />,
+})
+
 const SUPPORTED_ZIPS = [
   "47708","47710","47711","47712","47713","47714","47715","47720", // Evansville
   "47630", // Newburgh
