@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Leaf, Shield, Clock, Star, Phone, Camera } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import QuoteFormClient from "@/app/quote/QuoteFormClient"
 
 
 export default function HomePage() {
@@ -56,7 +57,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      
+      {/* Inline Quote Form on Homepage */}
+      <section className="py-10 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <QuoteFormClient />
+          </div>
+        </div>
+      </section>
 
       <HomeServiceCards />
       <ReviewsRow />
