@@ -17,8 +17,7 @@ export default function Image() {
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
-					background:
-						"linear-gradient(0deg, rgba(165,28,28,1) 0%, rgba(204,39,39,1) 40%, rgba(204,39,39,1) 60%, rgba(165,28,28,1) 100%)",
+					background: "rgb(204,39,39)",
 					color: "white",
 					padding: "64px",
 					boxSizing: "border-box",
