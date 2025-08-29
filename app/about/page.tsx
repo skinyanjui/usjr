@@ -261,18 +261,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-red-700 via-rose-600 to-orange-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience the Uncle Sam Difference?</h2>
-          <p className="text-xl text-red-100 mb-8">
+          <p className="text-xl text-white/85 mb-8">
             Join thousands of satisfied customers who trust Uncle Sam Junk Removal for their junk removal and cleaning
             needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold text-lg">
+            <Button className="bg-white/10 text-white hover:bg-white/20 border border-white/30 backdrop-blur px-8 py-3 rounded-full font-semibold text-lg">
               📞 {settings.phone}
             </Button>
-            <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-full font-semibold text-lg bg-transparent">
+            <Button asChild variant="outline" className="bg-white text-red-700 hover:bg-gray-100 border-transparent px-8 py-3 rounded-full font-semibold text-lg">
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </Button>
           </div>
