@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
+import { RelatedServices } from "@/components/related-services"
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -239,6 +240,11 @@ export function ServicePageTemplate({
           </div>
         </section>
       )}
+
+      {/* Related Services */}
+      <section className="bg-white">
+        <RelatedServices />
+      </section>
 
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">

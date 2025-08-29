@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
 import { RoutePrefetcher } from "@/components/route-prefetcher"
 import { Canonical } from "@/components/canonical"
+import { BreadcrumbsAuto } from "@/components/breadcrumbs"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Canonical />
           <Header />
+          <BreadcrumbsAuto />
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
           <main>{children}</main>
