@@ -30,7 +30,7 @@ export default function JunkRemovalCostPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               How much does junk removal cost in the Tri-State? (full breakdown)
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+            <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
                 <span>Updated Jan 2025</span>

@@ -30,7 +30,7 @@ export function BentoGrid() {
           <Card className="flex flex-col h-full p-0 w-full max-w-2xl">
             <CardHeader className="pb-3 sm:pb-4">
               <CardTitle className="text-lg sm:text-xl font-bold text-gray-900">Get Your Free Quote</CardTitle>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-700 text-sm">
                 Ready to get rid of your junk in Evansville? Contact Uncle Sam Junk Removal today for a free,
                 no-obligation quote. We'll beat any written estimate!
               </p>
@@ -109,7 +109,7 @@ export function BentoGrid() {
                   Get Free Quote
                 </Link>
               </Button>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-600">
                 By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
               </p>
             </CardContent>

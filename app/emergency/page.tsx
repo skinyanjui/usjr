@@ -41,7 +41,7 @@ export default function EmergencyPage() {
                 <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white">
                   <a href={`tel:${settings.phoneE164}`}>{settings.phone}</a>
                 </Button>
-                <p className="text-sm text-gray-500 mt-2">Available 24/7 for emergencies</p>
+                <p className="text-sm text-gray-600 mt-2">Available 24/7 for emergencies</p>
               </div>
 
               <div className="text-center">
@@ -51,7 +51,7 @@ export default function EmergencyPage() {
                 <Button asChild size="lg" variant="outline" className="border-red-800 text-red-800 bg-transparent">
                   <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>
-                <p className="text-sm text-gray-500 mt-2">Get instant quote via text</p>
+                <p className="text-sm text-gray-600 mt-2">Get instant quote via text</p>
               </div>
             </div>
           </CardContent>

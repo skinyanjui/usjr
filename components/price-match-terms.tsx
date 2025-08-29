@@ -56,7 +56,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
               <li>We’ll verify and reply with a matched quote—often within minutes</li>
             </ul>
           </div>
-          <p className="text-xs text-gray-500">Note: We may request photos to confirm the exact scope and ensure apples-to-apples pricing.</p>
+          <p className="text-xs text-gray-600">Note: We may request photos to confirm the exact scope and ensure apples-to-apples pricing.</p>
         </div>
       </DialogContent>
     </Dialog>

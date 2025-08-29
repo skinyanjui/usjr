@@ -128,7 +128,7 @@ export function PricingCalculator() {
             onChange={(e) => setLoadSize([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
+          <div className="flex justify-between text-[10px] sm:text-xs text-gray-600 mt-1">
             <span>10%</span>
             <span>50%</span>
             <span>100%</span>
@@ -150,7 +150,7 @@ export function PricingCalculator() {
             onChange={(e) => setItemCount([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="flex justify-between text-[10px] sm:text-xs text-gray-500 mt-1">
+          <div className="flex justify-between text-[10px] sm:text-xs text-gray-600 mt-1">
             <span>1</span>
             <span>20</span>
             <span>40</span>

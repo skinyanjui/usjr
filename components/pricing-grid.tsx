@@ -69,7 +69,7 @@ export function PricingGrid() {
           <p className="text-lg sm:text-xl text-gray-600 mb-2">
             Unlike other companies, we show you exactly what you'll pay
           </p>
-          <p className="text-base sm:text-lg text-gray-500">All prices include labor, hauling, and dump fees</p>
+          <p className="text-base sm:text-lg text-gray-600">All prices include labor, hauling, and dump fees</p>
           <div className="flex flex-col items-center justify-center gap-2 mt-4">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
@@ -77,7 +77,7 @@ export function PricingGrid() {
               ))}
             </div>
             <span className="text-gray-600">4.9/5 from 200+ customers</span>
-            <p className="text-sm text-gray-500 max-w-2xl">
+            <p className="text-sm text-gray-600 max-w-2xl">
               Prices shown are typical ranges. Photos help confirm your exact price and can save you money.
             </p>
           </div>

@@ -76,7 +76,7 @@ export function EvansvilleQuoteForm() {
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Thanks! We received your request.</h3>
-          <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto">
+          <p className="text-sm sm:text-base text-gray-700 max-w-md mx-auto">
             We'll text or call you shortly with your free estimate. For fastest service, call or text {settings.phone}.
           </p>
         </CardContent>
@@ -189,7 +189,7 @@ export function EvansvilleQuoteForm() {
             >
               {isSubmitting ? "Submitting..." : "Get Free Quote"}
             </Button>
-            <p className="text-xs sm:text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-600">
               By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
             </p>
           </div>

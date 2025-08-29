@@ -67,7 +67,7 @@ export default function FAQClient() {
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" aria-hidden="true" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" aria-hidden="true" />
             <Input
               placeholder="Search frequently asked questions..."
               aria-label="Search FAQs"

@@ -188,7 +188,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <p className="text-gray-500 text-sm">Last updated: January 1, 2025</p>
+        <p className="text-gray-600 text-sm">Last updated: January 1, 2025</p>
       </div>
     </main>
   )
