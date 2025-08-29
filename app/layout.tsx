@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "junk removal, dumpster rental, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County",
   authors: [{ name: "Uncle Sam Junk Removal" }],
   metadataBase: new URL(siteUrl),
-  alternates: { canonical: siteUrl },
   openGraph: {
     title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
     description:
