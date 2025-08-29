@@ -4,6 +4,7 @@ import { HomeServiceCards } from "@/components/home-service-cards"
 import { ReviewsRow } from "@/components/reviews-row"
 import { StructuredData } from "@/components/structured-data"
 import { getAggregateTestimonialStats } from "@/lib/cms-content"
+import { HomeMap } from "@/components/home-map"
 
 export default function HomePage() {
   const { averageRating, reviewCount } = getAggregateTestimonialStats()
@@ -23,6 +24,10 @@ export default function HomePage() {
       <ReviewsRow />
       <BentoGrid />
       <StructuredData type="LocalBusiness" />
+      {/* Defer map below-the-fold to avoid critical request chains */}
+      <div className="mt-8">
+        <HomeMap />
+      </div>
     </main>
   )
 }

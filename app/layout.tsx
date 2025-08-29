@@ -5,7 +5,6 @@ import "./globals.css"
 import Script from "next/script"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { HomeMap } from "@/components/home-map"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
@@ -75,7 +74,6 @@ export default function RootLayout({
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
           <main>{children}</main>
-          <HomeMap />
           <Footer />
         </ThemeProvider>
         <Analytics />
