@@ -222,7 +222,7 @@ export function SimpleQuoteForm() {
             >
               {isSubmitting ? "Submitting..." : "Get Free Quote"}
             </Button>
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-gray-600 text-center">
               By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
             </p>
           </div>

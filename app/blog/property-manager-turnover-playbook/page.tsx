@@ -65,7 +65,7 @@ export default function PropertyManagerPlaybookPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Property manager turnover playbook: trash-out to broom clean
             </h1>
-            <div className="flex items-center gap-2 text-xs text-gray-500 mb-6">
+            <div className="flex items-center gap-2 text-xs text-gray-600 mb-6">
               <div className="flex items-center gap-1">
                 <User className="w-3 h-3" />
                 <span>Uncle Sam Team</span>

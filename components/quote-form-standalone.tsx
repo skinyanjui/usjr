@@ -168,7 +168,7 @@ export function QuoteFormStandalone() {
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
             </Button>
             <div className="text-center">
-              <p className="text-sm text-gray-500 mb-2">Need immediate assistance?</p>
+              <p className="text-sm text-gray-600 mb-2">Need immediate assistance?</p>
               <p className="text-lg font-semibold text-gray-900">Text us at {settings.phone}</p>
             </div>
           </div>
@@ -667,18 +667,18 @@ export function QuoteFormStandalone() {
           {/* Photo Upload */}
           <div className="space-y-4 sm:space-y-5">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900">Photos for Accurate Pricing</h3>
-            <p className="text-xs sm:text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gray-700">
               Upload up to 6 photos of the areas/items for the job to help us provide the most accurate estimate
             </p>
 
             <div>
               <label className="flex flex-col items-center justify-center w-full h-32 sm:h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="w-8 h-8 sm:w-10 sm:h-10 mb-3 text-gray-400" />
-                  <p className="mb-2 text-xs sm:text-sm text-gray-500">
+                  <Upload className="w-8 h-8 sm:w-10 sm:h-10 mb-3 text-gray-500" />
+                  <p className="mb-2 text-xs sm:text-sm text-gray-600">
                     <span className="font-semibold">Click to upload photos</span> or drag and drop
                   </p>
-                  <p className="text-[10px] sm:text-xs text-gray-500">PNG, JPG up to 10MB each (max 6 photos)</p>
+                  <p className="text-[10px] sm:text-xs text-gray-600">PNG, JPG up to 10MB each (max 6 photos)</p>
                 </div>
                 <input
                   type="file"
@@ -696,7 +696,7 @@ export function QuoteFormStandalone() {
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
                     <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center border">
-                      <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
+                      <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-gray-500" />
                     </div>
                     <button
                       type="button"
@@ -706,7 +706,7 @@ export function QuoteFormStandalone() {
                     >
                       <X className="w-3 h-3" />
                     </button>
-                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1 truncate">{file.name}</p>
+                    <p className="text-[10px] sm:text-xs text-gray-600 mt-1 truncate">{file.name}</p>
                   </div>
                 ))}
               </div>
@@ -751,7 +751,7 @@ export function QuoteFormStandalone() {
             <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg">
               Get My Free Quote
             </Button>
-            <p className="text-center text-sm text-gray-500 mt-4">
+            <p className="text-center text-sm text-gray-600 mt-4">
               We'll review your request and respond within 2 hours with a detailed estimate
             </p>
           </div>

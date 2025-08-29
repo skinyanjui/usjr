@@ -176,7 +176,7 @@ export default function BlogPage() {
             <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Expert tips, guides, and insights from Uncle Sam Junk Removal's professional team
             </p>
-            <p className="text-base sm:text-lg text-gray-500">
+            <p className="text-base sm:text-lg text-gray-600">
               Natural cleaning solutions and professional advice for Evansville homeowners and businesses
             </p>
           </div>
@@ -216,7 +216,7 @@ export default function BlogPage() {
                       <CardTitle className="text-xl font-bold text-gray-900 line-clamp-2 hover:text-green-600 transition-colors">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </CardTitle>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
                         <div className="flex items-center gap-1">
                           <User className="w-4 h-4" />
                           <span>{post.author}</span>
@@ -278,7 +278,7 @@ export default function BlogPage() {
                       <CardTitle className="text-xl font-bold text-gray-900 line-clamp-2 hover:text-green-600 transition-colors">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </CardTitle>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
                         <div className="flex items-center gap-1">
                           <User className="w-4 h-4" />
                           <span>{post.author}</span>
@@ -343,7 +343,7 @@ export default function BlogPage() {
                     <CardTitle className="text-xl font-bold text-gray-900 line-clamp-2 hover:text-green-600 transition-colors">
                       <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </CardTitle>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-4 text-sm text-gray-600">
                       <div className="flex items-center gap-1">
                         <User className="w-4 h-4" />
                         <span>{post.author}</span>

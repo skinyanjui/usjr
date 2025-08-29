@@ -102,7 +102,7 @@ export default function ContactSection() {
                   <div className="text-center py-8">
                     <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-500 mx-auto mb-4" />
                     <h3 className="text-xl sm:text-2xl font-bold text-green-600 mb-2">Thank You!</h3>
-                    <p className="text-gray-600">{"We'll contact you within 30 minutes with your free quote."}</p>
+                    <p className="text-gray-700">{"We'll contact you within 30 minutes with your free quote."}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -235,7 +235,7 @@ export default function ContactSection() {
                       {isSubmitting ? "Submitting..." : "Get Free Quote"}
                     </Button>
 
-                    <p className="text-sm text-gray-500 text-center">
+                    <p className="text-sm text-gray-600 text-center">
                       By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
                     </p>
                   </form>
@@ -256,7 +256,7 @@ export default function ContactSection() {
                       <div>
                         <h4 className="font-semibold text-gray-900">Phone</h4>
                         <p className="text-gray-600 text-base sm:text-lg font-semibold">{settings.phone}</p>
-                        <p className="text-sm text-gray-500">Call or text for fastest response</p>
+                        <p className="text-sm text-gray-600">Call or text for fastest response</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -273,7 +273,7 @@ export default function ContactSection() {
                         <h4 className="font-semibold text-gray-900">Service Area</h4>
                         <p className="text-gray-600">Evansville, IN & Southern Indiana</p>
                         <p className="text-gray-600">Vanderburgh, Warrick, Posey Counties</p>
-                        <p className="text-sm text-gray-500">Also serving Henderson, KY area</p>
+                        <p className="text-sm text-gray-600">Also serving Henderson, KY area</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -282,7 +282,7 @@ export default function ContactSection() {
                         <h4 className="font-semibold text-gray-900">Hours</h4>
                         <p className="text-gray-600">Monday - Sunday</p>
                         <p className="text-gray-600">8:00 AM - 8:00 PM</p>
-                        <p className="text-sm text-gray-500">Emergency service available</p>
+                        <p className="text-sm text-gray-600">Emergency service available</p>
                       </div>
                     </div>
                   </div>

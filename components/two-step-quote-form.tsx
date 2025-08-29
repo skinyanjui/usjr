@@ -189,7 +189,7 @@ export function TwoStepQuoteForm() {
                     </label>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-600 mt-2">
                   *Includes labor, hauling, and dump fees. Final price determined on-site.
                 </p>
               </div>
@@ -233,7 +233,7 @@ export function TwoStepQuoteForm() {
                   onChange={(e) => setContactInfo((prev) => ({ ...prev, photos: e.target.files }))}
                   className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
                 />
-                <p className="text-xs text-gray-500 mt-1">Photos help us provide more accurate quotes</p>
+                <p className="text-xs text-gray-600 mt-1">Photos help us provide more accurate quotes</p>
               </div>
 
               <div className="flex gap-2">

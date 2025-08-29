@@ -99,7 +99,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
               </Button>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 Or text us at <span className="font-semibold">{settings.phone}</span> for immediate assistance
               </p>
             </div>
@@ -333,9 +333,9 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <div className="mt-2">
               <label className="flex flex-col items-center justify-center w-full h-28 sm:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                 <div className="flex flex-col items-center justify-center pt-4 pb-5">
-                  <Upload className="w-7 h-7 sm:w-8 sm:h-8 mb-2 text-gray-400" />
-                  <p className="mb-1 text-xs text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-[10px] sm:text-xs text-gray-500">PNG, JPG up to 10MB each</p>
+                  <Upload className="w-7 h-7 sm:w-8 sm:h-8 mb-2 text-gray-500" />
+                  <p className="mb-1 text-xs text-gray-600"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                  <p className="text-[10px] sm:text-xs text-gray-600">PNG, JPG up to 10MB each</p>
                 </div>
                 <input
                   type="file"
@@ -353,7 +353,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
                     <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
+                      <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500" />
                     </div>
                     <button
                       type="button"
@@ -363,7 +363,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     >
                       <X className="w-3 h-3" />
                     </button>
-                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1 truncate">{file.name}</p>
+                    <p className="text-[10px] sm:text-xs text-gray-600 mt-1 truncate">{file.name}</p>
                   </div>
                 ))}
               </div>

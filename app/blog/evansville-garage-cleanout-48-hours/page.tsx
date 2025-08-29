@@ -53,7 +53,7 @@ export default function GarageCleanoutPage() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Evansville garage cleanout in 48 hours: checklist & timeline
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
+            <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
               <div className="flex items-center gap-1">
                 <User className="w-4 h-4" />
                 <span>Uncle Sam Team</span>

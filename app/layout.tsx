@@ -10,6 +10,7 @@ import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
 import { RoutePrefetcher } from "@/components/route-prefetcher"
+import { Canonical } from "@/components/canonical"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <Canonical />
           <Header />
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />

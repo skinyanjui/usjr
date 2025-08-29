@@ -80,8 +80,8 @@ export function ServiceArea() {
               />
               <button type="button" onClick={handleCheck} className="px-4 py-2 bg-red-600 text-white rounded-md font-semibold">Check</button>
             </div>
-            <p className="text-sm text-gray-600 mt-2">{message}</p>
-            <p className="text-xs text-gray-500 mt-1">Some services may be location-limited (e.g., dumpsters).</p>
+            <p className="text-sm text-gray-700 mt-2">{message}</p>
+            <p className="text-xs text-gray-600 mt-1">Some services may be location-limited (e.g., dumpsters).</p>
           </div>
 
           <GlassCard variant="white" className="p-0 overflow-hidden">
@@ -95,7 +95,7 @@ export function ServiceArea() {
                   {/** Client-only Leaflet map for interactivity */}
                   <ClientLeafletMap />
                 </div>
-                <div className="px-4 py-2 text-xs text-gray-500">
+                <div className="px-4 py-2 text-xs text-gray-600">
                   <a
                     className="underline"
                     href="https://www.openstreetmap.org/?mlat=37.9716&mlon=-87.5711#map=11/37.9716/-87.5711"
