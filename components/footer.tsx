@@ -12,7 +12,7 @@ export function Footer() {
   const locations = NAV.find((i) => i.label === "Locations")?.children ?? []
 
   return (
-    <footer role="contentinfo" className="text-white">
+    <footer role="contentinfo" className="relative z-[2000] text-white">
       <div className="bg-red-900">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="rounded-lg p-4 mb-6 bg-red-600">
