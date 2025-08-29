@@ -64,6 +64,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="HzFgroT+3yowD6SFZ/ihvw" async></script>
+      </head>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
