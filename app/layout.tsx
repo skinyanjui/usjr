@@ -65,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
