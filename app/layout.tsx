@@ -65,11 +65,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
       <body className="font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[5000] focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:rounded-md"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <HomeMap />
           <Footer />
         </ThemeProvider>
