@@ -6,7 +6,7 @@ import { PageHero } from "@/components/ui/page-hero"
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | Uncle Sam Junk Removal",
-  description: "Answers about junk removal, dumpster rental, and cleaning services in Southern Indiana.",
+  description: "Get quick answers about junk removal, dumpster rental, and cleaning in Southern Indiana—pricing, scheduling, what we take, service areas, and more.",
 }
 
 export default function FAQPage() {
