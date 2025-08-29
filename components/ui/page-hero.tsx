@@ -19,7 +19,7 @@ export function PageHero({ title, description, imageSrc, priority = false }: Pag
         quality={50}
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="relative z-10 w-full">
         <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
