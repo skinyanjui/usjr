@@ -22,16 +22,22 @@ export function HeroSection() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
-        <div className="text-center text-white mb-6">
-          <h1 className="text-xl md:text-3xl font-semibold text-white my-1.5 py-0 mx-0 px-0 border-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-36 pb-20">
+        <div className="text-center text-white mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white my-2">
             Same-Day Junk Removal, Dumpster Rental & Cleaning in Evansville, IN
           </h1>
-          <p className="text-lg md:text-xl text-gray-200">Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana</p>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto">
+            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana
+          </p>
         </div>
 
         <div className="text-center mb-16">
-          <Button asChild size="xl" className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold w-full sm:w-auto">
+          <Button
+            asChild
+            size="xl"
+            className="bg-red-600 hover:bg-red-700 text-white rounded-full font-extrabold w-full sm:w-auto shadow-lg shadow-red-800/30 px-10 py-4"
+          >
             <QuoteCtaLink location="hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
           </Button>
           <p className="text-gray-200 mt-2">
