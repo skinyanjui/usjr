@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
+import { getCanonicalForPath } from "@/lib/canonicals"
 
 export function Canonical() {
   const pathname = usePathname() || "/"
@@ -9,7 +10,8 @@ export function Canonical() {
   useEffect(() => {
     const base = (process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, ""))
       || window.location.origin
-    const href = `${base}${pathname}`
+    const override = getCanonicalForPath(pathname)
+    const href = override || `${base}${pathname}`
 
     let linkEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!linkEl) {
