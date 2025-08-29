@@ -1,0 +1,119 @@
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { NAV } from "@/lib/nav"
+import { useMemo } from "react"
+
+function getBaseUrl(): string {
+  if (typeof window !== "undefined") {
+    const env = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "")
+    return (env && env.length > 0 ? env : window.location.origin) || ""
+  }
+  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || ""
+}
+
+function labelForPath(path: string, defaultLabel: string): string {
+  // Exact match from NAV
+  for (const item of NAV) {
+    if (item.href === path) return item.label
+    if (item.children) {
+      for (const child of item.children) {
+        if (child.href === path) return child.label
+      }
+    }
+  }
+
+  // Fallbacks for known sections
+  if (path === "/services") return "Services"
+  if (path === "/blog") return "Blog"
+  if (path === "/faq") return "FAQ"
+  if (path === "/about") return "About"
+  if (path === "/quote") return "Get Free Quote"
+  if (path === "/privacy") return "Privacy Policy"
+  if (path === "/terms") return "Terms of Service"
+
+  // If the last segment matches a NAV child, use its label
+  const last = path.split("/").filter(Boolean).pop() || defaultLabel
+  const humanized = last
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+  return humanized
+}
+
+export function BreadcrumbsAuto() {
+  const pathname = usePathname() || "/"
+
+  const crumbs = useMemo(() => {
+    if (pathname === "/") return [] as Array<{ name: string; href: string }>
+    const segments = pathname.split("/").filter(Boolean)
+    const acc: Array<{ name: string; href: string }> = []
+    let running = ""
+    for (let i = 0; i < segments.length; i++) {
+      running += `/${segments[i]}`
+
+      // Skip adding a non-existent index for certain sections (e.g., /locations has no index page)
+      if (segments[i] === "locations" && i < segments.length - 1) {
+        // Only add the final location crumb later
+        continue
+      }
+
+      const name = labelForPath(running, segments[i])
+      acc.push({ name, href: running })
+    }
+
+    // If we skipped locations parent, ensure we still add the final crumb label based on NAV
+    if (segments[0] === "locations" && acc.length === 0) {
+      const full = `/${segments.join("/")}`
+      const name = labelForPath(full, segments[segments.length - 1])
+      acc.push({ name, href: full })
+    }
+
+    return acc
+  }, [pathname])
+
+  if (!crumbs.length) return null
+
+  const base = getBaseUrl()
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
+      ...crumbs.map((c, idx) => ({
+        "@type": "ListItem",
+        position: idx + 2,
+        name: c.name,
+        item: `${base}${c.href}`,
+      })),
+    ],
+  }
+
+  return (
+    <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 py-2 text-sm">
+        <ol className="flex items-center gap-2 text-gray-600">
+          <li>
+            <Link href="/" className="hover:text-red-700 hover:underline">Home</Link>
+          </li>
+          {crumbs.map((crumb, index) => (
+            <li key={crumb.href} className="flex items-center gap-2">
+              <span aria-hidden="true">/</span>
+              {index === crumbs.length - 1 ? (
+                <span aria-current="page" className="text-gray-900 font-medium">{crumb.name}</span>
+              ) : (
+                <Link href={crumb.href} className="hover:text-red-700 hover:underline">{crumb.name}</Link>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </nav>
+  )
+}
+
