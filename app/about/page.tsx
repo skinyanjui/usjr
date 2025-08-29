@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Script from "next/script"
-import { Button } from "@/components/ui/button"
-import { Star, Shield, Truck, Users, Award, Clock, MapPin, Leaf, Recycle } from "lucide-react"
+import { Button, PhoneButton } from "@/components/ui/button"
+import { Star, Shield, Truck, Users, Award, Clock, MapPin, Leaf, Recycle, Phone } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
@@ -261,7 +261,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
+      <section className="py-16 bg-red-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience the Uncle Sam Difference?</h2>
           <p className="text-xl text-red-100 mb-8">
@@ -269,10 +269,10 @@ export default function AboutPage() {
             needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold text-lg">
-              📞 {settings.phone}
-            </Button>
-            <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 rounded-full font-semibold text-lg bg-transparent">
+            <PhoneButton href={`tel:${settings.phoneE164}`} size="lg" className="justify-center">
+              <Phone className="h-4 w-4" /> Call {settings.phone}
+            </PhoneButton>
+            <Button asChild className="bg-white text-red-700 font-semibold px-8 py-3 shadow hover:bg-red-50 transition-colors rounded-lg text-lg justify-center">
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
             </Button>
           </div>
