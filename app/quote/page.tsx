@@ -7,6 +7,7 @@ import Link from "next/link"
 import QuoteFormClient from "./QuoteFormClient"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
+import { junkRemovalTiers, dumpsterRentalTiers } from "@/lib/pricing"
 
 export const metadata: Metadata = {
   title: "Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Dumpster Rental & Cleaning",
@@ -81,10 +82,9 @@ export default function QuotePage() {
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <h3 className="font-semibold text-blue-900 mb-2">Starting Prices:</h3>
                     <ul className="text-sm text-blue-800 space-y-1">
-                      <li>• Single item: From $75-$150</li>
-                      <li>• 1/4 truck load: From $200-$300</li>
-                      <li>• 1/2 truck load: From $350-$450</li>
-                      <li>• Full truck load: From $500-$650</li>
+                      {junkRemovalTiers.map((t) => (
+                        <li key={t.id}>• {t.name}: {t.price}</li>
+                      ))}
                     </ul>
                   </div>
 
@@ -137,12 +137,11 @@ export default function QuotePage() {
 
                 <div className="space-y-4 mb-6">
                   <div className="bg-orange-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-orange-900 mb-2">Rental Prices:</h3>
+                    <h3 className="font-semibold text-orange-900 mb-2">Rental Prices (per week):</h3>
                     <ul className="text-sm text-orange-800 space-y-1">
-                      <li>• 10-yard: From $350/week</li>
-                      <li>• 20-yard: From $450/week</li>
-                      <li>• 30-yard: From $550/week</li>
-                      <li>• 40-yard: From $650/week</li>
+                      {dumpsterRentalTiers.map((t) => (
+                        <li key={t.id}>• {t.name.replace(" Dumpster", "")}: {t.price}</li>
+                      ))}
                     </ul>
                   </div>
 

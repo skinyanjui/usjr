@@ -5,13 +5,14 @@ import { IconContainer } from "@/components/ui/icon-container"
 import { Check } from "lucide-react"
 import { PriceMatchTerms } from "@/components/price-match-terms"
 import { settings } from "@/lib/cms-content"
+import { junkRemovalTiers } from "@/lib/pricing"
 
 export function PricingGrid() {
-  const pricingTiers = [
+  const baseTiers = [
     {
       id: "single",
       name: "Single Item",
-      price: "From $89-149",
+      price: "",
       description: "Perfect for 1-2 items",
       features: ["1-2 items removal", "Labor included", "Hauling & disposal", "Same-day service", "No hidden fees"],
       popular: false,
@@ -20,7 +21,7 @@ export function PricingGrid() {
     {
       id: "quarter",
       name: "¼ Truck Load",
-      price: "From $179-249",
+      price: "",
       description: "Small pickup truck load",
       features: [
         "¼ truck capacity",
@@ -35,7 +36,7 @@ export function PricingGrid() {
     {
       id: "half",
       name: "½ Truck Load",
-      price: "From $289-389",
+      price: "",
       description: "Half pickup truck load",
       features: ["½ truck capacity", "2-person crew", "Labor included", "Hauling & disposal", "Same-day service"],
       popular: true,
@@ -44,7 +45,7 @@ export function PricingGrid() {
     {
       id: "three-quarter",
       name: "¾ Truck Load",
-      price: "From $389-489",
+      price: "",
       description: "Large pickup truck load",
       features: ["¾ truck capacity", "2-person crew", "Labor included", "Hauling & disposal", "Free estimates"],
       popular: false,
@@ -53,13 +54,16 @@ export function PricingGrid() {
     {
       id: "full",
       name: "Full Truck Load",
-      price: "From $489-649",
+      price: "",
       description: "Complete truck load",
       features: ["Full truck capacity", "2-3 person crew", "Labor included", "Hauling & disposal", "Volume discounts"],
       popular: false,
       examples: "Whole house cleanout, estate",
     },
-  ]
+  ] as const
+
+  const priceMap = new Map(junkRemovalTiers.map((t) => [t.id, t.price]))
+  const pricingTiers = baseTiers.map((t) => ({ ...t, price: priceMap.get(t.id) || t.price }))
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">

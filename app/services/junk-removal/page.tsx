@@ -55,11 +55,10 @@ export default function JunkRemovalPage() {
         },
       ]}
       pricing={[
-        // Changed structure to match template (name instead of size)
-        { name: "1/8 Truck Load", price: "From $99", description: "Perfect for small cleanouts" },
-        { name: "1/4 Truck Load", price: "From $179", description: "Great for room cleanouts" },
-        { name: "1/2 Truck Load", price: "From $299", description: "Ideal for large cleanouts" },
-        { name: "Full Truck Load", price: "From $499", description: "Complete home cleanouts" },
+        { name: "Single Item", price: "From $89-149", description: "Perfect for 1-2 items" },
+        { name: "1/4 Truck Load", price: "From $179-249", description: "Great for room cleanouts" },
+        { name: "1/2 Truck Load", price: "From $289-389", description: "Ideal for large cleanouts" },
+        { name: "Full Truck Load", price: "From $489-649", description: "Complete home cleanouts" },
       ]}
       faqs={[
         // Added missing FAQs array
