@@ -31,6 +31,18 @@ export const CANONICAL_OVERRIDES: Record<string, string> = {
   // Appliance disposal guide likely overlaps with appliance removal service page
   "/blog/appliance-disposal-recycling-guide": abs("/services/appliance-removal"),
   "/services/appliance-removal": abs("/services/appliance-removal"),
+
+  // Dumpster rental guide overlaps with the dumpster rental service page
+  "/blog/dumpster-rental-guide-evansville": abs("/services/dumpster-rental"),
+  "/services/dumpster-rental": abs("/services/dumpster-rental"),
+
+  // Estate cleanout guide overlaps with the estate cleanouts service page
+  "/blog/estate-cleanout-guide": abs("/services/estate-cleanouts"),
+  "/services/estate-cleanouts": abs("/services/estate-cleanouts"),
+
+  // Garage cleanout how-to overlaps with the garage cleanout service page
+  "/blog/evansville-garage-cleanout-48-hours": abs("/services/garage-cleanout"),
+  "/services/garage-cleanout": abs("/services/garage-cleanout"),
 }
 
 export function getCanonicalForPath(pathname: string): string | undefined {
