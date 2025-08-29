@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Camera, Truck, Package, Home, Building2 } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { junkRemovalTiers } from "@/lib/pricing"
 
 export function TwoStepQuoteForm() {
   const [step, setStep] = useState(1)
@@ -59,12 +60,13 @@ export function TwoStepQuoteForm() {
     { id: "other", label: "Other Items", icon: Package },
   ]
 
+  const priceById = new Map(junkRemovalTiers.map((t) => [t.id, t.price]))
   const loadSizes = [
-    { id: "single", label: "Single Item", description: "1-2 items", price: "From $89-149" },
-    { id: "quarter", label: "¼ Truck Load", description: "Small pickup load", price: "From $179-249" },
-    { id: "half", label: "½ Truck Load", description: "Half pickup load", price: "From $289-389" },
-    { id: "three-quarter", label: "¾ Truck Load", description: "Large pickup load", price: "From $389-489" },
-    { id: "full", label: "Full Truck Load", description: "Complete truck load", price: "From $489-649" },
+    { id: "single", label: "Single Item", description: "1-2 items", price: priceById.get("single") || "" },
+    { id: "quarter", label: "¼ Truck Load", description: "Small pickup load", price: priceById.get("quarter") || "" },
+    { id: "half", label: "½ Truck Load", description: "Half pickup load", price: priceById.get("half") || "" },
+    { id: "three-quarter", label: "¾ Truck Load", description: "Large pickup load", price: priceById.get("three-quarter") || "" },
+    { id: "full", label: "Full Truck Load", description: "Complete truck load", price: priceById.get("full") || "" },
   ]
 
   const handleZipSubmit = (e: React.FormEvent) => {

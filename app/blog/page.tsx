@@ -171,8 +171,7 @@ export default function BlogPage() {
                 Professional Tips
               </Badge>
             </div>
-
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Cleaning & Junk Removal Blog</h2>
+            {/* Remove duplicate H1 for accessibility (already provided by PageHero) */}
             <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Expert tips, guides, and insights from Uncle Sam Junk Removal's professional team
             </p>
