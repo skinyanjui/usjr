@@ -25,7 +25,7 @@ export function PageHero({ title, description, imageSrc, priority = false }: Pag
         <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3">{title}</h1>
           {description && (
-            <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-3xl">{description}</p>
+            <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl">{description}</p>
           )}
         </div>
       </div>

@@ -41,7 +41,7 @@ export function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm text-white">
               {services.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href!} className="text-red-100 hover:text-white transition-colors">
+                  <Link href={s.href!} className="text-white hover:text-red-200 transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -52,10 +52,10 @@ export function Footer() {
           {/* Service Areas */}
           <nav aria-label="Service areas" className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Service Areas</h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm text-white">
               {locations.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href!} className="text-red-100 hover:text-white transition-colors">
+                  <Link href={l.href!} className="text-white hover:text-red-200 transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -66,52 +66,52 @@ export function Footer() {
           {/* Company Info */}
           <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Uncle Sam Junk Removal</h3>
-            <p className="text-red-100 text-xs sm:text-sm mb-3">
+            <p className="text-white text-xs sm:text-sm mb-3">
               Evansville's premier junk removal service. Locally owned and operated.
             </p>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-red-100 mb-2">
               <Clock className="h-4 w-4" />
               <span>Same Day Service</span>
             </div>
-            <div className="text-xs sm:text-sm text-red-100">Available 7 Days a Week</div>
+            <div className="text-xs sm:text-sm text-white">Available 7 Days a Week</div>
           </div>
 
           {/* Quick Links */}
           <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <h3 className="text-base sm:text-lg font-semibold mb-3">Quick Links</h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm text-white">
               <li>
-                <Link href="/about" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/about" className="text-white hover:text-red-200 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/blog" className="text-white hover:text-red-200 transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/faq" className="text-white hover:text-red-200 transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="text-red-100 hover:text-white transition-colors">
+                <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-200 transition-colors">
                   Karcher Cleaners
                 </a>
               </li>
               <li>
-                <Link href="/quote" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/quote" className="text-white hover:text-red-200 transition-colors">
                   Get Free Quote
                 </Link>
               </li>
               <li>
-                <Link href="/sitemap" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/sitemap" className="text-white hover:text-red-200 transition-colors">
                   Sitemap (HTML)
                 </Link>
               </li>
               <li>
-                <Link href="/sitemap.xml" className="text-red-100 hover:text-white transition-colors">
+                <Link href="/sitemap.xml" className="text-white hover:text-red-200 transition-colors">
                   Sitemap (XML)
                 </Link>
               </li>
@@ -130,7 +130,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-2 w-1/2 sm:w-[calc(33.333%-0.75rem)]">
               <Mail className="h-4 w-4" />
-              <a href={`mailto:${settings.email}`} className="text-red-100 hover:text-white transition-colors">
+              <a href={`mailto:${settings.email}`} className="text-white hover:text-red-200 transition-colors">
                 {settings.email}
               </a>
             </div>
@@ -142,13 +142,13 @@ export function Footer() {
         </div>
 
         <div className="border-t border-red-700/60 pt-3">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-1 text-xs sm:text-sm text-red-100">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-1 text-xs sm:text-sm text-white">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <div className="flex gap-4">
-              <Link href="/privacy" className="hover:text-white transition-colors">
+              <Link href="/privacy" className="text-white hover:text-red-200 transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
+              <Link href="/terms" className="text-white hover:text-red-200 transition-colors">
                 Terms of Service
               </Link>
             </div>
