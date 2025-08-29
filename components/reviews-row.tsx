@@ -99,7 +99,7 @@ export function ReviewsRow() {
             >
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < Math.round(item.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-400"}`} />
+                  <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < Math.round(item.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-500"}`} />
                 ))}
               </div>
               <div className="text-[12px] sm:text-[13px] md:text-sm">
@@ -124,7 +124,7 @@ export function ReviewsRow() {
               <div key={t.id} className="shrink-0 w-64 sm:w-72 md:w-80 lg:w-96 rounded-lg border border-gray-300 bg-white/90 backdrop-blur-sm shadow-sm p-3 sm:p-4 md:p-5 snap-start">
                 <div className="flex items-center gap-1 sm:gap-1.5 mb-1 sm:mb-2">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-400"}`} />
+                    <Star key={i} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-500"}`} />
                   ))}
                 </div>
                 <p className="text-[12px] sm:text-[13px] md:text-sm text-gray-700">"{t.text}"</p>
