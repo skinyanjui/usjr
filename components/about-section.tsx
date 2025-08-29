@@ -11,8 +11,8 @@ export function AboutSection() {
     },
     {
       icon: <Truck className="h-8 w-8 text-red-600" />,
-      number: "10000+",
-      label: "Jobs Completed",
+      number: "500+",
+      label: "Satisfied Clients",
     },
     {
       icon: <Star className="h-8 w-8 text-red-600" />,
