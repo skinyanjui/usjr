@@ -30,6 +30,27 @@ export default function LeafletMap() {
   const mapRef = useRef<L.Map | null>(null)
 
   useEffect(() => {
+    // Ensure Leaflet CSS is loaded non-blockingly when the map mounts on client
+    const existing = document.querySelector('link[data-leaflet-css="true"]') as HTMLLinkElement | null
+    if (!existing) {
+      const preload = document.createElement("link")
+      preload.rel = "preload"
+      preload.as = "style"
+      preload.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      preload.setAttribute("data-leaflet-css", "true")
+      document.head.appendChild(preload)
+
+      const stylesheet = document.createElement("link")
+      stylesheet.rel = "stylesheet"
+      stylesheet.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      stylesheet.media = "print"
+      stylesheet.onload = () => {
+        stylesheet.media = "all"
+      }
+      stylesheet.setAttribute("data-leaflet-css", "true")
+      document.head.appendChild(stylesheet)
+    }
+
     if (!mapContainerRef.current) return
 
     const map = L.map(mapContainerRef.current, {

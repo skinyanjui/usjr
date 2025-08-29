@@ -2,10 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { IBM_Plex_Sans } from "next/font/google"
 import "./globals.css"
-import "leaflet/dist/leaflet.css"
+import Script from "next/script"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { HomeMap } from "@/components/home-map"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
@@ -66,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
       <head>
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="HzFgroT+3yowD6SFZ/ihvw" async></script>
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
@@ -76,10 +75,14 @@ export default function RootLayout({
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
           <main>{children}</main>
-          <HomeMap />
           <Footer />
         </ThemeProvider>
         <Analytics />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="HzFgroT+3yowD6SFZ/ihvw"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

@@ -22,17 +22,21 @@ export function ReviewsRow() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [reviews, setReviews] = useState<Testimonial[]>([])
+  const cachedOffsetsRef = useRef<number[] | null>(null)
+  const writeFrameRef = useRef<number | null>(null)
 
   useEffect(() => {
     setReviews(getActiveTestimonials(12))
   }, [])
 
-  // Compute and cache card offsets for reliable snapping across responsive widths
+  // Compute and cache card offsets in one read pass to avoid repeated reflows
   const getCardOffsets = (): number[] => {
+    if (cachedOffsetsRef.current) return cachedOffsetsRef.current
     const container = carouselRef.current
     if (!container) return []
     const children = Array.from(container.children) as HTMLElement[]
-    return children.map((child) => child.offsetLeft)
+    cachedOffsetsRef.current = children.map((child) => child.offsetLeft)
+    return cachedOffsetsRef.current
   }
 
   const scrollToIndex = (index: number) => {
@@ -43,7 +47,10 @@ export function ReviewsRow() {
     const safeIndex = ((index % offsets.length) + offsets.length) % offsets.length
     const target = offsets[safeIndex]
     if (typeof target !== "number") return
-    container.scrollTo({ left: target, behavior: "smooth" as ScrollBehavior })
+    if (writeFrameRef.current !== null) cancelAnimationFrame(writeFrameRef.current)
+    writeFrameRef.current = requestAnimationFrame(() => {
+      container.scrollTo({ left: target, behavior: "smooth" as ScrollBehavior })
+    })
   }
 
   const goToNext = () => {
@@ -79,11 +86,19 @@ export function ReviewsRow() {
   useEffect(() => {
     const handle = () => {
       // Re-align to current index after layout changes
+      cachedOffsetsRef.current = null
       scrollToIndex(currentIndex)
     }
     window.addEventListener("resize", handle)
     return () => window.removeEventListener("resize", handle)
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Cleanup any scheduled writes on unmount
+  useEffect(() => {
+    return () => {
+      if (writeFrameRef.current !== null) cancelAnimationFrame(writeFrameRef.current)
+    }
   }, [])
 
   return (
