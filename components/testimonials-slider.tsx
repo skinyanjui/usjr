@@ -56,7 +56,7 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
                 <Star
                   key={i}
                   className={`w-5 h-5 ${
-                    i < currentTestimonial.rating ? "text-yellow-400 fill-current" : "text-gray-400"
+                    i < currentTestimonial.rating ? "text-yellow-400 fill-current" : "text-gray-500"
                   }`}
                 />
               ))}
