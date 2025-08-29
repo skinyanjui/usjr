@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ThemedButton } from "@/components/ui/themed-button"
+import { Button } from "@/components/ui/button"
 import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Truck, Container, Lightbulb } from "lucide-react"
@@ -30,9 +31,9 @@ export function HeroSection() {
         </div>
 
         <div className="text-center mb-16">
-          <ThemedButton theme="red" size="xl" className="w-full sm:w-auto rounded-full font-bold" asChild>
+          <Button asChild size="xl" className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold w-full sm:w-auto">
             <QuoteCtaLink location="hero" label="Get Free Quote">Get Free Quote</QuoteCtaLink>
-          </ThemedButton>
+          </Button>
           <p className="text-gray-200 mt-2">
             See pricing, text photos, and get an exact quote — same-day service available
           </p>
