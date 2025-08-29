@@ -21,4 +21,3 @@ export const getServiceOptions = (): ServiceOption[] => {
     href: child.href || "",
   }))
 }
-

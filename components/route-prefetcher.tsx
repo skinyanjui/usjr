@@ -60,4 +60,3 @@ export function prefetchRoutes(hrefs: string[]) {
     }
   } catch {}
 }
-
