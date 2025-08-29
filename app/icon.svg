@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Uncle Sam Junk Removal favicon">
+  <defs>
+    <style>
+      .bg { fill: #e30000; }
+      .label { fill: #ffffff; font-family: Arial, Helvetica, sans-serif; font-weight: 800; letter-spacing: 2px; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="512" height="512" rx="64" ry="64" />
+  <text class="label" x="256" y="160" font-size="120">UNCLE</text>
+  <text class="label" x="256" y="300" font-size="170">SAM</text>
+  <text class="label" x="256" y="420" font-size="70">JUNK REMOVAL</text>
+</svg>
