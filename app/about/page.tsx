@@ -80,8 +80,8 @@ export default function AboutPage() {
                   <div className="text-gray-600">Founded</div>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-green-600">10,000+</div>
-                  <div className="text-gray-600">Jobs Completed</div>
+                  <div className="text-2xl font-bold text-green-600">500+</div>
+                  <div className="text-gray-600">Satisfied Clients</div>
                 </div>
               </div>
             </div>
