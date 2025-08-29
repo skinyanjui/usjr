@@ -32,13 +32,6 @@ export default function LeafletMap() {
   useEffect(() => {
     if (!mapContainerRef.current) return
 
-    // Ensure default marker icons load correctly in Next.js
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-      shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-    })
-
     const map = L.map(mapContainerRef.current, {
       center: [37.9716, -87.5711],
       zoom: 9,
@@ -56,12 +49,19 @@ export default function LeafletMap() {
     const markerGroup = L.layerGroup().addTo(map)
 
     locations.forEach((location) => {
-      const marker = L.marker([location.latitude, location.longitude]).addTo(markerGroup)
+      const marker = L.circleMarker([location.latitude, location.longitude], {
+        radius: 6,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: "#dc2626",
+        fillOpacity: 1,
+        opacity: 1,
+      }).addTo(markerGroup)
       const label: string = location.name.split(",")[0] ?? location.name
       marker.bindTooltip(label, {
         permanent: true,
         direction: "top",
-        offset: [0, -10],
+        offset: [0, -12],
         opacity: 0.9,
         className: "bg-white/90 px-1 py-[2px] rounded text-[10px] font-medium text-gray-700 shadow",
       })
