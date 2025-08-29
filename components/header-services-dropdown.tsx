@@ -26,7 +26,6 @@ export default function ServicesDropdown({ servicesMenuId, onMouseEnter, onMouse
           <Link
             key={item.href}
             href={item.href!}
-            prefetch={false}
             className="block py-2 px-3 rounded-md text-gray-700 hover:text-white hover:bg-red-600 hover:underline transition-colors text-sm"
             role="menuitem"
           >

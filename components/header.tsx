@@ -5,6 +5,7 @@ import { Button, PhoneButton } from "@/components/ui/button"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
+import { useRouter } from "next/navigation"
 import { settings } from "@/lib/cms-content"
 import { trackQuoteClick } from "@/lib/quoteTracking"
 import { NAV } from "@/lib/nav"
@@ -13,6 +14,7 @@ const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { s
 const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), { ssr: false })
 
 export function Header() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isMobileLocationsOpen, setIsMobileLocationsOpen] = useState(false)
@@ -27,6 +29,14 @@ export function Header() {
       timeoutRef.current = null
     }
     setActiveDropdown(dropdown)
+
+    // Prefetch dropdown routes eagerly when menu is opened
+    const items = NAV.find((i) => i.label === (dropdown === "services" ? "Services" : "Locations"))?.children ?? []
+    for (const item of items) {
+      if (item.href) {
+        try { router.prefetch(item.href) } catch {}
+      }
+    }
   }
 
   const handleDropdownLeave = () => {
@@ -59,7 +69,6 @@ export function Header() {
           <div className="flex col-span-2 lg:col-span-1 min-w-0 items-end text-center">
             <Link
               href="/"
-              prefetch={false}
               className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-xs md:text-base hover:bg-red-700 transition-colors whitespace-nowrap max-w-full truncate"
             >
               UNCLE SAM JUNK REMOVAL
@@ -70,7 +79,6 @@ export function Header() {
           <div className="hidden lg:flex items-center justify-center space-x-6">
             <Link
               href="/"
-              prefetch={false}
               className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               HOME
@@ -78,7 +86,6 @@ export function Header() {
 
             <Link
               href="/about"
-              prefetch={false}
               className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               ABOUT
@@ -148,7 +155,6 @@ export function Header() {
 
             <Link
               href="/blog"
-              prefetch={false}
               className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               BLOG
@@ -156,7 +162,6 @@ export function Header() {
 
             <Link
               href="/faq"
-              prefetch={false}
               className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
             >
               FAQ
@@ -217,7 +222,6 @@ export function Header() {
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
-                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
                 onClick={closeMobileMenuAndSections}
               >
@@ -225,7 +229,6 @@ export function Header() {
               </Link>
               <Link
                 href="/about"
-                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
                 onClick={closeMobileMenuAndSections}
               >
@@ -249,7 +252,6 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        prefetch={false}
                         className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
                         onClick={closeMobileMenuAndSections}
                       >
@@ -277,7 +279,6 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        prefetch={false}
                         className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
                         onClick={closeMobileMenuAndSections}
                       >
@@ -290,7 +291,6 @@ export function Header() {
 
               <Link
                 href="/blog"
-                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
                 onClick={closeMobileMenuAndSections}
               >
@@ -298,7 +298,6 @@ export function Header() {
               </Link>
               <Link
                 href="/faq"
-                prefetch={false}
                 className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
                 onClick={closeMobileMenuAndSections}
               >

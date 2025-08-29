@@ -52,7 +52,7 @@ export function HeroSection() {
               <li>✓ Licensed & Insured</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/junk-removal" prefetch={false}>
+              <Link href="/services/junk-removal">
                 View Junk Removal services
               </Link>
             </ThemedButton>
@@ -71,7 +71,7 @@ export function HeroSection() {
               <li>✓ Multiple Sizes Available</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/dumpster-rental" prefetch={false}>
+              <Link href="/services/dumpster-rental">
                 Explore Dumpster Rental options
               </Link>
             </ThemedButton>
@@ -90,7 +90,7 @@ export function HeroSection() {
               <li>✓ Flexible Scheduling</li>
             </ul>
             <ThemedButton theme="green" fullWidth asChild>
-              <Link href="/cleaning" prefetch={false}>
+              <Link href="/cleaning">
                 View Cleaning Services
               </Link>
             </ThemedButton>
