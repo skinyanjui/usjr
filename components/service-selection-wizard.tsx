@@ -23,7 +23,7 @@ export function ServiceSelectionWizard() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {OPTIONS.map((opt) => (
             <GlassCard key={opt.label} variant="white" className="p-5 text-center hover:shadow-md transition-shadow">
-              <Link href={opt.href} className="flex flex-col items-center gap-2" prefetch={false}>
+              <Link href={opt.href} className="flex flex-col items-center gap-2">
                 <opt.icon className="w-8 h-8 text-red-600" />
                 <span className="text-sm font-semibold text-gray-900">{opt.label}</span>
               </Link>

@@ -9,6 +9,7 @@ import { HomeMap } from "@/components/home-map"
 import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
+import { RoutePrefetcher } from "@/components/route-prefetcher"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function RootLayout({
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
+          <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
           <main>{children}</main>
           <HomeMap />
