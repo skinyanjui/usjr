@@ -18,7 +18,7 @@ export default function Image() {
 					alignItems: "center",
 					justifyContent: "center",
 					background:
-						"linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0ea5e9 100%)",
+						"linear-gradient(0deg, rgba(165,28,28,1) 0%, rgba(204,39,39,1) 40%, rgba(204,39,39,1) 60%, rgba(165,28,28,1) 100%)",
 					color: "white",
 					padding: "64px",
 					boxSizing: "border-box",
@@ -29,19 +29,14 @@ export default function Image() {
 						display: "flex",
 						flexDirection: "column",
 						alignItems: "center",
+						textTransform: "uppercase",
 						textAlign: "center",
+						lineHeight: 1.05,
+						letterSpacing: 1,
 					}}
 				>
-					<div style={{ fontSize: 64, fontWeight: 800, marginBottom: 8 }}>
-						Uncle Sam Junk Removal
-						
-					</div>
-					<div style={{ fontSize: 32, opacity: 0.9 }}>
-						Professional Junk Removal & Dumpster Rental in Evansville, IN
-					</div>
-					<div style={{ fontSize: 28, marginTop: 28, opacity: 0.95 }}>
-						unclesamjunkremoval.com
-					</div>
+					<div style={{ fontSize: 180, fontWeight: 900 }}>Uncle Sam</div>
+					<div style={{ fontSize: 160, fontWeight: 900 }}>Junk Removal</div>
 				</div>
 			</div>
 		),

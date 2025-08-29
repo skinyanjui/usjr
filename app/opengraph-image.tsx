@@ -15,71 +15,28 @@ export default function Image() {
 					width: "100%",
 					height: "100%",
 					display: "flex",
-					flexDirection: "column",
-					justifyContent: "space-between",
+					alignItems: "center",
+					justifyContent: "center",
 					background:
-						"linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0ea5e9 100%)",
+						"linear-gradient(0deg, rgba(165,28,28,1) 0%, rgba(204,39,39,1) 40%, rgba(204,39,39,1) 60%, rgba(165,28,28,1) 100%)",
 					color: "white",
 					padding: "64px",
 					boxSizing: "border-box",
 				}}
 			>
-				<div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-					<div
-						style={{
-							width: 72,
-							height: 72,
-							borderRadius: 16,
-							background: "rgba(255,255,255,0.15)",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-							backdropFilter: "blur(2px)",
-						}}
-					>
-						<span style={{ fontSize: 40, fontWeight: 700 }}>US</span>
-					</div>
-
-					<div style={{ display: "flex", flexDirection: "column" }}>
-						<span style={{ fontSize: 40, fontWeight: 700 }}>
-							Uncle Sam Junk Removal
-						</span>
-						<span style={{ fontSize: 24, opacity: 0.9 }}>
-							Professional Junk Removal & Dumpster Rental in Evansville, IN
-						</span>
-					</div>
-				</div>
-
 				<div
 					style={{
 						display: "flex",
+						flexDirection: "column",
 						alignItems: "center",
-						justifyContent: "space-between",
+						textTransform: "uppercase",
+						textAlign: "center",
+						lineHeight: 1.05,
+						letterSpacing: 1,
 					}}
 				>
-					<div style={{ fontSize: 30, opacity: 0.95 }}>unclesamjunkremoval.com</div>
-					<div style={{ display: "flex", gap: 16 }}>
-						<div
-							style={{
-								padding: "12px 20px",
-								borderRadius: 9999,
-								background: "rgba(255,255,255,0.12)",
-								fontSize: 24,
-							}}
-						>
-							Junk Removal
-						</div>
-						<div
-							style={{
-								padding: "12px 20px",
-								borderRadius: 9999,
-								background: "rgba(255,255,255,0.12)",
-								fontSize: 24,
-							}}
-						>
-							Dumpster Rental
-						</div>
-					</div>
+					<div style={{ fontSize: 180, fontWeight: 900 }}>Uncle Sam</div>
+					<div style={{ fontSize: 160, fontWeight: 900 }}>Junk Removal</div>
 				</div>
 			</div>
 		),

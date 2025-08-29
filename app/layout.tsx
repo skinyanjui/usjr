@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Uncle Sam Junk Removal",
-    images: ["/junk-removal-evansville.png"],
+    images: ["/opengraph-image"],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
     description:
       "Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.",
-    images: ["/junk-removal-evansville.png"],
+    images: ["/twitter-image"],
   },
   icons: {
     icon: [
