@@ -26,14 +26,14 @@ export function HeroSection() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white my-2">
             Same-Day Junk Removal, Dumpster Rental & Cleaning in Evansville, IN
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto">
             Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana
           </p>
         </div>
 
         <div className="text-center mb-16">
           <QuoteCtaLink location="hero" label="Get Free Quote" />
-          <p className="text-gray-200 mt-2">
+          <p className="text-white mt-2">
             See pricing, text photos, and get an exact quote — same-day service available
           </p>
         </div>
@@ -44,7 +44,7 @@ export function HeroSection() {
             className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
           >
             <IconContainer icon={Truck} color="red" className="mx-auto mb-4 md:mb-6" />
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Junk Removal</h3>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Junk Removal</h2>
             <ul className="text-left space-y-2 mb-6 text-gray-700">
               <li>✓ Free Estimates Given</li>
               <li>✓ Same Day Service Available</li>
@@ -63,7 +63,7 @@ export function HeroSection() {
             className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
           >
             <IconContainer icon={Container} color="red" className="mx-auto mb-4 md:mb-6" />
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Dumpster Rental</h3>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Dumpster Rental</h2>
             <ul className="text-left space-y-2 mb-6 text-gray-700">
               <li>✓ Delivery & Pick Up | 7 Days</li>
               <li>✓ Residential & Commercial</li>
@@ -82,7 +82,7 @@ export function HeroSection() {
             className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
           >
             <IconContainer icon={Lightbulb} color="green" className="mx-auto mb-4 md:mb-6" />
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Cleaning Services</h3>
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Cleaning Services</h2>
             <ul className="text-left space-y-2 mb-6 text-gray-700">
               <li>✓ Natural Products Used</li>
               <li>✓ Residential & Commercial</li>

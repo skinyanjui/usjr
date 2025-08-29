@@ -172,7 +172,7 @@ export default function BlogPage() {
               </Badge>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Cleaning & Junk Removal Blog</h1>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">Cleaning & Junk Removal Blog</h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-6">
               Expert tips, guides, and insights from Uncle Sam Junk Removal's professional team
             </p>
