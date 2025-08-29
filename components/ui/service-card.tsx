@@ -118,7 +118,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`glass hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
+      className={`glass dark:glass-dark hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
     >
       <div className={`relative ${sizes.image} w-full`}>
         <Image
@@ -141,12 +141,12 @@ export function ServiceCard({
       </div>
       <CardContent className={`${sizes.content}`}>
         <div className="flex items-start justify-between">
-          <h3 className={`${sizes.title} text-gray-900`}>{title}</h3>
+          <h3 className={`${sizes.title} text-foreground`}>{title}</h3>
           <div className={`${sizes.price} ${colors.text}`}>{price}</div>
         </div>
-        <p className={`${sizes.description} text-gray-600`}>{description}</p>
+        <p className={`${sizes.description} text-muted-foreground`}>{description}</p>
         <div className="pt-2">
-          <Button asChild size="xs" className={`${colors.button} text-white`}>
+          <Button asChild size="xs" className={`${colors.button} text-primary-foreground`}>
             <Link href={link} aria-label={`View ${title} details`} title={`View ${title} details`}>
               View {title} details
             </Link>
