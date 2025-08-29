@@ -50,22 +50,24 @@ export function BreadcrumbsAuto() {
     const acc: Array<{ name: string; href: string }> = []
     let running = ""
     for (let i = 0; i < segments.length; i++) {
-      running += `/${segments[i]}`
+      const segment = segments[i] ?? ""
+      running += `/${segment}`
 
       // Skip adding a non-existent index for certain sections (e.g., /locations has no index page)
-      if (segments[i] === "locations" && i < segments.length - 1) {
+      if (segment === "locations" && i < segments.length - 1) {
         // Only add the final location crumb later
         continue
       }
 
-      const name = labelForPath(running, segments[i])
+      const name = labelForPath(running, segment)
       acc.push({ name, href: running })
     }
 
     // If we skipped locations parent, ensure we still add the final crumb label based on NAV
-    if (segments[0] === "locations" && acc.length === 0) {
+    if ((segments[0] ?? "") === "locations" && acc.length === 0) {
       const full = `/${segments.join("/")}`
-      const name = labelForPath(full, segments[segments.length - 1])
+      const last = segments[segments.length - 1] ?? ""
+      const name = labelForPath(full, last)
       acc.push({ name, href: full })
     }
 
