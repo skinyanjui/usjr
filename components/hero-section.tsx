@@ -17,6 +17,7 @@ export function HeroSection() {
         fetchPriority="high"
         sizes="100vw"
         quality={40}
+        unoptimized
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/60" />
