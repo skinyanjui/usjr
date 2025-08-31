@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center">
       <Image
-        src="/junk-removal-evansville.png"
+        src="https://source.unsplash.com/1600x900/?junk,truck"
         alt="Junk removal crew in Evansville, IN"
         fill
         priority
