@@ -9,7 +9,6 @@ import { ScrollToTopOnRouteChange } from "@/components/scroll-to-top"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
 import { RoutePrefetcher } from "@/components/route-prefetcher"
-import { Canonical } from "@/components/canonical"
 import { BreadcrumbsAuto } from "@/components/breadcrumbs"
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -69,7 +68,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <Canonical />
           <Header />
           <BreadcrumbsAuto />
           <RoutePrefetcher />
@@ -78,11 +76,13 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Analytics />
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="HzFgroT+3yowD6SFZ/ihvw"
-          strategy="afterInteractive"
-        />
+        {process.env.NEXT_PUBLIC_AHREFS_KEY ? (
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key={process.env.NEXT_PUBLIC_AHREFS_KEY}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   )

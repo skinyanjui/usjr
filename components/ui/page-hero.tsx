@@ -17,6 +17,7 @@ export function PageHero({ title, description, imageSrc, priority = false }: Pag
         priority={priority}
         sizes="100vw"
         quality={50}
+        unoptimized
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/50" />

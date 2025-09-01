@@ -10,13 +10,14 @@ export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center">
       <Image
-        src="/junk-removal-evansville.png"
+        src="https://source.unsplash.com/1600x900/?junk,truck"
         alt="Junk removal crew in Evansville, IN"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
         quality={40}
+        unoptimized
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/60" />

@@ -128,6 +128,7 @@ export function ServiceCard({
           className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           quality={50}
+          unoptimized
           loading="lazy"
         />
         <div className={`absolute top-3 left-3 p-2 rounded-full ${colors.bg} shadow-lg`}>
