@@ -99,6 +99,18 @@ export default function BlogPage() {
     },
     // New posts
     {
+      slug: "evansville-junk-removal-tips",
+      title: "Essential Junk Removal Tips for Evansville Residents",
+      excerpt:
+        "Local expert tips for efficient, cost-effective junk removal in Evansville, IN. From preparation to disposal, make your cleanout a success.",
+      author: "Uncle Sam Team",
+      date: "January 28, 2025",
+      readTime: "8 min read",
+      category: "Local Guide",
+      image: "/junk-removal-evansville.png",
+      featured: true,
+    },
+    {
       slug: "mattress-disposal-evansville",
       title: "Mattress disposal in Evansville: recycling, costs, and pickup options",
       excerpt:
