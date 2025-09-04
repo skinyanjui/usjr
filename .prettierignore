@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.vercel/
+.env*
+build/
+dist/
+*.log
+coverage/
+.nyc_output/
+*.tgz
+*.tar.gz
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

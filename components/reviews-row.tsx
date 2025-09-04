@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 import { getActiveTestimonials, type Testimonial } from "@/lib/cms-content"
 
@@ -24,20 +24,63 @@ export function ReviewsRow() {
   const [reviews, setReviews] = useState<Testimonial[]>([])
   const cachedOffsetsRef = useRef<number[] | null>(null)
   const writeFrameRef = useRef<number | null>(null)
+  const resizeObserverRef = useRef<ResizeObserver | null>(null)
 
   useEffect(() => {
     setReviews(getActiveTestimonials(12))
   }, [])
 
-  // Compute and cache card offsets in one read pass to avoid repeated reflows
-  const getCardOffsets = (): number[] => {
-    if (cachedOffsetsRef.current) return cachedOffsetsRef.current
+  // Cache offsets using ResizeObserver to avoid forced synchronous layouts
+  const updateOffsets = useCallback(() => {
     const container = carouselRef.current
-    if (!container) return []
-    const children = Array.from(container.children) as HTMLElement[]
-    cachedOffsetsRef.current = children.map((child) => child.offsetLeft)
-    return cachedOffsetsRef.current
+    if (!container) return
+    
+    // Use ResizeObserver to efficiently track layout changes
+    if (!resizeObserverRef.current) {
+      resizeObserverRef.current = new ResizeObserver(() => {
+        requestAnimationFrame(() => {
+          const children = Array.from(container.children) as HTMLElement[]
+          // eslint-disable-next-line no-restricted-syntax
+          const containerRect = container.getBoundingClientRect()
+          cachedOffsetsRef.current = children.map((child) => {
+            // eslint-disable-next-line no-restricted-syntax
+            const childRect = child.getBoundingClientRect()
+            // eslint-disable-next-line no-restricted-syntax
+            return childRect.left - containerRect.left + container.scrollLeft
+          })
+        })
+      })
+    }
+    
+    // Initial offset calculation
+    requestAnimationFrame(() => {
+      const children = Array.from(container.children) as HTMLElement[]
+      // eslint-disable-next-line no-restricted-syntax
+      const containerRect = container.getBoundingClientRect()
+      cachedOffsetsRef.current = children.map((child) => {
+        // eslint-disable-next-line no-restricted-syntax
+        const childRect = child.getBoundingClientRect()
+        // eslint-disable-next-line no-restricted-syntax
+        return childRect.left - containerRect.left + container.scrollLeft
+      })
+    })
+    
+    resizeObserverRef.current.observe(container)
+  }, [])
+
+  // Get cached offsets safely
+  const getCardOffsets = (): number[] => {
+    return cachedOffsetsRef.current || []
   }
+
+  // Cleanup ResizeObserver on unmount
+  useEffect(() => {
+    return () => {
+      if (resizeObserverRef.current) {
+        resizeObserverRef.current.disconnect()
+      }
+    }
+  }, [])
 
   const scrollToIndex = (index: number) => {
     const container = carouselRef.current
@@ -67,6 +110,11 @@ export function ReviewsRow() {
     setCurrentIndex((prev) => (prev - 1 + count) % count)
   }
 
+  // Initialize offsets calculation
+  useEffect(() => {
+    updateOffsets()
+  }, [updateOffsets])
+
   // Sync scrolling when index changes
   useEffect(() => {
     scrollToIndex(currentIndex)
@@ -81,18 +129,6 @@ export function ReviewsRow() {
     }, 4000)
     return () => clearInterval(interval)
   }, [isPaused])
-
-  // Recompute snapping target on resize to keep alignment
-  useEffect(() => {
-    const handle = () => {
-      // Re-align to current index after layout changes
-      cachedOffsetsRef.current = null
-      scrollToIndex(currentIndex)
-    }
-    window.addEventListener("resize", handle)
-    return () => window.removeEventListener("resize", handle)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // Cleanup any scheduled writes on unmount
   useEffect(() => {

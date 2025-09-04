@@ -8,7 +8,7 @@ export function ScrollToTopOnRouteChange() {
 
   // Ensure browser doesn't auto-restore scroll which can conflict with our manual scroll handling
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === "undefined") return undefined
     if ("scrollRestoration" in window.history) {
       const previous = window.history.scrollRestoration
       window.history.scrollRestoration = "manual"
@@ -16,6 +16,7 @@ export function ScrollToTopOnRouteChange() {
         window.history.scrollRestoration = previous
       }
     }
+    return undefined
   }, [])
 
   useEffect(() => {
@@ -33,6 +34,7 @@ export function ScrollToTopOnRouteChange() {
         if (raf2) cancelAnimationFrame(raf2)
       }
     }
+    return undefined
   }, [pathname])
 
   return null
