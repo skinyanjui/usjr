@@ -3,6 +3,7 @@ import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
 import { buildCanonicalMetadata } from "@/components/canonical"
 import { buildKeywordString } from "@/lib/keyword-variations"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
@@ -20,22 +21,30 @@ export default function JunkRemovalPage() {
       theme="red"
       title="Junk Removal Services in Evansville"
       description="Fast, reliable junk removal, trash removal, and haul away services throughout Southern Indiana. Whether you need to get rid of old furniture, clean out your house, or dispose of construction debris, we provide same-day service with upfront pricing and no hidden fees." // Changed from subtitle to description
-      badges={["Same-Day Service", "Licensed & Insured", "Eco-Friendly"]} // Added badges array
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.LICENSED_INSURED, UNIFORM_OFFERS.ECO_FRIENDLY]}
+      serviceCategory="Junk Removal Service"
       heroImage="/junk-removal-evansville.png"
       features={[
-        // Added missing icon property to each feature
         {
           icon: CheckCircle,
-          title: "Licensed & Insured",
+          title: UNIFORM_OFFERS.LICENSED_INSURED,
           description: "Fully licensed and insured for your protection",
         },
-        { icon: Calendar, title: "Same-Day Service Available", description: "Quick response for urgent cleanouts" },
+        { 
+          icon: Calendar, 
+          title: UNIFORM_OFFERS.SAME_DAY_SERVICE, 
+          description: "Quick response for urgent cleanouts" 
+        },
         {
           icon: CheckCircle,
-          title: "Eco-Friendly Disposal",
+          title: UNIFORM_OFFERS.ECO_FRIENDLY,
           description: "Responsible recycling and donation practices",
         },
-        { icon: CheckCircle, title: "Upfront Pricing", description: "No hidden fees or surprise charges" },
+        { 
+          icon: CheckCircle, 
+          title: UNIFORM_OFFERS.UPFRONT_PRICING, 
+          description: UNIFORM_OFFERS.NO_HIDDEN_FEES 
+        },
       ]}
       steps={[
         // Added missing icon property and restructured to match template
@@ -59,17 +68,17 @@ export default function JunkRemovalPage() {
         },
       ]}
       pricing={[
-        { name: "Single Item", price: "From $89-149", description: "Perfect for 1-2 items" },
-        { name: "1/4 Truck Load", price: "From $179-249", description: "Great for room cleanouts" },
-        { name: "1/2 Truck Load", price: "From $289-389", description: "Ideal for large cleanouts" },
-        { name: "Full Truck Load", price: "From $489-649", description: "Complete home cleanouts" },
+        { name: "Single Item", price: "From $89-149", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.SINGLE_ITEM },
+        { name: "1/4 Truck Load", price: "From $179-249", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.QUARTER_LOAD },
+        { name: "1/2 Truck Load", price: "From $289-389", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.HALF_LOAD },
+        { name: "Full Truck Load", price: "From $489-649", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.FULL_LOAD },
       ]}
       faqs={[
         // Added missing FAQs array
         {
-          question: "Do you provide same-day service?",
+          question: `Do you provide ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()}?`,
           answer:
-            "Yes! We offer same-day junk removal service throughout Evansville and surrounding areas, subject to availability.",
+            `Yes! We offer ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} throughout Evansville and surrounding areas, subject to availability.`,
         },
         {
           question: "What items do you accept for removal?",
@@ -77,9 +86,9 @@ export default function JunkRemovalPage() {
             "We accept most household items, furniture, appliances, construction debris, and yard waste. Whether you need to dispose of old furniture, get rid of broken appliances, or remove construction materials, we handle it all. We cannot accept hazardous materials, chemicals, or paint.",
         },
         {
-          question: "How do you price your trash removal and hauling services?",
+          question: "How do you price your junk removal services?",
           answer:
-            "Our pricing for junk removal and haul away services is based on the volume of items removed, measured by truck space. We provide upfront pricing with no hidden fees before we start any work.",
+            `${PRICING_LANGUAGE.PRICING_NOTES.VOLUME_BASED}. ${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.`,
         },
         {
           question: "Are you licensed and insured?",

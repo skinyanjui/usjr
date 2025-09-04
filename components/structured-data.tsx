@@ -1,13 +1,28 @@
 import { settings, getActiveServices, getAggregateTestimonialStats } from "@/lib/cms-content"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
 
 type FaqItem = { question: string; answer: string }
 
 interface BreadcrumbItem { name: string; url: string }
 
+interface ServiceOffer {
+  name: string
+  description: string
+  price?: string
+  availability?: string
+}
+
 interface StructuredDataProps {
   type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList"
   data?:
-    | { name?: string; description?: string; price?: string; category?: string }
+    | { 
+        name?: string
+        description?: string
+        price?: string
+        category?: string
+        offers?: ServiceOffer[]
+        serviceArea?: string[]
+      }
     | { faqs?: FaqItem[] }
     | { breadcrumbs?: BreadcrumbItem[] }
 }
@@ -77,18 +92,42 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         currenciesAccepted: "USD",
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Cleaning Services",
+          name: "Junk Removal and Cleaning Services",
           itemListElement: activeServices.map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
               name: service.name,
               description: service.description,
+              category: service.category,
             },
             price: service.price,
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: service.price,
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+            },
             priceCurrency: "USD",
             availability: "https://schema.org/InStock",
             validFrom: new Date().toISOString(),
+            businessFunction: "https://schema.org/Sell",
+            offeredBy: {
+              "@type": "LocalBusiness",
+              "@id": "https://unclesamjunkremoval.com/#organization"
+            },
+            includesObject: [
+              {
+                "@type": "Service",
+                name: UNIFORM_OFFERS.SAME_DAY_SERVICE,
+                description: "Same-day service available for most areas"
+              },
+              {
+                "@type": "Service", 
+                name: UNIFORM_OFFERS.FREE_ESTIMATES,
+                description: "Free estimates provided for all services"
+              }
+            ]
           })),
         },
         aggregateRating: agg.reviewCount > 0 ? {
@@ -106,14 +145,23 @@ export function StructuredData({ type, data }: StructuredDataProps) {
     }
 
     case "Service": {
-      const svc = (data as { name?: string; description?: string; price?: string; category?: string }) || {}
+      const svc = (data as { 
+        name?: string
+        description?: string
+        price?: string
+        category?: string
+        offers?: ServiceOffer[]
+        serviceArea?: string[]
+      }) || {}
+      
       structuredData = {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: svc.name || "Cleaning Service",
-        description: svc.description || "Professional cleaning service",
+        name: svc.name || "Junk Removal Service",
+        description: svc.description || "Professional junk removal service",
         provider: {
           "@type": "LocalBusiness",
+          "@id": "https://unclesamjunkremoval.com/#organization",
           name: "Uncle Sam Junk Removal",
           telephone: settings.phoneE164,
           address: {
@@ -123,14 +171,46 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             addressCountry: "US",
           },
         },
-        serviceArea: settings.serviceAreas,
-        offers: {
-          "@type": "Offer",
-          priceRange: svc.price || "From $80+",
-          availability: "https://schema.org/InStock",
-          validFrom: new Date().toISOString(),
-        },
-        category: svc.category || "Cleaning Service",
+        serviceArea: svc.serviceArea || settings.serviceAreas,
+        offers: [
+          {
+            "@type": "Offer",
+            name: svc.name || "Service",
+            priceRange: svc.price || "Contact for pricing",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            validFrom: new Date().toISOString(),
+            description: PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR,
+            businessFunction: "https://schema.org/Sell",
+            seller: {
+              "@type": "LocalBusiness",
+              "@id": "https://unclesamjunkremoval.com/#organization"
+            }
+          },
+          // Add standard service offers
+          {
+            "@type": "Offer",
+            name: UNIFORM_OFFERS.SAME_DAY_SERVICE,
+            description: "Same-day service available for most locations",
+            availability: "https://schema.org/InStock",
+            businessFunction: "https://schema.org/Sell"
+          },
+          {
+            "@type": "Offer", 
+            name: UNIFORM_OFFERS.FREE_ESTIMATES,
+            description: "Free estimates provided via phone, text, or in-person",
+            price: "0",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            businessFunction: "https://schema.org/Sell"
+          }
+        ],
+        category: svc.category || "Junk Removal Service",
+        serviceType: svc.category || "Junk Removal",
+        areaServed: (svc.serviceArea || settings.serviceAreas).map(area => ({
+          "@type": "City",
+          name: area
+        }))
       }
       break
     }
