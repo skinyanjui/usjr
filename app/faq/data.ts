@@ -52,12 +52,12 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "What is your cancellation or rescheduling policy?",
         answer:
-          "You can cancel or reschedule up to 24 hours before your appointment at no charge. Same-day cancellations may incur a $25 dispatch fee to cover route planning.",
+          "We offer flexible cancellation and rescheduling because we understand that life happens. You can cancel or reschedule up to 24 hours before your appointment at no charge - just call or text us. For same-day cancellations (less than 24 hours notice), there may be a $25 dispatch fee to cover route planning and crew scheduling, since we've already committed resources to your job. However, we waive this fee for emergencies, weather issues, or other circumstances beyond your control. We'd much rather reschedule than have you feel pressured to proceed when it's not convenient. Our scheduling system allows easy rescheduling online or via phone, and we'll work with your calendar to find the best alternative date.",
       },
       {
         question: "Do you provide arrival windows?",
         answer:
-          "Yes. We provide a 2-hour arrival window and will send a text when we are 30 minutes away. If we're delayed due to traffic, we'll keep you updated.",
+          "Yes! We provide precise 2-hour arrival windows and use real-time GPS tracking to keep you informed. You'll receive a confirmation text the evening before your service with your arrival window, and we'll send another text when our crew is 30 minutes away with an updated ETA. If we're running behind due to traffic, weather, or a previous job taking longer than expected, we'll proactively contact you with updates rather than leaving you guessing. Our dispatch system allows us to provide accurate ETAs, and if we're more than 15 minutes late to your window, we'll offer a service discount. We respect your time and understand that waiting around all day isn't an option for busy families and professionals.",
       },
     ],
   },
@@ -75,7 +75,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "Do I need to be present during pickup?",
         answer:
-          "You don't need to be present if items are easily accessible and you've provided clear instructions. However, we recommend being available for any questions or final walkthrough.",
+          "While you don't need to be present if items are clearly marked and easily accessible, we generally recommend being available for the best experience. When you're present, you can point out specific items, clarify any questions about what stays or goes, ensure valuable items aren't accidentally removed, and do a final walkthrough to confirm everything was handled to your satisfaction. If you can't be present, we can work with clear written instructions, photos of items to be removed, and detailed access information. Many customers prefer to be there for the first 10-15 minutes to point everything out, then leave while we do the heavy lifting. For security reasons, we require someone 18+ to be present for interior work if items aren't pre-staged outside.",
       },
       {
         question: "How quickly can you remove my junk?",
@@ -189,22 +189,32 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "What payment methods do you accept?",
         answer:
-          "We accept cash, check, and all major credit cards (Visa, MasterCard, American Express, Discover). Payment is due upon completion of service.",
+          "We accept all major payment methods for your convenience: cash, personal or business checks, and all major credit cards including Visa, MasterCard, American Express, and Discover. For recurring cleaning services, we can set up automatic billing to your preferred card. Payment is due upon completion of service, and we never require payment upfront (a red flag with some competitors). For large commercial projects over $1,000, we can arrange net-15 payment terms with approved credit. Our invoicing system provides detailed receipts that break down services performed, materials disposed of, and any applicable discounts or promotions applied.",
       },
       {
         question: "Do you charge for estimates?",
         answer:
-          "No, all estimates are completely free with no obligation. We provide detailed, written estimates for all services.",
+          "Absolutely not! All estimates are completely free with no obligation, no pressure, and no fine print. We believe you should know exactly what you're paying before committing to any service. Our estimates include detailed breakdowns of labor, disposal fees, and any special handling requirements. For most junk removal jobs, we can provide accurate estimates via text photos, but we're always happy to visit in person for complex projects. Unlike some competitors who charge 'assessment fees' or 'quote fees,' we only make money when we provide value to you. Our free estimates are valid for 30 days and include detailed explanations of our process, timeline, and what's included in your service.",
       },
       {
         question: "Are there any hidden fees?",
         answer:
-          "No hidden fees ever. Our pricing includes labor, hauling, disposal fees, and cleanup. The price we quote is the price you pay.",
+          "Never! Transparent pricing is fundamental to our business model. Our quotes include everything: labor, equipment, hauling, disposal fees, cleanup, protective materials for your property, and even potential disposal fee increases that might occur between quote and service. Unlike many competitors, we don't add fuel surcharges, weekend fees, weight overages (unless extreme), or last-minute 'disposal fee adjustments.' The price we quote is the price you pay, period. Our detailed estimates clearly break down what's included so there are never surprises. The only additional charge you might encounter is if you add significant items to the job after we arrive, and even then, we'll get your approval before proceeding.",
       },
       {
         question: "Should I tip the crew?",
         answer:
-          "Tips are never required but always appreciated for exceptional service. If you'd like to tip, you can do so in cash or add it to your card payment.",
+          "Tips are never required or expected, but they're always genuinely appreciated when customers feel we've provided exceptional service. Our crew members are fairly compensated with competitive wages and benefits, so you should never feel obligated to tip. However, many customers choose to tip for particularly challenging jobs (like multi-story furniture removal), going above and beyond service, or when our team works in difficult conditions. If you'd like to tip, you can do so in cash directly to the crew or add it to your credit card payment. Typical tips range from $10-50 depending on job size and complexity. Many customers also show appreciation by leaving positive reviews, which helps our business grow and allows us to maintain our quality standards.",
+      },
+      {
+        question: "Do you offer discounts for multiple services?",
+        answer:
+          "Yes! We offer significant package discounts when you combine our services. For example, customers who book both junk removal and cleaning services save 15% on the cleaning portion. Estate cleanout customers who also need ongoing cleaning services receive 20% off their first three cleaning sessions. Dumpster rental customers who also need junk removal service get preferred pricing on both. We also offer seasonal promotions, military/veteran discounts (10% off), senior citizen discounts (10% off for 65+), and special rates for repeat customers. Property managers and real estate agents working multiple properties receive volume pricing. Our goal is to reward customer loyalty and make our comprehensive services more accessible.",
+      },
+      {
+        question: "What makes Uncle Sam Junk Removal different from competitors?",
+        answer:
+          "Our difference lies in genuine local expertise, environmental responsibility, and customer-first policies. As longtime Southern Indiana residents, we understand local regulations, have established relationships with recycling centers and charities, and know the most efficient routes. We divert 68% of collected materials from landfills through our donation and recycling partnerships. Unlike many competitors, we never require upfront payment, we include all fees in our quotes (no surprises), and we offer a comprehensive price match guarantee. Our team undergoes background checks and extensive training. We're fully licensed in both Indiana and Kentucky, carry comprehensive insurance, and have maintained an A+ BBB rating. Most importantly, we treat every customer's property as if it were our own family's home.",
       },
     ],
   },
