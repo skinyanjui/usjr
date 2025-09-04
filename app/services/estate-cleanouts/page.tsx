@@ -2,12 +2,16 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Heart, Home, Gift, Users } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Estate Cleanouts Evansville IN | Compassionate Service | Uncle Sam Junk Removal",
   description:
     `Compassionate estate cleanout services in Evansville, Indiana. Full house cleanouts, donation coordination, sensitive handling. Call ${settings.phone}`,
   keywords: "estate cleanouts Evansville, house cleanouts Indiana, estate sale cleanup, probate cleanouts Evansville",
+  ...buildCanonicalMetadata("/services/estate-cleanouts", baseUrl),
 }
 
 export default function EstateCleanoutsPage() {

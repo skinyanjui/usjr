@@ -2,12 +2,16 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Shed Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     `Professional shed and outbuilding removal in Evansville, Indiana. Complete demolition and cleanup. Same-day service available. Call ${settings.phone}`,
   keywords: "shed removal Evansville, outbuilding removal Indiana, shed demolition, storage building removal",
+  ...buildCanonicalMetadata("/services/shed-removal", baseUrl),
 }
 
 export default function ShedRemovalPage() {

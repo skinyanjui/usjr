@@ -2,12 +2,16 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Zap, Wrench, Recycle, Clock } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Hot Tub Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     `Professional hot tub and spa removal in Evansville, Indiana. Safe disconnection, eco-friendly disposal. Same-day service available. Call ${settings.phone}`,
   keywords: "hot tub removal Evansville, spa removal Indiana, jacuzzi removal, hot tub disposal Evansville",
+  ...buildCanonicalMetadata("/services/hot-tub-removal", baseUrl),
 }
 
 export default function HotTubRemovalPage() {

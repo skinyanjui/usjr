@@ -50,3 +50,15 @@ export function getCanonicalForPath(pathname: string): string | undefined {
   return CANONICAL_OVERRIDES[key]
 }
 
+export function shouldIncludeInSitemap(pathname: string): boolean {
+  const key = pathname.replace(/\/$/, "") || "/"
+  const canonical = CANONICAL_OVERRIDES[key]
+  
+  // If there's a canonical override and it doesn't point to itself, exclude from sitemap
+  if (canonical && canonical !== `${SITE_URL}${key}`) {
+    return false
+  }
+  
+  return true
+}
+

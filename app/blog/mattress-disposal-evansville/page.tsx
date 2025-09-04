@@ -2,11 +2,15 @@ import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Mattress Disposal in Evansville: Recycling, Costs, and Pickup Options | Uncle Sam Junk Removal",
   description:
     "What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.",
+  ...buildCanonicalMetadata("/blog/mattress-disposal-evansville", baseUrl),
 }
 
 export default function MattressDisposalBlog() {
