@@ -3,14 +3,15 @@ import { CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Yard Waste Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    `Professional yard waste removal in Evansville, Indiana. Brush, leaves, tree limbs, landscaping debris. Same-day service available. Call ${settings.phone}`,
-  keywords: "yard waste removal Evansville, brush removal Indiana, tree limb removal, landscaping debris Evansville",
+    `Professional yard waste removal, yard cleanup, and landscaping debris removal in Evansville, Indiana. Whether you need brush removal, tree debris removal, leaf removal, or yard trash pickup, we provide same-day service with eco-friendly disposal. Call ${settings.phone}`,
+  keywords: buildKeywordString("yard-waste-removal"),
   ...buildCanonicalMetadata("/services/yard-waste-removal", baseUrl),
 }
 

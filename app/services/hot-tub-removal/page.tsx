@@ -3,14 +3,15 @@ import { Zap, Wrench, Recycle, Clock } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Hot Tub Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    `Professional hot tub and spa removal in Evansville, Indiana. Safe disconnection, eco-friendly disposal. Same-day service available. Call ${settings.phone}`,
-  keywords: "hot tub removal Evansville, spa removal Indiana, jacuzzi removal, hot tub disposal Evansville",
+    `Professional hot tub removal, spa removal, and jacuzzi disposal in Evansville, Indiana. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we provide safe disconnection and eco-friendly disposal with same-day service. Call ${settings.phone}`,
+  keywords: buildKeywordString("hot-tub-removal"),
   ...buildCanonicalMetadata("/services/hot-tub-removal", baseUrl),
 }
 
@@ -19,7 +20,7 @@ export default function HotTubRemovalPage() {
     <ServicePageTemplate
       theme="blue"
       title="Hot Tub Removal in Evansville"
-      description="Professional hot tub and spa removal with safe disconnection and eco-friendly disposal" // Changed from subtitle to description
+      description="Professional hot tub removal, spa removal, and jacuzzi disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we handle it all with specialized equipment." // Changed from subtitle to description
       heroImage="/hot-tub-removal-evansville.png"
       badges={["Same-Day Service", "Safe Disconnection", "Eco-Friendly"]} // Added badges array
       features={[
@@ -75,9 +76,9 @@ export default function HotTubRemovalPage() {
             "Yes, our team includes licensed professionals who can safely disconnect electrical connections. For complex plumbing, we recommend having a plumber disconnect water lines before our arrival.",
         },
         {
-          question: "How much does hot tub removal cost in Evansville?",
+          question: "How much does hot tub disposal and spa removal cost in Evansville?",
           answer:
-            "Hot tub removal typically costs from $389-649 depending on size, access difficulty, and disconnection needs. We provide upfront pricing with no hidden fees.",
+            "Hot tub removal typically costs from $389-649 depending on size, access difficulty, and disconnection needs. Spa removal and jacuzzi disposal follow similar pricing. We provide upfront pricing with no hidden fees for all hot tub haul away services.",
         },
         {
           question: "Can you remove hot tubs from tight spaces or decks?",

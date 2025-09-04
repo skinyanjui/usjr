@@ -3,14 +3,15 @@ import { Heart, Home, Gift, Users } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Estate Cleanouts Evansville IN | Compassionate Service | Uncle Sam Junk Removal",
   description:
-    `Compassionate estate cleanout services in Evansville, Indiana. Full house cleanouts, donation coordination, sensitive handling. Call ${settings.phone}`,
-  keywords: "estate cleanouts Evansville, house cleanouts Indiana, estate sale cleanup, probate cleanouts Evansville",
+    `Compassionate estate cleanouts, house cleanouts, and property cleanout services in Evansville, Indiana. Whether you need to clean out an inherited home, clear a deceased property, or clean out a family home, we provide full estate cleanup with sensitive handling and donation coordination. Call ${settings.phone}`,
+  keywords: buildKeywordString("estate-cleanouts"),
   ...buildCanonicalMetadata("/services/estate-cleanouts", baseUrl),
 }
 
@@ -19,7 +20,7 @@ export default function EstateCleanoutsPage() {
     <ServicePageTemplate
       theme="orange" // Changed from "amber" to "orange" to match supported themes
       title="Estate Cleanouts in Evansville"
-      description="Compassionate, respectful estate cleanout services for families during difficult times" // Changed from subtitle to description
+      description="Compassionate estate cleanouts, house cleanouts, and property cleanout services for families during difficult times. Whether you need to clean out an inherited home, clear a deceased property, or handle a complete family home cleanout, we provide respectful and thorough service." // Changed from subtitle to description
       heroImage="/estate-cleanout-evansville.png"
       badges={["Compassionate Service", "Complete Cleanout", "Donation Coordination"]} // Added badges array
       features={[
@@ -67,9 +68,9 @@ export default function EstateCleanoutsPage() {
             "We approach every estate cleanout with compassion and respect. Our team is trained to be sensitive to family emotions and work at your pace, allowing time for decision-making about important items.",
         },
         {
-          question: "How much do estate cleanouts cost in Evansville?",
+          question: "How much do house cleanouts and estate cleanup services cost in Evansville?",
           answer:
-            "Estate cleanouts typically cost $649-1,899 depending on home size and contents. We provide detailed estimates and work with executors and families to find solutions that fit budgets and timelines.",
+            "Estate cleanouts and property cleanout services typically cost $649-1,899 depending on home size and contents. House cleanouts for inherited properties follow similar pricing. We provide detailed estimates and work with executors and families to find solutions that fit budgets and timelines.",
         },
         {
           question: "Can you help identify valuable items during the cleanout?",

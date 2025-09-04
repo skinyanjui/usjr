@@ -3,15 +3,15 @@ import { Truck, Shield, Wrench, Recycle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Appliance Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    `Professional appliance removal in Evansville, Indiana. Refrigerators, washers, dryers, stoves. Eco-friendly disposal. Same-day service. Call ${settings.phone}`,
-  keywords:
-    "appliance removal Evansville, refrigerator removal Indiana, washer dryer removal, stove removal Evansville",
+    `Professional appliance removal, old appliance pickup, and appliance disposal in Evansville, Indiana. Whether you need refrigerator removal, washer dryer removal, stove removal, or dishwasher removal, we provide safe disconnection and eco-friendly disposal. Same-day service. Call ${settings.phone}`,
+  keywords: buildKeywordString("appliance-removal"),
   ...buildCanonicalMetadata("/services/appliance-removal", baseUrl),
 }
 
@@ -20,7 +20,7 @@ export default function ApplianceRemovalPage() {
     <ServicePageTemplate
       theme="orange"
       title="Appliance Removal in Evansville"
-      description="Professional removal of all appliances with safe disconnection and eco-friendly disposal" // Changed from subtitle to description
+      description="Professional appliance removal, old appliance pickup, and appliance disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of old appliances, remove refrigerators, or dispose of washers and dryers, we handle it all." // Changed from subtitle to description
       heroImage="/appliance-removal-evansville.png"
       badges={["Same-Day Service", "Safe Disconnection", "EPA Compliant"]} // Added badges array
       features={[
@@ -80,9 +80,9 @@ export default function ApplianceRemovalPage() {
             "Yes, our team can safely disconnect electric appliances. For gas appliances, we recommend having a licensed plumber disconnect gas lines before our arrival for safety.",
         },
         {
-          question: "How much does appliance removal cost in Evansville?",
+          question: "How much does old appliance pickup and disposal cost in Evansville?",
           answer:
-            "Single appliances from $89 (small) to $149 (large). Multiple appliances get volume discounts. Refrigerators and washers are $119-149 depending on size and access.",
+            "Single appliances from $89 (small) to $149 (large). Refrigerator removal and washer dryer removal are $119-149 depending on size and access. Multiple appliances get volume discounts for appliance haul away services.",
         },
         {
           question: "Can you remove built-in appliances?",

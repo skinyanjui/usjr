@@ -3,14 +3,15 @@ import { Warehouse, SortAsc, Gift, Clock } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Garage Cleanout Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    `Professional garage cleanout services in Evansville, Indiana. Complete garage cleaning and junk removal. Same-day service available. Call ${settings.phone}`,
-  keywords: "garage cleanout Evansville, garage cleaning Indiana, garage junk removal, storage cleanout Evansville",
+    `Professional garage cleanout, garage cleanup, and garage junk removal services in Evansville, Indiana. Whether you need to clean out your garage, organize garage space, or clear garage clutter, we provide complete garage cleaning and removal. Same-day service available. Call ${settings.phone}`,
+  keywords: buildKeywordString("garage-cleanout"),
   ...buildCanonicalMetadata("/services/garage-cleanout", baseUrl),
 }
 
