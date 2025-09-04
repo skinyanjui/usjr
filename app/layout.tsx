@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { IBM_Plex_Sans } from "next/font/google"
+// import { IBM_Plex_Sans } from "next/font/google" // Temporarily commented due to network restrictions
 import "./globals.css"
 import Script from "next/script"
 import { Header } from "@/components/header"
@@ -11,12 +11,12 @@ import { Analytics } from "@vercel/analytics/next"
 import { RoutePrefetcher } from "@/components/route-prefetcher"
 import { BreadcrumbsAuto } from "@/components/breadcrumbs"
 
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-ibm-plex-sans",
-})
+// const ibmPlexSans = IBM_Plex_Sans({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "600", "700"],
+//   display: "swap",
+//   variable: "--font-ibm-plex-sans",
+// }) // Temporarily commented due to network restrictions
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
@@ -62,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className="antialiased" suppressHydrationWarning> {/* className={`${ibmPlexSans.variable} antialiased`} when fonts restored */}
       <head>
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
