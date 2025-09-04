@@ -3,14 +3,15 @@ import { CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
-    `Professional mattress and box spring removal in Evansville, Indiana. Eco-friendly disposal and recycling. Same-day service available. Call ${settings.phone}`,
-  keywords: "mattress removal Evansville, box spring removal Indiana, bed disposal, mattress recycling Evansville",
+    `Professional mattress removal, bed disposal, and old mattress pickup in Evansville, Indiana. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we provide eco-friendly disposal with same-day service. Call ${settings.phone}`,
+  keywords: buildKeywordString("mattress-removal"),
   ...buildCanonicalMetadata("/services/mattress-removal", baseUrl),
 }
 
@@ -34,9 +35,9 @@ export default function MattressRemovalPage() {
         "Yes, we remove mattresses from any location including upstairs bedrooms, basements, and tight spaces. Our team handles all the heavy lifting and navigation.",
     },
     {
-      question: "How much does mattress removal cost in Evansville?",
+      question: "How much does mattress disposal and bed removal cost in Evansville?",
       answer:
-        "Single mattress removal from $89, with box springs adding $25. Full bedroom sets (mattress, box spring, frame) from $149. We offer volume discounts for multiple items.",
+        "Single mattress removal starts from $89, with box springs adding $25. Full bedroom sets (mattress, box spring, frame) start from $149. We offer volume discounts for multiple items and provide upfront pricing for all bed disposal services.",
     },
     {
       question: "Can you remove stained or damaged mattresses?",
@@ -54,7 +55,7 @@ export default function MattressRemovalPage() {
     <ServicePageTemplate
       theme="blue"
       title="Mattress Removal in Evansville"
-      description="Eco-friendly mattress and box spring removal with same-day service"
+      description="Professional mattress removal, bed disposal, and old mattress pickup service with same-day availability. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we handle it all with eco-friendly disposal methods."
       heroImage="/mattress-removal-evansville.png"
       badges={["Same-day service available", "Licensed & Insured"]}
       features={features}

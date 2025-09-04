@@ -23,9 +23,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: "Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville",
   description:
-    "Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services. Free estimates, eco-friendly disposal, and reliable service throughout Southern Indiana.",
+    "Locally owned junk removal, trash removal, and dumpster rental in Evansville, Indiana. Whether you need to get rid of junk, remove old furniture, haul away appliances, or rent a dumpster, we provide professional waste management services with free estimates, eco-friendly disposal, and reliable service throughout Southern Indiana.",
   keywords:
-    "junk removal, dumpster rental, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County",
+    "junk removal, trash removal, dumpster rental, haul away service, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County, get rid of junk, remove old furniture, appliance removal",
   authors: [{ name: "Uncle Sam Junk Removal" }],
   metadataBase: new URL(siteUrl),
   openGraph: {

@@ -2,15 +2,15 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildKeywordString } from "@/lib/keyword-variations"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Junk Removal Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
-    "Professional junk removal services in Evansville and Southern Indiana. Same-day service, eco-friendly disposal, free estimates. Licensed and insured.",
-  keywords:
-    "junk removal Evansville, furniture removal Indiana, appliance disposal, construction debris, estate cleanout, Vanderburgh County",
+    "Professional junk removal, trash removal, and haul away services in Evansville and Southern Indiana. Whether you need to get rid of junk, remove old furniture, or clean out your house, we provide same-day service with eco-friendly disposal. Licensed and insured hauling service.",
+  keywords: buildKeywordString("junk-removal"),
   ...buildCanonicalMetadata("/services/junk-removal", baseUrl),
 }
 
@@ -19,7 +19,7 @@ export default function JunkRemovalPage() {
     <ServicePageTemplate
       theme="red"
       title="Junk Removal Services in Evansville"
-      description="Fast, reliable, and eco-friendly junk removal throughout Southern Indiana. Same-day service available with upfront pricing and no hidden fees." // Changed from subtitle to description
+      description="Fast, reliable junk removal, trash removal, and haul away services throughout Southern Indiana. Whether you need to get rid of old furniture, clean out your house, or dispose of construction debris, we provide same-day service with upfront pricing and no hidden fees." // Changed from subtitle to description
       badges={["Same-Day Service", "Licensed & Insured", "Eco-Friendly"]} // Added badges array
       heroImage="/junk-removal-evansville.png"
       features={[
@@ -72,14 +72,14 @@ export default function JunkRemovalPage() {
             "Yes! We offer same-day junk removal service throughout Evansville and surrounding areas, subject to availability.",
         },
         {
-          question: "What items do you accept?",
+          question: "What items do you accept for removal?",
           answer:
-            "We accept most household items, furniture, appliances, construction debris, and yard waste. We cannot accept hazardous materials, chemicals, or paint.",
+            "We accept most household items, furniture, appliances, construction debris, and yard waste. Whether you need to dispose of old furniture, get rid of broken appliances, or remove construction materials, we handle it all. We cannot accept hazardous materials, chemicals, or paint.",
         },
         {
-          question: "How do you price your services?",
+          question: "How do you price your trash removal and hauling services?",
           answer:
-            "Our pricing is based on the volume of junk removed, measured by truck space. We provide upfront pricing with no hidden fees.",
+            "Our pricing for junk removal and haul away services is based on the volume of items removed, measured by truck space. We provide upfront pricing with no hidden fees before we start any work.",
         },
         {
           question: "Are you licensed and insured?",
