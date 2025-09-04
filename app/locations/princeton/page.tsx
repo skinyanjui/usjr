@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { MapPin, Clock, Truck, Recycle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
-import { PageHero } from "@/components/ui/page-hero"
+import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
+import { locationData, LocationData } from "@/lib/location-data"
 
 export const metadata = {
   title: "Junk Removal Princeton IN | Same-Day Service | Uncle Sam Junk Removal",
@@ -11,85 +10,29 @@ export const metadata = {
 }
 
 export default function PrincetonPage() {
-  const landmarks = [
-    "Downtown Princeton",
-    "Gibson County Courthouse",
-    "Princeton Community High School",
-    "Princeton Golf Club",
-    "Gibson County Fairgrounds",
-    "Wabash River Access",
-    "Princeton City Park",
-    "Toyota Motor Manufacturing",
-  ]
+  const data = locationData["princeton"] as LocationData
 
-  return (
-    <main className="min-h-screen">
-      <PageHero title="Junk Removal in Princeton, Indiana" description="Professional junk removal service for Princeton and Gibson County" imageSrc="/junk-removal-evansville.png" priority />
+  const templateProps: LocationPageTemplateProps = {
+    locationName: data.locationName,
+    state: data.state,
+    tagline: data.tagline,
+    theme: data.theme,
+    features: data.features,
+    landmarks: data.landmarks,
+    offers: data.offers,
+    stories: data.stories,
+    serviceGuarantee: data.serviceGuarantee,
+    ctaPrimary: `📞 Call ${settings.phone}`,
+    ctaSecondary: "Schedule Princeton Service"
+  }
 
-      <section className="py-16 bg-gradient-to-b from-teal-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Princeton's Trusted Junk Removal Service</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Clock className="w-6 h-6 text-teal-600 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Gibson County Coverage</h3>
-                    <p className="text-gray-600">30-minute drive from Evansville - regular service to Princeton area</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Truck className="w-6 h-6 text-teal-600 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Industrial Experience</h3>
-                    <p className="text-gray-600">Experienced with commercial and industrial cleanouts</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Recycle className="w-6 h-6 text-teal-600 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">County Compliant</h3>
-                    <p className="text-gray-600">Following Gibson County environmental regulations</p>
-                  </div>
-                </div>
-              </div>
+  if (data.neighborhoods) {
+    templateProps.neighborhoods = data.neighborhoods
+  }
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button className="bg-teal-600 hover:bg-teal-700 text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold">
-                  📞 Call {settings.phone}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-teal-800 text-teal-800 hover:bg-teal-800 hover:text-white w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent"
-                >
-                  Schedule Princeton Service
-                </Button>
-              </div>
-            </div>
+  if (data.disposalNote) {
+    templateProps.disposalNote = data.disposalNote
+  }
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Princeton Service Areas</h3>
-              <div className="grid grid-cols-1 gap-3">
-                {landmarks.map((landmark) => (
-                  <div key={landmark} className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-teal-600" />
-                    <span className="text-gray-700">{landmark}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <h4 className="font-semibold text-gray-900 mb-3">Commercial Services Available</h4>
-                <p className="text-sm text-gray-600">
-                  We provide commercial junk removal services for Princeton businesses, including office cleanouts and
-                  industrial waste removal.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  )
+  return <LocationPageTemplate {...templateProps} />
 }
