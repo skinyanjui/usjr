@@ -1,6 +1,9 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Junk Removal Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -8,6 +11,7 @@ export const metadata: Metadata = {
     "Professional junk removal services in Evansville and Southern Indiana. Same-day service, eco-friendly disposal, free estimates. Licensed and insured.",
   keywords:
     "junk removal Evansville, furniture removal Indiana, appliance disposal, construction debris, estate cleanout, Vanderburgh County",
+  ...buildCanonicalMetadata("/services/junk-removal", baseUrl),
 }
 
 export default function JunkRemovalPage() {

@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next"
+import { shouldIncludeInSitemap } from "@/lib/canonicals"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  return [
+  // All potential URLs
+  const allUrls = [
     // Top-level pages
     { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -50,57 +52,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/locations/mount-vernon-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/locations/new-harmony-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
-    // Blog posts
-    {
-      url: `${baseUrl}/blog/junk-removal-cost-tri-state`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/evansville-garage-cleanout-48-hours`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/hot-tub-removal-what-to-know`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/property-manager-turnover-playbook`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/dumpster-rental-guide-evansville`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/appliance-disposal-recycling-guide`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    { url: `${baseUrl}/blog/estate-cleanout-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    {
-      url: `${baseUrl}/blog/mattress-disposal-evansville`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    { url: `${baseUrl}/blog/shed-removal-guide-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/blog/yard-waste-disposal-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    // Blog posts - only include ones that should be indexed (non-canonical)
+    { url: `${baseUrl}/blog/property-manager-turnover-playbook`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ]
+
+  // Filter URLs based on canonical rules
+  return allUrls.filter((urlObj) => {
+    const pathname = urlObj.url.replace(baseUrl, "")
+    return shouldIncludeInSitemap(pathname)
+  }) as MetadataRoute.Sitemap
 }

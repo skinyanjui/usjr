@@ -2,12 +2,16 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     `Professional mattress and box spring removal in Evansville, Indiana. Eco-friendly disposal and recycling. Same-day service available. Call ${settings.phone}`,
   keywords: "mattress removal Evansville, box spring removal Indiana, bed disposal, mattress recycling Evansville",
+  ...buildCanonicalMetadata("/services/mattress-removal", baseUrl),
 }
 
 export default function MattressRemovalPage() {

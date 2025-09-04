@@ -2,6 +2,9 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import type { Metadata } from "next"
 import { Truck, Clock, DollarSign, Package, Phone, Calendar, Trash2, CheckCircle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Dumpster Rental Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -9,6 +12,7 @@ export const metadata: Metadata = {
     "Affordable dumpster rental in Evansville and Southern Indiana. Multiple sizes available, same-day delivery, all-inclusive pricing. Perfect for construction, renovation, and cleanout projects.",
   keywords:
     "dumpster rental Evansville, roll-off dumpster Indiana, construction dumpster, renovation waste, Vanderburgh County dumpster",
+  ...buildCanonicalMetadata("/services/dumpster-rental", baseUrl),
 }
 
 export default function DumpsterRentalPage() {

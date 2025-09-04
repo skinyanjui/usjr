@@ -4,12 +4,16 @@ import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from "lucide-r
 import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal",
   description:
     "Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.",
   keywords: "hot tub removal preparation, spa removal Evansville, hot tub disposal, jacuzzi removal Indiana",
+  ...buildCanonicalMetadata("/blog/hot-tub-removal-what-to-know", baseUrl),
 }
 
 export default function HotTubRemovalPage() {

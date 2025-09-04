@@ -2,11 +2,15 @@ import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Yard Waste Disposal in Evansville: Composting and Pickup Basics | Uncle Sam Junk Removal",
   description:
     "Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.",
+  ...buildCanonicalMetadata("/blog/yard-waste-disposal-evansville", baseUrl),
 }
 
 export default function YardWasteDisposalBlog() {

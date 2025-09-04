@@ -5,12 +5,16 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock } from "lucide-react"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Complete Dumpster Rental Guide for Evansville Residents | Uncle Sam Junk Removal",
   description:
     "Everything you need to know about dumpster rental in Evansville, IN. Sizes, pricing, permits, and tips for your next project.",
   keywords: "dumpster rental Evansville, dumpster sizes, construction dumpster, home renovation, Evansville permits",
+  ...buildCanonicalMetadata("/blog/dumpster-rental-guide-evansville", baseUrl),
 }
 
 export default function DumpsterRentalGuidePage() {

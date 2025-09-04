@@ -2,11 +2,15 @@ import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Shed Removal in Evansville: Permit Tips, Pricing, and Timeline | Uncle Sam Junk Removal",
   description:
     "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
+  ...buildCanonicalMetadata("/blog/shed-removal-guide-evansville", baseUrl),
 }
 
 export default function ShedRemovalGuideBlog() {

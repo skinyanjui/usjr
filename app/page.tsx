@@ -5,6 +5,14 @@ import { ReviewsRow } from "@/components/reviews-row"
 import { StructuredData } from "@/components/structured-data"
 import { getAggregateTestimonialStats } from "@/lib/cms-content"
 import { HomeMap } from "@/components/home-map"
+import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+
+export const metadata: Metadata = {
+  ...buildCanonicalMetadata("/", baseUrl),
+}
 
 export default function HomePage() {
   const { averageRating, reviewCount } = getAggregateTestimonialStats()

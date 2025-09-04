@@ -3,6 +3,9 @@ import { Calendar, Clock, User } from "lucide-react"
 import Link from "next/link"
 import { settings } from "@/lib/cms-content"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide",
@@ -10,6 +13,7 @@ export const metadata = {
     "Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.",
   keywords:
     "junk removal cost Evansville, Henderson junk removal prices, Tri-State cleanup costs, junk removal pricing guide",
+  ...buildCanonicalMetadata("/blog/junk-removal-cost-tri-state", baseUrl),
 }
 
 export default function JunkRemovalCostPage() {
