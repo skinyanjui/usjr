@@ -5,6 +5,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { IconContainer } from "@/components/ui/icon-container"
 import { Truck, Container, Lightbulb } from "lucide-react"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
+import { UNIFORM_OFFERS } from "@/lib/uniform-offers"
 
 export function HeroSection() {
   return (
@@ -33,9 +34,9 @@ export function HeroSection() {
         </div>
 
         <div className="text-center mb-16">
-          <QuoteCtaLink location="hero" label="Get Free Quote" />
+          <QuoteCtaLink location="hero" label={UNIFORM_OFFERS.GET_FREE_QUOTE} />
           <p className="text-white mt-2">
-            See pricing, text photos, and get an exact quote — same-day service available
+            See pricing, text photos, and get an exact quote — {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
           </p>
         </div>
 
@@ -47,10 +48,10 @@ export function HeroSection() {
             <IconContainer icon={Truck} color="red" className="mx-auto mb-4 md:mb-6" />
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Junk Removal</h2>
             <ul className="text-left space-y-2 mb-6 text-gray-700">
-              <li>✓ Free Estimates Given</li>
-              <li>✓ Same Day Service Available</li>
-              <li>✓ Eco-Friendly Disposal</li>
-              <li>✓ Licensed & Insured</li>
+              <li>✓ {UNIFORM_OFFERS.FREE_ESTIMATES}</li>
+              <li>✓ {UNIFORM_OFFERS.SAME_DAY_SERVICE}</li>
+              <li>✓ {UNIFORM_OFFERS.ECO_FRIENDLY}</li>
+              <li>✓ {UNIFORM_OFFERS.LICENSED_INSURED}</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
               <Link href="/services/junk-removal">
@@ -68,7 +69,7 @@ export function HeroSection() {
             <ul className="text-left space-y-2 mb-6 text-gray-700">
               <li>✓ Delivery & Pick Up | 7 Days</li>
               <li>✓ Residential & Commercial</li>
-              <li>✓ All Inclusive Pricing</li>
+              <li>✓ {UNIFORM_OFFERS.UPFRONT_PRICING}</li>
               <li>✓ Multiple Sizes Available</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
@@ -87,8 +88,8 @@ export function HeroSection() {
             <ul className="text-left space-y-2 mb-6 text-gray-700">
               <li>✓ Natural Products Used</li>
               <li>✓ Residential & Commercial</li>
-              <li>✓ Woman-Owned Business</li>
-              <li>✓ Flexible Scheduling</li>
+              <li>✓ {UNIFORM_OFFERS.VETERAN_OWNED}</li>
+              <li>✓ {UNIFORM_OFFERS.FLEXIBLE_SCHEDULING}</li>
             </ul>
             <ThemedButton theme="green" fullWidth asChild>
               <Link href="/cleaning">

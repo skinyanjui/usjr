@@ -20,6 +20,21 @@ export const faqCategories: FaqCategory[] = [
           "We serve Evansville, Newburgh, Henderson KY, Owensboro KY, Boonville, Princeton, and all of Southern Indiana. We also provide service to surrounding areas within 50 miles of Evansville.",
       },
       {
+        question: "Do you serve Henderson, Kentucky?",
+        answer:
+          "Yes! We're licensed to operate in Kentucky and regularly serve Henderson and Henderson County. We follow all Kentucky disposal regulations and partner with local recycling facilities.",
+      },
+      {
+        question: "Can you provide service to Owensboro?",
+        answer:
+          "Yes, we serve Owensboro and Daviess County. Since it's an extended service area (45 minutes from our base), we recommend scheduling 24-48 hours in advance for optimal timing.",
+      },
+      {
+        question: "Do you handle rural properties around Boonville?",
+        answer:
+          "Absolutely! We specialize in rural property cleanouts throughout Warrick County, including farm equipment removal and large-scale projects. We offer special pricing for properties over 2 acres.",
+      },
+      {
         question: "Are you licensed and insured?",
         answer:
           "Yes, Uncle Sam Junk Removal is fully licensed and insured. We carry general liability insurance and workers' compensation to protect both our team and your property.",
@@ -71,6 +86,16 @@ export const faqCategories: FaqCategory[] = [
         question: "What happens to my junk after removal?",
         answer:
           "We prioritize eco-friendly disposal. Items are donated when possible, recycled when appropriate, and only sent to landfills as a last resort. We provide donation receipts upon request when available from our partners.",
+      },
+      {
+        question: "Do you work with local Evansville recycling centers?",
+        answer:
+          "Yes! We partner with Evansville Recycling Center, Habitat for Humanity ReStore, and other local facilities to ensure materials are recycled or donated locally whenever possible.",
+      },
+      {
+        question: "Can you remove construction debris in Warrick County?",
+        answer:
+          "Yes, we handle construction debris throughout Warrick County including Boonville area. We're familiar with local disposal requirements and work with county-approved facilities.",
       },
       {
         question: "Do you remove hazardous materials?",

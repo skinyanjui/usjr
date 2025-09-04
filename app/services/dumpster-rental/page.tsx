@@ -4,6 +4,7 @@ import { Truck, Clock, DollarSign, Package, Phone, Calendar, Trash2, CheckCircle
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
 import { buildKeywordString } from "@/lib/keyword-variations"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
@@ -22,22 +23,23 @@ export default function DumpsterRentalPage() {
       title="Dumpster Rental in Evansville"
       description="Reliable dumpster rental, roll-off container rental, and trash container rental for construction, renovation, and cleanout projects throughout Southern Indiana. Whether you need to rent a dumpster, get a construction dumpster, or order a big trash bin, we offer same-day delivery with transparent pricing."
       heroImage="/dumpster-rental-evansville.png"
-      badges={["Same-Day Delivery", "All-Inclusive Pricing", "Multiple Sizes"]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.UPFRONT_PRICING, "Multiple Sizes"]}
+      serviceCategory="Dumpster Rental Service"
       features={[
         {
           icon: Truck,
-          title: "Same-Day Delivery Available",
+          title: `${UNIFORM_OFFERS.SAME_DAY_SERVICE} Delivery`,
           description: "Quick delivery when you need it most",
         },
         {
           icon: Clock,
-          title: "Flexible Rental Periods",
+          title: UNIFORM_OFFERS.FLEXIBLE_SCHEDULING,
           description: "Keep it as long as you need",
         },
         {
           icon: DollarSign,
-          title: "All-Inclusive Pricing",
-          description: "No hidden fees or surprise charges",
+          title: UNIFORM_OFFERS.UPFRONT_PRICING,
+          description: UNIFORM_OFFERS.NO_HIDDEN_FEES,
         },
         {
           icon: Package,
@@ -91,14 +93,14 @@ export default function DumpsterRentalPage() {
             "Hazardous materials, paint, chemicals, batteries, tires, and appliances with refrigerants are not allowed. Contact us for a complete list of prohibited items.",
         },
         {
-          question: "Do you offer same-day delivery?",
+          question: `Do you offer ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} delivery?`,
           answer:
-            "Yes! We offer same-day delivery throughout Evansville and Southern Indiana, subject to availability. Call us early in the day for best availability.",
+            `Yes! We offer ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} delivery throughout Evansville and Southern Indiana, subject to availability. Call us early in the day for best availability.`,
         },
         {
           question: "Are there any additional fees?",
           answer:
-            "Our pricing is all-inclusive with delivery, pickup, and disposal fees included. Additional fees only apply for extended rental periods or overweight loads.",
+            `${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR} and disposal fees. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}. Additional fees only apply for extended rental periods or overweight loads.`,
         },
       ]}
       ctaPrimary={`📞 Call ${settings.phone}`}

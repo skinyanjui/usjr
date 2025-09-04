@@ -53,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/locations/new-harmony-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
     // Blog posts - only include ones that should be indexed (non-canonical)
+    { url: `${baseUrl}/blog/evansville-junk-removal-tips`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog/property-manager-turnover-playbook`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ]

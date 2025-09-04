@@ -7,6 +7,8 @@ import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
 import { RelatedServices } from "@/components/related-services"
+import { StructuredData } from "@/components/structured-data"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -34,6 +36,10 @@ export interface ServicePageTemplateProps {
 
   // Theme
   theme: "red" | "blue" | "green" | "orange" | "purple" | "teal"
+
+  // Structured data
+  serviceCategory?: string
+  serviceArea?: string[]
 
   // Features section
   features: Array<{
@@ -118,6 +124,8 @@ export function ServicePageTemplate({
   description,
   badges = [],
   theme,
+  serviceCategory,
+  serviceArea,
   features = [],
   steps = [],
   stepsTitle = "How It Works",
@@ -125,8 +133,8 @@ export function ServicePageTemplate({
   pricingTitle = "Pricing",
   pricingNote,
   faqs = [],
-  ctaPrimary = "📞 Call Now",
-  ctaSecondary = "Get Free Quote",
+  ctaPrimary = `📞 ${UNIFORM_OFFERS.CALL_NOW}`,
+  ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
   heroImage,
 }: ServicePageTemplateProps) {
@@ -201,11 +209,18 @@ export function ServicePageTemplate({
                         <span className="font-medium text-gray-900">{tier.name}</span>
                         {tier.description && <div className="text-sm text-gray-600">{tier.description}</div>}
                       </div>
-                      <span className={`${classes.accent} font-bold`}>{tier.price}</span>
+                      <span className={`${classes.accent} font-bold`}>
+                        {tier.price.startsWith("From") ? tier.price : `${UNIFORM_OFFERS.STARTING_AT} ${tier.price}`}
+                      </span>
                     </div>
                   ))}
                 </div>
                 {pricingNote && <p className="text-sm text-gray-600 mt-4">{pricingNote}</p>}
+                {!pricingNote && (
+                  <p className="text-sm text-gray-600 mt-4">
+                    {PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. {PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.
+                  </p>
+                )}
               </div>
             )}
           </div>
@@ -264,6 +279,37 @@ export function ServicePageTemplate({
           </div>
         </div>
       </section>
+      
+      {/* Structured Data */}
+      <StructuredData 
+        type="Service" 
+        data={{
+          name: title,
+          description: description,
+          category: serviceCategory || "Junk Removal Service",
+          price: pricing.length > 0 ? pricing[0]?.price || "Contact for pricing" : "Contact for pricing",
+          serviceArea: serviceArea || settings.serviceAreas,
+          offers: [
+            {
+              name: UNIFORM_OFFERS.SAME_DAY_SERVICE,
+              description: "Same-day service available for most locations"
+            },
+            {
+              name: UNIFORM_OFFERS.FREE_ESTIMATES,
+              description: "Free estimates provided via phone, text, or in-person",
+              price: "Free"
+            }
+          ]
+        }}
+      />
+
+      {/* FAQ Structured Data */}
+      {faqs.length > 0 && (
+        <StructuredData 
+          type="FAQPage" 
+          data={{ faqs: faqs }}
+        />
+      )}
     </main>
   )
 }
