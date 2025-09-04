@@ -4,12 +4,16 @@ import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Evansville Garage Cleanout in 48 Hours: Complete Checklist & Timeline",
   description:
     "Step-by-step guide to completely clean out your Evansville garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips.",
   keywords: "garage cleanout Evansville, garage organization, 48 hour cleanup, garage decluttering Indiana",
+  ...buildCanonicalMetadata("/blog/evansville-garage-cleanout-48-hours", baseUrl),
 }
 
 export default function GarageCleanoutPage() {

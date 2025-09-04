@@ -2,11 +2,15 @@ import type { Metadata } from "next"
 import { GlassCard } from "@/components/ui/glass-card"
 import { SectionHeader } from "@/components/ui/section-header"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Estate Cleanout Guide: Compassionate Planning and Donation Options | Uncle Sam Junk Removal",
   description:
     "A step-by-step guide to planning an estate cleanout with sensitivity, including donation and recycling strategies.",
+  ...buildCanonicalMetadata("/blog/estate-cleanout-guide", baseUrl),
 }
 
 export default function EstateCleanoutGuideBlog() {

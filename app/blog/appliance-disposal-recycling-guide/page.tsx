@@ -4,6 +4,9 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock, Recycle, AlertTriangle } from "lucide-react"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Appliance Disposal & Recycling Guide for Evansville Residents | Uncle Sam Junk Removal",
@@ -11,6 +14,7 @@ export const metadata: Metadata = {
     "Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.",
   keywords:
     "appliance disposal Evansville, appliance recycling, refrigerator removal, washer dryer disposal, eco-friendly appliance removal",
+  ...buildCanonicalMetadata("/blog/appliance-disposal-recycling-guide", baseUrl),
 }
 
 export default function ApplianceDisposalGuidePage() {
