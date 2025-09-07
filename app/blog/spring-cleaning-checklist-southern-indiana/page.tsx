@@ -4,6 +4,9 @@ import { ThemedButton } from "@/components/ui/themed-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Calendar, User, Clock, CheckCircle } from "lucide-react"
 import Image from "next/image"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Ultimate Spring Cleaning Checklist for Southern Indiana Homes | Uncle Sam Junk Removal",
@@ -11,6 +14,7 @@ export const metadata: Metadata = {
     "Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.",
   keywords:
     "spring cleaning Southern Indiana, home cleaning checklist, eco-friendly cleaning, professional cleaning Evansville",
+  ...buildCanonicalMetadata("/blog/spring-cleaning-checklist-southern-indiana", baseUrl),
 }
 
 export default function SpringCleaningChecklistPage() {

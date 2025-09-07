@@ -1,12 +1,16 @@
 import { settings } from "@/lib/cms-content"
 import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
 import { locationData, LocationData } from "@/lib/location-data"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Junk Removal Mount Vernon IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     `Professional junk removal in Mount Vernon, Indiana. Same-day service and fair pricing for Posey County homes and businesses. Call ${settings.phone}`,
   keywords: "junk removal Mount Vernon, Mount Vernon junk removal, Posey County junk removal, trash removal Mount Vernon IN",
+  ...buildCanonicalMetadata("/locations/mount-vernon-in", baseUrl),
 }
 
 export default function MountVernonPage() {

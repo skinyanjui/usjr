@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Refrigerator, Package, Sparkles, CheckCircle, Users, Star } from "lucide-react"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Specialty Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -8,6 +11,7 @@ export const metadata: Metadata = {
     "Specialized cleaning services in Evansville: refrigerator cleaning, oven cleaning, organizing, and decluttering. Natural products and professional results.",
   keywords:
     "specialty cleaning Evansville, refrigerator cleaning, oven cleaning, home organizing, decluttering services",
+  ...buildCanonicalMetadata("/cleaning/specialty", baseUrl),
 }
 
 export default function SpecialtyCleaningPage() {

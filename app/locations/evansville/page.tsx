@@ -1,6 +1,9 @@
 import { settings } from "@/lib/cms-content"
 import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
 import { locationData, LocationData } from "@/lib/location-data"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Junk Removal Evansville IN | #1 Local Service Since 2016 | Uncle Sam Junk Removal",
@@ -8,6 +11,7 @@ export const metadata = {
     `Professional junk removal in Evansville, Indiana with same-day service, transparent pricing, and eco-friendly disposal. Serving all Evansville neighborhoods with local expertise since 2016. Call ${settings.phone} for free estimates.`,
   keywords:
     "junk removal Evansville, Evansville junk removal, trash removal Evansville IN, furniture removal Evansville, appliance removal Evansville, estate cleanout Evansville, construction debris removal",
+  ...buildCanonicalMetadata("/locations/evansville", baseUrl),
 }
 
 export default function EvansvillePage() {

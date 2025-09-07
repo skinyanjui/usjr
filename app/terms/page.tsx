@@ -1,4 +1,7 @@
 import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 
@@ -6,6 +9,7 @@ export const metadata: Metadata = {
   title: "Terms of Service | Uncle Sam Junk Removal",
   description:
     "Read Uncle Sam Junk Removal's terms of service covering bookings, cancellations, payments, and service limitations.",
+  ...buildCanonicalMetadata("/terms", baseUrl),
 }
 
 export default function TermsPage() {

@@ -7,6 +7,9 @@ import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { StructuredData } from "@/components/structured-data"
 import { UNIFORM_OFFERS } from "@/lib/uniform-offers"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Evansville Junk Removal Tips: Local Guide | Uncle Sam Junk Removal",
@@ -14,6 +17,7 @@ export const metadata = {
     "Essential junk removal tips for Evansville residents. Learn local disposal options, recycling centers, and cost-saving strategies from local experts.",
   keywords:
     "Evansville junk removal tips, Evansville recycling, local disposal Evansville, junk removal guide Indiana",
+  ...buildCanonicalMetadata("/blog/evansville-junk-removal-tips", baseUrl),
 }
 
 export default function EvansvilleJunkRemovalTipsPage() {

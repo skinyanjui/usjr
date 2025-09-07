@@ -6,6 +6,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
@@ -13,6 +16,7 @@ export const metadata = {
     "Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners. Natural cleaning solutions and professional insights.",
   keywords:
     "cleaning tips, junk removal guides, natural cleaning, Evansville home improvement, eco-friendly cleaning, decluttering advice",
+  ...buildCanonicalMetadata("/blog", baseUrl),
 }
 
 export default function BlogPage() {

@@ -2,12 +2,16 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { CheckCircle, Phone, Camera, Truck, Recycle } from "lucide-react"
 import type { Metadata } from "next"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Light Demolition Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
   description:
     `Professional light demolition services in Evansville, Indiana. Interior demo, deck removal, fence removal. Same-day service available. Call ${settings.phone}`,
   keywords: "light demolition Evansville, interior demolition Indiana, deck removal, fence removal Evansville",
+  ...buildCanonicalMetadata("/services/light-demolition", baseUrl),
 }
 
 export default function LightDemolitionPage() {
