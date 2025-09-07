@@ -52,10 +52,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/locations/mount-vernon-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/locations/new-harmony-in`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
-    // Blog posts - only include ones that should be indexed (non-canonical)
+    // Blog posts - include all valuable blog content
     { url: `${baseUrl}/blog/evansville-junk-removal-tips`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog/property-manager-turnover-playbook`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    
+    // Informational blog posts with unique content that should be indexed
+    { url: `${baseUrl}/blog/mattress-disposal-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/estate-cleanout-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/dumpster-rental-guide-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/junk-removal-cost-tri-state`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/appliance-disposal-recycling-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/yard-waste-disposal-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog/shed-removal-guide-evansville`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ]
 
   // Filter URLs based on canonical rules

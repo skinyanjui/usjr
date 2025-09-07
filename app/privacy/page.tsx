@@ -8,7 +8,8 @@ import { PageHero } from "@/components/ui/page-hero"
 export const metadata: Metadata = {
   title: "Privacy Policy | Uncle Sam Junk Removal",
   description:
-    "Read Uncle Sam Junk Removal's privacy policy. Learn how we collect, use, and protect your information.",
+    "Read Uncle Sam Junk Removal's privacy policy. Learn how we collect, use, and protect your information when using our junk removal and cleaning services in Evansville, IN.",
+  keywords: "privacy policy, data protection, Uncle Sam Junk Removal privacy, Evansville junk removal privacy",
   ...buildCanonicalMetadata("/privacy", baseUrl),
 }
 
@@ -17,7 +18,7 @@ export default function PrivacyPolicyPage() {
     <main className="min-h-screen bg-gray-50">
       <PageHero title="Privacy Policy" description="How we collect, use, and protect your information" imageSrc="/natural-cleaning-service.png" priority />
       <div className="max-w-3xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Privacy Policy</h2>
         <p className="text-gray-600 mb-8">Effective: January 1, 2025</p>
 
         <section className="mb-8">

@@ -10,6 +10,7 @@ export const metadata = {
   description:
     `Professional junk removal in Henderson, Kentucky. Cross-state service from Indiana. Same-day pickup available. Call ${settings.phone}`,
   keywords: "junk removal Henderson KY, Henderson Kentucky junk removal, trash removal Henderson, Kentucky junk pickup",
+  robots: "index, follow",
   ...buildCanonicalMetadata("/locations/henderson-ky", baseUrl),
 }
 
