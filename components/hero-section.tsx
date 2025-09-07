@@ -1,15 +1,18 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ThemedButton } from "@/components/ui/themed-button"
-import { GlassCard } from "@/components/ui/glass-card"
-import { IconContainer } from "@/components/ui/icon-container"
-import { Truck, Container, Lightbulb } from "lucide-react"
-import { QuoteCtaLink } from "@/components/quote-cta-link"
-import { UNIFORM_OFFERS } from "@/lib/uniform-offers"
+import Link from 'next/link'
+import Image from 'next/image'
+import { ThemedButton } from '@/components/ui/themed-button'
+import { GlassCard } from '@/components/ui/glass-card'
+import { IconContainer } from '@/components/ui/icon-container'
+import { Truck, Container, Lightbulb } from 'lucide-react'
+import { QuoteCtaLink } from '@/components/quote-cta-link'
+import { UNIFORM_OFFERS } from '@/lib/uniform-offers'
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center">
+    <section
+      id="home"
+      className="relative flex min-h-[80vh] items-center justify-center md:min-h-screen"
+    >
       <Image
         src="https://source.unsplash.com/1600x900/?junk,truck"
         alt="Junk removal crew in Evansville, IN"
@@ -23,78 +26,73 @@ export function HeroSection() {
       />
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-36 pb-20">
-        <div className="text-center text-white mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white my-2">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-36 pb-20">
+        <div className="mb-8 text-center text-white">
+          <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Same-Day Junk Removal, Dumpster Rental & Cleaning in Evansville, IN
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white max-w-4xl mx-auto">
+          <p className="mx-auto max-w-4xl text-lg text-white sm:text-xl md:text-2xl">
             Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana
           </p>
         </div>
 
-        <div className="text-center mb-16">
+        <div className="mb-16 text-center">
           <QuoteCtaLink location="hero" label={UNIFORM_OFFERS.GET_FREE_QUOTE} />
-          <p className="text-white mt-2">
-            See pricing, text photos, and get an exact quote — {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
+          <p className="mt-2 text-white">
+            See pricing, text photos, and get an exact quote —{' '}
+            {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
           <GlassCard
             variant="white"
-            className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
+            className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
           >
             <IconContainer icon={Truck} color="red" className="mx-auto mb-4 md:mb-6" />
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Junk Removal</h2>
-            <ul className="text-left space-y-2 mb-6 text-gray-700">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Junk Removal</h2>
+            <ul className="mb-6 space-y-2 text-left text-gray-700">
               <li>✓ {UNIFORM_OFFERS.FREE_ESTIMATES}</li>
               <li>✓ {UNIFORM_OFFERS.SAME_DAY_SERVICE}</li>
               <li>✓ {UNIFORM_OFFERS.ECO_FRIENDLY}</li>
               <li>✓ {UNIFORM_OFFERS.LICENSED_INSURED}</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/junk-removal">
-                View Junk Removal services
-              </Link>
+              <Link href="/services/junk-removal">View Junk Removal services</Link>
             </ThemedButton>
           </GlassCard>
 
           <GlassCard
             variant="white"
-            className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
+            className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
           >
             <IconContainer icon={Container} color="red" className="mx-auto mb-4 md:mb-6" />
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Dumpster Rental</h2>
-            <ul className="text-left space-y-2 mb-6 text-gray-700">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Dumpster Rental</h2>
+            <ul className="mb-6 space-y-2 text-left text-gray-700">
               <li>✓ Delivery & Pick Up | 7 Days</li>
               <li>✓ Residential & Commercial</li>
               <li>✓ {UNIFORM_OFFERS.UPFRONT_PRICING}</li>
               <li>✓ Multiple Sizes Available</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/dumpster-rental">
-                Explore Dumpster Rental options
-              </Link>
+              <Link href="/services/dumpster-rental">Explore Dumpster Rental options</Link>
             </ThemedButton>
           </GlassCard>
 
           <GlassCard
             variant="white"
-            className="p-6 md:p-8 text-center hover:scale-105 transition-transform duration-300"
+            className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
           >
             <IconContainer icon={Lightbulb} color="green" className="mx-auto mb-4 md:mb-6" />
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Cleaning Services</h2>
-            <ul className="text-left space-y-2 mb-6 text-gray-700">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Cleaning Services</h2>
+            <ul className="mb-6 space-y-2 text-left text-gray-700">
               <li>✓ Natural Products Used</li>
               <li>✓ Residential & Commercial</li>
               <li>✓ {UNIFORM_OFFERS.VETERAN_OWNED}</li>
               <li>✓ {UNIFORM_OFFERS.FLEXIBLE_SCHEDULING}</li>
             </ul>
             <ThemedButton theme="green" fullWidth asChild>
-              <Link href="/cleaning">
-                View Cleaning Services
-              </Link>
+              <Link href="/cleaning">View Cleaning Services</Link>
             </ThemedButton>
           </GlassCard>
         </div>

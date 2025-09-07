@@ -1,26 +1,32 @@
-"use client"
+'use client'
 
-import type React from "react"
-import { CheckCircle, Phone } from "lucide-react"
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { settings } from "@/lib/cms-content"
-import { getServiceOptions } from "@/lib/service-options"
+import type React from 'react'
+import { CheckCircle, Phone } from 'lucide-react'
+import { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { settings } from '@/lib/cms-content'
+import { getServiceOptions } from '@/lib/service-options'
 
 export function SimpleQuoteForm() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    phoneNumber: "",
-    emailAddress: "",
-    serviceAddress: "",
-    serviceNeeded: "",
-    projectSize: "",
-    projectDetails: "",
+    fullName: '',
+    phoneNumber: '',
+    emailAddress: '',
+    serviceAddress: '',
+    serviceNeeded: '',
+    projectSize: '',
+    projectDetails: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -31,9 +37,9 @@ export function SimpleQuoteForm() {
     setErrorMessage(null)
     setIsSubmitting(true)
     try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fullName: formData.fullName,
           phoneNumber: formData.phoneNumber,
@@ -42,52 +48,53 @@ export function SimpleQuoteForm() {
           serviceNeeded: formData.serviceNeeded,
           projectSize: formData.projectSize,
           projectDetails: formData.projectDetails,
-          source: "simple-quote-form",
+          source: 'simple-quote-form',
         }),
       })
       if (!res.ok) {
         const text = await res.text()
-        throw new Error(text || "Failed to submit")
+        throw new Error(text || 'Failed to submit')
       }
       setIsSubmitted(true)
       setFormData({
-        fullName: "",
-        phoneNumber: "",
-        emailAddress: "",
-        serviceAddress: "",
-        serviceNeeded: "",
-        projectSize: "",
-        projectDetails: "",
+        fullName: '',
+        phoneNumber: '',
+        emailAddress: '',
+        serviceAddress: '',
+        serviceNeeded: '',
+        projectSize: '',
+        projectDetails: '',
       })
     } catch (err) {
-      if (process.env.NODE_ENV !== "production") {
+      if (process.env.NODE_ENV !== 'production') {
         console.error(err)
       }
-      setErrorMessage("Something went wrong. Please try again or call us.")
+      setErrorMessage('Something went wrong. Please try again or call us.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+    setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   if (isSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto">
+      <Card className="mx-auto w-full max-w-2xl">
         <CardContent className="py-12 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8 text-green-600" />
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+            <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Quote Request Received!</h3>
-          <p className="text-gray-600 mb-8 max-w-md mx-auto">
-            Thank you for your request. We'll contact you shortly with your free estimate and same-day service options.
+          <h3 className="mb-4 text-2xl font-bold text-gray-900">Quote Request Received!</h3>
+          <p className="mx-auto mb-8 max-w-md text-gray-600">
+            Thank you for your request. We'll contact you shortly with your free estimate and
+            same-day service options.
           </p>
           <div className="space-y-4">
             <a
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-red-700/35 text-white ring-1 ring-white/30 px-5 py-2.5 hover:bg-red-700/45 transition-colors font-semibold justify-center w-full max-w-sm"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg bg-red-700/35 px-5 py-2.5 font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-red-700/45"
             >
               <Phone className="h-4 w-4" /> Call {settings.phone} for Immediate Service
             </a>
@@ -98,14 +105,16 @@ export function SimpleQuoteForm() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="mx-auto w-full max-w-2xl">
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-gray-900">Request Free Quote</CardTitle>
-        <CardDescription className="text-gray-600">Get an instant estimate for your Evansville project</CardDescription>
+        <CardDescription className="text-gray-600">
+          Get an instant estimate for your Evansville project
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
                 Full Name *
@@ -114,7 +123,7 @@ export function SimpleQuoteForm() {
                 id="fullName"
                 type="text"
                 value={formData.fullName}
-                onChange={(e) => handleInputChange("fullName", e.target.value)}
+                onChange={e => handleInputChange('fullName', e.target.value)}
                 required
                 className="mt-1"
               />
@@ -127,7 +136,7 @@ export function SimpleQuoteForm() {
                 id="phoneNumber"
                 type="tel"
                 value={formData.phoneNumber}
-                onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                onChange={e => handleInputChange('phoneNumber', e.target.value)}
                 required
                 className="mt-1"
               />
@@ -142,7 +151,7 @@ export function SimpleQuoteForm() {
               id="emailAddress"
               type="email"
               value={formData.emailAddress}
-              onChange={(e) => handleInputChange("emailAddress", e.target.value)}
+              onChange={e => handleInputChange('emailAddress', e.target.value)}
               required
               className="mt-1"
             />
@@ -156,27 +165,29 @@ export function SimpleQuoteForm() {
               id="serviceAddress"
               type="text"
               value={formData.serviceAddress}
-              onChange={(e) => handleInputChange("serviceAddress", e.target.value)}
+              onChange={e => handleInputChange('serviceAddress', e.target.value)}
               className="mt-1"
               placeholder="Enter your service address"
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <Label htmlFor="serviceNeeded" className="text-sm font-medium text-gray-700">
                 Service Needed *
               </Label>
               <Select
                 value={formData.serviceNeeded}
-                onValueChange={(value) => handleInputChange("serviceNeeded", value)}
+                onValueChange={value => handleInputChange('serviceNeeded', value)}
               >
                 <SelectTrigger id="serviceNeeded" className="mt-1" aria-label="Service Needed" fit>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {getServiceOptions().map((option) => (
-                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  {getServiceOptions().map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -185,7 +196,10 @@ export function SimpleQuoteForm() {
               <Label htmlFor="projectSize" className="text-sm font-medium text-gray-700">
                 Project Size
               </Label>
-              <Select value={formData.projectSize} onValueChange={(value) => handleInputChange("projectSize", value)}>
+              <Select
+                value={formData.projectSize}
+                onValueChange={value => handleInputChange('projectSize', value)}
+              >
                 <SelectTrigger id="projectSize" className="mt-1" aria-label="Project Size" fit>
                   <SelectValue placeholder="Select size" />
                 </SelectTrigger>
@@ -206,7 +220,7 @@ export function SimpleQuoteForm() {
             <Textarea
               id="projectDetails"
               value={formData.projectDetails}
-              onChange={(e) => handleInputChange("projectDetails", e.target.value)}
+              onChange={e => handleInputChange('projectDetails', e.target.value)}
               rows={4}
               className="mt-1"
               placeholder="Tell us more about your project..."
@@ -214,16 +228,17 @@ export function SimpleQuoteForm() {
           </div>
 
           <div className="space-y-4">
-            {errorMessage && <p className="text-sm text-red-600 text-center">{errorMessage}</p>}
+            {errorMessage && <p className="text-center text-sm text-red-600">{errorMessage}</p>}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3 text-lg font-semibold"
+              className="w-full bg-red-600 py-3 text-lg font-semibold text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {isSubmitting ? "Submitting..." : "Get Free Quote"}
+              {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
             </Button>
-            <p className="text-sm text-gray-600 text-center">
-              By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
+            <p className="text-center text-sm text-gray-600">
+              By submitting this form, you agree to receive text messages and calls from Uncle Sam
+              Junk Removal.
             </p>
           </div>
         </form>

@@ -1,17 +1,29 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { X, Upload, Camera, CheckCircle } from "lucide-react"
-import { settings } from "@/lib/cms-content"
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Checkbox } from '@/components/ui/checkbox'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { X, Upload, Camera, CheckCircle } from 'lucide-react'
+import { settings } from '@/lib/cms-content'
 
 interface QuoteFormModalProps {
   isOpen: boolean
@@ -19,47 +31,47 @@ interface QuoteFormModalProps {
 }
 
 export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
-  const [segment, setSegment] = useState<"residential" | "commercial">("residential")
+  const [segment, setSegment] = useState<'residential' | 'commercial'>('residential')
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    sqft: "",
-    bedrooms: "",
-    bathrooms: "",
-    businessType: "",
-    suiteAccess: "",
-    service: "",
-    preferredDate: "",
-    preferredTime: "",
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    sqft: '',
+    bedrooms: '',
+    bathrooms: '',
+    businessType: '',
+    suiteAccess: '',
+    service: '',
+    preferredDate: '',
+    preferredTime: '',
     ecoFriendly: true,
-    message: "",
+    message: '',
   })
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const residentialServices = [
-    "Deep Cleaning",
-    "Recurring Cleaning (Weekly)",
-    "Recurring Cleaning (Bi-weekly)",
-    "Recurring Cleaning (Monthly)",
-    "Move-In/Move-Out Cleaning",
-    "Refrigerator Cleaning",
-    "Oven Cleaning",
-    "Home Organizing",
-    "Decluttering Service",
+    'Deep Cleaning',
+    'Recurring Cleaning (Weekly)',
+    'Recurring Cleaning (Bi-weekly)',
+    'Recurring Cleaning (Monthly)',
+    'Move-In/Move-Out Cleaning',
+    'Refrigerator Cleaning',
+    'Oven Cleaning',
+    'Home Organizing',
+    'Decluttering Service',
   ]
 
   const commercialServices = [
-    "Office Cleaning (Daily)",
-    "Office Cleaning (Weekly)",
-    "Office Cleaning (Bi-weekly)",
-    "Office Cleaning (Monthly)",
-    "Retail Store Cleaning",
-    "Medical Office Cleaning",
-    "Restaurant Cleaning",
-    "After-Hours Cleaning",
+    'Office Cleaning (Daily)',
+    'Office Cleaning (Weekly)',
+    'Office Cleaning (Bi-weekly)',
+    'Office Cleaning (Monthly)',
+    'Retail Store Cleaning',
+    'Medical Office Cleaning',
+    'Restaurant Cleaning',
+    'After-Hours Cleaning',
   ]
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,8 +88,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the form data to your backend
-    if (process.env.NODE_ENV !== "production") {
-      console.log("Form submitted:", { formData, uploadedFiles, segment })
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Form submitted:', { formData, uploadedFiles, segment })
     }
     setIsSubmitted(true)
   }
@@ -86,21 +98,24 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     return (
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-md">
-          <div className="text-center py-8">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-green-600" />
+          <div className="py-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+              <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Quote Request Received!</h3>
-            <p className="text-gray-600 mb-6">
-              Thank you for your quote request. We'll review your information and get back to you within 2 hours with a
-              detailed estimate.
+            <h3 className="mb-2 text-xl font-bold text-gray-900">Quote Request Received!</h3>
+            <p className="mb-6 text-gray-600">
+              Thank you for your quote request. We'll review your information and get back to you
+              within 2 hours with a detailed estimate.
             </p>
-            <div className="space-y-3 mb-6">
-              <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
+            <div className="mb-6 space-y-3">
+              <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
+                  Schedule Call - Calendar Link
+                </a>
               </Button>
               <p className="text-sm text-gray-600">
-                Or text us at <span className="font-semibold">{settings.phone}</span> for immediate assistance
+                Or text us at <span className="font-semibold">{settings.phone}</span> for immediate
+                assistance
               </p>
             </div>
             <Button variant="outline" onClick={onClose} className="w-full bg-transparent">
@@ -114,9 +129,11 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-xl sm:text-2xl font-bold">Get Your Free Cleaning Quote</DialogTitle>
+          <DialogTitle className="text-xl font-bold sm:text-2xl">
+            Get Your Free Cleaning Quote
+          </DialogTitle>
           <DialogDescription>
             Fill out the form below and we'll provide a detailed estimate within 2 hours
           </DialogDescription>
@@ -124,21 +141,25 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
 
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           {/* Segment Toggle */}
-          <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+          <div className="flex gap-2 rounded-lg bg-gray-100 p-1">
             <button
               type="button"
-              onClick={() => setSegment("residential")}
-              className={`flex-1 py-2 sm:py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
-                segment === "residential" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              onClick={() => setSegment('residential')}
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
+                segment === 'residential'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Residential
             </button>
             <button
               type="button"
-              onClick={() => setSegment("commercial")}
-              className={`flex-1 py-2 sm:py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
-                segment === "commercial" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              onClick={() => setSegment('commercial')}
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
+                segment === 'commercial'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Commercial
@@ -146,13 +167,13 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           </div>
 
           {/* Contact Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
             <div>
               <Label htmlFor="name">Full Name *</Label>
               <Input
                 id="name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
                 required
               />
             </div>
@@ -162,7 +183,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                 id="phone"
                 type="tel"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
                 required
               />
             </div>
@@ -172,7 +193,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                 id="email"
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
                 required
               />
             </div>
@@ -185,30 +206,30 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               <Input
                 id="address"
                 value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                onChange={e => setFormData({ ...formData, address: e.target.value })}
                 placeholder="Street address, city, state, zip"
                 required
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
               <div>
                 <Label htmlFor="sqft">Square Footage</Label>
                 <Input
                   id="sqft"
                   value={formData.sqft}
-                  onChange={(e) => setFormData({ ...formData, sqft: e.target.value })}
+                  onChange={e => setFormData({ ...formData, sqft: e.target.value })}
                   placeholder="e.g., 1500"
                 />
               </div>
 
-              {segment === "residential" ? (
+              {segment === 'residential' ? (
                 <>
                   <div>
                     <Label htmlFor="qfm-bedrooms">Bedrooms</Label>
                     <Select
                       value={formData.bedrooms}
-                      onValueChange={(value) => setFormData({ ...formData, bedrooms: value })}
+                      onValueChange={value => setFormData({ ...formData, bedrooms: value })}
                     >
                       <SelectTrigger id="qfm-bedrooms" aria-label="Bedrooms">
                         <SelectValue placeholder="Select" />
@@ -226,7 +247,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <Label htmlFor="qfm-bathrooms">Bathrooms</Label>
                     <Select
                       value={formData.bathrooms}
-                      onValueChange={(value) => setFormData({ ...formData, bathrooms: value })}
+                      onValueChange={value => setFormData({ ...formData, bathrooms: value })}
                     >
                       <SelectTrigger id="qfm-bathrooms" aria-label="Bathrooms">
                         <SelectValue placeholder="Select" />
@@ -247,7 +268,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <Label htmlFor="qfm-business-type">Business Type</Label>
                     <Select
                       value={formData.businessType}
-                      onValueChange={(value) => setFormData({ ...formData, businessType: value })}
+                      onValueChange={value => setFormData({ ...formData, businessType: value })}
                     >
                       <SelectTrigger id="qfm-business-type" aria-label="Business Type">
                         <SelectValue placeholder="Select" />
@@ -267,7 +288,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <Input
                       id="suiteAccess"
                       value={formData.suiteAccess}
-                      onChange={(e) => setFormData({ ...formData, suiteAccess: e.target.value })}
+                      onChange={e => setFormData({ ...formData, suiteAccess: e.target.value })}
                       placeholder="Access codes, key location, etc."
                     />
                   </div>
@@ -281,38 +302,40 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <Label htmlFor="qfm-service">Service Needed *</Label>
             <Select
               value={formData.service}
-              onValueChange={(value) => setFormData({ ...formData, service: value })}
+              onValueChange={value => setFormData({ ...formData, service: value })}
               required
             >
               <SelectTrigger id="qfm-service" aria-label="Service Needed">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
               <SelectContent>
-                {(segment === "residential" ? residentialServices : commercialServices).map((service) => (
-                  <SelectItem key={service} value={service}>
-                    {service}
-                  </SelectItem>
-                ))}
+                {(segment === 'residential' ? residentialServices : commercialServices).map(
+                  service => (
+                    <SelectItem key={service} value={service}>
+                      {service}
+                    </SelectItem>
+                  )
+                )}
               </SelectContent>
             </Select>
           </div>
 
           {/* Scheduling */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
             <div>
               <Label htmlFor="preferredDate">Preferred Date</Label>
               <Input
                 id="preferredDate"
                 type="date"
                 value={formData.preferredDate}
-                onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                onChange={e => setFormData({ ...formData, preferredDate: e.target.value })}
               />
             </div>
             <div>
               <Label htmlFor="qfm-preferred-time">Preferred Time</Label>
               <Select
                 value={formData.preferredTime}
-                onValueChange={(value) => setFormData({ ...formData, preferredTime: value })}
+                onValueChange={value => setFormData({ ...formData, preferredTime: value })}
               >
                 <SelectTrigger id="qfm-preferred-time" aria-label="Preferred Time">
                   <SelectValue placeholder="Select time" />
@@ -331,11 +354,13 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div>
             <Label>Photos (Optional - Up to 6 images)</Label>
             <div className="mt-2">
-              <label className="flex flex-col items-center justify-center w-full h-28 sm:h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+              <label className="flex h-28 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 sm:h-32">
                 <div className="flex flex-col items-center justify-center pt-4 pb-5">
-                  <Upload className="w-7 h-7 sm:w-8 sm:h-8 mb-2 text-gray-500" />
-                  <p className="mb-1 text-xs text-gray-600"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-[10px] sm:text-xs text-gray-600">PNG, JPG up to 10MB each</p>
+                  <Upload className="mb-2 h-7 w-7 text-gray-500 sm:h-8 sm:w-8" />
+                  <p className="mb-1 text-xs text-gray-600">
+                    <span className="font-semibold">Click to upload</span> or drag and drop
+                  </p>
+                  <p className="text-[10px] text-gray-600 sm:text-xs">PNG, JPG up to 10MB each</p>
                 </div>
                 <input
                   type="file"
@@ -349,21 +374,23 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             </div>
 
             {uploadedFiles.length > 0 && (
-              <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
-                    <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500" />
+                    <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-100">
+                      <Camera className="h-5 w-5 text-gray-500 sm:h-6 sm:w-6" />
                     </div>
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white"
                       aria-label={`Remove file ${file.name}`}
                     >
-                      <X className="w-3 h-3" />
+                      <X className="h-3 w-3" />
                     </button>
-                    <p className="text-[10px] sm:text-xs text-gray-600 mt-1 truncate">{file.name}</p>
+                    <p className="mt-1 truncate text-[10px] text-gray-600 sm:text-xs">
+                      {file.name}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -375,7 +402,9 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <Checkbox
               id="ecoFriendly"
               checked={formData.ecoFriendly}
-              onCheckedChange={(checked) => setFormData({ ...formData, ecoFriendly: checked as boolean })}
+              onCheckedChange={checked =>
+                setFormData({ ...formData, ecoFriendly: checked as boolean })
+              }
             />
             <Label htmlFor="ecoFriendly" className="text-sm">
               Use eco-friendly products only (recommended)
@@ -388,16 +417,23 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <Textarea
               id="message"
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onChange={e => setFormData({ ...formData, message: e.target.value })}
               placeholder="Any specific requirements, concerns, or questions..."
               rows={3}
             />
           </div>
 
           {/* Submit Button */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">Submit Request</Button>
-            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto">Cancel</Button>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 text-white hover:bg-blue-700 sm:w-auto"
+            >
+              Submit Request
+            </Button>
+            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto">
+              Cancel
+            </Button>
           </div>
         </form>
       </DialogContent>

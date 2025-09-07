@@ -1,20 +1,23 @@
-import { settings, getAggregateTestimonialStats } from "@/lib/cms-content"
-import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
-import { locationData, LocationData } from "@/lib/location-data"
-import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildLocationMetadata } from "@/lib/seo-metadata"
-import { PromotionHighlight } from "@/components/ui/promotion-highlight"
-import { ReviewMention } from "@/components/ui/review-mention"
-import { StructuredData } from "@/components/structured-data"
+import { settings, getAggregateTestimonialStats } from '@/lib/cms-content'
+import {
+  LocationPageTemplate,
+  LocationPageTemplateProps,
+} from '@/components/ui/location-page-template'
+import { locationData, LocationData } from '@/lib/location-data'
+import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildLocationMetadata } from '@/lib/seo-metadata'
+import { PromotionHighlight } from '@/components/ui/promotion-highlight'
+import { ReviewMention } from '@/components/ui/review-mention'
+import { StructuredData } from '@/components/structured-data'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 const locationInfo = {
-  locationName: "Newburgh",
-  state: "IN",
-  neighborhoods: ["Historic Newburgh", "Lynnville", "Chandler"],
-  landmarks: ["Newburgh Historic District", "Ohio River", "Angel Mounds State Historic Site"],
-  specialOffers: ["Waterfront discount", "Historic district service", "Advanced booking savings"]
+  locationName: 'Newburgh',
+  state: 'IN',
+  neighborhoods: ['Historic Newburgh', 'Lynnville', 'Chandler'],
+  landmarks: ['Newburgh Historic District', 'Ohio River', 'Angel Mounds State Historic Site'],
+  specialOffers: ['Waterfront discount', 'Historic district service', 'Advanced booking savings'],
 }
 
 const seoData = buildLocationMetadata(locationInfo)
@@ -23,11 +26,11 @@ export const metadata = {
   title: seoData.title,
   description: seoData.description,
   keywords: seoData.keywords,
-  ...buildCanonicalMetadata("/locations/newburgh", baseUrl),
+  ...buildCanonicalMetadata('/locations/newburgh', baseUrl),
 }
 
 export default function NewburghPage() {
-  const data = locationData["newburgh"] as LocationData
+  const data = locationData['newburgh'] as LocationData
   const testimonialStats = getAggregateTestimonialStats()
 
   const templateProps: LocationPageTemplateProps = {
@@ -41,7 +44,7 @@ export default function NewburghPage() {
     stories: data.stories,
     serviceGuarantee: data.serviceGuarantee,
     ctaPrimary: `📞 Call ${settings.phone}`,
-    ctaSecondary: "Schedule Newburgh Pickup"
+    ctaSecondary: 'Schedule Newburgh Pickup',
   }
 
   if (data.neighborhoods) {
@@ -64,7 +67,7 @@ export default function NewburghPage() {
             description: offer.description,
             validFrom: offer.validFrom,
             validThrough: offer.validThrough,
-            locationSpecific: true
+            locationSpecific: true,
           }))}
           theme={data.theme}
           showStructuredData={true}
@@ -93,8 +96,8 @@ export default function NewburghPage() {
             averageRating: testimonialStats.averageRating,
             reviewCount: testimonialStats.reviewCount,
             bestRating: 5,
-            worstRating: 1
-          }
+            worstRating: 1,
+          },
         }}
       />
     </>

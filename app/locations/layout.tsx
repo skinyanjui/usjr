@@ -1,5 +1,5 @@
-import type React from "react"
-import { RelatedServices } from "@/components/related-services"
+import type React from 'react'
+import { RelatedServices } from '@/components/related-services'
 
 export default function LocationsLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,4 +9,3 @@ export default function LocationsLayout({ children }: { children: React.ReactNod
     </>
   )
 }
-

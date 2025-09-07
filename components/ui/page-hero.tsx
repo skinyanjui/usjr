@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from 'next/image'
 
 export interface PageHeroProps {
   title: string
@@ -9,7 +9,7 @@ export interface PageHeroProps {
 
 export function PageHero({ title, description, imageSrc, priority = false }: PageHeroProps) {
   return (
-    <section className="relative min-h-[40vh] md:min-h-[50vh] flex items-end">
+    <section className="relative flex min-h-[40vh] items-end md:min-h-[50vh]">
       <Image
         src={imageSrc}
         alt={title}
@@ -23,10 +23,10 @@ export function PageHero({ title, description, imageSrc, priority = false }: Pag
       <div className="absolute inset-0 bg-black/50" />
 
       <div className="relative z-10 w-full">
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3">{title}</h1>
+        <div className="mx-auto max-w-7xl px-4 py-10 md:py-16">
+          <h1 className="mb-3 text-3xl font-bold text-white sm:text-5xl md:text-6xl">{title}</h1>
           {description && (
-            <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl">{description}</p>
+            <p className="max-w-3xl text-base text-white sm:text-lg md:text-xl">{description}</p>
           )}
         </div>
       </div>

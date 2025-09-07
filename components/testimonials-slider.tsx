@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Star, ChevronLeft, ChevronRight, MapPin } from "lucide-react"
-import { getActiveTestimonials, type Testimonial } from "@/lib/cms-content"
+import { useState, useEffect } from 'react'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
+import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
 
 interface TestimonialsSliderProps {
   limit?: number
@@ -12,7 +12,11 @@ interface TestimonialsSliderProps {
   showNavigation?: boolean
 }
 
-export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation = true }: TestimonialsSliderProps) {
+export function TestimonialsSlider({
+  limit = 6,
+  autoPlay = true,
+  showNavigation = true,
+}: TestimonialsSliderProps) {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -24,18 +28,18 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
     if (!autoPlay || testimonials.length <= 1) return
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+      setCurrentIndex(prev => (prev + 1) % testimonials.length)
     }, 5000)
 
     return () => clearInterval(interval)
   }, [autoPlay, testimonials.length])
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setCurrentIndex(prev => (prev + 1) % testimonials.length)
   }
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrentIndex(prev => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
   if (testimonials.length === 0) {
@@ -46,44 +50,46 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
   if (!currentTestimonial) return null
 
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className="relative mx-auto max-w-4xl">
       <Card className="bg-white/80 backdrop-blur-sm">
         <CardContent className="p-8">
           <div className="text-center">
             {/* Rating Stars */}
-            <div className="flex justify-center mb-4">
+            <div className="mb-4 flex justify-center">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-5 h-5 ${
-                    i < currentTestimonial.rating ? "text-yellow-400 fill-current" : "text-gray-500"
+                  className={`h-5 w-5 ${
+                    i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
                   }`}
                 />
               ))}
             </div>
 
             {/* Testimonial Text */}
-            <blockquote className="text-lg text-gray-700 mb-6 italic">"{currentTestimonial.text}"</blockquote>
+            <blockquote className="mb-6 text-lg text-gray-700 italic">
+              "{currentTestimonial.text}"
+            </blockquote>
 
             {/* Customer Info */}
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="mb-2 flex items-center justify-center gap-2">
               <span className="font-semibold text-gray-900">{currentTestimonial.name}</span>
               <span className="text-gray-600">•</span>
               <div className="flex items-center gap-1 text-gray-600">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="h-4 w-4" />
                 <span className="text-sm">{currentTestimonial.location}</span>
               </div>
             </div>
 
             {/* Service Type */}
-            <div className="text-sm text-green-600 font-medium">{currentTestimonial.service}</div>
+            <div className="text-sm font-medium text-green-600">{currentTestimonial.service}</div>
 
             {/* Date */}
-            <div className="text-xs text-gray-600 mt-2">
-              {new Date(currentTestimonial.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
+            <div className="mt-2 text-xs text-gray-600">
+              {new Date(currentTestimonial.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
               })}
             </div>
           </div>
@@ -92,9 +98,15 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
 
       {/* Navigation */}
       {showNavigation && testimonials.length > 1 && (
-        <div className="flex justify-center items-center gap-4 mt-6">
-          <Button variant="outline" size="sm" onClick={prevTestimonial} className="bg-white/80" aria-label="Previous testimonial">
-            <ChevronLeft className="w-4 h-4" />
+        <div className="mt-6 flex items-center justify-center gap-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={prevTestimonial}
+            className="bg-white/80"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="h-4 w-4" />
           </Button>
 
           {/* Dots Indicator */}
@@ -104,8 +116,8 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
                 type="button"
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-green-600" : "bg-gray-300"
+                className={`h-2 w-2 rounded-full transition-colors ${
+                  index === currentIndex ? 'bg-green-600' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
                 aria-pressed={index === currentIndex}
@@ -113,14 +125,20 @@ export function TestimonialsSlider({ limit = 6, autoPlay = true, showNavigation 
             ))}
           </div>
 
-          <Button variant="outline" size="sm" onClick={nextTestimonial} className="bg-white/80" aria-label="Next testimonial">
-            <ChevronRight className="w-4 h-4" />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={nextTestimonial}
+            className="bg-white/80"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
       )}
 
       {/* Counter */}
-      <div className="text-center mt-4 text-sm text-gray-600">
+      <div className="mt-4 text-center text-sm text-gray-600">
         {currentIndex + 1} of {testimonials.length}
       </div>
     </div>

@@ -1,20 +1,28 @@
-import { settings, getAggregateTestimonialStats } from "@/lib/cms-content"
-import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
-import { locationData, LocationData } from "@/lib/location-data"
-import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildLocationMetadata } from "@/lib/seo-metadata"
-import { PromotionHighlight } from "@/components/ui/promotion-highlight"
-import { ReviewMention } from "@/components/ui/review-mention"
-import { StructuredData } from "@/components/structured-data"
+import { settings, getAggregateTestimonialStats } from '@/lib/cms-content'
+import {
+  LocationPageTemplate,
+  LocationPageTemplateProps,
+} from '@/components/ui/location-page-template'
+import { locationData, LocationData } from '@/lib/location-data'
+import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildLocationMetadata } from '@/lib/seo-metadata'
+import { PromotionHighlight } from '@/components/ui/promotion-highlight'
+import { ReviewMention } from '@/components/ui/review-mention'
+import { StructuredData } from '@/components/structured-data'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 const locationInfo = {
-  locationName: "Evansville",
-  state: "IN",
-  neighborhoods: ["Haynie's Corner", "Jacobsville", "Lincolnshire", "McCutchanville"],
-  landmarks: ["Downtown Evansville", "University of Evansville", "Eastland Mall", "Wesselman Woods"],
-  specialOffers: ["15% University Discount", "$35 Curbside Special", "$25 Referral Credit"]
+  locationName: 'Evansville',
+  state: 'IN',
+  neighborhoods: ["Haynie's Corner", 'Jacobsville', 'Lincolnshire', 'McCutchanville'],
+  landmarks: [
+    'Downtown Evansville',
+    'University of Evansville',
+    'Eastland Mall',
+    'Wesselman Woods',
+  ],
+  specialOffers: ['15% University Discount', '$35 Curbside Special', '$25 Referral Credit'],
 }
 
 const seoData = buildLocationMetadata(locationInfo)
@@ -23,11 +31,11 @@ export const metadata = {
   title: seoData.title,
   description: seoData.description,
   keywords: seoData.keywords,
-  ...buildCanonicalMetadata("/locations/evansville", baseUrl),
+  ...buildCanonicalMetadata('/locations/evansville', baseUrl),
 }
 
 export default function EvansvillePage() {
-  const data = locationData["evansville"] as LocationData
+  const data = locationData['evansville'] as LocationData
   const testimonialStats = getAggregateTestimonialStats()
 
   const templateProps: LocationPageTemplateProps = {
@@ -41,7 +49,7 @@ export default function EvansvillePage() {
     stories: data.stories,
     serviceGuarantee: data.serviceGuarantee,
     ctaPrimary: `📞 Call ${settings.phone}`,
-    ctaSecondary: "Text Photos for Instant Quote"
+    ctaSecondary: 'Text Photos for Instant Quote',
   }
 
   if (data.neighborhoods) {
@@ -64,7 +72,7 @@ export default function EvansvillePage() {
             description: offer.description,
             validFrom: offer.validFrom,
             validThrough: offer.validThrough,
-            locationSpecific: true
+            locationSpecific: true,
           }))}
           theme={data.theme}
           showStructuredData={true}
@@ -93,8 +101,8 @@ export default function EvansvillePage() {
             averageRating: testimonialStats.averageRating,
             reviewCount: testimonialStats.reviewCount,
             bestRating: 5,
-            worstRating: 1
-          }
+            worstRating: 1,
+          },
         }}
       />
     </>

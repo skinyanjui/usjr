@@ -1,17 +1,17 @@
-import { HeroSection } from "@/components/hero-section"
-import { BentoGrid } from "@/components/bento-grid"
-import { HomeServiceCards } from "@/components/home-service-cards"
-import { ReviewsRow } from "@/components/reviews-row"
-import { StructuredData } from "@/components/structured-data"
-import { getAggregateTestimonialStats } from "@/lib/cms-content"
-import { HomeMap } from "@/components/home-map"
-import type { Metadata } from "next"
-import { buildCanonicalMetadata } from "@/components/canonical"
+import { HeroSection } from '@/components/hero-section'
+import { BentoGrid } from '@/components/bento-grid'
+import { HomeServiceCards } from '@/components/home-service-cards'
+import { ReviewsRow } from '@/components/reviews-row'
+import { StructuredData } from '@/components/structured-data'
+import { getAggregateTestimonialStats } from '@/lib/cms-content'
+import { HomeMap } from '@/components/home-map'
+import type { Metadata } from 'next'
+import { buildCanonicalMetadata } from '@/components/canonical'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  ...buildCanonicalMetadata("/", baseUrl),
+  ...buildCanonicalMetadata('/', baseUrl),
 }
 
 export default function HomePage() {
@@ -22,10 +22,9 @@ export default function HomePage() {
 
       {/* Removed Quote CTA Section per request */}
 
-      
-
-      <div className="px-4 mt-4 text-center text-gray-700 text-sm">
-        <span className="font-semibold">{averageRating.toFixed(1)}/5</span> from {reviewCount} verified reviews
+      <div className="mt-4 px-4 text-center text-sm text-gray-700">
+        <span className="font-semibold">{averageRating.toFixed(1)}/5</span> from {reviewCount}{' '}
+        verified reviews
       </div>
 
       <HomeServiceCards />

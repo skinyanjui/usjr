@@ -1,30 +1,37 @@
-"use client"
+'use client'
 
-import { useMemo, useState } from "react"
-import dynamic from "next/dynamic"
-import { MapPin } from "lucide-react"
-import { GlassCard } from "@/components/ui/glass-card"
+import { useMemo, useState } from 'react'
+import dynamic from 'next/dynamic'
+import { MapPin } from 'lucide-react'
+import { GlassCard } from '@/components/ui/glass-card'
 
-const ClientLeafletMap = dynamic(() => import("./leaflet-map"), {
+const ClientLeafletMap = dynamic(() => import('./leaflet-map'), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-gray-100" />,
+  loading: () => <div className="h-full w-full bg-gray-100" />,
 })
 
 const SUPPORTED_ZIPS = [
-  "47708","47710","47711","47712","47713","47714","47715","47720", // Evansville
-  "47630", // Newburgh
-  "42420", // Henderson, KY
-  "47601", // Boonville
-  "47670", // Princeton
-  "42301", // Owensboro, KY
-  "62863", // Mount Carmel, IL
-  "47620", // Mount Vernon, IN
-  "47631", // New Harmony, IN
+  '47708',
+  '47710',
+  '47711',
+  '47712',
+  '47713',
+  '47714',
+  '47715',
+  '47720', // Evansville
+  '47630', // Newburgh
+  '42420', // Henderson, KY
+  '47601', // Boonville
+  '47670', // Princeton
+  '42301', // Owensboro, KY
+  '62863', // Mount Carmel, IL
+  '47620', // Mount Vernon, IN
+  '47631', // New Harmony, IN
 ]
 
 export function ServiceArea() {
-  const [zip, setZip] = useState("")
-  const [result, setResult] = useState<null | "yes" | "maybe" | "no">(null)
+  const [zip, setZip] = useState('')
+  const [result, setResult] = useState<null | 'yes' | 'maybe' | 'no'>(null)
 
   const handleCheck = () => {
     if (zip.trim().length < 5) {
@@ -32,34 +39,36 @@ export function ServiceArea() {
       return
     }
     if (SUPPORTED_ZIPS.includes(zip.trim())) {
-      setResult("yes")
+      setResult('yes')
     } else {
       // light heuristic: outside list but could still be inside 50mi radius
-      setResult("maybe")
+      setResult('maybe')
     }
   }
 
   const message = useMemo(() => {
     switch (result) {
-      case "yes":
-        return "Yes! We serve your area. Same-day service may be available."
-      case "maybe":
-        return "We likely cover your area. Text us your zip for confirmation."
-      case "no":
-        return "Sorry, that zip appears outside our standard area. Please contact us to confirm."
+      case 'yes':
+        return 'Yes! We serve your area. Same-day service may be available.'
+      case 'maybe':
+        return 'We likely cover your area. Text us your zip for confirmation.'
+      case 'no':
+        return 'Sorry, that zip appears outside our standard area. Please contact us to confirm.'
       default:
-        return "Enter your zip code to check coverage."
+        return 'Enter your zip code to check coverage.'
     }
   }, [result])
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+    <section className="bg-gray-50 py-16">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2">Service Area</h2>
-            <p className="text-base sm:text-lg text-gray-600 mb-6">We serve Evansville and Southern Indiana within ~50 miles.</p>
-            <ul className="text-gray-700 grid grid-cols-2 gap-2 text-sm mb-6">
+            <h2 className="mb-2 text-2xl font-bold text-gray-900 sm:text-4xl">Service Area</h2>
+            <p className="mb-6 text-base text-gray-600 sm:text-lg">
+              We serve Evansville and Southern Indiana within ~50 miles.
+            </p>
+            <ul className="mb-6 grid grid-cols-2 gap-2 text-sm text-gray-700">
               <li>• Evansville, IN</li>
               <li>• Newburgh, IN</li>
               <li>• Henderson, KY</li>
@@ -73,21 +82,29 @@ export function ServiceArea() {
             <div className="flex gap-2">
               <input
                 value={zip}
-                onChange={(e) => setZip(e.target.value.replace(/[^0-9]/g, "").slice(0, 5))}
+                onChange={e => setZip(e.target.value.replace(/[^0-9]/g, '').slice(0, 5))}
                 placeholder="Enter ZIP"
                 aria-label="ZIP code"
-                className="px-3 py-2 border border-gray-300 rounded-md w-32"
+                className="w-32 rounded-md border border-gray-300 px-3 py-2"
               />
-              <button type="button" onClick={handleCheck} className="px-4 py-2 bg-red-600 text-white rounded-md font-semibold">Check</button>
+              <button
+                type="button"
+                onClick={handleCheck}
+                className="rounded-md bg-red-600 px-4 py-2 font-semibold text-white"
+              >
+                Check
+              </button>
             </div>
-            <p className="text-sm text-gray-700 mt-2">{message}</p>
-            <p className="text-xs text-gray-600 mt-1">Some services may be location-limited (e.g., dumpsters).</p>
+            <p className="mt-2 text-sm text-gray-700">{message}</p>
+            <p className="mt-1 text-xs text-gray-600">
+              Some services may be location-limited (e.g., dumpsters).
+            </p>
           </div>
 
-          <GlassCard variant="white" className="p-0 overflow-hidden">
+          <GlassCard variant="white" className="overflow-hidden p-0">
             <div className="bg-white">
-              <div className="flex items-center gap-2 px-4 py-3 border-b">
-                <MapPin className="w-4 h-4 text-red-600" />
+              <div className="flex items-center gap-2 border-b px-4 py-3">
+                <MapPin className="h-4 w-4 text-red-600" />
                 <span className="text-sm font-semibold">Coverage Map (OpenStreetMap)</span>
               </div>
               <div className="p-0">

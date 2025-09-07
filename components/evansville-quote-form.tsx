@@ -1,25 +1,31 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
-import { settings } from "@/lib/cms-content"
-import { getServiceOptions } from "@/lib/service-options"
+import { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { CheckCircle } from 'lucide-react'
+import { settings } from '@/lib/cms-content'
+import { getServiceOptions } from '@/lib/service-options'
 
 export function EvansvilleQuoteForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    address: "",
-    service: "",
-    projectSize: "",
-    details: "",
+    name: '',
+    phone: '',
+    email: '',
+    address: '',
+    service: '',
+    projectSize: '',
+    details: '',
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,9 +36,9 @@ export function EvansvilleQuoteForm() {
     setErrorMessage(null)
     setIsSubmitting(true)
     try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name,
           phone: formData.phone,
@@ -41,28 +47,28 @@ export function EvansvilleQuoteForm() {
           service: formData.service,
           projectSize: formData.projectSize,
           details: formData.details,
-          source: "evansville-quote-form",
+          source: 'evansville-quote-form',
         }),
       })
       if (!res.ok) {
         const text = await res.text()
-        throw new Error(text || "Failed to submit")
+        throw new Error(text || 'Failed to submit')
       }
       setIsSubmitted(true)
       setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        address: "",
-        service: "",
-        projectSize: "",
-        details: "",
+        name: '',
+        phone: '',
+        email: '',
+        address: '',
+        service: '',
+        projectSize: '',
+        details: '',
       })
     } catch (err) {
-      if (process.env.NODE_ENV !== "production") {
+      if (process.env.NODE_ENV !== 'production') {
         console.error(err)
       }
-      setErrorMessage("Something went wrong. Please try again or call us.")
+      setErrorMessage('Something went wrong. Please try again or call us.')
     } finally {
       setIsSubmitting(false)
     }
@@ -72,12 +78,15 @@ export function EvansvilleQuoteForm() {
     return (
       <Card className="w-full">
         <CardContent className="py-10 text-center">
-          <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Thanks! We received your request.</h3>
-          <p className="text-sm sm:text-base text-gray-700 max-w-md mx-auto">
-            We'll text or call you shortly with your free estimate. For fastest service, call or text {settings.phone}.
+          <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
+            Thanks! We received your request.
+          </h3>
+          <p className="mx-auto max-w-md text-sm text-gray-700 sm:text-base">
+            We'll text or call you shortly with your free estimate. For fastest service, call or
+            text {settings.phone}.
           </p>
         </CardContent>
       </Card>
@@ -88,18 +97,20 @@ export function EvansvilleQuoteForm() {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl sm:text-2xl">Request Free Quote</CardTitle>
-        <CardDescription className="text-sm sm:text-base">Get an instant estimate for your Evansville project</CardDescription>
+        <CardDescription className="text-sm sm:text-base">
+          Get an instant estimate for your Evansville project
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <Label htmlFor="name">Full Name *</Label>
               <Input
                 id="name"
                 placeholder="Your full name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={e => setFormData({ ...formData, name: e.target.value })}
                 required
               />
             </div>
@@ -110,7 +121,7 @@ export function EvansvilleQuoteForm() {
                 type="tel"
                 placeholder="(812) 555-0123"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
                 required
               />
             </div>
@@ -121,7 +132,7 @@ export function EvansvilleQuoteForm() {
                 type="email"
                 placeholder="your@email.com"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
                 required
               />
             </div>
@@ -131,18 +142,23 @@ export function EvansvilleQuoteForm() {
                 id="address"
                 placeholder="Evansville, IN address"
                 value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                onChange={e => setFormData({ ...formData, address: e.target.value })}
               />
             </div>
             <div>
               <Label htmlFor="service">Service Needed *</Label>
-              <Select value={formData.service} onValueChange={(value) => setFormData({ ...formData, service: value })}>
+              <Select
+                value={formData.service}
+                onValueChange={value => setFormData({ ...formData, service: value })}
+              >
                 <SelectTrigger id="service" aria-label="Service Needed">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {getServiceOptions().map((option) => (
-                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  {getServiceOptions().map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -151,7 +167,7 @@ export function EvansvilleQuoteForm() {
               <Label htmlFor="size">Project Size</Label>
               <Select
                 value={formData.projectSize}
-                onValueChange={(value) => setFormData({ ...formData, projectSize: value })}
+                onValueChange={value => setFormData({ ...formData, projectSize: value })}
               >
                 <SelectTrigger id="size" aria-label="Project Size">
                   <SelectValue placeholder="Select size" />
@@ -173,24 +189,23 @@ export function EvansvilleQuoteForm() {
                 placeholder="Tell us about your project in Evansville..."
                 rows={4}
                 value={formData.details}
-                onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                onChange={e => setFormData({ ...formData, details: e.target.value })}
               />
             </div>
           </div>
 
           <div className="space-y-3">
-            {errorMessage && (
-              <p className="text-sm text-red-600 text-center">{errorMessage}</p>
-            )}
+            {errorMessage && <p className="text-center text-sm text-red-600">{errorMessage}</p>}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3 text-base sm:text-lg"
+              className="w-full bg-blue-600 py-3 text-base text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
             >
-              {isSubmitting ? "Submitting..." : "Get Free Quote"}
+              {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
             </Button>
-            <p className="text-xs sm:text-sm text-gray-600">
-              By submitting this form, you agree to receive text messages and calls from Uncle Sam Junk Removal.
+            <p className="text-xs text-gray-600 sm:text-sm">
+              By submitting this form, you agree to receive text messages and calls from Uncle Sam
+              Junk Removal.
             </p>
           </div>
         </form>

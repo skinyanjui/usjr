@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import { useEffect } from "react"
-import { usePathname } from "next/navigation"
+import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export function ScrollToTopOnRouteChange() {
   const pathname = usePathname()
 
   // Ensure browser doesn't auto-restore scroll which can conflict with our manual scroll handling
   useEffect(() => {
-    if (typeof window === "undefined") return
-    if ("scrollRestoration" in window.history) {
+    if (typeof window === 'undefined') return
+    if ('scrollRestoration' in window.history) {
       const previous = window.history.scrollRestoration
-      window.history.scrollRestoration = "manual"
+      window.history.scrollRestoration = 'manual'
       return () => {
         window.history.scrollRestoration = previous
       }
@@ -19,13 +19,13 @@ export function ScrollToTopOnRouteChange() {
   }, [])
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       let raf1 = 0
       let raf2 = 0
       raf1 = window.requestAnimationFrame(() => {
         // Defer to the next frame to ensure pending layout/style work is flushed
         raf2 = window.requestAnimationFrame(() => {
-          window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
         })
       })
       return () => {
