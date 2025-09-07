@@ -107,7 +107,7 @@ export function buildBlogMetadata(blog: BlogMetadata) {
   const title = `${topic}${locationPart} Guide | Uncle Sam Junk Removal`
   
   const readTimePart = readTime ? ` ${readTime} read.` : ''
-  const description = `${topic} guide for${locationPart} residents. Expert tips and local insights from Uncle Sam Junk Removal professionals.${readTimePart} Local expertise since 2016.`
+  const description = `${topic} guide for${locationPart} residents. Expert tips and local insights from Uncle Sam Junk Removal professionals.${readTimePart} Local expertise since 2025.`
   
   const baseKeywords = [
     `${topic.toLowerCase()}${locationPart.toLowerCase()}`,

@@ -32,6 +32,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/mattress-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/services/light-demolition`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/services/yard-waste-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    
+    // New specialized services
+    { url: `${baseUrl}/services/storage-unit-cleanouts`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/office-cleanouts`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/restaurant-equipment-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/property-management-turnovers`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/warehouse-fixture-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/holiday-tree-removal`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${baseUrl}/services/storm-debris-cleanup`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
 
     // Cleaning pages
     { url: `${baseUrl}/cleaning/residential`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

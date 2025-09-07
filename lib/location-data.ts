@@ -23,7 +23,7 @@ export const locationData: Record<string, LocationData> = {
   evansville: {
     locationName: "Evansville",
     state: "Indiana",
-    tagline: "Local experts serving Evansville since 2016 with same-day service, transparent pricing, and eco-friendly disposal",
+    tagline: "Local experts serving Evansville since 2025 with same-day service, transparent pricing, and eco-friendly disposal",
     theme: "red",
     features: [
       {
