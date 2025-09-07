@@ -1,17 +1,24 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Zap, Wrench, Recycle, Clock } from "lucide-react"
 import type { Metadata } from "next"
-import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Hot Tub Removal Services",
+  category: "Hot Tub Removal",
+  price: "From $389-649",
+  benefits: ["Same-day service", "Safe disconnection", "Licensed & insured", "Eco-friendly disposal"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Hot Tub Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
-  description:
-    `Professional hot tub removal, spa removal, and jacuzzi disposal in Evansville, Indiana. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we provide safe disconnection and eco-friendly disposal with same-day service. Call ${settings.phone}`,
-  keywords: buildKeywordString("hot-tub-removal"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/hot-tub-removal", baseUrl),
 }
 

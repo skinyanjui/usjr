@@ -1,17 +1,24 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Heart, Home, Gift, Users } from "lucide-react"
 import type { Metadata } from "next"
-import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Estate Cleanout Services",
+  category: "Estate Cleanouts",
+  price: "From $389-1,899",
+  benefits: ["Compassionate service", "Licensed & insured", "Donation coordination", "Complete cleanout"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Estate Cleanouts Evansville IN | Compassionate Service | Uncle Sam Junk Removal",
-  description:
-    `Compassionate estate cleanouts, house cleanouts, and property cleanout services in Evansville, Indiana. Whether you need to clean out an inherited home, clear a deceased property, or clean out a family home, we provide full estate cleanup with sensitive handling and donation coordination. Call ${settings.phone}`,
-  keywords: buildKeywordString("estate-cleanouts"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/estate-cleanouts", baseUrl),
 }
 
