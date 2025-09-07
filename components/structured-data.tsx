@@ -12,19 +12,37 @@ interface ServiceOffer {
   availability?: string
 }
 
+interface LocationSpecificData {
+  locationName?: string | undefined
+  locationOffers?: Array<{
+    title: string
+    discount: string
+    description: string
+    validFrom?: string | undefined
+    validThrough?: string | undefined
+  }>
+  reviews?: {
+    averageRating: number
+    reviewCount: number
+    bestRating?: number
+    worstRating?: number
+  }
+}
+
 interface StructuredDataProps {
-  type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList"
+  type: "LocalBusiness" | "Service" | "FAQPage" | "BreadcrumbList" | "Offer" | "Review"
   data?:
-    | { 
+    | ({ 
         name?: string
         description?: string
         price?: string
         category?: string
         offers?: ServiceOffer[]
         serviceArea?: string[]
-      }
+      } & LocationSpecificData)
     | { faqs?: FaqItem[] }
     | { breadcrumbs?: BreadcrumbItem[] }
+    | LocationSpecificData
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
@@ -245,6 +263,61 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             name: crumb.name,
             item: crumb.url,
           })) || [],
+      }
+      break
+    }
+
+    case "Offer": {
+      const offerData = (data as LocationSpecificData) || {}
+      const locationOffers = offerData.locationOffers || []
+      
+      if (locationOffers.length === 0) break
+      
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: locationOffers.map((offer, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          name: offer.title,
+          description: offer.description,
+          price: offer.discount,
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          validFrom: offer.validFrom || new Date().toISOString(),
+          validThrough: offer.validThrough || new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days
+          businessFunction: "https://schema.org/Sell",
+          seller: {
+            "@type": "LocalBusiness",
+            "@id": "https://unclesamjunkremoval.com/#organization"
+          },
+          areaServed: offerData.locationName ? {
+            "@type": "City",
+            name: offerData.locationName
+          } : undefined
+        }))
+      }
+      break
+    }
+
+    case "Review": {
+      const reviewData = (data as LocationSpecificData) || {}
+      const reviews = reviewData.reviews
+      
+      if (!reviews || reviews.reviewCount === 0) break
+      
+      structuredData = {
+        "@context": "https://schema.org",
+        "@type": "AggregateRating",
+        ratingValue: String(reviews.averageRating),
+        reviewCount: String(reviews.reviewCount),
+        bestRating: String(reviews.bestRating || 5),
+        worstRating: String(reviews.worstRating || 1),
+        itemReviewed: {
+          "@type": "LocalBusiness",
+          "@id": "https://unclesamjunkremoval.com/#organization",
+          name: "Uncle Sam Junk Removal"
+        }
       }
       break
     }
