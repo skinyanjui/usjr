@@ -50,6 +50,13 @@ export default function AboutPage() {
             "trash removal",
             "residential cleaning",
             "commercial cleaning",
+            "storage unit cleanouts",
+            "office cleanouts",
+            "restaurant equipment removal",
+            "property management turnovers",
+            "warehouse fixture removal",
+            "holiday tree removal",
+            "storm debris cleanup",
           ],
         })}
       </Script>

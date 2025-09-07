@@ -17,6 +17,13 @@ export const NAV: NavItem[] = [
       { label: "Mattress Removal", href: "/services/mattress-removal" },
       { label: "Shed Removal", href: "/services/shed-removal" },
       { label: "Yard Waste Removal", href: "/services/yard-waste-removal" },
+      { label: "Storage Unit Cleanouts", href: "/services/storage-unit-cleanouts" },
+      { label: "Office Cleanouts", href: "/services/office-cleanouts" },
+      { label: "Restaurant Equipment Removal", href: "/services/restaurant-equipment-removal" },
+      { label: "Property Management Turnovers", href: "/services/property-management-turnovers" },
+      { label: "Warehouse Fixture Removal", href: "/services/warehouse-fixture-removal" },
+      { label: "Holiday Tree Removal", href: "/services/holiday-tree-removal" },
+      { label: "Storm Debris Cleanup", href: "/services/storm-debris-cleanup" },
     ],
   },
   {
