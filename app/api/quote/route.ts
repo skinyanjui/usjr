@@ -1,6 +1,6 @@
+import { NextRequest } from 'next/server'
 import { z } from 'zod'
 
-// Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
 const RATE_LIMIT_MAX_REQUESTS = 5
 const ipToTimestamps = new Map<string, number[]>()
@@ -14,7 +14,8 @@ const QuoteSchema = z.object({
   projectSize: z.string().optional().default(''),
   details: z.string().optional().default(''),
   source: z.string().optional().default('website'),
-  timestamp: z.string().optional(),
+  location: z.string().optional().default(''),
+  hasPhotos: z.boolean().optional().default(false),
   // Honeypot field (should remain empty)
   website: z.string().optional().default(''),
 })
@@ -29,15 +30,91 @@ function normalize(body: any) {
     projectSize: body?.projectSize ?? '',
     details: body?.message ?? body?.details ?? body?.projectDetails ?? '',
     source: body?.source ?? 'website',
+    location: body?.location ?? '',
+    hasPhotos: body?.hasPhotos ?? false,
     timestamp: new Date().toISOString(),
   }
 }
 
-export async function POST(req: Request) {
+async function sendEmailNotification(data: any) {
+  // Using Resend (recommended) or SendGrid
+  const emailBody = `
+    New Quote Request from ${data.name}
+    
+    Contact Information:
+    - Name: ${data.name}
+    - Phone: ${data.phone}
+    - Email: ${data.email}
+    - Service Address: ${data.address || 'Not provided'}
+    
+    Service Details:
+    - Service Needed: ${data.service}
+    - Project Size: ${data.projectSize || 'Not specified'}
+    - Location: ${data.location || 'Not specified'}
+    - Source: ${data.source}
+    - Has Photos: ${data.hasPhotos ? 'Yes' : 'No'}
+    
+    Project Details:
+    ${data.details || 'No additional details provided'}
+    
+    Submitted: ${data.timestamp}
+  `
+
+  try {
+    // Option 1: Using Resend (Recommended)
+    if (process.env.RESEND_API_KEY) {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'quotes@unclesamjunkremoval.com', // Your verified domain
+          to: ['sam@sandalwoodmedical.com'],
+          subject: `New Quote Request from ${data.name} - ${data.service}`,
+          text: emailBody,
+          html: emailBody.replace(/\n/g, '<br>'),
+        }),
+      })
+      return response.ok
+    }
+    
+    // Option 2: Using SendGrid as fallback
+    if (process.env.SENDGRID_API_KEY) {
+      const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          personalizations: [{
+            to: [{ email: 'sam@sandalwoodmedical.com' }],
+            subject: `New Quote Request from ${data.name} - ${data.service}`,
+          }],
+          from: { email: 'quotes@unclesamjunkremoval.com' },
+          content: [{
+            type: 'text/plain',
+            value: emailBody,
+          }],
+        }),
+      })
+      return response.ok
+    }
+    
+    return false
+  } catch (error) {
+    console.error('Email sending failed:', error)
+    return false
+  }
+}
+
+export async function POST(req: NextRequest) {
   try {
     const raw = await req.json()
 
-    // Honeypot check: if filled, treat as success without processing
+    // Honeypot check
     if (typeof raw?.website === 'string' && raw.website.trim().length > 0) {
       return new Response(JSON.stringify({ ok: true }), {
         status: 200,
@@ -45,22 +122,27 @@ export async function POST(req: Request) {
       })
     }
 
-    // Rate limit per IP
+    // Rate limiting
     const ipHeader = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
     const ip = (ipHeader.split(',')[0] || 'unknown').trim()
     const now = Date.now()
     const hits = ipToTimestamps.get(ip) || []
     const recent = hits.filter(t => now - t < RATE_LIMIT_WINDOW_MS)
+    
     if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
       return new Response(JSON.stringify({ ok: false, error: 'Too many requests' }), {
         status: 429,
         headers: { 'Content-Type': 'application/json' },
       })
     }
+    
     recent.push(now)
     ipToTimestamps.set(ip, recent)
+
+    // Validate and normalize data
     const normalized = normalize(raw)
     const parsed = QuoteSchema.safeParse(normalized)
+    
     if (!parsed.success) {
       return new Response(JSON.stringify({ ok: false, errors: parsed.error.flatten() }), {
         status: 400,
@@ -68,10 +150,12 @@ export async function POST(req: Request) {
       })
     }
 
-    // In production, send to an email service, CRM, or database here.
-    // Avoid logging PII in production
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('New quote request:', parsed.data)
+    // Send email notification
+    const emailSent = await sendEmailNotification(parsed.data)
+    
+    if (!emailSent) {
+      console.error('Failed to send email notification')
+      // Don't fail the request, but log it for monitoring
     }
 
     return new Response(JSON.stringify({ ok: true }), {

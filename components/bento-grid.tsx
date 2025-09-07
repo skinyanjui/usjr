@@ -1,31 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { Star } from 'lucide-react'
-import { getServiceOptions } from '@/lib/service-options'
-import Link from 'next/link'
+import { UniversalQuoteForm } from './universal-quote-form'
 
 export function BentoGrid() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
-    email: '',
-    address: '',
-    service: '',
-    size: '',
-    details: '',
-  })
 
   return (
     <section className="px-4 py-8 sm:py-10 lg:py-12">
@@ -52,77 +31,11 @@ export function BentoGrid() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-2 pb-2 sm:space-y-3 sm:pb-3">
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <Input
-                    placeholder="Your full name"
-                    value={formData.fullName}
-                    onChange={e => setFormData({ ...formData, fullName: e.target.value })}
-                    className="text-sm"
-                  />
-                  <Input
-                    placeholder="(812) 555-0123"
-                    value={formData.phone}
-                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                    className="text-sm"
-                  />
-                </div>
-                <Input
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="text-sm"
+                <UniversalQuoteForm 
+                  variant="embedded"
+                  theme="red"
+                  className="p-0"
                 />
-                <Input
-                  placeholder="Evansville, IN address"
-                  value={formData.address}
-                  onChange={e => setFormData({ ...formData, address: e.target.value })}
-                  className="text-sm"
-                />
-                <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                  <Select
-                    value={formData.service}
-                    onValueChange={value => setFormData({ ...formData, service: value })}
-                  >
-                    <SelectTrigger className="text-sm" aria-label="Service Needed">
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {getServiceOptions().map(option => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <Select
-                    value={formData.size}
-                    onValueChange={value => setFormData({ ...formData, size: value })}
-                  >
-                    <SelectTrigger className="text-sm" aria-label="Project Size">
-                      <SelectValue placeholder="Select size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="small">Small</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="large">Large</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Textarea
-                  placeholder="Tell us about your project in Evansville..."
-                  value={formData.details}
-                  onChange={e => setFormData({ ...formData, details: e.target.value })}
-                  className="min-h-[60px] text-sm"
-                />
-                <Button asChild className="w-full bg-red-700 text-sm hover:bg-red-800">
-                  <Link href="/quote" prefetch>
-                    Get Free Quote
-                  </Link>
-                </Button>
-                <p className="text-xs text-gray-600">
-                  By submitting this form, you agree to receive text messages and calls from Uncle
-                  Sam Junk Removal.
-                </p>
               </CardContent>
             </Card>
           </div>
