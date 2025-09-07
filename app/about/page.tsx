@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Uncle Sam Junk Removal is a veteran-owned junk removal, trash removal, and dumpster rental company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Whether you need to get rid of junk, remove old furniture, haul away appliances, or clean out your house, we provide professional hauling services. Professional cleaning by women-owned Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.",
   keywords:
     "evansville junk removal, trash removal evansville, dumpster rental evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners, haul away service, get rid of junk, remove old furniture",
+  robots: "index, follow",
   ...buildCanonicalMetadata("/about", baseUrl),
 }
 

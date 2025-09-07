@@ -10,6 +10,7 @@ export const metadata = {
   description:
     `Professional junk removal in Owensboro, Kentucky. Extended service area from Indiana. Same-day pickup when possible. Call ${settings.phone}`,
   keywords: "junk removal Owensboro KY, Owensboro Kentucky junk removal, Daviess County junk pickup",
+  robots: "index, follow",
   ...buildCanonicalMetadata("/locations/owensboro-ky", baseUrl),
 }
 

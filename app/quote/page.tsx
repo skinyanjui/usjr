@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "Get free quotes for junk removal, dumpster rental, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.",
   keywords:
     "free quote Evansville, junk removal quote, dumpster rental quote, cleaning quote, Uncle Sam Junk Removal pricing",
+  robots: "index, follow",
   ...buildCanonicalMetadata("/quote", baseUrl),
 }
 
