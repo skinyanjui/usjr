@@ -13,6 +13,8 @@ export interface LocationOffer {
   title: string
   discount: string
   description: string
+  validFrom?: string | undefined
+  validThrough?: string | undefined
 }
 
 export interface LocationStory {

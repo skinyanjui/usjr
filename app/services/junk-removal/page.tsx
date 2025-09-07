@@ -2,20 +2,78 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
+import { InternalLinks } from "@/components/ui/internal-links"
+import { ReviewMention } from "@/components/ui/review-mention"
+import { getAggregateTestimonialStats } from "@/lib/cms-content"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Junk Removal Services",
+  category: "Junk Removal",
+  price: "From $89-649",
+  benefits: ["Same-day service", "Licensed & insured", "Eco-friendly disposal", "No hidden fees"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Junk Removal Services in Evansville, IN | Uncle Sam Junk Removal",
-  description:
-    "Professional junk removal, trash removal, and haul away services in Evansville and Southern Indiana. Whether you need to get rid of junk, remove old furniture, or clean out your house, we provide same-day service with eco-friendly disposal. Licensed and insured hauling service.",
-  keywords: buildKeywordString("junk-removal"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/junk-removal", baseUrl),
 }
 
 export default function JunkRemovalPage() {
+  const testimonialStats = getAggregateTestimonialStats()
+
+  const relatedContent = [
+    {
+      title: "Evansville Junk Removal Tips",
+      href: "/blog/evansville-junk-removal-tips",
+      description: "Local tips for efficient junk removal in Evansville. Learn about bulk pickup schedules and local recycling centers.",
+      type: "blog" as const,
+      category: "Local Guide"
+    },
+    {
+      title: "Junk Removal Cost Guide",
+      href: "/blog/junk-removal-cost-tri-state",
+      description: "Understanding junk removal pricing in the Tri-State area. Learn what factors affect costs and how to save money.",
+      type: "blog" as const,
+      category: "Pricing Guide"
+    },
+    {
+      title: "Appliance Removal",
+      href: "/services/appliance-removal",
+      description: "Specialized appliance removal service for refrigerators, washers, dryers, and other large appliances.",
+      type: "service" as const,
+      category: "Related Service"
+    },
+    {
+      title: "Estate Cleanouts",
+      href: "/services/estate-cleanouts",
+      description: "Comprehensive estate cleanout services for inherited properties and downsizing projects.",
+      type: "service" as const,
+      category: "Related Service"
+    },
+    {
+      title: "Dumpster Rental",
+      href: "/services/dumpster-rental",
+      description: "Convenient dumpster rental for larger projects requiring extended disposal timeframes.",
+      type: "service" as const,
+      category: "Alternative Service"
+    },
+    {
+      title: "Henderson KY Service",
+      href: "/locations/henderson-ky",
+      description: "Professional junk removal service in Henderson, Kentucky with local expertise and competitive rates.",
+      type: "location" as const,
+      category: "Service Area"
+    }
+  ]
+
   return (
     <ServicePageTemplate
       theme="red"
@@ -100,6 +158,32 @@ export default function JunkRemovalPage() {
             "We serve Evansville and all of Southern Indiana, including Henderson KY, Newburgh, Boonville, and surrounding communities.",
         },
       ]}
-    />
+    >
+      {/* Customer reviews section */}
+      <div className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <ReviewMention
+            averageRating={testimonialStats.averageRating}
+            reviewCount={testimonialStats.reviewCount}
+            variant="detailed"
+            theme="red"
+            location="Evansville"
+            showStructuredData={false} // Avoid duplicate structured data
+          />
+        </div>
+      </div>
+
+      {/* Internal linking section */}
+      <div className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <InternalLinks
+            title="Related Services & Helpful Resources"
+            links={relatedContent}
+            variant="grid"
+            theme="red"
+          />
+        </div>
+      </div>
+    </ServicePageTemplate>
   )
 }

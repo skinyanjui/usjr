@@ -8,15 +8,24 @@ import { PageHero } from "@/components/ui/page-hero"
 import { StructuredData } from "@/components/structured-data"
 import { UNIFORM_OFFERS } from "@/lib/uniform-offers"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import { buildBlogMetadata } from "@/lib/seo-metadata"
+import { InternalLinks } from "@/components/ui/internal-links"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const blogInfo = {
+  topic: "Evansville Junk Removal Tips",
+  location: "Evansville",
+  category: "Local Guide",
+  readTime: "8 min"
+}
+
+const seoData = buildBlogMetadata(blogInfo)
+
 export const metadata = {
-  title: "Evansville Junk Removal Tips: Local Guide | Uncle Sam Junk Removal",
-  description:
-    "Essential junk removal tips for Evansville residents. Learn local disposal options, recycling centers, and cost-saving strategies from local experts.",
-  keywords:
-    "Evansville junk removal tips, Evansville recycling, local disposal Evansville, junk removal guide Indiana",
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/blog/evansville-junk-removal-tips", baseUrl),
 }
 
@@ -199,6 +208,59 @@ export default function EvansvilleJunkRemovalTipsPage() {
                 </Link>
               </div>
             </div>
+          </section>
+
+          {/* Internal Links Section */}
+          <section className="mt-12">
+            <InternalLinks
+              title="Related Services & Resources"
+              links={[
+                {
+                  title: "Junk Removal Services",
+                  href: "/services/junk-removal",
+                  description: "Professional junk removal services in Evansville with same-day availability and transparent pricing.",
+                  type: "service",
+                  category: "Our Services"
+                },
+                {
+                  title: "Appliance Removal",
+                  href: "/services/appliance-removal",
+                  description: "Specialized appliance removal for refrigerators, washers, dryers, and other large appliances.",
+                  type: "service",
+                  category: "Our Services"
+                },
+                {
+                  title: "Estate Cleanouts",
+                  href: "/services/estate-cleanouts",
+                  description: "Comprehensive estate cleanout services for inherited properties and downsizing projects.",
+                  type: "service",
+                  category: "Our Services"
+                },
+                {
+                  title: "Junk Removal Cost Guide",
+                  href: "/blog/junk-removal-cost-tri-state",
+                  description: "Understanding junk removal pricing in the Tri-State area and how to save money on your project.",
+                  type: "blog",
+                  category: "Pricing Guide"
+                },
+                {
+                  title: "Spring Cleaning Checklist",
+                  href: "/blog/spring-cleaning-checklist-southern-indiana",
+                  description: "Comprehensive spring cleaning guide for Southern Indiana homeowners with local tips and resources.",
+                  type: "blog",
+                  category: "Seasonal Guide"
+                },
+                {
+                  title: "Evansville Location",
+                  href: "/locations/evansville",
+                  description: "Learn more about our Evansville service area, local expertise, and special offers for residents.",
+                  type: "location",
+                  category: "Service Area"
+                }
+              ]}
+              variant="grid"
+              theme="red"
+            />
           </section>
         </div>
       </article>

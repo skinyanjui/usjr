@@ -71,17 +71,23 @@ export const locationData: Record<string, LocationData> = {
       {
         title: "University Discount",
         discount: "15% Off",
-        description: "Students, faculty, and UE staff with valid ID"
+        description: "Students, faculty, and UE staff with valid ID",
+        validFrom: new Date().toISOString(),
+        validThrough: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString() // 1 year
       },
       {
         title: "Curbside Special",
         discount: "Save $35",
-        description: "Items staged at curb for easy pickup"
+        description: "Items staged at curb for easy pickup",
+        validFrom: new Date().toISOString(),
+        validThrough: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString() // 90 days
       },
       {
         title: "Neighbor Referral",
         discount: "$25 Credit",
-        description: "For each Evansville neighbor you refer"
+        description: "For each Evansville neighbor you refer",
+        validFrom: new Date().toISOString(),
+        validThrough: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString() // 1 year
       }
     ],
     stories: [
