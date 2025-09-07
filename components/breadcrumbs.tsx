@@ -81,12 +81,12 @@ export function BreadcrumbsAuto() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
+      { "@type": "ListItem", position: 1, name: "Home", item: { "@id": `${base}/` } },
       ...crumbs.map((c, idx) => ({
         "@type": "ListItem",
         position: idx + 2,
         name: c.name,
-        item: `${base}${c.href}`,
+        item: { "@id": `${base}${c.href}` },
       })),
     ],
   }
