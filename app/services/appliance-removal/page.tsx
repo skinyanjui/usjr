@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   title: seoData.title,
   description: seoData.description,
   keywords: seoData.keywords,
-  robots: "index, follow",
   ...buildCanonicalMetadata("/services/appliance-removal", baseUrl),
 }
 
