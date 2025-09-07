@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 // Import the necessary components
-import SimpleQuoteForm from './SimpleQuoteForm';
-import EvansvilleQuoteForm from './EvansvilleQuoteForm';
-import ContactSection from './ContactSection';
-import BentoGrid from './BentoGrid';
-import QuoteFormModal from './QuoteFormModal';
-import QuoteFormStandalone from './QuoteFormStandalone';
+import { SimpleQuoteForm } from './simple-quote-form';
+import { EvansvilleQuoteForm } from './evansville-quote-form';
+import ContactSection from './contact-section';
+import { QuoteFormModal } from './quote-form-modal';
+import { QuoteFormStandalone } from './quote-form-standalone';
 
 interface UniversalQuoteFormProps {
   variant: 'simple' | 'detailed' | 'contact' | 'embedded';
@@ -16,24 +15,23 @@ interface UniversalQuoteFormProps {
 
 const UniversalQuoteForm: React.FC<UniversalQuoteFormProps> = ({
   variant,
-  theme,
-  allowPhotoUpload,
-  locationCustomization,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   switch (variant) {
     case 'simple':
-      return <SimpleQuoteForm theme={theme} allowPhotoUpload={allowPhotoUpload} />;
+      return <SimpleQuoteForm />;
     case 'detailed':
-      return <EvansvilleQuoteForm theme={theme} allowPhotoUpload={allowPhotoUpload} />;
+      return <EvansvilleQuoteForm />;
     case 'contact':
       return (
         <> 
           <ContactSection />
-          <QuoteFormModal theme={theme} locationCustomization={locationCustomization} />
+          <QuoteFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
       );
     case 'embedded':
-      return <QuoteFormStandalone theme={theme} />;
+      return <QuoteFormStandalone />;
     default:
       return null;
   }
