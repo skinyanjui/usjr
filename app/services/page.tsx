@@ -8,6 +8,9 @@ import Link from "next/link"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal",
@@ -15,6 +18,7 @@ export const metadata: Metadata = {
     "Comprehensive junk removal, dumpster rental, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.",
   keywords:
     "junk removal services, dumpster rental, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal",
+  ...buildCanonicalMetadata("/services", baseUrl),
 }
 
 export default function ServicesPage() {

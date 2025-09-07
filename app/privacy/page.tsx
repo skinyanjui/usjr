@@ -1,4 +1,7 @@
 import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 
@@ -6,6 +9,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Uncle Sam Junk Removal",
   description:
     "Read Uncle Sam Junk Removal's privacy policy. Learn how we collect, use, and protect your information.",
+  ...buildCanonicalMetadata("/privacy", baseUrl),
 }
 
 export default function PrivacyPolicyPage() {

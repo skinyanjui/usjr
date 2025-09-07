@@ -7,6 +7,9 @@ import Link from "next/link"
 import { StructuredData } from "@/components/structured-data"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -14,6 +17,7 @@ export const metadata: Metadata = {
     "Veteran-led residential and commercial cleaning services in Evansville. Natural products, flexible scheduling, and spotless results. Book your cleaning today!",
   keywords:
     "cleaning services Evansville, residential cleaning, commercial cleaning, natural cleaning products, woman-owned business",
+  ...buildCanonicalMetadata("/cleaning", baseUrl),
 }
 
 export default function CleaningHub() {

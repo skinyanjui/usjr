@@ -5,6 +5,19 @@ import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from "lucide-
 import { settings } from "@/lib/cms-content"
 import { QuoteCtaLink } from "@/components/quote-cta-link"
 import { PageHero } from "@/components/ui/page-hero"
+import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+
+export const metadata: Metadata = {
+  title: "Emergency Junk Removal in Evansville, IN | 24/7 Service | Uncle Sam Junk Removal",
+  description:
+    "24/7 emergency junk removal services in Evansville, Indiana. Fast response for urgent cleanouts, storm debris, and emergency situations throughout Southern Indiana.",
+  keywords:
+    "emergency junk removal Evansville, 24/7 junk removal, urgent cleanout, storm debris removal, emergency cleanup Indiana",
+  ...buildCanonicalMetadata("/emergency", baseUrl),
+}
  
 export default function EmergencyPage() {
   return (

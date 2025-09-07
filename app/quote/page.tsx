@@ -1,4 +1,7 @@
 import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -15,6 +18,7 @@ export const metadata: Metadata = {
     "Get free quotes for junk removal, dumpster rental, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.",
   keywords:
     "free quote Evansville, junk removal quote, dumpster rental quote, cleaning quote, Uncle Sam Junk Removal pricing",
+  ...buildCanonicalMetadata("/quote", baseUrl),
 }
 
 export default function QuotePage() {

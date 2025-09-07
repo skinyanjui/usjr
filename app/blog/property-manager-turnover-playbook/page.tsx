@@ -4,6 +4,9 @@ import { Calendar, Clock, User, CheckCircle, DollarSign, Timer, Building2 } from
 import Link from "next/link"
 import Image from "next/image"
 import { settings } from "@/lib/cms-content"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata = {
   title: "Property Manager Turnover Playbook: Trash-Out to Broom Clean | Uncle Sam Junk Removal",
@@ -11,6 +14,7 @@ export const metadata = {
     "Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.",
   keywords:
     "property management turnover, rental cleanup Evansville, tenant turnover, property manager junk removal, rental property cleanup",
+  ...buildCanonicalMetadata("/blog/property-manager-turnover-playbook", baseUrl),
 }
 
 export default function PropertyManagerPlaybookPage() {

@@ -1,12 +1,16 @@
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Home, Truck, Shield, CheckCircle, Calendar, Users, Star } from "lucide-react"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Move-In/Move-Out Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Professional move-in and move-out cleaning services in Evansville. Complete property cleaning for transitions using natural products. Book your move cleaning today!",
   keywords: "move-in cleaning Evansville, move-out cleaning, property cleaning, transition cleaning, natural products",
+  ...buildCanonicalMetadata("/cleaning/move-in-move-out", baseUrl),
 }
 
 export default function MoveInMoveOutPage() {

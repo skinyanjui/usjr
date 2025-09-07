@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Building, Clock, Shield, Users, CheckCircle, Calendar, Briefcase } from "lucide-react"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Commercial Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
@@ -8,6 +11,7 @@ export const metadata: Metadata = {
     "Reliable, insured, after-hours business cleaning in Evansville. Professional office cleaning services with natural products. Serving businesses throughout Southern Indiana.",
   keywords:
     "commercial cleaning Evansville, office cleaning, business cleaning, after-hours cleaning, janitorial services",
+  ...buildCanonicalMetadata("/cleaning/commercial", baseUrl),
 }
 
 export default function CommercialCleaningPage() {

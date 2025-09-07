@@ -1,12 +1,16 @@
 import type { Metadata } from "next"
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Calendar, Users, Shield, CheckCircle, Star, Home } from "lucide-react"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
 export const metadata: Metadata = {
   title: "Recurring Cleaning Services in Evansville, IN | Uncle Sam Junk Removal",
   description:
     "Weekly, bi-weekly, and monthly recurring cleaning services in Evansville. Consistent team, natural products, flexible scheduling. Book your recurring service today!",
   keywords: "recurring cleaning Evansville, weekly cleaning, bi-weekly cleaning, monthly cleaning, maid service",
+  ...buildCanonicalMetadata("/cleaning/recurring", baseUrl),
 }
 
 export default function RecurringCleaningPage() {
