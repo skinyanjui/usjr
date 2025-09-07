@@ -3,16 +3,24 @@ import type { Metadata } from "next"
 import { Truck, Clock, DollarSign, Package, Phone, Calendar, Trash2, CheckCircle } from "lucide-react"
 import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Dumpster Rental Services",
+  category: "Dumpster Rental",
+  price: "From $349-649",
+  benefits: ["Same-day delivery", "Multiple sizes", "Transparent pricing", "Flexible rental periods"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Dumpster Rental Services in Evansville, IN | Uncle Sam Junk Removal",
-  description:
-    "Affordable dumpster rental, roll-off container rental, and trash container rental in Evansville and Southern Indiana. Whether you need to rent a dumpster for construction, get a dumpster for home projects, or order a big trash bin, we offer multiple sizes with same-day delivery and all-inclusive pricing.",
-  keywords: buildKeywordString("dumpster-rental"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/dumpster-rental", baseUrl),
 }
 
