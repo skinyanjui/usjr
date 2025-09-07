@@ -1,28 +1,73 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Truck, Shield, Wrench, Recycle } from "lucide-react"
 import type { Metadata } from "next"
-import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
+import { InternalLinks } from "@/components/ui/internal-links"
+import { ReviewMention } from "@/components/ui/review-mention"
+import { getAggregateTestimonialStats } from "@/lib/cms-content"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Appliance Removal Services",
+  category: "Appliance Removal",
+  price: "From $89-149",
+  benefits: ["Same-day service", "Safe disconnection", "EPA compliant", "No hidden fees"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Appliance Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
-  description:
-    `Professional appliance removal, old appliance pickup, and appliance disposal in Evansville, Indiana. Whether you need refrigerator removal, washer dryer removal, stove removal, or dishwasher removal, we provide safe disconnection and eco-friendly disposal. Same-day service. Call ${settings.phone}`,
-  keywords: buildKeywordString("appliance-removal"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/appliance-removal", baseUrl),
 }
 
 export default function ApplianceRemovalPage() {
+  const testimonialStats = getAggregateTestimonialStats()
+
+  const relatedContent = [
+    {
+      title: "Appliance Disposal Guide",
+      href: "/blog/appliance-disposal-recycling-guide",
+      description: "Complete guide to appliance disposal and recycling in the Tri-State area. Learn about EPA regulations and disposal options.",
+      type: "blog" as const,
+      category: "Local Guide"
+    },
+    {
+      title: "Junk Removal Services",
+      href: "/services/junk-removal",
+      description: "Full-service junk removal for all household items including furniture, appliances, and more.",
+      type: "service" as const,
+      category: "Related Service"
+    },
+    {
+      title: "Estate Cleanouts",
+      href: "/services/estate-cleanouts",
+      description: "Comprehensive estate cleanout services for inherited properties and downsizing projects.",
+      type: "service" as const,
+      category: "Related Service"
+    },
+    {
+      title: "Mattress Removal",
+      href: "/services/mattress-removal",
+      description: "Professional mattress removal and bed disposal service with eco-friendly disposal methods.",
+      type: "service" as const,
+      category: "Related Service"
+    }
+  ]
+
   return (
     <ServicePageTemplate
       theme="orange"
-      title="Appliance Removal in Evansville"
-      description="Professional appliance removal, old appliance pickup, and appliance disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of old appliances, remove refrigerators, or dispose of washers and dryers, we handle it all." // Changed from subtitle to description
+      title="Appliance Removal Services in Evansville"
+      description="Professional appliance removal, old appliance pickup, and appliance disposal with safe disconnection and eco-friendly disposal throughout Southern Indiana. Whether you need refrigerator removal, washer dryer removal, or any appliance disposal, we handle it all with specialized equipment."
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, "Safe Disconnection", "EPA Compliant"]}
+      serviceCategory="Appliance Removal Service"
       heroImage="/appliance-removal-evansville.png"
-      badges={["Same-Day Service", "Safe Disconnection", "EPA Compliant"]} // Added badges array
       features={[
         {
           icon: Truck,
@@ -36,7 +81,7 @@ export default function ApplianceRemovalPage() {
         },
         {
           icon: Wrench,
-          title: "Heavy Lifting Equipment",
+          title: UNIFORM_OFFERS.PROFESSIONAL_TEAM,
           description: "Specialized tools for safe removal from any location",
         },
         {
@@ -45,44 +90,49 @@ export default function ApplianceRemovalPage() {
           description: "Responsible disposal following all regulations",
         },
       ]}
-      pricing={[
-        { name: "Small Appliances", price: "From $89", description: "Microwave, etc." },
-        { name: "Washer or Dryer", price: "From $119", description: "Standard size" },
-        { name: "Refrigerator or Stove", price: "From $149", description: "Large appliances" },
-        { name: "Multiple Appliances", price: "15% Discount", description: "Volume pricing" },
-      ]}
       steps={[
         {
           icon: Truck,
           title: "Schedule Service",
-          description: "Call for same-day pickup. We handle all appliance types and sizes.",
+          description: "Call for same-day pickup. We handle all appliance types and sizes with upfront pricing.",
         },
         {
           icon: Shield,
           title: "Safe Disconnection",
-          description: "Professional disconnection of gas, electric, and water connections.",
+          description: "Professional disconnection of gas, electric, and water connections following safety protocols.",
         },
         {
           icon: Wrench,
           title: "Careful Removal",
-          description: "Specialized equipment for heavy appliances and tight spaces.",
+          description: "Specialized equipment for heavy appliances and tight spaces with complete protection of your property.",
         },
         {
           icon: Recycle,
           title: "Responsible Disposal",
-          description: "EPA-compliant disposal with maximum recycling of metals and components.",
+          description: "EPA-compliant disposal with maximum recycling of metals and components. Nothing goes to waste.",
         },
       ]}
+      pricing={[
+        { name: "Small Appliances", price: "From $89", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.SINGLE_ITEM },
+        { name: "Washer or Dryer", price: "From $119", description: "Standard size appliances" },
+        { name: "Refrigerator or Stove", price: "From $149", description: "Large appliances" },
+        { name: "Multiple Appliances", price: "15% Discount", description: "Volume pricing available" },
+      ]}
       faqs={[
+        {
+          question: `Do you provide ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} for appliance removal?`,
+          answer:
+            `Yes! We offer ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} throughout Evansville and surrounding areas for appliance removal, subject to availability.`,
+        },
         {
           question: "Do you disconnect gas and electric appliances?",
           answer:
             "Yes, our team can safely disconnect electric appliances. For gas appliances, we recommend having a licensed plumber disconnect gas lines before our arrival for safety.",
         },
         {
-          question: "How much does old appliance pickup and disposal cost in Evansville?",
+          question: "How do you price appliance removal services?",
           answer:
-            "Single appliances from $89 (small) to $149 (large). Refrigerator removal and washer dryer removal are $119-149 depending on size and access. Multiple appliances get volume discounts for appliance haul away services.",
+            `${PRICING_LANGUAGE.PRICING_NOTES.VOLUME_BASED}. ${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.`,
         },
         {
           question: "Can you remove built-in appliances?",
@@ -94,12 +144,33 @@ export default function ApplianceRemovalPage() {
           answer:
             "We recycle metals, donate working appliances when possible, and ensure proper disposal of refrigerants and hazardous materials following EPA guidelines.",
         },
-        {
-          question: "Do you remove appliances from basements or upstairs?",
-          answer:
-            "Yes, we remove appliances from any location including basements, second floors, and tight spaces. We have specialized equipment for challenging removals.",
-        },
       ]}
-    />
+    >
+      {/* Customer reviews section */}
+      <div className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <ReviewMention
+            averageRating={testimonialStats.averageRating}
+            reviewCount={testimonialStats.reviewCount}
+            variant="detailed"
+            theme="orange"
+            location="Evansville"
+            showStructuredData={false} // Avoid duplicate structured data
+          />
+        </div>
+      </div>
+
+      {/* Internal linking section */}
+      <div className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <InternalLinks
+            title="Related Services & Helpful Resources"
+            links={relatedContent}
+            variant="grid"
+            theme="orange"
+          />
+        </div>
+      </div>
+    </ServicePageTemplate>
   )
 }

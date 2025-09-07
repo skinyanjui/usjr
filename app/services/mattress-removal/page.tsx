@@ -1,71 +1,173 @@
 import { ServicePageTemplate } from "@/components/ui/service-page-template"
-import { CheckCircle } from "lucide-react"
+import { Truck, Phone, CheckCircle, Calendar } from "lucide-react"
 import type { Metadata } from "next"
-import { settings } from "@/lib/cms-content"
 import { buildCanonicalMetadata } from "@/components/canonical"
-import { buildKeywordString } from "@/lib/keyword-variations"
+import { buildServiceMetadata } from "@/lib/seo-metadata"
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
+import { InternalLinks } from "@/components/ui/internal-links"
+import { ReviewMention } from "@/components/ui/review-mention"
+import { getAggregateTestimonialStats } from "@/lib/cms-content"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
+const serviceInfo = {
+  serviceName: "Mattress Removal Services",
+  category: "Mattress Removal",
+  price: "From $89-229",
+  benefits: ["Same-day service", "Licensed & insured", "Eco-friendly disposal", "No hidden fees"]
+}
+
+const seoData = buildServiceMetadata(serviceInfo, "Evansville, IN")
+
 export const metadata: Metadata = {
-  title: "Mattress Removal Evansville IN | Same-Day Service | Uncle Sam Junk Removal",
-  description:
-    `Professional mattress removal, bed disposal, and old mattress pickup in Evansville, Indiana. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we provide eco-friendly disposal with same-day service. Call ${settings.phone}`,
-  keywords: buildKeywordString("mattress-removal"),
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata("/services/mattress-removal", baseUrl),
 }
 
 export default function MattressRemovalPage() {
-  const features = [
-    { icon: CheckCircle, title: "Quick Scheduling", description: "Call or text for same-day pickup. No need to bag or wrap." },
-    { icon: CheckCircle, title: "Professional Pickup", description: "We handle all lifting from any location in your home." },
-    { icon: CheckCircle, title: "Eco-Friendly Processing", description: "Materials are recycled or donated when possible." },
-  ]
+  const testimonialStats = getAggregateTestimonialStats()
 
-  const pricing = [
-    { name: "Single Mattress", price: "From $89-129" },
-    { name: "Mattress + Box Spring", price: "From $119-179" },
-    { name: "Full Bedroom Set", price: "From $149-229" },
-  ]
-
-  const faqs = [
+  const relatedContent = [
     {
-      question: "Do you remove mattresses from upstairs bedrooms?",
-      answer:
-        "Yes, we remove mattresses from any location including upstairs bedrooms, basements, and tight spaces. Our team handles all the heavy lifting and navigation.",
+      title: "Mattress Disposal Guide",
+      href: "/blog/mattress-disposal-evansville",
+      description: "Complete guide to mattress disposal in Evansville. Learn about recycling options and disposal regulations.",
+      type: "blog" as const,
+      category: "Local Guide"
     },
     {
-      question: "How much does mattress disposal and bed removal cost in Evansville?",
-      answer:
-        "Single mattress removal starts from $89, with box springs adding $25. Full bedroom sets (mattress, box spring, frame) start from $149. We offer volume discounts for multiple items and provide upfront pricing for all bed disposal services.",
+      title: "Junk Removal Services",
+      href: "/services/junk-removal",
+      description: "Full-service junk removal for all household items including furniture, appliances, and more.",
+      type: "service" as const,
+      category: "Related Service"
     },
     {
-      question: "Can you remove stained or damaged mattresses?",
-      answer:
-        "Yes, we remove mattresses in any condition including stained, torn, or water-damaged. We follow proper sanitation protocols and disposal methods for all mattresses.",
+      title: "Appliance Removal",
+      href: "/services/appliance-removal",
+      description: "Professional appliance removal service for refrigerators, washers, dryers, and other large appliances.",
+      type: "service" as const,
+      category: "Related Service"
     },
     {
-      question: "What happens to my old mattress after removal?",
-      answer:
-        "We partner with local recycling facilities to break down mattresses into component materials. Springs, foam, and fabric are recycled when possible. Unusable materials go to certified disposal facilities.",
-    },
+      title: "Estate Cleanouts",
+      href: "/services/estate-cleanouts",
+      description: "Comprehensive estate cleanout services for inherited properties and downsizing projects.",
+      type: "service" as const,
+      category: "Related Service"
+    }
   ]
 
   return (
     <ServicePageTemplate
       theme="blue"
-      title="Mattress Removal in Evansville"
-      description="Professional mattress removal, bed disposal, and old mattress pickup service with same-day availability. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we handle it all with eco-friendly disposal methods."
+      title="Mattress Removal Services in Evansville"
+      description="Fast, reliable mattress removal, bed disposal, and old mattress pickup throughout Southern Indiana. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we provide same-day service with upfront pricing and eco-friendly disposal methods."
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.LICENSED_INSURED, UNIFORM_OFFERS.ECO_FRIENDLY]}
+      serviceCategory="Mattress Removal Service"
       heroImage="/mattress-removal-evansville.png"
-      badges={["Same-day service available", "Licensed & Insured"]}
-      features={features}
-      steps={[]}
-      pricing={pricing}
-      pricingTitle="Mattress Removal Pricing"
-      pricingNote="Final pricing depends on access and item condition"
-      faqs={faqs}
-      ctaPrimary={`📞 Call ${settings.phone}`}
-      ctaSecondary="Get Mattress Removal Quote"
-    />
+      features={[
+        {
+          icon: CheckCircle,
+          title: UNIFORM_OFFERS.LICENSED_INSURED,
+          description: "Fully licensed and insured for your protection",
+        },
+        { 
+          icon: Calendar, 
+          title: UNIFORM_OFFERS.SAME_DAY_SERVICE, 
+          description: "Call or text for same-day pickup" 
+        },
+        {
+          icon: CheckCircle,
+          title: UNIFORM_OFFERS.ECO_FRIENDLY,
+          description: "Materials are recycled or donated when possible",
+        },
+        { 
+          icon: CheckCircle, 
+          title: UNIFORM_OFFERS.UPFRONT_PRICING, 
+          description: UNIFORM_OFFERS.NO_HIDDEN_FEES 
+        },
+      ]}
+      steps={[
+        {
+          icon: Phone,
+          title: "Schedule",
+          description:
+            "Call us or text photos for a free estimate. We offer same-day and next-day appointments throughout Evansville.",
+        },
+        {
+          icon: Truck,
+          title: "We Arrive",
+          description:
+            "Our professional team arrives on time, provides upfront pricing, and handles all the heavy lifting from any location in your home.",
+        },
+        {
+          icon: CheckCircle,
+          title: "We Remove & Recycle",
+          description:
+            "We remove your mattress, box spring, and bed frame, then dispose of everything responsibly through recycling and proper facilities.",
+        },
+      ]}
+      pricing={[
+        { name: "Single Mattress", price: "From $89-129", description: PRICING_LANGUAGE.TIER_DESCRIPTORS.SINGLE_ITEM },
+        { name: "Mattress + Box Spring", price: "From $119-179", description: "Great for bedroom updates" },
+        { name: "Full Bedroom Set", price: "From $149-229", description: "Complete bed removal service" },
+      ]}
+      faqs={[
+        {
+          question: `Do you provide ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} for mattress removal?`,
+          answer:
+            `Yes! We offer ${UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} throughout Evansville and surrounding areas, subject to availability.`,
+        },
+        {
+          question: "Do you remove mattresses from upstairs bedrooms?",
+          answer:
+            "Yes, we remove mattresses from any location including upstairs bedrooms, basements, and tight spaces. Our team handles all the heavy lifting and navigation.",
+        },
+        {
+          question: "How do you price mattress removal services?",
+          answer:
+            `${PRICING_LANGUAGE.PRICING_NOTES.VOLUME_BASED}. ${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.`,
+        },
+        {
+          question: "Can you remove stained or damaged mattresses?",
+          answer:
+            "Yes, we remove mattresses in any condition including stained, torn, or water-damaged. We follow proper sanitation protocols and disposal methods for all mattresses.",
+        },
+        {
+          question: "What happens to my old mattress after removal?",
+          answer:
+            "We partner with local recycling facilities to break down mattresses into component materials. Springs, foam, and fabric are recycled when possible. Unusable materials go to certified disposal facilities.",
+        },
+      ]}
+    >
+      {/* Customer reviews section */}
+      <div className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <ReviewMention
+            averageRating={testimonialStats.averageRating}
+            reviewCount={testimonialStats.reviewCount}
+            variant="detailed"
+            theme="blue"
+            location="Evansville"
+            showStructuredData={false} // Avoid duplicate structured data
+          />
+        </div>
+      </div>
+
+      {/* Internal linking section */}
+      <div className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <InternalLinks
+            title="Related Services & Helpful Resources"
+            links={relatedContent}
+            variant="grid"
+            theme="blue"
+          />
+        </div>
+      </div>
+    </ServicePageTemplate>
   )
 }
