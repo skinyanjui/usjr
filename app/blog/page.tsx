@@ -7,15 +7,35 @@ import Image from "next/image"
 import { settings } from "@/lib/cms-content"
 import { PageHero } from "@/components/ui/page-hero"
 import { buildCanonicalMetadata } from "@/components/canonical"
+import type { Metadata } from "next"
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal",
   description:
     "Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners. Natural cleaning solutions and professional insights.",
   keywords:
     "cleaning tips, junk removal guides, natural cleaning, Evansville home improvement, eco-friendly cleaning, decluttering advice",
+  openGraph: {
+    title: "Cleaning & Junk Removal Blog | Uncle Sam Junk Removal",
+    description: "Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.",
+    url: `${baseUrl}/blog`,
+    siteName: "Uncle Sam Junk Removal",
+    type: "website",
+    images: [{
+      url: `${baseUrl}/spring-cleaning-natural.png`,
+      width: 1200,
+      height: 630,
+      alt: "Uncle Sam Junk Removal Blog - Cleaning & Junk Removal Tips"
+    }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cleaning & Junk Removal Blog | Uncle Sam Junk Removal",
+    description: "Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.",
+    images: [`${baseUrl}/spring-cleaning-natural.png`]
+  },
   ...buildCanonicalMetadata("/blog", baseUrl),
 }
 
@@ -166,8 +186,47 @@ export default function BlogPage() {
     (post) => post.category.toLowerCase().includes("dumpster") || post.slug.includes("dumpster")
   )
 
+  // Structured data for the blog page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Uncle Sam Junk Removal Blog",
+    "description": "Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.",
+    "url": `${baseUrl}/blog`,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Uncle Sam Junk Removal",
+      "url": baseUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/icon-512.png`
+      }
+    },
+    "mainEntity": blogPosts.slice(0, 5).map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "url": `${baseUrl}/blog/${post.slug}`,
+      "datePublished": new Date(post.date).toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": post.author
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}${post.image}`
+      }
+    }))
+  }
+
   return (
     <main className="min-h-screen">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       <PageHero
         title="Cleaning & Junk Removal Blog"
         description="Expert tips, guides, and professional insights for Evansville homeowners"
