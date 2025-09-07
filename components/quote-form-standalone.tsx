@@ -1,117 +1,119 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
-import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from "lucide-react"
-import { settings } from "@/lib/cms-content"
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Badge } from '@/components/ui/badge'
+import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from 'lucide-react'
+import { settings } from '@/lib/cms-content'
 
 export function QuoteFormStandalone() {
-  const [segment, setSegment] = useState<"residential" | "commercial">("residential")
+  const [segment, setSegment] = useState<'residential' | 'commercial'>('residential')
   const [sector, setSector] = useState<
-    | "junk-removal"
-    | "dumpster-rental"
-    | "cleaning"
-    | "light-demolition"
-    | "estate-cleanouts"
-  >("junk-removal")
+    'junk-removal' | 'dumpster-rental' | 'cleaning' | 'light-demolition' | 'estate-cleanouts'
+  >('junk-removal')
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    sqft: "",
-    bedrooms: "",
-    bathrooms: "",
-    businessType: "",
-    suiteAccess: "",
-    service: "",
-    preferredDate: "",
-    preferredTime: "",
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    sqft: '',
+    bedrooms: '',
+    bathrooms: '',
+    businessType: '',
+    suiteAccess: '',
+    service: '',
+    preferredDate: '',
+    preferredTime: '',
     ecoFriendly: true,
-    message: "",
+    message: '',
     // Sector-specific fields
-    loadSize: "",
-    itemsDescription: "",
-    rentalDuration: "",
-    dumpsterPlacement: "",
-    dumpsterMaterial: "",
+    loadSize: '',
+    itemsDescription: '',
+    rentalDuration: '',
+    dumpsterPlacement: '',
+    dumpsterMaterial: '',
     drivewayProtection: false,
-    structureType: "",
-    approxSize: "",
+    structureType: '',
+    approxSize: '',
     utilitiesDisconnected: false,
-    demolitionMaterial: "",
+    demolitionMaterial: '',
     haulAway: false,
-    estatePropertyType: "",
-    estateRooms: "",
-    estateAccess: "",
-    estateTimeline: "",
+    estatePropertyType: '',
+    estateRooms: '',
+    estateAccess: '',
+    estateTimeline: '',
   })
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const residentialServices = [
-    "Deep Cleaning",
-    "Recurring Cleaning (Weekly)",
-    "Recurring Cleaning (Bi-weekly)",
-    "Recurring Cleaning (Monthly)",
-    "Move-In/Move-Out Cleaning",
-    "Refrigerator Cleaning",
-    "Oven Cleaning",
-    "Home Organizing",
-    "Decluttering Service",
+    'Deep Cleaning',
+    'Recurring Cleaning (Weekly)',
+    'Recurring Cleaning (Bi-weekly)',
+    'Recurring Cleaning (Monthly)',
+    'Move-In/Move-Out Cleaning',
+    'Refrigerator Cleaning',
+    'Oven Cleaning',
+    'Home Organizing',
+    'Decluttering Service',
   ]
 
   const commercialServices = [
-    "Office Cleaning (Daily)",
-    "Office Cleaning (Weekly)",
-    "Office Cleaning (Bi-weekly)",
-    "Office Cleaning (Monthly)",
-    "Retail Store Cleaning",
-    "Medical Office Cleaning",
-    "Restaurant Cleaning",
-    "After-Hours Cleaning",
+    'Office Cleaning (Daily)',
+    'Office Cleaning (Weekly)',
+    'Office Cleaning (Bi-weekly)',
+    'Office Cleaning (Monthly)',
+    'Retail Store Cleaning',
+    'Medical Office Cleaning',
+    'Restaurant Cleaning',
+    'After-Hours Cleaning',
   ]
 
   const junkRemovalServices = [
-    "Single Item Pickup",
-    "Furniture Removal",
-    "Appliance Removal",
-    "Garage Cleanout",
-    "Estate Cleanout",
-    "Construction Debris",
-    "Yard Waste",
-    "Hot Tub Removal",
-    "Shed Removal",
-    "Light Demolition",
+    'Single Item Pickup',
+    'Furniture Removal',
+    'Appliance Removal',
+    'Garage Cleanout',
+    'Estate Cleanout',
+    'Construction Debris',
+    'Yard Waste',
+    'Hot Tub Removal',
+    'Shed Removal',
+    'Light Demolition',
   ]
 
   const dumpsterRentalServices = [
-    "10-yard Dumpster",
-    "20-yard Dumpster",
-    "30-yard Dumpster",
-    "40-yard Dumpster",
+    '10-yard Dumpster',
+    '20-yard Dumpster',
+    '30-yard Dumpster',
+    '40-yard Dumpster',
   ]
 
   const estateCleanoutServices = [
-    "Estate Cleanout - Partial",
-    "Estate Cleanout - Full",
-    "Hoarding Cleanup",
+    'Estate Cleanout - Partial',
+    'Estate Cleanout - Full',
+    'Hoarding Cleanup',
   ]
 
   const lightDemolitionServices = [
-    "Interior Demolition",
-    "Deck Removal",
-    "Fence Removal",
-    "Shed Tear-Down",
+    'Interior Demolition',
+    'Deck Removal',
+    'Fence Removal',
+    'Shed Tear-Down',
   ]
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,62 +130,64 @@ export function QuoteFormStandalone() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the form data to your backend
-    if (process.env.NODE_ENV !== "production") {
-      console.log("Form submitted:", { formData, uploadedFiles, segment, sector })
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Form submitted:', { formData, uploadedFiles, segment, sector })
     }
     setIsSubmitted(true)
   }
 
   const getSectorServiceOptions = () => {
     switch (sector) {
-      case "junk-removal":
+      case 'junk-removal':
         return junkRemovalServices
-      case "dumpster-rental":
+      case 'dumpster-rental':
         return dumpsterRentalServices
-      case "estate-cleanouts":
+      case 'estate-cleanouts':
         return estateCleanoutServices
-      case "light-demolition":
+      case 'light-demolition':
         return lightDemolitionServices
-      case "cleaning":
+      case 'cleaning':
       default:
-        return segment === "residential" ? residentialServices : commercialServices
+        return segment === 'residential' ? residentialServices : commercialServices
     }
   }
 
   if (isSubmitted) {
     return (
-      <Card className="max-w-2xl mx-auto flex flex-col">
-        <CardContent className="text-center p-6 sm:p-12">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-10 h-10 text-green-600" />
+      <Card className="mx-auto flex max-w-2xl flex-col">
+        <CardContent className="p-6 text-center sm:p-12">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+            <CheckCircle className="h-10 w-10 text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Quote Request Received!</h2>
-          <p className="text-gray-600 mb-8 max-w-md mx-auto">
-            Thank you for your detailed quote request. We'll review your information and photos, then get back to you
-            within 2 hours with a comprehensive estimate.
+          <h2 className="mb-4 text-2xl font-bold text-gray-900">Quote Request Received!</h2>
+          <p className="mx-auto mb-8 max-w-md text-gray-600">
+            Thank you for your detailed quote request. We'll review your information and photos,
+            then get back to you within 2 hours with a comprehensive estimate.
           </p>
 
-          <div className="space-y-4 mb-8">
-            <Button asChild className="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white">
-              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">Schedule Call - Calendar Link</a>
+          <div className="mb-8 space-y-4">
+            <Button asChild className="w-full max-w-sm bg-blue-600 text-white hover:bg-blue-700">
+              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
+                Schedule Call - Calendar Link
+              </a>
             </Button>
             <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">Need immediate assistance?</p>
+              <p className="mb-2 text-sm text-gray-600">Need immediate assistance?</p>
               <p className="text-lg font-semibold text-gray-900">Text us at {settings.phone}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div className="flex items-center gap-2 justify-center">
-              <Clock className="w-4 h-4 text-blue-600" />
+          <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
+            <div className="flex items-center justify-center gap-2">
+              <Clock className="h-4 w-4 text-blue-600" />
               <span>2-hour response</span>
             </div>
-            <div className="flex items-center gap-2 justify-center">
-              <Leaf className="w-4 h-4 text-green-600" />
+            <div className="flex items-center justify-center gap-2">
+              <Leaf className="h-4 w-4 text-green-600" />
               <span>Natural products</span>
             </div>
-            <div className="flex items-center gap-2 justify-center">
-              <Shield className="w-4 h-4 text-purple-600" />
+            <div className="flex items-center justify-center gap-2">
+              <Shield className="h-4 w-4 text-purple-600" />
               <span>Fully insured</span>
             </div>
           </div>
@@ -193,21 +197,25 @@ export function QuoteFormStandalone() {
   }
 
   return (
-    <Card className="max-w-4xl mx-auto flex flex-col">
-      <CardHeader className="p-6 sm:p-8 pb-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-3">
+    <Card className="mx-auto flex max-w-4xl flex-col">
+      <CardHeader className="p-6 pb-4 sm:p-8">
+        <div className="mb-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           <div>
-            <CardTitle className="text-xl sm:text-2xl font-bold">Request Your Free Quote</CardTitle>
-            <CardDescription className="text-sm sm:text-base">Detailed form for accurate pricing - we'll respond within 2 hours</CardDescription>
+            <CardTitle className="text-xl font-bold sm:text-2xl">Request Your Free Quote</CardTitle>
+            <CardDescription className="text-sm sm:text-base">
+              Detailed form for accurate pricing - we'll respond within 2 hours
+            </CardDescription>
           </div>
-          <Badge className="bg-green-100 text-green-800 border-green-200">Free Estimate</Badge>
+          <Badge className="border-green-200 bg-green-100 text-green-800">Free Estimate</Badge>
         </div>
 
         {/* Sector + Segment Toggle */}
-        <div className="flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="max-w-md w-full">
-            <Label htmlFor="sector" className="mb-1 block text-sm">Service Sector</Label>
-            <Select value={sector} onValueChange={(value) => setSector(value as typeof sector)}>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
+          <div className="w-full max-w-md">
+            <Label htmlFor="sector" className="mb-1 block text-sm">
+              Service Sector
+            </Label>
+            <Select value={sector} onValueChange={value => setSector(value as typeof sector)}>
               <SelectTrigger id="sector" aria-label="Service Sector" fit>
                 <SelectValue placeholder="Select sector" />
               </SelectTrigger>
@@ -221,21 +229,25 @@ export function QuoteFormStandalone() {
             </Select>
           </div>
 
-          <div className="flex gap-2 p-1 bg-gray-100 rounded-lg max-w-md w-full">
+          <div className="flex w-full max-w-md gap-2 rounded-lg bg-gray-100 p-1">
             <button
               type="button"
-              onClick={() => setSegment("residential")}
-              className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
-                segment === "residential" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              onClick={() => setSegment('residential')}
+              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors sm:px-6 sm:py-3 ${
+                segment === 'residential'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Residential
             </button>
             <button
               type="button"
-              onClick={() => setSegment("commercial")}
-              className={`flex-1 py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm font-medium transition-colors ${
-                segment === "commercial" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              onClick={() => setSegment('commercial')}
+              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors sm:px-6 sm:py-3 ${
+                segment === 'commercial'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Commercial
@@ -244,18 +256,20 @@ export function QuoteFormStandalone() {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6 sm:p-8 pt-0">
+      <CardContent className="p-6 pt-0 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           {/* Contact Information */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900">Contact Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+              Contact Information
+            </h3>
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
               <div>
                 <Label htmlFor="name">Full Name *</Label>
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   required
                 />
               </div>
@@ -265,7 +279,7 @@ export function QuoteFormStandalone() {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   required
                 />
               </div>
@@ -275,7 +289,7 @@ export function QuoteFormStandalone() {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   required
                 />
               </div>
@@ -284,36 +298,36 @@ export function QuoteFormStandalone() {
 
           {/* Property Information */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900">Property Details</h3>
+            <h3 className="text-base font-semibold text-gray-900 sm:text-lg">Property Details</h3>
             <div>
               <Label htmlFor="address">Property Address *</Label>
               <Input
                 id="address"
                 value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                onChange={e => setFormData({ ...formData, address: e.target.value })}
                 placeholder="Street address, city, state, zip"
                 required
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
               <div>
                 <Label htmlFor="sqft">Square Footage (Optional)</Label>
                 <Input
                   id="sqft"
                   value={formData.sqft}
-                  onChange={(e) => setFormData({ ...formData, sqft: e.target.value })}
+                  onChange={e => setFormData({ ...formData, sqft: e.target.value })}
                   placeholder="e.g., 1500"
                 />
               </div>
 
-              {sector === "cleaning" && segment === "residential" ? (
+              {sector === 'cleaning' && segment === 'residential' ? (
                 <>
                   <div>
                     <Label htmlFor="qfs-bedrooms">Bedrooms</Label>
                     <Select
                       value={formData.bedrooms}
-                      onValueChange={(value) => setFormData({ ...formData, bedrooms: value })}
+                      onValueChange={value => setFormData({ ...formData, bedrooms: value })}
                     >
                       <SelectTrigger id="qfs-bedrooms" aria-label="Bedrooms" fit>
                         <SelectValue placeholder="Select" />
@@ -331,7 +345,7 @@ export function QuoteFormStandalone() {
                     <Label htmlFor="qfs-bathrooms">Bathrooms</Label>
                     <Select
                       value={formData.bathrooms}
-                      onValueChange={(value) => setFormData({ ...formData, bathrooms: value })}
+                      onValueChange={value => setFormData({ ...formData, bathrooms: value })}
                     >
                       <SelectTrigger id="qfs-bathrooms" aria-label="Bathrooms" fit>
                         <SelectValue placeholder="Select" />
@@ -346,13 +360,13 @@ export function QuoteFormStandalone() {
                     </Select>
                   </div>
                 </>
-              ) : segment === "commercial" ? (
+              ) : segment === 'commercial' ? (
                 <>
                   <div>
                     <Label htmlFor="qfs-business-type">Business Type</Label>
                     <Select
                       value={formData.businessType}
-                      onValueChange={(value) => setFormData({ ...formData, businessType: value })}
+                      onValueChange={value => setFormData({ ...formData, businessType: value })}
                     >
                       <SelectTrigger id="qfs-business-type" aria-label="Business Type" fit>
                         <SelectValue placeholder="Select" />
@@ -372,7 +386,7 @@ export function QuoteFormStandalone() {
                     <Input
                       id="suiteAccess"
                       value={formData.suiteAccess}
-                      onChange={(e) => setFormData({ ...formData, suiteAccess: e.target.value })}
+                      onChange={e => setFormData({ ...formData, suiteAccess: e.target.value })}
                       placeholder="Access codes, key location, etc."
                     />
                   </div>
@@ -385,19 +399,19 @@ export function QuoteFormStandalone() {
 
           {/* Service Selection */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900">Service Details</h3>
+            <h3 className="text-base font-semibold text-gray-900 sm:text-lg">Service Details</h3>
             <div>
               <Label htmlFor="qfs-service">Service Needed *</Label>
               <Select
                 value={formData.service}
-                onValueChange={(value) => setFormData({ ...formData, service: value })}
+                onValueChange={value => setFormData({ ...formData, service: value })}
                 required
               >
                 <SelectTrigger id="qfs-service" aria-label="Service Needed" fit>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {getSectorServiceOptions().map((service) => (
+                  {getSectorServiceOptions().map(service => (
                     <SelectItem key={service} value={service}>
                       {service}
                     </SelectItem>
@@ -406,21 +420,21 @@ export function QuoteFormStandalone() {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
               <div>
                 <Label htmlFor="preferredDate">Preferred Date</Label>
                 <Input
                   id="preferredDate"
                   type="date"
                   value={formData.preferredDate}
-                  onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                  onChange={e => setFormData({ ...formData, preferredDate: e.target.value })}
                 />
               </div>
               <div>
                 <Label htmlFor="qfs-preferred-time">Preferred Time Window</Label>
                 <Select
                   value={formData.preferredTime}
-                  onValueChange={(value) => setFormData({ ...formData, preferredTime: value })}
+                  onValueChange={value => setFormData({ ...formData, preferredTime: value })}
                 >
                   <SelectTrigger id="qfs-preferred-time" aria-label="Preferred Time Window" fit>
                     <SelectValue placeholder="Select time" />
@@ -437,15 +451,17 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Sector-specific Details */}
-          {sector === "junk-removal" && (
+          {sector === 'junk-removal' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Junk Removal Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                Junk Removal Details
+              </h3>
+              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                 <div>
                   <Label htmlFor="jr-load-size">Estimated Load Size</Label>
                   <Select
                     value={formData.loadSize}
-                    onValueChange={(value) => setFormData({ ...formData, loadSize: value })}
+                    onValueChange={value => setFormData({ ...formData, loadSize: value })}
                   >
                     <SelectTrigger id="jr-load-size" aria-label="Estimated Load Size" fit>
                       <SelectValue placeholder="Select size" />
@@ -466,22 +482,24 @@ export function QuoteFormStandalone() {
                     rows={3}
                     placeholder="List items or rooms to clear (e.g., sofa, fridge, garage, attic)"
                     value={formData.itemsDescription}
-                    onChange={(e) => setFormData({ ...formData, itemsDescription: e.target.value })}
+                    onChange={e => setFormData({ ...formData, itemsDescription: e.target.value })}
                   />
                 </div>
               </div>
             </div>
           )}
 
-          {sector === "dumpster-rental" && (
+          {sector === 'dumpster-rental' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Dumpster Rental Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                Dumpster Rental Details
+              </h3>
+              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                 <div>
                   <Label htmlFor="dr-duration">Rental Duration</Label>
                   <Select
                     value={formData.rentalDuration}
-                    onValueChange={(value) => setFormData({ ...formData, rentalDuration: value })}
+                    onValueChange={value => setFormData({ ...formData, rentalDuration: value })}
                   >
                     <SelectTrigger id="dr-duration" aria-label="Rental Duration" fit>
                       <SelectValue placeholder="Select duration" />
@@ -497,7 +515,7 @@ export function QuoteFormStandalone() {
                   <Label htmlFor="dr-material">Material Type</Label>
                   <Select
                     value={formData.dumpsterMaterial}
-                    onValueChange={(value) => setFormData({ ...formData, dumpsterMaterial: value })}
+                    onValueChange={value => setFormData({ ...formData, dumpsterMaterial: value })}
                   >
                     <SelectTrigger id="dr-material" aria-label="Material Type" fit>
                       <SelectValue placeholder="Select material" />
@@ -516,30 +534,36 @@ export function QuoteFormStandalone() {
                     id="dr-placement"
                     placeholder="Driveway, street (if permitted), side yard, etc."
                     value={formData.dumpsterPlacement}
-                    onChange={(e) => setFormData({ ...formData, dumpsterPlacement: e.target.value })}
+                    onChange={e => setFormData({ ...formData, dumpsterPlacement: e.target.value })}
                   />
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox
                     id="dr-driveway-protect"
                     checked={formData.drivewayProtection}
-                    onCheckedChange={(checked) => setFormData({ ...formData, drivewayProtection: checked as boolean })}
+                    onCheckedChange={checked =>
+                      setFormData({ ...formData, drivewayProtection: checked as boolean })
+                    }
                   />
-                  <Label htmlFor="dr-driveway-protect" className="text-sm">Add driveway protection boards</Label>
+                  <Label htmlFor="dr-driveway-protect" className="text-sm">
+                    Add driveway protection boards
+                  </Label>
                 </div>
               </div>
             </div>
           )}
 
-          {sector === "light-demolition" && (
+          {sector === 'light-demolition' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Demolition Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                Demolition Details
+              </h3>
+              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                 <div>
                   <Label htmlFor="ld-structure">Structure Type</Label>
                   <Select
                     value={formData.structureType}
-                    onValueChange={(value) => setFormData({ ...formData, structureType: value })}
+                    onValueChange={value => setFormData({ ...formData, structureType: value })}
                   >
                     <SelectTrigger id="ld-structure" aria-label="Structure Type" fit>
                       <SelectValue placeholder="Select type" />
@@ -558,14 +582,14 @@ export function QuoteFormStandalone() {
                     id="ld-size"
                     placeholder="e.g., 10x12, 200 sq ft"
                     value={formData.approxSize}
-                    onChange={(e) => setFormData({ ...formData, approxSize: e.target.value })}
+                    onChange={e => setFormData({ ...formData, approxSize: e.target.value })}
                   />
                 </div>
                 <div>
                   <Label htmlFor="ld-material">Primary Material</Label>
                   <Select
                     value={formData.demolitionMaterial}
-                    onValueChange={(value) => setFormData({ ...formData, demolitionMaterial: value })}
+                    onValueChange={value => setFormData({ ...formData, demolitionMaterial: value })}
                   >
                     <SelectTrigger id="ld-material" aria-label="Primary Material" fit>
                       <SelectValue placeholder="Select material" />
@@ -582,31 +606,41 @@ export function QuoteFormStandalone() {
                   <Checkbox
                     id="ld-utilities"
                     checked={formData.utilitiesDisconnected}
-                    onCheckedChange={(checked) => setFormData({ ...formData, utilitiesDisconnected: checked as boolean })}
+                    onCheckedChange={checked =>
+                      setFormData({ ...formData, utilitiesDisconnected: checked as boolean })
+                    }
                   />
-                  <Label htmlFor="ld-utilities" className="text-sm">Utilities disconnected (electric/water/gas)</Label>
+                  <Label htmlFor="ld-utilities" className="text-sm">
+                    Utilities disconnected (electric/water/gas)
+                  </Label>
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox
                     id="ld-haulaway"
                     checked={formData.haulAway}
-                    onCheckedChange={(checked) => setFormData({ ...formData, haulAway: checked as boolean })}
+                    onCheckedChange={checked =>
+                      setFormData({ ...formData, haulAway: checked as boolean })
+                    }
                   />
-                  <Label htmlFor="ld-haulaway" className="text-sm">Include debris haul-away</Label>
+                  <Label htmlFor="ld-haulaway" className="text-sm">
+                    Include debris haul-away
+                  </Label>
                 </div>
               </div>
             </div>
           )}
 
-          {sector === "estate-cleanouts" && (
+          {sector === 'estate-cleanouts' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Estate Cleanout Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                Estate Cleanout Details
+              </h3>
+              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
                 <div>
                   <Label htmlFor="ec-type">Property Type</Label>
                   <Select
                     value={formData.estatePropertyType}
-                    onValueChange={(value) => setFormData({ ...formData, estatePropertyType: value })}
+                    onValueChange={value => setFormData({ ...formData, estatePropertyType: value })}
                   >
                     <SelectTrigger id="ec-type" aria-label="Property Type" fit>
                       <SelectValue placeholder="Select type" />
@@ -623,7 +657,7 @@ export function QuoteFormStandalone() {
                   <Label htmlFor="ec-rooms">Rooms/Areas</Label>
                   <Select
                     value={formData.estateRooms}
-                    onValueChange={(value) => setFormData({ ...formData, estateRooms: value })}
+                    onValueChange={value => setFormData({ ...formData, estateRooms: value })}
                   >
                     <SelectTrigger id="ec-rooms" aria-label="Rooms/Areas" fit>
                       <SelectValue placeholder="Select" />
@@ -641,14 +675,14 @@ export function QuoteFormStandalone() {
                     id="ec-access"
                     placeholder="Stairs only, limited parking, narrow hallways, etc."
                     value={formData.estateAccess}
-                    onChange={(e) => setFormData({ ...formData, estateAccess: e.target.value })}
+                    onChange={e => setFormData({ ...formData, estateAccess: e.target.value })}
                   />
                 </div>
                 <div>
                   <Label htmlFor="ec-timeline">Timeline/Urgency</Label>
                   <Select
                     value={formData.estateTimeline}
-                    onValueChange={(value) => setFormData({ ...formData, estateTimeline: value })}
+                    onValueChange={value => setFormData({ ...formData, estateTimeline: value })}
                   >
                     <SelectTrigger id="ec-timeline" aria-label="Timeline/Urgency" fit>
                       <SelectValue placeholder="Select" />
@@ -666,19 +700,24 @@ export function QuoteFormStandalone() {
 
           {/* Photo Upload */}
           <div className="space-y-4 sm:space-y-5">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900">Photos for Accurate Pricing</h3>
-            <p className="text-xs sm:text-sm text-gray-700">
-              Upload up to 6 photos of the areas/items for the job to help us provide the most accurate estimate
+            <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+              Photos for Accurate Pricing
+            </h3>
+            <p className="text-xs text-gray-700 sm:text-sm">
+              Upload up to 6 photos of the areas/items for the job to help us provide the most
+              accurate estimate
             </p>
 
             <div>
-              <label className="flex flex-col items-center justify-center w-full h-32 sm:h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
+              <label className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 transition-colors hover:bg-gray-100 sm:h-40">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="w-8 h-8 sm:w-10 sm:h-10 mb-3 text-gray-500" />
-                  <p className="mb-2 text-xs sm:text-sm text-gray-600">
+                  <Upload className="mb-3 h-8 w-8 text-gray-500 sm:h-10 sm:w-10" />
+                  <p className="mb-2 text-xs text-gray-600 sm:text-sm">
                     <span className="font-semibold">Click to upload photos</span> or drag and drop
                   </p>
-                  <p className="text-[10px] sm:text-xs text-gray-600">PNG, JPG up to 10MB each (max 6 photos)</p>
+                  <p className="text-[10px] text-gray-600 sm:text-xs">
+                    PNG, JPG up to 10MB each (max 6 photos)
+                  </p>
                 </div>
                 <input
                   type="file"
@@ -692,21 +731,23 @@ export function QuoteFormStandalone() {
             </div>
 
             {uploadedFiles.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
+              <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
-                    <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center border">
-                      <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-gray-500" />
+                    <div className="flex aspect-square items-center justify-center rounded-lg border bg-gray-100">
+                      <Camera className="h-6 w-6 text-gray-500 sm:h-8 sm:w-8" />
                     </div>
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white"
                       aria-label={`Remove file ${file.name}`}
                     >
-                      <X className="w-3 h-3" />
+                      <X className="h-3 w-3" />
                     </button>
-                    <p className="text-[10px] sm:text-xs text-gray-600 mt-1 truncate">{file.name}</p>
+                    <p className="mt-1 truncate text-[10px] text-gray-600 sm:text-xs">
+                      {file.name}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -714,17 +755,19 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Preferences (cleaning only) */}
-          {sector === "cleaning" && (
+          {sector === 'cleaning' && (
             <div className="space-y-5 sm:space-y-6">
               <h3 className="text-lg font-semibold text-gray-900">Preferences</h3>
               <div className="flex items-center space-x-3">
                 <Checkbox
                   id="ecoFriendly"
                   checked={formData.ecoFriendly}
-                  onCheckedChange={(checked) => setFormData({ ...formData, ecoFriendly: checked as boolean })}
+                  onCheckedChange={checked =>
+                    setFormData({ ...formData, ecoFriendly: checked as boolean })
+                  }
                 />
-                <Label htmlFor="ecoFriendly" className="text-sm flex items-center gap-2">
-                  <Leaf className="w-4 h-4 text-green-600" />
+                <Label htmlFor="ecoFriendly" className="flex items-center gap-2 text-sm">
+                  <Leaf className="h-4 w-4 text-green-600" />
                   Use eco-friendly, natural products only (recommended)
                 </Label>
               </div>
@@ -739,7 +782,7 @@ export function QuoteFormStandalone() {
               <Textarea
                 id="message"
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={e => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Any specific requirements, access details, hazards, or questions you'd like to discuss..."
                 rows={4}
               />
@@ -747,11 +790,14 @@ export function QuoteFormStandalone() {
           </div>
 
           {/* Submit Button */}
-          <div className="pt-8 border-t">
-            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg">
+          <div className="border-t pt-8">
+            <Button
+              type="submit"
+              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700"
+            >
               Get My Free Quote
             </Button>
-            <p className="text-center text-sm text-gray-600 mt-4">
+            <p className="mt-4 text-center text-sm text-gray-600">
               We'll review your request and respond within 2 hours with a detailed estimate
             </p>
           </div>

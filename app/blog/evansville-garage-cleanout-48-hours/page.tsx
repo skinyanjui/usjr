@@ -1,41 +1,42 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { settings } from "@/lib/cms-content"
-import { buildCanonicalMetadata } from "@/components/canonical"
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { settings } from '@/lib/cms-content'
+import { buildCanonicalMetadata } from '@/components/canonical'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: "Evansville Garage Cleanout in 48 Hours: Complete Checklist & Timeline",
+  title: 'Evansville Garage Cleanout in 48 Hours: Complete Checklist & Timeline',
   description:
-    "Step-by-step guide to completely clean out your Evansville garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips.",
-  keywords: "garage cleanout Evansville, garage organization, 48 hour cleanup, garage decluttering Indiana",
-  ...buildCanonicalMetadata("/blog/evansville-garage-cleanout-48-hours", baseUrl),
+    'Step-by-step guide to completely clean out your Evansville garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips.',
+  keywords:
+    'garage cleanout Evansville, garage organization, 48 hour cleanup, garage decluttering Indiana',
+  ...buildCanonicalMetadata('/blog/evansville-garage-cleanout-48-hours', baseUrl),
 }
 
 export default function GarageCleanoutPage() {
   const timeline = [
     {
-      time: "Day 1: Morning (8am-12pm)",
-      tasks: ["Empty entire garage", "Sort into 4 categories", "Take inventory photos"],
+      time: 'Day 1: Morning (8am-12pm)',
+      tasks: ['Empty entire garage', 'Sort into 4 categories', 'Take inventory photos'],
       icon: Timer,
     },
     {
-      time: "Day 1: Afternoon (1pm-5pm)",
-      tasks: ["Deep clean empty garage", "Repair/prep storage areas", "Schedule donations pickup"],
+      time: 'Day 1: Afternoon (1pm-5pm)',
+      tasks: ['Deep clean empty garage', 'Repair/prep storage areas', 'Schedule donations pickup'],
       icon: CheckCircle,
     },
     {
-      time: "Day 2: Morning (8am-12pm)",
-      tasks: ["Organize keep items", "Install storage solutions", "Load donation items"],
+      time: 'Day 2: Morning (8am-12pm)',
+      tasks: ['Organize keep items', 'Install storage solutions', 'Load donation items'],
       icon: Timer,
     },
     {
-      time: "Day 2: Afternoon (1pm-5pm)",
-      tasks: ["Final organization", "Schedule junk removal", "Celebrate success!"],
+      time: 'Day 2: Afternoon (1pm-5pm)',
+      tasks: ['Final organization', 'Schedule junk removal', 'Celebrate success!'],
       icon: Trash2,
     },
   ]
@@ -43,35 +44,37 @@ export default function GarageCleanoutPage() {
   return (
     <main className="min-h-screen">
       <article className="pt-32 pb-16">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="mx-auto max-w-4xl px-4">
           <div className="mb-8">
-            <Link href="/blog" className="text-red-600 hover:text-red-700 font-medium">
+            <Link href="/blog" className="font-medium text-red-600 hover:text-red-700">
               ← Back to Blog
             </Link>
           </div>
 
           <header className="mb-12">
             <div className="mb-4">
-              <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">How-To Guide</span>
+              <span className="rounded-full bg-green-600 px-3 py-1 text-sm font-semibold text-white">
+                How-To Guide
+              </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
               Evansville garage cleanout in 48 hours: checklist & timeline
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+            <div className="mb-6 flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
-                <User className="w-4 h-4" />
+                <User className="h-4 w-4" />
                 <span>Uncle Sam Team</span>
               </div>
               <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="h-4 w-4" />
                 <span>January 12, 2025</span>
               </div>
               <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+                <Clock className="h-4 w-4" />
                 <span>6 min read</span>
               </div>
             </div>
-            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
               <Image
                 src="/organized-garage-cleanout.png"
                 alt="Garage cleanout before and after"
@@ -84,17 +87,20 @@ export default function GarageCleanoutPage() {
           </header>
 
           <div className="prose prose-lg max-w-none">
-            <p className="text-xl text-gray-600 mb-8">
-              Is your Evansville garage so cluttered you can't park your car? You're not alone. With Indiana's changing
-              seasons, garages become catch-alls for everything from holiday decorations to lawn equipment. Here's your
-              complete 48-hour garage transformation plan.
+            <p className="mb-8 text-xl text-gray-600">
+              Is your Evansville garage so cluttered you can't park your car? You're not alone. With
+              Indiana's changing seasons, garages become catch-alls for everything from holiday
+              decorations to lawn equipment. Here's your complete 48-hour garage transformation
+              plan.
             </p>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Before You Start: Essential Supplies</h2>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">
+              Before You Start: Essential Supplies
+            </h2>
 
-            <div className="bg-blue-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Gather These Items First</h3>
-              <div className="grid md:grid-cols-2 gap-4">
+            <div className="mb-8 rounded-lg bg-blue-50 p-6">
+              <h3 className="mb-4 text-xl font-bold text-gray-900">Gather These Items First</h3>
+              <div className="grid gap-4 md:grid-cols-2">
                 <ul className="space-y-2 text-gray-700">
                   <li>• Large trash bags (at least 20)</li>
                   <li>• Cardboard boxes for donations</li>
@@ -110,26 +116,28 @@ export default function GarageCleanoutPage() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The 48-Hour Timeline</h2>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">The 48-Hour Timeline</h2>
 
-            <div className="space-y-6 mb-8">
+            <div className="mb-8 space-y-6">
               {timeline.map((phase, index) => {
                 const Icon = phase.icon
                 return (
                   <Card key={index} className="glass">
                     <CardHeader>
                       <div className="flex items-center gap-3">
-                        <div className="bg-green-600 w-12 h-12 rounded-full flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-white" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600">
+                          <Icon className="h-6 w-6 text-white" />
                         </div>
-                        <CardTitle className="text-xl font-bold text-gray-900">{phase.time}</CardTitle>
+                        <CardTitle className="text-xl font-bold text-gray-900">
+                          {phase.time}
+                        </CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
                         {phase.tasks.map((task, taskIndex) => (
                           <li key={taskIndex} className="flex items-center gap-2 text-gray-700">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="h-4 w-4 text-green-600" />
                             {task}
                           </li>
                         ))}
@@ -140,16 +148,16 @@ export default function GarageCleanoutPage() {
               })}
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The 4-Category Sorting System</h2>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">The 4-Category Sorting System</h2>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="mb-8 grid gap-6 md:grid-cols-2">
               <Card className="glass border-green-200">
                 <CardHeader>
                   <CardTitle className="text-lg font-bold text-green-700">KEEP</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-2">Items you use regularly or seasonally</p>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <p className="mb-2 text-gray-700">Items you use regularly or seasonally</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
                     <li>• Tools and lawn equipment</li>
                     <li>• Holiday decorations</li>
                     <li>• Sports equipment</li>
@@ -163,8 +171,8 @@ export default function GarageCleanoutPage() {
                   <CardTitle className="text-lg font-bold text-blue-700">DONATE</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-2">Good condition items you no longer need</p>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <p className="mb-2 text-gray-700">Good condition items you no longer need</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
                     <li>• Outgrown sports equipment</li>
                     <li>• Working appliances</li>
                     <li>• Books and games</li>
@@ -178,8 +186,8 @@ export default function GarageCleanoutPage() {
                   <CardTitle className="text-lg font-bold text-yellow-700">SELL</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-2">Valuable items worth the effort to sell</p>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <p className="mb-2 text-gray-700">Valuable items worth the effort to sell</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
                     <li>• Power tools</li>
                     <li>• Exercise equipment</li>
                     <li>• Antiques or collectibles</li>
@@ -193,8 +201,8 @@ export default function GarageCleanoutPage() {
                   <CardTitle className="text-lg font-bold text-red-700">TRASH/RECYCLE</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-2">Broken, expired, or unusable items</p>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <p className="mb-2 text-gray-700">Broken, expired, or unusable items</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
                     <li>• Broken tools</li>
                     <li>• Old paint and chemicals</li>
                     <li>• Worn-out items</li>
@@ -204,14 +212,16 @@ export default function GarageCleanoutPage() {
               </Card>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Evansville-Specific Disposal Options</h2>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">
+              Evansville-Specific Disposal Options
+            </h2>
 
-            <div className="bg-gray-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Local Resources</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="mb-8 rounded-lg bg-gray-50 p-6">
+              <h3 className="mb-4 text-xl font-bold text-gray-900">Local Resources</h3>
+              <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Donation Centers</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <h4 className="mb-2 font-semibold text-gray-900">Donation Centers</h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
                     <li>• Goodwill (multiple locations)</li>
                     <li>• Salvation Army</li>
                     <li>• Habitat for Humanity ReStore</li>
@@ -219,8 +229,8 @@ export default function GarageCleanoutPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Hazardous Waste</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <h4 className="mb-2 font-semibold text-gray-900">Hazardous Waste</h4>
+                  <ul className="space-y-1 text-sm text-gray-700">
                     <li>• Vanderburgh County HHW events</li>
                     <li>• Auto parts stores (oil, batteries)</li>
                     <li>• Home Depot (paint disposal)</li>
@@ -230,14 +240,16 @@ export default function GarageCleanoutPage() {
               </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">When to Call the Professionals</h2>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">
+              When to Call the Professionals
+            </h2>
 
-            <p className="text-gray-700 mb-4">
-              Sometimes the best 48-hour garage cleanout includes professional help. Consider calling Uncle Sam Junk Removal
-              if you have:
+            <p className="mb-4 text-gray-700">
+              Sometimes the best 48-hour garage cleanout includes professional help. Consider
+              calling Uncle Sam Junk Removal if you have:
             </p>
 
-            <ul className="space-y-2 text-gray-700 mb-6">
+            <ul className="mb-6 space-y-2 text-gray-700">
               <li>• Large appliances or heavy items</li>
               <li>• More than 2 truck loads of disposal items</li>
               <li>• Hazardous materials that need special handling</li>
@@ -245,17 +257,27 @@ export default function GarageCleanoutPage() {
               <li>• Items too large for your vehicle</li>
             </ul>
 
-            <div className="bg-red-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Garage Cleanout Service</h3>
-              <p className="text-gray-700 mb-4">
-                Let Uncle Sam Junk Removal handle the heavy lifting while you focus on organizing. We'll remove all unwanted
-                items, coordinate donations, and leave your garage spotless.
+            <div className="mb-8 rounded-lg bg-red-50 p-6">
+              <h3 className="mb-4 text-xl font-bold text-gray-900">
+                Professional Garage Cleanout Service
+              </h3>
+              <p className="mb-4 text-gray-700">
+                Let Uncle Sam Junk Removal handle the heavy lifting while you focus on organizing.
+                We'll remove all unwanted items, coordinate donations, and leave your garage
+                spotless.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button
+                  asChild
+                  className="bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700"
+                >
                   <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
                 </Button>
-                <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-red-800 bg-transparent px-6 py-3 font-semibold text-red-800 hover:bg-red-800 hover:text-white"
+                >
                   <a href={`sms:${settings.phoneE164}`}>Text Photos for Instant Quote</a>
                 </Button>
               </div>

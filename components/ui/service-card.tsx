@@ -1,8 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
-import type { LucideIcon } from "lucide-react"
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
+import type { LucideIcon } from 'lucide-react'
 
 interface ServiceCardProps {
   title: string
@@ -10,10 +10,10 @@ interface ServiceCardProps {
   image: string
   price: string
   icon: LucideIcon
-  color: "red" | "orange" | "green" | "blue" | "purple" | "teal"
+  color: 'red' | 'orange' | 'green' | 'blue' | 'purple' | 'teal'
   link: string
   category: string
-  size?: "small" | "medium" | "large"
+  size?: 'small' | 'medium' | 'large'
 }
 
 export function ServiceCard({
@@ -25,57 +25,57 @@ export function ServiceCard({
   color,
   link,
   category,
-  size = "medium",
+  size = 'medium',
 }: ServiceCardProps) {
-  const getColorClasses = (color: ServiceCardProps["color"]) => {
+  const getColorClasses = (color: ServiceCardProps['color']) => {
     const colorMap = {
       red: {
-        border: "border-red-200",
-        bg: "bg-red-50",
-        text: "text-red-600",
-        textStrong: "text-red-700",
-        button: "bg-red-700 hover:bg-red-800",
-        icon: "text-red-600",
+        border: 'border-red-200',
+        bg: 'bg-red-50',
+        text: 'text-red-600',
+        textStrong: 'text-red-700',
+        button: 'bg-red-700 hover:bg-red-800',
+        icon: 'text-red-600',
       },
       orange: {
-        border: "border-orange-200",
-        bg: "bg-orange-50",
-        text: "text-orange-600",
-        textStrong: "text-orange-700",
-        button: "bg-orange-700 hover:bg-orange-800",
-        icon: "text-orange-600",
+        border: 'border-orange-200',
+        bg: 'bg-orange-50',
+        text: 'text-orange-600',
+        textStrong: 'text-orange-700',
+        button: 'bg-orange-700 hover:bg-orange-800',
+        icon: 'text-orange-600',
       },
       green: {
-        border: "border-green-200",
-        bg: "bg-green-50",
-        text: "text-green-600",
-        textStrong: "text-green-700",
-        button: "bg-green-700 hover:bg-green-800",
-        icon: "text-green-600",
+        border: 'border-green-200',
+        bg: 'bg-green-50',
+        text: 'text-green-600',
+        textStrong: 'text-green-700',
+        button: 'bg-green-700 hover:bg-green-800',
+        icon: 'text-green-600',
       },
       blue: {
-        border: "border-blue-200",
-        bg: "bg-blue-50",
-        text: "text-blue-600",
-        textStrong: "text-blue-700",
-        button: "bg-blue-700 hover:bg-blue-800",
-        icon: "text-blue-600",
+        border: 'border-blue-200',
+        bg: 'bg-blue-50',
+        text: 'text-blue-600',
+        textStrong: 'text-blue-700',
+        button: 'bg-blue-700 hover:bg-blue-800',
+        icon: 'text-blue-600',
       },
       purple: {
-        border: "border-purple-200",
-        bg: "bg-purple-50",
-        text: "text-purple-600",
-        textStrong: "text-purple-700",
-        button: "bg-purple-700 hover:bg-purple-800",
-        icon: "text-purple-600",
+        border: 'border-purple-200',
+        bg: 'bg-purple-50',
+        text: 'text-purple-600',
+        textStrong: 'text-purple-700',
+        button: 'bg-purple-700 hover:bg-purple-800',
+        icon: 'text-purple-600',
       },
       teal: {
-        border: "border-teal-200",
-        bg: "bg-teal-50",
-        text: "text-teal-600",
-        textStrong: "text-teal-700",
-        button: "bg-teal-700 hover:bg-teal-800",
-        icon: "text-teal-600",
+        border: 'border-teal-200',
+        bg: 'bg-teal-50',
+        text: 'text-teal-600',
+        textStrong: 'text-teal-700',
+        button: 'bg-teal-700 hover:bg-teal-800',
+        icon: 'text-teal-600',
       },
     } as const
     return colorMap[color]
@@ -83,32 +83,32 @@ export function ServiceCard({
 
   const getSizeClasses = (size: string) => {
     switch (size) {
-      case "small":
+      case 'small':
         return {
-          card: "h-full",
-          image: "h-36",
-          content: "px-4 py-4 space-y-3",
-          title: "text-sm font-bold",
-          description: "text-xs",
-          price: "text-xs",
+          card: 'h-full',
+          image: 'h-36',
+          content: 'px-4 py-4 space-y-3',
+          title: 'text-sm font-bold',
+          description: 'text-xs',
+          price: 'text-xs',
         }
-      case "large":
+      case 'large':
         return {
-          card: "h-full",
-          image: "h-48",
-          content: "px-6 py-6 space-y-4",
-          title: "text-xl font-bold",
-          description: "text-base",
-          price: "text-sm",
+          card: 'h-full',
+          image: 'h-48',
+          content: 'px-6 py-6 space-y-4',
+          title: 'text-xl font-bold',
+          description: 'text-base',
+          price: 'text-sm',
         }
       default:
         return {
-          card: "h-full",
-          image: "h-32",
-          content: "px-6 py-4 space-y-4",
-          title: "text-lg font-bold",
-          description: "text-sm",
-          price: "text-xs",
+          card: 'h-full',
+          image: 'h-32',
+          content: 'px-6 py-4 space-y-4',
+          title: 'text-lg font-bold',
+          description: 'text-sm',
+          price: 'text-xs',
         }
     }
   }
@@ -118,11 +118,11 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`glass dark:glass-dark hover:shadow-xl transition-all duration-300 hover:scale-105 ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
+      className={`glass dark:glass-dark transition-all duration-300 hover:scale-105 hover:shadow-xl ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
     >
       <div className={`relative ${sizes.image} w-full`}>
         <Image
-          src={image || "/placeholder.svg"}
+          src={image || '/placeholder.svg'}
           alt={title}
           fill
           className="object-cover"
@@ -131,11 +131,11 @@ export function ServiceCard({
           unoptimized
           loading="lazy"
         />
-        <div className={`absolute top-3 left-3 p-2 rounded-full ${colors.bg} shadow-lg`}>
+        <div className={`absolute top-3 left-3 rounded-full p-2 ${colors.bg} shadow-lg`}>
           <Icon className={`h-6 w-6 ${colors.icon}`} />
         </div>
         <div
-          className={`absolute top-3 right-3 px-1.5 py-0.5 rounded-full ${colors.bg} ${colors.textStrong} text-[10px] sm:text-xs font-semibold`}
+          className={`absolute top-3 right-3 rounded-full px-1.5 py-0.5 ${colors.bg} ${colors.textStrong} text-[10px] font-semibold sm:text-xs`}
         >
           {category}
         </div>

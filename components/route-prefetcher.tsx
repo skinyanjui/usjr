@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { useEffect, useMemo } from "react"
-import { useRouter, usePathname } from "next/navigation"
-import { NAV } from "@/lib/nav"
+import { useEffect, useMemo } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { NAV } from '@/lib/nav'
 
 function getAllNavHrefs(): string[] {
   const hrefs: string[] = []
@@ -22,11 +22,11 @@ export function RoutePrefetcher() {
   const pathname = usePathname()
 
   const targets = useMemo(() => {
-    return getAllNavHrefs().filter((href) => href !== pathname)
+    return getAllNavHrefs().filter(href => href !== pathname)
   }, [pathname])
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === 'undefined') return
 
     const idleCb = () => {
       for (const href of targets) {
@@ -36,7 +36,7 @@ export function RoutePrefetcher() {
       }
     }
 
-    if ("requestIdleCallback" in window) {
+    if ('requestIdleCallback' in window) {
       const id = (window as any).requestIdleCallback(idleCb, { timeout: 2000 })
       return () => (window as any).cancelIdleCallback?.(id)
     } else {
@@ -49,8 +49,8 @@ export function RoutePrefetcher() {
 }
 
 export function prefetchRoutes(hrefs: string[]) {
-  if (typeof window === "undefined") return
-  const router = (require("next/navigation") as typeof import("next/navigation")).useRouter?.()
+  if (typeof window === 'undefined') return
+  const router = (require('next/navigation') as typeof import('next/navigation')).useRouter?.()
   const unique = Array.from(new Set(hrefs))
   try {
     // If hook not available in this context, fall back to link-hover behavior elsewhere

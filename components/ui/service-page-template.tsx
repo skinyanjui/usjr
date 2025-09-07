@@ -1,14 +1,14 @@
-import type React from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Clock } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
-import { settings } from "@/lib/cms-content"
-import { PageHero } from "@/components/ui/page-hero"
-import { QuoteCtaLink } from "@/components/quote-cta-link"
-import { RelatedServices } from "@/components/related-services"
-import { StructuredData } from "@/components/structured-data"
-import { UNIFORM_OFFERS, PRICING_LANGUAGE } from "@/lib/uniform-offers"
+import type React from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Clock } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { settings } from '@/lib/cms-content'
+import { PageHero } from '@/components/ui/page-hero'
+import { QuoteCtaLink } from '@/components/quote-cta-link'
+import { RelatedServices } from '@/components/related-services'
+import { StructuredData } from '@/components/structured-data'
+import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
 
 export interface ServiceStep {
   icon: LucideIcon
@@ -35,7 +35,7 @@ export interface ServicePageTemplateProps {
   heroImage?: string
 
   // Theme
-  theme: "red" | "blue" | "green" | "orange" | "purple" | "teal"
+  theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
 
   // Structured data
   serviceCategory?: string
@@ -70,52 +70,52 @@ export interface ServicePageTemplateProps {
 
 const themeClasses = {
   red: {
-    gradient: "from-red-50 to-white",
-    primary: "bg-red-600 hover:bg-red-700",
-    secondary: "border-red-700 text-red-700 hover:bg-red-700 hover:text-white",
-    accent: "text-red-600",
-    icon: "bg-red-600",
-    badge: "bg-red-100 text-red-800 border-red-200",
+    gradient: 'from-red-50 to-white',
+    primary: 'bg-red-600 hover:bg-red-700',
+    secondary: 'border-red-700 text-red-700 hover:bg-red-700 hover:text-white',
+    accent: 'text-red-600',
+    icon: 'bg-red-600',
+    badge: 'bg-red-100 text-red-800 border-red-200',
   },
   blue: {
-    gradient: "from-blue-50 to-white",
-    primary: "bg-blue-600 hover:bg-blue-700",
-    secondary: "border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white",
-    accent: "text-blue-600",
-    icon: "bg-blue-600",
-    badge: "bg-blue-100 text-blue-800 border-blue-200",
+    gradient: 'from-blue-50 to-white',
+    primary: 'bg-blue-600 hover:bg-blue-700',
+    secondary: 'border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white',
+    accent: 'text-blue-600',
+    icon: 'bg-blue-600',
+    badge: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   green: {
-    gradient: "from-green-50 to-white",
-    primary: "bg-green-600 hover:bg-green-700",
-    secondary: "border-green-700 text-green-700 hover:bg-green-700 hover:text-white",
-    accent: "text-green-600",
-    icon: "bg-green-600",
-    badge: "bg-green-100 text-green-800 border-green-200",
+    gradient: 'from-green-50 to-white',
+    primary: 'bg-green-600 hover:bg-green-700',
+    secondary: 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white',
+    accent: 'text-green-600',
+    icon: 'bg-green-600',
+    badge: 'bg-green-100 text-green-800 border-green-200',
   },
   orange: {
-    gradient: "from-orange-50 to-white",
-    primary: "bg-orange-600 hover:bg-orange-700",
-    secondary: "border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white",
-    accent: "text-orange-600",
-    icon: "bg-orange-600",
-    badge: "bg-orange-100 text-orange-800 border-orange-200",
+    gradient: 'from-orange-50 to-white',
+    primary: 'bg-orange-600 hover:bg-orange-700',
+    secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
+    accent: 'text-orange-600',
+    icon: 'bg-orange-600',
+    badge: 'bg-orange-100 text-orange-800 border-orange-200',
   },
   purple: {
-    gradient: "from-purple-50 to-white",
-    primary: "bg-purple-600 hover:bg-purple-700",
-    secondary: "border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white",
-    accent: "text-purple-600",
-    icon: "bg-purple-600",
-    badge: "bg-purple-100 text-purple-800 border-purple-200",
+    gradient: 'from-purple-50 to-white',
+    primary: 'bg-purple-600 hover:bg-purple-700',
+    secondary: 'border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white',
+    accent: 'text-purple-600',
+    icon: 'bg-purple-600',
+    badge: 'bg-purple-100 text-purple-800 border-purple-200',
   },
   teal: {
-    gradient: "from-teal-50 to-white",
-    primary: "bg-teal-600 hover:bg-teal-700",
-    secondary: "border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white",
-    accent: "text-teal-600",
-    icon: "bg-teal-600",
-    badge: "bg-teal-100 text-teal-800 border-teal-200",
+    gradient: 'from-teal-50 to-white',
+    primary: 'bg-teal-600 hover:bg-teal-700',
+    secondary: 'border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
+    accent: 'text-teal-600',
+    icon: 'bg-teal-600',
+    badge: 'bg-teal-100 text-teal-800 border-teal-200',
   },
 }
 
@@ -128,9 +128,9 @@ export function ServicePageTemplate({
   serviceArea,
   features = [],
   steps = [],
-  stepsTitle = "How It Works",
+  stepsTitle = 'How It Works',
   pricing = [],
-  pricingTitle = "Pricing",
+  pricingTitle = 'Pricing',
   pricingNote,
   faqs = [],
   ctaPrimary = `📞 ${UNIFORM_OFFERS.CALL_NOW}`,
@@ -146,18 +146,20 @@ export function ServicePageTemplate({
         <PageHero title={title} description={description} imageSrc={heroImage} priority />
       )}
       {/* Hero Section */}
-      <section className={`pt-32 pb-16 bg-gradient-to-b ${classes.gradient}`}>
-        <div className="max-w-7xl mx-auto px-4">
+      <section className={`bg-gradient-to-b pt-32 pb-16 ${classes.gradient}`}>
+        <div className="mx-auto max-w-7xl px-4">
           {!heroImage && (
-            <div className="text-center mb-12">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">{title}</h1>
-              <p className="text-lg sm:text-xl text-gray-600 mb-6">{description}</p>
+            <div className="mb-12 text-center">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
+                {title}
+              </h1>
+              <p className="mb-6 text-lg text-gray-600 sm:text-xl">{description}</p>
 
               {badges.length > 0 && (
                 <div className="flex items-center justify-center gap-4 text-gray-700">
                   {badges.map((badge, index) => (
                     <div key={index} className="flex items-center gap-1">
-                      <Clock className={`w-5 h-5 ${classes.accent}`} />
+                      <Clock className={`h-5 w-5 ${classes.accent}`} />
                       <span>{badge}</span>
                     </div>
                   ))}
@@ -166,15 +168,17 @@ export function ServicePageTemplate({
             </div>
           )}
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Why Choose Uncle Sam Junk Removal?</h2>
+              <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl">
+                Why Choose Uncle Sam Junk Removal?
+              </h2>
               <div className="space-y-4">
                 {features.map((feature, index) => {
                   const IconComponent = feature.icon
                   return (
                     <div key={index} className="flex items-start gap-3">
-                      <IconComponent className={`w-6 h-6 ${classes.accent} mt-1`} />
+                      <IconComponent className={`h-6 w-6 ${classes.accent} mt-1`} />
                       <div>
                         <h3 className="font-semibold text-gray-900">{feature.title}</h3>
                         <p className="text-gray-600">{feature.description}</p>
@@ -184,41 +188,54 @@ export function ServicePageTemplate({
                 })}
               </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button asChild className={`${classes.primary} w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold`}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button
+                  asChild
+                  className={`${classes.primary} w-full px-6 py-3 text-base font-semibold text-white sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                >
                   <a href={`tel:${settings.phoneE164}`}>{ctaPrimary}</a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className={`${classes.secondary} w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-semibold bg-transparent`}
+                  className={`${classes.secondary} w-full bg-transparent px-6 py-3 text-base font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
                 >
-                  <QuoteCtaLink location="service-template" label={ctaSecondary}>{ctaSecondary}</QuoteCtaLink>
+                  <QuoteCtaLink location="service-template" label={ctaSecondary}>
+                    {ctaSecondary}
+                  </QuoteCtaLink>
                 </Button>
               </div>
             </div>
 
             {/* Pricing Card */}
             {pricing.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{pricingTitle}</h3>
+              <div className="rounded-2xl bg-white p-8 shadow-lg">
+                <h3 className="mb-6 text-2xl font-bold text-gray-900">{pricingTitle}</h3>
                 <div className="space-y-4">
                   {pricing.map((tier, index) => (
-                    <div key={index} className="flex justify-between items-center py-3 border-b border-gray-200">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between border-b border-gray-200 py-3"
+                    >
                       <div>
                         <span className="font-medium text-gray-900">{tier.name}</span>
-                        {tier.description && <div className="text-sm text-gray-600">{tier.description}</div>}
+                        {tier.description && (
+                          <div className="text-sm text-gray-600">{tier.description}</div>
+                        )}
                       </div>
                       <span className={`${classes.accent} font-bold`}>
-                        {tier.price.startsWith("From") ? tier.price : `${UNIFORM_OFFERS.STARTING_AT} ${tier.price}`}
+                        {tier.price.startsWith('From')
+                          ? tier.price
+                          : `${UNIFORM_OFFERS.STARTING_AT} ${tier.price}`}
                       </span>
                     </div>
                   ))}
                 </div>
-                {pricingNote && <p className="text-sm text-gray-600 mt-4">{pricingNote}</p>}
+                {pricingNote && <p className="mt-4 text-sm text-gray-600">{pricingNote}</p>}
                 {!pricingNote && (
-                  <p className="text-sm text-gray-600 mt-4">
-                    {PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. {PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.
+                  <p className="mt-4 text-sm text-gray-600">
+                    {PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}.{' '}
+                    {PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.
                   </p>
                 )}
               </div>
@@ -231,19 +248,26 @@ export function ServicePageTemplate({
 
       {/* Steps Section */}
       {steps.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">{stepsTitle}</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-7xl px-4">
+            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">{stepsTitle}</h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, index) => {
                 const IconComponent = step.icon
                 return (
-                  <Card key={index} className="text-center glass hover:scale-105 transition-transform duration-300">
+                  <Card
+                    key={index}
+                    className="glass text-center transition-transform duration-300 hover:scale-105"
+                  >
                     <CardHeader>
-                      <div className={`${classes.icon} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                        <IconComponent className="w-8 h-8 text-white" />
+                      <div
+                        className={`${classes.icon} mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full`}
+                      >
+                        <IconComponent className="h-8 w-8 text-white" />
                       </div>
-                      <CardTitle className="text-xl font-bold text-gray-900">{step.title}</CardTitle>
+                      <CardTitle className="text-xl font-bold text-gray-900">
+                        {step.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600">{step.description}</p>
@@ -262,14 +286,18 @@ export function ServicePageTemplate({
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">
+            Frequently Asked Questions
+          </h2>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <Card key={index} className="glass">
                 <CardHeader>
-                  <CardTitle className="text-lg font-semibold text-gray-900">{faq.question}</CardTitle>
+                  <CardTitle className="text-lg font-semibold text-gray-900">
+                    {faq.question}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">{faq.answer}</p>
@@ -279,37 +307,33 @@ export function ServicePageTemplate({
           </div>
         </div>
       </section>
-      
+
       {/* Structured Data */}
-      <StructuredData 
-        type="Service" 
+      <StructuredData
+        type="Service"
         data={{
           name: title,
           description: description,
-          category: serviceCategory || "Junk Removal Service",
-          price: pricing.length > 0 ? pricing[0]?.price || "Contact for pricing" : "Contact for pricing",
+          category: serviceCategory || 'Junk Removal Service',
+          price:
+            pricing.length > 0 ? pricing[0]?.price || 'Contact for pricing' : 'Contact for pricing',
           serviceArea: serviceArea || settings.serviceAreas,
           offers: [
             {
               name: UNIFORM_OFFERS.SAME_DAY_SERVICE,
-              description: "Same-day service available for most locations"
+              description: 'Same-day service available for most locations',
             },
             {
               name: UNIFORM_OFFERS.FREE_ESTIMATES,
-              description: "Free estimates provided via phone, text, or in-person",
-              price: "Free"
-            }
-          ]
+              description: 'Free estimates provided via phone, text, or in-person',
+              price: 'Free',
+            },
+          ],
         }}
       />
 
       {/* FAQ Structured Data */}
-      {faqs.length > 0 && (
-        <StructuredData 
-          type="FAQPage" 
-          data={{ faqs: faqs }}
-        />
-      )}
+      {faqs.length > 0 && <StructuredData type="FAQPage" data={{ faqs: faqs }} />}
     </main>
   )
 }

@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import { useState, useRef, useEffect } from "react"
-import { Button, PhoneButton } from "@/components/ui/button"
-import { Menu, X, ChevronDown, Phone } from "lucide-react"
-import Link from "next/link"
-import dynamic from "next/dynamic"
-import { useRouter } from "next/navigation"
-import { settings } from "@/lib/cms-content"
-import { trackQuoteClick } from "@/lib/quoteTracking"
-import { NAV } from "@/lib/nav"
+import { useState, useRef, useEffect } from 'react'
+import { Button, PhoneButton } from '@/components/ui/button'
+import { Menu, X, ChevronDown, Phone } from 'lucide-react'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
+import { settings } from '@/lib/cms-content'
+import { trackQuoteClick } from '@/lib/quoteTracking'
+import { NAV } from '@/lib/nav'
 
-const ServicesDropdown = dynamic(() => import("./header-services-dropdown"), { ssr: false })
-const LocationsDropdown = dynamic(() => import("./header-locations-dropdown"), { ssr: false })
+const ServicesDropdown = dynamic(() => import('./header-services-dropdown'), { ssr: false })
+const LocationsDropdown = dynamic(() => import('./header-locations-dropdown'), { ssr: false })
 
 export function Header() {
   const router = useRouter()
@@ -20,8 +20,8 @@ export function Header() {
   const [isMobileLocationsOpen, setIsMobileLocationsOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const servicesMenuId = "services-menu"
-  const locationsMenuId = "locations-menu"
+  const servicesMenuId = 'services-menu'
+  const locationsMenuId = 'locations-menu'
 
   const handleDropdownEnter = (dropdown: string) => {
     if (timeoutRef.current) {
@@ -31,10 +31,14 @@ export function Header() {
     setActiveDropdown(dropdown)
 
     // Prefetch dropdown routes eagerly when menu is opened
-    const items = NAV.find((i) => i.label === (dropdown === "services" ? "Services" : "Locations"))?.children ?? []
+    const items =
+      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ??
+      []
     for (const item of items) {
       if (item.href) {
-        try { router.prefetch(item.href) } catch {}
+        try {
+          router.prefetch(item.href)
+        } catch {}
       }
     }
   }
@@ -47,12 +51,12 @@ export function Header() {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setActiveDropdown(null)
       }
     }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
 
   const closeMobileMenuAndSections = () => {
@@ -62,92 +66,94 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass">
-      <nav className="bg-white/90 backdrop-blur-md border-b border-white/20 px-4 py-3">
-        <div className="max-w-7xl mx-auto grid grid-cols-3 items-center">
+    <header className="glass fixed top-0 right-0 left-0 z-50">
+      <nav className="border-b border-white/20 bg-white/90 px-4 py-3 backdrop-blur-md">
+        <div className="mx-auto grid max-w-7xl grid-cols-3 items-center">
           {/* Logo */}
-          <div className="flex col-span-2 lg:col-span-1 min-w-0 items-end text-center">
+          <div className="col-span-2 flex min-w-0 items-end text-center lg:col-span-1">
             <Link
               href="/"
-              className="bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-xs md:text-base hover:bg-red-700 transition-colors whitespace-nowrap max-w-full truncate"
+              className="max-w-full truncate rounded-lg bg-red-600 px-3 py-2 text-xs font-bold whitespace-nowrap text-white transition-colors hover:bg-red-700 md:text-base"
             >
               UNCLE SAM JUNK REMOVAL
             </Link>
           </div>
 
           {/* Centered desktop nav */}
-          <div className="hidden lg:flex items-center justify-center space-x-6">
+          <div className="hidden items-center justify-center space-x-6 lg:flex">
             <Link
               href="/"
-              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
             >
               HOME
             </Link>
 
             <Link
               href="/about"
-              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
             >
               ABOUT
             </Link>
 
             <div
-              className="relative group"
-              onMouseEnter={() => handleDropdownEnter("services")}
+              className="group relative"
+              onMouseEnter={() => handleDropdownEnter('services')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
+                className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
                 aria-haspopup="menu"
-                aria-expanded={activeDropdown === "services"}
+                aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
-                onClick={() => setActiveDropdown((prev) => (prev === "services" ? null : "services"))}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
+                onClick={() => setActiveDropdown(prev => (prev === 'services' ? null : 'services'))}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    setActiveDropdown((prev) => (prev === "services" ? null : "services"))
+                    setActiveDropdown(prev => (prev === 'services' ? null : 'services'))
                   }
                 }}
               >
                 SERVICES
-                <ChevronDown className="w-3 h-3" aria-hidden="true" />
+                <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </button>
-              {activeDropdown === "services" && (
+              {activeDropdown === 'services' && (
                 <ServicesDropdown
                   servicesMenuId={servicesMenuId}
-                  onMouseEnter={() => handleDropdownEnter("services")}
+                  onMouseEnter={() => handleDropdownEnter('services')}
                   onMouseLeave={handleDropdownLeave}
                 />
               )}
             </div>
 
             <div
-              className="relative group"
-              onMouseEnter={() => handleDropdownEnter("locations")}
+              className="group relative"
+              onMouseEnter={() => handleDropdownEnter('locations')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 type="button"
-                className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors flex items-center gap-1 text-sm"
+                className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
                 aria-haspopup="menu"
-                aria-expanded={activeDropdown === "locations"}
+                aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
-                onClick={() => setActiveDropdown((prev) => (prev === "locations" ? null : "locations"))}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
+                onClick={() =>
+                  setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))
+                }
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    setActiveDropdown((prev) => (prev === "locations" ? null : "locations"))
+                    setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))
                   }
                 }}
               >
                 LOCATIONS
-                <ChevronDown className="w-3 h-3" aria-hidden="true" />
+                <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </button>
-              {activeDropdown === "locations" && (
+              {activeDropdown === 'locations' && (
                 <LocationsDropdown
                   locationsMenuId={locationsMenuId}
-                  onMouseEnter={() => handleDropdownEnter("locations")}
+                  onMouseEnter={() => handleDropdownEnter('locations')}
                   onMouseLeave={handleDropdownLeave}
                 />
               )}
@@ -155,14 +161,14 @@ export function Header() {
 
             <Link
               href="/blog"
-              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
             >
               BLOG
             </Link>
 
             <Link
               href="/faq"
-              className="text-gray-700 hover:text-red-600 hover:underline font-medium transition-colors text-sm"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
             >
               FAQ
             </Link>
@@ -171,7 +177,7 @@ export function Header() {
           </div>
 
           {/* Right desktop actions */}
-          <div className="hidden lg:flex items-center justify-end gap-4 ml-4 pl-4">
+          <div className="ml-4 hidden items-center justify-end gap-4 pl-4 lg:flex">
             <div className="text-center">
               <PhoneButton
                 href={`tel:${settings.phoneE164}`}
@@ -180,15 +186,27 @@ export function Header() {
               >
                 <Phone className="h-3 w-3" /> {settings.phone}
               </PhoneButton>
-              <div className="text-xs mt-0">
-                <a href={`sms:${settings.phoneE164}`} className="text-black hover:text-red-600">Text photos for quote</a>
+              <div className="mt-0 text-xs">
+                <a href={`sms:${settings.phoneE164}`} className="text-black hover:text-red-600">
+                  Text photos for quote
+                </a>
               </div>
             </div>
-            <Button asChild size="xs" className="bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold">
+            <Button
+              asChild
+              size="xs"
+              className="rounded-full bg-red-600 font-semibold text-white hover:bg-red-700"
+            >
               <Link
                 href="/quote"
                 prefetch
-                onClick={() => trackQuoteClick({ location: "header-desktop", label: "Get Free Quote", destination: "/quote" })}
+                onClick={() =>
+                  trackQuoteClick({
+                    location: 'header-desktop',
+                    label: 'Get Free Quote',
+                    destination: '/quote',
+                  })
+                }
               >
                 Get Free Quote
               </Link>
@@ -198,9 +216,9 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="lg:hidden justify-self-end"
+            className="justify-self-end lg:hidden"
             onClick={() =>
-              setIsMenuOpen((prev) => {
+              setIsMenuOpen(prev => {
                 const next = !prev
                 if (!next) {
                   setIsMobileServicesOpen(false)
@@ -209,7 +227,7 @@ export function Header() {
                 return next
               })
             }
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
           >
@@ -218,18 +236,21 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-nav" className="lg:hidden mt-4 pb-4 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
+          <div
+            id="mobile-nav"
+            className="mt-4 max-h-[70vh] overflow-y-auto border-t border-gray-200 pb-4 lg:hidden"
+          >
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
-                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
                 onClick={closeMobileMenuAndSections}
               >
                 HOME
               </Link>
               <Link
                 href="/about"
-                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
                 onClick={closeMobileMenuAndSections}
               >
                 ABOUT
@@ -238,21 +259,23 @@ export function Header() {
               <div className="pt-2">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  className="flex w-full items-center justify-between py-2 text-sm font-medium text-gray-700"
                   aria-expanded={isMobileServicesOpen}
                   aria-controls="mobile-services-panel"
-                  onClick={() => setIsMobileServicesOpen((v) => !v)}
+                  onClick={() => setIsMobileServicesOpen(v => !v)}
                 >
                   <span>SERVICES</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
                 {isMobileServicesOpen && (
                   <div id="mobile-services-panel" className="pl-3">
-                    {(NAV.find((i) => i.label === "Services")?.children ?? []).map((item) => (
+                    {(NAV.find(i => i.label === 'Services')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        className="block py-1.5 text-sm font-medium text-gray-700 hover:text-red-600"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -265,21 +288,23 @@ export function Header() {
               <div className="pt-2">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between text-gray-700 font-medium text-sm py-2"
+                  className="flex w-full items-center justify-between py-2 text-sm font-medium text-gray-700"
                   aria-expanded={isMobileLocationsOpen}
                   aria-controls="mobile-locations-panel"
-                  onClick={() => setIsMobileLocationsOpen((v) => !v)}
+                  onClick={() => setIsMobileLocationsOpen(v => !v)}
                 >
                   <span>LOCATIONS</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileLocationsOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${isMobileLocationsOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
                 {isMobileLocationsOpen && (
                   <div id="mobile-locations-panel" className="pl-3">
-                    {(NAV.find((i) => i.label === "Locations")?.children ?? []).map((item) => (
+                    {(NAV.find(i => i.label === 'Locations')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block text-gray-700 hover:text-red-600 font-medium text-sm py-1.5"
+                        className="block py-1.5 text-sm font-medium text-gray-700 hover:text-red-600"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -291,25 +316,29 @@ export function Header() {
 
               <Link
                 href="/blog"
-                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
                 onClick={closeMobileMenuAndSections}
               >
                 BLOG
               </Link>
               <Link
                 href="/faq"
-                className="text-gray-700 hover:text-red-600 font-medium text-sm py-2"
+                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
                 onClick={closeMobileMenuAndSections}
               >
                 FAQ
               </Link>
               <div className="pt-4">
-                <Button asChild size="sm" className="bg-red-600 hover:bg-red-700 text-white w-full">
+                <Button asChild size="sm" className="w-full bg-red-600 text-white hover:bg-red-700">
                   <Link
                     href="/quote"
                     prefetch
                     onClick={() => {
-                      trackQuoteClick({ location: "header-mobile", label: "Get Free Quote", destination: "/quote" })
+                      trackQuoteClick({
+                        location: 'header-mobile',
+                        label: 'Get Free Quote',
+                        destination: '/quote',
+                      })
                       closeMobileMenuAndSections()
                     }}
                   >

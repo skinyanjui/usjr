@@ -1,5 +1,5 @@
-import type { Metadata } from "next"
-import { getCanonicalForPath } from "@/lib/canonicals"
+import type { Metadata } from 'next'
+import { getCanonicalForPath } from '@/lib/canonicals'
 
 // Server component exports a function to be used in route metadata
 export function buildCanonicalMetadata(pathname: string, baseUrl: string): Partial<Metadata> {
@@ -11,4 +11,3 @@ export function buildCanonicalMetadata(pathname: string, baseUrl: string): Parti
     },
   }
 }
-

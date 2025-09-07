@@ -1,72 +1,84 @@
-import type * as React from "react"
+import type * as React from 'react'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
-export type CardProps = React.ComponentProps<"div">
+export type CardProps = React.ComponentProps<'div'>
 
 export const CARD_SPACING = {
-  header: "px-6 pb-4",
-  content: "px-6 py-4",
-  footer: "px-6 pt-4",
-  gap: "space-y-4",
+  header: 'px-6 pb-4',
+  content: 'px-6 py-4',
+  footer: 'px-6 pt-4',
+  gap: 'space-y-4',
 } as const
 
 function Card({ className, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
-      className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)}
+      className={cn('bg-card text-card-foreground rounded-lg border shadow-sm', className)}
       {...props}
     />
   )
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-header"
-      className={cn("flex flex-col space-y-1 sm:space-y-1.5 px-4 py-3 sm:px-6 sm:py-4", className)}
+      className={cn('flex flex-col space-y-1 px-4 py-3 sm:space-y-1.5 sm:px-6 sm:py-4', className)}
       {...props}
     />
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
+function CardTitle({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
     <h3
       data-slot="card-title"
-      className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
+      className={cn('text-2xl leading-none font-semibold tracking-tight', className)}
       {...props}
     />
   )
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"p">) {
-  return <p data-slot="card-description" className={cn("text-sm text-muted-foreground", className)} {...props} />
+function CardDescription({ className, ...props }: React.ComponentProps<'p'>) {
+  return (
+    <p
+      data-slot="card-description"
+      className={cn('text-muted-foreground text-sm', className)}
+      {...props}
+    />
+  )
 }
 
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-content"
-      className={cn("px-4 py-2 space-y-2 sm:px-6 sm:py-4 sm:space-y-4", className)}
+      className={cn('space-y-2 px-4 py-2 sm:space-y-4 sm:px-6 sm:py-4', className)}
       {...props}
     />
   )
 }
 
-function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-action"
-      className={cn("flex items-center justify-end space-x-2 px-6 py-4", className)}
+      className={cn('flex items-center justify-end space-x-2 px-6 py-4', className)}
       {...props}
     />
   )
 }
 
-function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="card-footer" className={cn("flex items-center px-6 py-4 pt-0", className)} {...props} />
+function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn('flex items-center px-6 py-4 pt-0', className)}
+      {...props}
+    />
+  )
 }
 
 export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent }

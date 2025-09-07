@@ -5,12 +5,14 @@ A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk 
 ## Features
 
 ### Services
+
 - **Junk Removal**: Residential and commercial junk removal with transparent pricing
 - **Dumpster Rental**: Multiple sizes available for various projects
 - **Residential Cleaning**: Deep cleaning, recurring service, move-in/out, specialty cleaning
 - **Commercial Cleaning**: Office, retail, medical, and restaurant cleaning with after-hours service
 
 ### Key Components
+
 - Responsive design with glassmorphic elements
 - Two-step quote form with photo upload
 - Comprehensive service pages with FAQs
@@ -24,7 +26,8 @@ A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk 
 - Includes `LocationPageTemplate`, `FAQSection`, and shared quote form utilities
 
 ### Technical Features
-- Next.js 15 with App Router
+
+- Next.js 15.5.2 with App Router (latest secure version)
 - TypeScript for type safety
 - Tailwind CSS for styling
 - shadcn/ui component library
@@ -35,13 +38,19 @@ A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk 
 - JSON-LD structured data
 - Responsive images and lazy loading
 - Accessibility compliance (WCAG AA)
+- **Security headers** (X-Frame-Options, CSP, etc.)
+- **Bundle analyzer** for performance monitoring
+- **Testing infrastructure** with Jest and React Testing Library
+- **Code quality tools** (Prettier, ESLint, Husky, lint-staged)
 
 ## Architecture
 
 ### Component System
+
 The application uses a modular component architecture with reusable UI components:
 
 #### Core Components
+
 - **ServiceCard**: Standardized service display cards with color theming
 - **ThemedButton**: Consistent button styling across color themes
 - **GlassCard**: Glassmorphic card components with variants
@@ -51,11 +60,13 @@ The application uses a modular component architecture with reusable UI component
 - **PricingCard**: Standardized pricing display cards
 
 #### Template Components (New)
+
 - **ServicePageTemplate**: Complete service page layout with hero, features, steps, pricing, and FAQ sections
 - **LocationPageTemplate**: Standardized location pages with local information and service areas
 - **FAQSection**: Reusable FAQ component for consistent question/answer displays
 
 #### Quote Form Components (New)
+
 - **useQuoteForm**: Custom hook managing all quote form state and logic
 - **QuoteSuccessMessage**: Standardized success message for form submissions
 - **ContactFields**: Reusable contact information fields
@@ -64,7 +75,9 @@ The application uses a modular component architecture with reusable UI component
 See `docs/COMPONENTS.md` for detailed component documentation.
 
 ### Color System
+
 The application uses a consistent 6-color theme system:
+
 - **Red**: Primary brand color for junk removal services
 - **Orange**: Dumpster rental services
 - **Green**: Cleaning services
@@ -73,15 +86,18 @@ The application uses a consistent 6-color theme system:
 - **Teal**: Location-specific branding (Princeton)
 
 ### Refactoring Benefits
+
 The new template and shared components provide significant improvements:
 
 #### Code Reduction
+
 - **Service pages**: ~70% code reduction using ServicePageTemplate
-- **Location pages**: ~60% code reduction using LocationPageTemplate  
+- **Location pages**: ~60% code reduction using LocationPageTemplate
 - **Quote forms**: ~50% code reduction using shared hooks and components
 - **FAQ sections**: ~40% code reduction using FAQSection component
 
 #### Consistency & Maintainability
+
 - Standardized layouts across all service and location pages
 - Consistent theming and color application throughout the site
 - Single source of truth for page templates and form logic
@@ -91,6 +107,7 @@ The new template and shared components provide significant improvements:
 ## Content Management
 
 ### Editing Services
+
 Services are managed in `lib/cms-content.ts`. To add or edit services:
 
 1. Open `lib/cms-content.ts`
@@ -99,6 +116,7 @@ Services are managed in `lib/cms-content.ts`. To add or edit services:
 4. Update pricing, descriptions, and included items as needed
 
 ### Managing FAQs
+
 FAQs are categorized and can be edited in the same file:
 
 1. Find the `faqs` array in `lib/cms-content.ts`
@@ -106,6 +124,7 @@ FAQs are categorized and can be edited in the same file:
 3. Set `active: true` to display them
 
 ### Location Management
+
 Service areas are managed in the `locations` array:
 
 1. Add new locations with zip codes and landmarks
@@ -113,6 +132,7 @@ Service areas are managed in the `locations` array:
 3. Set `active: true` to enable location pages
 
 ### Settings Configuration
+
 Business settings are in the `settings` object:
 
 1. **Phone**: Update the main business phone number
@@ -124,6 +144,7 @@ Business settings are in the `settings` object:
 ## Development Guidelines
 
 ### Using Template Components
+
 For new service pages, use the ServicePageTemplate:
 
 \`\`\`tsx
@@ -131,39 +152,40 @@ import { ServicePageTemplate } from "@/components/ui/service-page-template"
 import { Phone, Camera, Truck, Recycle } from 'lucide-react'
 
 <ServicePageTemplate
-  title="Service Name in Evansville"
-  description="Professional service description"
-  theme="blue"
-  features={[
-    {
-      icon: Phone,
-      title: "Feature Title",
-      description: "Feature description"
-    }
-  ]}
-  steps={[
-    {
-      icon: Phone,
-      title: "Step Title", 
-      description: "Step description"
-    }
-  ]}
-  pricing={[
-    {
-      name: "Service Tier",
-      price: "From $199-299"
-    }
-  ]}
-  faqs={[
-    {
-      question: "Common question?",
-      answer: "Detailed answer..."
-    }
-  ]}
+title="Service Name in Evansville"
+description="Professional service description"
+theme="blue"
+features={[
+{
+icon: Phone,
+title: "Feature Title",
+description: "Feature description"
+}
+]}
+steps={[
+{
+icon: Phone,
+title: "Step Title",
+description: "Step description"
+}
+]}
+pricing={[
+{
+name: "Service Tier",
+price: "From $199-299"
+}
+]}
+faqs={[
+{
+question: "Common question?",
+answer: "Detailed answer..."
+}
+]}
 />
 \`\`\`
 
 ### Using Location Templates
+
 For new location pages, use the LocationPageTemplate:
 
 \`\`\`tsx
@@ -171,67 +193,69 @@ import { LocationPageTemplate } from "@/components/ui/location-page-template"
 import { Clock, Truck, Recycle } from 'lucide-react'
 
 <LocationPageTemplate
-  locationName="City Name"
-  state="Indiana"
-  tagline="Local service tagline"
-  theme="red"
-  features={[
-    {
-      icon: Clock,
-      title: "Local Feature",
-      description: "Local benefit description"
-    }
-  ]}
-  landmarks={["Local Landmark 1", "Local Landmark 2"]}
-  neighborhoods={["Neighborhood 1", "Neighborhood 2"]}
+locationName="City Name"
+state="Indiana"
+tagline="Local service tagline"
+theme="red"
+features={[
+{
+icon: Clock,
+title: "Local Feature",
+description: "Local benefit description"
+}
+]}
+landmarks={["Local Landmark 1", "Local Landmark 2"]}
+neighborhoods={["Neighborhood 1", "Neighborhood 2"]}
 />
 \`\`\`
 
 ### Component Usage
+
 When creating new features, always use the existing reusable components:
 
 \`\`\`tsx
 // Use ServiceCard for service displays
-<ServiceCard 
-  title="Service Name"
-  description="Service description"
-  color="red"
-  icon={ServiceIcon}
-  // ... other props
+<ServiceCard
+title="Service Name"
+description="Service description"
+color="red"
+icon={ServiceIcon}
+// ... other props
 />
 
 // Use ThemedButton for consistent styling
 <ThemedButton theme="red" variant="outline">
-  Button Text
+Button Text
 </ThemedButton>
 
 // Use shared quote form logic
 import { useQuoteForm, ContactFields, PhotoUpload } from "@/components/ui/quote-form-shared"
 
 function MyQuoteForm() {
-  const {
-    formData,
-    setFormData,
-    uploadedFiles,
-    handleFileUpload,
-    removeFile,
-    handleSubmit
-  } = useQuoteForm()
+const {
+formData,
+setFormData,
+uploadedFiles,
+handleFileUpload,
+removeFile,
+handleSubmit
+} = useQuoteForm()
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <ContactFields formData={formData} setFormData={setFormData} />
-      <PhotoUpload 
+return (
+<form onSubmit={handleSubmit}>
+<ContactFields formData={formData} setFormData={setFormData} />
+<PhotoUpload 
         uploadedFiles={uploadedFiles}
         handleFileUpload={handleFileUpload}
         removeFile={removeFile}
       />
-    </form>
-  )
+</form>
+)
 }
 \`\`\`
 
 ### Adding New Components
+
 When creating new reusable components:
 
 1. Place in `components/ui/` directory
@@ -242,6 +266,7 @@ When creating new reusable components:
 6. Export from `components/ui/index.ts`
 
 ### Code Standards
+
 - Use TypeScript for all components
 - Follow existing naming conventions (kebab-case for files)
 - Include proper accessibility attributes
@@ -250,15 +275,65 @@ When creating new reusable components:
 - Prefer template components over custom implementations
 - Use shared hooks and utilities to avoid code duplication
 
+## Development Tools
+
+### Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm lint:fix` - Run ESLint with auto-fix
+- `pnpm test` - Run Jest tests
+- `pnpm test:watch` - Run Jest in watch mode
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting
+- `pnpm analyze` - Analyze bundle size with webpack-bundle-analyzer
+
+### Code Quality Tools
+
+- **ESLint**: Configured with Next.js rules and custom performance warnings
+- **Prettier**: Automated code formatting with Tailwind CSS class sorting
+- **Husky**: Git hooks for pre-commit quality checks
+- **lint-staged**: Run linting and formatting on staged files only
+- **Jest**: Unit testing framework with React Testing Library
+- **Bundle Analyzer**: Performance monitoring and dependency analysis
+
+### Testing
+
+Basic testing setup is configured with Jest and React Testing Library. Example:
+
+\`\`\`tsx
+import { render, screen } from '@testing-library/react'
+import { Button } from '@/components/ui/button'
+
+test('renders button with text', () => {
+render(<Button>Click me</Button>)
+expect(screen.getByRole('button')).toBeInTheDocument()
+})
+\`\`\`
+
+### Security Features
+
+- **Security Headers**: Automatically applied to all routes
+  - X-Frame-Options: DENY
+  - X-Content-Type-Options: nosniff
+  - Referrer-Policy: strict-origin-when-cross-origin
+  - Permissions-Policy: camera=(), microphone=(), geolocation=()
+- **Dependency Management**: Standardized on pnpm for security and performance
+- **Bundle Analysis**: Regular monitoring of dependencies for security vulnerabilities
+
 ## Environment Variables
 
 ### Required Variables
+
 \`\`\`env
 SQUARE_BOOKING_URL=https://square.site/book/YOUR_BOOKING_URL
 NEXT_PUBLIC_SITE_URL=https://unclesamjunkremoval.com
 \`\`\`
 
 ### Optional Variables
+
 \`\`\`env
 GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 FACEBOOK_PIXEL_ID=XXXXXXXXXX
@@ -269,11 +344,13 @@ RECAPTCHA_SECRET_KEY=XXXXXXXXXX
 ## Deployment
 
 ### Vercel Deployment
+
 1. Connect your GitHub repository to Vercel
 2. Set environment variables in Vercel dashboard
 3. Deploy automatically on push to main branch
 
 ### Custom Domain Setup
+
 1. Add your domain in Vercel dashboard
 2. Update DNS records as instructed
 3. SSL certificate will be automatically provisioned
@@ -281,6 +358,7 @@ RECAPTCHA_SECRET_KEY=XXXXXXXXXX
 ## SEO Optimization
 
 ### Local SEO Features
+
 - Location-specific pages with local keywords
 - Google My Business schema markup
 - Local business structured data
@@ -288,6 +366,7 @@ RECAPTCHA_SECRET_KEY=XXXXXXXXXX
 - Customer reviews and ratings
 
 ### Technical SEO
+
 - Comprehensive sitemap generation
 - Robots.txt configuration
 - Meta tags and descriptions
@@ -298,6 +377,7 @@ RECAPTCHA_SECRET_KEY=XXXXXXXXXX
 ## Migration Guide
 
 ### Converting Existing Pages
+
 To convert existing service pages to use templates:
 
 1. **Service Pages**: Replace custom implementation with ServicePageTemplate
@@ -310,6 +390,7 @@ See `docs/COMPONENTS.md` for detailed migration instructions.
 ## Maintenance
 
 ### Regular Updates
+
 1. **Content**: Update testimonials and gallery images monthly
 2. **Services**: Review pricing and service descriptions quarterly
 3. **SEO**: Monitor and update local keywords as needed
@@ -318,18 +399,30 @@ See `docs/COMPONENTS.md` for detailed migration instructions.
 6. **Templates**: Update template components to benefit all pages using them
 
 ### Performance Monitoring
+
 - Monitor Core Web Vitals
 - Check mobile usability
 - Review search console for errors
 - Update structured data as needed
 - Audit component usage for consistency
 - Monitor bundle size with new component additions
+- Use `pnpm analyze` to analyze bundle size and dependencies
 
 ### Code Quality
+
 - Use template components for new pages to maintain consistency
 - Regularly audit for code duplication opportunities
 - Update shared components to benefit entire application
 - Follow established patterns for new feature development
+- Run `pnpm test` before committing changes
+- Use `pnpm format` to ensure consistent code formatting
+- Pre-commit hooks automatically run linting and formatting
+
+### Security
+
+- Security headers are automatically applied to all routes
+- Regular security updates are applied to dependencies
+- Bundle analysis helps identify potential security vulnerabilities in dependencies
 
 ## Support
 

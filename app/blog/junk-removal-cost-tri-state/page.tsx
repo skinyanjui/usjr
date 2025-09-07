@@ -1,54 +1,56 @@
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, User } from "lucide-react"
-import Link from "next/link"
-import { settings } from "@/lib/cms-content"
-import Image from "next/image"
-import { buildCanonicalMetadata } from "@/components/canonical"
+import { Button } from '@/components/ui/button'
+import { Calendar, Clock, User } from 'lucide-react'
+import Link from 'next/link'
+import { settings } from '@/lib/cms-content'
+import Image from 'next/image'
+import { buildCanonicalMetadata } from '@/components/canonical'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: "Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide",
+  title: 'Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide',
   description:
-    "Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.",
+    'Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.',
   keywords:
-    "junk removal cost Evansville, Henderson junk removal prices, Tri-State cleanup costs, junk removal pricing guide",
-  ...buildCanonicalMetadata("/blog/junk-removal-cost-tri-state", baseUrl),
+    'junk removal cost Evansville, Henderson junk removal prices, Tri-State cleanup costs, junk removal pricing guide',
+  ...buildCanonicalMetadata('/blog/junk-removal-cost-tri-state', baseUrl),
 }
 
 export default function JunkRemovalCostPage() {
   return (
     <main className="min-h-screen">
       <article className="pt-32 pb-16">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="mx-auto max-w-4xl px-4">
           <div className="mb-8">
-            <Link href="/blog" className="text-red-600 hover:text-red-700 font-medium">
+            <Link href="/blog" className="font-medium text-red-600 hover:text-red-700">
               ← Back to Blog
             </Link>
           </div>
 
           <header className="mb-12">
             <div className="mb-4">
-              <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Pricing Guide</span>
+              <span className="rounded-full bg-red-600 px-3 py-1 text-sm font-semibold text-white">
+                Pricing Guide
+              </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
               How much does junk removal cost in the Tri-State? (full breakdown)
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+            <div className="mb-6 flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="h-4 w-4" />
                 <span>Updated Jan 2025</span>
               </div>
               <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+                <Clock className="h-4 w-4" />
                 <span>8 min read</span>
               </div>
               <div className="flex items-center gap-1">
-                <User className="w-4 h-4" />
+                <User className="h-4 w-4" />
                 <span>Uncle Sam Team</span>
               </div>
             </div>
-            <div className="relative w-full h-64 rounded-lg overflow-hidden mb-8">
+            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
               <Image
                 src="/junk-removal-pricing.png"
                 alt="Junk removal cost ranges and factors"
@@ -62,8 +64,9 @@ export default function JunkRemovalCostPage() {
 
           <div className="prose prose-red max-w-none">
             <p>
-              Understanding junk removal pricing helps you budget your project and avoid surprises. This guide explains the
-              factors that affect cost and provides real ranges for Evansville, Henderson, and surrounding areas.
+              Understanding junk removal pricing helps you budget your project and avoid surprises.
+              This guide explains the factors that affect cost and provides real ranges for
+              Evansville, Henderson, and surrounding areas.
             </p>
 
             <h2>What affects junk removal cost?</h2>
@@ -88,25 +91,34 @@ export default function JunkRemovalCostPage() {
               </li>
             </ul>
 
-            <div className="bg-red-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Get Your Exact Quote</h3>
-              <p className="text-gray-700 mb-4">
-                Ready to find out exactly what your junk removal project will cost? We offer free, no-obligation
-                estimates for all Tri-State area residents.
+            <div className="mb-8 rounded-lg bg-red-50 p-6">
+              <h3 className="mb-4 text-xl font-bold text-gray-900">Get Your Exact Quote</h3>
+              <p className="mb-4 text-gray-700">
+                Ready to find out exactly what your junk removal project will cost? We offer free,
+                no-obligation estimates for all Tri-State area residents.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-semibold">
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button
+                  asChild
+                  className="bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700"
+                >
                   <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
                 </Button>
-                <Button asChild variant="outline" className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 py-3 font-semibold bg-transparent">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-red-800 bg-transparent px-6 py-3 font-semibold text-red-800 hover:bg-red-800 hover:text-white"
+                >
                   <a href={`sms:${settings.phoneE164}`}>Text Photos for Instant Quote</a>
                 </Button>
               </div>
             </div>
 
             <p className="text-gray-700">
-              <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs from $89-649 depending
-              on your project size. With transparent pricing, professional service, and eco-friendly disposal, Uncle Sam Junk Removal makes cleanup projects simple and affordable for Evansville and Henderson area residents.
+              <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs from
+              $89-649 depending on your project size. With transparent pricing, professional
+              service, and eco-friendly disposal, Uncle Sam Junk Removal makes cleanup projects
+              simple and affordable for Evansville and Henderson area residents.
             </p>
           </div>
         </div>

@@ -1,27 +1,31 @@
-"use client"
+'use client'
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
-import { settings } from "@/lib/cms-content"
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { settings } from '@/lib/cms-content'
 
 export function EvansvilleContactSidebar() {
   return (
     <div className="space-y-8">
       <Card className="glass">
         <CardContent className="p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Contact Uncle Sam Junk Removal</h3>
+          <h3 className="mb-6 text-xl font-bold text-gray-900 sm:text-2xl">
+            Contact Uncle Sam Junk Removal
+          </h3>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
+              <Phone className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="font-semibold text-gray-900">Phone</h4>
-                <p className="text-gray-800 text-base sm:text-lg font-semibold">{settings.phone}</p>
-                <p className="text-xs sm:text-sm text-gray-600">Call or text for fastest response</p>
+                <p className="text-base font-semibold text-gray-800 sm:text-lg">{settings.phone}</p>
+                <p className="text-xs text-gray-600 sm:text-sm">
+                  Call or text for fastest response
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
+              <Mail className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="font-semibold text-gray-900">Email</h4>
                 <p className="text-gray-700">info@unclesamjunkremoval.com</p>
@@ -29,21 +33,21 @@ export function EvansvilleContactSidebar() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
+              <MapPin className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="font-semibold text-gray-900">Service Area</h4>
                 <p className="text-gray-700">Evansville, IN & Southern Indiana</p>
                 <p className="text-gray-700">Vanderburgh, Warrick, Posey Counties</p>
-                <p className="text-xs sm:text-sm text-gray-600">Also serving Henderson, KY area</p>
+                <p className="text-xs text-gray-600 sm:text-sm">Also serving Henderson, KY area</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-red-600 mt-1" />
+              <Clock className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="font-semibold text-gray-900">Hours</h4>
                 <p className="text-gray-700">Monday - Sunday</p>
                 <p className="text-gray-700">8:00 AM - 8:00 PM</p>
-                <p className="text-xs sm:text-sm text-gray-600">Emergency service available</p>
+                <p className="text-xs text-gray-600 sm:text-sm">Emergency service available</p>
               </div>
             </div>
           </div>
@@ -51,15 +55,21 @@ export function EvansvilleContactSidebar() {
       </Card>
 
       <Card className="glass bg-red-600 text-white">
-        <CardContent className="p-6 sm:p-8 text-center">
-          <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 text-black">Same Day Service in Evansville!</h3>
-          <p className="mb-5 sm:mb-6 text-white text-sm sm:text-base">
-            Need your junk removed today? We offer same-day service throughout Evansville and surrounding areas.
+        <CardContent className="p-6 text-center sm:p-8">
+          <h3 className="mb-3 text-lg font-bold text-black sm:mb-4 sm:text-2xl">
+            Same Day Service in Evansville!
+          </h3>
+          <p className="mb-5 text-sm text-white sm:mb-6 sm:text-base">
+            Need your junk removed today? We offer same-day service throughout Evansville and
+            surrounding areas.
           </p>
-          <Button asChild className="bg-white text-red-600 hover:bg-gray-100 w-full sm:w-auto px-6 sm:px-8 py-3 font-semibold mb-4">
+          <Button
+            asChild
+            className="mb-4 w-full bg-white px-6 py-3 font-semibold text-red-600 hover:bg-gray-100 sm:w-auto sm:px-8"
+          >
             <a href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</a>
           </Button>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-white">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-white sm:text-sm">
             <span>✓ Licensed & Insured</span>
             <span>✓ Free Estimates</span>
             <span>✓ Eco-Friendly</span>
@@ -69,8 +79,10 @@ export function EvansvilleContactSidebar() {
 
       <Card className="glass bg-blue-600 text-white">
         <CardContent className="p-6 sm:p-8">
-          <h3 className="text-lg sm:text-xl font-bold mb-4">Why Evansville Chooses Uncle Sam Junk Removal</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
+          <h3 className="mb-4 text-lg font-bold sm:text-xl">
+            Why Evansville Chooses Uncle Sam Junk Removal
+          </h3>
+          <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 sm:gap-4">
             <div>✓ 15+ Years Experience</div>
             <div>✓ Locally Owned & Operated</div>
             <div>✓ Upfront Pricing</div>

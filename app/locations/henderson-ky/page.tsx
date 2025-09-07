@@ -1,21 +1,24 @@
-import { settings } from "@/lib/cms-content"
-import { LocationPageTemplate, LocationPageTemplateProps } from "@/components/ui/location-page-template"
-import { locationData, LocationData } from "@/lib/location-data"
-import { buildCanonicalMetadata } from "@/components/canonical"
+import { settings } from '@/lib/cms-content'
+import {
+  LocationPageTemplate,
+  LocationPageTemplateProps,
+} from '@/components/ui/location-page-template'
+import { locationData, LocationData } from '@/lib/location-data'
+import { buildCanonicalMetadata } from '@/components/canonical'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: "Junk Removal Henderson KY | Same-Day Service | Uncle Sam Junk Removal",
-  description:
-    `Professional junk removal in Henderson, Kentucky. Cross-state service from Indiana. Same-day pickup available. Call ${settings.phone}`,
-  keywords: "junk removal Henderson KY, Henderson Kentucky junk removal, trash removal Henderson, Kentucky junk pickup",
-  robots: "index, follow",
-  ...buildCanonicalMetadata("/locations/henderson-ky", baseUrl),
+  title: 'Junk Removal Henderson KY | Same-Day Service | Uncle Sam Junk Removal',
+  description: `Professional junk removal in Henderson, Kentucky. Cross-state service from Indiana. Same-day pickup available. Call ${settings.phone}`,
+  keywords:
+    'junk removal Henderson KY, Henderson Kentucky junk removal, trash removal Henderson, Kentucky junk pickup',
+  robots: 'index, follow',
+  ...buildCanonicalMetadata('/locations/henderson-ky', baseUrl),
 }
 
 export default function HendersonPage() {
-  const data = locationData["henderson-ky"] as LocationData
+  const data = locationData['henderson-ky'] as LocationData
 
   const templateProps: LocationPageTemplateProps = {
     locationName: data.locationName,
@@ -28,7 +31,7 @@ export default function HendersonPage() {
     stories: data.stories,
     serviceGuarantee: data.serviceGuarantee,
     ctaPrimary: `📞 Call ${settings.phone}`,
-    ctaSecondary: "Get Free Quote"
+    ctaSecondary: 'Get Free Quote',
   }
 
   if (data.neighborhoods) {
