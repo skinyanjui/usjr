@@ -1,6 +1,19 @@
 import Link from "next/link"
 import { NAV } from "@/lib/nav"
 import { PageHero } from "@/components/ui/page-hero"
+import type { Metadata } from "next"
+import { buildCanonicalMetadata } from "@/components/canonical"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://unclesamjunkremoval.com"
+
+export const metadata: Metadata = {
+  title: "Sitemap | Uncle Sam Junk Removal - All Pages",
+  description:
+    "Browse all pages on the Uncle Sam Junk Removal website. Find services, locations, blog posts, and more.",
+  keywords: "sitemap, site navigation, junk removal services, Evansville pages",
+  robots: "noindex, follow",
+  ...buildCanonicalMetadata("/html-sitemap", baseUrl),
+}
 
 export default function HtmlSitemapPage() {
 	const topLevel = NAV.filter((i) => i.href && !["Get Quote", "Get Free Quote"].includes(i.label))
