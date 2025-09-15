@@ -14,14 +14,13 @@ export function HeroSection() {
       className="relative flex min-h-[80vh] items-center justify-center md:min-h-screen"
     >
       <Image
-        src="https://source.unsplash.com/1600x900/?junk,truck"
+        src="/hero-background.png"
         alt="Junk removal crew in Evansville, IN"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
-        quality={40}
-        unoptimized
+        quality={85}
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/60" />

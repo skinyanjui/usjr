@@ -26,7 +26,7 @@ export default function ServicesPage() {
     {
       title: 'General Junk Removal',
       description: 'Complete household and office junk removal with eco-friendly disposal',
-      image: 'https://source.unsplash.com/1600x900/?junk,truck',
+      image: '/junk-removal-evansville.png',
       price: 'From $99',
       link: '/services/junk-removal',
       icon: Truck,
@@ -34,7 +34,7 @@ export default function ServicesPage() {
     {
       title: 'Hot Tub Removal',
       description: 'Professional hot tub dismantling and removal service',
-      image: 'https://source.unsplash.com/1600x900/?backyard,spa',
+      image: '/hot-tub-removal-evansville.png',
       price: 'From $299',
       link: '/services/hot-tub-removal',
       icon: Home,
@@ -42,7 +42,7 @@ export default function ServicesPage() {
     {
       title: 'Appliance Removal',
       description: 'Safe removal and recycling of old appliances',
-      image: 'https://source.unsplash.com/1600x900/?appliance,kitchen',
+      image: '/appliance-removal-evansville.png',
       price: 'From $75',
       link: '/services/appliance-removal',
       icon: Wrench,
@@ -50,7 +50,7 @@ export default function ServicesPage() {
     {
       title: 'Garage Cleanouts',
       description: 'Complete garage cleaning and organization service',
-      image: 'https://source.unsplash.com/1600x900/?garage,organization',
+      image: '/garage-cleanout-evansville.png',
       price: 'From $199',
       link: '/services/garage-cleanout',
       icon: Building2,
@@ -58,7 +58,7 @@ export default function ServicesPage() {
     {
       title: 'Estate Cleanouts',
       description: 'Compassionate and thorough estate cleanout services',
-      image: 'https://source.unsplash.com/1600x900/?estate,house,interior',
+      image: '/estate-cleanout-evansville.png',
       price: 'From $399',
       link: '/services/estate-cleanouts',
       icon: Home,
@@ -66,7 +66,7 @@ export default function ServicesPage() {
     {
       title: 'Mattress Removal',
       description: 'Eco-friendly mattress disposal and recycling',
-      image: 'https://source.unsplash.com/1600x900/?mattress,bedroom',
+      image: '/mattress-removal-evansville.png',
       price: 'From $49',
       link: '/services/mattress-removal',
       icon: Trash2,
@@ -77,7 +77,7 @@ export default function ServicesPage() {
     {
       title: 'Dumpster Rental',
       description: 'Flexible dumpster rental for projects of all sizes',
-      image: 'https://source.unsplash.com/1600x900/?dumpster,construction',
+      image: '/dumpster-rental-evansville.png',
       price: 'From $299/week',
       link: '/services/dumpster-rental',
       icon: Truck,
@@ -85,7 +85,7 @@ export default function ServicesPage() {
     {
       title: 'Light Demolition',
       description: 'Safe demolition services for small structures',
-      image: 'https://source.unsplash.com/1600x900/?demolition,renovation',
+      image: '/light-demolition-evansville.png',
       price: 'From $499',
       link: '/services/light-demolition',
       icon: Wrench,
@@ -93,7 +93,7 @@ export default function ServicesPage() {
     {
       title: 'Shed Removal',
       description: 'Complete shed dismantling and removal',
-      image: 'https://source.unsplash.com/1600x900/?shed,backyard',
+      image: '/shed-removal-evansville.png',
       price: 'From $199',
       link: '/services/shed-removal',
       icon: Building2,
@@ -101,7 +101,7 @@ export default function ServicesPage() {
     {
       title: 'Yard Waste Removal',
       description: 'Seasonal yard cleanup and debris removal',
-      image: 'https://source.unsplash.com/1600x900/?yard,waste,leaves',
+      image: '/yard-waste-removal-evansville.png',
       price: 'From $149',
       link: '/services/yard-waste-removal',
       icon: Recycle,
@@ -112,7 +112,7 @@ export default function ServicesPage() {
     {
       title: 'Residential Cleaning',
       description: 'Professional home cleaning with natural products',
-      image: 'https://source.unsplash.com/1600x900/?cleaning,home',
+      image: '/natural-cleaning-service.png',
       price: 'From $89',
       link: '/cleaning/residential',
       icon: Home,
@@ -120,7 +120,7 @@ export default function ServicesPage() {
     {
       title: 'Commercial Cleaning',
       description: 'After-hours business cleaning services',
-      image: 'https://source.unsplash.com/1600x900/?office,cleaning',
+      image: '/commercial-office-cleaning.png',
       price: 'From $149',
       link: '/cleaning/commercial',
       icon: Building2,
@@ -128,7 +128,7 @@ export default function ServicesPage() {
     {
       title: 'Deep Cleaning',
       description: 'Comprehensive deep cleaning for homes and offices',
-      image: 'https://source.unsplash.com/1600x900/?deep,cleaning',
+      image: '/natural-deep-cleaning.png',
       price: 'From $199',
       link: '/cleaning/deep-clean',
       icon: Recycle,
@@ -140,7 +140,7 @@ export default function ServicesPage() {
       <PageHero
         title="Professional Services in Evansville"
         description="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"
-        imageSrc="https://source.unsplash.com/1600x900/?junk,removal"
+        imageSrc="/junk-removal-pricing.png"
         priority
       />
 
