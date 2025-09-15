@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ServicePageTemplate } from '@/components/ui/service-page-template'
+import { BeforeAfterGallery } from '@/components/before-after-gallery'
 import { Sparkles, Shield, Clock, CheckCircle, Star, Users, Home } from 'lucide-react'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
@@ -110,6 +111,19 @@ export default function DeepCleaningPage() {
             'Yes! We exclusively use natural, non-toxic cleaning products that are completely safe for your family and pets. All products are eco-friendly and biodegradable. We also offer fragrance-free options upon request.',
         },
       ]}
-    />
+    >
+      {/* Before/After Gallery Section */}
+      <div className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-900">See Our Deep Cleaning Results</h2>
+            <p className="text-lg text-gray-600">
+              Real before and after photos from our deep cleaning services
+            </p>
+          </div>
+          <BeforeAfterGallery limit={6} service="Deep Cleaning" />
+        </div>
+      </div>
+    </ServicePageTemplate>
   )
 }
