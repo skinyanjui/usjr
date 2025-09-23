@@ -42,7 +42,7 @@ export function PageHero({ title, description, theme = 'slate', align = 'left' }
 
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-br ${themeStyles.gradient} py-20 text-white sm:py-24`}
+      className={`relative overflow-hidden bg-gradient-to-br ${themeStyles.gradient} py-12 text-white sm:py-16`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_55%)]" />
       <div className="absolute inset-0 opacity-20 mix-blend-overlay">

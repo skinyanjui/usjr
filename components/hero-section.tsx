@@ -10,20 +10,21 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white md:min-h-screen"
+      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white md:min-h-[75vh]"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_55%)]" />
       <div className="absolute inset-0 opacity-20 mix-blend-overlay">
         <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_45%,rgba(255,255,255,0.08)_80%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-36 pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-24 pb-16">
         <div className="mb-8 text-center text-white">
           <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Same-Day Junk Removal & Cleaning in Evansville, IN
           </h1>
           <p className="mx-auto max-w-4xl text-lg text-white sm:text-xl md:text-2xl">
-            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with full-service hauling and light demolition support
+            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with
+            full-service hauling and light demolition support
           </p>
         </div>
 
