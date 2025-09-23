@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
@@ -6,7 +9,62 @@ import { Truck, Hammer, Lightbulb } from 'lucide-react'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { UNIFORM_OFFERS } from '@/lib/uniform-offers'
 
+const HERO_CITIES = [
+  'Evansville, IN',
+  'Newburgh, IN',
+  'Henderson, KY',
+  'Owensboro, KY',
+  'Boonville, IN',
+]
+
+const ROTATION_INTERVAL_MS = 5000
+
+function useRotatingCity() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setShouldReduceMotion(event.matches)
+    }
+
+    setShouldReduceMotion(mediaQuery.matches)
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange)
+
+      return () => {
+        mediaQuery.removeEventListener('change', handleChange)
+      }
+    }
+
+    mediaQuery.addListener(handleChange)
+
+    return () => {
+      mediaQuery.removeListener(handleChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (HERO_CITIES.length < 2 || shouldReduceMotion) {
+      return
+    }
+
+    const intervalId = window.setInterval(() => {
+      setCurrentIndex(index => (index + 1) % HERO_CITIES.length)
+    }, ROTATION_INTERVAL_MS)
+
+    return () => window.clearInterval(intervalId)
+  }, [shouldReduceMotion])
+
+  return HERO_CITIES[currentIndex]
+}
+
 export function HeroSection() {
+  const rotatingCity = useRotatingCity()
+
   return (
     <section
       id="home"
@@ -20,7 +78,13 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-24 pb-16">
         <div className="mb-8 text-center text-white">
           <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Same-Day Junk Removal & Cleaning in Evansville, IN
+            Same-Day Junk Removal & Cleaning in{' '}
+            <span
+              aria-live="polite"
+              className="inline-block min-w-[14ch] text-white transition-opacity duration-500"
+            >
+              {rotatingCity}
+            </span>
           </h1>
           <p className="mx-auto max-w-4xl text-lg text-white sm:text-xl md:text-2xl">
             Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with
