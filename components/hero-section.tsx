@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { IconContainer } from '@/components/ui/icon-container'
@@ -76,31 +77,49 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-24 pb-16">
-        <div className="mb-8 text-center text-white">
-          <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Same-Day Junk Removal & Cleaning in{' '}
-            <span
-              aria-live="polite"
-              className="inline-block min-w-[14ch] text-white transition-opacity duration-500"
-            >
-              {rotatingCity}
-            </span>
-          </h1>
-          <p className="mx-auto max-w-4xl text-lg text-white sm:text-xl md:text-2xl">
-            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with
-            full-service hauling and light demolition support
-          </p>
+        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
+          <div className="order-2 text-center text-white md:order-1 md:text-left">
+            <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Same-Day Junk Removal & Cleaning in{' '}
+              <span
+                aria-live="polite"
+                className="inline-block min-w-[14ch] text-white transition-opacity duration-500"
+              >
+                {rotatingCity}
+              </span>
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-white/90 sm:text-xl md:mx-0 md:text-2xl">
+              Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with
+              full-service hauling and light demolition support
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-start">
+              <QuoteCtaLink location="hero" label={UNIFORM_OFFERS.GET_FREE_QUOTE} />
+              <p className="max-w-sm text-sm text-white/80 md:text-base">
+                See pricing, text photos, and get an exact quote —{' '}
+                {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
+              </p>
+            </div>
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="relative mx-auto w-full max-w-xl">
+              <div
+                className="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-red-500/40 via-orange-400/30 to-emerald-400/40 blur-3xl"
+                aria-hidden="true"
+              />
+              <Image
+                src="/hero-illustration.svg"
+                alt="Illustration of a junk removal truck filled with items against an Evansville skyline"
+                width={720}
+                height={540}
+                priority
+                sizes="(min-width: 1024px) 540px, (min-width: 768px) 480px, 100vw"
+                className="relative z-10 h-auto w-full drop-shadow-[0_40px_90px_rgba(15,23,42,0.45)]"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mb-16 text-center">
-          <QuoteCtaLink location="hero" label={UNIFORM_OFFERS.GET_FREE_QUOTE} />
-          <p className="mt-2 text-white">
-            See pricing, text photos, and get an exact quote —{' '}
-            {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
-          </p>
-        </div>
-
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-3">
           <GlassCard
             variant="white"
             className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
