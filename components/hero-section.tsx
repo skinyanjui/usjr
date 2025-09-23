@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { IconContainer } from '@/components/ui/icon-container'
@@ -102,19 +101,11 @@ export function HeroSection() {
           </div>
           <div className="order-1 md:order-2">
             <div className="relative mx-auto w-full max-w-xl">
-              <div
-                className="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-red-500/40 via-orange-400/30 to-emerald-400/40 blur-3xl"
-                aria-hidden="true"
-              />
-              <Image
-                src="/hero-illustration.svg"
-                alt="Illustration of a junk removal truck filled with items against an Evansville skyline"
-                width={720}
-                height={540}
-                priority
-                sizes="(min-width: 1024px) 540px, (min-width: 768px) 480px, 100vw"
-                className="relative z-10 h-auto w-full drop-shadow-[0_40px_90px_rgba(15,23,42,0.45)]"
-              />
+              <div className="relative z-10 flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[3rem] bg-red-600 shadow-[0_40px_90px_rgba(15,23,42,0.55)]">
+                <span className="text-2xl font-semibold tracking-[0.3em] text-white/70 uppercase sm:text-3xl">
+                  Uniform Pros
+                </span>
+              </div>
             </div>
           </div>
         </div>
