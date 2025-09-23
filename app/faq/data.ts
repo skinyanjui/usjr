@@ -105,39 +105,6 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
-    id: 'dumpster',
-    name: 'Dumpster Rental',
-    icon: 'Container',
-    color: 'orange',
-    faqs: [
-      {
-        question: 'What sizes of dumpsters do you offer?',
-        answer:
-          "We offer four dumpster sizes to match your project needs: 10-yard (perfect for bathroom remodels, small cleanouts, holds about 3 pickup truck loads), 15-yard (ideal for kitchen remodels, small roofing projects, holds about 4.5 pickup truck loads), 20-yard (great for whole-room remodels, large cleanouts, holds about 6 pickup truck loads), and 30-yard (perfect for major renovations, new construction, holds about 9 pickup truck loads). Our experienced team can assess your project and recommend the optimal size based on material type and scope. We've found that choosing the right size upfront saves money and prevents the need for multiple containers or overage fees. If you're unsure, we can start with a smaller size and upgrade if needed.",
-      },
-      {
-        question: 'How long can I keep the dumpster?',
-        answer:
-          "Our standard rental period is 7 days for residential projects and up to 14 days for construction projects, with flexible extensions available. We understand that projects don't always go according to schedule, so we offer daily extension rates that are much more affordable than competitors' weekly minimums. For long-term projects (30+ days), we can arrange special pricing. Most customers find 7 days sufficient for home cleanouts, while renovations typically need 10-14 days. We'll work with your timeline - just give us 24 hours notice if you need an extension or are ready for early pickup. Weather delays, permit issues, or contractor schedules never result in rush fees from us.",
-      },
-      {
-        question: "What can't go in the dumpster?",
-        answer:
-          'Hazardous materials, chemicals, paint, batteries, tires, and liquids cannot be placed in dumpsters. We provide a complete list of prohibited items with every rental.',
-      },
-      {
-        question: 'Do you need permits for dumpster placement?',
-        answer:
-          'Permits are typically required for street placement but not for private property. We can help coordinate permits if needed, though permit fees are additional.',
-      },
-      {
-        question: 'Do you protect driveways and surfaces?',
-        answer:
-          'Yes. We place protective boards under roll-offs to minimize surface contact and recommend a flat, sturdy placement area.',
-      },
-    ],
-  },
-  {
     id: 'cleaning',
     name: 'Cleaning Services',
     icon: 'Sparkles',

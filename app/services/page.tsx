@@ -15,9 +15,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal',
   description:
-    'Comprehensive junk removal, dumpster rental, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
+    'Comprehensive junk removal, light demolition, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
   keywords:
-    'junk removal services, dumpster rental, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
+    'junk removal services, cleaning services, light demolition, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
   ...buildCanonicalMetadata('/services', baseUrl),
 }
 
@@ -73,15 +73,7 @@ export default function ServicesPage() {
     },
   ]
 
-  const rentalServices = [
-    {
-      title: 'Dumpster Rental',
-      description: 'Flexible dumpster rental for projects of all sizes',
-      image: 'https://source.unsplash.com/1600x900/?dumpster,construction',
-      price: 'From $299/week',
-      link: '/services/dumpster-rental',
-      icon: Truck,
-    },
+  const specialtyServices = [
     {
       title: 'Light Demolition',
       description: 'Safe demolition services for small structures',
@@ -139,9 +131,8 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <PageHero
         title="Professional Services in Evansville"
-        description="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"
-        imageSrc="https://source.unsplash.com/1600x900/?junk,removal"
-        priority
+        description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
+        align="center"
       />
 
       {/* Top CTAs */}
@@ -186,16 +177,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Dumpster & Demolition Services */}
+      {/* Demolition & Specialty Services */}
       <section className="bg-white/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title="Dumpster & Demolition Services"
-            subtitle="Rental and demolition solutions for larger projects"
+            title="Demolition & Specialty Services"
+            subtitle="Specialty solutions for larger projects and tough cleanouts"
           />
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {rentalServices.map((service, index) => (
+            {specialtyServices.map((service, index) => (
               <ServiceCard
                 key={index}
                 title={service.title}
@@ -205,7 +196,7 @@ export default function ServicesPage() {
                 link={service.link}
                 icon={service.icon}
                 color="orange"
-                category="Dumpster & Demo"
+                category="Specialty"
                 size="small"
               />
             ))}

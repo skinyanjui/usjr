@@ -28,7 +28,6 @@ export default function GarageCleanoutPage() {
       theme="purple" // Changed from "indigo" to "purple" - indigo is not a supported theme
       title="Garage Cleanout in Evansville"
       description="Complete garage cleanout services with sorting, removal, and organization" // Changed from subtitle to description
-      heroImage="/garage-cleanout-evansville.png"
       badges={['Same-Day Service', 'Complete Cleanout', 'Donation Coordination']} // Added badges array
       features={[
         {

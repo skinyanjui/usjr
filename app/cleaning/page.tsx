@@ -85,8 +85,7 @@ export default function CleaningHub() {
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        imageSrc="/natural-cleaning-service.png"
-        priority
+        align="center"
       />
 
       {/* Subheader badges/CTAs */}

@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { IconContainer } from '@/components/ui/icon-container'
-import { Truck, Container, Lightbulb } from 'lucide-react'
+import { Truck, Hammer, Lightbulb } from 'lucide-react'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { UNIFORM_OFFERS } from '@/lib/uniform-offers'
 
@@ -11,28 +10,20 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[80vh] items-center justify-center md:min-h-screen"
+      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white md:min-h-screen"
     >
-      <Image
-        src="https://source.unsplash.com/1600x900/?junk,truck"
-        alt="Junk removal crew in Evansville, IN"
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        quality={40}
-        unoptimized
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_55%)]" />
+      <div className="absolute inset-0 opacity-20 mix-blend-overlay">
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_45%,rgba(255,255,255,0.08)_80%)]" />
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-36 pb-20">
         <div className="mb-8 text-center text-white">
           <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Same-Day Junk Removal, Dumpster Rental & Cleaning in Evansville, IN
+            Same-Day Junk Removal & Cleaning in Evansville, IN
           </h1>
           <p className="mx-auto max-w-4xl text-lg text-white sm:text-xl md:text-2xl">
-            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana
+            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with full-service hauling and light demolition support
           </p>
         </div>
 
@@ -66,16 +57,16 @@ export function HeroSection() {
             variant="white"
             className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
           >
-            <IconContainer icon={Container} color="red" className="mx-auto mb-4 md:mb-6" />
-            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Dumpster Rental</h2>
+            <IconContainer icon={Hammer} color="orange" className="mx-auto mb-4 md:mb-6" />
+            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Light Demolition</h2>
             <ul className="mb-6 space-y-2 text-left text-gray-700">
-              <li>✓ Delivery & Pick Up | 7 Days</li>
-              <li>✓ Residential & Commercial</li>
+              <li>✓ Structure tear-down & haul away</li>
+              <li>✓ Safe, insured crew</li>
               <li>✓ {UNIFORM_OFFERS.UPFRONT_PRICING}</li>
-              <li>✓ Multiple Sizes Available</li>
+              <li>✓ Debris cleanup included</li>
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/dumpster-rental">Explore Dumpster Rental options</Link>
+              <Link href="/services/light-demolition">Explore Light Demolition</Link>
             </ThemedButton>
           </GlassCard>
 

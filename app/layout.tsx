@@ -21,17 +21,17 @@ import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville',
+  title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
   description:
-    'Locally owned junk removal, trash removal, and dumpster rental in Evansville, Indiana. Whether you need to get rid of junk, remove old furniture, haul away appliances, or rent a dumpster, we provide professional waste management services with free estimates, eco-friendly disposal, and reliable service throughout Southern Indiana.',
+    'Locally owned junk removal, trash removal, and cleaning in Evansville, Indiana. Whether you need to get rid of junk, remove old furniture, haul away appliances, or schedule light demolition, we provide professional waste management services with free estimates, eco-friendly disposal, and reliable service throughout Southern Indiana.',
   keywords:
-    'junk removal, trash removal, dumpster rental, haul away service, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County, get rid of junk, remove old furniture, appliance removal',
+    'junk removal, trash removal, cleaning services, light demolition, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County, get rid of junk, remove old furniture, appliance removal',
   authors: [{ name: 'Uncle Sam Junk Removal' }],
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: 'Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville',
+    title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
     description:
-      'Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.',
+      'Locally owned in Evansville, Indiana. Professional junk removal, cleaning, and light demolition services throughout Southern Indiana.',
     type: 'website',
     url: siteUrl,
     siteName: 'Uncle Sam Junk Removal',
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Uncle Sam Junk Removal - Professional Junk Removal & Dumpster Rental in Evansville',
+    title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
     description:
-      'Locally owned in Evansville, Indiana. Professional junk removal and dumpster rental services throughout Southern Indiana.',
+      'Locally owned in Evansville, Indiana. Professional junk removal, cleaning, and light demolition services throughout Southern Indiana.',
     images: ['/twitter-image'],
   },
   icons: {

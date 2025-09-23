@@ -46,15 +46,6 @@ export const SERVICE_DESCRIPTIONS = {
       UNIFORM_OFFERS.UPFRONT_PRICING,
     ],
   },
-  DUMPSTER_RENTAL: {
-    tagline: 'Convenient dumpster rental solutions',
-    features: [
-      UNIFORM_OFFERS.FLEXIBLE_SCHEDULING,
-      UNIFORM_OFFERS.UPFRONT_PRICING,
-      UNIFORM_OFFERS.PROFESSIONAL_TEAM,
-      UNIFORM_OFFERS.LOCAL_BUSINESS,
-    ],
-  },
   CLEANING: {
     tagline: 'Professional cleaning services',
     features: [

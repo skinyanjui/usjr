@@ -74,7 +74,6 @@ export default function ShedRemovalPage() {
         'Complete Demolition',
       ]}
       serviceCategory="Shed Removal Service"
-      heroImage="/shed-removal-evansville.png"
       features={[
         {
           icon: CheckCircle,

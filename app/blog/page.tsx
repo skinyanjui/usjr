@@ -46,18 +46,6 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const blogPosts = [
     {
-      slug: 'dumpster-rental-guide-evansville',
-      title: 'Complete Dumpster Rental Guide for Evansville Residents',
-      excerpt:
-        'Everything you need to know about dumpster rental in Evansville, IN. Sizes, pricing, permits, and tips for your next project.',
-      author: 'Uncle Sam Team',
-      date: 'December 15, 2024',
-      readTime: '8 min read',
-      category: 'Dumpster Rental',
-      image: '/dumpster-rental-evansville.png',
-      featured: true,
-    },
-    {
       slug: 'spring-cleaning-checklist-southern-indiana',
       title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
       excerpt:
@@ -186,9 +174,6 @@ export default function BlogPage() {
 
   const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 1)
   const regularPosts = blogPosts.filter(post => !post.featured)
-  const dumpsterPosts = blogPosts.filter(
-    post => post.category.toLowerCase().includes('dumpster') || post.slug.includes('dumpster')
-  )
 
   // Structured data for the blog page
   const structuredData = {
@@ -235,8 +220,7 @@ export default function BlogPage() {
       <PageHero
         title="Cleaning & Junk Removal Blog"
         description="Expert tips, guides, and professional insights for Evansville homeowners"
-        imageSrc="/spring-cleaning-natural.png"
-        priority
+        align="center"
       />
       <section className="bg-gradient-to-b from-gray-50 to-white pt-16 pb-16">
         <div className="mx-auto max-w-7xl px-4">
@@ -318,71 +302,6 @@ export default function BlogPage() {
                         <Button
                           variant="outline"
                           className="group border-green-800 bg-transparent text-green-800 hover:bg-green-800 hover:text-white"
-                          aria-label={`Read ${post.title}`}
-                          title={`Read ${post.title}`}
-                        >
-                          Read: {post.title}
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Dumpster Blogs */}
-          {dumpsterPosts.length > 0 && (
-            <div className="mb-16">
-              <h2 className="mb-8 text-2xl font-bold text-gray-900">Dumpster Blogs</h2>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {dumpsterPosts.map(post => (
-                  <Card
-                    key={post.slug}
-                    className="glass overflow-hidden transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="relative aspect-video overflow-hidden bg-gray-200">
-                      <Image
-                        src={post.image || '/placeholder.svg'}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        quality={50}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-orange-600 text-white">Dumpster</Badge>
-                      </div>
-                    </div>
-
-                    <CardHeader>
-                      <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                      </CardTitle>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{post.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{post.readTime}</span>
-                        </div>
-                      </div>
-                    </CardHeader>
-
-                    <CardContent>
-                      <p className="mb-4 line-clamp-3 text-gray-600">{post.excerpt}</p>
-                      <Link href={`/blog/${post.slug}`}>
-                        <Button
-                          variant="outline"
-                          className="group border-orange-700 bg-transparent text-orange-700 hover:bg-orange-700 hover:text-white"
                           aria-label={`Read ${post.title}`}
                           title={`Read ${post.title}`}
                         >

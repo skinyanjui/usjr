@@ -20,8 +20,7 @@ export default function PrivacyPolicyPage() {
       <PageHero
         title="Privacy Policy"
         description="How we collect, use, and protect your information"
-        imageSrc="/natural-cleaning-service.png"
-        priority
+        align="center"
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
         <h2 className="mb-2 text-3xl font-bold text-gray-900">Privacy Policy</h2>

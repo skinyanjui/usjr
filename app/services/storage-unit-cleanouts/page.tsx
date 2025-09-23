@@ -33,7 +33,6 @@ export default function StorageUnitCleanoutsPage() {
       theme="blue"
       title="Storage Unit Cleanouts in Evansville"
       description="Professional storage unit cleanout services for abandoned units, estate storage, and facility turnovers"
-      heroImage="/storage-unit-cleanout-evansville.png"
       badges={['Same-Day Service', 'Full Unit Clearing', 'High Demand Service']}
       features={[
         {

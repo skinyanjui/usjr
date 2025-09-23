@@ -25,8 +25,7 @@ export default function HtmlSitemapPage() {
       <PageHero
         title="Sitemap"
         description="Browse all pages on our site"
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        align="center"
       />
       <div className="mx-auto max-w-5xl px-4 pt-8 pb-16">
         <h1 className="mb-6 text-3xl font-bold sm:text-4xl">Sitemap</h1>

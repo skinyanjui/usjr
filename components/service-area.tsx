@@ -97,7 +97,7 @@ export function ServiceArea() {
             </div>
             <p className="mt-2 text-sm text-gray-700">{message}</p>
             <p className="mt-1 text-xs text-gray-600">
-              Some services may be location-limited (e.g., dumpsters).
+              Some services may be location-limited (e.g., heavy demolition).
             </p>
           </div>
 

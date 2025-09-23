@@ -109,7 +109,7 @@ This report provides a comprehensive audit of the Uncle Sam Junk Removal website
 ### Issues Requiring Attention 🟡
 
 #### 1. Template Inconsistency (from AUDIT_SERVICES.md)
-- **Using Templates:** junk-removal, estate-cleanouts, garage-cleanout, appliance-removal, hot-tub-removal, dumpster-rental
+- **Using Templates:** junk-removal, estate-cleanouts, garage-cleanout, appliance-removal, hot-tub-removal
 - **Not Using Templates:** mattress-removal, shed-removal, yard-waste-removal, light-demolition
 - **Impact:** Code duplication and maintenance overhead
 

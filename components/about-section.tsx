@@ -36,7 +36,7 @@ export function AboutSection() {
             </h2>
             <p className="mb-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
               Veteran-owned and locally operated in <strong>Evansville, IN</strong>, we handle junk
-              removal and dumpster rentals with same-day availability and honest, upfront pricing.
+              removal and large-scale cleanouts with same-day availability and honest, upfront pricing.
             </p>
             <p className="mb-6 text-base leading-relaxed text-gray-600 sm:text-lg">
               Founded in 2025 by <strong>Samuel Kinyanjui</strong> (United States Marine Corps), our

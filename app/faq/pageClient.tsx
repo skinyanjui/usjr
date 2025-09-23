@@ -66,7 +66,7 @@ export default function FAQClient() {
           Frequently Asked Questions
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
-          Find answers to common questions about our junk removal, dumpster rental, and cleaning
+          Find answers to common questions about our junk removal, light demolition, and cleaning
           services in Evansville and Southern Indiana.
         </p>
       </div>

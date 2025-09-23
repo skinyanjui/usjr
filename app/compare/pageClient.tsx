@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Check, X, Truck, Container, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
+import { Check, X, Truck, Hammer, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 
 const services = [
@@ -29,22 +29,22 @@ const services = [
     color: 'red',
   },
   {
-    id: 'dumpster-rental',
-    name: 'Dumpster Rental',
-    icon: Container,
-    description: 'Self-service dumpster rental for DIY projects',
-    priceRange: '$299-$599',
-    timeframe: '7-14 day rental',
-    bestFor: 'Large projects, construction, renovations',
+    id: 'light-demolition',
+    name: 'Light Demolition',
+    icon: Hammer,
+    description: 'Structure tear-down with debris removal',
+    priceRange: '$349-$899',
+    timeframe: 'Scheduled in advance',
+    bestFor: 'Sheds, decks, hot tubs, interior demo',
     features: [
-      'Multiple sizes available',
-      '7-14 day rental period',
-      'Delivery & pickup included',
-      'Flat-rate pricing',
-      'Commercial & residential',
-      'Flexible scheduling',
+      'Full tear-down service',
+      'Debris hauling included',
+      'Licensed & insured crew',
+      'Site left clean and swept',
+      'Permitting guidance',
+      'Fast project timelines',
     ],
-    notIncluded: ['Labor not included', 'Hazardous materials', 'Overweight fees may apply'],
+    notIncluded: ['Hazardous materials', 'Structural engineering', 'Utility disconnects'],
     color: 'orange',
   },
   {
@@ -189,7 +189,13 @@ export default function CompareClient() {
                     }`}
                   >
                     <Link
-                      href={service.id === 'cleaning' ? '/cleaning' : `/services/${service.id}`}
+                      href={
+                        service.id === 'cleaning'
+                          ? '/cleaning'
+                          : service.id === 'junk-removal'
+                            ? '/services/junk-removal'
+                            : '/services/light-demolition'
+                      }
                       aria-label={`${service.name} details`}
                       title={`${service.name} details`}
                     >

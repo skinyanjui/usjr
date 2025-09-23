@@ -10,7 +10,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Uncle Sam Junk Removal',
   description:
-    'Get quick answers about junk removal, dumpster rental, and cleaning in Southern Indiana—pricing, scheduling, what we take, service areas, and more.',
+    'Get quick answers about junk removal, light demolition, and cleaning in Southern Indiana—pricing, scheduling, what we take, service areas, and more.',
   ...buildCanonicalMetadata('/faq', baseUrl),
 }
 
@@ -22,9 +22,8 @@ export default function FAQPage() {
     <div className="min-h-screen bg-gray-50">
       <PageHero
         title="Frequently Asked Questions"
-        description="Answers about junk removal, dumpster rental, and cleaning services in Southern Indiana."
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        description="Answers about junk removal and cleaning services in Southern Indiana."
+        align="center"
       />
       <div className="pt-8 pb-16">
         <StructuredData

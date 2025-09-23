@@ -33,7 +33,6 @@ export default function RestaurantEquipmentRemovalPage() {
       theme="orange"
       title="Restaurant Equipment Removal in Evansville"
       description="Professional removal of commercial kitchen equipment including ovens, refrigerators, sinks, and complete restaurant cleanouts"
-      heroImage="/restaurant-equipment-removal-evansville.png"
       badges={['Commercial Equipment', 'Disconnect Coordination', 'Scrap Metal Recovery']}
       features={[
         {

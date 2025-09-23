@@ -1,7 +1,7 @@
 'use client'
 
 import { ServiceCard } from '@/components/ui/service-card'
-import { Trash2, Truck, Sparkles } from 'lucide-react'
+import { Trash2, Sparkles } from 'lucide-react'
 
 export function HomeServiceCards() {
   const cards = [
@@ -33,38 +33,6 @@ export function HomeServiceCards() {
       price: 'Free quotes',
       icon: Trash2,
       color: 'red' as const,
-      link: '/services',
-      category: 'Property Mgmt',
-    },
-
-    // Dumpster Rental (Residential, Commercial, Property Mgmt)
-    {
-      title: 'Residential Dumpster Rental',
-      description: 'Perfect for renovations, cleanouts, and weekend projects.',
-      image: '/dumpster-rental-evansville.png',
-      price: 'Flat-rate pricing',
-      icon: Truck,
-      color: 'blue' as const,
-      link: '/services',
-      category: 'Residential',
-    },
-    {
-      title: 'Commercial Dumpster Rental',
-      description: 'Reliable delivery and pickup for business and construction sites.',
-      image: '/dumpster-rental-evansville.png',
-      price: 'Flat-rate pricing',
-      icon: Truck,
-      color: 'blue' as const,
-      link: '/services',
-      category: 'Commercial',
-    },
-    {
-      title: 'Property Mgmt Dumpster Rental',
-      description: 'Streamline turnovers with timely dumpster placement and removal.',
-      image: '/dumpster-rental-evansville.png',
-      price: 'Flat-rate pricing',
-      icon: Truck,
-      color: 'blue' as const,
       link: '/services',
       category: 'Property Mgmt',
     },

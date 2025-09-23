@@ -122,8 +122,8 @@ export function LocationPageTemplate({
       <PageHero
         title={`Professional Junk Removal in ${locationName}, ${state}`}
         description={tagline}
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        theme={theme}
+        align="center"
       />
 
       {/* Local Expertise Section */}

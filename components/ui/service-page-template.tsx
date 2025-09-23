@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Clock } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { RelatedServices } from '@/components/related-services'
 import { StructuredData } from '@/components/structured-data'
@@ -32,7 +31,6 @@ export interface ServicePageTemplateProps {
   title: string
   description: string
   badges?: string[]
-  heroImage?: string
 
   // Theme
   theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
@@ -136,37 +134,29 @@ export function ServicePageTemplate({
   ctaPrimary = `📞 ${UNIFORM_OFFERS.CALL_NOW}`,
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
-  heroImage,
 }: ServicePageTemplateProps) {
   const classes = themeClasses[theme]
 
   return (
     <main className="min-h-screen">
-      {heroImage && (
-        <PageHero title={title} description={description} imageSrc={heroImage} priority />
-      )}
       {/* Hero Section */}
       <section className={`bg-gradient-to-b pt-32 pb-16 ${classes.gradient}`}>
         <div className="mx-auto max-w-7xl px-4">
-          {!heroImage && (
-            <div className="mb-12 text-center">
-              <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                {title}
-              </h1>
-              <p className="mb-6 text-lg text-gray-600 sm:text-xl">{description}</p>
+          <div className="mb-12 text-center">
+            <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl md:text-6xl">{title}</h1>
+            <p className="mb-6 text-lg text-gray-600 sm:text-xl">{description}</p>
 
-              {badges.length > 0 && (
-                <div className="flex items-center justify-center gap-4 text-gray-700">
-                  {badges.map((badge, index) => (
-                    <div key={index} className="flex items-center gap-1">
-                      <Clock className={`h-5 w-5 ${classes.accent}`} />
-                      <span>{badge}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+            {badges.length > 0 && (
+              <div className="flex items-center justify-center gap-4 text-gray-700">
+                {badges.map((badge, index) => (
+                  <div key={index} className="flex items-center gap-1">
+                    <Clock className={`h-5 w-5 ${classes.accent}`} />
+                    <span>{badge}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
             <div>

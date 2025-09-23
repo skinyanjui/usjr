@@ -90,8 +90,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
       <PageHero
         title={blogPost.title}
         description={blogPost.excerpt}
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        align="center"
       />
 
       <article className="bg-white py-16">

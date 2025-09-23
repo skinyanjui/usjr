@@ -25,8 +25,7 @@ export default function EmergencyPage() {
       <PageHero
         title="Emergency Junk Removal"
         description="24/7 emergency response throughout Evansville and Southern Indiana"
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        align="center"
       />
       <div className="mx-auto max-w-4xl px-4">
         <div className="mb-12 text-center">

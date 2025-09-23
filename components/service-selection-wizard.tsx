@@ -1,12 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Truck, Container, Home, Hammer, Sparkles } from 'lucide-react'
+import { Truck, Home, Hammer, Sparkles } from 'lucide-react'
 import { GlassCard } from '@/components/ui/glass-card'
 
 const OPTIONS = [
   { label: 'Junk Removal', icon: Truck, href: '/services/junk-removal' },
-  { label: 'Dumpster Rental', icon: Container, href: '/services/dumpster-rental' },
   { label: 'Estate Cleanout', icon: Home, href: '/services/estate-cleanouts' },
   { label: 'Cleaning Service', icon: Sparkles, href: '/cleaning' },
   { label: 'Demolition', icon: Hammer, href: '/services/light-demolition' },
