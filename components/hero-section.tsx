@@ -68,32 +68,27 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white md:min-h-[75vh]"
+      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-white text-slate-900 md:min-h-[75vh]"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_55%)]" />
-      <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_45%,rgba(255,255,255,0.08)_80%)]" />
-      </div>
-
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-24 pb-16">
         <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
-          <div className="order-2 text-center text-white md:order-1 md:text-left">
-            <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <div className="order-2 text-center text-slate-900 md:order-1 md:text-left">
+            <h1 className="my-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               Same-Day Junk Removal & Cleaning in{' '}
               <span
                 aria-live="polite"
-                className="inline-block min-w-[14ch] text-white transition-opacity duration-500"
+                className="inline-block min-w-[14ch] text-slate-900 transition-opacity duration-500"
               >
                 {rotatingCity}
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-white/90 sm:text-xl md:mx-0 md:text-2xl">
+            <p className="mx-auto max-w-2xl text-lg text-slate-700 sm:text-xl md:mx-0 md:text-2xl">
               Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana with
               full-service hauling and light demolition support
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-start">
               <QuoteCtaLink location="hero" label={UNIFORM_OFFERS.GET_FREE_QUOTE} />
-              <p className="max-w-sm text-sm text-white/80 md:text-base">
+              <p className="max-w-sm text-sm text-slate-600 md:text-base">
                 See pricing, text photos, and get an exact quote —{' '}
                 {UNIFORM_OFFERS.SAME_DAY_SERVICE.toLowerCase()} available
               </p>
