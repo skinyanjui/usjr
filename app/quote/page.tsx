@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function QuotePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-orange-50">
+    <div className="min-h-screen bg-blue-50">
       <PageHero
         title="Get Your Free Quote Today"
         description="Professional junk removal, dumpster rental, and cleaning services in Evansville and Southern Indiana"

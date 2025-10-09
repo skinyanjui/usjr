@@ -70,7 +70,7 @@ export interface ServicePageTemplateProps {
 
 const themeClasses = {
   red: {
-    gradient: 'from-red-50 to-white',
+    background: 'bg-red-50',
     primary: 'bg-red-600 hover:bg-red-700',
     secondary: 'border-red-700 text-red-700 hover:bg-red-700 hover:text-white',
     accent: 'text-red-600',
@@ -78,7 +78,7 @@ const themeClasses = {
     badge: 'bg-red-100 text-red-800 border-red-200',
   },
   blue: {
-    gradient: 'from-blue-50 to-white',
+    background: 'bg-blue-50',
     primary: 'bg-blue-600 hover:bg-blue-700',
     secondary: 'border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white',
     accent: 'text-blue-600',
@@ -86,7 +86,7 @@ const themeClasses = {
     badge: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   green: {
-    gradient: 'from-green-50 to-white',
+    background: 'bg-green-50',
     primary: 'bg-green-600 hover:bg-green-700',
     secondary: 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white',
     accent: 'text-green-600',
@@ -94,7 +94,7 @@ const themeClasses = {
     badge: 'bg-green-100 text-green-800 border-green-200',
   },
   orange: {
-    gradient: 'from-orange-50 to-white',
+    background: 'bg-orange-50',
     primary: 'bg-orange-600 hover:bg-orange-700',
     secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
     accent: 'text-orange-600',
@@ -102,7 +102,7 @@ const themeClasses = {
     badge: 'bg-orange-100 text-orange-800 border-orange-200',
   },
   purple: {
-    gradient: 'from-purple-50 to-white',
+    background: 'bg-purple-50',
     primary: 'bg-purple-600 hover:bg-purple-700',
     secondary: 'border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white',
     accent: 'text-purple-600',
@@ -110,7 +110,7 @@ const themeClasses = {
     badge: 'bg-purple-100 text-purple-800 border-purple-200',
   },
   teal: {
-    gradient: 'from-teal-50 to-white',
+    background: 'bg-teal-50',
     primary: 'bg-teal-600 hover:bg-teal-700',
     secondary: 'border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
     accent: 'text-teal-600',
@@ -146,7 +146,7 @@ export function ServicePageTemplate({
         <PageHero title={title} description={description} imageSrc={heroImage} priority />
       )}
       {/* Hero Section */}
-      <section className={`bg-gradient-to-b pt-32 pb-16 ${classes.gradient}`}>
+      <section className={`pt-32 pb-16 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
           {!heroImage && (
             <div className="mb-12 text-center">

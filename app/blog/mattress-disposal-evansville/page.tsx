@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function MattressDisposalBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
+    <div className="min-h-screen bg-purple-50">
       {/* Structured Data for Blog Article */}
       <Script id="mattress-disposal-blog-schema" type="application/ld+json">
         {JSON.stringify({

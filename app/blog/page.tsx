@@ -238,7 +238,7 @@ export default function BlogPage() {
         imageSrc="/spring-cleaning-natural.png"
         priority
       />
-      <section className="bg-gradient-to-b from-gray-50 to-white pt-16 pb-16">
+      <section className="bg-gray-50 pt-16 pb-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
             <div className="mb-4 flex justify-center gap-2">
@@ -470,7 +470,7 @@ export default function BlogPage() {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-r from-green-50 to-blue-50 p-8">
+            <div className="mx-auto max-w-3xl rounded-2xl bg-green-50 p-8">
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Need Professional Cleaning or Junk Removal?
               </h2>

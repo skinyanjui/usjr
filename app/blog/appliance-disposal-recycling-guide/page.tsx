@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ApplianceDisposalGuidePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className="min-h-screen bg-blue-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <header className="mb-12">
           <SectionHeader

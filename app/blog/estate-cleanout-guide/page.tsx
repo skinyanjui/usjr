@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function EstateCleanoutGuideBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-white">
+    <div className="min-h-screen bg-red-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <SectionHeader
           title="Estate cleanout guide: compassionate planning and donation options"

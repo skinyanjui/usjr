@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gray-50">
       <PageHero
         title="About Uncle Sam Junk Removal"
         description="Veteran-owned junk removal, dumpster rental, and professional cleaning in Evansville, IN and the Tri-State."

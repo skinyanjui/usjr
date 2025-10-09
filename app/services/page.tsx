@@ -136,7 +136,7 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
+    <div className="min-h-screen bg-blue-50">
       <PageHero
         title="Professional Services in Evansville"
         description="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"

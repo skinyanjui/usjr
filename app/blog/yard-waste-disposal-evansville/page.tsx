@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function YardWasteDisposalBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+    <div className="min-h-screen bg-green-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <SectionHeader
           title="Yard waste disposal in Evansville: composting and pickup basics"
