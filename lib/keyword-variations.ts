@@ -189,24 +189,6 @@ export const serviceKeywords: Record<string, KeywordMapping> = {
     actionTerms: ['remove old shed', 'tear down shed', 'dispose of shed', 'haul away shed'],
     localVariations: ['Evansville shed removal', 'Indiana shed disposal', 'Tri-State shed service'],
   },
-
-  'dumpster-rental': {
-    primary: 'dumpster rental',
-    expertTerms: ['roll-off container rental', 'waste container service', 'temporary dumpster'],
-    noviceTerms: [
-      'dumpster for rent',
-      'trash container rental',
-      'big trash bin',
-      'construction dumpster',
-      'home project dumpster',
-    ],
-    actionTerms: ['rent a dumpster', 'get a dumpster', 'order dumpster', 'need dumpster'],
-    localVariations: [
-      'Evansville dumpster rental',
-      'Indiana dumpster service',
-      'Southern Indiana roll-off',
-    ],
-  },
 }
 
 // Helper function to get all keyword variations for a service

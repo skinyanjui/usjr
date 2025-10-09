@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { settings } from '@/lib/cms-content'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -76,15 +76,9 @@ export default function HotTubRemovalPage() {
                 <span>5 min read</span>
               </div>
             </div>
-            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-              <Image
-                src="/hot-tub-removal-checklist.png"
-                alt="Hot tub removal preparation"
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-              />
-            </div>
+            <SolidPanel color="orange" label="Hot Tub Prep" className="mb-8 h-64">
+              Clear access, power disconnection, and a dry spa make removal effortless.
+            </SolidPanel>
           </header>
 
           <div className="prose prose-lg max-w-none">

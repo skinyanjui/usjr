@@ -81,12 +81,11 @@ export default function CleaningHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-green-50">
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        imageSrc="/natural-cleaning-service.png"
-        priority
+        color="green"
       />
 
       {/* Subheader badges/CTAs */}

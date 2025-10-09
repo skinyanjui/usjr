@@ -63,10 +63,9 @@ export default function JunkRemovalPage() {
       category: 'Related Service',
     },
     {
-      title: 'Dumpster Rental',
-      href: '/services/dumpster-rental',
-      description:
-        'Convenient dumpster rental for larger projects requiring extended disposal timeframes.',
+      title: 'Light Demolition',
+      href: '/services/light-demolition',
+      description: 'Shed, deck, and playset tear-downs with debris hauling for exterior cleanups.',
       type: 'service' as const,
       category: 'Alternative Service',
     },
@@ -91,7 +90,6 @@ export default function JunkRemovalPage() {
         UNIFORM_OFFERS.ECO_FRIENDLY,
       ]}
       serviceCategory="Junk Removal Service"
-      heroImage="/junk-removal-evansville.png"
       features={[
         {
           icon: CheckCircle,

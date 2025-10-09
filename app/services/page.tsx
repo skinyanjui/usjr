@@ -15,9 +15,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal',
   description:
-    'Comprehensive junk removal, dumpster rental, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
+    'Comprehensive junk removal, light demolition, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
   keywords:
-    'junk removal services, dumpster rental, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
+    'junk removal services, light demolition, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
   ...buildCanonicalMetadata('/services', baseUrl),
 }
 
@@ -26,7 +26,6 @@ export default function ServicesPage() {
     {
       title: 'General Junk Removal',
       description: 'Complete household and office junk removal with eco-friendly disposal',
-      image: 'https://source.unsplash.com/1600x900/?junk,truck',
       price: 'From $99',
       link: '/services/junk-removal',
       icon: Truck,
@@ -34,7 +33,6 @@ export default function ServicesPage() {
     {
       title: 'Hot Tub Removal',
       description: 'Professional hot tub dismantling and removal service',
-      image: 'https://source.unsplash.com/1600x900/?backyard,spa',
       price: 'From $299',
       link: '/services/hot-tub-removal',
       icon: Home,
@@ -42,7 +40,6 @@ export default function ServicesPage() {
     {
       title: 'Appliance Removal',
       description: 'Safe removal and recycling of old appliances',
-      image: 'https://source.unsplash.com/1600x900/?appliance,kitchen',
       price: 'From $75',
       link: '/services/appliance-removal',
       icon: Wrench,
@@ -50,7 +47,6 @@ export default function ServicesPage() {
     {
       title: 'Garage Cleanouts',
       description: 'Complete garage cleaning and organization service',
-      image: 'https://source.unsplash.com/1600x900/?garage,organization',
       price: 'From $199',
       link: '/services/garage-cleanout',
       icon: Building2,
@@ -58,7 +54,6 @@ export default function ServicesPage() {
     {
       title: 'Estate Cleanouts',
       description: 'Compassionate and thorough estate cleanout services',
-      image: 'https://source.unsplash.com/1600x900/?estate,house,interior',
       price: 'From $399',
       link: '/services/estate-cleanouts',
       icon: Home,
@@ -66,42 +61,37 @@ export default function ServicesPage() {
     {
       title: 'Mattress Removal',
       description: 'Eco-friendly mattress disposal and recycling',
-      image: 'https://source.unsplash.com/1600x900/?mattress,bedroom',
       price: 'From $49',
       link: '/services/mattress-removal',
       icon: Trash2,
     },
   ]
 
-  const rentalServices = [
-    {
-      title: 'Dumpster Rental',
-      description: 'Flexible dumpster rental for projects of all sizes',
-      image: 'https://source.unsplash.com/1600x900/?dumpster,construction',
-      price: 'From $299/week',
-      link: '/services/dumpster-rental',
-      icon: Truck,
-    },
+  const projectServices = [
     {
       title: 'Light Demolition',
-      description: 'Safe demolition services for small structures',
-      image: 'https://source.unsplash.com/1600x900/?demolition,renovation',
+      description: 'Safe dismantling for sheds, decks, and small structures',
       price: 'From $499',
       link: '/services/light-demolition',
       icon: Wrench,
     },
     {
       title: 'Shed Removal',
-      description: 'Complete shed dismantling and removal',
-      image: 'https://source.unsplash.com/1600x900/?shed,backyard',
+      description: 'Complete shed tear-down and debris hauling',
       price: 'From $199',
       link: '/services/shed-removal',
       icon: Building2,
     },
     {
+      title: 'Storm Debris Cleanup',
+      description: 'Rapid response for branches, limbs, and exterior debris',
+      price: 'Emergency ready',
+      link: '/services/storm-debris-cleanup',
+      icon: Truck,
+    },
+    {
       title: 'Yard Waste Removal',
       description: 'Seasonal yard cleanup and debris removal',
-      image: 'https://source.unsplash.com/1600x900/?yard,waste,leaves',
       price: 'From $149',
       link: '/services/yard-waste-removal',
       icon: Recycle,
@@ -112,7 +102,6 @@ export default function ServicesPage() {
     {
       title: 'Residential Cleaning',
       description: 'Professional home cleaning with natural products',
-      image: 'https://source.unsplash.com/1600x900/?cleaning,home',
       price: 'From $89',
       link: '/cleaning/residential',
       icon: Home,
@@ -120,7 +109,6 @@ export default function ServicesPage() {
     {
       title: 'Commercial Cleaning',
       description: 'After-hours business cleaning services',
-      image: 'https://source.unsplash.com/1600x900/?office,cleaning',
       price: 'From $149',
       link: '/cleaning/commercial',
       icon: Building2,
@@ -128,7 +116,6 @@ export default function ServicesPage() {
     {
       title: 'Deep Cleaning',
       description: 'Comprehensive deep cleaning for homes and offices',
-      image: 'https://source.unsplash.com/1600x900/?deep,cleaning',
       price: 'From $199',
       link: '/cleaning/deep-clean',
       icon: Recycle,
@@ -136,12 +123,11 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
+    <div className="min-h-screen bg-blue-50">
       <PageHero
         title="Professional Services in Evansville"
-        description="Comprehensive junk removal, dumpster rental, and cleaning services for Southern Indiana"
-        imageSrc="https://source.unsplash.com/1600x900/?junk,removal"
-        priority
+        description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
+        color="blue"
       />
 
       {/* Top CTAs */}
@@ -174,7 +160,6 @@ export default function ServicesPage() {
                 key={index}
                 title={service.title}
                 description={service.description}
-                image={service.image}
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
@@ -186,26 +171,25 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Dumpster & Demolition Services */}
+      {/* Project Services */}
       <section className="bg-white/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title="Dumpster & Demolition Services"
-            subtitle="Rental and demolition solutions for larger projects"
+            title="Project Services"
+            subtitle="Demolition, debris removal, and seasonal cleanup support"
           />
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {rentalServices.map((service, index) => (
+            {projectServices.map((service, index) => (
               <ServiceCard
                 key={index}
                 title={service.title}
                 description={service.description}
-                image={service.image}
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
                 color="orange"
-                category="Dumpster & Demo"
+                category="Project"
                 size="small"
               />
             ))}
@@ -227,7 +211,6 @@ export default function ServicesPage() {
                 key={index}
                 title={service.title}
                 description={service.description}
-                image={service.image}
                 price={service.price}
                 link={service.link}
                 icon={service.icon}

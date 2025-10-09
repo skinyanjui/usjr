@@ -33,7 +33,6 @@ export default function WarehouseFixtureRemovalPage() {
       theme="purple"
       title="Warehouse & Retail Fixture Removal in Evansville"
       description="Professional removal of warehouse racks, retail shelving, and commercial fixtures for space reconfiguration"
-      heroImage="/warehouse-fixture-removal-evansville.png"
       badges={['Commercial Fixtures', 'Heavy Equipment', 'Space Reconfiguration']}
       features={[
         {

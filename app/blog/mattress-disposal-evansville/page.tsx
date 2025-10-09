@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
-import Image from 'next/image'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function MattressDisposalBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
+    <div className="min-h-screen bg-purple-50">
       {/* Structured Data for Blog Article */}
       <Script id="mattress-disposal-blog-schema" type="application/ld+json">
         {JSON.stringify({
@@ -29,7 +29,6 @@ export default function MattressDisposalBlog() {
           headline: 'Mattress Disposal in Evansville: Recycling, Costs, and Pickup Options',
           description:
             'Complete guide to mattress disposal in Evansville, IN. Professional removal costs $89-149, recycling options, city bulk pickup, and donation opportunities.',
-          image: `${baseUrl}/mattress-removal-evansville.png`,
           author: {
             '@type': 'Organization',
             name: 'Uncle Sam Junk Removal',
@@ -64,16 +63,10 @@ export default function MattressDisposalBlog() {
           title="Mattress disposal in Evansville: recycling, costs, and pickup options"
           subtitle="How to handle old mattresses the right way"
         />
-        <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-          <Image
-            src="/mattress-removal-evansville.png"
-            alt="Mattress disposal and recycling options"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        <SolidPanel color="purple" label="Mattress Disposal" className="mb-8 h-64">
+          Discover removal, donation, and recycling options that keep bulky mattresses out of
+          landfills.
+        </SolidPanel>
         <GlassCard className="p-8">
           <p className="mb-6 text-gray-700">
             Old mattresses are bulky, hard to haul, and often not accepted by regular trash pickup

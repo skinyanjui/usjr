@@ -34,12 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/services/dumpster-rental`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/services/hot-tub-removal`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -255,12 +249,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/blog/estate-cleanout-guide`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/dumpster-rental-guide-evansville`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,

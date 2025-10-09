@@ -1,13 +1,11 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
 
 interface ServiceCardProps {
   title: string
   description: string
-  image: string
   price: string
   icon: LucideIcon
   color: 'red' | 'orange' | 'green' | 'blue' | 'purple' | 'teal'
@@ -19,7 +17,6 @@ interface ServiceCardProps {
 export function ServiceCard({
   title,
   description,
-  image,
   price,
   icon: Icon,
   color,
@@ -32,6 +29,8 @@ export function ServiceCard({
       red: {
         border: 'border-red-200',
         bg: 'bg-red-50',
+        banner: 'bg-red-200',
+        bannerText: 'text-red-900',
         text: 'text-red-600',
         textStrong: 'text-red-700',
         button: 'bg-red-700 hover:bg-red-800',
@@ -40,6 +39,8 @@ export function ServiceCard({
       orange: {
         border: 'border-orange-200',
         bg: 'bg-orange-50',
+        banner: 'bg-orange-200',
+        bannerText: 'text-orange-900',
         text: 'text-orange-600',
         textStrong: 'text-orange-700',
         button: 'bg-orange-700 hover:bg-orange-800',
@@ -48,6 +49,8 @@ export function ServiceCard({
       green: {
         border: 'border-green-200',
         bg: 'bg-green-50',
+        banner: 'bg-green-200',
+        bannerText: 'text-green-900',
         text: 'text-green-600',
         textStrong: 'text-green-700',
         button: 'bg-green-700 hover:bg-green-800',
@@ -56,6 +59,8 @@ export function ServiceCard({
       blue: {
         border: 'border-blue-200',
         bg: 'bg-blue-50',
+        banner: 'bg-blue-200',
+        bannerText: 'text-blue-900',
         text: 'text-blue-600',
         textStrong: 'text-blue-700',
         button: 'bg-blue-700 hover:bg-blue-800',
@@ -64,6 +69,8 @@ export function ServiceCard({
       purple: {
         border: 'border-purple-200',
         bg: 'bg-purple-50',
+        banner: 'bg-purple-200',
+        bannerText: 'text-purple-900',
         text: 'text-purple-600',
         textStrong: 'text-purple-700',
         button: 'bg-purple-700 hover:bg-purple-800',
@@ -72,6 +79,8 @@ export function ServiceCard({
       teal: {
         border: 'border-teal-200',
         bg: 'bg-teal-50',
+        banner: 'bg-teal-200',
+        bannerText: 'text-teal-900',
         text: 'text-teal-600',
         textStrong: 'text-teal-700',
         button: 'bg-teal-700 hover:bg-teal-800',
@@ -86,29 +95,32 @@ export function ServiceCard({
       case 'small':
         return {
           card: 'h-full',
-          image: 'h-36',
+          banner: 'h-36',
           content: 'px-4 py-4 space-y-3',
           title: 'text-sm font-bold',
           description: 'text-xs',
           price: 'text-xs',
+          category: 'text-xs font-semibold uppercase tracking-wide',
         }
       case 'large':
         return {
           card: 'h-full',
-          image: 'h-48',
+          banner: 'h-48',
           content: 'px-6 py-6 space-y-4',
           title: 'text-xl font-bold',
           description: 'text-base',
           price: 'text-sm',
+          category: 'text-sm font-semibold uppercase tracking-wide',
         }
       default:
         return {
           card: 'h-full',
-          image: 'h-32',
+          banner: 'h-32',
           content: 'px-6 py-4 space-y-4',
           title: 'text-lg font-bold',
           description: 'text-sm',
           price: 'text-xs',
+          category: 'text-xs font-semibold uppercase tracking-wide',
         }
     }
   }
@@ -120,25 +132,12 @@ export function ServiceCard({
     <Card
       className={`glass dark:glass-dark transition-all duration-300 hover:scale-105 hover:shadow-xl ${colors.border} overflow-hidden ${sizes.card} text-[12px] sm:text-[13px] md:text-[14px]`}
     >
-      <div className={`relative ${sizes.image} w-full`}>
-        <Image
-          src={image || '/placeholder.svg'}
-          alt={title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          quality={50}
-          unoptimized
-          loading="lazy"
-        />
-        <div className={`absolute top-3 left-3 rounded-full p-2 ${colors.bg} shadow-lg`}>
-          <Icon className={`h-6 w-6 ${colors.icon}`} />
-        </div>
-        <div
-          className={`absolute top-3 right-3 rounded-full px-1.5 py-0.5 ${colors.bg} ${colors.textStrong} text-[10px] font-semibold sm:text-xs`}
-        >
-          {category}
-        </div>
+      <div
+        className={`flex ${sizes.banner} w-full flex-col items-center justify-center gap-2 ${colors.banner}`}
+        aria-hidden
+      >
+        <Icon className={`h-8 w-8 ${colors.icon}`} />
+        <span className={`${colors.bannerText} ${sizes.category}`}>{category}</span>
       </div>
       <CardContent className={`${sizes.content}`}>
         <div className="flex items-start justify-between">

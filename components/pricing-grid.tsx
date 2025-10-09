@@ -90,7 +90,7 @@ export function PricingGrid() {
   const pricingTiers = baseTiers.map(t => ({ ...t, price: priceMap.get(t.id) || t.price }))
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+    <section className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">

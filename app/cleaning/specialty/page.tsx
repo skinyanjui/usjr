@@ -19,7 +19,6 @@ export default function SpecialtyCleaningPage() {
     <ServicePageTemplate
       title="Specialty Cleaning Services"
       description="Specialized cleaning and organizing services. Professional specialty cleaning services in Evansville including refrigerator cleaning, oven deep cleaning, home organizing, and decluttering using natural, eco-friendly products."
-      heroImage="/natural-cleaning-organizing.png"
       theme="orange"
       badges={['From $75', 'Natural Products', 'Professional Results']}
       features={[

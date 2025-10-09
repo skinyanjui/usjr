@@ -18,8 +18,7 @@ export default function TermsPage() {
       <PageHero
         title="Terms of Service"
         description="Bookings, cancellations, payments, and service limitations"
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        color="slate"
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
         <h1 className="mb-2 text-4xl font-bold text-gray-900">Terms of Service</h1>
@@ -31,8 +30,8 @@ export default function TermsPage() {
             These Terms of Service ("Terms") constitute a legally binding agreement between you
             ("you" or "Customer") and Uncle Sam Junk Removal ("Company", "we", "us", or "our")
             governing your access to and use of our website and services, including junk removal,
-            light demolition, dumpster rental, and cleaning (collectively, the "Services"). By
-            scheduling or using our Services, you agree to these Terms.
+            light demolition, and cleaning (collectively, the "Services"). By scheduling or using
+            our Services, you agree to these Terms.
           </p>
         </section>
 

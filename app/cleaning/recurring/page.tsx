@@ -19,7 +19,6 @@ export default function RecurringCleaningPage() {
     <ServicePageTemplate
       title="Recurring Cleaning Services"
       description="Consistent, reliable home cleaning service. Weekly, bi-weekly, or monthly cleaning services with the same trusted team. Natural products, flexible scheduling, and consistent results you can count on."
-      heroImage="/natural-cleaning-service.png"
       theme="green"
       badges={['From $80', 'Same Team', 'Natural Products']}
       features={[

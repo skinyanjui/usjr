@@ -41,14 +41,22 @@ export interface Testimonial {
   active: boolean
 }
 
+export type GalleryPanelColor = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal' | 'slate'
+
+export interface GalleryPanel {
+  label: string
+  description: string
+  color: GalleryPanelColor
+}
+
 export interface GalleryImage {
   id: string
   title: string
-  beforeImage: string
-  afterImage: string
   service: string
   location: string
-  description: string
+  summary: string
+  before: GalleryPanel
+  after: GalleryPanel
   active: boolean
 }
 
@@ -357,32 +365,58 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 'kitchen-deep-clean',
     title: 'Kitchen Deep Clean Transformation',
-    beforeImage: '/gallery/kitchen-before.jpg',
-    afterImage: '/gallery/kitchen-after.jpg',
     service: 'Deep Cleaning',
     location: 'Evansville, IN',
-    description: 'Complete kitchen deep clean including appliances, cabinets, and countertops',
+    summary: 'Complete kitchen deep clean including appliances, cabinets, and countertops',
+    before: {
+      label: 'Before',
+      description:
+        'Grease buildup on the stove, cluttered counters, and dull stainless appliances.',
+      color: 'red',
+    },
+    after: {
+      label: 'After',
+      description:
+        'Sanitized surfaces, polished appliances, and organized cabinets ready for cooking.',
+      color: 'green',
+    },
     active: true,
   },
   {
     id: 'bathroom-renovation-clean',
     title: 'Post-Renovation Bathroom Cleaning',
-    beforeImage: '/gallery/bathroom-before.jpg',
-    afterImage: '/gallery/bathroom-after.jpg',
     service: 'Move-In Cleaning',
     location: 'Newburgh, IN',
-    description: 'Move-in cleaning after bathroom renovation with construction dust removal',
+    summary: 'Move-in cleaning after bathroom renovation with construction dust removal',
+    before: {
+      label: 'Before',
+      description: 'Dust-covered tile, paint splatters on fixtures, and debris in the shower.',
+      color: 'orange',
+    },
+    after: {
+      label: 'After',
+      description:
+        'Crystal-clear glass, sanitized tile and grout, and sparkling fixtures throughout.',
+      color: 'teal',
+    },
     active: true,
   },
   {
     id: 'office-space-clean',
     title: 'Commercial Office Deep Clean',
-    beforeImage: '/gallery/office-before.jpg',
-    afterImage: '/gallery/office-after.jpg',
     service: 'Commercial Cleaning',
     location: 'Henderson, KY',
-    description:
-      'Complete office cleaning including workstations, conference rooms, and common areas',
+    summary: 'Complete office cleaning including workstations, conference rooms, and common areas',
+    before: {
+      label: 'Before',
+      description: 'Overflowing trash bins, dusty desks, and streaked conference room glass.',
+      color: 'purple',
+    },
+    after: {
+      label: 'After',
+      description: 'Freshly sanitized work areas, reset conference rooms, and shining entryways.',
+      color: 'blue',
+    },
     active: true,
   },
 ]
