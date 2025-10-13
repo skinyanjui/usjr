@@ -130,12 +130,12 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="/sitemap.xml"
                     className="text-white transition-colors hover:text-red-200"
                   >
-                    Sitemap
-                  </Link>
+                    XML Sitemap
+                  </a>
                 </li>
               </ul>
             </div>
