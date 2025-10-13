@@ -1,6 +1,8 @@
 // CMS-like content management for cleaning services
 // In a real application, this would connect to a headless CMS or database
 
+import type { SolidPanelColor } from '@/lib/solid-panel-colors'
+
 export interface Service {
   id: string
   name: string
@@ -41,7 +43,7 @@ export interface Testimonial {
   active: boolean
 }
 
-export type GalleryPanelColor = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal' | 'slate'
+export type GalleryPanelColor = SolidPanelColor
 
 export interface GalleryPanel {
   label: string

@@ -1,7 +1,6 @@
 import { type PropsWithChildren } from 'react'
 import clsx from 'clsx'
-
-export type SolidPanelColor = 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal' | 'slate'
+import { SolidPanelColor } from '@/lib/solid-panel-colors'
 
 const colorStyles: Record<SolidPanelColor, { background: string; text: string }> = {
   red: { background: 'bg-red-200', text: 'text-red-900' },

@@ -72,9 +72,9 @@ export default function QuotePage() {
               </Badge>
             </div>
 
-            <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-              Get Your Free Quote Today
-            </h1>
+            <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+              Pick the fastest way to get your quote
+            </h2>
             <p className="mx-auto mb-8 max-w-4xl text-base text-gray-600 sm:text-lg">
               Professional junk removal, light demolition, and cleaning services in Evansville and
               Southern Indiana. Choose your service below for instant pricing and same-day

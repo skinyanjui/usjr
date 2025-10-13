@@ -1,116 +1,229 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { AlertTriangle, Clock, MessageSquare, Phone, Shield, Truck, Zap } from 'lucide-react'
+import type { Metadata } from 'next'
+import { ServicePageTemplate } from '@/components/ui/service-page-template'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { AlertTriangle, Clock, Phone, MessageSquare, Zap, Shield } from 'lucide-react'
-import { settings } from '@/lib/cms-content'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
-import { PageHero } from '@/components/ui/page-hero'
-import type { Metadata } from 'next'
+import { settings } from '@/lib/cms-content'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildServiceMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
+const serviceInfo = {
+  serviceName: 'Emergency Junk Removal',
+  category: 'Emergency Junk Removal',
+  price: 'From $134',
+  benefits: ['24/7 dispatch', '2-hour arrival window', 'Licensed & insured'],
+}
+
+const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
+
 export const metadata: Metadata = {
-  title: 'Emergency Junk Removal in Evansville, IN | 24/7 Service | Uncle Sam Junk Removal',
-  description:
-    '24/7 emergency junk removal services in Evansville, Indiana. Fast response for urgent cleanouts, storm debris, and emergency situations throughout Southern Indiana.',
-  keywords:
-    'emergency junk removal Evansville, 24/7 junk removal, urgent cleanout, storm debris removal, emergency cleanup Indiana',
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
   ...buildCanonicalMetadata('/emergency', baseUrl),
 }
 
 export default function EmergencyPage() {
-  return (
-    <div className="min-h-screen bg-red-50 pt-0 pb-16">
-      <PageHero
-        title="Emergency Junk Removal"
-        description="24/7 emergency response throughout Evansville and Southern Indiana"
-        color="red"
-      />
-      <div className="mx-auto max-w-4xl px-4">
-        <div className="mb-12 text-center">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-600">
-            <AlertTriangle className="h-10 w-10 text-white" />
-          </div>
-          <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-            Emergency Junk Removal
-          </h1>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
-            Need immediate junk removal service? We provide same-day emergency response throughout
-            Evansville and Southern Indiana.
-          </p>
-          <Badge className="mt-4 bg-red-600 px-4 py-2 text-lg text-white">
-            <Clock className="mr-2 h-4 w-4" />
-            Available 24/7 for Emergencies
-          </Badge>
-        </div>
+  const features = [
+    {
+      icon: AlertTriangle,
+      title: '24/7 Emergency Dispatch',
+      description:
+        'On-call crew ready to mobilize immediately for property damage, storm debris, and urgent cleanouts.',
+    },
+    {
+      icon: Clock,
+      title: 'Two-Hour Arrival Window',
+      description:
+        'Average arrival under two hours for calls placed before 8 PM with continuous updates from our dispatch team.',
+    },
+    {
+      icon: Shield,
+      title: 'Licensed & Insured Crew',
+      description:
+        'Trained professionals prepared for hazardous situations with proper disposal and documentation support.',
+    },
+    {
+      icon: Phone,
+      title: 'Direct Access to Dispatch',
+      description:
+        'Call or text photos to receive upfront pricing with no hidden fees before our trucks leave the warehouse.',
+    },
+  ]
 
-        <Card className="mb-8 border-red-200 bg-white">
-          <CardContent className="p-8">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="text-center">
-                <Phone className="mx-auto mb-4 h-12 w-12 text-red-600" />
-                <h3 className="mb-2 text-2xl font-bold text-gray-900">Call Now</h3>
+  const steps = [
+    {
+      icon: Phone,
+      title: 'Contact Emergency Dispatch',
+      description:
+        'Call or text photos anytime to trigger immediate scheduling for your situation.',
+    },
+    {
+      icon: Clock,
+      title: 'Confirm Arrival Window',
+      description:
+        'We provide a guaranteed arrival window and dispatch the closest available crew with real-time updates.',
+    },
+    {
+      icon: Truck,
+      title: 'Rapid On-Site Cleanup',
+      description:
+        'Our team handles all loading, sorting, and debris mitigation so you can focus on securing the property.',
+    },
+    {
+      icon: Shield,
+      title: 'Responsible Disposal',
+      description:
+        'We document the removal, donate salvageable items, and dispose of waste according to local regulations.',
+    },
+  ]
+
+  const pricing = [
+    {
+      name: 'Small Emergency',
+      price: 'From $134-224',
+      description: '1-3 items • 2-hour response window',
+    },
+    {
+      name: 'Medium Emergency',
+      price: 'From $269-584',
+      description: 'Room cleanout • Same-day arrival',
+    },
+    {
+      name: 'Large Emergency',
+      price: 'From $734-974',
+      description: 'Full property • Immediate deployment',
+    },
+  ]
+
+  const faqs = [
+    {
+      question: 'How fast can your team arrive?',
+      answer:
+        'Most emergency calls receive on-site support within two hours. When travel or weather is a factor, we keep you updated with ETA text alerts.',
+    },
+    {
+      question: 'Is there an additional cost for emergency service?',
+      answer:
+        'Emergency dispatch includes a readiness surcharge of up to 50% that covers overtime labor, rapid routing, and priority access to disposal facilities. All pricing is provided upfront.',
+    },
+    {
+      question: 'Can I text photos for a faster quote?',
+      answer: `Yes. Text photos to ${settings.phone} and our dispatchers will review them immediately so we can lock in pricing before the crew arrives.`,
+    },
+    {
+      question: 'What areas do you cover for emergency junk removal?',
+      answer:
+        'We dispatch to Evansville, Newburgh, Boonville, Mount Vernon, Henderson, and Owensboro with extended coverage throughout Southern Indiana and Western Kentucky.',
+    },
+  ]
+
+  return (
+    <ServicePageTemplate
+      title="24/7 Emergency Junk Removal"
+      description="Immediate junk removal response throughout Evansville and Southern Indiana. Same-day cleanouts, storm debris removal, and urgent property services with licensed professionals."
+      theme="red"
+      badges={['24/7 Emergency Response', '2-Hour Arrival Window', 'Licensed & Insured']}
+      features={features}
+      steps={steps}
+      stepsTitle="Emergency Response Process"
+      pricing={pricing}
+      pricingTitle="Emergency Pricing"
+      pricingNote="Emergency services include up to a 50% rapid-response surcharge that covers overtime labor, dispatch coordination, and priority disposal access. All pricing is confirmed upfront."
+      faqs={faqs}
+      serviceCategory="Emergency Junk Removal"
+      serviceArea={[
+        'Evansville, IN',
+        'Newburgh, IN',
+        'Boonville, IN',
+        'Henderson, KY',
+        'Owensboro, KY',
+      ]}
+      ctaPrimary="📞 Call for Emergency Dispatch"
+      ctaSecondary="Text Photos for Fast Quote"
+    >
+      <div className="mt-12 space-y-8">
+        <Card className="border-red-200 bg-white shadow-lg">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold text-gray-900">
+              Immediate Support Options
+            </CardTitle>
+            <CardDescription>
+              Reach our emergency dispatch by phone or text for instant coordination and pricing.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-lg border border-red-100 p-6 text-center">
+                <Badge className="mb-3 inline-flex items-center gap-2 bg-red-600 px-4 py-2 text-base text-white">
+                  <Phone className="h-4 w-4" />
+                  Call Now
+                </Badge>
                 <p className="mb-4 text-gray-600">
-                  Speak directly with our emergency dispatch team
+                  Speak directly with our on-call dispatcher for immediate scheduling and arrival
+                  updates.
                 </p>
                 <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
                   <a href={`tel:${settings.phoneE164}`}>{settings.phone}</a>
                 </Button>
-                <p className="mt-2 text-sm text-gray-600">Available 24/7 for emergencies</p>
+                <p className="mt-2 text-sm text-gray-500">Available 24/7 for emergencies</p>
               </div>
 
-              <div className="text-center">
-                <MessageSquare className="mx-auto mb-4 h-12 w-12 text-red-600" />
-                <h3 className="mb-2 text-2xl font-bold text-gray-900">Text Photos</h3>
-                <p className="mb-4 text-gray-600">Send photos for immediate assessment</p>
+              <div className="rounded-lg border border-red-100 p-6 text-center">
+                <Badge className="mb-3 inline-flex items-center gap-2 bg-white px-4 py-2 text-base text-red-700 ring-1 ring-red-200">
+                  <MessageSquare className="h-4 w-4" />
+                  Text Photos
+                </Badge>
+                <p className="mb-4 text-gray-600">
+                  Send photos of the emergency to get pricing confirmed before we arrive on-site.
+                </p>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-red-800 bg-transparent text-red-800"
+                  className="border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
                 >
                   <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>
-                <p className="mt-2 text-sm text-gray-600">Get instant quote via text</p>
+                <p className="mt-2 text-sm text-gray-500">Receive responses in minutes</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <div className="mb-8 grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5 text-yellow-600" />
+              <CardTitle className="flex items-center gap-2 text-gray-900">
+                <AlertTriangle className="h-5 w-5 text-red-600" />
                 Emergency Situations We Handle
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-left text-gray-600">
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Property damage cleanup</span>
+                  Property damage cleanup
                 </li>
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Storm debris removal</span>
+                  Storm debris and fallen trees
                 </li>
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Eviction cleanouts</span>
+                  Eviction and hoarding cleanouts
                 </li>
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Biohazard situations</span>
+                  Biohazard-adjacent junk removal support
                 </li>
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Urgent estate cleanouts</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span>Commercial emergencies</span>
+                  Commercial emergencies and shutdowns
                 </li>
               </ul>
             </CardContent>
@@ -118,67 +231,49 @@ export default function EmergencyPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-gray-900">
                 <Shield className="h-5 w-5 text-green-600" />
                 Emergency Service Features
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-left text-gray-600">
                 <li className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-green-600" />
-                  <span>2-hour response time</span>
+                  2-hour response window for most calls
                 </li>
                 <li className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-green-600" />
-                  <span>Same-day service available</span>
+                  Same-day service on nights & weekends
                 </li>
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  <span>Weekend & holiday service</span>
+                  <Shield className="h-4 w-4 text-green-600" />
+                  Licensed, insured, and background-checked crew
                 </li>
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  <span>Licensed & insured</span>
+                  <Zap className="h-4 w-4 text-green-600" />
+                  Specialized equipment for heavy or oversized items
                 </li>
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  <span>Proper disposal guaranteed</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
-                  <span>Upfront emergency pricing</span>
+                  <Truck className="h-4 w-4 text-green-600" />
+                  Proper disposal with donation and recycling options
                 </li>
               </ul>
             </CardContent>
           </Card>
         </div>
 
-        <Card className="border-yellow-200 bg-yellow-50">
-          <CardContent className="p-8 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">Emergency Service Pricing</h3>
-            <p className="mb-6 text-gray-600">
-              Emergency services include a 50% surcharge for immediate response. All pricing is
-              provided upfront with no hidden fees.
+        <Card className="border-yellow-200 bg-yellow-50 text-center">
+          <CardContent className="space-y-4 py-8">
+            <Badge className="mx-auto inline-flex items-center gap-2 bg-yellow-500 px-4 py-2 text-base text-white">
+              <Zap className="h-4 w-4" />
+              Priority Dispatch Available
+            </Badge>
+            <p className="mx-auto max-w-2xl text-gray-700">
+              Need same-hour service? Our emergency team is staffed overnight and on weekends to
+              help secure properties, clear access points, and remove hazards fast.
             </p>
-            <div className="mb-6 grid gap-4 md:grid-cols-3">
-              <div className="rounded-lg bg-white p-4">
-                <h4 className="font-bold text-gray-900">Small Emergency</h4>
-                <p className="text-2xl font-bold text-red-600">$134-224</p>
-                <p className="text-sm text-gray-600">1-3 items, 2-hour response</p>
-              </div>
-              <div className="rounded-lg bg-white p-4">
-                <h4 className="font-bold text-gray-900">Medium Emergency</h4>
-                <p className="text-2xl font-bold text-red-600">$269-584</p>
-                <p className="text-sm text-gray-600">Room cleanout, same-day</p>
-              </div>
-              <div className="rounded-lg bg-white p-4">
-                <h4 className="font-bold text-gray-900">Large Emergency</h4>
-                <p className="text-2xl font-bold text-red-600">$734-974</p>
-                <p className="text-sm text-gray-600">Full property, immediate</p>
-              </div>
-            </div>
-            <Button asChild className="bg-red-600 text-white hover:bg-red-700">
+            <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
               <QuoteCtaLink location="emergency" label="Get Emergency Quote Now">
                 Get Emergency Quote Now
               </QuoteCtaLink>
@@ -186,6 +281,6 @@ export default function EmergencyPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </ServicePageTemplate>
   )
 }
