@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { PageHero } from '@/components/ui/page-hero'
+import { settings } from '@/lib/cms-content'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
