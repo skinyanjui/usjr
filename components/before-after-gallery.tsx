@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Badge } from '@/components/ui/badge'
 import { Eye, MapPin, X } from 'lucide-react'
 import { getActiveGalleryImages, type GalleryImage } from '@/lib/cms-content'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 interface BeforeAfterGalleryProps {
   limit?: number
@@ -26,6 +27,12 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
     setImages(galleryImages)
   }, [limit, service])
 
+  useEffect(() => {
+    if (selectedImage) {
+      setShowBefore(true)
+    }
+  }, [selectedImage])
+
   if (images.length === 0) {
     return null
   }
@@ -35,26 +42,22 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {images.map(image => (
           <Card key={image.id} className="overflow-hidden transition-shadow hover:shadow-lg">
-            <div className="relative aspect-video bg-gray-100">
-              <img
-                src={image.afterImage || '/placeholder.svg'}
-                alt={image.title}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity hover:opacity-100">
+            <SolidPanel color="slate" label={image.service} className="aspect-video p-8">
+              <div className="flex flex-col items-center gap-2 text-slate-800">
+                <span className="text-base font-semibold text-slate-900">{image.title}</span>
+                <p className="text-sm font-medium text-slate-700">{image.summary}</p>
                 <Button
                   variant="secondary"
                   size="sm"
                   onClick={() => setSelectedImage(image)}
-                  className="bg-white/90 text-gray-900 hover:bg-white"
-                  aria-label={`Open before/after view for ${image.title}`}
+                  className="bg-white text-slate-800 hover:bg-slate-100"
+                  aria-label={`Open transformation details for ${image.title}`}
                 >
                   <Eye className="mr-2 h-4 w-4" />
-                  View Before/After
+                  View Transformation
                 </Button>
               </div>
-            </div>
+            </SolidPanel>
             <CardHeader className="pb-2">
               <div className="flex items-start justify-between gap-2">
                 <CardTitle className="text-lg">{image.title}</CardTitle>
@@ -68,7 +71,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
               </div>
             </CardHeader>
             <CardContent className="pt-0">
-              <CardDescription className="text-sm">{image.description}</CardDescription>
+              <CardDescription className="text-sm">{image.summary}</CardDescription>
             </CardContent>
           </Card>
         ))}
@@ -114,18 +117,15 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
               </div>
 
               {/* Image Display */}
-              <div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100">
-                <img
-                  src={showBefore ? selectedImage.beforeImage : selectedImage.afterImage}
-                  alt={`${selectedImage.title} - ${showBefore ? 'Before' : 'After'}`}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge className={showBefore ? 'bg-red-600' : 'bg-green-600'}>
-                    {showBefore ? 'Before' : 'After'}
-                  </Badge>
-                </div>
-              </div>
+              <SolidPanel
+                color={showBefore ? selectedImage.before.color : selectedImage.after.color}
+                label={showBefore ? selectedImage.before.label : selectedImage.after.label}
+                className="aspect-video p-10"
+              >
+                <p className="text-base font-semibold">
+                  {showBefore ? selectedImage.before.description : selectedImage.after.description}
+                </p>
+              </SolidPanel>
 
               {/* Image Info */}
               <div className="space-y-2 text-center">
@@ -136,7 +136,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   </div>
                   <Badge variant="secondary">{selectedImage.service}</Badge>
                 </div>
-                <p className="text-gray-700">{selectedImage.description}</p>
+                <p className="text-gray-700">{selectedImage.summary}</p>
               </div>
             </div>
           </DialogContent>

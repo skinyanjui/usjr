@@ -32,7 +32,6 @@ export interface ServicePageTemplateProps {
   title: string
   description: string
   badges?: string[]
-  heroImage?: string
 
   // Theme
   theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
@@ -70,7 +69,7 @@ export interface ServicePageTemplateProps {
 
 const themeClasses = {
   red: {
-    gradient: 'from-red-50 to-white',
+    background: 'bg-red-50',
     primary: 'bg-red-600 hover:bg-red-700',
     secondary: 'border-red-700 text-red-700 hover:bg-red-700 hover:text-white',
     accent: 'text-red-600',
@@ -78,7 +77,7 @@ const themeClasses = {
     badge: 'bg-red-100 text-red-800 border-red-200',
   },
   blue: {
-    gradient: 'from-blue-50 to-white',
+    background: 'bg-blue-50',
     primary: 'bg-blue-600 hover:bg-blue-700',
     secondary: 'border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white',
     accent: 'text-blue-600',
@@ -86,7 +85,7 @@ const themeClasses = {
     badge: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   green: {
-    gradient: 'from-green-50 to-white',
+    background: 'bg-green-50',
     primary: 'bg-green-600 hover:bg-green-700',
     secondary: 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white',
     accent: 'text-green-600',
@@ -94,7 +93,7 @@ const themeClasses = {
     badge: 'bg-green-100 text-green-800 border-green-200',
   },
   orange: {
-    gradient: 'from-orange-50 to-white',
+    background: 'bg-orange-50',
     primary: 'bg-orange-600 hover:bg-orange-700',
     secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
     accent: 'text-orange-600',
@@ -102,7 +101,7 @@ const themeClasses = {
     badge: 'bg-orange-100 text-orange-800 border-orange-200',
   },
   purple: {
-    gradient: 'from-purple-50 to-white',
+    background: 'bg-purple-50',
     primary: 'bg-purple-600 hover:bg-purple-700',
     secondary: 'border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white',
     accent: 'text-purple-600',
@@ -110,7 +109,7 @@ const themeClasses = {
     badge: 'bg-purple-100 text-purple-800 border-purple-200',
   },
   teal: {
-    gradient: 'from-teal-50 to-white',
+    background: 'bg-teal-50',
     primary: 'bg-teal-600 hover:bg-teal-700',
     secondary: 'border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
     accent: 'text-teal-600',
@@ -136,37 +135,39 @@ export function ServicePageTemplate({
   ctaPrimary = `📞 ${UNIFORM_OFFERS.CALL_NOW}`,
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
-  heroImage,
 }: ServicePageTemplateProps) {
   const classes = themeClasses[theme]
+  const heroColorMap = {
+    red: 'red',
+    blue: 'blue',
+    green: 'green',
+    orange: 'orange',
+    purple: 'purple',
+    teal: 'teal',
+  } as const
 
   return (
     <main className="min-h-screen">
-      {heroImage && (
-        <PageHero title={title} description={description} imageSrc={heroImage} priority />
-      )}
+      <PageHero title={title} description={description} color={heroColorMap[theme]} />
       {/* Hero Section */}
-      <section className={`bg-gradient-to-b pt-32 pb-16 ${classes.gradient}`}>
+      <section className={`pt-32 pb-16 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
-          {!heroImage && (
-            <div className="mb-12 text-center">
-              <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                {title}
-              </h1>
-              <p className="mb-6 text-lg text-gray-600 sm:text-xl">{description}</p>
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+              What to Expect
+            </h2>
 
-              {badges.length > 0 && (
-                <div className="flex items-center justify-center gap-4 text-gray-700">
-                  {badges.map((badge, index) => (
-                    <div key={index} className="flex items-center gap-1">
-                      <Clock className={`h-5 w-5 ${classes.accent}`} />
-                      <span>{badge}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+            {badges.length > 0 && (
+              <div className="flex items-center justify-center gap-4 text-gray-700">
+                {badges.map((badge, index) => (
+                  <div key={index} className="flex items-center gap-1">
+                    <Clock className={`h-5 w-5 ${classes.accent}`} />
+                    <span>{badge}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
             <div>

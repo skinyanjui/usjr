@@ -22,12 +22,7 @@ export default function HtmlSitemapPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <PageHero
-        title="Sitemap"
-        description="Browse all pages on our site"
-        imageSrc="/junk-removal-evansville.png"
-        priority
-      />
+      <PageHero title="Sitemap" description="Browse all pages on our site" color="slate" />
       <div className="mx-auto max-w-5xl px-4 pt-8 pb-16">
         <h1 className="mb-6 text-3xl font-bold sm:text-4xl">Sitemap</h1>
         <p className="mb-8 text-gray-600">

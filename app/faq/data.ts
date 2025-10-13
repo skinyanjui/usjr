@@ -105,39 +105,6 @@ export const faqCategories: FaqCategory[] = [
     ],
   },
   {
-    id: 'dumpster',
-    name: 'Dumpster Rental',
-    icon: 'Container',
-    color: 'orange',
-    faqs: [
-      {
-        question: 'What sizes of dumpsters do you offer?',
-        answer:
-          "We offer four dumpster sizes to match your project needs: 10-yard (perfect for bathroom remodels, small cleanouts, holds about 3 pickup truck loads), 15-yard (ideal for kitchen remodels, small roofing projects, holds about 4.5 pickup truck loads), 20-yard (great for whole-room remodels, large cleanouts, holds about 6 pickup truck loads), and 30-yard (perfect for major renovations, new construction, holds about 9 pickup truck loads). Our experienced team can assess your project and recommend the optimal size based on material type and scope. We've found that choosing the right size upfront saves money and prevents the need for multiple containers or overage fees. If you're unsure, we can start with a smaller size and upgrade if needed.",
-      },
-      {
-        question: 'How long can I keep the dumpster?',
-        answer:
-          "Our standard rental period is 7 days for residential projects and up to 14 days for construction projects, with flexible extensions available. We understand that projects don't always go according to schedule, so we offer daily extension rates that are much more affordable than competitors' weekly minimums. For long-term projects (30+ days), we can arrange special pricing. Most customers find 7 days sufficient for home cleanouts, while renovations typically need 10-14 days. We'll work with your timeline - just give us 24 hours notice if you need an extension or are ready for early pickup. Weather delays, permit issues, or contractor schedules never result in rush fees from us.",
-      },
-      {
-        question: "What can't go in the dumpster?",
-        answer:
-          'Hazardous materials, chemicals, paint, batteries, tires, and liquids cannot be placed in dumpsters. We provide a complete list of prohibited items with every rental.',
-      },
-      {
-        question: 'Do you need permits for dumpster placement?',
-        answer:
-          'Permits are typically required for street placement but not for private property. We can help coordinate permits if needed, though permit fees are additional.',
-      },
-      {
-        question: 'Do you protect driveways and surfaces?',
-        answer:
-          'Yes. We place protective boards under roll-offs to minimize surface contact and recommend a flat, sturdy placement area.',
-      },
-    ],
-  },
-  {
     id: 'cleaning',
     name: 'Cleaning Services',
     icon: 'Sparkles',
@@ -179,7 +146,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'How much do your services cost?',
         answer:
-          'Our pricing reflects quality service with transparent, competitive rates: Junk removal typically ranges $89-$649 depending on volume and material type, with most residential jobs falling between $159-$389. Dumpster rental ranges $299-$599 including delivery, pickup, and disposal fees (no hidden charges). Cleaning services range $99-$399 based on home size and service level, with our popular bi-weekly residential cleaning averaging $179. We provide detailed, written estimates that break down all costs including labor, disposal fees, and any special handling charges. Unlike many competitors, our prices include everything - no fuel surcharges, no disposal fee increases, no surprise add-ons. We also offer package discounts for customers using multiple services and seasonal promotions that can reduce costs significantly.',
+          'Our pricing reflects quality service with transparent, competitive rates: Junk removal typically ranges $89-$649 depending on volume and material type, with most residential jobs falling between $159-$389. Light demolition projects such as shed or deck removal start around $399 and average $699-$1,299 depending on structure size and materials. Cleaning services range $99-$399 based on home size and service level, with our popular bi-weekly residential cleaning averaging $179. We provide detailed, written estimates that break down all costs including labor, disposal fees, and any special handling charges. Unlike many competitors, our prices include everything—no fuel surcharges, no disposal fee increases, no surprise add-ons. We also offer package discounts for customers using multiple services and seasonal promotions that can reduce costs significantly.',
       },
       {
         question: 'Do you offer a Price Match Guarantee?',
@@ -209,7 +176,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'Do you offer discounts for multiple services?',
         answer:
-          'Yes! We offer significant package discounts when you combine our services. For example, customers who book both junk removal and cleaning services save 15% on the cleaning portion. Estate cleanout customers who also need ongoing cleaning services receive 20% off their first three cleaning sessions. Dumpster rental customers who also need junk removal service get preferred pricing on both. We also offer seasonal promotions, military/veteran discounts (10% off), senior citizen discounts (10% off for 65+), and special rates for repeat customers. Property managers and real estate agents working multiple properties receive volume pricing. Our goal is to reward customer loyalty and make our comprehensive services more accessible.',
+          'Yes! We offer significant package discounts when you combine our services. For example, customers who book both junk removal and cleaning services save 15% on the cleaning portion. Estate cleanout customers who also need ongoing cleaning services receive 20% off their first three cleaning sessions. Light demolition clients who schedule junk hauling for the debris receive bundled pricing on both services. We also offer seasonal promotions, military/veteran discounts (10% off), senior citizen discounts (10% off for 65+), and special rates for repeat customers. Property managers and real estate agents working multiple properties receive volume pricing. Our goal is to reward customer loyalty and make our comprehensive services more accessible.',
       },
       {
         question: 'What makes Uncle Sam Junk Removal different from competitors?',

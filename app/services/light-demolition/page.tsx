@@ -79,7 +79,6 @@ export default function LightDemolitionPage() {
         UNIFORM_OFFERS.LICENSED_INSURED,
       ]}
       serviceCategory="Light Demolition Service"
-      heroImage="/light-demolition-evansville.png"
       features={[
         {
           icon: CheckCircle,

@@ -87,12 +87,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
 
   return (
     <main className="min-h-screen">
-      <PageHero
-        title={blogPost.title}
-        description={blogPost.excerpt}
-        imageSrc="/junk-removal-evansville.png"
-        priority
-      />
+      <PageHero title={blogPost.title} description={blogPost.excerpt} color="red" />
 
       <article className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4">
@@ -204,7 +199,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
 
           {/* Call to Action */}
           <section className="text-center">
-            <div className="rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 p-8">
+            <div className="rounded-2xl bg-red-50 p-8">
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Need Professional Junk Removal in Evansville?
               </h2>

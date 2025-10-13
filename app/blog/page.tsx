@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import type { Metadata } from 'next'
+import { SolidPanel, type SolidPanelProps } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -24,39 +24,18 @@ export const metadata: Metadata = {
     url: `${baseUrl}/blog`,
     siteName: 'Uncle Sam Junk Removal',
     type: 'website',
-    images: [
-      {
-        url: `${baseUrl}/spring-cleaning-natural.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Uncle Sam Junk Removal Blog - Cleaning & Junk Removal Tips',
-      },
-    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Cleaning & Junk Removal Blog | Uncle Sam Junk Removal',
     description:
       'Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.',
-    images: [`${baseUrl}/spring-cleaning-natural.png`],
   },
   ...buildCanonicalMetadata('/blog', baseUrl),
 }
 
 export default function BlogPage() {
   const blogPosts = [
-    {
-      slug: 'dumpster-rental-guide-evansville',
-      title: 'Complete Dumpster Rental Guide for Evansville Residents',
-      excerpt:
-        'Everything you need to know about dumpster rental in Evansville, IN. Sizes, pricing, permits, and tips for your next project.',
-      author: 'Uncle Sam Team',
-      date: 'December 15, 2024',
-      readTime: '8 min read',
-      category: 'Dumpster Rental',
-      image: '/dumpster-rental-evansville.png',
-      featured: true,
-    },
     {
       slug: 'spring-cleaning-checklist-southern-indiana',
       title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
@@ -66,8 +45,8 @@ export default function BlogPage() {
       date: 'March 1, 2024',
       readTime: '12 min read',
       category: 'Spring Cleaning',
-      image: '/spring-cleaning-natural.png',
       featured: true,
+      panelColor: 'green',
     },
     {
       slug: 'appliance-disposal-recycling-guide',
@@ -78,8 +57,8 @@ export default function BlogPage() {
       date: 'November 20, 2024',
       readTime: '10 min read',
       category: 'Appliance Disposal',
-      image: '/appliance-removal-evansville.png',
       featured: true,
+      panelColor: 'blue',
     },
     {
       slug: 'junk-removal-cost-tri-state',
@@ -90,7 +69,7 @@ export default function BlogPage() {
       date: 'January 15, 2025',
       readTime: '8 min read',
       category: 'Pricing Guide',
-      image: '/junk-removal-pricing.png',
+      panelColor: 'red',
     },
     {
       slug: 'evansville-garage-cleanout-48-hours',
@@ -101,7 +80,7 @@ export default function BlogPage() {
       date: 'January 12, 2025',
       readTime: '6 min read',
       category: 'How-To Guide',
-      image: '/organized-garage-cleanout.png',
+      panelColor: 'blue',
     },
     {
       slug: 'hot-tub-removal-what-to-know',
@@ -112,7 +91,7 @@ export default function BlogPage() {
       date: 'January 8, 2025',
       readTime: '5 min read',
       category: 'Service Guide',
-      image: '/hot-tub-removal-checklist.png',
+      panelColor: 'orange',
     },
     {
       slug: 'property-manager-turnover-playbook',
@@ -123,7 +102,7 @@ export default function BlogPage() {
       date: 'January 6, 2025',
       readTime: '10 min read',
       category: 'Property Management',
-      image: '/rental-turnover-cleanup.png',
+      panelColor: 'purple',
     },
     // New posts
     {
@@ -135,8 +114,8 @@ export default function BlogPage() {
       date: 'January 28, 2025',
       readTime: '8 min read',
       category: 'Local Guide',
-      image: '/junk-removal-evansville.png',
       featured: true,
+      panelColor: 'red',
     },
     {
       slug: 'mattress-disposal-evansville',
@@ -147,7 +126,7 @@ export default function BlogPage() {
       date: 'January 20, 2025',
       readTime: '6 min read',
       category: 'Mattress Removal',
-      image: '/mattress-removal-evansville.png',
+      panelColor: 'purple',
     },
     {
       slug: 'shed-removal-guide-evansville',
@@ -158,7 +137,7 @@ export default function BlogPage() {
       date: 'January 22, 2025',
       readTime: '7 min read',
       category: 'Light Demolition',
-      image: '/shed-removal-evansville.png',
+      panelColor: 'orange',
     },
     {
       slug: 'estate-cleanout-guide',
@@ -169,7 +148,7 @@ export default function BlogPage() {
       date: 'January 24, 2025',
       readTime: '9 min read',
       category: 'Estate Cleanouts',
-      image: '/estate-cleanout-evansville.png',
+      panelColor: 'slate',
     },
     {
       slug: 'yard-waste-disposal-evansville',
@@ -180,15 +159,12 @@ export default function BlogPage() {
       date: 'January 26, 2025',
       readTime: '6 min read',
       category: 'Yard Waste',
-      image: '/yard-waste-removal-evansville.png',
+      panelColor: 'green',
     },
   ]
 
   const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 1)
   const regularPosts = blogPosts.filter(post => !post.featured)
-  const dumpsterPosts = blogPosts.filter(
-    post => post.category.toLowerCase().includes('dumpster') || post.slug.includes('dumpster')
-  )
 
   // Structured data for the blog page
   const structuredData = {
@@ -217,10 +193,6 @@ export default function BlogPage() {
         '@type': 'Person',
         name: post.author,
       },
-      image: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}${post.image}`,
-      },
     })),
   }
 
@@ -235,10 +207,9 @@ export default function BlogPage() {
       <PageHero
         title="Cleaning & Junk Removal Blog"
         description="Expert tips, guides, and professional insights for Evansville homeowners"
-        imageSrc="/spring-cleaning-natural.png"
-        priority
+        color="green"
       />
-      <section className="bg-gradient-to-b from-gray-50 to-white pt-16 pb-16">
+      <section className="bg-gray-50 pt-16 pb-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
             <div className="mb-4 flex justify-center gap-2">
@@ -266,31 +237,26 @@ export default function BlogPage() {
             <div className="mb-16">
               <h2 className="mb-8 text-2xl font-bold text-gray-900">Featured Articles</h2>
               <div className="space-y-8">
-                {featuredPosts.map((post, index) => (
+                {featuredPosts.map(post => (
                   <Card
                     key={post.slug}
                     className="glass overflow-hidden border-2 border-green-200 transition-all duration-300 hover:scale-105"
                   >
-                    <div className="relative aspect-video overflow-hidden bg-gray-200">
-                      <Image
-                        src={post.image || '/placeholder.svg'}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 1200px"
-                        quality={50}
-                        priority={index < 1}
-                      />
-                      <div className="absolute top-4 left-4">
+                    <SolidPanel
+                      color={(post.panelColor as SolidPanelProps['color']) ?? 'blue'}
+                      className="aspect-video"
+                      label={post.category}
+                    >
+                      <div className="flex flex-col items-center gap-2">
                         <Badge className="bg-green-600 text-white">
                           <Sparkles className="mr-1 h-3 w-3" />
                           Featured
                         </Badge>
+                        <span className="text-sm text-white/90">
+                          {post.readTime} • {post.date}
+                        </span>
                       </div>
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/90 text-gray-800">{post.category}</Badge>
-                      </div>
-                    </div>
+                    </SolidPanel>
 
                     <CardHeader>
                       <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
@@ -332,71 +298,6 @@ export default function BlogPage() {
             </div>
           )}
 
-          {/* Dumpster Blogs */}
-          {dumpsterPosts.length > 0 && (
-            <div className="mb-16">
-              <h2 className="mb-8 text-2xl font-bold text-gray-900">Dumpster Blogs</h2>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {dumpsterPosts.map(post => (
-                  <Card
-                    key={post.slug}
-                    className="glass overflow-hidden transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="relative aspect-video overflow-hidden bg-gray-200">
-                      <Image
-                        src={post.image || '/placeholder.svg'}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        quality={50}
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-orange-600 text-white">Dumpster</Badge>
-                      </div>
-                    </div>
-
-                    <CardHeader>
-                      <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                      </CardTitle>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{post.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{post.readTime}</span>
-                        </div>
-                      </div>
-                    </CardHeader>
-
-                    <CardContent>
-                      <p className="mb-4 line-clamp-3 text-gray-600">{post.excerpt}</p>
-                      <Link href={`/blog/${post.slug}`}>
-                        <Button
-                          variant="outline"
-                          className="group border-orange-700 bg-transparent text-orange-700 hover:bg-orange-700 hover:text-white"
-                          aria-label={`Read ${post.title}`}
-                          title={`Read ${post.title}`}
-                        >
-                          Read: {post.title}
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Regular Posts */}
           <div className="mb-16">
             <h2 className="mb-8 text-2xl font-bold text-gray-900">All Articles</h2>
@@ -406,24 +307,15 @@ export default function BlogPage() {
                   key={post.slug}
                   className="glass overflow-hidden transition-all duration-300 hover:scale-105"
                 >
-                  <div className="relative aspect-video overflow-hidden bg-gray-200">
-                    <Image
-                      src={post.image || '/placeholder.svg'}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={50}
-                      loading="lazy"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge
-                        className={`${post.category.includes('Cleaning') ? 'bg-green-600' : 'bg-red-600'} text-white`}
-                      >
-                        {post.category}
-                      </Badge>
-                    </div>
-                  </div>
+                  <SolidPanel
+                    color={(post.panelColor as SolidPanelProps['color']) ?? 'blue'}
+                    className="aspect-video"
+                    label={post.category}
+                  >
+                    <span className="text-sm text-white/90">
+                      {post.readTime} • {post.date}
+                    </span>
+                  </SolidPanel>
 
                   <CardHeader>
                     <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
@@ -470,7 +362,7 @@ export default function BlogPage() {
 
           {/* Call to Action */}
           <div className="text-center">
-            <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-r from-green-50 to-blue-50 p-8">
+            <div className="mx-auto max-w-3xl rounded-2xl bg-green-50 p-8">
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Need Professional Cleaning or Junk Removal?
               </h2>

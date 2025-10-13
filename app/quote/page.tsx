@@ -12,35 +12,42 @@ import {
   Star,
   CheckCircle,
   Truck,
-  Trash2,
+  Wrench,
   Sparkles,
   Phone,
   Camera,
+  BadgeDollarSign,
 } from 'lucide-react'
 import Link from 'next/link'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
-import { junkRemovalTiers, dumpsterRentalTiers } from '@/lib/pricing'
+import { junkRemovalTiers } from '@/lib/pricing'
 
 export const metadata: Metadata = {
-  title: 'Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Dumpster Rental & Cleaning',
+  title: 'Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Light Demolition & Cleaning',
   description:
-    'Get free quotes for junk removal, dumpster rental, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.',
+    'Get free quotes for junk removal, light demolition, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.',
   keywords:
-    'free quote Evansville, junk removal quote, dumpster rental quote, cleaning quote, Uncle Sam Junk Removal pricing',
+    'free quote Evansville, junk removal quote, light demolition quote, cleaning quote, Uncle Sam Junk Removal pricing',
   robots: 'index, follow',
   ...buildCanonicalMetadata('/quote', baseUrl),
 }
 
 export default function QuotePage() {
+  const lightDemolitionPricing = [
+    '• Shed removal up to 120 sq ft: From $399',
+    '• Deck or fence tear-out: From $499',
+    '• Playset removal: From $299',
+    '• Small interior demo projects: Custom quote',
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-orange-50">
+    <div className="min-h-screen bg-blue-50">
       <PageHero
         title="Get Your Free Quote Today"
-        description="Professional junk removal, dumpster rental, and cleaning services in Evansville and Southern Indiana"
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        description="Professional junk removal, light demolition, and cleaning services in Evansville and Southern Indiana"
+        color="blue"
       />
       <div className="px-4 pb-16">
         <div className="mx-auto max-w-7xl">
@@ -69,7 +76,7 @@ export default function QuotePage() {
               Get Your Free Quote Today
             </h1>
             <p className="mx-auto mb-8 max-w-4xl text-base text-gray-600 sm:text-lg">
-              Professional junk removal, dumpster rental, and cleaning services in Evansville and
+              Professional junk removal, light demolition, and cleaning services in Evansville and
               Southern Indiana. Choose your service below for instant pricing and same-day
               availability.
             </p>
@@ -160,29 +167,25 @@ export default function QuotePage() {
               </CardContent>
             </Card>
 
-            {/* Dumpster Rental Service */}
+            {/* Light Demolition Service */}
             <Card className="glass border-2 border-orange-200 transition-all duration-300 hover:border-orange-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 sm:h-16 sm:w-16">
-                    <Trash2 className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
+                    <Wrench className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
                   </div>
                   <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
-                    Dumpster Rental
+                    Light Demolition
                   </h2>
-                  <p className="text-gray-600">Flexible rental periods for any project</p>
+                  <p className="text-gray-600">Careful tear-downs for sheds, decks, and more</p>
                 </div>
 
                 <div className="mb-6 space-y-4">
                   <div className="rounded-lg bg-orange-50 p-4">
-                    <h3 className="mb-2 font-semibold text-orange-900">
-                      Rental Prices (per week):
-                    </h3>
+                    <h3 className="mb-2 font-semibold text-orange-900">Starting Prices:</h3>
                     <ul className="space-y-1 text-sm text-orange-800">
-                      {dumpsterRentalTiers.map(t => (
-                        <li key={t.id}>
-                          • {t.name.replace(' Dumpster', '')}: {t.price}
-                        </li>
+                      {lightDemolitionPricing.map(item => (
+                        <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
@@ -190,33 +193,33 @@ export default function QuotePage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      Next-day delivery available
+                      Sheds, decks, playsets, and swing sets
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      Flexible rental periods
+                      Licensed & insured crew
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      Construction & renovation projects
+                      Responsible debris hauling
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <CheckCircle className="h-4 w-4 text-green-600" />
-                      No hidden fees
+                      Permitting guidance when needed
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-orange-600 text-white hover:bg-orange-700">
-                    <Link href="/services/dumpster-rental">Get Dumpster Quote</Link>
+                    <Link href="/services/light-demolition">Get Demolition Quote</Link>
                   </Button>
-                  <Link href="/services/dumpster-rental">
+                  <Link href="/services/light-demolition">
                     <Button
                       variant="outline"
                       className="w-full border-orange-800 bg-transparent text-orange-800 hover:bg-orange-100"
                     >
-                      Dumpster Rental Sizes, Rates & Availability
+                      Light Demolition Services & Pricing
                     </Button>
                   </Link>
                 </div>
@@ -322,7 +325,7 @@ export default function QuotePage() {
                 </div>
                 <div className="text-center">
                   <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 sm:h-12 sm:w-12">
-                    <Trash2 className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
+                    <BadgeDollarSign className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="mb-2 font-bold">All-Inclusive Pricing</h3>
                   <p className="text-sm text-gray-600">Transparent quotes with no hidden fees</p>

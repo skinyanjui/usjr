@@ -33,7 +33,6 @@ export default function OfficeCleanoutsPage() {
       theme="blue"
       title="Office Cleanouts in Evansville"
       description="Professional office cleanout services for cubicles, desks, IT equipment, and complete office relocations"
-      heroImage="/office-cleanout-evansville.png"
       badges={['Same-Day Service', 'IT Equipment Handling', 'Secure Document Disposal']}
       features={[
         {

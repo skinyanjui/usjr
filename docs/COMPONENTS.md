@@ -9,7 +9,7 @@ This document provides comprehensive documentation for all reusable UI component
 All components support a consistent 6-color theme system:
 
 - `red` - Primary brand color, junk removal services
-- `orange` - Dumpster rental services
+- `orange` - Light demolition services
 - `green` - Cleaning services
 - `blue` - General business/commercial elements
 - `purple` - Location-specific branding (Owensboro)
@@ -36,7 +36,6 @@ Standardized service display card with image, icon, pricing, and call-to-action 
 interface ServiceCardProps {
 title: string
 description: string
-image: string
 price: string
 icon: LucideIcon
 color: "red" | "orange" | "green" | "blue" | "purple" | "teal"
@@ -54,7 +53,6 @@ import { Truck } from 'lucide-react'
 <ServiceCard
   title="Junk Removal"
   description="Professional junk removal service"
-  image="/service-image.jpg"
   price="From $99"
   icon={Truck}
   color="red"
@@ -66,7 +64,7 @@ import { Truck } from 'lucide-react'
 
 **Features**:
 
-- Responsive image with overlay icon and category badge
+- Solid color banner with icon and category badge
 - Color-coded theming with hover effects
 - Glassmorphic styling with scale animation
 - Dual call-to-action buttons (Service Details + Quote)
@@ -281,7 +279,6 @@ interface ServicePageTemplateProps {
 title: string
 description: string
 badges?: string[]
-heroImage?: string
 theme: "red" | "blue" | "green" | "orange" | "purple" | "teal"
 features: Array<{
 icon: LucideIcon
@@ -572,7 +569,7 @@ import { RESIDENTIAL_SERVICES, COMMERCIAL_SERVICES } from "@/components/ui/quote
 Choose colors based on service category:
 
 - **Red**: Junk removal, primary brand actions
-- **Orange**: Dumpster rental services
+- **Orange**: Light demolition services
 - **Green**: Cleaning services, eco-friendly features
 - **Blue**: General business, commercial services
 - **Purple/Teal**: Location-specific branding

@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button'
 import { Calendar, Clock, User } from 'lucide-react'
 import Link from 'next/link'
 import { settings } from '@/lib/cms-content'
-import Image from 'next/image'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -50,16 +50,9 @@ export default function JunkRemovalCostPage() {
                 <span>Uncle Sam Team</span>
               </div>
             </div>
-            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-              <Image
-                src="/junk-removal-pricing.png"
-                alt="Junk removal cost ranges and factors"
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-                priority
-              />
-            </div>
+            <SolidPanel color="red" label="Pricing Breakdown" className="mb-8 h-64">
+              Understand how load size, access, and item type shape every junk removal quote.
+            </SolidPanel>
           </header>
 
           <div className="prose prose-red max-w-none">

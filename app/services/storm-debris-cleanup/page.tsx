@@ -33,7 +33,6 @@ export default function StormDebrisCleanupPage() {
       theme="red"
       title="Storm Debris Cleanup in Evansville"
       description="Emergency storm debris removal including branches, fencing, shingles, and storm damage cleanup"
-      heroImage="/storm-debris-cleanup-evansville.png"
       badges={['Emergency Response', 'Insurance Coordination', 'Complete Cleanup']}
       features={[
         {
