@@ -7,7 +7,6 @@ export const NAV: NavItem[] = [
     label: 'Services',
     children: [
       { label: 'Junk Removal', href: '/services/junk-removal' },
-      { label: 'Dumpster Rental', href: '/services/dumpster-rental' },
       { label: 'Cleaning', href: '/cleaning' },
       { label: 'Estate Cleanouts', href: '/services/estate-cleanouts' },
       { label: 'Appliance Removal', href: '/services/appliance-removal' },

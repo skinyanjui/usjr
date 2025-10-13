@@ -23,7 +23,7 @@ import { settings } from '@/lib/cms-content'
 export function QuoteFormStandalone() {
   const [segment, setSegment] = useState<'residential' | 'commercial'>('residential')
   const [sector, setSector] = useState<
-    'junk-removal' | 'dumpster-rental' | 'cleaning' | 'light-demolition' | 'estate-cleanouts'
+    'junk-removal' | 'cleaning' | 'light-demolition' | 'estate-cleanouts'
   >('junk-removal')
   const [formData, setFormData] = useState({
     name: '',
@@ -43,10 +43,6 @@ export function QuoteFormStandalone() {
     // Sector-specific fields
     loadSize: '',
     itemsDescription: '',
-    rentalDuration: '',
-    dumpsterPlacement: '',
-    dumpsterMaterial: '',
-    drivewayProtection: false,
     structureType: '',
     approxSize: '',
     utilitiesDisconnected: false,
@@ -96,13 +92,6 @@ export function QuoteFormStandalone() {
     'Light Demolition',
   ]
 
-  const dumpsterRentalServices = [
-    '10-yard Dumpster',
-    '20-yard Dumpster',
-    '30-yard Dumpster',
-    '40-yard Dumpster',
-  ]
-
   const estateCleanoutServices = [
     'Estate Cleanout - Partial',
     'Estate Cleanout - Full',
@@ -140,8 +129,6 @@ export function QuoteFormStandalone() {
     switch (sector) {
       case 'junk-removal':
         return junkRemovalServices
-      case 'dumpster-rental':
-        return dumpsterRentalServices
       case 'estate-cleanouts':
         return estateCleanoutServices
       case 'light-demolition':
@@ -221,7 +208,6 @@ export function QuoteFormStandalone() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="junk-removal">Junk Removal</SelectItem>
-                <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
                 <SelectItem value="cleaning">Cleaning</SelectItem>
                 <SelectItem value="estate-cleanouts">Estate Cleanouts</SelectItem>
                 <SelectItem value="light-demolition">Light Demolition</SelectItem>
@@ -484,70 +470,6 @@ export function QuoteFormStandalone() {
                     value={formData.itemsDescription}
                     onChange={e => setFormData({ ...formData, itemsDescription: e.target.value })}
                   />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {sector === 'dumpster-rental' && (
-            <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
-                Dumpster Rental Details
-              </h3>
-              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-                <div>
-                  <Label htmlFor="dr-duration">Rental Duration</Label>
-                  <Select
-                    value={formData.rentalDuration}
-                    onValueChange={value => setFormData({ ...formData, rentalDuration: value })}
-                  >
-                    <SelectTrigger id="dr-duration" aria-label="Rental Duration" fit>
-                      <SelectValue placeholder="Select duration" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="3-days">1-3 days</SelectItem>
-                      <SelectItem value="7-days">7 days</SelectItem>
-                      <SelectItem value="14-days">14 days</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="dr-material">Material Type</Label>
-                  <Select
-                    value={formData.dumpsterMaterial}
-                    onValueChange={value => setFormData({ ...formData, dumpsterMaterial: value })}
-                  >
-                    <SelectTrigger id="dr-material" aria-label="Material Type" fit>
-                      <SelectValue placeholder="Select material" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="household">Household/General</SelectItem>
-                      <SelectItem value="construction">Construction/Demo</SelectItem>
-                      <SelectItem value="yard">Yard Waste</SelectItem>
-                      <SelectItem value="mixed">Mixed</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="dr-placement">Placement Instructions</Label>
-                  <Input
-                    id="dr-placement"
-                    placeholder="Driveway, street (if permitted), side yard, etc."
-                    value={formData.dumpsterPlacement}
-                    onChange={e => setFormData({ ...formData, dumpsterPlacement: e.target.value })}
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <Checkbox
-                    id="dr-driveway-protect"
-                    checked={formData.drivewayProtection}
-                    onCheckedChange={checked =>
-                      setFormData({ ...formData, drivewayProtection: checked as boolean })
-                    }
-                  />
-                  <Label htmlFor="dr-driveway-protect" className="text-sm">
-                    Add driveway protection boards
-                  </Label>
                 </div>
               </div>
             </div>

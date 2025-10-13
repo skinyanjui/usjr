@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Calendar, Clock, User, CheckCircle, DollarSign, Timer, Building2 } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { settings } from '@/lib/cms-content'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -93,16 +93,9 @@ export default function PropertyManagerPlaybookPage() {
                 <span>10 min read</span>
               </div>
             </div>
-            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-              <Image
-                src="/rental-turnover-cleanup.png"
-                alt="Property management turnover process"
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-                priority
-              />
-            </div>
+            <SolidPanel color="purple" label="Turnover Playbook" className="mb-8 h-64">
+              From trash-out to final inspection, keep vacancies short with a focused six-day plan.
+            </SolidPanel>
           </header>
 
           <div className="prose prose-lg max-w-none">

@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Calculator, Truck, Container, Sparkles, Info, Phone } from 'lucide-react'
+import { Calculator, Truck, Wrench, Sparkles, Info, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { settings } from '@/lib/cms-content'
 
@@ -36,10 +36,10 @@ export function PricingCalculator() {
           basePrice = size <= 25 ? 89 : size <= 50 ? 179 : size <= 75 ? 289 : 489
         }
         break
-      case 'dumpster-rental':
+      case 'light-demolition':
         {
           const size = loadSize?.[0] ?? 25
-          basePrice = size <= 25 ? 299 : size <= 50 ? 399 : size <= 75 ? 499 : 599
+          basePrice = size <= 25 ? 399 : size <= 50 ? 549 : size <= 75 ? 699 : 899
         }
         break
       case 'cleaning':
@@ -101,10 +101,10 @@ export function PricingCalculator() {
                   Junk Removal
                 </div>
               </SelectItem>
-              <SelectItem value="dumpster-rental">
+              <SelectItem value="light-demolition">
                 <div className="flex items-center gap-2">
-                  <Container className="h-4 w-4" />
-                  Dumpster Rental
+                  <Wrench className="h-4 w-4" />
+                  Light Demolition
                 </div>
               </SelectItem>
               <SelectItem value="cleaning">

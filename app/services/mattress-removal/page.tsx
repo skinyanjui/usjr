@@ -75,7 +75,6 @@ export default function MattressRemovalPage() {
         UNIFORM_OFFERS.ECO_FRIENDLY,
       ]}
       serviceCategory="Mattress Removal Service"
-      heroImage="/mattress-removal-evansville.png"
       features={[
         {
           icon: CheckCircle,

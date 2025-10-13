@@ -73,7 +73,6 @@ export default function YardWasteRemovalPage() {
         UNIFORM_OFFERS.ECO_FRIENDLY,
       ]}
       serviceCategory="Yard Waste Removal Service"
-      heroImage="/yard-waste-removal-evansville.png"
       features={[
         {
           icon: CheckCircle,

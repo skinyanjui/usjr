@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
-import Image from 'next/image'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -17,22 +17,16 @@ export const metadata: Metadata = {
 
 export default function EstateCleanoutGuideBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-white">
+    <div className="min-h-screen bg-red-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <SectionHeader
           title="Estate cleanout guide: compassionate planning and donation options"
           subtitle="Supportive steps during a difficult time"
         />
-        <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-          <Image
-            src="/estate-cleanout-evansville.png"
-            alt="Estate cleanout planning and donation options"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        <SolidPanel color="red" label="Estate Support" className="mb-8 h-64">
+          Gentle guidance to help Southern Indiana families navigate every step of an estate
+          cleanout.
+        </SolidPanel>
         <SectionHeader
           title="Compassionate Estate Cleanout Guide: Honoring Memory While Moving Forward"
           subtitle="Professional guidance from 8+ years of helping Southern Indiana families through difficult transitions"
@@ -45,16 +39,9 @@ export default function EstateCleanoutGuideBlog() {
           <span>💚 Based on 200+ estate cleanouts</span>
         </div>
 
-        <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-          <Image
-            src="/estate-cleanout-evansville.png"
-            alt="Compassionate estate cleanout service with dignity and respect"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        <SolidPanel color="slate" label="Dignified Care" className="mb-8 h-64">
+          We honor memories while coordinating donations, recycling, and respectful cleanouts.
+        </SolidPanel>
         <GlassCard className="p-8">
           <div className="prose prose-lg max-w-none">
             <p className="mb-6 text-lg text-gray-700">

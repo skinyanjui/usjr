@@ -21,7 +21,6 @@ export const CANONICAL_OVERRIDES: Record<string, string> = {
   '/services/hot-tub-removal': abs('/services/hot-tub-removal'),
   '/services/junk-removal': abs('/services/junk-removal'),
   '/services/appliance-removal': abs('/services/appliance-removal'),
-  '/services/dumpster-rental': abs('/services/dumpster-rental'),
   '/services/estate-cleanouts': abs('/services/estate-cleanouts'),
   '/services/garage-cleanout': abs('/services/garage-cleanout'),
 

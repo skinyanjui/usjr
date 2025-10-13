@@ -33,7 +33,6 @@ export default function PropertyManagementTurnoversPage() {
       theme="teal"
       title="Property Management Turnovers in Evansville"
       description="Fast, reliable cleanout services for apartments, evictions, foreclosures, and rental property turnovers"
-      heroImage="/property-management-turnovers-evansville.png"
       badges={['Property Manager Preferred', 'Fast Turnaround', 'Eviction Specialists']}
       features={[
         {

@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Calendar, Clock, User, CheckCircle, Timer, Trash2 } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { settings } from '@/lib/cms-content'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -74,16 +74,9 @@ export default function GarageCleanoutPage() {
                 <span>6 min read</span>
               </div>
             </div>
-            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-              <Image
-                src="/organized-garage-cleanout.png"
-                alt="Garage cleanout before and after"
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-                loading="lazy"
-              />
-            </div>
+            <SolidPanel color="blue" label="Garage Cleanout" className="mb-8 h-64">
+              Two focused days turn a packed garage into organized parking and storage space.
+            </SolidPanel>
           </header>
 
           <div className="prose prose-lg max-w-none">

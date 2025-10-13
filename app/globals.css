@@ -124,19 +124,6 @@
   }
 }
 
-/* Enforce solid backgrounds when gradient utility classes are present */
-/* This overrides Tailwind gradient utilities to use solid color only */
-.bg-gradient-to-b,
-.bg-gradient-to-t,
-.bg-gradient-to-l,
-.bg-gradient-to-r,
-.bg-gradient-to-bl,
-.bg-gradient-to-br,
-.bg-gradient-to-tl,
-.bg-gradient-to-tr {
-  background-image: none !important;
-}
-
 /* Glassmorphic utilities */
 .glass {
   background: rgba(255, 255, 255, 0.7);

@@ -3,8 +3,8 @@ import { GlassCard } from '@/components/ui/glass-card'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { SectionHeader } from '@/components/ui/section-header'
 import { Calendar, User, Clock, Recycle, AlertTriangle } from 'lucide-react'
-import Image from 'next/image'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ApplianceDisposalGuidePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className="min-h-screen bg-blue-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <header className="mb-12">
           <SectionHeader
@@ -44,16 +44,9 @@ export default function ApplianceDisposalGuidePage() {
         </header>
 
         <GlassCard className="mb-8 p-8">
-          <div className="relative mb-6 h-64 w-full overflow-hidden rounded-lg">
-            <Image
-              src="/appliance-removal-evansville.png"
-              alt="Professional appliance removal and recycling"
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-              loading="lazy"
-            />
-          </div>
+          <SolidPanel color="blue" label="Appliance Recycling" className="mb-6 h-64">
+            Proper appliance disposal keeps Evansville green. We'll handle the heavy lifting.
+          </SolidPanel>
 
           <div className="prose prose-lg max-w-none">
             <p className="mb-6 text-lg text-gray-700">

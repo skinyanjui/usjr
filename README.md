@@ -7,7 +7,7 @@ A comprehensive Next.js website for Uncle Sam Junk Removal, featuring both junk 
 ### Services
 
 - **Junk Removal**: Residential and commercial junk removal with transparent pricing
-- **Dumpster Rental**: Multiple sizes available for various projects
+- **Light Demolition**: Shed, deck, and small structure tear-down with debris hauling included
 - **Residential Cleaning**: Deep cleaning, recurring service, move-in/out, specialty cleaning
 - **Commercial Cleaning**: Office, retail, medical, and restaurant cleaning with after-hours service
 
@@ -79,7 +79,7 @@ See `docs/COMPONENTS.md` for detailed component documentation.
 The application uses a consistent 6-color theme system:
 
 - **Red**: Primary brand color for junk removal services
-- **Orange**: Dumpster rental services
+- **Orange**: Light demolition services
 - **Green**: Cleaning services
 - **Blue**: General business/commercial elements
 - **Purple**: Location-specific branding (Owensboro)
@@ -242,6 +242,7 @@ handleSubmit
 } = useQuoteForm()
 
 return (
+
 <form onSubmit={handleSubmit}>
 <ContactFields formData={formData} setFormData={setFormData} />
 <PhotoUpload 

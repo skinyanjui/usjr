@@ -23,21 +23,20 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services',
   description:
-    'Uncle Sam Junk Removal is a veteran-owned junk removal, trash removal, and dumpster rental company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Whether you need to get rid of junk, remove old furniture, haul away appliances, or clean out your house, we provide professional hauling services. Professional cleaning by women-owned Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.',
+    'Uncle Sam Junk Removal is a veteran-owned junk removal and cleaning company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Whether you need to get rid of junk, remove old furniture, haul away appliances, or clean out your house, we provide professional hauling services. Professional cleaning by women-owned Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.',
   keywords:
-    'evansville junk removal, trash removal evansville, dumpster rental evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners, haul away service, get rid of junk, remove old furniture',
+    'evansville junk removal, trash removal evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners, haul away service, get rid of junk, remove old furniture',
   robots: 'index, follow',
   ...buildCanonicalMetadata('/about', baseUrl),
 }
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gray-50">
       <PageHero
         title="About Uncle Sam Junk Removal"
-        description="Veteran-owned junk removal, dumpster rental, and professional cleaning in Evansville, IN and the Tri-State."
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        description="Veteran-owned junk removal and professional cleaning in Evansville, IN and the Tri-State."
+        color="blue"
       />
 
       {/* SEO: LocalBusiness JSON-LD */}
@@ -49,7 +48,7 @@ export default function AboutPage() {
           url: 'https://unclesamjunkremoval.com',
           telephone: settings.phoneE164,
           description:
-            'Veteran-owned junk removal and dumpster rental in Evansville, IN. Professional cleaning by women-owned Karcher Cleaners.',
+            'Veteran-owned junk removal in Evansville, IN. Professional cleaning by women-owned Karcher Cleaners.',
           foundingDate: '2025',
           founder: {
             '@type': 'Person',
@@ -59,7 +58,6 @@ export default function AboutPage() {
           sameAs: Object.values(settings.socialMedia || {}),
           knowsAbout: [
             'junk removal',
-            'dumpster rental',
             'appliance removal',
             'estate cleanouts',
             'yard waste removal',
@@ -87,8 +85,8 @@ export default function AboutPage() {
                 <p>
                   Founded in 2025 by <strong>Samuel Kinyanjui</strong> — a United States Marine
                   Corps veteran — Uncle Sam Junk Removal serves <strong>Evansville, IN</strong> and
-                  the Tri-State with dependable, same-day junk removal and dumpster rental. We built
-                  this company on Marine Corps values: integrity, respect, and service.
+                  the Tri-State with dependable, same-day junk removal and light demolition support.
+                  We built this company on Marine Corps values: integrity, respect, and service.
                 </p>
                 <p>
                   Our professional cleaning services are provided by{' '}
@@ -157,7 +155,7 @@ export default function AboutPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Truck className="mt-0.5 h-5 w-5 text-blue-600" />
-                  <span>Small dumpster rental options</span>
+                  <span>Light demolition, shed, and deck tear-downs</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Shield className="mt-0.5 h-5 w-5 text-red-600" />

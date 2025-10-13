@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
-import Image from 'next/image'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { SolidPanel } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -15,22 +15,15 @@ export const metadata: Metadata = {
 
 export default function ShedRemovalGuideBlog() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+    <div className="min-h-screen bg-green-50">
       <article className="mx-auto max-w-4xl px-4 py-16">
         <SectionHeader
           title="Shed removal in Evansville: permit tips, pricing, and timeline"
           subtitle="Plan your project with confidence"
         />
-        <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg">
-          <Image
-            src="/shed-removal-evansville.png"
-            alt="Shed removal process and planning"
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        <SolidPanel color="orange" label="Shed Removal" className="mb-8 h-64">
+          Prepare for tear-down day with clear access, utility checks, and a plan for debris.
+        </SolidPanel>
         <GlassCard className="p-8">
           <p className="mb-4 text-gray-700">
             Most small sheds under 200 sq ft don't require permits in many jurisdictions, but always

@@ -45,58 +45,64 @@ export interface LocationPageTemplateProps {
 
 const themeConfig = {
   red: {
-    gradient: 'from-red-50 to-white',
+    background: 'bg-red-50',
     primary: 'text-red-600',
     button: 'bg-red-600 hover:bg-red-700',
     outline: 'border-red-800 text-red-800 hover:bg-red-800',
     accent: 'bg-red-50',
     accentText: 'text-red-800',
     accentTextLight: 'text-red-700',
+    ctaBackground: 'bg-red-100',
   },
   blue: {
-    gradient: 'from-blue-50 to-white',
+    background: 'bg-blue-50',
     primary: 'text-blue-600',
     button: 'bg-blue-600 hover:bg-blue-700',
     outline: 'border-blue-800 text-blue-800 hover:bg-blue-800',
     accent: 'bg-blue-50',
     accentText: 'text-blue-800',
     accentTextLight: 'text-blue-700',
+    ctaBackground: 'bg-blue-100',
   },
   green: {
-    gradient: 'from-green-50 to-white',
+    background: 'bg-green-50',
     primary: 'text-green-600',
     button: 'bg-green-600 hover:bg-green-700',
     outline: 'border-green-800 text-green-800 hover:bg-green-800',
     accent: 'bg-green-50',
     accentText: 'text-green-800',
     accentTextLight: 'text-green-700',
+    ctaBackground: 'bg-green-100',
   },
   orange: {
-    gradient: 'from-orange-50 to-white',
+    background: 'bg-orange-50',
     primary: 'text-orange-600',
     button: 'bg-orange-600 hover:bg-orange-700',
     outline: 'border-orange-800 text-orange-800 hover:bg-orange-800',
     accent: 'bg-orange-50',
     accentText: 'text-orange-800',
     accentTextLight: 'text-orange-700',
+    ctaBackground: 'bg-orange-100',
   },
   purple: {
-    gradient: 'from-purple-50 to-white',
+    background: 'bg-purple-50',
     primary: 'text-purple-600',
     button: 'bg-purple-600 hover:bg-purple-700',
     outline: 'border-purple-800 text-purple-800 hover:bg-purple-800',
     accent: 'bg-purple-50',
     accentText: 'text-purple-800',
     accentTextLight: 'text-purple-700',
+    ctaBackground: 'bg-purple-100',
   },
   teal: {
-    gradient: 'from-teal-50 to-white',
+    background: 'bg-teal-50',
     primary: 'text-teal-600',
     button: 'bg-teal-600 hover:bg-teal-700',
     outline: 'border-teal-800 text-teal-800 hover:bg-teal-800',
     accent: 'bg-teal-50',
     accentText: 'text-teal-800',
     accentTextLight: 'text-teal-700',
+    ctaBackground: 'bg-teal-100',
   },
 }
 
@@ -116,18 +122,25 @@ export function LocationPageTemplate({
   ctaSecondary = 'Text Photos for Instant Quote',
 }: LocationPageTemplateProps) {
   const colors = themeConfig[theme]
+  const heroColors = {
+    red: 'red',
+    blue: 'blue',
+    green: 'green',
+    orange: 'orange',
+    purple: 'purple',
+    teal: 'teal',
+  } as const
 
   return (
     <main className="min-h-screen">
       <PageHero
         title={`Professional Junk Removal in ${locationName}, ${state}`}
         description={tagline}
-        imageSrc="/junk-removal-evansville.png"
-        priority
+        color={heroColors[theme] ?? 'blue'}
       />
 
       {/* Local Expertise Section */}
-      <section className={`bg-gradient-to-b py-16 ${colors.gradient}`}>
+      <section className={`py-16 ${colors.background}`}>
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-900">
@@ -268,9 +281,7 @@ export function LocationPageTemplate({
               ))}
             </div>
 
-            <div
-              className={`bg-gradient-to-r from-${theme}-100 to-${theme === 'red' ? 'orange' : theme === 'blue' ? 'indigo' : theme === 'green' ? 'emerald' : theme === 'orange' ? 'yellow' : theme === 'purple' ? 'pink' : 'cyan'}-100 rounded-lg p-6`}
-            >
+            <div className={`rounded-lg p-6 ${colors.ctaBackground}`}>
               <h3 className="mb-3 text-xl font-semibold text-gray-900">
                 Ready to Clean Up {locationName}?
               </h3>

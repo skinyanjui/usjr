@@ -19,7 +19,6 @@ export default function MoveInMoveOutPage() {
     <ServicePageTemplate
       title="Move-In/Move-Out Cleaning"
       description="Complete property cleaning for life transitions. Professional move-in and move-out cleaning services in Evansville. Deep cleaning for fresh starts and maximum deposit returns using natural, eco-friendly products."
-      heroImage="/natural-cleaning-service.png"
       theme="purple"
       badges={['From $200', '4-6 Hours', 'Natural Products']}
       features={[

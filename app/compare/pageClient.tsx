@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Check, X, Truck, Container, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
+import { Check, X, Truck, Wrench, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 
 const services = [
@@ -29,22 +29,22 @@ const services = [
     color: 'red',
   },
   {
-    id: 'dumpster-rental',
-    name: 'Dumpster Rental',
-    icon: Container,
-    description: 'Self-service dumpster rental for DIY projects',
-    priceRange: '$299-$599',
-    timeframe: '7-14 day rental',
-    bestFor: 'Large projects, construction, renovations',
+    id: 'light-demolition',
+    name: 'Light Demolition',
+    icon: Wrench,
+    description: 'Shed, deck, and playset tear-down with debris hauling',
+    priceRange: 'From $399',
+    timeframe: 'Scheduled within 3-5 days',
+    bestFor: 'Small structure removal & exterior projects',
     features: [
-      'Multiple sizes available',
-      '7-14 day rental period',
-      'Delivery & pickup included',
-      'Flat-rate pricing',
-      'Commercial & residential',
-      'Flexible scheduling',
+      'Careful dismantling',
+      'Debris hauling included',
+      'Permit guidance when needed',
+      'Licensed & insured crew',
+      'Responsible disposal',
+      'Transparent quotes',
     ],
-    notIncluded: ['Labor not included', 'Hazardous materials', 'Overweight fees may apply'],
+    notIncluded: ['Major structural demo', 'Hazardous materials', 'Utility disconnects'],
     color: 'orange',
   },
   {

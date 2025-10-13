@@ -72,7 +72,6 @@ export default function ApplianceRemovalPage() {
       description="Professional appliance removal, old appliance pickup, and appliance disposal with safe disconnection and eco-friendly disposal throughout Southern Indiana. Whether you need refrigerator removal, washer dryer removal, or any appliance disposal, we handle it all with specialized equipment."
       badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, 'Safe Disconnection', 'EPA Compliant']}
       serviceCategory="Appliance Removal Service"
-      heroImage="/appliance-removal-evansville.png"
       features={[
         {
           icon: Truck,

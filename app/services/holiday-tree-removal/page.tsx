@@ -33,7 +33,6 @@ export default function HolidayTreeRemovalPage() {
       theme="green"
       title="Holiday Tree Removal in Evansville"
       description="Convenient Christmas tree removal and seasonal landscaping cleanup services"
-      heroImage="/holiday-tree-removal-evansville.png"
       badges={['Seasonal Service', 'Eco-Friendly Disposal', 'Christmas Specialists']}
       features={[
         {

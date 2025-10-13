@@ -18,7 +18,7 @@ Date: 2025-08-28
 
 2. Template usage inconsistency
 
-- Using `ServicePageTemplate`: junk-removal, estate-cleanouts, garage-cleanout, appliance-removal, hot-tub-removal, dumpster-rental.
+- Using `ServicePageTemplate`: junk-removal, estate-cleanouts, garage-cleanout, appliance-removal, hot-tub-removal, storm-debris-cleanup.
 - Not using template (custom layout): mattress-removal, shed-removal, yard-waste-removal, light-demolition.
 
 3. Theme consistency
