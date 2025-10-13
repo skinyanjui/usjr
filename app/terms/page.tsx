@@ -21,7 +21,7 @@ export default function TermsPage() {
         color="slate"
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
-        <p className="mb-2 text-3xl font-bold text-gray-900">Service terms overview</p>
+        <h2 className="mb-2 text-3xl font-bold text-gray-900">Service terms overview</h2>
         <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
 
         <section className="mb-8">
