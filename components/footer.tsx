@@ -131,18 +131,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/html-sitemap"
-                    className="text-white transition-colors hover:text-red-200"
-                  >
-                    Sitemap (HTML)
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/sitemap.xml"
                     className="text-white transition-colors hover:text-red-200"
                   >
-                    Sitemap (XML)
+                    Sitemap
                   </Link>
                 </li>
               </ul>
