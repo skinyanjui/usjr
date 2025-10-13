@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { PageHero } from '@/components/ui/page-hero'
+import { settings } from '@/lib/cms-content'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Uncle Sam Junk Removal',
@@ -21,9 +21,9 @@ export default function TermsPage() {
         color="slate"
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
+
         <p className="mb-2 text-3xl font-bold text-gray-900">Service terms overview</p>
         <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
-
         <section className="mb-8">
           <h2 className="mb-2 text-2xl font-bold text-gray-900">Agreement to Terms</h2>
           <p className="text-gray-700">
