@@ -31,9 +31,10 @@ export default function HtmlSitemapPage() {
       />
 
       <div className="mx-auto max-w-5xl px-4 pt-8 pb-16">
-        <p className="mb-10 text-gray-600">
-          Need a quick overview of everything on our site? Use the sections below to jump to top
-          pages, services, and locations. Search engines should continue to rely on the{' '}
+
+        <h2 className="mb-6 text-3xl font-bold sm:text-4xl">Explore the sitemap</h2>
+        <p className="mb-8 text-gray-600">
+          Browse all pages on our site. For search engines, see{' '}
           <Link href="/sitemap.xml" className="text-red-700 underline">
             XML sitemap
           </Link>{' '}

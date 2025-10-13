@@ -7,9 +7,11 @@
 
 ## Duplicate findings
 
-- `/html-sitemap`: Displayed the hero heading "Sitemap" twice (hero plus on-page heading). Kept the hero and replaced the in-page `<h1>` with section headings so the hierarchy flows from the hero without duplicate wording.
+
+- `/html-sitemap`: Displayed the hero heading "Sitemap" twice (hero plus on-page heading). Updated the on-page heading copy to "Explore the sitemap" to avoid duplication.
 - `/quote`: Repeated "Get Your Free Quote Today" as both the hero and a secondary heading. Retitled the secondary heading to "Pick the fastest way to get your quote."
-- `/terms`: Repeated "Terms of Service" as both the hero and a body heading. Introduced a distinct "Service terms overview" `<h2>` with supporting copy to keep the hero unique while maintaining a clear heading structure.
+- `/terms`: Repeated "Terms of Service" as both the hero and a body heading. Replaced the body heading with a descriptive summary paragraph instead of a second heading.
+
 
 ## Result
 
