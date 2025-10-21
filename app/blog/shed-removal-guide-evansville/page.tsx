@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { GlassCard } from '@/components/ui/glass-card'
-import { SectionHeader } from '@/components/ui/section-header'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { SolidPanel } from '@/components/ui/solid-panel'
+import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -16,50 +13,86 @@ export const metadata: Metadata = {
 
 export default function ShedRemovalGuideBlog() {
   return (
-    <div className="min-h-screen bg-green-50">
-      <article className="mx-auto max-w-4xl px-4 py-16">
-        <SectionHeader
-          title="Shed removal in Evansville: permit tips, pricing, and timeline"
-          subtitle="Plan your project with confidence"
-        />
-        <SolidPanel color="orange" label="Shed Removal" className="mb-8 h-64">
-          Prepare for tear-down day with clear access, utility checks, and a plan for debris.
-        </SolidPanel>
-        <GlassCard className="p-8">
-          <p className="mb-4 text-gray-700">
-            Most small sheds under 200 sq ft don't require permits in many jurisdictions, but always
-            check local rules. Expect $289–649 for removal depending on size, materials, access, and
-            whether concrete pads need demo.
-          </p>
-          <h2 className="mt-6 mb-2 text-xl font-bold text-gray-900">Quick Planning Checklist</h2>
-          <ul className="list-disc pl-6 text-gray-700">
-            <li>Empty the shed beforehand or ask for a cleanout quote</li>
-            <li>Confirm utility disconnections (electric)</li>
-            <li>Clear a 4-foot access path to the structure</li>
-          </ul>
+    <BlogPostTemplate
+      meta={{
+        title: 'Shed Removal in Evansville: Permit Tips, Pricing, and Timeline',
+        excerpt:
+          "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
+        author: 'Uncle Sam Team',
+        date: 'January 22, 2025',
+        readTime: '7 min read',
+        category: 'Light Demolition',
+        tags: ['Shed Removal', 'Permits', 'Demolition', 'Evansville'],
+      }}
+      relatedPosts={[
+        {
+          title: 'Hot Tub Removal: What to Know Before We Arrive',
+          href: '/blog/hot-tub-removal-what-to-know',
+          excerpt:
+            'Essential preparation steps for hot tub removal including electrical disconnection and access requirements.',
+          category: 'Service Guide',
+        },
+        {
+          title: 'Junk Removal Cost in Tri-State Area',
+          href: '/blog/junk-removal-cost-tri-state',
+          excerpt: 'Complete pricing guide for junk removal services in the Tri-State area.',
+          category: 'Pricing Guide',
+        },
+      ]}
+    >
+      <p>
+        Most small sheds under 200 sq ft don't require permits in many jurisdictions, but always
+        check local rules. Expect $289–649 for removal depending on size, materials, access, and
+        whether concrete pads need demo.
+      </p>
 
-          <div className="mt-8 rounded-lg bg-gradient-to-br from-orange-600 to-red-600 p-8 text-center text-white shadow-lg">
-            <h3 className="mb-3 text-2xl font-bold">Need Professional Shed Removal?</h3>
-            <p className="mb-6 text-lg">
-              Get a free estimate for complete shed removal and disposal in Evansville.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/quote"
-                className="rounded-lg bg-white px-8 py-3 font-semibold text-orange-600 transition-transform hover:scale-105 hover:shadow-xl"
-              >
-                Get Free Quote
-              </Link>
-              <Link
-                href="/services/shed-removal"
-                className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all hover:bg-white hover:text-orange-600"
-              >
-                View Shed Removal Services
-              </Link>
-            </div>
-          </div>
-        </GlassCard>
-      </article>
-    </div>
+      <h2>Quick Planning Checklist</h2>
+      <ul>
+        <li>Empty the shed beforehand or ask for a cleanout quote</li>
+        <li>Confirm utility disconnections (electric)</li>
+        <li>Clear a 4-foot access path to the structure</li>
+      </ul>
+
+      <h2>Permit Requirements in Evansville</h2>
+      <p>
+        Before beginning your shed removal project, it's important to understand local permit
+        requirements. While many small structures don't require permits for removal, larger sheds or
+        those connected to utilities may have different requirements.
+      </p>
+
+      <h2>Pricing Factors</h2>
+      <p>Several factors influence the cost of shed removal:</p>
+      <ul>
+        <li>
+          <strong>Size:</strong> Larger sheds require more labor and disposal capacity
+        </li>
+        <li>
+          <strong>Materials:</strong> Wood sheds are typically easier to dismantle than metal ones
+        </li>
+        <li>
+          <strong>Access:</strong> Easy access reduces labor time and costs
+        </li>
+        <li>
+          <strong>Foundation:</strong> Concrete pad removal adds to the total cost
+        </li>
+        <li>
+          <strong>Contents:</strong> Empty sheds are faster and cheaper to remove
+        </li>
+      </ul>
+
+      <h2>Timeline Expectations</h2>
+      <p>
+        Most shed removals can be completed in a single day. The process typically involves
+        dismantling the structure, loading materials, and hauling away debris. Larger sheds or those
+        with concrete foundations may take longer.
+      </p>
+
+      <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
+        <p className="text-lg font-medium text-gray-900">
+          <strong>Pro Tip:</strong> Prepare for tear-down day with clear access, utility checks, and
+          a plan for debris disposal to ensure a smooth, efficient removal process.
+        </p>
+      </div>
+    </BlogPostTemplate>
   )
 }
