@@ -19,13 +19,13 @@ export function PageHero({ title, description, color = 'blue' }: PageHeroProps) 
 
   return (
     <section
-      className={`flex min-h-[40vh] items-end md:min-h-[50vh] ${backgroundClass} text-white`}
+      className={`flex min-h-[20vh] items-end md:min-h-[25vh] ${backgroundClass} text-white`}
     >
       <div className="w-full">
-        <div className="mx-auto max-w-7xl px-4 py-10 md:py-16">
-          <h1 className="mb-3 text-3xl font-bold text-white sm:text-5xl md:text-6xl">{title}</h1>
+        <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
+          <h1 className="mb-2 text-2xl font-bold text-white sm:text-3xl md:text-4xl">{title}</h1>
           {description && (
-            <p className="max-w-3xl text-base text-white sm:text-lg md:text-xl">{description}</p>
+            <p className="max-w-3xl text-sm text-white sm:text-base md:text-lg">{description}</p>
           )}
         </div>
       </div>

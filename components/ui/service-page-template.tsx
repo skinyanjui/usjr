@@ -150,10 +150,10 @@ export function ServicePageTemplate({
     <main className="min-h-screen">
       <PageHero title={title} description={description} color={heroColorMap[theme]} />
       {/* Hero Section */}
-      <section className={`pt-32 pb-16 ${classes.background}`}>
+      <section className={`pt-12 pb-12 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
               What to Expect
             </h2>
 
@@ -169,9 +169,9 @@ export function ServicePageTemplate({
             )}
           </div>
 
-          <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
+          <div className="mb-12 grid items-center gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl">
+              <h2 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">
                 Why Choose Uncle Sam Junk Removal?
               </h2>
               <div className="space-y-4">
