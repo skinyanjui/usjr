@@ -2,7 +2,7 @@
 
 import type React from 'react'
 import Link from 'next/link'
-import { Calendar, Clock, User, Share2, ArrowLeft, Tag, CheckCircle } from 'lucide-react'
+import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
 
