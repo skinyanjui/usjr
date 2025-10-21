@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import Link from 'next/link'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -227,6 +228,27 @@ export default function MattressDisposalBlog() {
             costs $89-149 and offers the most convenient, reliable solution for disposing of old
             mattresses while ensuring proper environmental handling.
           </p>
+
+          <div className="mt-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 p-8 text-center text-white shadow-lg">
+            <h3 className="mb-3 text-2xl font-bold">Ready to Remove Your Old Mattress?</h3>
+            <p className="mb-6 text-lg">
+              Get fast, affordable mattress removal in Evansville with same-day service available.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/quote"
+                className="rounded-lg bg-white px-8 py-3 font-semibold text-blue-600 transition-transform hover:scale-105 hover:shadow-xl"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/services/mattress-removal"
+                className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all hover:bg-white hover:text-blue-600"
+              >
+                Learn More About Our Service
+              </Link>
+            </div>
+          </div>
         </GlassCard>
       </article>
     </div>

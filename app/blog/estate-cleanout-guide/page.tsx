@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -386,6 +387,30 @@ export default function EstateCleanoutGuideBlog() {
                 Whether you need help with the entire process or just the final removal and disposal
                 phase, we're here to support your family during this difficult time.
               </p>
+            </div>
+
+            <div className="mt-8 rounded-lg bg-gradient-to-br from-red-600 to-pink-600 p-8 text-center text-white shadow-lg">
+              <h3 className="mb-3 text-2xl font-bold">
+                Compassionate Estate Cleanout Services in Evansville
+              </h3>
+              <p className="mb-6 text-lg">
+                Let our experienced team help your family through this difficult transition with care
+                and respect.
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <Link
+                  href="/services/estate-cleanouts"
+                  className="rounded-lg bg-white px-8 py-3 font-semibold text-red-600 transition-transform hover:scale-105 hover:shadow-xl"
+                >
+                  View Estate Cleanout Services
+                </Link>
+                <Link
+                  href="/quote"
+                  className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all hover:bg-white hover:text-red-600"
+                >
+                  Request a Consultation
+                </Link>
+              </div>
             </div>
           </div>
         </GlassCard>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -36,6 +37,27 @@ export default function ShedRemovalGuideBlog() {
             <li>Confirm utility disconnections (electric)</li>
             <li>Clear a 4-foot access path to the structure</li>
           </ul>
+
+          <div className="mt-8 rounded-lg bg-gradient-to-br from-orange-600 to-red-600 p-8 text-center text-white shadow-lg">
+            <h3 className="mb-3 text-2xl font-bold">Need Professional Shed Removal?</h3>
+            <p className="mb-6 text-lg">
+              Get a free estimate for complete shed removal and disposal in Evansville.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/quote"
+                className="rounded-lg bg-white px-8 py-3 font-semibold text-orange-600 transition-transform hover:scale-105 hover:shadow-xl"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/services/shed-removal"
+                className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all hover:bg-white hover:text-orange-600"
+              >
+                View Shed Removal Services
+              </Link>
+            </div>
+          </div>
         </GlassCard>
       </article>
     </div>

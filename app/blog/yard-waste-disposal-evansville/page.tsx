@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { GlassCard } from '@/components/ui/glass-card'
 import { SectionHeader } from '@/components/ui/section-header'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -36,6 +37,27 @@ export default function YardWasteDisposalBlog() {
             <li>Keep yard waste separate from trash to maximize recycling</li>
             <li>Ask about seasonal cleanup discounts</li>
           </ul>
+
+          <div className="mt-8 rounded-lg bg-gradient-to-br from-green-600 to-emerald-600 p-8 text-center text-white shadow-lg">
+            <h3 className="mb-3 text-2xl font-bold">Schedule Yard Waste Removal Today</h3>
+            <p className="mb-6 text-lg">
+              Fast, eco-friendly yard waste pickup in Evansville. Same-day service available.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/quote"
+                className="rounded-lg bg-white px-8 py-3 font-semibold text-green-600 transition-transform hover:scale-105 hover:shadow-xl"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/services/yard-waste-removal"
+                className="rounded-lg border-2 border-white px-8 py-3 font-semibold text-white transition-all hover:bg-white hover:text-green-600"
+              >
+                View Yard Waste Services
+              </Link>
+            </div>
+          </div>
         </GlassCard>
       </article>
     </div>
