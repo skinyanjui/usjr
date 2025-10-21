@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
-import { GlassCard } from '@/components/ui/glass-card'
-import { ThemedButton } from '@/components/ui/themed-button'
-import { SectionHeader } from '@/components/ui/section-header'
-import { Calendar, User, Clock, CheckCircle } from 'lucide-react'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { SolidPanel } from '@/components/ui/solid-panel'
+import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -19,213 +15,159 @@ export const metadata: Metadata = {
 
 export default function SpringCleaningChecklistPage() {
   return (
-    <div className="min-h-screen bg-green-50">
-      <article className="mx-auto max-w-4xl px-4 py-16">
-        <header className="mb-12">
-          <SectionHeader
-            title="Ultimate Spring Cleaning Checklist for Southern Indiana Homes"
-            subtitle="Transform your home with our comprehensive room-by-room cleaning guide"
-          />
+    <BlogPostTemplate
+      meta={{
+        title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
+        excerpt:
+          'Complete spring cleaning guide for Southern Indiana residents with room-by-room checklist and eco-friendly tips.',
+        author: 'Sarah Johnson',
+        date: 'March 1, 2024',
+        readTime: '12 min read',
+        category: 'Spring Cleaning',
+        tags: ['Spring Cleaning', 'Checklist', 'Southern Indiana', 'Eco-Friendly'],
+      }}
+      relatedPosts={[
+        {
+          title: 'Garage Cleanout in 48 Hours',
+          href: '/blog/evansville-garage-cleanout-48-hours',
+          excerpt: 'Step-by-step guide to completely clean out your garage in just 48 hours.',
+          category: 'How-To Guide',
+        },
+        {
+          title: 'Yard Waste Disposal in Evansville',
+          href: '/blog/yard-waste-disposal-evansville',
+          excerpt: 'Eco-friendly ways to handle yard waste in Evansville.',
+          category: 'Yard Waste',
+        },
+      ]}
+    >
+      <p>
+        Spring has arrived in Southern Indiana, and it's time to refresh your home after the long winter months. This comprehensive checklist helps you tackle every room systematically while using eco-friendly methods safe for your family and environment.
+      </p>
 
-          <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span>March 1, 2024</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <User className="h-4 w-4" />
-              <span>Sarah Johnson, Cleaning Specialist</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              <span>12 min read</span>
-            </div>
-          </div>
-        </header>
+      <h2>Before You Begin: Essential Supplies</h2>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <h3>Natural Cleaning Products:</h3>
+          <ul>
+            <li>White vinegar</li>
+            <li>Baking soda</li>
+            <li>Lemon juice</li>
+            <li>Castile soap</li>
+            <li>Essential oils (tea tree, lavender)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools & Equipment:</h3>
+          <ul>
+            <li>Microfiber cloths</li>
+            <li>Vacuum with attachments</li>
+            <li>Mop and bucket</li>
+            <li>Scrub brushes</li>
+            <li>Rubber gloves</li>
+          </ul>
+        </div>
+      </div>
 
-        <GlassCard className="mb-8 p-8">
-          <SolidPanel color="green" label="Spring Refresh" className="mb-6 h-64">
-            Welcome the season with a natural cleaning plan tailored for Southern Indiana homes.
-          </SolidPanel>
+      <h2>Room-by-Room Checklist</h2>
 
-          <div className="prose prose-lg max-w-none">
-            <p className="mb-6 text-lg text-gray-700">
-              Spring has arrived in Southern Indiana, and it's time to refresh your home after the
-              long winter months. This comprehensive checklist will help you tackle every room
-              systematically while using eco-friendly methods that are safe for your family and the
-              environment.
-            </p>
+      <h3>Living Room & Family Room</h3>
+      <ul>
+        <li>Dust all surfaces, electronics, and decorations</li>
+        <li>Vacuum upholstered furniture and cushions</li>
+        <li>Clean windows and window sills</li>
+        <li>Organize entertainment center</li>
+        <li>Deep clean carpets or mop hardwood</li>
+        <li>Wash throw pillows and blankets</li>
+        <li>Clean light fixtures and ceiling fans</li>
+      </ul>
 
-            <h2 className="mt-8 mb-4 text-2xl font-bold text-gray-900">
-              Before You Begin: Essential Supplies
-            </h2>
-            <div className="mb-6 grid gap-6 md:grid-cols-2">
-              <div>
-                <h3 className="mb-3 text-lg font-semibold text-gray-800">
-                  Natural Cleaning Products:
-                </h3>
-                <ul className="list-disc pl-6">
-                  <li>White vinegar</li>
-                  <li>Baking soda</li>
-                  <li>Lemon juice</li>
-                  <li>Castile soap</li>
-                  <li>Essential oils (tea tree, lavender)</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="mb-3 text-lg font-semibold text-gray-800">Tools & Equipment:</h3>
-                <ul className="list-disc pl-6">
-                  <li>Microfiber cloths</li>
-                  <li>Vacuum cleaner with attachments</li>
-                  <li>Mop and bucket</li>
-                  <li>Scrub brushes</li>
-                  <li>Rubber gloves</li>
-                </ul>
-              </div>
-            </div>
+      <h3>Kitchen</h3>
+      <ul>
+        <li>Deep clean appliances inside and out</li>
+        <li>Scrub and disinfect countertops and backsplash</li>
+        <li>Clean out refrigerator and freezer</li>
+        <li>Organize pantry and check expiration dates</li>
+        <li>Degrease range hood and clean filters</li>
+        <li>Sanitize sink and faucet</li>
+        <li>Mop floors and clean baseboards</li>
+      </ul>
 
-            <h2 className="mt-8 mb-4 text-2xl font-bold text-gray-900">Room-by-Room Checklist</h2>
+      <h3>Bedrooms</h3>
+      <ul>
+        <li>Wash all bedding including comforters</li>
+        <li>Rotate and flip mattresses</li>
+        <li>Organize closets and donate unused clothing</li>
+        <li>Dust furniture and clean mirrors</li>
+        <li>Vacuum under beds and in corners</li>
+        <li>Clean windows and wash curtains</li>
+        <li>Organize dresser drawers</li>
+      </ul>
 
-            <h3 className="mt-6 mb-4 text-xl font-semibold text-gray-800">
-              🏠 Living Room & Family Room
-            </h3>
-            <div className="mb-6 space-y-2">
-              {[
-                'Dust all surfaces, including electronics and decorations',
-                'Vacuum upholstered furniture and cushions',
-                'Clean windows and window sills',
-                'Organize entertainment center and cable management',
-                'Deep clean carpets or mop hardwood floors',
-                'Wash throw pillows and blankets',
-                'Clean light fixtures and ceiling fans',
-              ].map((task, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span>{task}</span>
-                </div>
-              ))}
-            </div>
+      <h3>Bathrooms</h3>
+      <ul>
+        <li>Scrub shower, tub, and tile grout</li>
+        <li>Disinfect toilet inside and out</li>
+        <li>Clean mirrors and medicine cabinet</li>
+        <li>Organize under-sink storage</li>
+        <li>Wash bath mats and shower curtain</li>
+        <li>Clean exhaust fan</li>
+        <li>Mop floors</li>
+      </ul>
 
-            <h3 className="mt-6 mb-4 text-xl font-semibold text-gray-800">🍳 Kitchen</h3>
-            <div className="mb-6 space-y-2">
-              {[
-                'Deep clean appliances inside and out',
-                'Scrub and disinfect countertops and backsplash',
-                'Clean out refrigerator and freezer',
-                'Organize pantry and check expiration dates',
-                'Degrease range hood and clean filters',
-                'Sanitize sink and faucet',
-                'Mop floors and clean baseboards',
-              ].map((task, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span>{task}</span>
-                </div>
-              ))}
-            </div>
+      <h3>Garage & Basement</h3>
+      <ul>
+        <li>Sort through storage items</li>
+        <li>Donate or dispose of unused items</li>
+        <li>Organize tools and equipment</li>
+        <li>Sweep and clean floors</li>
+        <li>Check for moisture or pest issues</li>
+        <li>Organize seasonal items</li>
+      </ul>
 
-            <h3 className="mt-6 mb-4 text-xl font-semibold text-gray-800">🛏️ Bedrooms</h3>
-            <div className="mb-6 space-y-2">
-              {[
-                'Wash all bedding, including comforters and pillows',
-                'Rotate and flip mattresses',
-                'Organize closets and donate unused clothing',
-                'Dust furniture and clean mirrors',
-                'Vacuum under beds and in corners',
-                'Clean windows and wash curtains',
-                'Organize dresser drawers and nightstands',
-              ].map((task, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span>{task}</span>
-                </div>
-              ))}
-            </div>
+      <h2>Eco-Friendly Cleaning Recipes</h2>
 
-            <h3 className="mt-6 mb-4 text-xl font-semibold text-gray-800">🚿 Bathrooms</h3>
-            <div className="mb-6 space-y-2">
-              {[
-                'Scrub shower, tub, and tile grout',
-                'Disinfect toilet inside and out',
-                'Clean mirrors and medicine cabinet',
-                'Replace shower curtain or clean glass doors',
-                'Organize under-sink storage',
-                'Wash bath mats and towels',
-                'Clean exhaust fan and light fixtures',
-              ].map((task, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" />
-                  <span>{task}</span>
-                </div>
-              ))}
-            </div>
+      <h3>All-Purpose Cleaner</h3>
+      <p>Mix 1 part white vinegar with 1 part water, add 10 drops of essential oil. Great for countertops, appliances, and most surfaces.</p>
 
-            <h2 className="mt-8 mb-4 text-2xl font-bold text-gray-900">
-              Eco-Friendly Cleaning Recipes
-            </h2>
+      <h3>Glass Cleaner</h3>
+      <p>Combine 2 cups water, 1/4 cup white vinegar, 1/2 teaspoon dish soap. Spray and wipe with microfiber cloth for streak-free shine.</p>
 
-            <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-800">All-Purpose Cleaner</h3>
-            <p className="mb-4">
-              Mix 1 cup water, 1/2 cup white vinegar, and 10 drops of essential oil in a spray
-              bottle.
-            </p>
+      <h3>Grout Cleaner</h3>
+      <p>Make paste with baking soda and water. Apply to grout, let sit 10 minutes, scrub with brush, rinse.</p>
 
-            <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-800">Glass Cleaner</h3>
-            <p className="mb-4">
-              Combine 2 cups water, 1/2 cup vinegar, and 1/4 cup rubbing alcohol for streak-free
-              windows.
-            </p>
+      <h2>When to Call for Help</h2>
+      <p>Professional services can assist with:</p>
+      <ul>
+        <li><strong>Junk removal:</strong> Clear out unwanted items during spring decluttering</li>
+        <li><strong>Carpet cleaning:</strong> Professional deep clean for carpets and upholstery</li>
+        <li><strong>Window washing:</strong> Exterior windows and hard-to-reach areas</li>
+        <li><strong>Gutter cleaning:</strong> Prepare for spring rains</li>
+        <li><strong>Garage cleanouts:</strong> Major decluttering projects</li>
+      </ul>
 
-            <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-800">Scrubbing Paste</h3>
-            <p className="mb-6">
-              Mix baking soda with just enough water to form a paste for tough stains and grime.
-            </p>
+      <h2>Southern Indiana Spring Cleaning Tips</h2>
+      <ul>
+        <li><strong>Pollen season:</strong> Change HVAC filters monthly during spring</li>
+        <li><strong>Humidity control:</strong> Use dehumidifiers in basements to prevent mold</li>
+        <li><strong>Storm preparation:</strong> Check gutters and downspouts before severe weather</li>
+        <li><strong>Outdoor spaces:</strong> Clean and inspect decks, patios, and outdoor furniture</li>
+      </ul>
 
-            <h2 className="mt-8 mb-4 text-2xl font-bold text-gray-900">
-              When to Call the Professionals
-            </h2>
-            <p className="mb-4">
-              While this checklist covers most spring cleaning tasks, some jobs are better left to
-              professionals:
-            </p>
-            <ul className="mb-6 list-disc pl-6">
-              <li>Deep carpet cleaning and stain removal</li>
-              <li>Window cleaning for multi-story homes</li>
-              <li>Pressure washing exterior surfaces</li>
-              <li>Cleaning hard-to-reach areas like high ceilings</li>
-              <li>Organizing and decluttering large spaces</li>
-            </ul>
+      <h2>Making It Manageable</h2>
+      <p>Don't try to do everything at once:</p>
+      <ul>
+        <li><strong>Week 1:</strong> Bedrooms and closets</li>
+        <li><strong>Week 2:</strong> Kitchen and dining areas</li>
+        <li><strong>Week 3:</strong> Living spaces and bathrooms</li>
+        <li><strong>Week 4:</strong> Garage, basement, and outdoor spaces</li>
+      </ul>
 
-            <h2 className="mt-8 mb-4 text-2xl font-bold text-gray-900">
-              Decluttering and Junk Removal
-            </h2>
-            <p className="mb-4">
-              Spring cleaning is the perfect time to declutter your home. As you clean each room,
-              set aside items you no longer need. Uncle Sam Junk Removal can help you dispose of
-              unwanted furniture, appliances, and household items responsibly, with a focus on
-              donation and recycling.
-            </p>
-          </div>
-        </GlassCard>
-
-        <GlassCard className="p-6 text-center">
-          <h3 className="mb-4 text-xl font-bold text-gray-900">
-            Need Help with Your Spring Cleaning?
-          </h3>
-          <p className="mb-6 text-gray-600">
-            Let our professional cleaning team handle the heavy lifting while you focus on what
-            matters most.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <ThemedButton asChild theme="green" size="lg">
-              <a href="/cleaning/deep-clean">Book Deep Cleaning</a>
-            </ThemedButton>
-            <ThemedButton asChild theme="red" variant="outline" size="lg">
-              <a href="/services/junk-removal">Schedule Junk Removal</a>
-            </ThemedButton>
-          </div>
-        </GlassCard>
-      </article>
-    </div>
+      <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+        <p className="text-lg font-medium text-gray-900">
+          <strong>Sustainability Tip:</strong> Southern Indiana has excellent donation options. Instead of trashing unwanted items, consider donating to Habitat ReStore, Goodwill, or local charities. It reduces landfill waste and helps neighbors in need.
+        </p>
+      </div>
+    </BlogPostTemplate>
   )
 }
