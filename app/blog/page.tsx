@@ -1,13 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Calendar, Clock, User, ArrowRight, Leaf, Sparkles } from 'lucide-react'
 import Link from 'next/link'
-import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
+import { Calendar, Clock, User, ArrowRight } from 'lucide-react'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import type { Metadata } from 'next'
-import { SolidPanel, type SolidPanelProps } from '@/components/ui/solid-panel'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -34,77 +28,20 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/blog', baseUrl),
 }
 
+interface BlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  author: string
+  date: string
+  readTime: string
+  category: string
+  featured?: boolean
+  image?: string
+}
+
 export default function BlogPage() {
-  const blogPosts = [
-    {
-      slug: 'spring-cleaning-checklist-southern-indiana',
-      title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
-      excerpt:
-        'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
-      author: 'Sarah Johnson, Cleaning Specialist',
-      date: 'March 1, 2024',
-      readTime: '12 min read',
-      category: 'Spring Cleaning',
-      featured: true,
-      panelColor: 'green',
-    },
-    {
-      slug: 'appliance-disposal-recycling-guide',
-      title: 'Appliance Disposal & Recycling Guide for Evansville Residents',
-      excerpt:
-        'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
-      author: 'Mike Thompson, Environmental Specialist',
-      date: 'November 20, 2024',
-      readTime: '10 min read',
-      category: 'Appliance Disposal',
-      featured: true,
-      panelColor: 'blue',
-    },
-    {
-      slug: 'junk-removal-cost-tri-state',
-      title: 'How much does junk removal cost in the Tri-State? (full breakdown)',
-      excerpt:
-        'Complete pricing guide for junk removal services in Evansville, Henderson, and surrounding areas. Learn what factors affect cost and how to get the best value.',
-      author: 'Uncle Sam Team',
-      date: 'January 15, 2025',
-      readTime: '8 min read',
-      category: 'Pricing Guide',
-      panelColor: 'red',
-    },
-    {
-      slug: 'evansville-garage-cleanout-48-hours',
-      title: 'Evansville garage cleanout in 48 hours: checklist & timeline',
-      excerpt:
-        'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips for Evansville residents.',
-      author: 'Uncle Sam Team',
-      date: 'January 12, 2025',
-      readTime: '6 min read',
-      category: 'How-To Guide',
-      panelColor: 'blue',
-    },
-    {
-      slug: 'hot-tub-removal-what-to-know',
-      title: 'Hot tub removal: what to know before we arrive',
-      excerpt:
-        'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
-      author: 'Uncle Sam Team',
-      date: 'January 8, 2025',
-      readTime: '5 min read',
-      category: 'Service Guide',
-      panelColor: 'orange',
-    },
-    {
-      slug: 'property-manager-turnover-playbook',
-      title: 'Property manager turnover playbook: trash-out to broom clean',
-      excerpt:
-        'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.',
-      author: 'Uncle Sam Team',
-      date: 'January 6, 2025',
-      readTime: '10 min read',
-      category: 'Property Management',
-      panelColor: 'purple',
-    },
-    // New posts
+  const blogPosts: BlogPost[] = [
     {
       slug: 'evansville-junk-removal-tips',
       title: 'Essential Junk Removal Tips for Evansville Residents',
@@ -115,29 +52,37 @@ export default function BlogPage() {
       readTime: '8 min read',
       category: 'Local Guide',
       featured: true,
-      panelColor: 'red',
     },
     {
-      slug: 'mattress-disposal-evansville',
-      title: 'Mattress disposal in Evansville: recycling, costs, and pickup options',
+      slug: 'spring-cleaning-checklist-southern-indiana',
+      title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
       excerpt:
-        'What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.',
-      author: 'Uncle Sam Team',
-      date: 'January 20, 2025',
-      readTime: '6 min read',
-      category: 'Mattress Removal',
-      panelColor: 'purple',
+        'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
+      author: 'Sarah Johnson',
+      date: 'March 1, 2024',
+      readTime: '12 min read',
+      category: 'Spring Cleaning',
+      featured: true,
     },
     {
-      slug: 'shed-removal-guide-evansville',
-      title: 'Shed removal in Evansville: permit tips, pricing, and timeline',
+      slug: 'appliance-disposal-recycling-guide',
+      title: 'Appliance Disposal & Recycling Guide for Evansville Residents',
       excerpt:
-        "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
+        'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
+      author: 'Mike Thompson',
+      date: 'November 20, 2024',
+      readTime: '10 min read',
+      category: 'Appliance Disposal',
+    },
+    {
+      slug: 'junk-removal-cost-tri-state',
+      title: 'How much does junk removal cost in the Tri-State? (full breakdown)',
+      excerpt:
+        'Complete pricing guide for junk removal services in Evansville, Henderson, and surrounding areas. Learn what factors affect cost and how to get the best value.',
       author: 'Uncle Sam Team',
-      date: 'January 22, 2025',
-      readTime: '7 min read',
-      category: 'Light Demolition',
-      panelColor: 'orange',
+      date: 'January 15, 2025',
+      readTime: '8 min read',
+      category: 'Pricing Guide',
     },
     {
       slug: 'estate-cleanout-guide',
@@ -148,7 +93,26 @@ export default function BlogPage() {
       date: 'January 24, 2025',
       readTime: '9 min read',
       category: 'Estate Cleanouts',
-      panelColor: 'slate',
+    },
+    {
+      slug: 'mattress-disposal-evansville',
+      title: 'Mattress disposal in Evansville: recycling, costs, and pickup options',
+      excerpt:
+        'What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.',
+      author: 'Uncle Sam Team',
+      date: 'January 20, 2025',
+      readTime: '6 min read',
+      category: 'Mattress Removal',
+    },
+    {
+      slug: 'shed-removal-guide-evansville',
+      title: 'Shed removal in Evansville: permit tips, pricing, and timeline',
+      excerpt:
+        "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
+      author: 'Uncle Sam Team',
+      date: 'January 22, 2025',
+      readTime: '7 min read',
+      category: 'Light Demolition',
     },
     {
       slug: 'yard-waste-disposal-evansville',
@@ -159,14 +123,43 @@ export default function BlogPage() {
       date: 'January 26, 2025',
       readTime: '6 min read',
       category: 'Yard Waste',
-      panelColor: 'green',
+    },
+    {
+      slug: 'evansville-garage-cleanout-48-hours',
+      title: 'Evansville garage cleanout in 48 hours: checklist & timeline',
+      excerpt:
+        'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips.',
+      author: 'Uncle Sam Team',
+      date: 'January 12, 2025',
+      readTime: '6 min read',
+      category: 'How-To Guide',
+    },
+    {
+      slug: 'hot-tub-removal-what-to-know',
+      title: 'Hot tub removal: what to know before we arrive',
+      excerpt:
+        'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options.',
+      author: 'Uncle Sam Team',
+      date: 'January 8, 2025',
+      readTime: '5 min read',
+      category: 'Service Guide',
+    },
+    {
+      slug: 'property-manager-turnover-playbook',
+      title: 'Property manager turnover playbook: trash-out to broom clean',
+      excerpt:
+        'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process.',
+      author: 'Uncle Sam Team',
+      date: 'January 6, 2025',
+      readTime: '10 min read',
+      category: 'Property Management',
     },
   ]
 
-  const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 1)
+  const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
 
-  // Structured data for the blog page
+  // Structured data for SEO
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
@@ -183,210 +176,147 @@ export default function BlogPage() {
         url: `${baseUrl}/icon-512.png`,
       },
     },
-    mainEntity: blogPosts.slice(0, 5).map(post => ({
-      '@type': 'BlogPosting',
-      headline: post.title,
-      description: post.excerpt,
-      url: `${baseUrl}/blog/${post.slug}`,
-      datePublished: new Date(post.date).toISOString(),
-      author: {
-        '@type': 'Person',
-        name: post.author,
-      },
-    })),
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Structured Data for SEO */}
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <PageHero
-        title="Cleaning & Junk Removal Blog"
-        description="Expert tips, guides, and professional insights for Evansville homeowners"
-        color="green"
-      />
-      <section className="bg-gray-50 pt-16 pb-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <div className="mb-4 flex justify-center gap-2">
-              <Badge className="border-green-200 bg-green-100 text-green-800">
-                <Leaf className="mr-1 h-3 w-3" />
-                Natural Cleaning
-              </Badge>
-              <Badge className="border-blue-200 bg-blue-100 text-blue-800">
-                <Sparkles className="mr-1 h-3 w-3" />
-                Professional Tips
-              </Badge>
-            </div>
-            {/* Remove duplicate H1 for accessibility (already provided by PageHero) */}
-            <p className="mb-6 text-lg text-gray-600 sm:text-xl">
-              Expert tips, guides, and insights from Uncle Sam Junk Removal's professional team
-            </p>
-            <p className="text-base text-gray-600 sm:text-lg">
-              Natural cleaning solutions and professional advice for Evansville homeowners and
-              businesses
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+              Junk Removal Insights & Guides
+            </h1>
+            <p className="text-lg text-white/90 md:text-xl">
+              Expert tips, local guides, and professional insights to help you tackle any cleanup
+              project with confidence
             </p>
           </div>
+        </div>
+      </div>
 
-          {/* Featured Posts */}
-          {featuredPosts.length > 0 && (
-            <div className="mb-16">
-              <h2 className="mb-8 text-2xl font-bold text-gray-900">Featured Articles</h2>
-              <div className="space-y-8">
-                {featuredPosts.map(post => (
-                  <Card
-                    key={post.slug}
-                    className="glass overflow-hidden border-2 border-green-200 transition-all duration-300 hover:scale-105"
-                  >
-                    <SolidPanel
-                      color={(post.panelColor as SolidPanelProps['color']) ?? 'blue'}
-                      className="aspect-video"
-                      label={post.category}
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        <Badge className="bg-green-600 text-white">
-                          <Sparkles className="mr-1 h-3 w-3" />
-                          Featured
-                        </Badge>
-                        <span className="text-sm text-white/90">
-                          {post.readTime} • {post.date}
-                        </span>
-                      </div>
-                    </SolidPanel>
-
-                    <CardHeader>
-                      <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                      </CardTitle>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{post.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{post.readTime}</span>
-                        </div>
-                      </div>
-                    </CardHeader>
-
-                    <CardContent>
-                      <p className="mb-4 line-clamp-3 text-gray-600">{post.excerpt}</p>
-                      <Link href={`/blog/${post.slug}`}>
-                        <Button
-                          variant="outline"
-                          className="group border-green-800 bg-transparent text-green-800 hover:bg-green-800 hover:text-white"
-                          aria-label={`Read ${post.title}`}
-                          title={`Read ${post.title}`}
-                        >
-                          Read: {post.title}
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Regular Posts */}
-          <div className="mb-16">
-            <h2 className="mb-8 text-2xl font-bold text-gray-900">All Articles</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {regularPosts.map(post => (
-                <Card
+      <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+        {/* Featured Posts */}
+        {featuredPosts.length > 0 && (
+          <section className="mb-16">
+            <h2 className="mb-8 text-3xl font-bold text-gray-900">Featured Articles</h2>
+            <div className="grid gap-8 lg:grid-cols-2">
+              {featuredPosts.map(post => (
+                <article
                   key={post.slug}
-                  className="glass overflow-hidden transition-all duration-300 hover:scale-105"
+                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
                 >
-                  <SolidPanel
-                    color={(post.panelColor as SolidPanelProps['color']) ?? 'blue'}
-                    className="aspect-video"
-                    label={post.category}
-                  >
-                    <span className="text-sm text-white/90">
-                      {post.readTime} • {post.date}
-                    </span>
-                  </SolidPanel>
-
-                  <CardHeader>
-                    <CardTitle className="line-clamp-2 text-xl font-bold text-gray-900 transition-colors hover:text-green-600">
+                  <div className="bg-gradient-to-br from-red-500 to-orange-500 p-8 text-white">
+                    <div className="mb-4">
+                      <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide backdrop-blur-sm">
+                        {post.category}
+                      </span>
+                    </div>
+                    <h3 className="mb-3 text-2xl font-bold leading-tight transition-transform group-hover:translate-x-1">
                       <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                    </CardTitle>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-1">
+                    </h3>
+                    <p className="mb-4 text-white/90">{post.excerpt}</p>
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-white/80">
+                      <div className="flex items-center gap-1.5">
                         <User className="h-4 w-4" />
                         <span>{post.author}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span>{post.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1.5">
                         <Clock className="h-4 w-4" />
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-                  </CardHeader>
-
-                  <CardContent>
-                    <p className="mb-4 line-clamp-3 text-gray-600">{post.excerpt}</p>
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button
-                        variant="outline"
-                        className={`${
-                          post.category.includes('Cleaning')
-                            ? 'border-green-700 text-green-700 hover:bg-green-700'
-                            : 'border-red-700 text-red-700 hover:bg-red-700'
-                        } group bg-transparent hover:text-white`}
-                        aria-label={`Read ${post.title}`}
-                        title={`Read ${post.title}`}
-                      >
-                        Read: {post.title}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
+                  </div>
+                  <div className="p-6">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 font-semibold text-red-600 transition-colors hover:text-red-700"
+                    >
+                      Read Article
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                </article>
               ))}
             </div>
-          </div>
+          </section>
+        )}
 
-          {/* Call to Action */}
-          <div className="text-center">
-            <div className="mx-auto max-w-3xl rounded-2xl bg-green-50 p-8">
-              <h2 className="mb-4 text-2xl font-bold text-gray-900">
-                Need Professional Cleaning or Junk Removal?
-              </h2>
-              <p className="mb-6 text-gray-600">
-                Our team provides expert cleaning and junk removal services throughout Evansville
-                using only natural, eco-friendly products. Get your free quote today!
-              </p>
-              <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <Button className="bg-green-600 px-8 py-3 font-semibold text-white hover:bg-green-700">
-                  📞 Call {settings.phone}
-                </Button>
-                <Link href="/quote">
-                  <Button
-                    variant="outline"
-                    className="border-green-800 bg-transparent px-8 py-3 font-semibold text-green-800 hover:bg-green-800 hover:text-white"
+        {/* All Posts Grid */}
+        <section>
+          <h2 className="mb-8 text-3xl font-bold text-gray-900">All Articles</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {regularPosts.map(post => (
+              <article
+                key={post.slug}
+                className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:border-red-200 hover:shadow-md"
+              >
+                <div className="p-6">
+                  <div className="mb-3">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-red-600">
+                      {post.category}
+                    </span>
+                  </div>
+                  <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-red-600">
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="mb-4 text-gray-600">{post.excerpt}</p>
+                  <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5" />
+                      <span>{post.date}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5" />
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 transition-colors hover:text-red-700"
                   >
-                    Get Free Quote
-                  </Button>
-                </Link>
-              </div>
+                    Read More
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Newsletter CTA */}
+        <section className="mt-16">
+          <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 p-8 text-center md:p-12">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
+              Need Junk Removal Help?
+            </h2>
+            <p className="mb-8 text-lg text-gray-700">
+              Get expert junk removal service for your home or business. Free quotes, same-day
+              service available.
+            </p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link
+                href="/quote"
+                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-red-700"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-red-600 bg-transparent px-8 py-4 text-lg font-semibold text-red-600 transition-colors hover:bg-red-600 hover:text-white"
+              >
+                View Services
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   )
 }
