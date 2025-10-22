@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { IconContainer } from '@/components/ui/icon-container'
-import { Truck, Wrench, Lightbulb } from 'lucide-react'
+import { Truck, Lightbulb } from 'lucide-react'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { UNIFORM_OFFERS } from '@/lib/uniform-offers'
 
@@ -14,7 +14,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 bg-blue-800" aria-hidden />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-36 pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-24 pb-20">
         <div className="mb-8 text-center text-white">
           <h1 className="my-2 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Same-Day Junk Removal & Cleaning in Evansville, IN
@@ -32,7 +32,7 @@ export function HeroSection() {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
           <GlassCard
             variant="white"
             className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
@@ -47,23 +47,6 @@ export function HeroSection() {
             </ul>
             <ThemedButton theme="red" fullWidth asChild>
               <Link href="/services/junk-removal">View Junk Removal services</Link>
-            </ThemedButton>
-          </GlassCard>
-
-          <GlassCard
-            variant="white"
-            className="p-6 text-center transition-transform duration-300 hover:scale-105 md:p-8"
-          >
-            <IconContainer icon={Wrench} color="orange" className="mx-auto mb-4 md:mb-6" />
-            <h2 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">Light Demolition</h2>
-            <ul className="mb-6 space-y-2 text-left text-gray-700">
-              <li>✓ Shed, deck, & playset tear-downs</li>
-              <li>✓ Responsible debris hauling</li>
-              <li>✓ {UNIFORM_OFFERS.UPFRONT_PRICING}</li>
-              <li>✓ Licensed & insured crew</li>
-            </ul>
-            <ThemedButton theme="red" fullWidth asChild>
-              <Link href="/services/light-demolition">Explore Light Demolition options</Link>
             </ThemedButton>
           </GlassCard>
 
