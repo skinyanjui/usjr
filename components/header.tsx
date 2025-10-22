@@ -66,7 +66,7 @@ export function Header() {
   }
 
   return (
-    <header className="glass fixed top-0 right-0 left-0 z-50">
+    <header className="glass sticky top-0 right-0 left-0 z-50">
       <nav className="border-b border-white/20 bg-white/90 px-4 py-3 backdrop-blur-md">
         <div className="mx-auto grid max-w-7xl grid-cols-3 items-center">
           {/* Logo */}
