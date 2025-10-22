@@ -143,7 +143,6 @@ export default function EmergencyPage() {
         'Henderson, KY',
         'Owensboro, KY',
       ]}
-
       ctaPrimary="📞 Call for Emergency Dispatch"
       ctaSecondary="Text Photos for Fast Quote"
     >

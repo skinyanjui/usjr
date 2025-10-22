@@ -31,7 +31,6 @@ export default function HtmlSitemapPage() {
       />
 
       <div className="mx-auto max-w-5xl px-4 pt-8 pb-16">
-
         <h2 className="mb-6 text-3xl font-bold sm:text-4xl">Explore the sitemap</h2>
         <p className="mb-8 text-gray-600">
           Browse all pages on our site. For search engines, see{' '}

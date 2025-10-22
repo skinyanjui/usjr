@@ -42,7 +42,9 @@ export default function SpringCleaningChecklistPage() {
       ]}
     >
       <p>
-        Spring has arrived in Southern Indiana, and it's time to refresh your home after the long winter months. This comprehensive checklist helps you tackle every room systematically while using eco-friendly methods safe for your family and environment.
+        Spring has arrived in Southern Indiana, and it's time to refresh your home after the long
+        winter months. This comprehensive checklist helps you tackle every room systematically while
+        using eco-friendly methods safe for your family and environment.
       </p>
 
       <h2>Before You Begin: Essential Supplies</h2>
@@ -128,44 +130,81 @@ export default function SpringCleaningChecklistPage() {
       <h2>Eco-Friendly Cleaning Recipes</h2>
 
       <h3>All-Purpose Cleaner</h3>
-      <p>Mix 1 part white vinegar with 1 part water, add 10 drops of essential oil. Great for countertops, appliances, and most surfaces.</p>
+      <p>
+        Mix 1 part white vinegar with 1 part water, add 10 drops of essential oil. Great for
+        countertops, appliances, and most surfaces.
+      </p>
 
       <h3>Glass Cleaner</h3>
-      <p>Combine 2 cups water, 1/4 cup white vinegar, 1/2 teaspoon dish soap. Spray and wipe with microfiber cloth for streak-free shine.</p>
+      <p>
+        Combine 2 cups water, 1/4 cup white vinegar, 1/2 teaspoon dish soap. Spray and wipe with
+        microfiber cloth for streak-free shine.
+      </p>
 
       <h3>Grout Cleaner</h3>
-      <p>Make paste with baking soda and water. Apply to grout, let sit 10 minutes, scrub with brush, rinse.</p>
+      <p>
+        Make paste with baking soda and water. Apply to grout, let sit 10 minutes, scrub with brush,
+        rinse.
+      </p>
 
       <h2>When to Call for Help</h2>
       <p>Professional services can assist with:</p>
       <ul>
-        <li><strong>Junk removal:</strong> Clear out unwanted items during spring decluttering</li>
-        <li><strong>Carpet cleaning:</strong> Professional deep clean for carpets and upholstery</li>
-        <li><strong>Window washing:</strong> Exterior windows and hard-to-reach areas</li>
-        <li><strong>Gutter cleaning:</strong> Prepare for spring rains</li>
-        <li><strong>Garage cleanouts:</strong> Major decluttering projects</li>
+        <li>
+          <strong>Junk removal:</strong> Clear out unwanted items during spring decluttering
+        </li>
+        <li>
+          <strong>Carpet cleaning:</strong> Professional deep clean for carpets and upholstery
+        </li>
+        <li>
+          <strong>Window washing:</strong> Exterior windows and hard-to-reach areas
+        </li>
+        <li>
+          <strong>Gutter cleaning:</strong> Prepare for spring rains
+        </li>
+        <li>
+          <strong>Garage cleanouts:</strong> Major decluttering projects
+        </li>
       </ul>
 
       <h2>Southern Indiana Spring Cleaning Tips</h2>
       <ul>
-        <li><strong>Pollen season:</strong> Change HVAC filters monthly during spring</li>
-        <li><strong>Humidity control:</strong> Use dehumidifiers in basements to prevent mold</li>
-        <li><strong>Storm preparation:</strong> Check gutters and downspouts before severe weather</li>
-        <li><strong>Outdoor spaces:</strong> Clean and inspect decks, patios, and outdoor furniture</li>
+        <li>
+          <strong>Pollen season:</strong> Change HVAC filters monthly during spring
+        </li>
+        <li>
+          <strong>Humidity control:</strong> Use dehumidifiers in basements to prevent mold
+        </li>
+        <li>
+          <strong>Storm preparation:</strong> Check gutters and downspouts before severe weather
+        </li>
+        <li>
+          <strong>Outdoor spaces:</strong> Clean and inspect decks, patios, and outdoor furniture
+        </li>
       </ul>
 
       <h2>Making It Manageable</h2>
       <p>Don't try to do everything at once:</p>
       <ul>
-        <li><strong>Week 1:</strong> Bedrooms and closets</li>
-        <li><strong>Week 2:</strong> Kitchen and dining areas</li>
-        <li><strong>Week 3:</strong> Living spaces and bathrooms</li>
-        <li><strong>Week 4:</strong> Garage, basement, and outdoor spaces</li>
+        <li>
+          <strong>Week 1:</strong> Bedrooms and closets
+        </li>
+        <li>
+          <strong>Week 2:</strong> Kitchen and dining areas
+        </li>
+        <li>
+          <strong>Week 3:</strong> Living spaces and bathrooms
+        </li>
+        <li>
+          <strong>Week 4:</strong> Garage, basement, and outdoor spaces
+        </li>
       </ul>
 
       <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
         <p className="text-lg font-medium text-gray-900">
-          <strong>Sustainability Tip:</strong> Southern Indiana has excellent donation options. Instead of trashing unwanted items, consider donating to Habitat ReStore, Goodwill, or local charities. It reduces landfill waste and helps neighbors in need.
+          <strong>Sustainability Tip:</strong> Southern Indiana has excellent donation options.
+          Instead of trashing unwanted items, consider donating to Habitat ReStore, Goodwill, or
+          local charities. It reduces landfill waste and helps neighbors in need.
         </p>
       </div>
     </BlogPostTemplate>

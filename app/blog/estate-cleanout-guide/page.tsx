@@ -70,7 +70,9 @@ export default function EstateCleanoutGuideBlog() {
       <div className="my-6 rounded-lg bg-yellow-50 p-6">
         <h4 className="mb-2 font-semibold text-yellow-800">Essential First Steps:</h4>
         <ul>
-          <li>Secure all important documents (will, insurance policies, deeds, financial records)</li>
+          <li>
+            Secure all important documents (will, insurance policies, deeds, financial records)
+          </li>
           <li>Change locks and ensure property security</li>
           <li>Notify utilities and insurance companies</li>
           <li>Check for family heirlooms or items specifically mentioned in wills</li>
@@ -119,8 +121,8 @@ export default function EstateCleanoutGuideBlog() {
       <h3>Furniture & Household Items</h3>
       <ul>
         <li>
-          <strong>Habitat for Humanity ReStore</strong> - 2828 Washington Ave, Evansville (furniture,
-          appliances, building materials)
+          <strong>Habitat for Humanity ReStore</strong> - 2828 Washington Ave, Evansville
+          (furniture, appliances, building materials)
         </li>
         <li>
           <strong>Goodwill Industries</strong> - Multiple locations (clothing, household items,

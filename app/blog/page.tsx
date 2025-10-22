@@ -190,7 +190,7 @@ export default function BlogPage() {
       <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
               Junk Removal Insights & Guides
             </h1>
             <p className="text-lg text-white/90 md:text-xl">
@@ -214,11 +214,11 @@ export default function BlogPage() {
                 >
                   <div className="bg-gradient-to-br from-red-500 to-orange-500 p-8 text-white">
                     <div className="mb-4">
-                      <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide backdrop-blur-sm">
+                      <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide uppercase backdrop-blur-sm">
                         {post.category}
                       </span>
                     </div>
-                    <h3 className="mb-3 text-2xl font-bold leading-tight transition-transform group-hover:translate-x-1">
+                    <h3 className="mb-3 text-2xl leading-tight font-bold transition-transform group-hover:translate-x-1">
                       <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </h3>
                     <p className="mb-4 text-white/90">{post.excerpt}</p>
@@ -259,7 +259,7 @@ export default function BlogPage() {
               >
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-red-600">
+                    <span className="text-xs font-semibold tracking-wide text-red-600 uppercase">
                       {post.category}
                     </span>
                   </div>
