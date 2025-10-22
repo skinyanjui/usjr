@@ -74,7 +74,7 @@ export default function RootLayout({
           <BreadcrumbsAuto />
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
-          <main>{children}</main>
+          <main className="pt-[95px]">{children}</main>
           <Footer />
         </ThemeProvider>
         <Analytics />

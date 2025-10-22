@@ -1,14 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Calendar, Clock, User, AlertTriangle, CheckCircle, Zap } from 'lucide-react'
-import Link from 'next/link'
-import { settings } from '@/lib/cms-content'
+import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { SolidPanel } from '@/components/ui/solid-panel'
+import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal',
   description:
     'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
@@ -18,135 +14,179 @@ export const metadata = {
 }
 
 export default function HotTubRemovalPage() {
-  const preparationSteps = [
-    {
-      icon: Zap,
-      title: 'Electrical Disconnection',
-      description:
-        'Turn off power at the breaker and have a licensed electrician disconnect if needed',
-      priority: 'Critical',
-      color: 'red',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Clear Access Path',
-      description: 'Remove obstacles from the path between hot tub and truck parking area',
-      priority: 'Important',
-      color: 'yellow',
-    },
-    {
-      icon: AlertTriangle,
-      title: 'Drain Completely',
-      description: 'Remove all water and allow to dry to prevent mold and reduce weight',
-      priority: 'Required',
-      color: 'blue',
-    },
-  ]
-
   return (
-    <main className="min-h-screen">
-      <article className="pt-32 pb-16">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mb-8">
-            <Link href="/blog" className="font-medium text-red-600 hover:text-red-700">
-              ← Back to Blog
-            </Link>
-          </div>
+    <BlogPostTemplate
+      meta={{
+        title: 'Hot Tub Removal: What to Know Before We Arrive',
+        excerpt:
+          'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options.',
+        author: 'Uncle Sam Team',
+        date: 'January 8, 2025',
+        readTime: '5 min read',
+        category: 'Service Guide',
+        tags: ['Hot Tub Removal', 'Preparation', 'Evansville', 'Service Guide'],
+      }}
+      relatedPosts={[
+        {
+          title: 'Shed Removal in Evansville',
+          href: '/blog/shed-removal-guide-evansville',
+          excerpt: 'Complete guide to shed removal with permit tips, pricing, and timeline.',
+          category: 'Light Demolition',
+        },
+        {
+          title: 'Junk Removal Cost in Tri-State Area',
+          href: '/blog/junk-removal-cost-tri-state',
+          excerpt: 'Complete pricing guide for junk removal services in the Tri-State area.',
+          category: 'Pricing Guide',
+        },
+      ]}
+    >
+      <p>
+        Hot tub removal requires careful preparation to ensure safety and efficiency. Whether your
+        hot tub is broken, outdated, or you're simply ready for a change, proper preparation makes
+        the removal process smooth and quick.
+      </p>
 
-          <header className="mb-12">
-            <div className="mb-4">
-              <span className="rounded-full bg-blue-600 px-3 py-1 text-sm font-semibold text-white">
-                Service Guide
-              </span>
-            </div>
-            <h1 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-              Hot tub removal: what to know before we arrive
-            </h1>
-            <div className="mb-6 flex items-center gap-4 text-sm text-gray-600">
-              <div className="flex items-center gap-1">
-                <User className="h-4 w-4" />
-                <span>Uncle Sam Team</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                <span>January 10, 2025</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                <span>5 min read</span>
-              </div>
-            </div>
-            <SolidPanel color="orange" label="Hot Tub Prep" className="mb-8 h-64">
-              Clear access, power disconnection, and a dry spa make removal effortless.
-            </SolidPanel>
-          </header>
+      <h2>Critical Preparation Steps</h2>
 
-          <div className="prose prose-lg max-w-none">
-            <p>
-              Preparing properly for hot tub removal ensures safety and efficiency. Use this
-              checklist to get everything ready before our team arrives.
-            </p>
+      <h3>1. Electrical Disconnection (CRITICAL)</h3>
+      <div className="my-4 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
+        <p className="font-semibold text-red-800">Safety First!</p>
+        <p className="text-red-700">
+          Hot tubs operate on 220-240V circuits. Improper disconnection can cause serious injury or
+          death. Always hire a licensed electrician if you're unsure about the electrical setup.
+        </p>
+      </div>
 
-            <h2 className="mb-6 text-3xl font-bold text-gray-900">Pre-Removal Checklist</h2>
+      <p>Before removal day:</p>
+      <ul>
+        <li>Turn off power at the main circuit breaker</li>
+        <li>Have a licensed electrician disconnect and cap wiring if needed</li>
+        <li>Never attempt electrical work yourself unless you're qualified</li>
+        <li>Provide confirmation of disconnection to removal team</li>
+      </ul>
 
-            <div className="mb-8 grid gap-6 md:grid-cols-3">
-              {preparationSteps.map((step, index) => {
-                const Icon = step.icon
-                const colorClasses =
-                  step.color === 'red'
-                    ? 'bg-red-600'
-                    : step.color === 'yellow'
-                      ? 'bg-yellow-500'
-                      : 'bg-blue-600'
-                return (
-                  <Card key={index} className="glass">
-                    <CardHeader>
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`${colorClasses} flex h-12 w-12 items-center justify-center rounded-full`}
-                        >
-                          <Icon className="h-6 w-6 text-white" />
-                        </div>
-                        <CardTitle className="text-xl font-bold text-gray-900">
-                          {step.title}
-                        </CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700">{step.description}</p>
-                    </CardContent>
-                  </Card>
-                )
-              })}
-            </div>
+      <h3>2. Drain Completely (REQUIRED)</h3>
+      <p>
+        A full hot tub can weigh 2,000-6,000 pounds. Complete draining is essential for safe
+        removal.
+      </p>
+      <ul>
+        <li>
+          <strong>Drain 24-48 hours before pickup:</strong> Allows time for complete drainage and
+          drying
+        </li>
+        <li>
+          <strong>Use built-in drain:</strong> Follow manufacturer instructions
+        </li>
+        <li>
+          <strong>Remove standing water:</strong> Use wet/dry vacuum for remaining water
+        </li>
+        <li>
+          <strong>Let it dry:</strong> Prevents mold growth and reduces weight
+        </li>
+      </ul>
 
-            <div className="mb-8 rounded-lg bg-red-50 p-6">
-              <h3 className="mb-4 text-xl font-bold text-gray-900">
-                Ready to remove your hot tub?
-              </h3>
-              <p className="mb-4 text-gray-700">
-                We can often remove your hot tub the same or next day. Text a photo for an instant
-                estimate, or call to schedule a crew.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <Button
-                  asChild
-                  className="bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700"
-                >
-                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-red-800 bg-transparent px-6 py-3 font-semibold text-red-800 hover:bg-red-800 hover:text-white"
-                >
-                  <a href={`sms:${settings.phoneE164}`}>Text Photos for Instant Quote</a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </main>
+      <h3>3. Clear Access Path (IMPORTANT)</h3>
+      <p>Hot tub removal requires clear passage from its location to the truck:</p>
+      <ul>
+        <li>
+          <strong>Measure doorways and gates:</strong> Typical hot tubs are 7-8 feet wide
+        </li>
+        <li>
+          <strong>Remove obstacles:</strong> Furniture, plants, decorations along the route
+        </li>
+        <li>
+          <strong>Check overhead clearance:</strong> Low-hanging branches, lights, or structures
+        </li>
+        <li>
+          <strong>Protect flooring:</strong> We'll use floor protection, but clearing the path helps
+        </li>
+        <li>
+          <strong>Consider crane access:</strong> For rooftop or enclosed deck hot tubs
+        </li>
+      </ul>
+
+      <h2>Hot Tub Removal Methods</h2>
+
+      <h3>Standard Removal (Most Common)</h3>
+      <p>
+        For hot tubs with clear access through gates or patio doors. We dismantle into manageable
+        sections and carry out.
+      </p>
+      <ul>
+        <li>
+          <strong>Timeline:</strong> 2-4 hours
+        </li>
+        <li>
+          <strong>Cost:</strong> $229-389
+        </li>
+        <li>
+          <strong>Best for:</strong> Ground-level installations with accessible routes
+        </li>
+      </ul>
+
+      <h3>Crane Removal (Specialized)</h3>
+      <p>For hot tubs on rooftops, enclosed decks, or without accessible routes.</p>
+      <ul>
+        <li>
+          <strong>Timeline:</strong> 4-6 hours
+        </li>
+        <li>
+          <strong>Cost:</strong> $449-649 (includes crane rental)
+        </li>
+        <li>
+          <strong>Best for:</strong> Rooftop installations, enclosed areas
+        </li>
+      </ul>
+
+      <h2>Common Questions</h2>
+
+      <h3>Can you remove the hot tub if it's still full of water?</h3>
+      <p>
+        No. For safety reasons, hot tubs must be drained before removal. Water adds 1,500-4,000
+        pounds of weight, making safe removal impossible.
+      </p>
+
+      <h3>What if the electrical isn't disconnected?</h3>
+      <p>
+        We cannot proceed with removal until power is safely disconnected. We can recommend local
+        electricians if needed (typically $100-200 for disconnection).
+      </p>
+
+      <h3>Do you remove the concrete pad underneath?</h3>
+      <p>
+        Concrete pad removal is a separate service. Hot tub removal includes only the hot tub
+        itself. We can provide quotes for pad removal if needed (typically $289-649 depending on
+        size).
+      </p>
+
+      <h3>What happens to the hot tub after removal?</h3>
+      <p>We responsibly dispose of hot tubs through:</p>
+      <ul>
+        <li>Metal recycling (pumps, heaters, frames)</li>
+        <li>Plastic recycling where available</li>
+        <li>Proper disposal of non-recyclable components</li>
+        <li>Donation if the hot tub is still functional (rare)</li>
+      </ul>
+
+      <h2>Day-of-Removal Checklist</h2>
+      <ol>
+        <li>✓ Power disconnected and confirmed safe</li>
+        <li>✓ Hot tub completely drained and dry</li>
+        <li>✓ Access path cleared of obstacles</li>
+        <li>✓ Pets secured indoors</li>
+        <li>✓ Gate or fence sections removed if necessary</li>
+        <li>✓ Someone available to answer questions</li>
+      </ol>
+
+      <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
+        <p className="text-lg font-medium text-gray-900">
+          <strong>Pro Tip:</strong> Hot tub removal is typically completed in 2-4 hours when
+          properly prepared. Taking time to drain completely and ensure safe electrical
+          disconnection prevents delays and ensures the fastest, safest removal possible.
+        </p>
+      </div>
+    </BlogPostTemplate>
   )
 }

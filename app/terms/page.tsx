@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { PageHero } from '@/components/ui/page-hero'
 import { settings } from '@/lib/cms-content'
@@ -21,6 +22,32 @@ export default function TermsPage() {
         color="slate"
       />
       <div className="mx-auto max-w-3xl px-4 py-12">
+        <div className="mb-8 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <Link
+            href="/"
+            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            Home
+          </Link>
+          <Link
+            href="/quote"
+            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+          >
+            Get a Quote
+          </Link>
+          <Link
+            href="/services"
+            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Our Services
+          </Link>
+          <Link
+            href="/privacy"
+            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Privacy Policy
+          </Link>
+        </div>
 
         <p className="mb-2 text-3xl font-bold text-gray-900">Service terms overview</p>
         <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
@@ -218,6 +245,33 @@ export default function TermsPage() {
         </section>
 
         <p className="text-sm text-gray-600">Last updated: January 1, 2025</p>
+
+        <div className="mt-12 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+          <Link
+            href="/"
+            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            Home
+          </Link>
+          <Link
+            href="/quote"
+            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+          >
+            Get a Quote
+          </Link>
+          <Link
+            href="/services"
+            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Our Services
+          </Link>
+          <Link
+            href="/privacy"
+            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </main>
   )
