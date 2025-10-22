@@ -90,7 +90,7 @@ export function BreadcrumbsAuto() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="fixed top-[57px] right-0 left-0 z-40 border-b border-gray-200 bg-gray-50">
+    <nav aria-label="Breadcrumb" className="sticky top-0 z-40 border-b border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-2 text-sm">
         <ol className="flex items-center gap-2 text-gray-600">
           <li>
