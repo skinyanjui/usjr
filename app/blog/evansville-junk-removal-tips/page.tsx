@@ -50,18 +50,29 @@ export default function EvansvilleJunkRemovalTipsPage() {
       ]}
     >
       <p>
-        Whether you're decluttering, moving, or handling an estate cleanout, knowing local Evansville resources and best practices can save you time and money. These expert tips help you navigate junk removal efficiently.
+        Whether you're decluttering, moving, or handling an estate cleanout, knowing local
+        Evansville resources and best practices can save you time and money. These expert tips help
+        you navigate junk removal efficiently.
       </p>
 
       <h2>Know Evansville's Bulk Pickup Schedule</h2>
       <p>
-        The City of Evansville offers bulk pickup twice yearly. Check your neighborhood's schedule to save on disposal costs for large items. However, professional removal offers advantages:
+        The City of Evansville offers bulk pickup twice yearly. Check your neighborhood's schedule
+        to save on disposal costs for large items. However, professional removal offers advantages:
       </p>
       <ul>
-        <li><strong>Same-day service:</strong> No waiting months for city pickup</li>
-        <li><strong>Indoor pickup:</strong> We remove items from any location in your home</li>
-        <li><strong>Weather protection:</strong> No leaving items at curb exposed to elements</li>
-        <li><strong>Full service:</strong> We do all the heavy lifting</li>
+        <li>
+          <strong>Same-day service:</strong> No waiting months for city pickup
+        </li>
+        <li>
+          <strong>Indoor pickup:</strong> We remove items from any location in your home
+        </li>
+        <li>
+          <strong>Weather protection:</strong> No leaving items at curb exposed to elements
+        </li>
+        <li>
+          <strong>Full service:</strong> We do all the heavy lifting
+        </li>
       </ul>
 
       <h2>Prepare Items for Efficient Removal</h2>
@@ -75,34 +86,68 @@ export default function EvansvilleJunkRemovalTipsPage() {
 
       <h3>Separate Recyclables When Possible</h3>
       <ul>
-        <li><strong>Metals:</strong> Appliances, scrap metal, bed frames</li>
-        <li><strong>Electronics:</strong> TVs, computers, printers</li>
-        <li><strong>Cardboard:</strong> Boxes, packaging materials</li>
-        <li><strong>Donations:</strong> Usable furniture, clothing, household items</li>
+        <li>
+          <strong>Metals:</strong> Appliances, scrap metal, bed frames
+        </li>
+        <li>
+          <strong>Electronics:</strong> TVs, computers, printers
+        </li>
+        <li>
+          <strong>Cardboard:</strong> Boxes, packaging materials
+        </li>
+        <li>
+          <strong>Donations:</strong> Usable furniture, clothing, household items
+        </li>
       </ul>
 
       <h2>Best Donation Options in Evansville</h2>
       <ul>
-        <li><strong>Habitat for Humanity ReStore:</strong> 2828 Washington Ave - Accepts furniture, appliances, building materials</li>
-        <li><strong>Goodwill Industries:</strong> Multiple locations - Clothing, household items, small furniture</li>
-        <li><strong>Catholic Charities:</strong> Furniture for families in need</li>
-        <li><strong>Salvation Army:</strong> Broad acceptance of household goods</li>
+        <li>
+          <strong>Habitat for Humanity ReStore:</strong> 2828 Washington Ave - Accepts furniture,
+          appliances, building materials
+        </li>
+        <li>
+          <strong>Goodwill Industries:</strong> Multiple locations - Clothing, household items,
+          small furniture
+        </li>
+        <li>
+          <strong>Catholic Charities:</strong> Furniture for families in need
+        </li>
+        <li>
+          <strong>Salvation Army:</strong> Broad acceptance of household goods
+        </li>
       </ul>
 
       <h2>Time Your Project Right</h2>
       <ul>
-        <li><strong>Spring & Fall:</strong> Peak seasons for cleanouts, book early</li>
-        <li><strong>Mid-week:</strong> Often more availability than weekends</li>
-        <li><strong>Winter months:</strong> Sometimes less busy, may have better availability</li>
-        <li><strong>Same-day service:</strong> Available for urgent needs</li>
+        <li>
+          <strong>Spring & Fall:</strong> Peak seasons for cleanouts, book early
+        </li>
+        <li>
+          <strong>Mid-week:</strong> Often more availability than weekends
+        </li>
+        <li>
+          <strong>Winter months:</strong> Sometimes less busy, may have better availability
+        </li>
+        <li>
+          <strong>Same-day service:</strong> Available for urgent needs
+        </li>
       </ul>
 
       <h2>Cost-Saving Strategies</h2>
       <ul>
-        <li><strong>Consolidate pickups:</strong> Combine items into one visit</li>
-        <li><strong>Sort beforehand:</strong> Donate what you can to reduce volume</li>
-        <li><strong>Be flexible with timing:</strong> Non-urgent pickups may qualify for discounts</li>
-        <li><strong>Group with neighbors:</strong> Some companies offer multi-property discounts</li>
+        <li>
+          <strong>Consolidate pickups:</strong> Combine items into one visit
+        </li>
+        <li>
+          <strong>Sort beforehand:</strong> Donate what you can to reduce volume
+        </li>
+        <li>
+          <strong>Be flexible with timing:</strong> Non-urgent pickups may qualify for discounts
+        </li>
+        <li>
+          <strong>Group with neighbors:</strong> Some companies offer multi-property discounts
+        </li>
       </ul>
 
       <h2>What We Can (and Can't) Take</h2>
@@ -137,7 +182,10 @@ export default function EvansvilleJunkRemovalTipsPage() {
 
       <div className="my-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
         <p className="text-lg font-medium text-gray-900">
-          <strong>Local Pro Tip:</strong> Evansville's twice-yearly bulk pickup is great for small projects, but for anything urgent or substantial, professional junk removal saves time and hassle. Most local residents find the $89-649 cost worthwhile for the convenience and peace of mind.
+          <strong>Local Pro Tip:</strong> Evansville's twice-yearly bulk pickup is great for small
+          projects, but for anything urgent or substantial, professional junk removal saves time and
+          hassle. Most local residents find the $89-649 cost worthwhile for the convenience and
+          peace of mind.
         </p>
       </div>
     </BlogPostTemplate>

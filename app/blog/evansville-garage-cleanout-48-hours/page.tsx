@@ -42,9 +42,9 @@ export default function GarageCleanoutPage() {
       ]}
     >
       <p>
-        A cluttered garage can feel overwhelming, but with a focused 48-hour plan, you can
-        transform your garage from chaos to organized workspace. This guide breaks down the process
-        into manageable steps that Evansville residents can complete in a single weekend.
+        A cluttered garage can feel overwhelming, but with a focused 48-hour plan, you can transform
+        your garage from chaos to organized workspace. This guide breaks down the process into
+        manageable steps that Evansville residents can complete in a single weekend.
       </p>
 
       <h2>Day 1: Sort and Categorize (Hours 1-24)</h2>

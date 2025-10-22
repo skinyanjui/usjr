@@ -1,4 +1,5 @@
 # Performance Audit Report
+
 **Uncle Sam Junk Removal (USJR) Website**  
 **Performance Assessment Date:** September 3, 2025  
 **Assessment Type:** Web Performance & Optimization Review
@@ -14,9 +15,11 @@ This performance audit evaluates the USJR Next.js application's loading speed, r
 ### Current Optimization Status ✅
 
 #### 1. Largest Contentful Paint (LCP)
+
 **Target: < 2.5 seconds**
 
 **Optimizations in Place:**
+
 - Next.js Image component with WebP/AVIF formats
 - Font optimization with `next/font`
 - Proper image sizing and lazy loading
@@ -34,30 +37,34 @@ images: {
 ```
 
 #### 2. First Input Delay (FID) / Interaction to Next Paint (INP)
+
 **Target: < 100ms**
 
 **ESLint Performance Rules:**
+
 ```javascript
 // Prevents layout thrashing
 "no-restricted-syntax": [
   "warn",
-  { selector: "MemberExpression[property.name='offsetWidth']", 
+  { selector: "MemberExpression[property.name='offsetWidth']",
     message: "Avoid forced synchronous layout" },
-  { selector: "CallExpression[callee.property.name='getBoundingClientRect']", 
+  { selector: "CallExpression[callee.property.name='getBoundingClientRect']",
     message: "Batch reads in requestAnimationFrame" }
 ]
 ```
 
 #### 3. Cumulative Layout Shift (CLS)
+
 **Target: < 0.1**
 
 **Font Loading Strategy:**
+
 ```typescript
 const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap", // Prevents layout shift
-  variable: "--font-ibm-plex-sans",
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap', // Prevents layout shift
+  variable: '--font-ibm-plex-sans',
 })
 ```
 
@@ -66,6 +73,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 ### Bundle Optimization ✅
 
 #### 1. Tree Shaking & Code Splitting
+
 ```javascript
 // Modular imports prevent large bundles
 modularizeImports: {
@@ -79,15 +87,17 @@ modularizeImports: {
 ```
 
 **Impact:**
+
 - Reduced bundle size by importing only used icons
 - Better tree shaking for date utilities
 - Smaller initial JavaScript payload
 
 #### 2. Production Optimizations
+
 ```javascript
 compiler: {
-  removeConsole: process.env.NODE_ENV === 'production' 
-    ? { exclude: ['error', 'warn'] } 
+  removeConsole: process.env.NODE_ENV === 'production'
+    ? { exclude: ['error', 'warn'] }
     : false,
 }
 ```
@@ -95,6 +105,7 @@ compiler: {
 ### Bundle Size Recommendations 📊
 
 #### Current Dependencies Analysis
+
 ```json
 {
   "@radix-ui/*": "Multiple packages - Consider bundle impact",
@@ -105,6 +116,7 @@ compiler: {
 ```
 
 #### Optimization Opportunities
+
 1. **Dynamic Imports:** Implement for non-critical components
 2. **Radix UI Bundling:** Consider individual package imports
 3. **Leaflet Maps:** Lazy load map components
@@ -122,6 +134,7 @@ const LeafletMap = dynamic(() => import('@/components/leaflet-map'), {
 ### Current Implementation ✅
 
 #### 1. Image Caching
+
 ```javascript
 images: {
   minimumCacheTTL: 31536000, // 1 year
@@ -129,6 +142,7 @@ images: {
 ```
 
 #### 2. Static Asset Caching
+
 - Next.js automatic static optimization
 - Build-time pre-rendering for static pages
 - Automatic code splitting by route
@@ -136,6 +150,7 @@ images: {
 ### Improvement Opportunities 📈
 
 #### 1. API Response Caching
+
 ```typescript
 // Add to API routes
 export async function GET() {
@@ -148,6 +163,7 @@ export async function GET() {
 ```
 
 #### 2. Service Worker Implementation
+
 ```javascript
 // Consider adding for offline functionality
 const withPWA = require('next-pwa')({
@@ -162,13 +178,16 @@ const withPWA = require('next-pwa')({
 ### Excellent Implementations ⭐
 
 #### 1. Template System Efficiency
+
 **ServicePageTemplate Benefits:**
+
 - 70% code reduction vs custom pages
 - Consistent rendering performance
 - Reduced bundle duplication
 - Optimized re-renders with React patterns
 
 #### 2. Route Prefetching
+
 ```typescript
 // RoutePrefetcher component
 export function RoutePrefetcher() {
@@ -177,6 +196,7 @@ export function RoutePrefetcher() {
 ```
 
 #### 3. Scroll Optimization
+
 ```typescript
 // ScrollToTopOnRouteChange prevents scroll issues
 export function ScrollToTopOnRouteChange() {
@@ -187,9 +207,11 @@ export function ScrollToTopOnRouteChange() {
 ### Performance Issues 🟡
 
 #### 1. Heavy Component Hydration
+
 **Issue:** Multiple Radix UI components may cause hydration delays
 
 **Analysis:**
+
 ```typescript
 // Heavy component stack
 "@radix-ui/react-accordion": "latest",
@@ -199,13 +221,16 @@ export function ScrollToTopOnRouteChange() {
 ```
 
 **Recommendation:**
+
 ```typescript
 // Lazy load heavy components
 const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ```
 
 #### 2. Analytics Loading
+
 **Current Implementation:**
+
 ```typescript
 {process.env.NEXT_PUBLIC_AHREFS_KEY ? (
   <Script
@@ -217,6 +242,7 @@ const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ```
 
 **Optimization:**
+
 ```typescript
 // Consider lazy loading analytics
 <Script
@@ -231,6 +257,7 @@ const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ### Current Optimizations ✅
 
 #### 1. Preconnect Headers
+
 ```tsx
 <head>
   <link rel="preconnect" href="https://analytics.ahrefs.com" />
@@ -238,6 +265,7 @@ const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ```
 
 #### 2. Image Optimization
+
 - WebP/AVIF format support
 - Responsive image sizes
 - Lazy loading implementation
@@ -245,6 +273,7 @@ const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ### Improvement Opportunities 📡
 
 #### 1. Resource Hints
+
 ```tsx
 // Add more preconnect hints
 <link rel="preconnect" href="https://images.unsplash.com" />
@@ -252,6 +281,7 @@ const HeavyDialog = lazy(() => import('@/components/heavy-dialog'))
 ```
 
 #### 2. Critical CSS Inlining
+
 ```javascript
 // Consider critical CSS for above-the-fold content
 experimental: {
@@ -264,15 +294,19 @@ experimental: {
 ### JavaScript Execution ⚡
 
 #### 1. Event Handler Optimization
+
 **Good Practices Found:**
+
 ```typescript
 // Keyboard event handling in header
-window.addEventListener("keydown", onKeyDown)
+window.addEventListener('keydown', onKeyDown)
 // Proper cleanup implemented
 ```
 
 #### 2. React Performance Patterns
+
 **Template Components:**
+
 - Proper memo usage for expensive renders
 - Efficient props drilling prevention
 - Good component composition
@@ -280,16 +314,20 @@ window.addEventListener("keydown", onKeyDown)
 ### Memory Management 🧠
 
 #### 1. Event Listener Cleanup
+
 ```typescript
 // Ensure proper cleanup in useEffect
 useEffect(() => {
-  const handler = (e: KeyboardEvent) => { /* ... */ }
-  window.addEventListener("keydown", handler)
-  return () => window.removeEventListener("keydown", handler)
+  const handler = (e: KeyboardEvent) => {
+    /* ... */
+  }
+  window.addEventListener('keydown', handler)
+  return () => window.removeEventListener('keydown', handler)
 }, [])
 ```
 
 #### 2. Component State Management
+
 - No global state management needed (good)
 - Local state properly scoped
 - Form state efficiently managed
@@ -299,10 +337,11 @@ useEffect(() => {
 ### Current API Implementation ✅
 
 #### 1. Quote API Optimization
+
 ```typescript
 // Efficient validation with Zod
 const QuoteSchema = z.object({
-  name: z.string().min(1, "Name is required"),
+  name: z.string().min(1, 'Name is required'),
   // ... other validations
 })
 
@@ -311,12 +350,14 @@ const parsed = QuoteSchema.safeParse(normalized)
 ```
 
 #### 2. Rate Limiting Performance
+
 ```typescript
 // In-memory storage (fast but not persistent)
 const ipToTimestamps = new Map<string, number[]>()
 ```
 
 **Performance Impact:**
+
 - ✅ Fast lookup times
 - ❌ Memory usage scales with traffic
 - ❌ Lost on server restart
@@ -324,13 +365,14 @@ const ipToTimestamps = new Map<string, number[]>()
 ### Recommendations 🚀
 
 #### 1. Response Time Optimization
+
 ```typescript
 // Add response time headers
 export async function POST(req: Request) {
   const start = performance.now()
-  
+
   // ... processing ...
-  
+
   const duration = performance.now() - start
   return new Response(JSON.stringify(result), {
     headers: {
@@ -345,21 +387,28 @@ export async function POST(req: Request) {
 ### Responsive Design ✅
 
 #### 1. Mobile-First Approach
+
 - Tailwind CSS mobile-first utilities
 - Responsive image implementations
 - Touch-friendly interface elements
 
 #### 2. Performance Considerations
+
 ```css
 /* Good mobile performance patterns found */
-.scroll-smooth { scroll-behavior: smooth; }
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
 /* Hardware acceleration for animations */
-.transform { transform: translateZ(0); }
+.transform {
+  transform: translateZ(0);
+}
 ```
 
 ### Mobile Optimization Opportunities 📱
 
 #### 1. Touch Events
+
 ```typescript
 // Consider adding touch event optimizations
 const handleTouchStart = useCallback((e: TouchEvent) => {
@@ -368,6 +417,7 @@ const handleTouchStart = useCallback((e: TouchEvent) => {
 ```
 
 #### 2. Viewport Optimization
+
 ```html
 <!-- Consider adding for better mobile performance -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -376,14 +426,16 @@ const handleTouchStart = useCallback((e: TouchEvent) => {
 ## Monitoring & Analytics
 
 ### Current Monitoring ✅
+
 ```typescript
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next'
 // Vercel Analytics for performance monitoring
 ```
 
 ### Enhanced Monitoring Recommendations 📊
 
 #### 1. Core Web Vitals Tracking
+
 ```typescript
 // Add custom performance tracking
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals'
@@ -398,6 +450,7 @@ getLCP(sendToAnalytics)
 ```
 
 #### 2. Error Boundary Performance
+
 ```typescript
 // Add performance tracking to error boundaries
 class PerformanceErrorBoundary extends React.Component {
@@ -410,16 +463,19 @@ class PerformanceErrorBoundary extends React.Component {
 ## Performance Roadmap
 
 ### Phase 1: Quick Wins (1-2 days) 🏃‍♂️
+
 - [ ] Update analytics loading strategy to `lazyOnload`
 - [ ] Add resource hints for external domains
 - [ ] Implement response time headers
 
 ### Phase 2: Optimization (1-2 weeks) 🔧
+
 - [ ] Implement dynamic imports for heavy components
 - [ ] Add Core Web Vitals monitoring
 - [ ] Optimize bundle with individual Radix imports
 
 ### Phase 3: Advanced (1-2 months) 🚀
+
 - [ ] Implement service worker for offline functionality
 - [ ] Add advanced caching strategies
 - [ ] Consider edge runtime for API routes
@@ -427,6 +483,7 @@ class PerformanceErrorBoundary extends React.Component {
 ## Performance Testing Strategy
 
 ### Automated Testing
+
 ```json
 {
   "scripts": {
@@ -438,6 +495,7 @@ class PerformanceErrorBoundary extends React.Component {
 ```
 
 ### Manual Testing Checklist
+
 - [ ] Lighthouse performance audit
 - [ ] WebPageTest analysis
 - [ ] Bundle size analysis
@@ -446,31 +504,34 @@ class PerformanceErrorBoundary extends React.Component {
 
 ## Performance Metrics
 
-| Metric | Current Status | Target | Action Required |
-|--------|---------------|---------|-----------------|
-| Bundle Size | Unknown | < 300KB | ✅ Analyze |
-| LCP | Optimized | < 2.5s | ✅ Monitor |
-| FID/INP | Good | < 100ms | ✅ Maintain |
-| CLS | Good | < 0.1 | ✅ Maintain |
-| Time to Interactive | Unknown | < 3.5s | 📊 Measure |
+| Metric              | Current Status | Target  | Action Required |
+| ------------------- | -------------- | ------- | --------------- |
+| Bundle Size         | Unknown        | < 300KB | ✅ Analyze      |
+| LCP                 | Optimized      | < 2.5s  | ✅ Monitor      |
+| FID/INP             | Good           | < 100ms | ✅ Maintain     |
+| CLS                 | Good           | < 0.1   | ✅ Maintain     |
+| Time to Interactive | Unknown        | < 3.5s  | 📊 Measure      |
 
 ## Conclusion
 
 The USJR website demonstrates excellent performance optimization practices with Next.js best practices properly implemented. The template system provides both development efficiency and runtime performance benefits.
 
 **Strengths:**
+
 - Excellent image optimization
 - Good bundle optimization with modular imports
 - Proper font loading strategy
 - ESLint rules preventing performance issues
 
 **Areas for Improvement:**
+
 - Bundle size monitoring and reduction
 - Advanced caching strategies
 - Core Web Vitals tracking
 - Mobile performance optimization
 
 **Priority Actions:**
+
 1. Implement bundle analysis and monitoring
 2. Add Core Web Vitals tracking
 3. Optimize analytics loading strategy

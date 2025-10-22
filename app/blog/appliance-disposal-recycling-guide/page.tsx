@@ -44,8 +44,8 @@ export default function ApplianceDisposalGuidePage() {
       <p>
         When it's time to replace that old refrigerator, washing machine, or other household
         appliance, proper disposal is crucial for both environmental protection and legal
-        compliance. This guide covers everything Evansville residents need to know about
-        responsible appliance disposal and recycling.
+        compliance. This guide covers everything Evansville residents need to know about responsible
+        appliance disposal and recycling.
       </p>
 
       <div className="my-6 rounded-lg border-l-4 border-yellow-500 bg-yellow-50 p-6">
@@ -110,8 +110,7 @@ export default function ApplianceDisposalGuidePage() {
           restrictions apply)
         </li>
         <li>
-          <strong>Lowe's & Home Depot:</strong> $30-50 haul-away service with new appliance
-          purchase
+          <strong>Lowe's & Home Depot:</strong> $30-50 haul-away service with new appliance purchase
         </li>
         <li>
           <strong>Local appliance stores:</strong> Many offer take-back programs
