@@ -1,7 +1,14 @@
 import { z } from 'zod'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialization to handle missing API key gracefully
+let resend: Resend | null = null
+function getResendClient() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
@@ -73,12 +80,16 @@ export async function POST(req: Request) {
 
     // Send email notification to business owner
     try {
-      await resend.emails.send({
-        from: 'Quote Form <samuel.kinyanjui.sk@gmail.com>',
-        to: 'samuel.kinyanjui.sk@gmail.com',
-        replyTo: parsed.data.email,
-        subject: `New Quote Request from ${parsed.data.name}`,
-        html: `
+      const resendClient = getResendClient()
+      if (!resendClient) {
+        console.warn('RESEND_API_KEY not configured - skipping email notifications')
+      } else {
+        await resendClient.emails.send({
+          from: 'Quote Form <samuel.kinyanjui.sk@gmail.com>',
+          to: 'samuel.kinyanjui.sk@gmail.com',
+          replyTo: parsed.data.email,
+          subject: `New Quote Request from ${parsed.data.name}`,
+          html: `
           <h2>New Quote Request</h2>
           <p><strong>Name:</strong> ${parsed.data.name}</p>
           <p><strong>Phone:</strong> ${parsed.data.phone}</p>
@@ -90,7 +101,8 @@ export async function POST(req: Request) {
           <p><strong>Source:</strong> ${parsed.data.source}</p>
           <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
         `,
-      })
+        })
+      }
     } catch (emailError) {
       console.error('Failed to send business notification email:', emailError)
       // Continue processing even if email fails - don't block the quote submission
@@ -98,11 +110,15 @@ export async function POST(req: Request) {
 
     // Send confirmation email to customer
     try {
-      await resend.emails.send({
-        from: 'US Junk Removal <samuel.kinyanjui.sk@gmail.com>',
-        to: parsed.data.email,
-        subject: 'Your Quote Request - US Junk Removal & Cleaning',
-        html: `
+      const resendClient = getResendClient()
+      if (!resendClient) {
+        console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
+      } else {
+        await resendClient.emails.send({
+          from: 'US Junk Removal <samuel.kinyanjui.sk@gmail.com>',
+          to: parsed.data.email,
+          subject: 'Your Quote Request - US Junk Removal & Cleaning',
+          html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #16a34a;">Thank You for Your Quote Request!</h2>
             <p>Hi ${parsed.data.name},</p>
@@ -122,28 +138,40 @@ export async function POST(req: Request) {
                 <td style="padding: 10px 0; font-weight: bold;">Email:</td>
                 <td style="padding: 10px 0;">${parsed.data.email}</td>
               </tr>
-              ${parsed.data.address ? `
+              ${
+                parsed.data.address
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Property Address:</td>
                 <td style="padding: 10px 0;">${parsed.data.address}</td>
               </tr>
-              ` : ''}
+              `
+                  : ''
+              }
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Service Requested:</td>
                 <td style="padding: 10px 0;">${parsed.data.service}</td>
               </tr>
-              ${parsed.data.projectSize ? `
+              ${
+                parsed.data.projectSize
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Project Size:</td>
                 <td style="padding: 10px 0;">${parsed.data.projectSize}</td>
               </tr>
-              ` : ''}
-              ${parsed.data.details ? `
+              `
+                  : ''
+              }
+              ${
+                parsed.data.details
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold; vertical-align: top;">Additional Details:</td>
                 <td style="padding: 10px 0;">${parsed.data.details}</td>
               </tr>
-              ` : ''}
+              `
+                  : ''
+              }
             </table>
 
             <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-left: 4px solid #16a34a;">
@@ -165,7 +193,8 @@ export async function POST(req: Request) {
             </p>
           </div>
         `,
-      })
+        })
+      }
     } catch (emailError) {
       console.error('Failed to send customer confirmation email:', emailError)
       // Continue processing even if email fails - don't block the quote submission

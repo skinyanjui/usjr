@@ -35,6 +35,20 @@ export function EvansvilleQuoteForm() {
     e.preventDefault()
     setErrorMessage(null)
     setIsSubmitting(true)
+
+    // Client-side validation
+    if (!formData.service) {
+      setErrorMessage('Please select a service')
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!formData.name || !formData.email || !formData.phone) {
+      setErrorMessage('Please fill in all required fields')
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       const res = await fetch('/api/quote', {
         method: 'POST',
@@ -50,9 +64,23 @@ export function EvansvilleQuoteForm() {
           source: 'evansville-quote-form',
         }),
       })
-      if (!res.ok) {
-        const text = await res.text()
-        throw new Error(text || 'Failed to submit')
+      const result = await res.json()
+      if (!res.ok || !result.ok) {
+        // Handle both 'error' (string) and 'errors' (validation errors object)
+        let errorMsg = 'Failed to submit'
+        if (result.error) {
+          errorMsg = result.error
+        } else if (result.errors) {
+          const fieldErrors = result.errors.fieldErrors || {}
+          const errorMessages = Object.entries(fieldErrors)
+            .map(
+              ([field, messages]) =>
+                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
+            )
+            .join('; ')
+          errorMsg = errorMessages || 'Please check your form and try again'
+        }
+        throw new Error(errorMsg)
       }
       setIsSubmitted(true)
       setFormData({
