@@ -55,6 +55,8 @@ export function QuoteFormStandalone() {
   })
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const residentialServices = [
     'Deep Cleaning',
@@ -116,13 +118,42 @@ export function QuoteFormStandalone() {
     setUploadedFiles(uploadedFiles.filter((_, i) => i !== index))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Form submitted:', { formData, uploadedFiles, segment, sector })
+    setIsSubmitting(true)
+    setSubmitError(null)
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          segment,
+          sector,
+          source: 'quote-form',
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'Failed to submit quote request')
+      }
+
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Error submitting quote:', error)
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'Failed to submit quote request. Please try again or call us directly.'
+      )
+    } finally {
+      setIsSubmitting(false)
     }
-    setIsSubmitted(true)
   }
 
   const getSectorServiceOptions = () => {
@@ -713,11 +744,18 @@ export function QuoteFormStandalone() {
 
           {/* Submit Button */}
           <div className="border-t pt-8">
+            {submitError && (
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+                <p className="font-semibold">Error submitting quote:</p>
+                <p>{submitError}</p>
+              </div>
+            )}
             <Button
               type="submit"
-              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700"
+              disabled={isSubmitting}
+              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:opacity-50"
             >
-              Get My Free Quote
+              {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
             </Button>
             <p className="mt-4 text-center text-sm text-gray-600">
               We'll review your request and respond within 2 hours with a detailed estimate
