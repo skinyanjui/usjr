@@ -28,7 +28,7 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 bg-blue-800" aria-hidden />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 pt-16 md:py-16 md:pt-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 pt-8 md:py-12 md:pt-12">
         <div className="mb-6 text-center text-white md:mb-8">
           <h1 className="my-2 text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             Same-Day Junk Removal & Cleaning in <RotatingLocation locations={LOCATIONS} />
