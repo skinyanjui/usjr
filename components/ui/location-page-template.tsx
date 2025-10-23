@@ -169,16 +169,16 @@ export function LocationPageTemplate({
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Button
-                  className={`${colors.button} w-full px-6 py-3 text-base font-semibold text-white sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${colors.button} px-6 py-2.5 text-base font-semibold text-white`}
                 >
                   {ctaPrimary}
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className={`${colors.outline} w-full bg-transparent px-6 py-3 text-base font-semibold hover:text-white sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${colors.outline} bg-transparent px-6 py-2.5 text-base font-semibold hover:text-white`}
                 >
                   <a href={`sms:${settings.phoneE164}`}>{ctaSecondary}</a>
                 </Button>
@@ -288,7 +288,7 @@ export function LocationPageTemplate({
               <p className="mb-4 text-gray-700">
                 Join hundreds of satisfied {locationName} customers who trust Uncle Sam Junk Removal
               </p>
-              <Button className={`${colors.button} px-8 py-3 font-semibold text-white`}>
+              <Button className={`${colors.button} px-6 py-2.5 text-base font-semibold text-white`}>
                 Get Your Free {locationName} Quote Today
               </Button>
             </div>
