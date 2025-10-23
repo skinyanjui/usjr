@@ -45,7 +45,7 @@ export function Footer() {
             {/* Services */}
             <nav
               aria-label="Our services"
-              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]"
+              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]"
             >
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Our Services</h3>
               <ul className="space-y-2 text-xs text-white sm:text-sm">
@@ -65,7 +65,7 @@ export function Footer() {
             {/* Service Areas */}
             <nav
               aria-label="Service areas"
-              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]"
+              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]"
             >
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Service Areas</h3>
               <ul className="space-y-2 text-xs text-white sm:text-sm">
@@ -83,7 +83,7 @@ export function Footer() {
             </nav>
 
             {/* Company Info */}
-            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
+            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Uncle Sam Junk Removal</h3>
               <p className="mb-3 text-xs text-white sm:text-sm">
                 Evansville's premier junk removal service. Locally owned and operated.
@@ -96,7 +96,7 @@ export function Footer() {
             </div>
 
             {/* Quick Links */}
-            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
+            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Quick Links</h3>
               <ul className="space-y-2 text-xs text-white sm:text-sm">
                 <li>
@@ -135,6 +135,53 @@ export function Footer() {
                     className="text-white transition-colors hover:text-red-200"
                   >
                     XML Sitemap
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Blog Feeds */}
+            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
+              <h3 className="mb-3 text-base font-semibold sm:text-lg">Blog Feeds</h3>
+              <ul className="space-y-2 text-xs text-white sm:text-sm">
+                <li>
+                  <a
+                    href="/rss.xml"
+                    className="text-white transition-colors hover:text-red-200"
+                  >
+                    RSS 2.0
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/atom.xml"
+                    className="text-white transition-colors hover:text-red-200"
+                  >
+                    Atom 1.0
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/atom03.xml"
+                    className="text-white transition-colors hover:text-red-200"
+                  >
+                    Atom 0.3
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/mrss.xml"
+                    className="text-white transition-colors hover:text-red-200"
+                  >
+                    Media RSS
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/feed.txt"
+                    className="text-white transition-colors hover:text-red-200"
+                  >
+                    Text Feed
                   </a>
                 </li>
               </ul>
