@@ -5,9 +5,9 @@ import { SectionHeader } from '@/components/ui/section-header'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Page Not Found | Uncle Sam Junk Removal',
+  title: '404 - Page Not Found | Uncle Sam Junk Removal',
   description:
-    "The page you're looking for doesn't exist. Find our junk removal and cleaning services here.",
+    "The page you're looking for doesn't exist. Find our junk removal and cleaning services for Evansville and the Tri-State area here.",
   robots: 'noindex, nofollow',
 }
 
