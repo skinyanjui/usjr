@@ -1,12 +1,8 @@
-# Uncle Sam Junk Removal - Robots Configuration
-
 User-agent: *
 Allow: /
 Disallow: /private/
 
-# Sitemaps
 Sitemap: https://unclesamjunkremoval.com/sitemap.xml
 Sitemap: https://unclesamjunkremoval.com/html-sitemap
 
-# Host
 Host: https://unclesamjunkremoval.com
