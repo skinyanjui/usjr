@@ -15,7 +15,9 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-16 text-center">
         <h1 className="mb-6 text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-          Junk Removal & Cleaning Services in <RotatingLocation locations={LOCATIONS} />
+          Junk Removal & Cleaning Services in
+          <br />
+          <RotatingLocation locations={LOCATIONS} />
         </h1>
 
         <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90 sm:text-xl">
