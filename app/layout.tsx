@@ -66,6 +66,19 @@ export default function RootLayout({
       {' '}
       {/* className={`${ibmPlexSans.variable} antialiased`} when fonts restored */}
       <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BD7LEP7D30"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BD7LEP7D30');
+          `}
+        </Script>
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
