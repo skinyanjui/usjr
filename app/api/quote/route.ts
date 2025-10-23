@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       })
     }
 
-    // Send email notification
+    // Send email notification to business owner
     try {
       await resend.emails.send({
         from: 'Quote Form <samuel.kinyanjui.sk@gmail.com>',
@@ -92,7 +92,82 @@ export async function POST(req: Request) {
         `,
       })
     } catch (emailError) {
-      console.error('Failed to send email:', emailError)
+      console.error('Failed to send business notification email:', emailError)
+      // Continue processing even if email fails - don't block the quote submission
+    }
+
+    // Send confirmation email to customer
+    try {
+      await resend.emails.send({
+        from: 'US Junk Removal <samuel.kinyanjui.sk@gmail.com>',
+        to: parsed.data.email,
+        subject: 'Your Quote Request - US Junk Removal & Cleaning',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #16a34a;">Thank You for Your Quote Request!</h2>
+            <p>Hi ${parsed.data.name},</p>
+            <p>We've received your quote request and will get back to you within 2 hours with a detailed estimate.</p>
+
+            <h3 style="color: #333; margin-top: 30px;">Your Quote Details:</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Name:</td>
+                <td style="padding: 10px 0;">${parsed.data.name}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Phone:</td>
+                <td style="padding: 10px 0;">${parsed.data.phone}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Email:</td>
+                <td style="padding: 10px 0;">${parsed.data.email}</td>
+              </tr>
+              ${parsed.data.address ? `
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Property Address:</td>
+                <td style="padding: 10px 0;">${parsed.data.address}</td>
+              </tr>
+              ` : ''}
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Service Requested:</td>
+                <td style="padding: 10px 0;">${parsed.data.service}</td>
+              </tr>
+              ${parsed.data.projectSize ? `
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold;">Project Size:</td>
+                <td style="padding: 10px 0;">${parsed.data.projectSize}</td>
+              </tr>
+              ` : ''}
+              ${parsed.data.details ? `
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px 0; font-weight: bold; vertical-align: top;">Additional Details:</td>
+                <td style="padding: 10px 0;">${parsed.data.details}</td>
+              </tr>
+              ` : ''}
+            </table>
+
+            <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-left: 4px solid #16a34a;">
+              <h3 style="margin-top: 0; color: #16a34a;">What Happens Next?</h3>
+              <ul style="margin: 10px 0;">
+                <li>We'll review your request carefully</li>
+                <li>You'll receive a detailed quote within 2 hours</li>
+                <li>Our team will answer any questions you have</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background-color: #f9fafb; text-align: center;">
+              <p style="margin: 0;"><strong>Need immediate assistance?</strong></p>
+              <p style="margin: 10px 0; font-size: 18px; color: #16a34a;">Call or text: (812) 401-9022</p>
+            </div>
+
+            <p style="margin-top: 30px; color: #666; font-size: 14px;">
+              Thank you for choosing US Junk Removal & Cleaning. We look forward to serving you!
+            </p>
+          </div>
+        `,
+      })
+    } catch (emailError) {
+      console.error('Failed to send customer confirmation email:', emailError)
       // Continue processing even if email fails - don't block the quote submission
     }
 
