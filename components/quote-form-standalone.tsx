@@ -123,6 +123,19 @@ export function QuoteFormStandalone() {
     setIsSubmitting(true)
     setSubmitError(null)
 
+    // Client-side validation
+    if (!formData.service) {
+      setSubmitError('Please select a service')
+      setIsSubmitting(false)
+      return
+    }
+
+    if (!formData.name || !formData.email || !formData.phone || !formData.address) {
+      setSubmitError('Please fill in all required fields')
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       // Prepare the data to send to the API
       const quoteData = {
@@ -146,7 +159,22 @@ export function QuoteFormStandalone() {
       const result = await response.json()
 
       if (!response.ok || !result.ok) {
-        throw new Error(result.error || 'Failed to submit quote request')
+        // Handle both 'error' (string) and 'errors' (validation errors object)
+        let errorMessage = 'Failed to submit quote request'
+        if (result.error) {
+          errorMessage = result.error
+        } else if (result.errors) {
+          // Extract field errors from zod validation
+          const fieldErrors = result.errors.fieldErrors || {}
+          const errorMessages = Object.entries(fieldErrors)
+            .map(
+              ([field, messages]) =>
+                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
+            )
+            .join('; ')
+          errorMessage = errorMessages || 'Please check your form and try again'
+        }
+        throw new Error(errorMessage)
       }
 
       setIsSubmitted(true)
@@ -812,7 +840,7 @@ export function QuoteFormStandalone() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
             </Button>
