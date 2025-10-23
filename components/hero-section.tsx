@@ -3,7 +3,17 @@
 import Link from 'next/link'
 import { RotatingLocation } from '@/components/rotating-location'
 
-const LOCATIONS = ['Evansville', 'Newburgh', 'Henderson', 'Owensboro']
+const LOCATIONS = [
+  'Evansville',
+  'Newburgh',
+  'Henderson',
+  'Owensboro',
+  'Boonville',
+  'Princeton',
+  'Mount Carmel',
+  'Mount Vernon',
+  'New Harmony',
+]
 
 export function HeroSection() {
   return (
