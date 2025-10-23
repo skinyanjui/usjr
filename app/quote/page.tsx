@@ -81,26 +81,24 @@ export default function QuotePage() {
               availability.
             </p>
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <Button
                 asChild
-                size="lg"
-                className="w-full bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 sm:w-auto sm:px-8"
+                className="bg-blue-600 px-6 py-2.5 text-base text-white hover:bg-blue-700"
               >
                 <a href={`tel:${settings.phoneE164}`}>
-                  <Phone className="mr-2 h-5 w-5" />
+                  <Phone className="mr-2 h-4 w-4" />
                   Call {settings.phone}
                 </a>
               </Button>
               <Button
                 asChild
-                size="lg"
                 variant="outline"
-                className="w-full border-blue-800 bg-transparent px-6 py-3 text-blue-800 hover:bg-blue-100 sm:w-auto sm:px-8"
+                className="border-blue-800 bg-transparent px-6 py-2.5 text-base text-blue-800 hover:bg-blue-100"
               >
                 <a href={`sms:${settings.phoneE164}`}>
-                  <Camera className="mr-2 h-5 w-5" />
-                  Text Photos for Instant Quote
+                  <Camera className="mr-2 h-4 w-4" />
+                  Text Photos
                 </a>
               </Button>
             </div>

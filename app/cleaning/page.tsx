@@ -94,7 +94,7 @@ export default function CleaningHub() {
           <Badge className="mb-6 border-green-200 bg-green-100 text-green-800">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"
@@ -232,7 +232,7 @@ export default function CleaningHub() {
           <p className="mb-8 text-xl text-gray-600">
             Book your cleaning service today or get a free, no-obligation quote.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"

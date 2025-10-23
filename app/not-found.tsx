@@ -30,7 +30,7 @@ export default function NotFound() {
             <p>• Contact us if you think this is an error</p>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button asChild>
               <Link href="/">Go to Homepage</Link>
             </Button>

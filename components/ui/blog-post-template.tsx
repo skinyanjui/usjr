@@ -239,17 +239,17 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             Our experienced team is ready to help with your junk removal project. Get your free
             quote today!
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="flex flex-wrap gap-3">
             <Button
               asChild
-              className="bg-red-600 px-8 py-6 text-lg font-semibold text-white hover:bg-red-700"
+              className="bg-red-600 px-6 py-2.5 text-base font-semibold text-white hover:bg-red-700"
             >
               <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="border-2 border-red-600 bg-transparent px-8 py-6 text-lg font-semibold text-red-600 hover:bg-red-600 hover:text-white"
+              className="border-2 border-red-600 bg-transparent px-6 py-2.5 text-base font-semibold text-red-600 hover:bg-red-600 hover:text-white"
             >
               <Link href="/quote">Get Free Quote</Link>
             </Button>

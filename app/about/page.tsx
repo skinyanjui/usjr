@@ -334,13 +334,13 @@ export default function AboutPage() {
             Join thousands of satisfied customers who trust Uncle Sam Junk Removal for their junk
             removal and cleaning needs.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <PhoneButton href={`tel:${settings.phoneE164}`} size="lg" className="justify-center">
+          <div className="flex flex-wrap justify-center gap-3">
+            <PhoneButton href={`tel:${settings.phoneE164}`} className="justify-center">
               <Phone className="h-4 w-4" /> Call {settings.phone}
             </PhoneButton>
             <Button
               asChild
-              className="justify-center rounded-lg bg-white px-8 py-3 text-lg font-semibold text-red-700 shadow transition-colors hover:bg-red-50"
+              className="justify-center rounded-lg bg-white px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-red-50"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote

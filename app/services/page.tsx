@@ -133,13 +133,13 @@ export default function ServicesPage() {
       {/* Top CTAs */}
       <section className="px-4 py-8">
         <div className="mx-auto max-w-7xl text-center">
-          <div className="mt-2 flex flex-col justify-center gap-4 sm:flex-row">
-            <ThemedButton theme="red" size="lg" asChild>
+          <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <ThemedButton theme="red" asChild>
               <QuoteCtaLink location="services-hero" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+            <ThemedButton theme="green" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>
@@ -259,13 +259,13 @@ export default function ServicesPage() {
           <p className="mb-8 text-xl text-gray-600">
             Book your service today or get a free, no-obligation quote.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <ThemedButton theme="red" size="lg" asChild>
+          <div className="flex flex-wrap justify-center gap-3">
+            <ThemedButton theme="red" asChild>
               <QuoteCtaLink location="services-cta" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+            <ThemedButton theme="green" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>

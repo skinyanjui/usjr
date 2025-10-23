@@ -300,16 +300,16 @@ export default function BlogPage() {
               Get expert junk removal service for your home or business. Free quotes, same-day
               service available.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/quote"
-                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-red-700"
+                className="inline-flex items-center justify-center rounded-lg bg-red-600 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-red-700"
               >
                 Get Free Quote
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-red-600 bg-transparent px-8 py-4 text-lg font-semibold text-red-600 transition-colors hover:bg-red-600 hover:text-white"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-red-600 bg-transparent px-6 py-2.5 text-base font-semibold text-red-600 transition-colors hover:bg-red-600 hover:text-white"
               >
                 View Services
               </Link>

@@ -189,17 +189,17 @@ export function ServicePageTemplate({
                 })}
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   asChild
-                  className={`${classes.primary} w-full px-6 py-3 text-base font-semibold text-white sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${classes.primary} px-6 py-2.5 text-base font-semibold text-white`}
                 >
                   <a href={`tel:${settings.phoneE164}`}>{ctaPrimary}</a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className={`${classes.secondary} w-full bg-transparent px-6 py-3 text-base font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${classes.secondary} bg-transparent px-6 py-2.5 text-base font-semibold`}
                 >
                   <QuoteCtaLink location="service-template" label={ctaSecondary}>
                     {ctaSecondary}
