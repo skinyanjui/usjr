@@ -55,6 +55,8 @@ export function QuoteFormStandalone() {
   })
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const residentialServices = [
     'Deep Cleaning',
@@ -116,13 +118,102 @@ export function QuoteFormStandalone() {
     setUploadedFiles(uploadedFiles.filter((_, i) => i !== index))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Form submitted:', { formData, uploadedFiles, segment, sector })
+    setIsSubmitting(true)
+    setSubmitError(null)
+
+    try {
+      // Prepare the data to send to the API
+      const quoteData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        service: formData.service,
+        details: buildDetailsString(),
+        source: 'quote-form',
+      }
+
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quoteData),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'Failed to submit quote request')
+      }
+
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Error submitting quote:', error)
+      setSubmitError(
+        error instanceof Error ? error.message : 'Failed to submit quote. Please try again.'
+      )
+    } finally {
+      setIsSubmitting(false)
     }
-    setIsSubmitted(true)
+  }
+
+  // Build a comprehensive details string from all form fields
+  const buildDetailsString = () => {
+    const details: string[] = []
+
+    // Add segment and sector info
+    details.push(`Segment: ${segment}`)
+    details.push(`Sector: ${sector}`)
+
+    // Add property details
+    if (formData.sqft) details.push(`Square Footage: ${formData.sqft}`)
+    if (formData.bedrooms) details.push(`Bedrooms: ${formData.bedrooms}`)
+    if (formData.bathrooms) details.push(`Bathrooms: ${formData.bathrooms}`)
+    if (formData.businessType) details.push(`Business Type: ${formData.businessType}`)
+    if (formData.suiteAccess) details.push(`Suite Access: ${formData.suiteAccess}`)
+
+    // Add scheduling preferences
+    if (formData.preferredDate) details.push(`Preferred Date: ${formData.preferredDate}`)
+    if (formData.preferredTime) details.push(`Preferred Time: ${formData.preferredTime}`)
+
+    // Add sector-specific details
+    if (sector === 'junk-removal') {
+      if (formData.loadSize) details.push(`Load Size: ${formData.loadSize}`)
+      if (formData.itemsDescription) details.push(`Items: ${formData.itemsDescription}`)
+    }
+
+    if (sector === 'light-demolition') {
+      if (formData.structureType) details.push(`Structure Type: ${formData.structureType}`)
+      if (formData.approxSize) details.push(`Approximate Size: ${formData.approxSize}`)
+      if (formData.demolitionMaterial) details.push(`Material: ${formData.demolitionMaterial}`)
+      if (formData.utilitiesDisconnected) details.push('Utilities: Disconnected')
+      if (formData.haulAway) details.push('Haul-away: Yes')
+    }
+
+    if (sector === 'estate-cleanouts') {
+      if (formData.estatePropertyType) details.push(`Property Type: ${formData.estatePropertyType}`)
+      if (formData.estateRooms) details.push(`Rooms: ${formData.estateRooms}`)
+      if (formData.estateAccess) details.push(`Access: ${formData.estateAccess}`)
+      if (formData.estateTimeline) details.push(`Timeline: ${formData.estateTimeline}`)
+    }
+
+    // Add eco-friendly preference for cleaning
+    if (sector === 'cleaning' && formData.ecoFriendly) {
+      details.push('Eco-Friendly Products: Yes')
+    }
+
+    // Add custom message
+    if (formData.message) details.push(`\nAdditional Notes: ${formData.message}`)
+
+    // Add file upload info
+    if (uploadedFiles.length > 0) {
+      details.push(`\nPhotos Uploaded: ${uploadedFiles.length}`)
+    }
+
+    return details.join('\n')
   }
 
   const getSectorServiceOptions = () => {
@@ -713,11 +804,17 @@ export function QuoteFormStandalone() {
 
           {/* Submit Button */}
           <div className="border-t pt-8">
+            {submitError && (
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+                {submitError}
+              </div>
+            )}
             <Button
               type="submit"
-              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700"
+              disabled={isSubmitting}
+              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Get My Free Quote
+              {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
             </Button>
             <p className="mt-4 text-center text-sm text-gray-600">
               We'll review your request and respond within 2 hours with a detailed estimate
