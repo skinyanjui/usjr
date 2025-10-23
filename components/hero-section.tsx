@@ -1,9 +1,24 @@
+'use client'
+
 import Link from 'next/link'
 import { ThemedButton } from '@/components/ui/themed-button'
 import { GlassCard } from '@/components/ui/glass-card'
 import { Shield, Award } from 'lucide-react'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { UNIFORM_OFFERS } from '@/lib/uniform-offers'
+import { RotatingLocation } from '@/components/rotating-location'
+
+const LOCATIONS = [
+  'Evansville',
+  'Newburgh',
+  'Henderson',
+  'Owensboro',
+  'Boonville',
+  'Princeton',
+  'Mount Carmel',
+  'Mount Vernon',
+  'New Harmony',
+]
 
 export function HeroSection() {
   return (
@@ -15,11 +30,11 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 pt-16 md:py-16 md:pt-20">
         <div className="mb-6 text-center text-white md:mb-8">
-          <h1 className="my-2 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            Same-Day Junk Removal & Cleaning in Evansville, IN
+          <h1 className="my-2 text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            Same-Day Junk Removal & Cleaning in <RotatingLocation locations={LOCATIONS} />
           </h1>
           <p className="mx-auto mt-4 max-w-4xl text-base text-white/90 sm:text-lg md:text-xl lg:text-2xl">
-            Local, veteran-owned pros serving Evansville, Newburgh & Southern Indiana
+            Local, veteran-owned pros serving the Tri-State area
           </p>
         </div>
 
