@@ -1,4 +1,7 @@
 import { z } from 'zod'
+import { Resend } from 'resend'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
@@ -68,7 +71,31 @@ export async function POST(req: Request) {
       })
     }
 
-    // In production, send to an email service, CRM, or database here.
+    // Send email notification
+    try {
+      await resend.emails.send({
+        from: 'Quote Form <samuel.kinyanjui.sk@gmail.com>',
+        to: 'samuel.kinyanjui.sk@gmail.com',
+        replyTo: parsed.data.email,
+        subject: `New Quote Request from ${parsed.data.name}`,
+        html: `
+          <h2>New Quote Request</h2>
+          <p><strong>Name:</strong> ${parsed.data.name}</p>
+          <p><strong>Phone:</strong> ${parsed.data.phone}</p>
+          <p><strong>Email:</strong> ${parsed.data.email}</p>
+          <p><strong>Address:</strong> ${parsed.data.address || 'Not provided'}</p>
+          <p><strong>Service:</strong> ${parsed.data.service}</p>
+          <p><strong>Project Size:</strong> ${parsed.data.projectSize || 'Not specified'}</p>
+          <p><strong>Details:</strong> ${parsed.data.details || 'No additional details provided'}</p>
+          <p><strong>Source:</strong> ${parsed.data.source}</p>
+          <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
+        `,
+      })
+    } catch (emailError) {
+      console.error('Failed to send email:', emailError)
+      // Continue processing even if email fails - don't block the quote submission
+    }
+
     // Avoid logging PII in production
     if (process.env.NODE_ENV !== 'production') {
       console.log('New quote request:', parsed.data)
