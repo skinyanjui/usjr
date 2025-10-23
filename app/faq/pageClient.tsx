@@ -127,10 +127,10 @@ export default function FAQClient() {
             Can't find the answer you're looking for? Our friendly team is here to help with any
             questions about our services.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-red-700"
             >
               <Phone className="h-4 w-4" />
               Call {settings.phone}
@@ -138,7 +138,7 @@ export default function FAQClient() {
             <Link
               href="/quote"
               prefetch
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-800 px-6 py-3 font-semibold text-red-800 transition-colors hover:bg-red-100"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-800 px-6 py-2.5 text-base font-semibold text-red-800 transition-colors hover:bg-red-100"
             >
               Get Free Quote
             </Link>

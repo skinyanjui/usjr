@@ -212,7 +212,7 @@ export default function CompareClient() {
               {selectedServices.length > 1 ? 's' : ''}. Get a free quote or bundle multiple services
               for potential savings.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <div className="flex flex-wrap justify-center gap-3">
               <Button asChild className="bg-red-600 hover:bg-red-700">
                 <Link href="/quote" prefetch>
                   Get Free Quote
