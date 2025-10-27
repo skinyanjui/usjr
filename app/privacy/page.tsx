@@ -173,6 +173,30 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
+          <h2 className="mb-2 text-2xl font-bold text-gray-900">Microsoft Clarity</h2>
+          <p className="mb-2 text-gray-700">
+            We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and
+            interact with our website through behavioral metrics, heatmaps, and session replay to
+            improve and market our products/services. Website usage data is captured using first and
+            third-party cookies and other tracking technologies to determine the popularity of
+            products/services and online activity. Additionally, we use this information for site
+            optimization, fraud/security purposes, and advertising.
+          </p>
+          <p className="text-gray-700">
+            For more information about how Microsoft collects and uses your data, visit the{' '}
+            <a
+              href="https://privacy.microsoft.com/privacystatement"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline hover:text-blue-800"
+            >
+              Microsoft Privacy Statement
+            </a>
+            .
+          </p>
+        </section>
+
+        <section className="mb-8">
           <h2 className="mb-2 text-2xl font-bold text-gray-900">How We Share Information</h2>
           <p className="mb-2 text-gray-700">
             We do not sell your personal information. We may share information in the following

@@ -225,6 +225,17 @@ export function Footer() {
                 </Link>
               </div>
             </div>
+            <div className="mt-3 text-center text-xs text-red-100">
+              <p>
+                We improve our products and advertising by using Microsoft Clarity to see how you
+                use our website. By using our site, you agree that we and Microsoft can collect and
+                use this data. Our{' '}
+                <Link href="/privacy" className="underline hover:text-white">
+                  privacy statement
+                </Link>{' '}
+                has more details.
+              </p>
+            </div>
           </div>
         </div>
       </div>
