@@ -123,6 +123,37 @@ export const blogPosts: BlogPost[] = [
     readTime: '10 min read',
     category: 'Property Management',
   },
+  {
+    slug: 'commercial-office-cleaning-guide-evansville',
+    title: 'Commercial Office Cleaning in Evansville: Complete Business Guide',
+    excerpt:
+      'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
+    author: 'Uncle Sam Team',
+    date: 'October 27, 2025',
+    readTime: '9 min read',
+    category: 'Commercial Cleaning',
+    featured: true,
+  },
+  {
+    slug: 'summer-cleanup-checklist-tri-state',
+    title: 'Summer Cleanup Checklist for Tri-State Homes & Yards',
+    excerpt:
+      'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
+    author: 'Sarah Johnson',
+    date: 'October 27, 2025',
+    readTime: '8 min read',
+    category: 'Seasonal Guide',
+  },
+  {
+    slug: 'moving-cleanout-guide-evansville',
+    title: 'Moving & Relocation Cleanout Guide for Evansville Residents',
+    excerpt:
+      'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
+    author: 'Uncle Sam Team',
+    date: 'October 27, 2025',
+    readTime: '10 min read',
+    category: 'Moving Guide',
+  },
 ]
 
 // Helper function to convert date string to Date object
