@@ -6,7 +6,8 @@ import { buildServiceMetadata } from '@/lib/seo-metadata'
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
 import { InternalLinks } from '@/components/ui/internal-links'
 import { ReviewMention } from '@/components/ui/review-mention'
-import { getAggregateTestimonialStats } from '@/lib/cms-content'
+import { getAggregateTestimonialStats, settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -207,6 +208,18 @@ export default function JunkRemovalPage() {
           />
         </div>
       </div>
+
+      {/* Service Schema Markup */}
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }

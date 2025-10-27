@@ -1,6 +1,6 @@
 import type React from 'react'
 import type { Metadata } from 'next'
-// import { IBM_Plex_Sans } from "next/font/google" // Temporarily commented due to network restrictions
+import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
 import { Header } from '@/components/header'
@@ -11,19 +11,19 @@ import { Analytics } from '@vercel/analytics/next'
 import { RoutePrefetcher } from '@/components/route-prefetcher'
 import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 
-// const ibmPlexSans = IBM_Plex_Sans({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"],
-//   display: "swap",
-//   variable: "--font-ibm-plex-sans",
-// }) // Temporarily commented due to network restrictions
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-ibm-plex-sans',
+})
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
   title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
   description:
-    'Locally owned junk removal, trash removal, and light demolition in Evansville, Indiana. Whether you need to get rid of junk, remove old furniture, haul away appliances, or dismantle a shed, we provide professional waste management services with free estimates, eco-friendly disposal, and reliable service throughout Southern Indiana.',
+    'Professional junk removal, cleaning & light demolition in Evansville, IN. Same-day service, eco-friendly disposal. Serving Southern Indiana.',
   keywords:
     'junk removal, trash removal, light demolition, haul away service, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County, get rid of junk, remove old furniture, appliance removal',
   authors: [{ name: 'Uncle Sam Junk Removal' }],
@@ -62,9 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="antialiased" suppressHydrationWarning>
-      {' '}
-      {/* className={`${ibmPlexSans.variable} antialiased`} when fonts restored */}
+    <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
         <Script
