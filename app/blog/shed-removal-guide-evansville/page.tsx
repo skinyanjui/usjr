@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Shed Removal in Evansville: Permit Tips, Pricing, and Timeline | Uncle Sam Junk Removal',
+  title: 'Shed Removal Evansville: Permits & Pricing | Uncle Sam',
   description:
     "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
   ...buildCanonicalMetadata('/blog/shed-removal-guide-evansville', baseUrl),

@@ -25,7 +25,7 @@ import { PageHero } from '@/components/ui/page-hero'
 import { junkRemovalTiers } from '@/lib/pricing'
 
 export const metadata: Metadata = {
-  title: 'Get Your Free Quote | Uncle Sam Junk Removal - Junk Removal, Light Demolition & Cleaning',
+  title: 'Free Quote | Uncle Sam Junk Removal - Tri-State Area',
   description:
     'Get free quotes for junk removal, light demolition, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.',
   keywords:

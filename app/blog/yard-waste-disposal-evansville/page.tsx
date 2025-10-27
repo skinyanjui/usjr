@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Yard Waste Disposal in Evansville: Composting and Pickup Basics | Uncle Sam Junk Removal',
+  title: 'Yard Waste Disposal Evansville: Composting | Uncle Sam',
   description:
     'Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.',
   ...buildCanonicalMetadata('/blog/yard-waste-disposal-evansville', baseUrl),

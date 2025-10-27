@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal',
+  title: 'Hot Tub Removal: What to Know | Uncle Sam Junk Removal',
   description:
     'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
   keywords:

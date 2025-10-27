@@ -6,7 +6,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Residential Cleaning Services in Evansville, IN | Uncle Sam Junk Removal',
+  title: 'Residential Cleaning Evansville IN | Uncle Sam',
   description:
     'Veteran-led, spotless results using natural products. Deep cleaning, recurring service, move-in/out cleaning in Evansville and surrounding areas.',
   keywords:

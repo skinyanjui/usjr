@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Evansville Garage Cleanout in 48 Hours: Checklist & Timeline | Uncle Sam Junk Removal',
+  title: 'Garage Cleanout in 48 Hours Evansville | Uncle Sam',
   description:
     'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips for Evansville residents.',
   keywords:

@@ -5,8 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title:
-    'Mattress Disposal in Evansville: Recycling, Costs, and Pickup Options | Uncle Sam Junk Removal',
+  title: 'Mattress Disposal Evansville: Costs & Options | Uncle Sam',
   description:
     'Complete guide to mattress disposal in Evansville, IN. Professional removal costs $89-149, recycling options, city bulk pickup, and donation opportunities. Same-day service available.',
   keywords:
