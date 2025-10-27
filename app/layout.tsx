@@ -79,6 +79,16 @@ export default function RootLayout({
             gtag('config', 'G-BD7LEP7D30');
           `}
         </Script>
+        {/* Microsoft Clarity tracking code */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "tww7ojgp9h");
+          `}
+        </Script>
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
