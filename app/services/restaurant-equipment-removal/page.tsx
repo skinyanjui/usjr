@@ -152,6 +152,17 @@ export default function RestaurantEquipmentRemovalPage() {
           and landlords clear spaces quickly for the next tenant or renovation project.
         </p>
       </div>
+
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }
