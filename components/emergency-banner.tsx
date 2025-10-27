@@ -1,26 +1,35 @@
-import { AlertTriangle, Phone } from 'lucide-react'
-import { settings } from '@/lib/cms-content'
+import Link from 'next/link'
 
 export function EmergencyBanner() {
   return (
-    <section className="border-y border-red-100 bg-red-50 py-4">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2 font-semibold text-red-700">
-            <AlertTriangle className="h-4 w-4" /> Emergency Services
-          </div>
-          <p className="text-sm text-red-800">
-            Storm damage, last-minute move-outs, illegal dumping, flooded basements. Availability
-            varies by service. After-hours fee may apply.
-          </p>
-          <a
-            href={`tel:${settings.phoneE164}`}
-            className="ml-auto inline-flex items-center gap-1 font-semibold text-red-800"
+    <div className="bg-gradient-to-r from-orange-600 to-red-600 px-4 py-3">
+      <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="flex items-center gap-3 text-white">
+          <svg
+            className="h-6 w-6 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <Phone className="h-4 w-4" /> Call {settings.phone}
-          </a>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <p className="text-sm md:text-base font-semibold">
+            <span className="font-bold">Emergency Service Available:</span> Storm cleanup, urgent
+            junk removal & same-day response
+          </p>
         </div>
+        <Link
+          href="/emergency"
+          className="whitespace-nowrap rounded-lg bg-white px-4 py-2 text-sm font-bold text-orange-600 hover:bg-gray-100 transition-colors"
+        >
+          Get Help Now →
+        </Link>
       </div>
-    </section>
+    </div>
   )
 }

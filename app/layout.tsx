@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from '@vercel/analytics/next'
 import { RoutePrefetcher } from '@/components/route-prefetcher'
 import { BreadcrumbsAuto } from '@/components/breadcrumbs'
+import { EmergencyBanner } from '@/components/emergency-banner'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -92,6 +93,7 @@ export default function RootLayout({
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
+          <EmergencyBanner />
           <BreadcrumbsAuto />
           <RoutePrefetcher />
           <ScrollToTopOnRouteChange />
