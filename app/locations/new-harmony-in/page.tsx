@@ -9,7 +9,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: 'Junk Removal New Harmony IN | Same-Day Service | Uncle Sam Junk Removal',
+  title: 'Junk Removal New Harmony IN | Same-Day | Uncle Sam',
   description: `Professional junk removal in New Harmony, Indiana. Friendly local team, transparent pricing, eco-friendly disposal. Call ${settings.phone}`,
   keywords:
     'junk removal New Harmony, New Harmony junk removal, Posey County junk removal, trash removal New Harmony IN',

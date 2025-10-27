@@ -9,7 +9,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: 'Junk Removal Mount Carmel IL | Same-Day Service | Uncle Sam Junk Removal',
+  title: 'Junk Removal Mount Carmel IL | Same-Day | Uncle Sam',
   description: `Professional junk removal in Mount Carmel, Illinois. Same-day service, transparent pricing. Serving Wabash County and surrounding. Call ${settings.phone}`,
   keywords:
     'junk removal Mount Carmel, Mount Carmel junk removal, trash removal Mount Carmel IL, Wabash County junk removal',

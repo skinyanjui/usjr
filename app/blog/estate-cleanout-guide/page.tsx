@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Compassionate Estate Cleanout Guide | Step-by-Step Planning | Uncle Sam Junk Removal',
+  title: 'Estate Cleanout Guide: Planning & Donation | Uncle Sam',
   description:
     'Comprehensive estate cleanout guide with 8+ years of experience. Step-by-step planning, local donation options, legal considerations, and emotional support strategies for Southern Indiana families.',
   keywords:

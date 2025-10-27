@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes | Uncle Sam Junk Removal',
+  title: 'Spring Cleaning Checklist Southern Indiana | Uncle Sam',
   description:
     'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
   keywords:

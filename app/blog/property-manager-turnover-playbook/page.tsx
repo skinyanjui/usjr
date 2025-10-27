@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Property Manager Turnover Playbook: Trash-Out to Broom Clean | Uncle Sam Junk Removal',
+  title: 'Property Manager Turnover Playbook | Uncle Sam Removal',
   description:
     'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.',
   keywords:

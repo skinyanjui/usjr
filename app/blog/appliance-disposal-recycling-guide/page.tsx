@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Appliance Disposal & Recycling Guide for Evansville Residents | Uncle Sam Junk Removal',
+  title: 'Appliance Disposal & Recycling Evansville | Uncle Sam',
   description:
     'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
   keywords:
