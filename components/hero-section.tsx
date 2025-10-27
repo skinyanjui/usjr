@@ -37,13 +37,13 @@ export function HeroSection() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/quote"
-            className="rounded-lg bg-white px-6 py-2.5 text-base font-semibold text-blue-800 transition-all hover:bg-gray-100"
+            className="rounded-lg bg-white px-6 py-3 text-base font-semibold text-blue-800 transition-all hover:bg-gray-100 min-h-[48px] flex items-center"
           >
             Get Free Quote
           </Link>
           <Link
             href="/services/junk-removal"
-            className="rounded-lg border-2 border-white bg-transparent px-6 py-2.5 text-base font-semibold text-white transition-all hover:bg-white/10"
+            className="rounded-lg border-2 border-white bg-transparent px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10 min-h-[48px] flex items-center"
           >
             View Services
           </Link>

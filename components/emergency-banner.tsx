@@ -25,7 +25,7 @@ export function EmergencyBanner() {
         </div>
         <Link
           href="/emergency"
-          className="whitespace-nowrap rounded-lg bg-white px-4 py-2 text-sm font-bold text-orange-600 hover:bg-gray-100 transition-colors"
+          className="whitespace-nowrap rounded-lg bg-white px-4 py-3 text-sm font-bold text-orange-600 hover:bg-gray-100 transition-colors min-h-[48px] flex items-center"
         >
           Get Help Now →
         </Link>
