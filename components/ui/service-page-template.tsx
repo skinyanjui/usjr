@@ -288,7 +288,7 @@ export function ServicePageTemplate({
 
       {/* FAQ Section */}
       <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">
             Frequently Asked Questions
           </h2>

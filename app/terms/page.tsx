@@ -21,7 +21,7 @@ export default function TermsPage() {
         description="Bookings, cancellations, payments, and service limitations"
         color="slate"
       />
-      <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="mb-8 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
           <Link
             href="/"

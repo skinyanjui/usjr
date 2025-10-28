@@ -184,7 +184,7 @@ export default function JunkRemovalPage() {
     >
       {/* Customer reviews section */}
       <div className="bg-gray-50 py-12">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
@@ -198,7 +198,7 @@ export default function JunkRemovalPage() {
 
       {/* Internal linking section */}
       <div className="bg-white py-12">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}

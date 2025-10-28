@@ -205,7 +205,7 @@ export default function CleaningHub() {
 
       {/* Guarantee Section */}
       <section className="bg-white/50 px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-7xl text-center">
           <div className="rounded-2xl bg-white p-8 shadow-lg">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
               <Shield className="h-8 w-8 text-green-600" />
