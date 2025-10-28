@@ -18,26 +18,27 @@ export default function FallCleanupGuide() {
         author: 'Uncle Sam Team',
         category: 'Seasonal Tips',
         tags: ['fall cleanup', 'yard waste', 'seasonal tips', 'home maintenance', 'tri-state'],
+        readTime: '12 min read',
       }}
     >
       <div className="prose prose-lg max-w-none">
         <p className="lead">
-          As the leaves begin to change color across Evansville, Henderson, and Owensboro, homeowners
-          face the annual challenge of fall cleanup. This comprehensive guide will help you tackle
-          every aspect of seasonal preparation, from leaf removal to winterization, ensuring your
-          property is ready for the colder months ahead.
+          As the leaves begin to change color across Evansville, Henderson, and Owensboro,
+          homeowners face the annual challenge of fall cleanup. This comprehensive guide will help
+          you tackle every aspect of seasonal preparation, from leaf removal to winterization,
+          ensuring your property is ready for the colder months ahead.
         </p>
 
         <h2>Why Fall Cleanup Matters in the Tri-State Area</h2>
         <p>
           The Tri-State area experiences distinct seasonal changes, with fall bringing cooler
-          temperatures, increased rainfall, and significant leaf drop. Proper fall cleanup isn't just
-          about aesthetics—it's essential for:
+          temperatures, increased rainfall, and significant leaf drop. Proper fall cleanup isn't
+          just about aesthetics—it's essential for:
         </p>
         <ul>
           <li>
-            <strong>Preventing lawn damage:</strong> Thick layers of wet leaves can smother grass and
-            create ideal conditions for fungal diseases
+            <strong>Preventing lawn damage:</strong> Thick layers of wet leaves can smother grass
+            and create ideal conditions for fungal diseases
           </li>
           <li>
             <strong>Protecting your home's foundation:</strong> Clogged gutters can lead to water
@@ -62,32 +63,32 @@ export default function FallCleanupGuide() {
         <h3>1. Leaf Management and Yard Waste Removal</h3>
         <p>
           Leaf removal is the cornerstone of fall cleanup. In the Tri-State area, peak leaf drop
-          typically occurs from mid-October through November, though some trees hold their leaves into
-          December.
+          typically occurs from mid-October through November, though some trees hold their leaves
+          into December.
         </p>
         <p>
           <strong>Best practices for leaf removal:</strong>
         </p>
         <ul>
           <li>
-            <strong>Rake or blow regularly:</strong> Don't wait for all leaves to fall—remove them in
-            stages to prevent matting
+            <strong>Rake or blow regularly:</strong> Don't wait for all leaves to fall—remove them
+            in stages to prevent matting
           </li>
           <li>
-            <strong>Mulch when possible:</strong> Shredded leaves make excellent mulch for garden beds
-            and around trees
+            <strong>Mulch when possible:</strong> Shredded leaves make excellent mulch for garden
+            beds and around trees
           </li>
           <li>
             <strong>Bag properly:</strong> Use biodegradable paper bags or reusable containers for
             curbside pickup
           </li>
           <li>
-            <strong>Compost responsibly:</strong> Start a compost pile with leaves, but avoid diseased
-            or treated leaves
+            <strong>Compost responsibly:</strong> Start a compost pile with leaves, but avoid
+            diseased or treated leaves
           </li>
           <li>
-            <strong>Consider professional removal:</strong> For properties with mature trees or large
-            yards, professional yard waste removal saves time and ensures thorough cleanup
+            <strong>Consider professional removal:</strong> For properties with mature trees or
+            large yards, professional yard waste removal saves time and ensures thorough cleanup
           </li>
         </ul>
         <p>
@@ -101,8 +102,8 @@ export default function FallCleanupGuide() {
         <h3>2. Gutter Cleaning and Downspout Maintenance</h3>
         <p>
           Clogged gutters are one of the most common—and most damaging—problems homeowners face in
-          fall. Leaves, twigs, and debris accumulate quickly, blocking water flow and creating serious
-          issues.
+          fall. Leaves, twigs, and debris accumulate quickly, blocking water flow and creating
+          serious issues.
         </p>
         <p>
           <strong>Why gutter cleaning is critical:</strong>
@@ -113,16 +114,16 @@ export default function FallCleanupGuide() {
             foundation, leading to basement flooding and structural damage
           </li>
           <li>
-            <strong>Roof preservation:</strong> Standing water in gutters can seep under shingles and
-            cause rot
+            <strong>Roof preservation:</strong> Standing water in gutters can seep under shingles
+            and cause rot
           </li>
           <li>
-            <strong>Ice dam prevention:</strong> Clean gutters reduce the risk of ice dams forming in
-            winter
+            <strong>Ice dam prevention:</strong> Clean gutters reduce the risk of ice dams forming
+            in winter
           </li>
           <li>
-            <strong>Pest deterrence:</strong> Standing water and debris attract mosquitoes, wasps, and
-            other pests
+            <strong>Pest deterrence:</strong> Standing water and debris attract mosquitoes, wasps,
+            and other pests
           </li>
         </ul>
         <p>
@@ -139,7 +140,8 @@ export default function FallCleanupGuide() {
         <h3>3. Branch and Limb Removal</h3>
         <p>
           Fall and winter storms can bring ice, snow, and high winds to the Tri-State area. Dead or
-          damaged branches pose serious safety risks and should be removed before storm season arrives.
+          damaged branches pose serious safety risks and should be removed before storm season
+          arrives.
         </p>
         <p>
           <strong>What to look for:</strong>
@@ -159,24 +161,24 @@ export default function FallCleanupGuide() {
 
         <h3>4. Garden Bed and Landscape Preparation</h3>
         <p>
-          Proper fall garden maintenance sets the stage for a beautiful spring landscape. Take time to
-          prepare beds, protect plants, and remove spent annuals.
+          Proper fall garden maintenance sets the stage for a beautiful spring landscape. Take time
+          to prepare beds, protect plants, and remove spent annuals.
         </p>
         <p>
           <strong>Essential garden tasks:</strong>
         </p>
         <ul>
           <li>
-            <strong>Remove dead annuals:</strong> Clear out summer flowers, vegetables, and plants to
-            prevent disease carryover
+            <strong>Remove dead annuals:</strong> Clear out summer flowers, vegetables, and plants
+            to prevent disease carryover
           </li>
           <li>
             <strong>Cut back perennials:</strong> Trim dead foliage from perennial plants, leaving
             3-4 inches above ground
           </li>
           <li>
-            <strong>Mulch beds:</strong> Apply 2-3 inches of fresh mulch to protect roots from freeze-
-            thaw cycles
+            <strong>Mulch beds:</strong> Apply 2-3 inches of fresh mulch to protect roots from
+            freeze- thaw cycles
           </li>
           <li>
             <strong>Divide and transplant:</strong> Fall is ideal for dividing overgrown perennials
@@ -187,15 +189,16 @@ export default function FallCleanupGuide() {
             flowering bulbs
           </li>
           <li>
-            <strong>Protect tender plants:</strong> Move containers indoors and cover sensitive shrubs
-            before hard freezes
+            <strong>Protect tender plants:</strong> Move containers indoors and cover sensitive
+            shrubs before hard freezes
           </li>
         </ul>
 
         <h3>5. Outdoor Furniture and Equipment Storage</h3>
         <p>
           Protecting your outdoor investments ensures they'll be ready for use next spring. Properly
-          storing furniture, grills, and equipment prevents weather damage and extends their lifespan.
+          storing furniture, grills, and equipment prevents weather damage and extends their
+          lifespan.
         </p>
         <p>
           <strong>Storage checklist:</strong>
@@ -206,8 +209,8 @@ export default function FallCleanupGuide() {
             storage
           </li>
           <li>
-            <strong>Drain water features:</strong> Empty fountains, birdbaths, and decorative ponds to
-            prevent freeze damage
+            <strong>Drain water features:</strong> Empty fountains, birdbaths, and decorative ponds
+            to prevent freeze damage
           </li>
           <li>
             <strong>Store cushions and fabrics:</strong> Bring cushions, umbrellas, and fabric items
@@ -218,19 +221,19 @@ export default function FallCleanupGuide() {
             protected storage
           </li>
           <li>
-            <strong>Secure loose items:</strong> Store garden tools, hoses, and decorative items that
-            could blow away in storms
+            <strong>Secure loose items:</strong> Store garden tools, hoses, and decorative items
+            that could blow away in storms
           </li>
           <li>
-            <strong>Winterize lawn equipment:</strong> Drain gas from mowers and trimmers or add fuel
-            stabilizer
+            <strong>Winterize lawn equipment:</strong> Drain gas from mowers and trimmers or add
+            fuel stabilizer
           </li>
         </ul>
 
         <h3>6. Deck, Patio, and Driveway Maintenance</h3>
         <p>
-          Fall is the perfect time to address outdoor surface maintenance before winter weather takes
-          its toll. A little preventive care now saves major repairs later.
+          Fall is the perfect time to address outdoor surface maintenance before winter weather
+          takes its toll. A little preventive care now saves major repairs later.
         </p>
         <p>
           <strong>Surface maintenance tasks:</strong>
@@ -266,12 +269,12 @@ export default function FallCleanupGuide() {
         <h3>Municipal Yard Waste Services</h3>
         <p>
           <strong>Evansville:</strong> Offers seasonal yard waste collection from October through
-          December. Leaves and yard debris must be placed in biodegradable bags or reusable containers
-          (no plastic bags).
+          December. Leaves and yard debris must be placed in biodegradable bags or reusable
+          containers (no plastic bags).
         </p>
         <p>
-          <strong>Henderson, KY:</strong> Provides curbside leaf collection and a drop-off yard waste
-          facility at the Henderson County Convenience Center.
+          <strong>Henderson, KY:</strong> Provides curbside leaf collection and a drop-off yard
+          waste facility at the Henderson County Convenience Center.
         </p>
         <p>
           <strong>Owensboro, KY:</strong> Offers seasonal leaf collection and year-round yard waste
@@ -322,23 +325,23 @@ export default function FallCleanupGuide() {
 
         <h2>Eco-Friendly Fall Cleanup Practices</h2>
         <p>
-          Fall cleanup doesn't have to mean sending everything to the landfill. Many yard waste items
-          can be recycled, composted, or repurposed.
+          Fall cleanup doesn't have to mean sending everything to the landfill. Many yard waste
+          items can be recycled, composted, or repurposed.
         </p>
         <p>
           <strong>Sustainable practices:</strong>
         </p>
         <ul>
           <li>
-            <strong>Compost leaves and garden waste:</strong> Create nutrient-rich soil amendment for
-            spring gardens
+            <strong>Compost leaves and garden waste:</strong> Create nutrient-rich soil amendment
+            for spring gardens
           </li>
           <li>
             <strong>Use leaves as mulch:</strong> Shred and spread around trees and perennial beds
           </li>
           <li>
-            <strong>Donate usable items:</strong> Garden tools, furniture, and equipment can find new
-            homes
+            <strong>Donate usable items:</strong> Garden tools, furniture, and equipment can find
+            new homes
           </li>
           <li>
             <strong>Recycle metal and wood:</strong> Many items can be recycled rather than trashed
@@ -359,16 +362,16 @@ export default function FallCleanupGuide() {
           maintenance.
         </p>
         <p>
-          <strong>3. Leaving decorations up:</strong> Halloween and fall decorations should come down
-          before winter storms arrive.
+          <strong>3. Leaving decorations up:</strong> Halloween and fall decorations should come
+          down before winter storms arrive.
         </p>
         <p>
           <strong>4. Forgetting about drainage:</strong> Ensure water flows away from your home to
           prevent foundation issues.
         </p>
         <p>
-          <strong>5. Skipping tree inspection:</strong> Dead branches are ticking time bombs during ice
-          storms.
+          <strong>5. Skipping tree inspection:</strong> Dead branches are ticking time bombs during
+          ice storms.
         </p>
 
         <h2>Professional Fall Cleanup Services</h2>
@@ -388,7 +391,8 @@ export default function FallCleanupGuide() {
             <strong>Gutter cleaning:</strong> Complete gutter and downspout cleaning service
           </li>
           <li>
-            <strong>Outdoor junk removal:</strong> Furniture, equipment, and unwanted items hauled away
+            <strong>Outdoor junk removal:</strong> Furniture, equipment, and unwanted items hauled
+            away
           </li>
           <li>
             <strong>Storm debris cleanup:</strong> Emergency response after severe weather events
@@ -421,7 +425,7 @@ export default function FallCleanupGuide() {
           Newburgh, Henderson, Owensboro, and all surrounding Tri-State communities.
         </p>
 
-        <div className="not-prose my-8 rounded-lg bg-blue-50 p-6 border border-blue-200">
+        <div className="not-prose my-8 rounded-lg border border-blue-200 bg-blue-50 p-6">
           <h3 className="mb-4 text-xl font-bold text-blue-900">Ready for Fall Cleanup?</h3>
           <p className="mb-4 text-blue-800">
             Get a free estimate for professional fall cleanup services. We'll handle everything from
