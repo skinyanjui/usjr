@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
+import Script from 'next/script'
 
 // Helper function to add visual breaks in content
 export function addContentBreaks() {
@@ -282,6 +283,40 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
         )}
       </div>
+
+      {/* Article Schema */}
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: meta.title,
+            description: meta.excerpt,
+            author: {
+              '@type': 'Person',
+              name: meta.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Uncle Sam Junk Removal',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://unclesamjunkremoval.com/icon-512.png',
+              },
+            },
+            datePublished: new Date(meta.date).toISOString(),
+            dateModified: new Date(meta.date).toISOString(),
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': typeof window !== 'undefined' ? window.location.href : '',
+            },
+            keywords: meta.tags?.join(', ') || meta.category,
+            articleSection: meta.category,
+          }),
+        }}
+      />
     </article>
   )
 }
