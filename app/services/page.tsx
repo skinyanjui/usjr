@@ -127,7 +127,7 @@ export default function ServicesPage() {
       <PageHero
         title="Professional Services in Evansville"
         description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
-        color="blue"
+        color="accent"
       />
 
       {/* Top CTAs */}
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="red"
+                color="accent"
                 category="Junk Removal"
               />
             ))}
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="orange"
+                color="accent"
                 category="Project"
                 size="small"
               />
@@ -214,7 +214,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="green"
+                color="accent"
                 category="Cleaning"
               />
             ))}

@@ -28,7 +28,7 @@ export interface LocationPageTemplateProps {
   locationName: string
   state: string
   tagline: string
-  theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme?: 'accent'
   features: LocationFeature[]
   landmarks?: string[]
   neighborhoods?: string[]

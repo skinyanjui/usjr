@@ -36,7 +36,7 @@ export default function AboutPage() {
       <PageHero
         title="About Uncle Sam Junk Removal"
         description="Veteran-owned junk removal and professional cleaning in Evansville, IN and the Tri-State."
-        color="blue"
+        color="accent"
       />
 
       {/* SEO: LocalBusiness JSON-LD */}

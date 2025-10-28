@@ -33,13 +33,18 @@ export default function FAQClient() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: 'text-blue-600',
-      red: 'text-red-600',
-      orange: 'text-orange-600',
-      green: 'text-green-600',
-      purple: 'text-purple-600',
+      accent: 'text-red-600 dark:text-red-400',
+      success: 'text-green-600 dark:text-green-400',
+      warning: 'text-orange-600 dark:text-orange-400',
+      info: 'text-blue-600 dark:text-blue-400',
+      // Legacy color mapping for backward compatibility
+      blue: 'text-red-600 dark:text-red-400',
+      red: 'text-red-600 dark:text-red-400',
+      orange: 'text-red-600 dark:text-red-400',
+      green: 'text-red-600 dark:text-red-400',
+      purple: 'text-red-600 dark:text-red-400',
     }
-    return colors[color as keyof typeof colors] || colors.blue
+    return colors[color as keyof typeof colors] || colors.accent
   }
 
   const getIcon = (name: string) => {

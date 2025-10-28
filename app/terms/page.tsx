@@ -19,7 +19,7 @@ export default function TermsPage() {
       <PageHero
         title="Terms of Service"
         description="Bookings, cancellations, payments, and service limitations"
-        color="slate"
+        color="neutral"
       />
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">

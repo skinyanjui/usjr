@@ -27,7 +27,7 @@ export default function CleaningHub() {
       description: 'Comprehensive one-time cleaning for your entire home',
       price: 'From $150',
       href: '/cleaning/deep-clean',
-      color: 'bg-blue-50 dark:bg-blue-950/30 border-blue-600 dark:border-blue-500',
+      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
       includes: [
         'High-to-low dusting',
         'Kitchen deep clean',
@@ -40,7 +40,7 @@ export default function CleaningHub() {
       description: 'Weekly, bi-weekly, or monthly maintenance cleaning',
       price: 'From $80',
       href: '/cleaning/recurring',
-      color: 'bg-green-50 dark:bg-green-950/30 border-green-600 dark:border-green-500',
+      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
       includes: ['Flexible scheduling', 'Consistent team', 'Supply included', 'Quality guarantee'],
     },
     {
@@ -48,7 +48,7 @@ export default function CleaningHub() {
       description: 'Complete property cleaning for transitions',
       price: 'From $200',
       href: '/cleaning/move-in-move-out',
-      color: 'bg-purple-50 border-purple-200',
+      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
       includes: ['Inside appliances', 'Cabinet interiors', 'Window tracks', 'Deep sanitization'],
     },
     {
@@ -56,7 +56,7 @@ export default function CleaningHub() {
       description: 'Organizing, decluttering, and specialized tasks',
       price: 'From $100',
       href: '/cleaning/specialty',
-      color: 'bg-orange-50 dark:bg-orange-950/30 border-orange-600 dark:border-orange-500',
+      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
       includes: ['Refrigerator cleaning', 'Oven deep clean', 'Home organizing', 'Decluttering'],
     },
     {
@@ -81,11 +81,11 @@ export default function CleaningHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-green-50 dark:bg-green-950/30">
+    <div className="min-h-screen bg-background">
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        color="green"
+        color="accent"
       />
 
       {/* Subheader badges/CTAs */}

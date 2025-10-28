@@ -1,21 +1,16 @@
 export interface PageHeroProps {
   title: string
   description?: string
-  color?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal' | 'slate'
+  color?: 'accent' | 'neutral'
 }
 
-export function PageHero({ title, description, color = 'blue' }: PageHeroProps) {
+export function PageHero({ title, description, color = 'accent' }: PageHeroProps) {
   const colorMap = {
-    red: 'bg-red-700',
-    blue: 'bg-blue-700',
-    green: 'bg-green-700',
-    orange: 'bg-orange-600',
-    purple: 'bg-purple-700',
-    teal: 'bg-teal-700',
-    slate: 'bg-slate-800',
+    accent: 'bg-red-700 dark:bg-red-900',
+    neutral: 'bg-slate-800 dark:bg-slate-900',
   } as const
 
-  const backgroundClass = colorMap[color] ?? colorMap.blue
+  const backgroundClass = colorMap[color]
 
   return (
     <section

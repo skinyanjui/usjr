@@ -1,15 +1,14 @@
 import { type PropsWithChildren } from 'react'
 import clsx from 'clsx'
-import { SolidPanelColor } from '@/lib/solid-panel-colors'
+
+type SolidPanelColor = 'accent' | 'neutral' | 'success' | 'warning' | 'info'
 
 const colorStyles: Record<SolidPanelColor, { background: string; text: string }> = {
-  red: { background: 'bg-red-200', text: 'text-red-900' },
-  blue: { background: 'bg-blue-200', text: 'text-blue-900' },
-  green: { background: 'bg-green-200', text: 'text-green-900' },
-  orange: { background: 'bg-orange-200', text: 'text-orange-900' },
-  purple: { background: 'bg-purple-200', text: 'text-purple-900' },
-  teal: { background: 'bg-teal-200', text: 'text-teal-900' },
-  slate: { background: 'bg-slate-200', text: 'text-slate-900' },
+  accent: { background: 'bg-red-600 dark:bg-red-700', text: 'text-white' },
+  neutral: { background: 'bg-slate-600 dark:bg-slate-700', text: 'text-white' },
+  success: { background: 'bg-green-600 dark:bg-green-700', text: 'text-white' },
+  warning: { background: 'bg-orange-600 dark:bg-orange-700', text: 'text-white' },
+  info: { background: 'bg-blue-600 dark:bg-blue-700', text: 'text-white' },
 }
 
 export interface SolidPanelProps extends PropsWithChildren {
@@ -18,8 +17,8 @@ export interface SolidPanelProps extends PropsWithChildren {
   label?: string
 }
 
-export function SolidPanel({ color = 'blue', className, label, children }: SolidPanelProps) {
-  const palette = colorStyles[color] ?? colorStyles.blue
+export function SolidPanel({ color = 'accent', className, label, children }: SolidPanelProps) {
+  const palette = colorStyles[color]
 
   return (
     <div

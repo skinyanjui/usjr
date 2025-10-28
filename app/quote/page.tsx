@@ -43,11 +43,11 @@ export default function QuotePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-blue-50 dark:bg-blue-950/30">
+    <div className="min-h-screen bg-muted/30">
       <PageHero
         title="Get Your Free Quote Today"
         description="Professional junk removal, light demolition, and cleaning services in Evansville and Southern Indiana"
-        color="blue"
+        color="accent"
       />
       <div className="px-4 pb-16">
         <div className="mx-auto max-w-7xl">
@@ -120,7 +120,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 p-4">
+                  <div className="rounded-lg bg-muted/30 p-4">
                     <h3 className="mb-2 font-semibold text-blue-900">Starting Prices:</h3>
                     <ul className="space-y-1 text-sm text-blue-700 dark:text-blue-400">
                       {junkRemovalTiers.map(t => (
@@ -183,7 +183,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-orange-50 dark:bg-orange-950/30 p-4">
+                  <div className="rounded-lg bg-muted/30 p-4">
                     <h3 className="mb-2 font-semibold text-orange-900">Starting Prices:</h3>
                     <ul className="space-y-1 text-sm text-orange-700 dark:text-orange-400">
                       {lightDemolitionPricing.map(item => (
@@ -242,7 +242,7 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-green-50 dark:bg-green-950/30 p-4">
+                  <div className="rounded-lg bg-muted/30 p-4">
                     <h3 className="mb-2 font-semibold text-green-900">Service Prices:</h3>
                     <ul className="space-y-1 text-sm text-green-700 dark:text-green-400">
                       <li>• Deep clean: From $150-$400</li>

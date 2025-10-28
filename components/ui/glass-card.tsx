@@ -4,20 +4,18 @@ import { cn } from '@/lib/utils'
 
 interface GlassCardProps extends CardProps {
   variant?: 'default' | 'colored' | 'white'
-  color?: 'red' | 'orange' | 'green' | 'blue' | 'purple' | 'teal'
+  color?: 'accent' | 'success' | 'warning' | 'info'
   hover?: boolean
 }
 
 export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
-  ({ className, variant = 'default', color = 'red', hover = true, ...props }, ref) => {
+  ({ className, variant = 'default', color = 'accent', hover = true, ...props }, ref) => {
     const getColorClasses = (color: NonNullable<GlassCardProps['color']>) => {
       const colorMap = {
-        red: 'border-red-200 bg-red-50/50',
-        orange: 'border-orange-200 bg-orange-50/50',
-        green: 'border-green-200 bg-green-50/50',
-        blue: 'border-blue-200 bg-blue-50/50',
-        purple: 'border-purple-200 bg-purple-50/50',
-        teal: 'border-teal-200 bg-teal-50/50',
+        accent: 'border-red-600 dark:border-red-500 bg-red-50/50 dark:bg-red-950/30',
+        success: 'border-green-600 dark:border-green-500 bg-green-50/50 dark:bg-green-950/30',
+        warning: 'border-orange-600 dark:border-orange-500 bg-orange-50/50 dark:bg-orange-950/30',
+        info: 'border-blue-600 dark:border-blue-500 bg-blue-50/50 dark:bg-blue-950/30',
       } as const
       return colorMap[color]
     }

@@ -33,8 +33,8 @@ export interface ServicePageTemplateProps {
   description: string
   badges?: string[]
 
-  // Theme
-  theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  // Theme - simplified to use accent color only
+  theme?: 'accent'
 
   // Structured data
   serviceCategory?: string
@@ -68,53 +68,13 @@ export interface ServicePageTemplateProps {
 }
 
 const themeClasses = {
-  red: {
-    background: 'bg-red-50',
-    primary: 'bg-red-600 hover:bg-red-700',
-    secondary: 'border-red-700 text-red-700 hover:bg-red-700 hover:text-white',
-    accent: 'text-red-600',
-    icon: 'bg-red-600',
-    badge: 'bg-red-100 text-red-800 border-red-200',
-  },
-  blue: {
-    background: 'bg-blue-50',
-    primary: 'bg-blue-600 hover:bg-blue-700',
-    secondary: 'border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white',
-    accent: 'text-blue-600',
-    icon: 'bg-blue-600',
-    badge: 'bg-blue-100 text-blue-800 border-blue-200',
-  },
-  green: {
-    background: 'bg-green-50',
-    primary: 'bg-green-600 hover:bg-green-700',
-    secondary: 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white',
-    accent: 'text-green-600',
-    icon: 'bg-green-600',
-    badge: 'bg-green-100 text-green-800 border-green-200',
-  },
-  orange: {
-    background: 'bg-orange-50',
-    primary: 'bg-orange-600 hover:bg-orange-700',
-    secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
-    accent: 'text-orange-700',
-    icon: 'bg-orange-600',
-    badge: 'bg-orange-100 text-orange-800 border-orange-200',
-  },
-  purple: {
-    background: 'bg-purple-50',
-    primary: 'bg-purple-600 hover:bg-purple-700',
-    secondary: 'border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white',
-    accent: 'text-purple-600',
-    icon: 'bg-purple-600',
-    badge: 'bg-purple-100 text-purple-800 border-purple-200',
-  },
-  teal: {
-    background: 'bg-teal-50',
-    primary: 'bg-teal-600 hover:bg-teal-700',
-    secondary: 'border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
-    accent: 'text-teal-600',
-    icon: 'bg-teal-600',
-    badge: 'bg-teal-100 text-teal-800 border-teal-200',
+  accent: {
+    background: 'bg-muted/30',
+    primary: 'bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700',
+    secondary: 'border-red-700 dark:border-red-500 text-red-700 dark:text-red-400 hover:bg-red-700 hover:text-white',
+    accent: 'text-red-600 dark:text-red-400',
+    icon: 'bg-red-600 dark:bg-red-700',
+    badge: 'bg-red-100 dark:bg-red-950/30 text-red-800 dark:text-red-300 border-red-600 dark:border-red-500',
   },
 }
 
@@ -122,7 +82,7 @@ export function ServicePageTemplate({
   title,
   description,
   badges = [],
-  theme,
+  theme = 'accent',
   serviceCategory,
   serviceArea,
   features = [],
@@ -136,19 +96,11 @@ export function ServicePageTemplate({
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
 }: ServicePageTemplateProps) {
-  const classes = themeClasses[theme]
-  const heroColorMap = {
-    red: 'red',
-    blue: 'blue',
-    green: 'green',
-    orange: 'orange',
-    purple: 'purple',
-    teal: 'teal',
-  } as const
+  const classes = themeClasses.accent
 
   return (
     <main className="min-h-screen">
-      <PageHero title={title} description={description} color={heroColorMap[theme]} />
+      <PageHero title={title} description={description} color="accent" />
       {/* Hero Section */}
       <section className={`pt-12 pb-12 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
