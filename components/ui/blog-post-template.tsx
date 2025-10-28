@@ -11,7 +11,7 @@ import Script from 'next/script'
 export function addContentBreaks() {
   return (
     <div className="my-12 flex items-center justify-center">
-      <div className="h-px w-32 bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+      <div className="h-px w-32 bg-gray-300"></div>
     </div>
   )
 }
@@ -53,10 +53,10 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
   }
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <article className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
-        <div className="mx-auto max-w-4xl px-6 py-10 md:px-4 md:py-16">
+      <div className="bg-red-700 text-white">
+        <div className="mx-auto max-w-4xl px-6 py-6 md:px-4 md:py-8">
           <Link
             href="/blog"
             className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
@@ -232,7 +232,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         )}
 
         {/* CTA Section */}
-        <div className="mt-12 rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 p-8 md:p-10">
+        <div className="mt-12 rounded-2xl bg-red-50 p-8 md:p-10">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
             Need Professional Help?
           </h2>
