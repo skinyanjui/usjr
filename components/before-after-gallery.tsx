@@ -43,14 +43,14 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
         {images.map(image => (
           <Card key={image.id} className="overflow-hidden transition-shadow hover:shadow-lg">
             <SolidPanel color="slate" label={image.service} className="aspect-video p-8">
-              <div className="flex flex-col items-center gap-2 text-slate-800">
-                <span className="text-base font-semibold text-slate-900">{image.title}</span>
-                <p className="text-sm font-medium text-slate-700">{image.summary}</p>
+              <div className="text-foreground flex flex-col items-center gap-2">
+                <span className="text-foreground text-base font-semibold">{image.title}</span>
+                <p className="text-muted-foreground text-sm font-medium">{image.summary}</p>
                 <Button
                   variant="secondary"
                   size="sm"
                   onClick={() => setSelectedImage(image)}
-                  className="bg-card text-slate-800 hover:bg-slate-100"
+                  className="bg-card text-foreground hover:bg-muted"
                   aria-label={`Open transformation details for ${image.title}`}
                 >
                   <Eye className="mr-2 h-4 w-4" />
