@@ -19,7 +19,7 @@ export default function CommercialCleaningPage() {
     <ServicePageTemplate
       title="Commercial Cleaning Services"
       description="Reliable, insured, after-hours business cleaning. Professional commercial cleaning services in Evansville and surrounding areas. We provide reliable, after-hours cleaning for offices, retail spaces, medical facilities, and more using eco-friendly products."
-      theme="blue"
+      theme="primary"
       badges={['From $120', 'After-Hours Available', 'Fully Insured']}
       features={[
         {

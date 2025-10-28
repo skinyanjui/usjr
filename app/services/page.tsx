@@ -134,12 +134,12 @@ export default function ServicesPage() {
       <section className="px-4 py-8">
         <div className="mx-auto max-w-7xl text-center">
           <div className="mt-2 flex flex-wrap justify-center gap-3">
-            <ThemedButton theme="red" asChild>
+            <ThemedButton theme="primary" asChild>
               <QuoteCtaLink location="services-hero" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" asChild>
+            <ThemedButton theme="primary" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>
@@ -243,7 +243,7 @@ export default function ServicesPage() {
                 key={index}
                 className="p-4 text-center transition-transform hover:scale-105"
               >
-                <ThemedButton theme="blue" variant="ghost" asChild className="w-full">
+                <ThemedButton theme="primary" variant="ghost" asChild className="w-full">
                   <Link href={location.href}>{location.name}</Link>
                 </ThemedButton>
               </GlassCard>
@@ -260,12 +260,12 @@ export default function ServicesPage() {
             Book your service today or get a free, no-obligation quote.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <ThemedButton theme="red" asChild>
+            <ThemedButton theme="primary" asChild>
               <QuoteCtaLink location="services-cta" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" asChild>
+            <ThemedButton theme="primary" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>

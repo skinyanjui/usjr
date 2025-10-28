@@ -82,7 +82,7 @@ export default function JunkRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="red"
+      theme="primary"
       title="Junk Removal Services in Evansville"
       description="Fast, reliable junk removal, trash removal, and haul away services throughout Southern Indiana. Whether you need to get rid of old furniture, clean out your house, or dispose of construction debris, we provide same-day service with upfront pricing and no hidden fees." // Changed from subtitle to description
       badges={[
@@ -190,7 +190,7 @@ export default function JunkRemovalPage() {
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="red"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -204,7 +204,7 @@ export default function JunkRemovalPage() {
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="red"
+            theme="primary"
           />
         </div>
       </div>

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function OfficeCleanoutsPage() {
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Office Cleanouts in Evansville"
       description="Professional office cleanout services for cubicles, desks, IT equipment, and complete office relocations"
       badges={['Same-Day Service', 'IT Equipment Handling', 'Secure Document Disposal']}

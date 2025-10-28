@@ -20,7 +20,7 @@ export default function DeepCleaningPage() {
     <ServicePageTemplate
       title="Deep Cleaning Services"
       description="Comprehensive deep cleaning for your entire home. Our thorough deep cleaning service covers every corner of your home using natural, eco-friendly products. Perfect for spring cleaning, move-ins, or when you need a fresh start."
-      theme="green"
+      theme="primary"
       badges={['From $150', '3-5 Hours', 'Natural Products']}
       features={[
         {

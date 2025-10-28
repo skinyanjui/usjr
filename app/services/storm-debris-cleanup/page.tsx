@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function StormDebrisCleanupPage() {
   return (
     <ServicePageTemplate
-      theme="red"
+      theme="primary"
       title="Storm Debris Cleanup in Evansville"
       description="Emergency storm debris removal including branches, fencing, shingles, and storm damage cleanup"
       badges={['Emergency Response', 'Insurance Coordination', 'Complete Cleanup']}

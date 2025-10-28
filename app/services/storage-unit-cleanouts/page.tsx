@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function StorageUnitCleanoutsPage() {
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Storage Unit Cleanouts in Evansville"
       description="Professional storage unit cleanout services for abandoned units, estate storage, and facility turnovers"
       badges={['Same-Day Service', 'Full Unit Clearing', 'High Demand Service']}

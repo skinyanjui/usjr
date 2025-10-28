@@ -126,7 +126,7 @@ export default function EmergencyPage() {
     <ServicePageTemplate
       title="24/7 Emergency Junk Removal"
       description="Immediate junk removal response throughout Evansville and Southern Indiana. Same-day cleanouts, storm debris removal, and urgent property services with licensed professionals."
-      theme="red"
+      theme="primary"
       badges={['24/7 Emergency Response', '2-Hour Arrival Window', 'Licensed & Insured']}
       features={features}
       steps={steps}

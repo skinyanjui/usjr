@@ -70,7 +70,7 @@ export default function LightDemolitionPage() {
 
   return (
     <ServicePageTemplate
-      theme="red"
+      theme="primary"
       title="Light Demolition Services in Evansville"
       description="Professional light demolition services including interior demo, deck removal, fence removal, and selective demolition throughout Southern Indiana. Safety-first approach with complete debris removal and site cleanup."
       badges={[
@@ -187,7 +187,7 @@ export default function LightDemolitionPage() {
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="red"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -201,7 +201,7 @@ export default function LightDemolitionPage() {
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="red"
+            theme="primary"
           />
         </div>
       </div>
