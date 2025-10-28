@@ -3,6 +3,8 @@ import { Heart, Home, Gift, Users } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -115,6 +117,17 @@ export default function EstateCleanoutsPage() {
             'Estate cleanouts typically take 1-3 days depending on home size and contents. We work efficiently while being thorough and respectful, and can adjust our timeline to meet family needs.',
         },
       ]}
-    />
+    >
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
+    </ServicePageTemplate>
   )
 }

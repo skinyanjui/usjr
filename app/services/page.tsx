@@ -15,7 +15,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal',
   description:
-    'Comprehensive junk removal, light demolition, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
+    'Junk removal, light demolition & cleaning in Evansville, IN. Eco-friendly disposal, free estimates. Serving Southern Indiana.',
   keywords:
     'junk removal services, light demolition, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
   ...buildCanonicalMetadata('/services', baseUrl),

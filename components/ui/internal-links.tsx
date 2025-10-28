@@ -33,7 +33,7 @@ const themeColors = {
     badge: 'bg-green-100 text-green-800 border-green-200',
   },
   orange: {
-    button: 'border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white',
+    button: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
     badge: 'bg-orange-100 text-orange-800 border-orange-200',
   },
   purple: {

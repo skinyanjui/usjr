@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/hero-section'
 import { HomeServiceCards } from '@/components/home-service-cards'
 import { ReviewsRow } from '@/components/reviews-row'
+import { GoogleReviews } from '@/components/google-reviews'
 import { StructuredData } from '@/components/structured-data'
 import { getAggregateTestimonialStats } from '@/lib/cms-content'
 import type { Metadata } from 'next'
@@ -31,6 +32,8 @@ export default function HomePage() {
         </div>
       </div>
 
+      <GoogleReviews />
+
       <ReviewsRow />
 
       {/* Simple CTA Section */}
@@ -42,7 +45,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/quote"
-            className="inline-block rounded-lg bg-blue-800 px-6 py-2.5 text-base font-semibold text-white transition-all hover:bg-blue-900"
+            className="inline-flex items-center rounded-lg bg-blue-800 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-900 min-h-[48px]"
           >
             Get Free Quote
           </Link>

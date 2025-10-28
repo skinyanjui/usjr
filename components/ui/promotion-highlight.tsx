@@ -42,7 +42,7 @@ const themeColors = {
     bg: 'bg-orange-50',
     border: 'border-orange-200',
     text: 'text-orange-800',
-    accent: 'text-orange-600',
+    accent: 'text-orange-700',
   },
   purple: {
     bg: 'bg-purple-50',

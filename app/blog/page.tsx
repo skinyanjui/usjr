@@ -54,7 +54,7 @@ export default function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gray-50">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -62,7 +62,7 @@ export default function BlogPage() {
       />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+      <div className="bg-red-700 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
@@ -87,7 +87,7 @@ export default function BlogPage() {
                   key={post.slug}
                   className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
                 >
-                  <div className="bg-gradient-to-br from-red-500 to-orange-500 p-8 text-white">
+                  <div className="bg-red-600 p-8 text-white">
                     <div className="mb-4">
                       <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide uppercase backdrop-blur-sm">
                         {post.category}
@@ -167,7 +167,7 @@ export default function BlogPage() {
 
         {/* Newsletter CTA */}
         <section className="mt-16">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 p-8 text-center md:p-12">
+          <div className="mx-auto max-w-4xl rounded-2xl bg-red-50 p-8 text-center md:p-12">
             <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
               Need Junk Removal Help?
             </h2>

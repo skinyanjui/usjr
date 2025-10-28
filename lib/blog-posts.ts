@@ -123,6 +123,59 @@ export const blogPosts: BlogPost[] = [
     readTime: '10 min read',
     category: 'Property Management',
   },
+  {
+    slug: 'commercial-office-cleaning-guide-evansville',
+    title: 'Commercial Office Cleaning in Evansville: Complete Business Guide',
+    excerpt:
+      'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
+    author: 'Uncle Sam Team',
+    date: 'October 27, 2025',
+    readTime: '9 min read',
+    category: 'Commercial Cleaning',
+    featured: true,
+  },
+  {
+    slug: 'summer-cleanup-checklist-tri-state',
+    title: 'Summer Cleanup Checklist for Tri-State Homes & Yards',
+    excerpt:
+      'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
+    author: 'Sarah Johnson',
+    date: 'October 27, 2025',
+    readTime: '8 min read',
+    category: 'Seasonal Guide',
+  },
+  {
+    slug: 'moving-cleanout-guide-evansville',
+    title: 'Moving & Relocation Cleanout Guide for Evansville Residents',
+    excerpt:
+      'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
+    author: 'Uncle Sam Team',
+    date: 'October 27, 2025',
+    readTime: '10 min read',
+    category: 'Moving Guide',
+  },
+  {
+    slug: 'fall-cleanup-checklist-tri-state',
+    title: 'Fall Cleanup Checklist for Tri-State Homeowners',
+    excerpt:
+      'Comprehensive guide to preparing your Tri-State home for fall and winter. From leaf removal to storm preparation, get your property ready for the cold months ahead.',
+    author: 'Uncle Sam Team',
+    date: 'September 15, 2024',
+    readTime: '12 min read',
+    category: 'Seasonal Tips',
+    featured: true,
+  },
+  {
+    slug: 'winter-storm-cleanup-guide-tri-state',
+    title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
+    excerpt:
+      'Complete guide to winter storm preparation, cleanup, and recovery in the Tri-State area. From ice storm damage to snow removal, learn how to protect your property and respond to winter emergencies.',
+    author: 'Uncle Sam Team',
+    date: 'November 1, 2024',
+    readTime: '13 min read',
+    category: 'Emergency Services',
+    featured: true,
+  },
 ]
 
 // Helper function to convert date string to Date object

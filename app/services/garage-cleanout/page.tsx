@@ -3,6 +3,8 @@ import { Warehouse, SortAsc, Gift, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -110,6 +112,17 @@ export default function GarageCleanoutPage() {
             'Most garage cleanouts take 2-6 hours depending on the amount of items and level of organization needed. We work efficiently while being thorough.',
         },
       ]}
-    />
+    >
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
+    </ServicePageTemplate>
   )
 }

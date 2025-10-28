@@ -41,10 +41,10 @@ export function ServiceCard({
         bg: 'bg-orange-50',
         banner: 'bg-orange-200',
         bannerText: 'text-orange-900',
-        text: 'text-orange-600',
-        textStrong: 'text-orange-700',
+        text: 'text-orange-700',
+        textStrong: 'text-orange-800',
         button: 'bg-orange-700 hover:bg-orange-800',
-        icon: 'text-orange-600',
+        icon: 'text-orange-700',
       },
       green: {
         border: 'border-green-200',

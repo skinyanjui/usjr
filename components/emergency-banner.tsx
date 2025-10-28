@@ -1,26 +1,53 @@
-import { AlertTriangle, Phone } from 'lucide-react'
-import { settings } from '@/lib/cms-content'
+'use client'
+
+import Link from 'next/link'
+import { X } from 'lucide-react'
+import { useState } from 'react'
 
 export function EmergencyBanner() {
+  const [isVisible, setIsVisible] = useState(true)
+
+  if (!isVisible) return null
+
   return (
-    <section className="border-y border-red-100 bg-red-50 py-4">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2 font-semibold text-red-700">
-            <AlertTriangle className="h-4 w-4" /> Emergency Services
-          </div>
-          <p className="text-sm text-red-800">
-            Storm damage, last-minute move-outs, illegal dumping, flooded basements. Availability
-            varies by service. After-hours fee may apply.
-          </p>
-          <a
-            href={`tel:${settings.phoneE164}`}
-            className="ml-auto inline-flex items-center gap-1 font-semibold text-red-800"
+    <div className="bg-orange-700 px-4 py-1.5">
+      <div className="mx-auto max-w-7xl flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 text-white flex-1 min-w-0">
+          <svg
+            className="h-4 w-4 flex-shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <Phone className="h-4 w-4" /> Call {settings.phone}
-          </a>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <p className="text-xs font-semibold truncate">
+            <span className="font-bold">Emergency Service:</span>{' '}
+            <span className="hidden sm:inline">Storm cleanup, urgent junk removal & same-day response</span>
+            <span className="sm:hidden">Same-day response available</span>
+          </p>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <Link
+            href="/emergency"
+            className="whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-xs font-bold text-orange-800 hover:bg-gray-100 transition-colors"
+          >
+            Get Help →
+          </Link>
+          <button
+            onClick={() => setIsVisible(false)}
+            className="text-white hover:text-gray-200 transition-colors p-1"
+            aria-label="Close banner"
+          >
+            <X className="h-4 w-4" />
+          </button>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

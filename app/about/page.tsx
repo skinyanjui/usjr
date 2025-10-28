@@ -23,7 +23,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'About Uncle Sam Junk Removal | Local Junk Removal & Cleaning Services',
   description:
-    'Uncle Sam Junk Removal is a veteran-owned junk removal and cleaning company in Evansville, IN. Founded in 2025 by Marine Corps veteran Samuel Kinyanjui. Whether you need to get rid of junk, remove old furniture, haul away appliances, or clean out your house, we provide professional hauling services. Professional cleaning by women-owned Karcher Cleaners, led by Chelsey Karcher. Serving Evansville, Newburgh, Henderson, Owensboro, Boonville, and Princeton. Licensed & insured.',
+    'Veteran-owned junk removal & cleaning in Evansville, IN. Licensed, insured, eco-friendly. Serving Southern Indiana & Kentucky tri-state area.',
   keywords:
     'evansville junk removal, trash removal evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners, haul away service, get rid of junk, remove old furniture',
   robots: 'index, follow',

@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
+import Script from 'next/script'
 
 // Helper function to add visual breaks in content
 export function addContentBreaks() {
   return (
     <div className="my-12 flex items-center justify-center">
-      <div className="h-px w-32 bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+      <div className="h-px w-32 bg-gray-300"></div>
     </div>
   )
 }
@@ -52,10 +53,10 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
   }
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <article className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
-        <div className="mx-auto max-w-4xl px-6 py-10 md:px-4 md:py-16">
+      <div className="bg-red-700 text-white">
+        <div className="mx-auto max-w-4xl px-6 py-6 md:px-4 md:py-8">
           <Link
             href="/blog"
             className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
@@ -231,7 +232,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         )}
 
         {/* CTA Section */}
-        <div className="mt-12 rounded-2xl bg-gradient-to-br from-red-50 to-orange-50 p-8 md:p-10">
+        <div className="mt-12 rounded-2xl bg-red-50 p-8 md:p-10">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
             Need Professional Help?
           </h2>
@@ -282,6 +283,40 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
         )}
       </div>
+
+      {/* Article Schema */}
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: meta.title,
+            description: meta.excerpt,
+            author: {
+              '@type': 'Person',
+              name: meta.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Uncle Sam Junk Removal',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://unclesamjunkremoval.com/icon-512.png',
+              },
+            },
+            datePublished: new Date(meta.date).toISOString(),
+            dateModified: new Date(meta.date).toISOString(),
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': typeof window !== 'undefined' ? window.location.href : '',
+            },
+            keywords: meta.tags?.join(', ') || meta.category,
+            articleSection: meta.category,
+          }),
+        }}
+      />
     </article>
   )
 }
