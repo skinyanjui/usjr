@@ -181,7 +181,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
       </ol>
 
       <div className="my-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Local Pro Tip:</strong> Evansville's twice-yearly bulk pickup is great for small
           projects, but for anything urgent or substantial, professional junk removal saves time and
           hassle. Most local residents find the $89-649 cost worthwhile for the convenience and

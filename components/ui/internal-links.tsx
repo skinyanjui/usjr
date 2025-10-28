@@ -72,7 +72,7 @@ export function InternalLinks({
   if (variant === 'compact') {
     return (
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-foreground text-lg font-semibold">{title}</h3>
         <div className="flex flex-wrap gap-2">
           {links.map((link, index) => {
             const Icon = getIcon(link.type)
@@ -98,7 +98,7 @@ export function InternalLinks({
   if (variant === 'list') {
     return (
       <div className="space-y-4">
-        <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+        <h3 className="text-foreground text-xl font-bold">{title}</h3>
         <div className="space-y-3">
           {links.map((link, index) => {
             const Icon = getIcon(link.type)
@@ -107,15 +107,15 @@ export function InternalLinks({
                 <CardContent className="p-4">
                   <Link href={link.href} className="group">
                     <div className="flex items-start gap-3">
-                      <Icon className="mt-1 h-5 w-5 flex-shrink-0 text-gray-600" />
+                      <Icon className="text-muted-foreground mt-1 h-5 w-5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-start justify-between gap-2">
-                          <h4 className="font-semibold text-gray-900 transition-colors group-hover:text-blue-600">
+                          <h4 className="text-foreground font-semibold transition-colors group-hover:text-blue-600">
                             {link.title}
                           </h4>
                           <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-gray-400 transition-transform group-hover:translate-x-1" />
                         </div>
-                        <p className="mt-1 text-sm text-gray-600">{link.description}</p>
+                        <p className="text-muted-foreground mt-1 text-sm">{link.description}</p>
                         {link.category && (
                           <Badge className={`${colors.badge} mt-2 text-xs`}>{link.category}</Badge>
                         )}
@@ -134,7 +134,7 @@ export function InternalLinks({
   // grid variant (default)
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+      <h3 className="text-foreground text-xl font-bold">{title}</h3>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {links.map((link, index) => {
           const Icon = getIcon(link.type)
@@ -144,15 +144,15 @@ export function InternalLinks({
                 <Link href={link.href}>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <Icon className="h-5 w-5 text-gray-600" />
+                      <Icon className="text-muted-foreground h-5 w-5" />
                       {link.category && (
                         <Badge className={`${colors.badge} text-xs`}>{link.category}</Badge>
                       )}
                     </div>
-                    <h4 className="font-semibold text-gray-900 transition-colors group-hover:text-blue-600">
+                    <h4 className="text-foreground font-semibold transition-colors group-hover:text-blue-600">
                       {link.title}
                     </h4>
-                    <p className="text-sm text-gray-600">{link.description}</p>
+                    <p className="text-muted-foreground text-sm">{link.description}</p>
                     <div className="flex items-center gap-1 text-sm text-gray-500 transition-colors group-hover:text-blue-600">
                       <span>Learn more</span>
                       <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />

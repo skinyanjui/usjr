@@ -66,7 +66,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </Link>
 
           <div className="mb-4">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
+            <span className="bg-card/20 inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
               <Tag className="h-3.5 w-3.5" />
               {meta.category}
             </span>
@@ -95,7 +95,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             </div>
             <button
               onClick={handleShare}
-              className="ml-auto flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1.5 backdrop-blur-sm transition-colors hover:bg-white/20"
+              className="bg-card/10 hover:bg-card/20 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 backdrop-blur-sm transition-colors"
               aria-label="Share article"
             >
               <Share2 className="h-4 w-4" />

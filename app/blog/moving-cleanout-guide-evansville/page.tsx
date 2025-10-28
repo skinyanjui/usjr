@@ -43,9 +43,9 @@ export default function MovingCleanoutGuidePage() {
     >
       <p>
         Moving is one of life's most stressful events, but with the right plan, you can streamline
-        the process and save time, money, and energy. This comprehensive guide covers everything from
-        decluttering weeks before your move to final walkthrough checklist—specifically tailored for
-        Evansville and Tri-State area residents.
+        the process and save time, money, and energy. This comprehensive guide covers everything
+        from decluttering weeks before your move to final walkthrough checklist—specifically
+        tailored for Evansville and Tri-State area residents.
       </p>
 
       <h2>8 Weeks Before Moving: Start Decluttering</h2>
@@ -311,7 +311,7 @@ export default function MovingCleanoutGuidePage() {
         <h3 className="mb-3 text-xl font-bold text-blue-900">
           Need Help with Your Move? We've Got You Covered
         </h3>
-        <p className="mb-4 text-gray-700">
+        <p className="text-muted-foreground mb-4">
           Our team provides comprehensive moving support including junk removal, cleanout services,
           and move-out cleaning throughout Evansville and the Tri-State area. Same-day service
           available for urgent needs.

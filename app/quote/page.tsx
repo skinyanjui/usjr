@@ -72,10 +72,10 @@ export default function QuotePage() {
               </Badge>
             </div>
 
-            <h2 className="mb-6 text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+            <h2 className="text-foreground mb-6 text-2xl font-bold sm:text-4xl md:text-5xl">
               Pick the fastest way to get your quote
             </h2>
-            <p className="mx-auto mb-8 max-w-4xl text-base text-gray-600 sm:text-lg">
+            <p className="text-muted-foreground mx-auto mb-8 max-w-4xl text-base sm:text-lg">
               Professional junk removal, light demolition, and cleaning services in Evansville and
               Southern Indiana. Choose your service below for instant pricing and same-day
               availability.
@@ -113,8 +113,10 @@ export default function QuotePage() {
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 sm:h-16 sm:w-16">
                     <Truck className="h-6 w-6 text-blue-600 sm:h-8 sm:w-8" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">Junk Removal</h2>
-                  <p className="text-gray-600">Same-day pickup and hauling services</p>
+                  <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
+                    Junk Removal
+                  </h2>
+                  <p className="text-muted-foreground">Same-day pickup and hauling services</p>
                 </div>
 
                 <div className="mb-6 space-y-4">
@@ -130,19 +132,19 @@ export default function QuotePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Furniture & appliance removal
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Construction debris cleanup
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Estate & garage cleanouts
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Same-day availability
                     </div>
@@ -172,10 +174,12 @@ export default function QuotePage() {
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 sm:h-16 sm:w-16">
                     <Wrench className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
+                  <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
                     Light Demolition
                   </h2>
-                  <p className="text-gray-600">Careful tear-downs for sheds, decks, and more</p>
+                  <p className="text-muted-foreground">
+                    Careful tear-downs for sheds, decks, and more
+                  </p>
                 </div>
 
                 <div className="mb-6 space-y-4">
@@ -189,19 +193,19 @@ export default function QuotePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Sheds, decks, playsets, and swing sets
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Licensed & insured crew
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Responsible debris hauling
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Permitting guidance when needed
                     </div>
@@ -231,10 +235,10 @@ export default function QuotePage() {
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 sm:h-16 sm:w-16">
                     <Sparkles className="h-6 w-6 text-green-600 sm:h-8 sm:w-8" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">
+                  <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
                     Cleaning Services
                   </h2>
-                  <p className="text-gray-600">Natural products for home & business</p>
+                  <p className="text-muted-foreground">Natural products for home & business</p>
                 </div>
 
                 <div className="mb-6 space-y-4">
@@ -249,19 +253,19 @@ export default function QuotePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       100% natural cleaning products
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Residential & commercial
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       After-hours availability
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       Satisfaction guaranteed
                     </div>
@@ -288,10 +292,10 @@ export default function QuotePage() {
           {/* Quote Form Section */}
           <div className="mb-16">
             <div className="mb-8 text-center">
-              <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">
+              <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">
                 Get Your Detailed Quote
               </h2>
-              <p className="mx-auto max-w-3xl text-base text-gray-600 sm:text-lg">
+              <p className="text-muted-foreground mx-auto max-w-3xl text-base sm:text-lg">
                 Fill out the form below or upload photos for the most accurate pricing. We'll
                 respond within 2 hours with your detailed estimate.
               </p>
@@ -302,7 +306,7 @@ export default function QuotePage() {
           {/* Why Choose Us Section */}
           <Card className="glass">
             <CardContent className="p-6 sm:p-8">
-              <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+              <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:text-3xl">
                 Why Choose Uncle Sam Junk Removal?
               </h2>
 
@@ -312,21 +316,27 @@ export default function QuotePage() {
                     <Truck className="h-6 w-6 text-blue-600 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="mb-2 font-bold">Fast Scheduling</h3>
-                  <p className="text-sm text-gray-600">Same-day and next-day availability</p>
+                  <p className="text-muted-foreground text-sm">
+                    Same-day and next-day availability
+                  </p>
                 </div>
                 <div className="text-center">
                   <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-green-100 sm:h-12 sm:w-12">
                     <Sparkles className="h-6 w-6 text-green-600 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="mb-2 font-bold">Eco-Friendly</h3>
-                  <p className="text-sm text-gray-600">We donate and recycle whenever possible</p>
+                  <p className="text-muted-foreground text-sm">
+                    We donate and recycle whenever possible
+                  </p>
                 </div>
                 <div className="text-center">
                   <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 sm:h-12 sm:w-12">
                     <BadgeDollarSign className="h-6 w-6 text-orange-600 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="mb-2 font-bold">All-Inclusive Pricing</h3>
-                  <p className="text-sm text-gray-600">Transparent quotes with no hidden fees</p>
+                  <p className="text-muted-foreground text-sm">
+                    Transparent quotes with no hidden fees
+                  </p>
                 </div>
               </div>
             </CardContent>

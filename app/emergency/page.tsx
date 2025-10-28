@@ -147,9 +147,9 @@ export default function EmergencyPage() {
       ctaSecondary="Text Photos for Fast Quote"
     >
       <div className="mt-12 space-y-8">
-        <Card className="border-red-200 bg-white shadow-lg">
+        <Card className="bg-card border-red-200 shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-gray-900">
+            <CardTitle className="text-foreground text-2xl font-bold">
               Immediate Support Options
             </CardTitle>
             <CardDescription>
@@ -163,7 +163,7 @@ export default function EmergencyPage() {
                   <Phone className="h-4 w-4" />
                   Call Now
                 </Badge>
-                <p className="mb-4 text-gray-600">
+                <p className="text-muted-foreground mb-4">
                   Speak directly with our on-call dispatcher for immediate scheduling and arrival
                   updates.
                 </p>
@@ -174,11 +174,11 @@ export default function EmergencyPage() {
               </div>
 
               <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="mb-3 inline-flex items-center gap-2 bg-white px-4 py-2 text-base text-red-700 ring-1 ring-red-200">
+                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-red-700 ring-1 ring-red-200">
                   <MessageSquare className="h-4 w-4" />
                   Text Photos
                 </Badge>
-                <p className="mb-4 text-gray-600">
+                <p className="text-muted-foreground mb-4">
                   Send photos of the emergency to get pricing confirmed before we arrive on-site.
                 </p>
                 <Button
@@ -198,13 +198,13 @@ export default function EmergencyPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-gray-900">
+              <CardTitle className="text-foreground flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-red-600" />
                 Emergency Situations We Handle
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-left text-gray-600">
+              <ul className="text-muted-foreground space-y-3 text-left">
                 <li className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
                   Property damage cleanup
@@ -231,13 +231,13 @@ export default function EmergencyPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-gray-900">
+              <CardTitle className="text-foreground flex items-center gap-2">
                 <Shield className="h-5 w-5 text-green-600" />
                 Emergency Service Features
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-left text-gray-600">
+              <ul className="text-muted-foreground space-y-3 text-left">
                 <li className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-green-600" />
                   2-hour response window for most calls
@@ -269,7 +269,7 @@ export default function EmergencyPage() {
               <Zap className="h-4 w-4" />
               Priority Dispatch Available
             </Badge>
-            <p className="mx-auto max-w-2xl text-gray-700">
+            <p className="text-muted-foreground mx-auto max-w-2xl">
               Need same-hour service? Our emergency team is staffed overnight and on weekends to
               help secure properties, clear access points, and remove hazards fast.
             </p>

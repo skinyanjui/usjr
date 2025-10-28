@@ -201,7 +201,7 @@ export default function SpringCleaningChecklistPage() {
       </ul>
 
       <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Sustainability Tip:</strong> Southern Indiana has excellent donation options.
           Instead of trashing unwanted items, consider donating to Habitat ReStore, Goodwill, or
           local charities. It reduces landfill waste and helps neighbors in need.

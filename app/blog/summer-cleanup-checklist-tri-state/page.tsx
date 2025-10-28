@@ -50,9 +50,9 @@ export default function SummerCleanupChecklistPage() {
       <h2>Why Summer Cleanup Matters</h2>
       <p>
         Summer provides the ideal window for outdoor projects—long days, dry weather, and
-        comfortable working conditions. Plus, addressing maintenance now prevents costly repairs come
-        fall and winter. A well-maintained outdoor space also increases property value and creates a
-        safer, more enjoyable environment for your family.
+        comfortable working conditions. Plus, addressing maintenance now prevents costly repairs
+        come fall and winter. A well-maintained outdoor space also increases property value and
+        creates a safer, more enjoyable environment for your family.
       </p>
 
       <h2>Outdoor Living Spaces</h2>
@@ -218,7 +218,8 @@ export default function SummerCleanupChecklistPage() {
           safety measures
         </li>
         <li>
-          <strong>Deck repairs/reconstruction:</strong> Structural work needs professional assessment
+          <strong>Deck repairs/reconstruction:</strong> Structural work needs professional
+          assessment
         </li>
         <li>
           <strong>Major garage cleanouts:</strong> Overwhelming projects benefit from professional
@@ -248,7 +249,7 @@ export default function SummerCleanupChecklistPage() {
 
       <div className="mt-8 rounded-lg bg-green-50 p-6">
         <h3 className="mb-3 text-xl font-bold text-green-900">Need Help with Summer Cleanup?</h3>
-        <p className="mb-4 text-gray-700">
+        <p className="text-muted-foreground mb-4">
           Our team provides professional junk removal, yard waste disposal, and garage cleanout
           services throughout the Tri-State area. Same-day service available.
         </p>

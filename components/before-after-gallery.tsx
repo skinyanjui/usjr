@@ -50,7 +50,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   variant="secondary"
                   size="sm"
                   onClick={() => setSelectedImage(image)}
-                  className="bg-white text-slate-800 hover:bg-slate-100"
+                  className="bg-card text-slate-800 hover:bg-slate-100"
                   aria-label={`Open transformation details for ${image.title}`}
                 >
                   <Eye className="mr-2 h-4 w-4" />
@@ -65,7 +65,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   {image.service}
                 </Badge>
               </div>
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="text-muted-foreground flex items-center gap-1 text-sm">
                 <MapPin className="h-3 w-3" />
                 {image.location}
               </div>
@@ -129,14 +129,14 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
 
               {/* Image Info */}
               <div className="space-y-2 text-center">
-                <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
+                <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />
                     {selectedImage.location}
                   </div>
                   <Badge variant="secondary">{selectedImage.service}</Badge>
                 </div>
-                <p className="text-gray-700">{selectedImage.summary}</p>
+                <p className="text-muted-foreground">{selectedImage.summary}</p>
               </div>
             </div>
           </DialogContent>

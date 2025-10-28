@@ -23,7 +23,7 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     }
 
     const baseClasses = cn(
-      variant === 'white' ? 'bg-white text-foreground' : 'glass dark:glass-dark',
+      variant === 'white' ? 'bg-card text-foreground' : 'glass dark:glass-dark',
       'px-6 py-6 space-y-4 text-foreground'
     )
     const hoverClasses = hover ? 'hover:shadow-xl transition-all duration-300' : ''

@@ -76,12 +76,12 @@ export function PromotionHighlight({
             <h2 className={`text-2xl font-bold ${colors.text} mb-2`}>
               {location ? `Special ${location} Offers` : 'Current Promotions'}
             </h2>
-            <p className="text-gray-600">Limited-time savings for our local customers</p>
+            <p className="text-muted-foreground">Limited-time savings for our local customers</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
             {offers.map((offer, index) => (
-              <Card key={index} className="bg-white shadow-sm">
+              <Card key={index} className="bg-card shadow-sm">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     <div className={`${colors.accent} mt-1`}>
@@ -94,11 +94,11 @@ export function PromotionHighlight({
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="mb-1 font-semibold text-gray-900">{offer.title}</h3>
+                      <h3 className="text-foreground mb-1 font-semibold">{offer.title}</h3>
                       <Badge className={`${colors.bg} ${colors.text} mb-2 border-0`}>
                         {offer.discount}
                       </Badge>
-                      <p className="text-sm text-gray-600">{offer.description}</p>
+                      <p className="text-muted-foreground text-sm">{offer.description}</p>
                       {offer.validThrough && (
                         <p className="mt-2 text-xs text-gray-500">
                           Valid through {new Date(offer.validThrough).toLocaleDateString()}
@@ -113,7 +113,7 @@ export function PromotionHighlight({
 
           {location && (
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 <MapPin className="mr-1 inline h-4 w-4" />
                 Exclusive offers for {location} area residents
               </p>

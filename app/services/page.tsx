@@ -172,7 +172,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Project Services */}
-      <section className="bg-white/50 px-4 py-16">
+      <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             title="Project Services"
@@ -223,7 +223,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Areas */}
-      <section className="bg-white/50 px-4 py-16">
+      <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             title="Service Areas"
@@ -255,8 +255,8 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">Ready to Get Started?</h2>
-          <p className="mb-8 text-xl text-gray-600">
+          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready to Get Started?</h2>
+          <p className="text-muted-foreground mb-8 text-xl">
             Book your service today or get a free, no-obligation quote.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

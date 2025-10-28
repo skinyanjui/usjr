@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <h2 className="text-foreground mb-2 text-3xl font-bold">Privacy Policy</h2>
-        <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
+        <p className="text-muted-foreground mb-8">Effective: January 1, 2025</p>
 
         <section className="mb-8">
           <h2 className="text-foreground mb-2 text-2xl font-bold">Overview</h2>
@@ -322,9 +322,9 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <p className="text-sm text-gray-600">Last updated: January 1, 2025</p>
+        <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
 
-        <div className="mt-12 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="border-border bg-card mt-12 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
@@ -339,13 +339,13 @@ export default function PrivacyPolicyPage() {
           </Link>
           <Link
             href="/services"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/terms"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Terms of Service
           </Link>

@@ -98,8 +98,8 @@ export default function CommercialOfficeCleaningPage() {
 
       <h3>Monthly Specialty Services</h3>
       <p>
-        <strong>What's Included:</strong> Carpet shampooing, hard floor stripping and waxing,
-        window cleaning (exterior), high dusting, air vent cleaning, upholstery cleaning.
+        <strong>What's Included:</strong> Carpet shampooing, hard floor stripping and waxing, window
+        cleaning (exterior), high dusting, air vent cleaning, upholstery cleaning.
       </p>
       <p>
         <strong>Best For:</strong> All businesses as supplemental service
@@ -229,7 +229,7 @@ export default function CommercialOfficeCleaningPage() {
         <h3 className="mb-3 text-xl font-bold text-blue-900">
           Free Commercial Cleaning Consultation
         </h3>
-        <p className="mb-4 text-gray-700">
+        <p className="text-muted-foreground mb-4">
           Get a customized cleaning plan and quote for your Evansville office. No obligation.
         </p>
         <a

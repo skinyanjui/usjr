@@ -550,7 +550,7 @@ export default function WinterStormCleanupGuide() {
             </a>
             <a
               href="/quote"
-              className="inline-block rounded-lg border-2 border-orange-700 bg-white px-6 py-3 font-semibold text-orange-700 hover:bg-orange-50"
+              className="bg-card inline-block rounded-lg border-2 border-orange-700 px-6 py-3 font-semibold text-orange-700 hover:bg-orange-50"
             >
               Request Quote
             </a>

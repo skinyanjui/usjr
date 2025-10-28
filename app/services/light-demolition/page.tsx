@@ -181,7 +181,7 @@ export default function LightDemolitionPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
@@ -195,7 +195,7 @@ export default function LightDemolitionPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"

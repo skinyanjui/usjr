@@ -15,14 +15,14 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-muted/30 min-h-screen">
       <PageHero
         title="Terms of Service"
         description="Bookings, cancellations, payments, and service limitations"
         color="slate"
       />
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="mb-8 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
@@ -37,20 +37,20 @@ export default function TermsPage() {
           </Link>
           <Link
             href="/services"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/privacy"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Privacy Policy
           </Link>
         </div>
 
         <p className="text-foreground mb-2 text-3xl font-bold">Service terms overview</p>
-        <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
+        <p className="text-muted-foreground mb-8">Effective: January 1, 2025</p>
         <section className="mb-8">
           <h2 className="text-foreground mb-2 text-2xl font-bold">Agreement to Terms</h2>
           <p className="text-muted-foreground">
@@ -244,9 +244,9 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <p className="text-sm text-gray-600">Last updated: January 1, 2025</p>
+        <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
 
-        <div className="mt-12 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="border-border bg-card mt-12 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
@@ -261,13 +261,13 @@ export default function TermsPage() {
           </Link>
           <Link
             href="/services"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/privacy"
-            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Privacy Policy
           </Link>

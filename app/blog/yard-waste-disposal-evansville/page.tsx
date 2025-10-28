@@ -98,7 +98,7 @@ export default function YardWasteDisposalBlog() {
       </p>
 
       <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Compost, mulch, or schedule a haul-away to keep limbs and leaves
           off your curb. Keeping yard waste separate from regular trash maximizes recycling
           opportunities.

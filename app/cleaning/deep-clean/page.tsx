@@ -112,11 +112,13 @@ export default function DeepCleaningPage() {
       ]}
     >
       {/* Before/After Gallery Section */}
-      <div className="bg-white py-16">
+      <div className="bg-card py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900">See Our Deep Cleaning Results</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-foreground mb-4 text-3xl font-bold">
+              See Our Deep Cleaning Results
+            </h2>
+            <p className="text-muted-foreground text-lg">
               Real before and after photos from our deep cleaning services
             </p>
           </div>

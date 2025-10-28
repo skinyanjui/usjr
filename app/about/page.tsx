@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-muted/30 min-h-screen">
       <PageHero
         title="About Uncle Sam Junk Removal"
         description="Veteran-owned junk removal and professional cleaning in Evansville, IN and the Tri-State."
@@ -81,7 +81,7 @@ export default function AboutPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">Our Story</h2>
-              <div className="space-y-4 leading-relaxed text-gray-600">
+              <div className="text-muted-foreground space-y-4 leading-relaxed">
                 <p>
                   Founded in 2025 by <strong>Samuel Kinyanjui</strong> — a United States Marine
                   Corps veteran — Uncle Sam Junk Removal serves <strong>Evansville, IN</strong> and
@@ -112,11 +112,11 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="rounded-lg bg-red-50 p-4">
                   <div className="text-2xl font-bold text-red-600">2025</div>
-                  <div className="text-gray-600">Founded</div>
+                  <div className="text-muted-foreground">Founded</div>
                 </div>
                 <div className="rounded-lg bg-green-50 p-4">
                   <div className="text-2xl font-bold text-green-600">500+</div>
-                  <div className="text-gray-600">Satisfied Clients</div>
+                  <div className="text-muted-foreground">Satisfied Clients</div>
                 </div>
               </div>
             </div>
@@ -125,19 +125,19 @@ export default function AboutPage() {
       </section>
 
       {/* Local Service Areas */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-muted/30 py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid items-start gap-12 lg:grid-cols-2">
             <div>
               <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
                 Proudly Serving Evansville & The Tri-State
               </h2>
-              <p className="mb-4 leading-relaxed text-gray-600">
+              <p className="text-muted-foreground mb-4 leading-relaxed">
                 We’re based in Evansville and serve nearby communities across Southern Indiana and
                 Western Kentucky. Expect on-time arrivals, friendly crews, and efficient
                 service—every time.
               </p>
-              <ul className="grid gap-3 text-gray-700 sm:grid-cols-2">
+              <ul className="text-muted-foreground grid gap-3 sm:grid-cols-2">
                 {settings.serviceAreas.map(area => (
                   <li key={area} className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-red-600" />
@@ -148,7 +148,7 @@ export default function AboutPage() {
             </div>
             <div className="glass rounded-2xl p-8">
               <h3 className="mb-4 text-xl font-bold text-gray-800">What We Do</h3>
-              <div className="grid gap-4 text-sm text-gray-700 sm:grid-cols-2">
+              <div className="text-muted-foreground grid gap-4 text-sm sm:grid-cols-2">
                 <div className="flex items-start gap-3">
                   <Truck className="mt-0.5 h-5 w-5 text-blue-600" />
                   <span>Full-service junk removal & curbside pick-ups</span>
@@ -180,11 +180,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-muted/30 py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">Our Values</h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
               The principles that guide everything we do
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <Shield className="mx-auto mb-4 h-12 w-12 text-red-600" />
               <h3 className="mb-4 text-xl font-bold">Reliability</h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 We show up on time, every time. Our customers count on us, and we never let them
                 down.
               </p>
@@ -202,7 +202,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <Users className="mx-auto mb-4 h-12 w-12 text-green-600" />
               <h3 className="mb-4 text-xl font-bold">Community</h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 We're your neighbors. Supporting local families and businesses is at the heart of
                 what we do.
               </p>
@@ -211,7 +211,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <Award className="mx-auto mb-4 h-12 w-12 text-blue-600" />
               <h3 className="mb-4 text-xl font-bold">Excellence</h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 From our first interaction to job completion, we strive for excellence in every
                 detail.
               </p>
@@ -235,7 +235,7 @@ export default function AboutPage() {
                 <Shield className="h-8 w-8 text-red-600" />
               </div>
               <h3 className="mb-2 font-bold">Licensed & Insured</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Full liability insurance and proper licensing for your peace of mind
               </p>
             </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
                 <Clock className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="mb-2 font-bold">Same-Day Service</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Available 7 days a week for urgent junk removal needs
               </p>
             </div>
@@ -255,7 +255,7 @@ export default function AboutPage() {
                 <Truck className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="mb-2 font-bold">Eco-Friendly</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 We donate, recycle, and dispose responsibly whenever possible
               </p>
             </div>
@@ -265,7 +265,7 @@ export default function AboutPage() {
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="mb-2 font-bold">5-Star Service</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Consistently rated 4.9/5 stars by our satisfied customers
               </p>
             </div>
@@ -274,11 +274,11 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-muted/30 py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">Meet Our Team</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-muted-foreground text-xl">
               The dedicated professionals who make it all happen
             </p>
           </div>
@@ -287,7 +287,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Samuel Kinyanjui</h3>
               <p className="mb-3 font-medium text-red-600">Founder & Owner</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel
                 leads with integrity and a commitment to reliable, professional service.
               </p>
@@ -306,7 +306,7 @@ export default function AboutPage() {
                   Karcher Cleaners
                 </a>
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Leads our women-owned cleaning partner, delivering professional cleaning services
                 with exceptional attention to detail.
               </p>
@@ -315,7 +315,7 @@ export default function AboutPage() {
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Our Local Team</h3>
               <p className="mb-3 font-medium text-blue-600">Operations</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Friendly professionals serving Evansville and surrounding areas with efficient,
                 respectful service.
               </p>
@@ -340,7 +340,7 @@ export default function AboutPage() {
             </PhoneButton>
             <Button
               asChild
-              className="justify-center rounded-lg bg-white px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-red-50"
+              className="bg-card justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-red-50"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote

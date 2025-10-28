@@ -179,7 +179,7 @@ export default function GarageCleanoutPage() {
       </ul>
 
       <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Success Tip:</strong> The 48-hour timeline works because it creates urgency and
           momentum. Block out a full weekend, get family involved, and you'll be amazed at what you
           can accomplish. Most Evansville families report reclaiming 200+ square feet of usable

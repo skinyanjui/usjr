@@ -19,7 +19,7 @@ export default function FAQPage() {
   const allFaqs = getAllFaqs()
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-muted/30 min-h-screen">
       <PageHero
         title="Frequently Asked Questions"
         description="Answers about junk removal, light demolition, and cleaning services in Southern Indiana."
