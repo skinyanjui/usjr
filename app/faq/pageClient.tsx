@@ -62,10 +62,10 @@ export default function FAQClient() {
   return (
     <div className="mx-auto max-w-7xl px-4">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+        <h1 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
           Frequently Asked Questions
         </h1>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
+        <p className="mx-auto max-w-3xl text-lg text-muted-foreground sm:text-xl">
           Find answers to common questions about our junk removal, light demolition, and cleaning
           services in Evansville and Southern Indiana.
         </p>
@@ -75,7 +75,7 @@ export default function FAQClient() {
         <CardContent className="p-6">
           <div className="relative">
             <Search
-              className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-gray-500"
+              className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-muted-foreground"
               aria-hidden="true"
             />
             <Input
@@ -110,7 +110,7 @@ export default function FAQClient() {
                       id={faq.question.includes('Price Match') ? 'price-match' : undefined}
                     >
                       <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                      <AccordionContent className="text-gray-600">{faq.answer}</AccordionContent>
+                      <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
@@ -120,10 +120,10 @@ export default function FAQClient() {
         })}
       </div>
 
-      <Card className="mt-12 border-blue-200 bg-blue-50">
+      <Card className="mt-12 border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/30">
         <CardContent className="p-8 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-gray-900">Still Have Questions?</h3>
-          <p className="mb-6 text-gray-600">
+          <h3 className="mb-4 text-2xl font-bold text-foreground">Still Have Questions?</h3>
+          <p className="mb-6 text-muted-foreground">
             Can't find the answer you're looking for? Our friendly team is here to help with any
             questions about our services.
           </p>
@@ -138,7 +138,7 @@ export default function FAQClient() {
             <Link
               href="/quote"
               prefetch
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-800 px-6 py-2.5 text-base font-semibold text-red-800 transition-colors hover:bg-red-100"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-600 dark:border-red-500 px-6 py-2.5 text-base font-semibold text-red-600 dark:text-red-400 transition-colors hover:bg-red-100 dark:hover:bg-red-950/30"
             >
               Get Free Quote
             </Link>

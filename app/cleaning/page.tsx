@@ -27,7 +27,7 @@ export default function CleaningHub() {
       description: 'Comprehensive one-time cleaning for your entire home',
       price: 'From $150',
       href: '/cleaning/deep-clean',
-      color: 'bg-blue-50 border-blue-200',
+      color: 'bg-blue-50 dark:bg-blue-950/30 border-blue-600 dark:border-blue-500',
       includes: [
         'High-to-low dusting',
         'Kitchen deep clean',
@@ -40,7 +40,7 @@ export default function CleaningHub() {
       description: 'Weekly, bi-weekly, or monthly maintenance cleaning',
       price: 'From $80',
       href: '/cleaning/recurring',
-      color: 'bg-green-50 border-green-200',
+      color: 'bg-green-50 dark:bg-green-950/30 border-green-600 dark:border-green-500',
       includes: ['Flexible scheduling', 'Consistent team', 'Supply included', 'Quality guarantee'],
     },
     {
@@ -56,7 +56,7 @@ export default function CleaningHub() {
       description: 'Organizing, decluttering, and specialized tasks',
       price: 'From $100',
       href: '/cleaning/specialty',
-      color: 'bg-orange-50 border-orange-200',
+      color: 'bg-orange-50 dark:bg-orange-950/30 border-orange-600 dark:border-orange-500',
       includes: ['Refrigerator cleaning', 'Oven deep clean', 'Home organizing', 'Decluttering'],
     },
     {
@@ -81,7 +81,7 @@ export default function CleaningHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-green-50 dark:bg-green-950/30">
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
@@ -91,7 +91,7 @@ export default function CleaningHub() {
       {/* Subheader badges/CTAs */}
       <section className="px-4 pt-8 pb-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge className="mb-6 border-green-200 bg-green-100 text-green-800">
+          <Badge className="mb-6 border-green-600 dark:border-green-500 bg-green-100 text-green-700 dark:text-green-400">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
           <div className="flex flex-wrap justify-center gap-3">
@@ -108,7 +108,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-800 hover:bg-green-100"
+              className="border-green-800 bg-transparent px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -194,7 +194,7 @@ export default function CleaningHub() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-green-800 bg-transparent text-green-800 hover:bg-green-100"
+                      className="border-green-800 bg-transparent text-green-700 dark:text-green-400 hover:bg-green-100"
                     >
                       <Link href="/quote" prefetch>
                         Quote
@@ -251,7 +251,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-800 hover:bg-green-100"
+              className="border-green-800 bg-transparent px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -261,7 +261,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="ghost"
-              className="px-8 py-3 text-green-800 hover:bg-green-100"
+              className="px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
             >
               <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </Button>

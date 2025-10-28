@@ -43,7 +43,7 @@ export default function QuotePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="min-h-screen bg-blue-50 dark:bg-blue-950/30">
       <PageHero
         title="Get Your Free Quote Today"
         description="Professional junk removal, light demolition, and cleaning services in Evansville and Southern Indiana"
@@ -54,11 +54,11 @@ export default function QuotePage() {
           {/* Header Section */}
           <div className="mt-8 mb-16 text-center">
             <div className="mb-6 flex justify-center gap-2">
-              <Badge className="border-green-200 bg-green-100 text-green-800">
+              <Badge className="border-green-600 dark:border-green-500 bg-green-100 text-green-700 dark:text-green-400">
                 <Leaf className="mr-1 h-3 w-3" />
                 Eco-Friendly
               </Badge>
-              <Badge className="border-blue-200 bg-blue-100 text-blue-800">
+              <Badge className="border-blue-600 dark:border-blue-500 bg-blue-100 text-blue-700 dark:text-blue-400">
                 <Shield className="mr-1 h-3 w-3" />
                 Fully Insured
               </Badge>
@@ -66,7 +66,7 @@ export default function QuotePage() {
                 <Star className="mr-1 h-3 w-3" />
                 Woman-Owned
               </Badge>
-              <Badge className="border-orange-200 bg-orange-100 text-orange-800">
+              <Badge className="border-orange-600 dark:border-orange-500 bg-orange-100 text-orange-700 dark:text-orange-400">
                 <Clock className="mr-1 h-3 w-3" />
                 Same-Day Service
               </Badge>
@@ -94,7 +94,7 @@ export default function QuotePage() {
               <Button
                 asChild
                 variant="outline"
-                className="border-blue-800 bg-transparent px-6 py-2.5 text-base text-blue-800 hover:bg-blue-100"
+                className="border-blue-800 bg-transparent px-6 py-2.5 text-base text-blue-700 dark:text-blue-400 hover:bg-blue-100"
               >
                 <a href={`sms:${settings.phoneE164}`}>
                   <Camera className="mr-2 h-4 w-4" />
@@ -107,7 +107,7 @@ export default function QuotePage() {
           {/* Service Selection Cards */}
           <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Junk Removal Service */}
-            <Card className="glass border-2 border-blue-200 transition-all duration-300 hover:border-blue-400">
+            <Card className="glass border-2 border-blue-600 dark:border-blue-500 transition-all duration-300 hover:border-blue-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 sm:h-16 sm:w-16">
@@ -120,9 +120,9 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-blue-50 p-4">
+                  <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 p-4">
                     <h3 className="mb-2 font-semibold text-blue-900">Starting Prices:</h3>
-                    <ul className="space-y-1 text-sm text-blue-800">
+                    <ul className="space-y-1 text-sm text-blue-700 dark:text-blue-400">
                       {junkRemovalTiers.map(t => (
                         <li key={t.id}>
                           • {t.name}: {t.price}
@@ -158,7 +158,7 @@ export default function QuotePage() {
                   <Link href="/services/junk-removal">
                     <Button
                       variant="outline"
-                      className="w-full border-blue-800 bg-transparent text-blue-800 hover:bg-blue-100"
+                      className="w-full border-blue-800 bg-transparent text-blue-700 dark:text-blue-400 hover:bg-blue-100"
                     >
                       Junk Removal Services & Pricing
                     </Button>
@@ -168,7 +168,7 @@ export default function QuotePage() {
             </Card>
 
             {/* Light Demolition Service */}
-            <Card className="glass border-2 border-orange-200 transition-all duration-300 hover:border-orange-400">
+            <Card className="glass border-2 border-orange-600 dark:border-orange-500 transition-all duration-300 hover:border-orange-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 sm:h-16 sm:w-16">
@@ -183,9 +183,9 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-orange-50 p-4">
+                  <div className="rounded-lg bg-orange-50 dark:bg-orange-950/30 p-4">
                     <h3 className="mb-2 font-semibold text-orange-900">Starting Prices:</h3>
-                    <ul className="space-y-1 text-sm text-orange-800">
+                    <ul className="space-y-1 text-sm text-orange-700 dark:text-orange-400">
                       {lightDemolitionPricing.map(item => (
                         <li key={item}>{item}</li>
                       ))}
@@ -219,7 +219,7 @@ export default function QuotePage() {
                   <Link href="/services/light-demolition">
                     <Button
                       variant="outline"
-                      className="w-full border-orange-800 bg-transparent text-orange-800 hover:bg-orange-100"
+                      className="w-full border-orange-800 bg-transparent text-orange-700 dark:text-orange-400 hover:bg-orange-100"
                     >
                       Light Demolition Services & Pricing
                     </Button>
@@ -229,7 +229,7 @@ export default function QuotePage() {
             </Card>
 
             {/* Cleaning Service */}
-            <Card className="glass border-2 border-green-200 transition-all duration-300 hover:border-green-400">
+            <Card className="glass border-2 border-green-600 dark:border-green-500 transition-all duration-300 hover:border-green-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 sm:h-16 sm:w-16">
@@ -242,9 +242,9 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mb-6 space-y-4">
-                  <div className="rounded-lg bg-green-50 p-4">
+                  <div className="rounded-lg bg-green-50 dark:bg-green-950/30 p-4">
                     <h3 className="mb-2 font-semibold text-green-900">Service Prices:</h3>
-                    <ul className="space-y-1 text-sm text-green-800">
+                    <ul className="space-y-1 text-sm text-green-700 dark:text-green-400">
                       <li>• Deep clean: From $150-$400</li>
                       <li>• Recurring: From $80-$200</li>
                       <li>• Move-in/out: From $200-$500</li>
@@ -279,7 +279,7 @@ export default function QuotePage() {
                   <Link href="/cleaning">
                     <Button
                       variant="outline"
-                      className="w-full border-green-800 bg-transparent text-green-800 hover:bg-green-100"
+                      className="w-full border-green-800 bg-transparent text-green-700 dark:text-green-400 hover:bg-green-100"
                     >
                       Eco-Friendly Cleaning Services & Packages
                     </Button>

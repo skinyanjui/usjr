@@ -38,7 +38,7 @@ export function HomeServiceCards() {
   return (
     <section className="px-4 py-12">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+        <h2 className="mb-8 text-center text-2xl font-bold text-foreground sm:text-3xl">
           Our Services
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -90,16 +90,16 @@ export function PricingGrid() {
   const pricingTiers = baseTiers.map(t => ({ ...t, price: priceMap.get(t.id) || t.price }))
 
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-muted/30 py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
             Transparent Pricing - No Surprises
           </h2>
-          <p className="mb-2 text-lg text-gray-600 sm:text-xl">
+          <p className="mb-2 text-lg text-muted-foreground sm:text-xl">
             Unlike other companies, we show you exactly what you'll pay
           </p>
-          <p className="text-base text-gray-600 sm:text-lg">
+          <p className="text-base text-muted-foreground sm:text-lg">
             All prices include labor, hauling, and dump fees
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-2">
@@ -108,8 +108,8 @@ export function PricingGrid() {
                 <Star key={i} className="h-5 w-5 fill-current text-yellow-400" />
               ))}
             </div>
-            <span className="text-gray-600">4.9/5 from 200+ customers</span>
-            <p className="max-w-2xl text-sm text-gray-600">
+            <span className="text-muted-foreground">4.9/5 from 200+ customers</span>
+            <p className="max-w-2xl text-sm text-muted-foreground">
               Prices shown are typical ranges. Photos help confirm your exact price and can save you
               money.
             </p>
@@ -120,16 +120,16 @@ export function PricingGrid() {
           {pricingTiers.map(tier => (
             <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-red-600' : ''}`}>
               <CardHeader>
-                <CardTitle className="flex items-center justify-between text-lg font-bold text-gray-900">
+                <CardTitle className="flex items-center justify-between text-lg font-bold text-foreground">
                   <span>{tier.name}</span>
                   <span className="text-red-700">{tier.price}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-3 text-sm text-gray-600">
+                <p className="mb-3 text-sm text-muted-foreground">
                   {tier.description} • {tier.examples}
                 </p>
-                <ul className="space-y-1 text-sm text-gray-700">
+                <ul className="space-y-1 text-sm text-muted-foreground">
                   {tier.features.map(f => (
                     <li key={f}>• {f}</li>
                   ))}
@@ -140,15 +140,15 @@ export function PricingGrid() {
         </div>
 
         <GlassCard variant="colored" color="red" className="p-6 text-center md:p-8">
-          <h3 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl">
+          <h3 className="mb-4 text-xl font-bold text-foreground md:text-2xl">
             Why Choose Our Transparent Pricing?
           </h3>
           <div className="grid gap-6 text-left sm:grid-cols-2 md:grid-cols-3">
             <div className="flex items-start gap-3">
               <IconContainer icon={Check} color="red" size="sm" />
               <div>
-                <h4 className="mb-1 font-semibold text-gray-900">No Hidden Fees</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="mb-1 font-semibold text-foreground">No Hidden Fees</h4>
+                <p className="text-sm text-muted-foreground">
                   Our prices include everything - labor, hauling, dump fees, and disposal costs.
                 </p>
               </div>
@@ -156,8 +156,8 @@ export function PricingGrid() {
             <div className="flex items-start gap-3">
               <IconContainer icon={Check} color="red" size="sm" />
               <div>
-                <h4 className="mb-1 font-semibold text-gray-900">Upfront Estimates</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="mb-1 font-semibold text-foreground">Upfront Estimates</h4>
+                <p className="text-sm text-muted-foreground">
                   Know exactly what you'll pay before we start. No surprises or last-minute charges.
                 </p>
               </div>
@@ -165,8 +165,8 @@ export function PricingGrid() {
             <div className="flex items-start gap-3">
               <IconContainer icon={Check} color="red" size="sm" />
               <div>
-                <h4 className="mb-1 font-semibold text-gray-900">Price Match Guarantee</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="mb-1 font-semibold text-foreground">Price Match Guarantee</h4>
+                <p className="text-sm text-muted-foreground">
                   Find a lower written quote for the same service? We’ll match it.{' '}
                   <PriceMatchTerms
                     trigger={
@@ -181,7 +181,7 @@ export function PricingGrid() {
           </div>
 
           <div className="mt-8 border-t border-red-200 pt-6">
-            <p className="mb-4 font-medium text-gray-700">
+            <p className="mb-4 font-medium text-muted-foreground">
               Ready to see exactly what your project will cost?
             </p>
             <div className="flex flex-row justify-center gap-4">

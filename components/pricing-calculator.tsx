@@ -80,14 +80,14 @@ export function PricingCalculator() {
           <Calculator className="h-6 w-6 text-blue-600" />
           Pricing Calculator
         </CardTitle>
-        <p className="text-sm text-gray-600 sm:text-base">
+        <p className="text-sm text-muted-foreground sm:text-base">
           Get an instant estimate for your project
         </p>
       </CardHeader>
 
       <CardContent className="space-y-6">
         <div>
-          <Label htmlFor="pc-service-type" className="mb-2 block text-sm font-medium text-gray-700">
+          <Label htmlFor="pc-service-type" className="mb-2 block text-sm font-medium text-muted-foreground">
             Service Type
           </Label>
           <Select value={service} onValueChange={setService}>
@@ -121,7 +121,7 @@ export function PricingCalculator() {
           <Label
             id="pc-project-size-label"
             htmlFor="pc-project-size"
-            className="mb-2 block text-sm font-medium text-gray-700"
+            className="mb-2 block text-sm font-medium text-muted-foreground"
           >
             Project Size: {loadSize[0]}%
           </Label>
@@ -136,7 +136,7 @@ export function PricingCalculator() {
             onChange={e => setLoadSize([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="mt-1 flex justify-between text-[10px] text-gray-600 sm:text-xs">
+          <div className="mt-1 flex justify-between text-[10px] text-muted-foreground sm:text-xs">
             <span>10%</span>
             <span>50%</span>
             <span>100%</span>
@@ -147,7 +147,7 @@ export function PricingCalculator() {
           <Label
             id="pc-item-count-label"
             htmlFor="pc-item-count"
-            className="mb-2 block text-sm font-medium text-gray-700"
+            className="mb-2 block text-sm font-medium text-muted-foreground"
           >
             Item Count: {itemCount[0]}
           </Label>
@@ -162,7 +162,7 @@ export function PricingCalculator() {
             onChange={e => setItemCount([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="mt-1 flex justify-between text-[10px] text-gray-600 sm:text-xs">
+          <div className="mt-1 flex justify-between text-[10px] text-muted-foreground sm:text-xs">
             <span>1</span>
             <span>20</span>
             <span>40</span>
@@ -171,7 +171,7 @@ export function PricingCalculator() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <Label htmlFor="pc-location" className="mb-2 block text-sm font-medium text-gray-700">
+            <Label htmlFor="pc-location" className="mb-2 block text-sm font-medium text-muted-foreground">
               Location
             </Label>
             <Select value={location} onValueChange={setLocation}>
@@ -185,7 +185,7 @@ export function PricingCalculator() {
             </Select>
           </div>
           <div>
-            <Label htmlFor="pc-urgency" className="mb-2 block text-sm font-medium text-gray-700">
+            <Label htmlFor="pc-urgency" className="mb-2 block text-sm font-medium text-muted-foreground">
               Urgency
             </Label>
             <Select value={urgency} onValueChange={setUrgency}>
@@ -201,8 +201,8 @@ export function PricingCalculator() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-          <div className="flex items-center gap-2 font-semibold text-red-800">
+        <div className="rounded-lg border border-red-600 dark:border-red-500 bg-red-50 dark:bg-red-950/30 p-4">
+          <div className="flex items-center gap-2 font-semibold text-red-700 dark:text-red-400">
             <Info className="h-4 w-4" /> Estimated Price Range
           </div>
           <div className="mt-2 text-gray-800">
@@ -225,7 +225,7 @@ export function PricingCalculator() {
           <Button
             asChild
             variant="outline"
-            className="border-red-800 bg-transparent text-red-800 hover:bg-red-800 hover:text-white"
+            className="border-red-800 bg-transparent text-red-700 dark:text-red-400 hover:bg-red-800 hover:text-white"
           >
             <Link href="/quote" prefetch>
               Get Free Quote
