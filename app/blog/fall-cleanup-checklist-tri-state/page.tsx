@@ -425,15 +425,17 @@ export default function FallCleanupGuide() {
           Newburgh, Henderson, Owensboro, and all surrounding Tri-State communities.
         </p>
 
-        <div className="not-prose my-8 rounded-lg border border-blue-200 bg-blue-50 p-6">
-          <h3 className="mb-4 text-xl font-bold text-blue-900">Ready for Fall Cleanup?</h3>
-          <p className="mb-4 text-blue-800">
+        <div className="not-prose my-8 rounded-lg border border-blue-600 bg-blue-50 p-6 dark:border-blue-500 dark:bg-blue-950/30">
+          <h3 className="mb-4 text-xl font-bold text-blue-900 dark:text-blue-200">
+            Ready for Fall Cleanup?
+          </h3>
+          <p className="mb-4 text-blue-800 dark:text-blue-300">
             Get a free estimate for professional fall cleanup services. We'll handle everything from
             leaf removal to gutter cleaning, preparing your property for winter.
           </p>
           <a
             href="/quote"
-            className="inline-block rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800"
+            className="inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
           >
             Request Free Quote
           </a>

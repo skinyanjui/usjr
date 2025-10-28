@@ -91,7 +91,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <Header />
           <EmergencyBanner />
           <BreadcrumbsAuto />
