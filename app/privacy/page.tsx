@@ -17,14 +17,14 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-background min-h-screen">
       <PageHero
         title="Privacy Policy"
         description="How we collect, use, and protect your information"
         color="slate"
       />
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="mb-8 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
             className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
@@ -39,24 +39,24 @@ export default function PrivacyPolicyPage() {
           </Link>
           <Link
             href="/services"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="border-border text-foreground hover:bg-muted rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/terms"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="border-border text-foreground hover:bg-muted rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Terms of Service
           </Link>
         </div>
 
-        <h2 className="mb-2 text-3xl font-bold text-gray-900">Privacy Policy</h2>
+        <h2 className="text-foreground mb-2 text-3xl font-bold">Privacy Policy</h2>
         <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Overview</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Overview</h2>
+          <p className="text-muted-foreground">
             This Privacy Policy explains how Uncle Sam Junk Removal ("Company", "we", "us", or
             "our") collects, uses, discloses, and safeguards information when you visit our website,
             request a quote, schedule service, or otherwise interact with us (collectively, the
@@ -66,8 +66,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Scope & Applicability</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Scope & Applicability</h2>
+          <p className="text-muted-foreground">
             This policy applies to information collected online via our website and offline via
             phone, text, and on-site service interactions in the United States. Additional
             disclosures for certain jurisdictions (e.g., California) are included below.
@@ -75,9 +75,11 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Information We Collect</h2>
-          <p className="mb-2 text-gray-700">We collect information in the following categories:</p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Information We Collect</h2>
+          <p className="text-muted-foreground mb-2">
+            We collect information in the following categories:
+          </p>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               Identifiers and contact information (name, email, phone, address, service location,
               company name if applicable)
@@ -105,8 +107,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Sources of Information</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Sources of Information</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               Directly from you when you submit a form, call, email, text, or speak with our team
             </li>
@@ -122,8 +124,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">How We Use Your Information</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">How We Use Your Information</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>Provide quotes, schedule appointments, and deliver Services</li>
             <li>Communicate with you about appointments, updates, and customer support</li>
             <li>Process payments and send invoices/receipts</li>
@@ -135,8 +137,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">SMS/Text Messaging</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">SMS/Text Messaging</h2>
+          <p className="text-muted-foreground">
             By providing your phone number, you consent to receive text messages related to quotes,
             scheduling, reminders, and customer service. Message and data rates may apply. Message
             frequency varies. You can opt out at any time by replying STOP. Reply HELP for help.
@@ -145,17 +147,19 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Cookies & Tracking Technologies</h2>
-          <p className="mb-2 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">
+            Cookies & Tracking Technologies
+          </h2>
+          <p className="text-muted-foreground mb-2">
             We use cookies, pixels, and similar technologies to operate the site, understand usage,
             and improve our marketing. Types of cookies include:
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>Essential: required for core site functionality</li>
             <li>Analytics: help us understand traffic and usage</li>
             <li>Advertising: measure and improve our marketing</li>
           </ul>
-          <p className="mt-2 text-gray-700">
+          <p className="text-muted-foreground mt-2">
             You can manage cookie preferences via your browser settings. If you block certain
             cookies, parts of the site may not function properly. We respond to Global Privacy
             Control signals where required by law.
@@ -163,8 +167,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Analytics & Advertising</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Analytics & Advertising</h2>
+          <p className="text-muted-foreground">
             We may use analytics (e.g., Google Analytics) and advertising tools (e.g.,
             Meta/Facebook) to understand site usage and improve our marketing. These tools may set
             cookies or read device identifiers. You can opt out of certain analytics/ads cookies in
@@ -173,8 +177,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Microsoft Clarity</h2>
-          <p className="mb-2 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Microsoft Clarity</h2>
+          <p className="text-muted-foreground mb-2">
             We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and
             interact with our website through behavioral metrics, heatmaps, and session replay to
             improve and market our products/services. Website usage data is captured using first and
@@ -182,7 +186,7 @@ export default function PrivacyPolicyPage() {
             products/services and online activity. Additionally, we use this information for site
             optimization, fraud/security purposes, and advertising.
           </p>
-          <p className="text-gray-700">
+          <p className="text-muted-foreground">
             For more information about how Microsoft collects and uses your data, visit the{' '}
             <a
               href="https://privacy.microsoft.com/privacystatement"
@@ -197,12 +201,12 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">How We Share Information</h2>
-          <p className="mb-2 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">How We Share Information</h2>
+          <p className="text-muted-foreground mb-2">
             We do not sell your personal information. We may share information in the following
             circumstances:
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               Service providers who perform services on our behalf (hosting, scheduling, payment
               processing, communications, analytics, marketing). These providers are bound by
@@ -219,8 +223,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Data Retention</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Data Retention</h2>
+          <p className="text-muted-foreground">
             We retain information for as long as reasonably necessary to provide Services, comply
             with legal obligations, resolve disputes, and enforce our agreements. Retention periods
             vary by record type (e.g., quote requests, service records, invoices, and
@@ -229,8 +233,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Data Security</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Data Security</h2>
+          <p className="text-muted-foreground">
             We use reasonable administrative, technical, and physical safeguards to protect
             information. However, no method of transmission or storage is 100% secure, and we cannot
             guarantee absolute security.
@@ -238,15 +242,15 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Your Privacy Choices & Rights</h2>
-          <p className="mb-2 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Your Privacy Choices & Rights</h2>
+          <p className="text-muted-foreground mb-2">
             Depending on where you live, you may have rights to access, correct, delete, or receive
             a copy of your information, and to opt out of certain processing (such as targeted
             advertising). To exercise a right or make a request, contact us using the information
             below. We may need to verify your identity before acting on your request. You may
             designate an authorized agent to submit requests on your behalf as allowed by law.
           </p>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>Access and portability: request a copy of certain information</li>
             <li>Correction: request we fix inaccurate information</li>
             <li>Deletion: request we delete certain information, subject to legal exceptions</li>
@@ -260,8 +264,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">California Privacy Notice</h2>
-          <p className="mb-2 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">California Privacy Notice</h2>
+          <p className="text-muted-foreground mb-2">
             If you are a California resident, the California Consumer Privacy Act (CCPA), as amended
             by the CPRA, provides additional rights. In the last 12 months, we may have collected
             the following categories of personal information for business purposes: identifiers;
@@ -276,8 +280,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Children's Privacy</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Children's Privacy</h2>
+          <p className="text-muted-foreground">
             Our Services are not directed to children under 13, and we do not knowingly collect
             personal information from children under 13. If you believe a child has provided us
             information, please contact us so we can delete it.
@@ -285,8 +289,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">International Users</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">International Users</h2>
+          <p className="text-muted-foreground">
             We operate in the United States. If you access the Services from outside the U.S., you
             understand that your information may be transferred to and processed in the U.S., which
             may have different data protection laws than your country of residence.
@@ -294,8 +298,8 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Third-Party Links</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Third-Party Links</h2>
+          <p className="text-muted-foreground">
             Our website may contain links to third-party websites or services we do not control. We
             are not responsible for the privacy practices of those third parties. We encourage you
             to review their policies.
@@ -303,16 +307,16 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Changes to This Policy</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Changes to This Policy</h2>
+          <p className="text-muted-foreground">
             We may update this Privacy Policy from time to time to reflect operational, legal, or
             regulatory changes. We will update the "Last updated" date below when changes are made.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Contact</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Contact</h2>
+          <p className="text-muted-foreground">
             Questions or requests? Email info@unclesamjunkremoval.com or call {settings.phone}.
             Mail: Uncle Sam Junk Removal, Evansville, IN.
           </p>
@@ -335,13 +339,13 @@ export default function PrivacyPolicyPage() {
           </Link>
           <Link
             href="/services"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
           >
             Our Services
           </Link>
           <Link
             href="/terms"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground rounded-md border border-gray-300 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-50"
           >
             Terms of Service
           </Link>
