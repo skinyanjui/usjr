@@ -127,7 +127,7 @@ export default function HtmlSitemapPage() {
       <PageHero
         title="Sitemap"
         description="Browse every page on our site by category"
-        color="slate"
+        color="neutral"
       />
 
       <div className="mx-auto max-w-7xl px-4 pt-8 pb-16">
