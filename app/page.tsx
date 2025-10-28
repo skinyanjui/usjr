@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/hero-section'
 import { HomeServiceCards } from '@/components/home-service-cards'
 import { ReviewsRow } from '@/components/reviews-row'
+import { GoogleReviews } from '@/components/google-reviews'
 import { StructuredData } from '@/components/structured-data'
 import { getAggregateTestimonialStats } from '@/lib/cms-content'
 import type { Metadata } from 'next'
@@ -30,6 +31,8 @@ export default function HomePage() {
           </p>
         </div>
       </div>
+
+      <GoogleReviews />
 
       <ReviewsRow />
 

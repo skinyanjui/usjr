@@ -76,7 +76,7 @@ const themeConfig = {
   },
   orange: {
     background: 'bg-orange-50',
-    primary: 'text-orange-600',
+    primary: 'text-orange-700',
     button: 'bg-orange-600 hover:bg-orange-700',
     outline: 'border-orange-800 text-orange-800 hover:bg-orange-800',
     accent: 'bg-orange-50',

@@ -96,7 +96,7 @@ const themeClasses = {
     background: 'bg-orange-50',
     primary: 'bg-orange-600 hover:bg-orange-700',
     secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
-    accent: 'text-orange-600',
+    accent: 'text-orange-700',
     icon: 'bg-orange-600',
     badge: 'bg-orange-100 text-orange-800 border-orange-200',
   },

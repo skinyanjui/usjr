@@ -18,6 +18,14 @@ import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
 
+interface FieldErrors {
+  fullName?: string
+  phoneNumber?: string
+  emailAddress?: string
+  serviceNeeded?: string
+  [key: string]: string | undefined
+}
+
 export function SimpleQuoteForm() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -31,24 +39,64 @@ export function SimpleQuoteForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+
+  const validateField = (field: string, value: string): string | undefined => {
+    switch (field) {
+      case 'fullName':
+        if (!value.trim()) return 'Name is required'
+        if (value.trim().length < 2) return 'Name must be at least 2 characters'
+        return undefined
+      case 'phoneNumber':
+        if (!value.trim()) return 'Phone number is required'
+        const phoneRegex = /^[\d\s\-\(\)]+$/
+        if (!phoneRegex.test(value)) return 'Please enter a valid phone number'
+        if (value.replace(/\D/g, '').length < 10) return 'Phone number must be at least 10 digits'
+        return undefined
+      case 'emailAddress':
+        if (!value.trim()) return 'Email is required'
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(value)) return 'Please enter a valid email address'
+        return undefined
+      case 'serviceNeeded':
+        if (!value) return 'Please select a service'
+        return undefined
+      default:
+        return undefined
+    }
+  }
+
+  const validateForm = (): boolean => {
+    const errors: FieldErrors = {}
+    errors.fullName = validateField('fullName', formData.fullName)
+    errors.phoneNumber = validateField('phoneNumber', formData.phoneNumber)
+    errors.emailAddress = validateField('emailAddress', formData.emailAddress)
+    errors.serviceNeeded = validateField('serviceNeeded', formData.serviceNeeded)
+
+    setFieldErrors(errors)
+    return !Object.values(errors).some(error => error !== undefined)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrorMessage(null)
+
+    // Mark all fields as touched
+    setTouched({
+      fullName: true,
+      phoneNumber: true,
+      emailAddress: true,
+      serviceNeeded: true,
+    })
+
+    // Validate all fields
+    if (!validateForm()) {
+      setErrorMessage('Please fix the errors above')
+      return
+    }
+
     setIsSubmitting(true)
-
-    // Client-side validation
-    if (!formData.serviceNeeded) {
-      setErrorMessage('Please select a service')
-      setIsSubmitting(false)
-      return
-    }
-
-    if (!formData.fullName || !formData.emailAddress || !formData.phoneNumber) {
-      setErrorMessage('Please fill in all required fields')
-      setIsSubmitting(false)
-      return
-    }
 
     try {
       const res = await fetch('/api/quote', {
@@ -105,6 +153,16 @@ export function SimpleQuoteForm() {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
+    // Clear field error when user starts typing
+    if (fieldErrors[field]) {
+      setFieldErrors(prev => ({ ...prev, [field]: undefined }))
+    }
+  }
+
+  const handleBlur = (field: string) => {
+    setTouched(prev => ({ ...prev, [field]: true }))
+    const error = validateField(field, formData[field as keyof typeof formData])
+    setFieldErrors(prev => ({ ...prev, [field]: error }))
   }
 
   if (isSubmitted) {
@@ -152,9 +210,17 @@ export function SimpleQuoteForm() {
                 type="text"
                 value={formData.fullName}
                 onChange={e => handleInputChange('fullName', e.target.value)}
+                onBlur={() => handleBlur('fullName')}
                 required
-                className="mt-1"
+                className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                aria-invalid={touched.fullName && !!fieldErrors.fullName}
+                aria-describedby={touched.fullName && fieldErrors.fullName ? 'fullName-error' : undefined}
               />
+              {touched.fullName && fieldErrors.fullName && (
+                <p id="fullName-error" className="mt-1 text-sm text-red-600">
+                  {fieldErrors.fullName}
+                </p>
+              )}
             </div>
             <div>
               <Label htmlFor="phoneNumber" className="text-sm font-medium text-gray-700">
@@ -165,9 +231,17 @@ export function SimpleQuoteForm() {
                 type="tel"
                 value={formData.phoneNumber}
                 onChange={e => handleInputChange('phoneNumber', e.target.value)}
+                onBlur={() => handleBlur('phoneNumber')}
                 required
-                className="mt-1"
+                className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                aria-invalid={touched.phoneNumber && !!fieldErrors.phoneNumber}
+                aria-describedby={touched.phoneNumber && fieldErrors.phoneNumber ? 'phoneNumber-error' : undefined}
               />
+              {touched.phoneNumber && fieldErrors.phoneNumber && (
+                <p id="phoneNumber-error" className="mt-1 text-sm text-red-600">
+                  {fieldErrors.phoneNumber}
+                </p>
+              )}
             </div>
           </div>
 
@@ -180,9 +254,17 @@ export function SimpleQuoteForm() {
               type="email"
               value={formData.emailAddress}
               onChange={e => handleInputChange('emailAddress', e.target.value)}
+              onBlur={() => handleBlur('emailAddress')}
               required
-              className="mt-1"
+              className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+              aria-invalid={touched.emailAddress && !!fieldErrors.emailAddress}
+              aria-describedby={touched.emailAddress && fieldErrors.emailAddress ? 'emailAddress-error' : undefined}
             />
+            {touched.emailAddress && fieldErrors.emailAddress && (
+              <p id="emailAddress-error" className="mt-1 text-sm text-red-600">
+                {fieldErrors.emailAddress}
+              </p>
+            )}
           </div>
 
           <div>
@@ -206,9 +288,19 @@ export function SimpleQuoteForm() {
               </Label>
               <Select
                 value={formData.serviceNeeded}
-                onValueChange={value => handleInputChange('serviceNeeded', value)}
+                onValueChange={value => {
+                  handleInputChange('serviceNeeded', value)
+                  handleBlur('serviceNeeded')
+                }}
               >
-                <SelectTrigger id="serviceNeeded" className="mt-1" aria-label="Service Needed" fit>
+                <SelectTrigger
+                  id="serviceNeeded"
+                  className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-red-500 focus:ring-red-500' : ''}`}
+                  aria-label="Service Needed"
+                  aria-invalid={touched.serviceNeeded && !!fieldErrors.serviceNeeded}
+                  aria-describedby={touched.serviceNeeded && fieldErrors.serviceNeeded ? 'serviceNeeded-error' : undefined}
+                  fit
+                >
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
@@ -219,6 +311,11 @@ export function SimpleQuoteForm() {
                   ))}
                 </SelectContent>
               </Select>
+              {touched.serviceNeeded && fieldErrors.serviceNeeded && (
+                <p id="serviceNeeded-error" className="mt-1 text-sm text-red-600">
+                  {fieldErrors.serviceNeeded}
+                </p>
+              )}
             </div>
             <div>
               <Label htmlFor="projectSize" className="text-sm font-medium text-gray-700">
