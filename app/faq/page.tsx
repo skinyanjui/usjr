@@ -23,7 +23,7 @@ export default function FAQPage() {
       <PageHero
         title="Frequently Asked Questions"
         description="Answers about junk removal, light demolition, and cleaning services in Southern Indiana."
-        color="accent"
+        color="primary"
       />
       <div className="pt-8 pb-16">
         <StructuredData

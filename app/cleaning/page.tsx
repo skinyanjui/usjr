@@ -27,7 +27,7 @@ export default function CleaningHub() {
       description: 'Comprehensive one-time cleaning for your entire home',
       price: 'From $150',
       href: '/cleaning/deep-clean',
-      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
+      color: 'bg-muted/30 border-border',
       includes: [
         'High-to-low dusting',
         'Kitchen deep clean',
@@ -40,7 +40,7 @@ export default function CleaningHub() {
       description: 'Weekly, bi-weekly, or monthly maintenance cleaning',
       price: 'From $80',
       href: '/cleaning/recurring',
-      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
+      color: 'bg-muted/30 border-border',
       includes: ['Flexible scheduling', 'Consistent team', 'Supply included', 'Quality guarantee'],
     },
     {
@@ -48,7 +48,7 @@ export default function CleaningHub() {
       description: 'Complete property cleaning for transitions',
       price: 'From $200',
       href: '/cleaning/move-in-move-out',
-      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
+      color: 'bg-muted/30 border-border',
       includes: ['Inside appliances', 'Cabinet interiors', 'Window tracks', 'Deep sanitization'],
     },
     {
@@ -56,7 +56,7 @@ export default function CleaningHub() {
       description: 'Organizing, decluttering, and specialized tasks',
       price: 'From $100',
       href: '/cleaning/specialty',
-      color: 'bg-red-50 dark:bg-red-950/30 border-red-600 dark:border-red-500',
+      color: 'bg-muted/30 border-border',
       includes: ['Refrigerator cleaning', 'Oven deep clean', 'Home organizing', 'Decluttering'],
     },
     {
@@ -85,13 +85,13 @@ export default function CleaningHub() {
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        color="accent"
+        color="primary"
       />
 
       {/* Subheader badges/CTAs */}
       <section className="px-4 pt-8 pb-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge className="mb-6 border-green-600 dark:border-green-500 bg-green-100 text-green-700 dark:text-green-400">
+          <Badge className="mb-6 border-border bg-green-100 text-green-700 dark:text-green-400">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
           <div className="flex flex-wrap justify-center gap-3">

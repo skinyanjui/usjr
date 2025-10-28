@@ -36,7 +36,7 @@ export default function AboutPage() {
       <PageHero
         title="About Uncle Sam Junk Removal"
         description="Veteran-owned junk removal and professional cleaning in Evansville, IN and the Tri-State."
-        color="accent"
+        color="primary"
       />
 
       {/* SEO: LocalBusiness JSON-LD */}
@@ -110,11 +110,11 @@ export default function AboutPage() {
             </div>
             <div className="glass rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="rounded-lg bg-red-50 dark:bg-red-950/30 p-4">
+                <div className="rounded-lg bg-muted/30 p-4">
                   <div className="text-2xl font-bold text-red-600">2025</div>
                   <div className="text-muted-foreground">Founded</div>
                 </div>
-                <div className="rounded-lg bg-green-50 dark:bg-green-950/30 p-4">
+                <div className="rounded-lg bg-muted/30 p-4">
                   <div className="text-2xl font-bold text-green-600">500+</div>
                   <div className="text-muted-foreground">Satisfied Clients</div>
                 </div>
@@ -340,7 +340,7 @@ export default function AboutPage() {
             </PhoneButton>
             <Button
               asChild
-              className="bg-card justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-red-50 dark:bg-red-950/30"
+              className="bg-card justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-muted/30"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote

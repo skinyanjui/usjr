@@ -33,16 +33,16 @@ export default function FAQClient() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      accent: 'text-red-600 dark:text-red-400',
-      success: 'text-green-600 dark:text-green-400',
-      warning: 'text-orange-600 dark:text-orange-400',
-      info: 'text-blue-600 dark:text-blue-400',
+      accent: 'text-primary',
+      success: 'text-foreground',
+      warning: 'text-foreground',
+      info: 'text-foreground',
       // Legacy color mapping for backward compatibility
-      blue: 'text-red-600 dark:text-red-400',
-      red: 'text-red-600 dark:text-red-400',
-      orange: 'text-red-600 dark:text-red-400',
-      green: 'text-red-600 dark:text-red-400',
-      purple: 'text-red-600 dark:text-red-400',
+      blue: 'text-primary',
+      red: 'text-primary',
+      orange: 'text-primary',
+      green: 'text-primary',
+      purple: 'text-primary',
     }
     return colors[color as keyof typeof colors] || colors.accent
   }
@@ -125,7 +125,7 @@ export default function FAQClient() {
         })}
       </div>
 
-      <Card className="mt-12 border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/30">
+      <Card className="mt-12 border-border bg-muted/30">
         <CardContent className="p-8 text-center">
           <h3 className="mb-4 text-2xl font-bold text-foreground">Still Have Questions?</h3>
           <p className="mb-6 text-muted-foreground">
@@ -143,7 +143,7 @@ export default function FAQClient() {
             <Link
               href="/quote"
               prefetch
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-600 dark:border-red-500 px-6 py-2.5 text-base font-semibold text-red-600 dark:text-red-400 transition-colors hover:bg-red-100 dark:hover:bg-red-950/30"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-2.5 text-base font-semibold text-primary transition-colors hover:bg-red-100 dark:hover:bg-red-950/30"
             >
               Get Free Quote
             </Link>

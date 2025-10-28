@@ -72,7 +72,7 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-red-600 dark:border-red-500 bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400',
+    red: 'border-border bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400',
     orange: 'border-orange-600 dark:border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400',
     green: 'border-green-600 dark:border-green-500 bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400',
   }
@@ -204,7 +204,7 @@ export default function CompareClient() {
       </div>
 
       {selectedServices.length > 0 && (
-        <Card className="border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/30">
+        <Card className="border-border bg-muted/30">
           <CardContent className="p-8 text-center">
             <h3 className="mb-4 text-2xl font-bold text-foreground">Ready to Get Started?</h3>
             <p className="mb-6 text-muted-foreground">

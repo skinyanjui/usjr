@@ -19,9 +19,9 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[60vh] items-center justify-center bg-blue-700 text-white dark:bg-blue-900"
+      className="relative flex min-h-[60vh] items-center justify-center bg-primary text-white"
     >
-      <div className="absolute inset-0 bg-blue-700 dark:bg-blue-900" aria-hidden />
+      <div className="absolute inset-0 bg-primary" aria-hidden />
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-16 text-center">
         <h1 className="mb-6 text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
@@ -37,7 +37,7 @@ export function HeroSection() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/quote"
-            className="flex min-h-[48px] items-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-blue-700 transition-all hover:bg-gray-100 dark:bg-gray-100 dark:text-blue-900 dark:hover:bg-gray-200"
+            className="flex min-h-[48px] items-center rounded-lg bg-background px-6 py-3 text-base font-semibold text-foreground transition-all hover:bg-background/90"
           >
             Get Free Quote
           </Link>

@@ -129,7 +129,7 @@ export default function BlogPage() {
             {regularPosts.map(post => (
               <article
                 key={post.slug}
-                className="group border-border bg-card overflow-hidden rounded-xl border shadow-sm transition-all hover:border-red-600 dark:border-red-500 hover:shadow-md"
+                className="group border-border bg-card overflow-hidden rounded-xl border shadow-sm transition-all hover:border-border hover:shadow-md"
               >
                 <div className="p-6">
                   <div className="mb-3">
@@ -166,7 +166,7 @@ export default function BlogPage() {
 
         {/* Newsletter CTA */}
         <section className="mt-16">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-red-50 dark:bg-red-950/30 p-8 text-center md:p-12">
+          <div className="mx-auto max-w-4xl rounded-2xl bg-muted/30 p-8 text-center md:p-12">
             <h2 className="text-foreground mb-4 text-2xl font-bold md:text-3xl">
               Need Junk Removal Help?
             </h2>

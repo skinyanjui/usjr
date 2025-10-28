@@ -28,7 +28,7 @@ export interface LocationPageTemplateProps {
   locationName: string
   state: string
   tagline: string
-  theme?: 'accent'
+  theme?: 'primary'
   features: LocationFeature[]
   landmarks?: string[]
   neighborhoods?: string[]

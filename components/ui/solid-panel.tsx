@@ -1,14 +1,11 @@
 import { type PropsWithChildren } from 'react'
 import clsx from 'clsx'
 
-type SolidPanelColor = 'accent' | 'neutral' | 'success' | 'warning' | 'info'
+type SolidPanelColor = 'primary' | 'neutral'
 
 const colorStyles: Record<SolidPanelColor, { background: string; text: string }> = {
-  accent: { background: 'bg-red-600 dark:bg-red-700', text: 'text-white' },
-  neutral: { background: 'bg-slate-600 dark:bg-slate-700', text: 'text-white' },
-  success: { background: 'bg-green-600 dark:bg-green-700', text: 'text-white' },
-  warning: { background: 'bg-orange-600 dark:bg-orange-700', text: 'text-white' },
-  info: { background: 'bg-blue-600 dark:bg-blue-700', text: 'text-white' },
+  primary: { background: 'bg-primary', text: 'text-primary-foreground' },
+  neutral: { background: 'bg-muted', text: 'text-muted-foreground' },
 }
 
 export interface SolidPanelProps extends PropsWithChildren {
@@ -17,20 +14,20 @@ export interface SolidPanelProps extends PropsWithChildren {
   label?: string
 }
 
-export function SolidPanel({ color = 'accent', className, label, children }: SolidPanelProps) {
+export function SolidPanel({ color = 'primary', className, label, children }: SolidPanelProps) {
   const palette = colorStyles[color]
 
   return (
     <div
       className={clsx(
-        'flex h-full w-full items-center justify-center rounded-lg border border-white/40 p-6 text-center shadow-sm',
+        'flex h-full w-full items-center justify-center rounded-lg border border-border p-6 text-center shadow-sm',
         palette.background,
         palette.text,
         className
       )}
     >
       <div className="space-y-2">
-        {label && <p className="text-sm font-semibold tracking-wide uppercase">{label}</p>}
+        {label && <p className="text-sm font-semibold tracking-wide uppercase opacity-70">{label}</p>}
         <div className="text-base font-semibold sm:text-lg">{children}</div>
       </div>
     </div>

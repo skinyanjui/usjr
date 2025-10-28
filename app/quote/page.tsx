@@ -47,18 +47,18 @@ export default function QuotePage() {
       <PageHero
         title="Get Your Free Quote Today"
         description="Professional junk removal, light demolition, and cleaning services in Evansville and Southern Indiana"
-        color="accent"
+        color="primary"
       />
       <div className="px-4 pb-16">
         <div className="mx-auto max-w-7xl">
           {/* Header Section */}
           <div className="mt-8 mb-16 text-center">
             <div className="mb-6 flex justify-center gap-2">
-              <Badge className="border-green-600 dark:border-green-500 bg-green-100 text-green-700 dark:text-green-400">
+              <Badge className="border-border bg-green-100 text-green-700 dark:text-green-400">
                 <Leaf className="mr-1 h-3 w-3" />
                 Eco-Friendly
               </Badge>
-              <Badge className="border-blue-600 dark:border-blue-500 bg-blue-100 text-blue-700 dark:text-blue-400">
+              <Badge className="border-border bg-blue-100 text-blue-700 dark:text-blue-400">
                 <Shield className="mr-1 h-3 w-3" />
                 Fully Insured
               </Badge>
@@ -66,7 +66,7 @@ export default function QuotePage() {
                 <Star className="mr-1 h-3 w-3" />
                 Woman-Owned
               </Badge>
-              <Badge className="border-orange-600 dark:border-orange-500 bg-orange-100 text-orange-700 dark:text-orange-400">
+              <Badge className="border-border bg-orange-100 text-orange-700 dark:text-orange-400">
                 <Clock className="mr-1 h-3 w-3" />
                 Same-Day Service
               </Badge>
@@ -107,7 +107,7 @@ export default function QuotePage() {
           {/* Service Selection Cards */}
           <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Junk Removal Service */}
-            <Card className="glass border-2 border-blue-600 dark:border-blue-500 transition-all duration-300 hover:border-blue-400">
+            <Card className="glass border-2 border-border transition-all duration-300 hover:border-blue-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 sm:h-16 sm:w-16">
@@ -168,7 +168,7 @@ export default function QuotePage() {
             </Card>
 
             {/* Light Demolition Service */}
-            <Card className="glass border-2 border-orange-600 dark:border-orange-500 transition-all duration-300 hover:border-orange-400">
+            <Card className="glass border-2 border-border transition-all duration-300 hover:border-orange-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 sm:h-16 sm:w-16">
@@ -229,7 +229,7 @@ export default function QuotePage() {
             </Card>
 
             {/* Cleaning Service */}
-            <Card className="glass border-2 border-green-600 dark:border-green-500 transition-all duration-300 hover:border-green-400">
+            <Card className="glass border-2 border-border transition-all duration-300 hover:border-green-400">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 sm:h-16 sm:w-16">

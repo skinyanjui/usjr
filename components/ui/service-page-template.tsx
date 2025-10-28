@@ -33,8 +33,8 @@ export interface ServicePageTemplateProps {
   description: string
   badges?: string[]
 
-  // Theme - simplified to use accent color only
-  theme?: 'accent'
+  // Theme - Linear.app inspired: black/white with brand accent only
+  theme?: 'primary'
 
   // Structured data
   serviceCategory?: string
@@ -68,13 +68,13 @@ export interface ServicePageTemplateProps {
 }
 
 const themeClasses = {
-  accent: {
-    background: 'bg-muted/30',
-    primary: 'bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700',
-    secondary: 'border-red-700 dark:border-red-500 text-red-700 dark:text-red-400 hover:bg-red-700 hover:text-white',
-    accent: 'text-red-600 dark:text-red-400',
-    icon: 'bg-red-600 dark:bg-red-700',
-    badge: 'bg-red-100 dark:bg-red-950/30 text-red-800 dark:text-red-300 border-red-600 dark:border-red-500',
+  primary: {
+    background: 'bg-background',
+    primary: 'bg-primary hover:bg-primary/90 text-primary-foreground',
+    secondary: 'border-primary text-primary hover:bg-primary hover:text-primary-foreground',
+    accent: 'text-primary',
+    icon: 'bg-primary text-primary-foreground',
+    badge: 'bg-muted text-muted-foreground border-border',
   },
 }
 
@@ -82,7 +82,7 @@ export function ServicePageTemplate({
   title,
   description,
   badges = [],
-  theme = 'accent',
+  theme = 'primary',
   serviceCategory,
   serviceArea,
   features = [],
@@ -96,11 +96,11 @@ export function ServicePageTemplate({
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
 }: ServicePageTemplateProps) {
-  const classes = themeClasses.accent
+  const classes = themeClasses.primary
 
   return (
     <main className="min-h-screen">
-      <PageHero title={title} description={description} color="accent" />
+      <PageHero title={title} description={description} color="primary" />
       {/* Hero Section */}
       <section className={`pt-12 pb-12 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
