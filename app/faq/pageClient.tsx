@@ -60,7 +60,17 @@ export default function FAQClient() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4">
+    <div className="mx-auto max-w-7xl px-4">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+          Frequently Asked Questions
+        </h1>
+        <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
+          Find answers to common questions about our junk removal, light demolition, and cleaning
+          services in Evansville and Southern Indiana.
+        </p>
+      </div>
+
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="relative">
