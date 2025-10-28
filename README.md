@@ -340,7 +340,107 @@ GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 FACEBOOK_PIXEL_ID=XXXXXXXXXX
 RECAPTCHA_SITE_KEY=XXXXXXXXXX
 RECAPTCHA_SECRET_KEY=XXXXXXXXXX
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_EMERGENCY_BANNER_ENABLED=true
 \`\`\`
+
+## Email Configuration (Resend)
+
+The application uses [Resend](https://resend.com) for sending quote request emails and customer confirmations. To enable email functionality:
+
+### 1. Get Your Resend API Key
+
+1. Sign up at [resend.com](https://resend.com)
+2. Navigate to **API Keys** in your dashboard
+3. Create a new API key
+4. Add it to your `.env.local` file:
+   \`\`\`env
+   RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxx
+   \`\`\`
+
+### 2. Set Up DNS Records for Email Authentication
+
+To ensure your emails are delivered properly and not marked as spam, you need to add DNS records to your domain.
+
+#### SPF Record (Required)
+
+Add a TXT record to your domain's DNS:
+
+**Record Type:** TXT
+**Host/Name:** `@` (or your root domain)
+**Value:** `v=spf1 include:_spf.resend.com ~all`
+**TTL:** 3600
+
+#### DKIM Record (Required)
+
+Add a TXT record to your domain's DNS for DKIM authentication:
+
+**Record Type:** TXT
+**Host/Name:** `resend._domainkey`
+**Value:** `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8qYCRLLCeGOhGLH09MZNZS5ZSjcnax5r5gLDJOMx88nXVvbBzzfeBZe164DrieDXhmHUiOMi2k5hVb1C4KbAYG+sQAOs60sZsTV+7CWawCbhcVS1nHqjxQuuHx4Aq5hoUPYennzXiwl/ODENfeYlxEED7HGuutMv1I1QpmFUjpwIDAQAB`
+**TTL:** 3600
+
+#### DMARC Record (Recommended)
+
+Add a TXT record for DMARC policy:
+
+**Record Type:** TXT
+**Host/Name:** `_dmarc`
+**Value:** `v=DMARC1; p=none; rua=mailto:your-email@yourdomain.com`
+**TTL:** 3600
+
+### 3. Verify Your Domain in Resend
+
+1. Log into your [Resend dashboard](https://resend.com/domains)
+2. Go to **Domains** section
+3. Add your domain (e.g., `unclesamjunkremoval.com`)
+4. Resend will verify the DNS records you added
+5. Wait for verification (can take 15 minutes to 48 hours for DNS propagation)
+
+### 4. Update Email Sender Address
+
+Once your domain is verified, update the email sender addresses in `app/api/quote/route.ts`:
+
+\`\`\`typescript
+// Line 88: Business notification email
+from: 'Quote Form <quotes@yourdomain.com>',
+
+// Line 118: Customer confirmation email
+from: 'US Junk Removal <noreply@yourdomain.com>',
+\`\`\`
+
+### Testing Email Configuration
+
+After setup is complete:
+
+1. Submit a test quote through your website
+2. Check that both emails are sent:
+   - Business notification email to your business email
+   - Customer confirmation email to the customer
+3. Check spam folders if emails don't appear in inbox
+4. Verify DNS records are properly configured using tools like:
+   - [MXToolbox SPF Lookup](https://mxtoolbox.com/spf.aspx)
+   - [DKIM Validator](https://dkimvalidator.com/)
+
+### Troubleshooting
+
+**Emails not sending:**
+
+- Verify `RESEND_API_KEY` is set in your environment variables
+- Check Resend dashboard for error logs
+- Ensure you're not on a free trial with sending limits
+
+**Emails going to spam:**
+
+- Verify all DNS records (SPF, DKIM, DMARC) are properly configured
+- Use the Resend dashboard to check domain verification status
+- Allow up to 48 hours for DNS propagation
+
+**Domain not verifying:**
+
+- Double-check DNS record values (no extra spaces or quotes)
+- Ensure records are added to the correct domain/subdomain
+- Use DNS lookup tools to verify records are published
 
 ## Deployment
 
