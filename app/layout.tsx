@@ -101,8 +101,8 @@ export default function RootLayout({
           scaling="100%"
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-            <Header />
             <EmergencyBanner />
+            <Header />
             <BreadcrumbsAuto />
             <RoutePrefetcher />
             <ScrollToTopOnRouteChange />
