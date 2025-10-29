@@ -50,9 +50,9 @@ export default function HotTubRemovalPage() {
       <h2>Critical Preparation Steps</h2>
 
       <h3>1. Electrical Disconnection (CRITICAL)</h3>
-      <div className="my-4 rounded-lg border-l-4 border-blue-700 bg-blue-50 p-6">
-        <p className="font-semibold text-blue-950">Safety First!</p>
-        <p className="text-blue-900">
+      <div className="my-4 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <p className="font-semibold text-gray-900">Safety First!</p>
+        <p className="text-gray-900">
           Hot tubs operate on 220-240V circuits. Improper disconnection can cause serious injury or
           death. Always hire a licensed electrician if you're unsure about the electrical setup.
         </p>
@@ -180,7 +180,7 @@ export default function HotTubRemovalPage() {
         <li>✓ Someone available to answer questions</li>
       </ol>
 
-      <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
         <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Hot tub removal is typically completed in 2-4 hours when
           properly prepared. Taking time to drain completely and ensure safe electrical

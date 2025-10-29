@@ -262,8 +262,8 @@ export function QuoteFormStandalone() {
     return (
       <Card className="mx-auto flex max-w-2xl flex-col">
         <CardContent className="p-6 text-center sm:p-12">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-10 w-10 text-green-600" />
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-800">
+            <CheckCircle className="h-10 w-10 text-gray-900" />
           </div>
           <h2 className="text-foreground mb-4 text-2xl font-bold">Quote Request Received!</h2>
           <p className="text-muted-foreground mx-auto mb-8 max-w-md">
@@ -272,7 +272,7 @@ export function QuoteFormStandalone() {
           </p>
 
           <div className="mb-8 space-y-4">
-            <Button asChild className="w-full max-w-sm bg-blue-600 text-white hover:bg-blue-700">
+            <Button asChild className="w-full max-w-sm bg-gray-900 text-white hover:bg-gray-900">
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Schedule Call - Calendar Link
               </a>
@@ -285,15 +285,15 @@ export function QuoteFormStandalone() {
 
           <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
             <div className="flex items-center justify-center gap-2">
-              <Clock className="h-4 w-4 text-blue-600" />
+              <Clock className="h-4 w-4 text-gray-900" />
               <span>2-hour response</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Leaf className="h-4 w-4 text-green-600" />
+              <Leaf className="h-4 w-4 text-gray-900" />
               <span>Natural products</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Shield className="h-4 w-4 text-purple-600" />
+              <Shield className="h-4 w-4 text-gray-900" />
               <span>Fully insured</span>
             </div>
           </div>
@@ -312,7 +312,7 @@ export function QuoteFormStandalone() {
               Detailed form for accurate pricing - we'll respond within 2 hours
             </CardDescription>
           </div>
-          <Badge className="border-green-600 bg-green-100 text-green-700 dark:border-green-500 dark:text-green-400">
+          <Badge className="border-gray-300 bg-gray-800 text-gray-900 dark:border-gray-300 dark:text-gray-900">
             Free Estimate
           </Badge>
         </div>
@@ -783,7 +783,7 @@ export function QuoteFormStandalone() {
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-xs text-white dark:bg-blue-950/300"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white dark:bg-gray-900/300"
                       aria-label={`Remove file ${file.name}`}
                     >
                       <X className="h-3 w-3" />
@@ -810,7 +810,7 @@ export function QuoteFormStandalone() {
                   }
                 />
                 <Label htmlFor="ecoFriendly" className="flex items-center gap-2 text-sm">
-                  <Leaf className="h-4 w-4 text-green-600" />
+                  <Leaf className="h-4 w-4 text-gray-900" />
                   Use eco-friendly, natural products only (recommended)
                 </Label>
               </div>
@@ -835,14 +835,14 @@ export function QuoteFormStandalone() {
           {/* Submit Button */}
           <div className="border-t pt-8">
             {submitError && (
-              <div className="mb-4 rounded-lg border border-blue-800 bg-blue-50 p-4 text-sm text-blue-900 dark:border-red-500 dark:bg-blue-950/30 dark:text-blue-400">
+              <div className="mb-4 rounded-lg border border-gray-300 bg-gray-900 p-4 text-sm text-gray-900 dark:border-red-500 dark:bg-gray-900/30 dark:text-gray-900">
                 {submitError}
               </div>
             )}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full bg-gray-800 py-3 text-lg text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
             </Button>

@@ -2,19 +2,10 @@
 
 import type React from 'react'
 import Link from 'next/link'
-import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
+import { Calendar, Clock, User, Share2, ArrowLeft, Tag, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
 import Script from 'next/script'
-
-// Helper function to add visual breaks in content
-export function addContentBreaks() {
-  return (
-    <div className="my-12 flex items-center justify-center">
-      <div className="h-px w-32 bg-gray-300"></div>
-    </div>
-  )
-}
 
 export interface BlogPostMeta {
   title: string
@@ -54,175 +45,295 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
 
   return (
     <article className="bg-background min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-blue-900 text-white dark:bg-blue-950">
-        <div className="mx-auto max-w-4xl px-6 py-6 md:px-4 md:py-8">
+      {/* Linear-inspired header */}
+      <header className="border-border/50 bg-background/80 border-b backdrop-blur-sm">
+        <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+            className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-[13px] font-medium transition-colors"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
             Back to Blog
           </Link>
+        </div>
+      </header>
 
-          <div className="mb-4">
-            <span className="bg-card/20 inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold backdrop-blur-sm">
+      {/* Hero section with Linear-style design */}
+      <div className="border-border/30 from-muted/30 to-background border-b bg-gradient-to-b">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          {/* Category badge */}
+          <div className="mb-6">
+            <span className="linear-border bg-background inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium">
               <Tag className="h-3.5 w-3.5" />
               {meta.category}
             </span>
           </div>
 
-          <h1 className="mb-4 text-2xl leading-tight font-bold sm:text-3xl md:mb-6 md:text-4xl lg:text-5xl">
+          {/* Title */}
+          <h1 className="text-foreground mb-6 text-[28px] leading-tight font-semibold tracking-tight sm:text-[36px] lg:text-[40px]">
             {meta.title}
           </h1>
 
-          <p className="mb-6 text-base leading-relaxed text-white/90 sm:text-lg md:mb-8 md:text-xl">
+          {/* Excerpt */}
+          <p className="text-muted-foreground mb-8 text-[15px] leading-relaxed sm:text-[16px]">
             {meta.excerpt}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/80">
+          {/* Meta information */}
+          <div className="text-muted-foreground flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px]">
             <div className="flex items-center gap-2">
-              <User className="h-4 w-4" />
-              <span>{meta.author}</span>
+              <User className="h-3.5 w-3.5" />
+              <span className="font-medium">{meta.author}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-3.5 w-3.5" />
               <time>{meta.date}</time>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
+              <Clock className="h-3.5 w-3.5" />
               <span>{meta.readTime}</span>
             </div>
             <button
               onClick={handleShare}
-              className="bg-card/10 hover:bg-card/20 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 backdrop-blur-sm transition-colors"
+              className="linear-border bg-background hover:bg-muted/50 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-[13px] font-medium transition-all"
               aria-label="Share article"
             >
-              <Share2 className="h-4 w-4" />
+              <Share2 className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Share</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="mx-auto max-w-4xl px-6 py-10 md:px-4 md:py-16">
-        <div className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-16 prose-h2:mb-6 prose-h2:text-3xl prose-h2:leading-tight prose-h2:scroll-mt-20 prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-2xl prose-h3:leading-snug prose-h3:scroll-mt-20 prose-h4:mt-8 prose-h4:mb-3 prose-h4:text-xl prose-h4:scroll-mt-20 prose-p:mb-6 prose-p:leading-relaxed prose-p:text-base prose-a:font-medium prose-a:text-blue-800 dark:prose-a:text-blue-400 prose-a:no-underline prose-a:transition-colors hover:prose-a:underline hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-300 prose-strong:font-semibold prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-2 prose-li:pl-2 prose-li:leading-relaxed prose-blockquote:border-l-4 prose-blockquote:border-blue-700 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/30 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:not-italic prose-code:rounded prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 mx-auto max-w-3xl">
+      {/* Main content with Linear-inspired typography */}
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="blog-content">
           <style jsx global>{`
-            /* Enhanced callout boxes */
-            .prose .my-6.rounded-lg,
-            .prose .my-8.rounded-lg {
-              box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-              margin-top: 2rem;
-              margin-bottom: 2rem;
+            /* Linear-inspired blog content styles */
+            .blog-content {
+              font-size: 15px;
+              line-height: 1.7;
+              color: hsl(var(--foreground));
             }
 
-            /* Better list spacing within callout boxes */
-            .prose .rounded-lg ul {
-              margin-top: 0.75rem;
-              margin-bottom: 0;
+            .blog-content > * + * {
+              margin-top: 1.5em;
             }
 
-            .prose .rounded-lg ul li {
-              margin-top: 0.5rem;
-              margin-bottom: 0.5rem;
-            }
-
-            /* Better ol styling within callout boxes */
-            .prose .rounded-lg ol {
-              margin-top: 0.75rem;
-              margin-bottom: 0;
-            }
-
-            .prose .rounded-lg ol li {
-              margin-top: 0.5rem;
-              margin-bottom: 0.5rem;
-            }
-
-            /* Smooth scroll behavior for anchor links */
-            html {
-              scroll-behavior: smooth;
-            }
-
-            /* Better table styling if any */
-            .prose table {
-              border-collapse: collapse;
-              width: 100%;
-              margin: 2rem 0;
-            }
-
-            .prose th {
-              background-color: #f9fafb;
+            .blog-content h2 {
+              margin-top: 2.5em;
+              margin-bottom: 0.75em;
+              font-size: 24px;
               font-weight: 600;
+              line-height: 1.3;
+              letter-spacing: -0.01em;
+              color: hsl(var(--foreground));
+              scroll-margin-top: 80px;
+            }
+
+            .blog-content h3 {
+              margin-top: 2em;
+              margin-bottom: 0.625em;
+              font-size: 20px;
+              font-weight: 600;
+              line-height: 1.4;
+              color: hsl(var(--foreground));
+              scroll-margin-top: 80px;
+            }
+
+            .blog-content h4 {
+              margin-top: 1.75em;
+              margin-bottom: 0.5em;
+              font-size: 17px;
+              font-weight: 600;
+              line-height: 1.4;
+              color: hsl(var(--foreground));
+            }
+
+            .blog-content p {
+              margin-bottom: 1.25em;
+              font-size: 15px;
+              line-height: 1.7;
+              color: hsl(var(--foreground));
+            }
+
+            .blog-content a {
+              color: rgb(30, 58, 138);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.15s ease;
+            }
+
+            .blog-content a:hover {
+              color: rgb(30, 64, 175);
+              text-decoration: underline;
+            }
+
+            .dark .blog-content a {
+              color: rgb(96, 165, 250);
+            }
+
+            .dark .blog-content a:hover {
+              color: rgb(147, 197, 253);
+            }
+
+            .blog-content strong {
+              font-weight: 600;
+              color: hsl(var(--foreground));
+            }
+
+            .blog-content ul,
+            .blog-content ol {
+              margin: 1.5em 0;
+              padding-left: 1.75em;
+            }
+
+            .blog-content ul {
+              list-style-type: disc;
+            }
+
+            .blog-content ol {
+              list-style-type: decimal;
+            }
+
+            .blog-content li {
+              margin: 0.5em 0;
+              padding-left: 0.375em;
+              line-height: 1.7;
+            }
+
+            .blog-content li > p {
+              margin: 0.375em 0;
+            }
+
+            .blog-content blockquote {
+              margin: 2em 0;
+              padding: 1.25em 1.5em;
+              border-left: 3px solid rgb(30, 58, 138);
+              background: rgb(239, 246, 255);
+              border-radius: 0.5em;
+              font-style: normal;
+            }
+
+            .dark .blog-content blockquote {
+              border-left-color: rgb(30, 64, 175);
+              background: rgba(30, 58, 138, 0.1);
+            }
+
+            .blog-content code {
+              padding: 0.2em 0.4em;
+              background: rgb(243, 244, 246);
+              border-radius: 0.375em;
+              font-size: 0.9em;
+              font-family: ui-monospace, monospace;
+            }
+
+            .dark .blog-content code {
+              background: rgb(31, 41, 55);
+            }
+
+            .blog-content pre {
+              margin: 2em 0;
+              padding: 1.25em;
+              background: rgb(17, 24, 39);
+              border-radius: 0.5em;
+              overflow-x: auto;
+              font-size: 14px;
+              line-height: 1.6;
+            }
+
+            .blog-content pre code {
+              padding: 0;
+              background: transparent;
+              color: rgb(243, 244, 246);
+            }
+
+            /* Linear-style callout boxes */
+            .blog-content .callout {
+              margin: 2em 0;
+              padding: 1.25em 1.5em;
+              background: rgba(255, 255, 255, 0.5);
+              border: 1px solid rgba(0, 0, 0, 0.08);
+              border-radius: 0.75em;
+              box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+            }
+
+            .dark .blog-content .callout {
+              background: rgba(255, 255, 255, 0.04);
+              border: 1px solid rgba(255, 255, 255, 0.08);
+              box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.04);
+            }
+
+            .blog-content img {
+              margin: 2em 0;
+              border-radius: 0.5em;
+              max-width: 100%;
+              height: auto;
+            }
+
+            .blog-content table {
+              width: 100%;
+              margin: 2em 0;
+              border-collapse: collapse;
+              font-size: 14px;
+            }
+
+            .blog-content th {
+              padding: 0.75em 1em;
               text-align: left;
-              padding: 0.75rem 1rem;
-              border-bottom: 2px solid #e5e7eb;
+              font-weight: 600;
+              border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+              background: rgba(0, 0, 0, 0.02);
             }
 
-            .prose td {
-              padding: 0.75rem 1rem;
-              border-bottom: 1px solid #e5e7eb;
+            .dark .blog-content th {
+              border-bottom-color: rgba(255, 255, 255, 0.1);
+              background: rgba(255, 255, 255, 0.04);
             }
 
-            /* Mobile-specific improvements */
+            .blog-content td {
+              padding: 0.75em 1em;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .dark .blog-content td {
+              border-bottom-color: rgba(255, 255, 255, 0.06);
+            }
+
             @media (max-width: 640px) {
-              .prose h2 {
-                font-size: 1.75rem;
-                margin-top: 3rem;
+              .blog-content {
+                font-size: 14px;
               }
 
-              .prose h3 {
-                font-size: 1.375rem;
+              .blog-content h2 {
+                font-size: 20px;
               }
 
-              .prose h4 {
-                font-size: 1.125rem;
+              .blog-content h3 {
+                font-size: 18px;
               }
 
-              .prose p {
-                font-size: 1rem;
-                line-height: 1.75;
+              .blog-content h4 {
+                font-size: 16px;
               }
-
-              .prose ul,
-              .prose ol {
-                padding-left: 1.25rem;
-              }
-
-              .prose .my-6.rounded-lg,
-              .prose .my-8.rounded-lg {
-                padding: 1.25rem;
-                margin-left: -0.5rem;
-                margin-right: -0.5rem;
-                border-radius: 0.5rem;
-              }
-            }
-
-            /* Improve readability on all screens */
-            .prose {
-              -webkit-font-smoothing: antialiased;
-              -moz-osx-font-smoothing: grayscale;
-            }
-
-            /* Better focus states for accessibility */
-            .prose a:focus-visible {
-              outline: 2px solid #dc2626;
-              outline-offset: 2px;
-              border-radius: 2px;
             }
           `}</style>
           {children}
         </div>
 
-        {/* Tags */}
+        {/* Tags section */}
         {meta.tags && meta.tags.length > 0 && (
-          <div className="border-border mt-12 border-t pt-8">
+          <div className="border-border/50 mt-12 border-t pt-8">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-foreground text-sm font-semibold">Tags:</span>
+              <span className="text-foreground text-[13px] font-semibold">Tags:</span>
               {meta.tags.map(tag => (
                 <span
                   key={tag}
-                  className="bg-muted text-muted-foreground rounded-full px-3 py-1 text-sm"
+                  className="linear-border bg-muted/50 text-muted-foreground rounded-full px-3 py-1 text-[13px] font-medium"
                 >
                   {tag}
                 </span>
@@ -231,52 +342,61 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
         )}
 
-        {/* CTA Section */}
-        <div className="mt-12 rounded-2xl bg-blue-50 p-8 md:p-10 dark:bg-blue-950/30">
-          <h2 className="text-foreground mb-4 text-2xl font-bold md:text-3xl">
-            Need Professional Help?
-          </h2>
-          <p className="text-muted-foreground mb-6 text-lg">
-            Our experienced team is ready to help with your junk removal project. Get your free
-            quote today!
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Button
-              asChild
-              className="bg-blue-800 px-6 py-2.5 text-base font-semibold text-white hover:bg-blue-900"
-            >
-              <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="border-2 border-blue-800 bg-transparent px-6 py-2.5 text-base font-semibold text-blue-800 hover:bg-blue-800 hover:text-white"
-            >
-              <Link href="/quote">Get Free Quote</Link>
-            </Button>
+        {/* CTA section with Linear-style card */}
+        <div className="linear-card mt-16 rounded-2xl p-8">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-white">
+              <BookOpen className="h-6 w-6" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-foreground mb-2 text-[20px] font-semibold">
+                Need Professional Help?
+              </h2>
+              <p className="text-muted-foreground mb-6 text-[15px] leading-relaxed">
+                Our experienced team is ready to help with your junk removal project. Get your free
+                quote today!
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  className="h-10 rounded-lg bg-gray-900 px-4 text-[14px] font-semibold text-white hover:bg-gray-900"
+                >
+                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="linear-border bg-background hover:bg-muted/50 h-10 rounded-lg px-4 text-[14px] font-semibold"
+                >
+                  <Link href="/quote">Get Free Quote</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Related Posts */}
+        {/* Related posts with Linear-style cards */}
         {relatedPosts && relatedPosts.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-foreground mb-8 text-2xl font-bold">Related Articles</h2>
-            <div className="grid gap-6 md:grid-cols-2">
+            <h2 className="text-foreground mb-6 text-[20px] font-semibold">Related Articles</h2>
+            <div className="grid gap-4 sm:grid-cols-2">
               {relatedPosts.map(post => (
                 <Link
                   key={post.href}
                   href={post.href}
-                  className="group border-border bg-card rounded-xl border p-6 shadow-sm transition-all hover:border-blue-800 hover:shadow-md dark:hover:border-blue-400"
+                  className="linear-card group block rounded-xl p-6 transition-all hover:shadow-md"
                 >
                   <div className="mb-2">
-                    <span className="text-xs font-semibold tracking-wide text-blue-800 uppercase dark:text-blue-400">
+                    <span className="text-[12px] font-semibold tracking-wide text-gray-900 uppercase dark:text-gray-900">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground mb-2 text-lg font-bold group-hover:text-blue-800 dark:group-hover:text-blue-400">
+                  <h3 className="text-foreground mb-2 text-[16px] leading-snug font-semibold group-hover:text-gray-900 dark:group-hover:text-gray-900">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm">{post.excerpt}</p>
+                  <p className="text-muted-foreground text-[14px] leading-relaxed">
+                    {post.excerpt}
+                  </p>
                 </Link>
               ))}
             </div>

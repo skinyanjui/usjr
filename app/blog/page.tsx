@@ -61,7 +61,7 @@ export default function BlogPage() {
       />
 
       {/* Hero Section */}
-      <div className="bg-blue-900 text-white">
+      <div className="bg-gray-900 text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
@@ -86,7 +86,7 @@ export default function BlogPage() {
                   key={post.slug}
                   className="group border-border bg-card overflow-hidden rounded-2xl border shadow-lg transition-all hover:shadow-xl"
                 >
-                  <div className="bg-blue-800 p-8 text-white">
+                  <div className="bg-gray-900 p-8 text-white">
                     <div className="mb-4">
                       <span className="bg-card/20 inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase backdrop-blur-sm">
                         {post.category}
@@ -110,7 +110,7 @@ export default function BlogPage() {
                   <div className="p-6">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 font-semibold text-blue-800 transition-colors hover:text-blue-900"
+                      className="inline-flex items-center gap-2 font-semibold text-gray-900 transition-colors hover:text-gray-900"
                     >
                       Read Article
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -133,11 +133,11 @@ export default function BlogPage() {
               >
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="text-xs font-semibold tracking-wide text-blue-800 uppercase">
+                    <span className="text-xs font-semibold tracking-wide text-gray-900 uppercase">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground mb-3 text-xl font-bold transition-colors group-hover:text-blue-800">
+                  <h3 className="text-foreground mb-3 text-xl font-bold transition-colors group-hover:text-gray-900">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
                   <p className="text-muted-foreground mb-4">{post.excerpt}</p>
@@ -153,7 +153,7 @@ export default function BlogPage() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-blue-800 transition-colors hover:text-blue-900"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 transition-colors hover:text-gray-900"
                   >
                     Read More
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -177,13 +177,13 @@ export default function BlogPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/quote"
-                className="inline-flex items-center justify-center rounded-lg bg-blue-800 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-blue-900"
+                className="inline-flex items-center justify-center rounded-lg bg-gray-900 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-gray-900"
               >
                 Get Free Quote
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-blue-800 bg-transparent px-6 py-2.5 text-base font-semibold text-blue-800 transition-colors hover:bg-blue-800 hover:text-white"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-transparent px-6 py-2.5 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white"
               >
                 View Services
               </Link>

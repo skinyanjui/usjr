@@ -118,11 +118,11 @@ export function PricingGrid() {
 
         <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {pricingTiers.map(tier => (
-            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-blue-800' : ''}`}>
+            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-gray-400' : ''}`}>
               <CardHeader>
                 <CardTitle className="text-foreground flex items-center justify-between text-lg font-bold">
                   <span>{tier.name}</span>
-                  <span className="text-blue-900">{tier.price}</span>
+                  <span className="text-gray-900">{tier.price}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -170,7 +170,7 @@ export function PricingGrid() {
                   Find a lower written quote for the same service? We’ll match it.{' '}
                   <PriceMatchTerms
                     trigger={
-                      <span className="cursor-pointer font-semibold text-blue-900 underline">
+                      <span className="cursor-pointer font-semibold text-gray-900 underline">
                         See terms
                       </span>
                     }
@@ -180,20 +180,20 @@ export function PricingGrid() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-blue-200 pt-6">
+          <div className="mt-8 border-t border-gray-300 pt-6">
             <p className="text-muted-foreground mb-4 font-medium">
               Ready to see exactly what your project will cost?
             </p>
             <div className="flex flex-row justify-center gap-4">
               <a
                 href={`tel:${settings.phoneE164}`}
-                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-blue-900 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-blue-900/45 sm:flex-initial"
+                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-gray-900/45 sm:flex-initial"
               >
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </a>
               <a
                 href={`sms:${settings.phoneE164}`}
-                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-blue-950 bg-transparent px-6 text-center font-semibold text-blue-950 transition-colors hover:bg-blue-950 hover:text-white sm:flex-initial"
+                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-transparent px-6 text-center font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white sm:flex-initial"
               >
                 Text Photos for Instant Quote
               </a>

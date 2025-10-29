@@ -94,7 +94,7 @@ export function InternalLinks({
                       <Icon className="text-muted-foreground mt-1 h-5 w-5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-start justify-between gap-2">
-                          <h4 className="text-foreground font-semibold transition-colors group-hover:text-blue-600">
+                          <h4 className="text-foreground font-semibold transition-colors group-hover:text-gray-900">
                             {link.title}
                           </h4>
                           <ArrowRight className="mt-1 h-4 w-4 flex-shrink-0 text-gray-400 transition-transform group-hover:translate-x-1" />
@@ -133,11 +133,11 @@ export function InternalLinks({
                         <Badge className={`${colors.badge} text-xs`}>{link.category}</Badge>
                       )}
                     </div>
-                    <h4 className="text-foreground font-semibold transition-colors group-hover:text-blue-600">
+                    <h4 className="text-foreground font-semibold transition-colors group-hover:text-gray-900">
                       {link.title}
                     </h4>
                     <p className="text-muted-foreground text-sm">{link.description}</p>
-                    <div className="flex items-center gap-1 text-sm text-gray-500 transition-colors group-hover:text-blue-600">
+                    <div className="flex items-center gap-1 text-sm text-gray-500 transition-colors group-hover:text-gray-900">
                       <span>Learn more</span>
                       <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </div>

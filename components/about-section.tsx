@@ -5,22 +5,22 @@ import { QuoteCtaLink } from '@/components/quote-cta-link'
 export function AboutSection() {
   const stats = [
     {
-      icon: <Users className="h-8 w-8 text-blue-800" />,
+      icon: <Users className="h-8 w-8 text-gray-900" />,
       number: '5000+',
       label: 'Happy Customers',
     },
     {
-      icon: <Truck className="h-8 w-8 text-blue-800" />,
+      icon: <Truck className="h-8 w-8 text-gray-900" />,
       number: '500+',
       label: 'Satisfied Clients',
     },
     {
-      icon: <Star className="h-8 w-8 text-blue-800" />,
+      icon: <Star className="h-8 w-8 text-gray-900" />,
       number: '4.9',
       label: 'Star Rating',
     },
     {
-      icon: <Award className="h-8 w-8 text-blue-800" />,
+      icon: <Award className="h-8 w-8 text-gray-900" />,
       number: '2025',
       label: 'Founded',
     },
@@ -56,7 +56,7 @@ export function AboutSection() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button
                 asChild
-                className="w-full rounded-full bg-blue-800 px-6 py-3 font-semibold text-white hover:bg-blue-900 sm:w-auto sm:px-8"
+                className="w-full rounded-full bg-gray-900 px-6 py-3 font-semibold text-white hover:bg-gray-900 sm:w-auto sm:px-8"
               >
                 <QuoteCtaLink location="about-section" label="Get Free Quote">
                   Get Free Quote
@@ -65,7 +65,7 @@ export function AboutSection() {
               <Button
                 asChild
                 variant="outline"
-                className="w-full rounded-full border-blue-950 bg-transparent px-6 py-3 font-semibold text-blue-950 hover:bg-blue-100 sm:w-auto sm:px-8"
+                className="w-full rounded-full border-gray-300 bg-transparent px-6 py-3 font-semibold text-gray-900 hover:bg-gray-900 sm:w-auto sm:px-8"
               >
                 <a href="/about" title="About Uncle Sam Junk Removal in Evansville">
                   About our company
@@ -75,31 +75,31 @@ export function AboutSection() {
           </div>
 
           <div className="relative">
-            <div className="glass inline-flex items-center gap-3 rounded-2xl bg-blue-800 p-6 text-white">
+            <div className="glass inline-flex items-center gap-3 rounded-2xl bg-gray-900 p-6 text-white">
               <Shield className="h-6 w-6" />
               <div>
                 <h3 className="text-2xl font-bold">Veteran-Owned</h3>
-                <p className="text-blue-100">Founded in 2025 in Evansville</p>
+                <p className="text-gray-900">Founded in 2025 in Evansville</p>
               </div>
             </div>
             <div className="text-muted-foreground mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Evansville, IN
+                <MapPin className="h-4 w-4 text-gray-900" /> Evansville, IN
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Newburgh, IN
+                <MapPin className="h-4 w-4 text-gray-900" /> Newburgh, IN
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Henderson, KY
+                <MapPin className="h-4 w-4 text-gray-900" /> Henderson, KY
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Owensboro, KY
+                <MapPin className="h-4 w-4 text-gray-900" /> Owensboro, KY
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Boonville, IN
+                <MapPin className="h-4 w-4 text-gray-900" /> Boonville, IN
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-blue-800" /> Princeton, IN
+                <MapPin className="h-4 w-4 text-gray-900" /> Princeton, IN
               </div>
             </div>
           </div>

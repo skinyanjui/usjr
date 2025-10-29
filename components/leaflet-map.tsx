@@ -153,7 +153,7 @@ export default function LeafletMap() {
 
       <div className="bg-card/90 absolute top-2 left-2 rounded-lg p-2 shadow-sm backdrop-blur-sm">
         <div className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
-          <MapPin className="h-3 w-3 text-blue-800" />
+          <MapPin className="h-3 w-3 text-gray-900" />
           <span>Service Area</span>
         </div>
         <div className="text-muted-foreground mt-1 text-xs">{locations.length} cities served</div>

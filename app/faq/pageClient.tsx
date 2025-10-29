@@ -66,16 +66,6 @@ export default function FAQClient() {
 
   return (
     <div className="mx-auto max-w-7xl px-4">
-      <div className="mb-12 text-center">
-        <h2 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-          Frequently Asked Questions
-        </h2>
-        <p className="text-muted-foreground mx-auto max-w-3xl text-lg sm:text-xl">
-          Find answers to common questions about our junk removal, light demolition, and cleaning
-          services in Evansville and Southern Indiana.
-        </p>
-      </div>
-
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="relative">
@@ -137,7 +127,7 @@ export default function FAQClient() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-800 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-blue-900"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-gray-900"
             >
               <Phone className="h-4 w-4" />
               Call {settings.phone}
@@ -145,7 +135,7 @@ export default function FAQClient() {
             <Link
               href="/quote"
               prefetch
-              className="border-border text-primary inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-2.5 text-base font-semibold transition-colors hover:bg-blue-100 dark:hover:bg-blue-950/30"
+              className="border-border text-primary inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-2.5 text-base font-semibold transition-colors hover:bg-gray-900 dark:hover:bg-gray-900/30"
             >
               Get Free Quote
             </Link>

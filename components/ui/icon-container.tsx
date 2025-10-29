@@ -3,27 +3,25 @@ import { cn } from '@/lib/utils'
 
 interface IconContainerProps {
   icon: LucideIcon
-  color?: 'red' | 'orange' | 'green' | 'blue' | 'purple' | 'teal'
+  variant?: 'default' | 'light' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   className?: string
 }
 
 export function IconContainer({
   icon: Icon,
-  color = 'blue',
+  variant = 'default',
   size = 'md',
   className,
 }: IconContainerProps) {
-  const getColorClasses = (color: NonNullable<IconContainerProps['color']>) => {
-    const colorMap = {
-      red: 'bg-blue-800 text-white',
-      orange: 'bg-orange-600 text-white',
-      green: 'bg-green-600 text-white',
-      blue: 'bg-blue-600 text-white',
-      purple: 'bg-purple-600 text-white',
-      teal: 'bg-teal-600 text-white',
+  const getVariantClasses = (variant: NonNullable<IconContainerProps['variant']>) => {
+    const variantMap = {
+      default: 'bg-gray-900 text-white dark:bg-white dark:text-gray-900',
+      light: 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100',
+      outline:
+        'border-2 border-gray-300 bg-transparent text-gray-900 dark:border-gray-600 dark:text-gray-100',
     } as const
-    return colorMap[color]
+    return variantMap[variant]
   }
 
   const getSizeClasses = (size: NonNullable<IconContainerProps['size']>) => {
@@ -48,7 +46,7 @@ export function IconContainer({
     <div
       className={cn(
         'flex items-center justify-center rounded-full shadow-lg',
-        getColorClasses(color),
+        getVariantClasses(variant),
         getSizeClasses(size),
         className
       )}

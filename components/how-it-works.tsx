@@ -37,7 +37,7 @@ export function HowItWorks() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, idx) => (
             <GlassCard key={idx} variant="white" className="p-6 text-center">
-              <step.icon className="mx-auto mb-4 h-10 w-10 text-blue-800" />
+              <step.icon className="mx-auto mb-4 h-10 w-10 text-gray-900" />
               <h3 className="text-foreground mb-1 text-lg font-semibold">{step.title}</h3>
               <p className="text-muted-foreground text-sm">{step.description}</p>
             </GlassCard>

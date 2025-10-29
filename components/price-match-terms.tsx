@@ -26,7 +26,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
         {trigger ?? (
           <button
             type="button"
-            className={className ?? 'text-blue-900 underline underline-offset-2'}
+            className={className ?? 'text-gray-900 underline underline-offset-2'}
           >
             Price Match Terms
           </button>
@@ -35,7 +35,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Info className="h-4 w-4 text-blue-800" /> Price Match Guarantee Terms
+            <Info className="h-4 w-4 text-gray-900" /> Price Match Guarantee Terms
           </DialogTitle>
           <DialogDescription>
             We stand behind transparent, competitive pricing. If you find a lower written quote for

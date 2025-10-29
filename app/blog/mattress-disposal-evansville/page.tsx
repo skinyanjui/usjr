@@ -245,7 +245,7 @@ export default function MattressDisposalBlog() {
         far less hassle and risk.
       </p>
 
-      <div className="my-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
         <p className="text-foreground text-lg font-medium">
           <strong>Bottom Line:</strong> Professional mattress removal in Evansville typically costs
           between $89-149 and provides the most convenient, reliable solution for disposing of old

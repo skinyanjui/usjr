@@ -15,7 +15,7 @@ export function EvansvilleContactSidebar() {
           </h3>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <Phone className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <Phone className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="text-foreground font-semibold">Phone</h4>
                 <p className="text-base font-semibold text-gray-800 sm:text-lg">{settings.phone}</p>
@@ -25,7 +25,7 @@ export function EvansvilleContactSidebar() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Mail className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <Mail className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="text-foreground font-semibold">Email</h4>
                 <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
@@ -33,7 +33,7 @@ export function EvansvilleContactSidebar() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <MapPin className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <MapPin className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="text-foreground font-semibold">Service Area</h4>
                 <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
@@ -44,7 +44,7 @@ export function EvansvilleContactSidebar() {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Clock className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <Clock className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
                 <h4 className="text-foreground font-semibold">Hours</h4>
                 <p className="text-muted-foreground">Monday - Sunday</p>
@@ -58,7 +58,7 @@ export function EvansvilleContactSidebar() {
         </CardContent>
       </Card>
 
-      <Card className="glass bg-blue-800 text-white">
+      <Card className="glass bg-gray-900 text-white">
         <CardContent className="p-6 text-center sm:p-8">
           <h3 className="mb-3 text-lg font-bold text-black sm:mb-4 sm:text-2xl">
             Same Day Service in Evansville!
@@ -69,7 +69,7 @@ export function EvansvilleContactSidebar() {
           </p>
           <Button
             asChild
-            className="bg-card mb-4 w-full px-6 py-3 font-semibold text-blue-800 hover:bg-gray-100 sm:w-auto sm:px-8"
+            className="bg-card mb-4 w-full px-6 py-3 font-semibold text-gray-900 hover:bg-gray-100 sm:w-auto sm:px-8"
           >
             <a href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</a>
           </Button>
@@ -81,7 +81,7 @@ export function EvansvilleContactSidebar() {
         </CardContent>
       </Card>
 
-      <Card className="glass bg-blue-600 text-white">
+      <Card className="glass bg-gray-900 text-white">
         <CardContent className="p-6 sm:p-8">
           <h3 className="mb-4 text-lg font-bold sm:text-xl">
             Why Evansville Chooses Uncle Sam Junk Removal

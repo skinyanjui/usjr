@@ -126,7 +126,7 @@ export function TwoStepQuoteForm() {
         <Card className="glass">
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-gray-800 sm:text-2xl">
-              <MapPin className="h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <MapPin className="h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               Get Your Free Quote
             </CardTitle>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -153,7 +153,7 @@ export function TwoStepQuoteForm() {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-blue-800 py-3 font-semibold text-white hover:bg-blue-900"
+                className="w-full bg-gray-900 py-3 font-semibold text-white hover:bg-gray-900"
               >
                 Check Service Area
               </Button>
@@ -164,7 +164,7 @@ export function TwoStepQuoteForm() {
         <Card className="glass">
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-gray-800 sm:text-2xl">
-              <Truck className="h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
+              <Truck className="h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               What needs to be removed?
             </CardTitle>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -188,8 +188,8 @@ export function TwoStepQuoteForm() {
                         onClick={() => handleItemToggle(item.id)}
                         className={`rounded-lg border-2 p-3 text-center transition-all ${
                           selectedItems.includes(item.id)
-                            ? 'border-blue-800 bg-blue-50 text-blue-900 dark:bg-blue-950/30'
-                            : 'border-border hover:border-blue-300'
+                            ? 'border-gray-300 bg-gray-900 text-gray-900 dark:bg-gray-900/30'
+                            : 'border-border hover:border-gray-300'
                         }`}
                       >
                         <Icon className="mx-auto mb-1 h-5 w-5 sm:h-6 sm:w-6" />
@@ -211,8 +211,8 @@ export function TwoStepQuoteForm() {
                       key={size.id}
                       className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${
                         loadSize === size.id
-                          ? 'border-blue-800 bg-blue-50 dark:bg-blue-950/30'
-                          : 'border-border hover:border-blue-300'
+                          ? 'border-gray-300 bg-gray-900 dark:bg-gray-900/30'
+                          : 'border-border hover:border-gray-300'
                       }`}
                     >
                       <div className="flex items-center">
@@ -229,7 +229,7 @@ export function TwoStepQuoteForm() {
                           <div className="text-muted-foreground text-sm">{size.description}</div>
                         </div>
                       </div>
-                      <div className="font-bold text-blue-800">{size.price}</div>
+                      <div className="font-bold text-gray-900">{size.price}</div>
                     </label>
                   ))}
                 </div>
@@ -277,7 +277,7 @@ export function TwoStepQuoteForm() {
                   multiple
                   capture="environment"
                   onChange={e => setContactInfo(prev => ({ ...prev, photos: e.target.files }))}
-                  className="file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-900 hover:file:bg-blue-100 dark:bg-blue-950/30"
+                  className="file:mr-4 file:rounded-full file:border-0 file:bg-gray-900 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gray-900 hover:file:bg-gray-900 dark:bg-gray-900/30"
                 />
                 <p className="text-muted-foreground mt-1 text-xs">
                   Photos help us provide more accurate quotes
@@ -295,7 +295,7 @@ export function TwoStepQuoteForm() {
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-blue-800 py-2 font-semibold text-white hover:bg-blue-900 sm:py-3"
+                  className="flex-1 bg-gray-900 py-2 font-semibold text-white hover:bg-gray-900 sm:py-3"
                   disabled={!loadSize || selectedItems.length === 0}
                 >
                   Get My Quote

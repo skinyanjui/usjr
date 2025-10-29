@@ -95,7 +95,7 @@ export function BreadcrumbsAuto() {
       <div className="mx-auto max-w-7xl px-4 py-2 text-sm">
         <ol className="text-muted-foreground flex items-center gap-2">
           <li>
-            <Link href="/" className="hover:text-blue-900 hover:underline">
+            <Link href="/" className="hover:text-gray-900 hover:underline">
               Home
             </Link>
           </li>
@@ -107,7 +107,7 @@ export function BreadcrumbsAuto() {
                   {crumb.name}
                 </span>
               ) : (
-                <Link href={crumb.href} className="hover:text-blue-900 hover:underline">
+                <Link href={crumb.href} className="hover:text-gray-900 hover:underline">
                   {crumb.name}
                 </Link>
               )}

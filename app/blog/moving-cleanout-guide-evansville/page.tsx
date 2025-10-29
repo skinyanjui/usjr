@@ -307,8 +307,8 @@ export default function MovingCleanoutGuidePage() {
         <li>Plan for unexpected items and last-minute disposal needs</li>
       </ul>
 
-      <div className="mt-8 rounded-lg bg-blue-50 p-6">
-        <h3 className="mb-3 text-xl font-bold text-blue-900">
+      <div className="mt-8 rounded-lg bg-gray-900 p-6">
+        <h3 className="mb-3 text-xl font-bold text-gray-900">
           Need Help with Your Move? We've Got You Covered
         </h3>
         <p className="text-muted-foreground mb-4">
@@ -319,13 +319,13 @@ export default function MovingCleanoutGuidePage() {
         <div className="flex flex-wrap gap-3">
           <a
             href="/quote"
-            className="inline-block rounded-lg bg-blue-600 px-6 py-2.5 font-semibold text-white hover:bg-blue-700"
+            className="inline-block rounded-lg bg-gray-900 px-6 py-2.5 font-semibold text-white hover:bg-gray-900"
           >
             Get Free Quote
           </a>
           <a
             href="/cleaning/move-in-move-out"
-            className="inline-block rounded-lg border-2 border-blue-600 px-6 py-2.5 font-semibold text-blue-600 hover:bg-blue-50"
+            className="inline-block rounded-lg border-2 border-gray-300 px-6 py-2.5 font-semibold text-gray-900 hover:bg-gray-900"
           >
             Learn About Move-Out Cleaning
           </a>

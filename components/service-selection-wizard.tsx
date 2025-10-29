@@ -32,7 +32,7 @@ export function ServiceSelectionWizard() {
               className="p-5 text-center transition-shadow hover:shadow-md"
             >
               <Link href={opt.href} className="flex flex-col items-center gap-2">
-                <opt.icon className="h-8 w-8 text-blue-800" />
+                <opt.icon className="h-8 w-8 text-gray-900" />
                 <span className="text-foreground text-sm font-semibold">{opt.label}</span>
               </Link>
             </GlassCard>

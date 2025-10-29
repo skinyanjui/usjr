@@ -225,8 +225,8 @@ export default function CommercialOfficeCleaningPage() {
         reliable commercial cleaning services. Same-day service available for urgent needs.
       </p>
 
-      <div className="mt-8 rounded-lg bg-blue-50 p-6">
-        <h3 className="mb-3 text-xl font-bold text-blue-900">
+      <div className="mt-8 rounded-lg bg-gray-900 p-6">
+        <h3 className="mb-3 text-xl font-bold text-gray-900">
           Free Commercial Cleaning Consultation
         </h3>
         <p className="text-muted-foreground mb-4">
@@ -234,7 +234,7 @@ export default function CommercialOfficeCleaningPage() {
         </p>
         <a
           href="/quote"
-          className="inline-block rounded-lg bg-blue-600 px-6 py-2.5 font-semibold text-white hover:bg-blue-700"
+          className="inline-block rounded-lg bg-gray-900 px-6 py-2.5 font-semibold text-white hover:bg-gray-900"
         >
           Request Free Quote
         </a>

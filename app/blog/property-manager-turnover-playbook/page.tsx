@@ -215,7 +215,7 @@ export default function PropertyManagerPlaybookPage() {
         </li>
       </ol>
 
-      <div className="my-8 rounded-lg border-l-4 border-purple-500 bg-purple-50 p-6">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
         <p className="text-foreground text-lg font-medium">
           <strong>Industry Benchmark:</strong> Professional property managers in Evansville report
           reducing average turnover time from 14-21 days to 7-10 days by using professional

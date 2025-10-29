@@ -82,7 +82,7 @@ export function TestimonialsSlider({
             </div>
 
             {/* Service Type */}
-            <div className="text-sm font-medium text-green-600">{currentTestimonial.service}</div>
+            <div className="text-sm font-medium text-gray-900">{currentTestimonial.service}</div>
 
             {/* Date */}
             <div className="text-muted-foreground mt-2 text-xs">
@@ -117,7 +117,7 @@ export function TestimonialsSlider({
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 w-2 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-green-600' : 'bg-gray-300'
+                  index === currentIndex ? 'bg-gray-800' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
                 aria-pressed={index === currentIndex}

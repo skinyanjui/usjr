@@ -72,11 +72,11 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-border bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400',
+    red: 'border-border bg-gray-900 dark:bg-gray-900/30 text-gray-900 dark:text-gray-900',
     orange:
-      'border-orange-600 dark:border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400',
+      'border-gray-300 dark:border-gray-300 bg-gray-800 dark:bg-gray-800/30 text-gray-900 dark:text-gray-900',
     green:
-      'border-green-600 dark:border-green-500 bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400',
+      'border-gray-300 dark:border-gray-300 bg-gray-800 dark:bg-gray-800/30 text-gray-900 dark:text-gray-900',
   }
   return colors[color]
 }
@@ -111,7 +111,7 @@ export default function CompareClient() {
             <Card
               key={service.id}
               className={`relative transition-all duration-300 hover:shadow-lg ${
-                isSelected ? 'shadow-lg ring-2 ring-blue-500' : ''
+                isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
               }`}
             >
               <CardHeader className="pb-4 text-center">
@@ -150,7 +150,7 @@ export default function CompareClient() {
                   <ul className="space-y-2">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
-                        <Check className="h-4 w-4 flex-shrink-0 text-green-600" />
+                        <Check className="h-4 w-4 flex-shrink-0 text-gray-900" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -185,11 +185,11 @@ export default function CompareClient() {
                     variant="outline"
                     className={`w-full bg-transparent ${
                       service.color === 'red'
-                        ? 'border-blue-900 text-blue-900'
+                        ? 'border-gray-300 text-gray-900'
                         : service.color === 'orange'
-                          ? 'border-orange-700 text-orange-700'
+                          ? 'border-gray-300 text-gray-900'
                           : service.color === 'green'
-                            ? 'border-green-700 text-green-700'
+                            ? 'border-gray-300 text-gray-900'
                             : ''
                     }`}
                   >
@@ -218,7 +218,7 @@ export default function CompareClient() {
               for potential savings.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Button asChild className="bg-blue-800 hover:bg-blue-900">
+              <Button asChild className="bg-gray-900 hover:bg-gray-900">
                 <Link href="/quote" prefetch>
                   Get Free Quote
                 </Link>
@@ -241,7 +241,7 @@ export default function CompareClient() {
             recommendations based on your specific needs.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button asChild className="bg-green-600 hover:bg-green-700">
+            <Button asChild className="bg-gray-800 hover:bg-gray-800">
               <Link href="/quote" prefetch>
                 Get Personalized Quote
               </Link>
