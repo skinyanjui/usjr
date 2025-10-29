@@ -57,7 +57,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/services/junk-removal"
-                className="linear-border flex min-h-[52px] items-center rounded-lg border-2 border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:shadow-lg"
+                className="linear-border flex min-h-[52px] items-center rounded-lg border border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:shadow-lg"
               >
                 View Services
               </Link>
