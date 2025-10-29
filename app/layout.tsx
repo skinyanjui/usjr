@@ -93,7 +93,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
-        <Theme appearance="dark" accentColor="red" grayColor="slate" radius="medium" scaling="100%">
+        <Theme
+          appearance="dark"
+          accentColor="blue"
+          grayColor="slate"
+          radius="medium"
+          scaling="100%"
+        >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <Header />
             <EmergencyBanner />
