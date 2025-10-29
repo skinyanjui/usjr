@@ -33,9 +33,6 @@ export interface ServicePageTemplateProps {
   description: string
   badges?: string[]
 
-  // Theme - Linear.app inspired: black/white with brand accent only
-  theme?: 'primary'
-
   // Structured data
   serviceCategory?: string
   serviceArea?: string[]
@@ -82,7 +79,6 @@ export function ServicePageTemplate({
   title,
   description,
   badges = [],
-  theme = 'primary',
   serviceCategory,
   serviceArea,
   features = [],
