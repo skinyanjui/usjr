@@ -145,7 +145,7 @@ export function PricingGrid() {
           </h3>
           <div className="grid gap-6 text-left sm:grid-cols-2 md:grid-cols-3">
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">No Hidden Fees</h4>
                 <p className="text-muted-foreground text-sm">
@@ -154,7 +154,7 @@ export function PricingGrid() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">Upfront Estimates</h4>
                 <p className="text-muted-foreground text-sm">
@@ -163,7 +163,7 @@ export function PricingGrid() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">Price Match Guarantee</h4>
                 <p className="text-muted-foreground text-sm">
