@@ -28,7 +28,7 @@ export function Footer() {
               <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
                 <Button
                   asChild
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-red-700 shadow transition-colors hover:bg-red-50 sm:px-5"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white dark:bg-gray-100 px-4 py-2 text-sm font-semibold text-red-700 dark:text-red-800 shadow transition-colors hover:bg-red-50 dark:hover:bg-red-100 sm:px-5"
                 >
                   <QuoteCtaLink location="footer-primary" label="Get Free Quote">
                     Get Free Quote

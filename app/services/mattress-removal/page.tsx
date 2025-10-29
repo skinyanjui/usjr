@@ -66,7 +66,7 @@ export default function MattressRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Mattress Removal Services in Evansville"
       description="Fast, reliable mattress removal, bed disposal, and old mattress pickup throughout Southern Indiana. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we provide same-day service with upfront pricing and eco-friendly disposal methods."
       badges={[
@@ -161,13 +161,13 @@ export default function MattressRemovalPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="blue"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -175,13 +175,13 @@ export default function MattressRemovalPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="blue"
+            theme="primary"
           />
         </div>
       </div>

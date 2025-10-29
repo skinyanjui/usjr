@@ -42,15 +42,15 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {images.map(image => (
           <Card key={image.id} className="overflow-hidden transition-shadow hover:shadow-lg">
-            <SolidPanel color="slate" label={image.service} className="aspect-video p-8">
-              <div className="flex flex-col items-center gap-2 text-slate-800">
-                <span className="text-base font-semibold text-slate-900">{image.title}</span>
-                <p className="text-sm font-medium text-slate-700">{image.summary}</p>
+            <SolidPanel color="neutral" label={image.service} className="aspect-video p-8">
+              <div className="text-foreground flex flex-col items-center gap-2">
+                <span className="text-foreground text-base font-semibold">{image.title}</span>
+                <p className="text-muted-foreground text-sm font-medium">{image.summary}</p>
                 <Button
                   variant="secondary"
                   size="sm"
                   onClick={() => setSelectedImage(image)}
-                  className="bg-white text-slate-800 hover:bg-slate-100"
+                  className="bg-card text-foreground hover:bg-muted"
                   aria-label={`Open transformation details for ${image.title}`}
                 >
                   <Eye className="mr-2 h-4 w-4" />
@@ -65,7 +65,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   {image.service}
                 </Badge>
               </div>
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="text-muted-foreground flex items-center gap-1 text-sm">
                 <MapPin className="h-3 w-3" />
                 {image.location}
               </div>
@@ -129,14 +129,14 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
 
               {/* Image Info */}
               <div className="space-y-2 text-center">
-                <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
+                <div className="text-muted-foreground flex items-center justify-center gap-4 text-sm">
                   <div className="flex items-center gap-1">
                     <MapPin className="h-3 w-3" />
                     {selectedImage.location}
                   </div>
                   <Badge variant="secondary">{selectedImage.service}</Badge>
                 </div>
-                <p className="text-gray-700">{selectedImage.summary}</p>
+                <p className="text-muted-foreground">{selectedImage.summary}</p>
               </div>
             </div>
           </DialogContent>

@@ -1,6 +1,7 @@
 import type React from 'react'
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans } from 'next/font/google'
+import '@radix-ui/themes/styles.css'
 import './globals.css'
 import Script from 'next/script'
 import { Header } from '@/components/header'
@@ -11,6 +12,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { RoutePrefetcher } from '@/components/route-prefetcher'
 import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
+import { Theme } from '@radix-ui/themes'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -91,15 +93,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body className="font-sans">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <Header />
-          <EmergencyBanner />
-          <BreadcrumbsAuto />
-          <RoutePrefetcher />
-          <ScrollToTopOnRouteChange />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Theme appearance="dark" accentColor="red" grayColor="slate" radius="medium" scaling="100%">
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+            <Header />
+            <EmergencyBanner />
+            <BreadcrumbsAuto />
+            <RoutePrefetcher />
+            <ScrollToTopOnRouteChange />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </Theme>
         <Analytics />
         {process.env.NEXT_PUBLIC_AHREFS_KEY ? (
           <Script

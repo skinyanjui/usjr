@@ -100,7 +100,7 @@ function SitemapSection({
     <nav aria-labelledby={`${title.toLowerCase().replace(/\s+/g, '-')}-heading`} className="mb-8">
       <h2
         id={`${title.toLowerCase().replace(/\s+/g, '-')}-heading`}
-        className="mb-3 text-xl font-semibold text-gray-900"
+        className="text-foreground mb-3 text-xl font-semibold"
       >
         {title}
       </h2>
@@ -108,7 +108,10 @@ function SitemapSection({
         {links.map(link => (
           <li key={link.href} className="flex items-start">
             <span className="mr-2 text-red-700">→</span>
-            <Link href={link.href} className="text-gray-700 hover:text-red-700 hover:underline">
+            <Link
+              href={link.href}
+              className="text-muted-foreground hover:text-red-700 hover:underline"
+            >
               {link.label}
             </Link>
           </li>
@@ -120,17 +123,17 @@ function SitemapSection({
 
 export default function HtmlSitemapPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-muted/30 min-h-screen">
       <PageHero
         title="Sitemap"
         description="Browse every page on our site by category"
-        color="slate"
+        color="neutral"
       />
 
       <div className="mx-auto max-w-7xl px-4 pt-8 pb-16">
         <div className="mb-8">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Explore Our Website</h2>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             Browse all pages on our site organized by category. For search engines, see our{' '}
             <Link href="/sitemap.xml" className="text-red-700 underline">
               XML sitemap

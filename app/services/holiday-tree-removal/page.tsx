@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function HolidayTreeRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="green"
+      theme="primary"
       title="Holiday Tree Removal in Evansville"
       description="Convenient Christmas tree removal and seasonal landscaping cleanup services"
       badges={['Seasonal Service', 'Eco-Friendly Disposal', 'Christmas Specialists']}

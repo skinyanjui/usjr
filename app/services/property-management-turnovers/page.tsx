@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function PropertyManagementTurnoversPage() {
   return (
     <ServicePageTemplate
-      theme="teal"
+      theme="primary"
       title="Property Management Turnovers in Evansville"
       description="Fast, reliable cleanout services for apartments, evictions, foreclosures, and rental property turnovers"
       badges={['Property Manager Preferred', 'Fast Turnaround', 'Eviction Specialists']}

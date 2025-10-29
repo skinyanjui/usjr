@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function WarehouseFixtureRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="purple"
+      theme="primary"
       title="Warehouse & Retail Fixture Removal in Evansville"
       description="Professional removal of warehouse racks, retail shelving, and commercial fixtures for space reconfiguration"
       badges={['Commercial Fixtures', 'Heavy Equipment', 'Space Reconfiguration']}

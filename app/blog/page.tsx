@@ -30,7 +30,6 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-
   const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
 
@@ -54,7 +53,7 @@ export default function BlogPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-muted/30 min-h-screen">
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -80,16 +79,16 @@ export default function BlogPage() {
         {/* Featured Posts */}
         {featuredPosts.length > 0 && (
           <section className="mb-16">
-            <h2 className="mb-8 text-3xl font-bold text-gray-900">Featured Articles</h2>
+            <h2 className="text-foreground mb-8 text-3xl font-bold">Featured Articles</h2>
             <div className="grid gap-8 lg:grid-cols-2">
               {featuredPosts.map(post => (
                 <article
                   key={post.slug}
-                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg transition-all hover:shadow-xl"
+                  className="group border-border bg-card overflow-hidden rounded-2xl border shadow-lg transition-all hover:shadow-xl"
                 >
                   <div className="bg-red-600 p-8 text-white">
                     <div className="mb-4">
-                      <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wide uppercase backdrop-blur-sm">
+                      <span className="bg-card/20 inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase backdrop-blur-sm">
                         {post.category}
                       </span>
                     </div>
@@ -125,12 +124,12 @@ export default function BlogPage() {
 
         {/* All Posts Grid */}
         <section>
-          <h2 className="mb-8 text-3xl font-bold text-gray-900">All Articles</h2>
+          <h2 className="text-foreground mb-8 text-3xl font-bold">All Articles</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {regularPosts.map(post => (
               <article
                 key={post.slug}
-                className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:border-red-200 hover:shadow-md"
+                className="group border-border bg-card overflow-hidden rounded-xl border shadow-sm transition-all hover:border-border hover:shadow-md"
               >
                 <div className="p-6">
                   <div className="mb-3">
@@ -138,10 +137,10 @@ export default function BlogPage() {
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-red-600">
+                  <h3 className="text-foreground mb-3 text-xl font-bold transition-colors group-hover:text-red-600">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
-                  <p className="mb-4 text-gray-600">{post.excerpt}</p>
+                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="h-3.5 w-3.5" />
@@ -167,11 +166,11 @@ export default function BlogPage() {
 
         {/* Newsletter CTA */}
         <section className="mt-16">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-red-50 p-8 text-center md:p-12">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
+          <div className="mx-auto max-w-4xl rounded-2xl bg-muted/30 p-8 text-center md:p-12">
+            <h2 className="text-foreground mb-4 text-2xl font-bold md:text-3xl">
               Need Junk Removal Help?
             </h2>
-            <p className="mb-8 text-lg text-gray-700">
+            <p className="text-muted-foreground mb-8 text-lg">
               Get expert junk removal service for your home or business. Free quotes, same-day
               service available.
             </p>

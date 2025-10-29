@@ -19,7 +19,7 @@ export default function ResidentialCleaning() {
     <ServicePageTemplate
       title="Residential Cleaning Services"
       description="Veteran-led, spotless results using natural products. Professional residential cleaning services in Evansville and surrounding areas. We use only natural, eco-friendly products to keep your home spotless and your family safe."
-      theme="green"
+      theme="primary"
       badges={['From $80', 'Natural Products', 'Veteran-Led']}
       features={[
         {

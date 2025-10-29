@@ -82,7 +82,7 @@ export default function JunkRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="red"
+      theme="primary"
       title="Junk Removal Services in Evansville"
       description="Fast, reliable junk removal, trash removal, and haul away services throughout Southern Indiana. Whether you need to get rid of old furniture, clean out your house, or dispose of construction debris, we provide same-day service with upfront pricing and no hidden fees." // Changed from subtitle to description
       badges={[
@@ -184,13 +184,13 @@ export default function JunkRemovalPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="red"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -198,13 +198,13 @@ export default function JunkRemovalPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="red"
+            theme="primary"
           />
         </div>
       </div>

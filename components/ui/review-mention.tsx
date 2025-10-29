@@ -8,40 +8,20 @@ interface ReviewMentionProps {
   reviewCount: number
   showStructuredData?: boolean
   variant?: 'compact' | 'detailed' | 'banner'
-  theme?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme?: 'primary' | 'neutral'
   location?: string
 }
 
 const themeColors = {
-  red: {
-    bg: 'bg-red-50',
-    text: 'text-red-600',
-    border: 'border-red-200',
+  primary: {
+    bg: 'bg-primary/5',
+    text: 'text-primary',
+    border: 'border-primary/20',
   },
-  blue: {
-    bg: 'bg-blue-50',
-    text: 'text-blue-600',
-    border: 'border-blue-200',
-  },
-  green: {
-    bg: 'bg-green-50',
-    text: 'text-green-600',
-    border: 'border-green-200',
-  },
-  orange: {
-    bg: 'bg-orange-50',
-    text: 'text-orange-600',
-    border: 'border-orange-200',
-  },
-  purple: {
-    bg: 'bg-purple-50',
-    text: 'text-purple-600',
-    border: 'border-purple-200',
-  },
-  teal: {
-    bg: 'bg-teal-50',
-    text: 'text-teal-600',
-    border: 'border-teal-200',
+  neutral: {
+    bg: 'bg-muted/30',
+    text: 'text-foreground',
+    border: 'border-border',
   },
 }
 
@@ -50,7 +30,7 @@ export function ReviewMention({
   reviewCount,
   showStructuredData = true,
   variant = 'compact',
-  theme = 'red',
+  theme = 'primary',
   location,
 }: ReviewMentionProps) {
   const colors = themeColors[theme]
@@ -106,7 +86,7 @@ export function ReviewMention({
               </div>
               <span className="text-lg font-semibold">{averageRating.toFixed(1)}</span>
             </div>
-            <div className="text-gray-600">
+            <div className="text-muted-foreground">
               <Users className="mr-1 inline h-5 w-5" />
               {reviewCount}+ satisfied customers{location ? ` in ${location}` : ''}
             </div>
@@ -145,8 +125,10 @@ export function ReviewMention({
             ))}
           </div>
           <div className="space-y-2">
-            <div className="text-3xl font-bold text-gray-900">{averageRating.toFixed(1)}/5.0</div>
-            <p className="text-gray-600">Based on {reviewCount}+ verified customer reviews</p>
+            <div className="text-foreground text-3xl font-bold">{averageRating.toFixed(1)}/5.0</div>
+            <p className="text-muted-foreground">
+              Based on {reviewCount}+ verified customer reviews
+            </p>
             {location && (
               <p className="text-sm text-gray-500">
                 From satisfied customers in {location} and surrounding areas
@@ -154,7 +136,9 @@ export function ReviewMention({
             )}
             <div className="mt-4 flex items-center justify-center gap-2">
               <CheckCircle className={`h-5 w-5 ${colors.text}`} />
-              <span className="text-sm font-medium text-gray-700">Trusted Local Service</span>
+              <span className="text-muted-foreground text-sm font-medium">
+                Trusted Local Service
+              </span>
             </div>
           </div>
         </CardContent>

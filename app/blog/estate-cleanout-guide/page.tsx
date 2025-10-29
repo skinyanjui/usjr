@@ -202,7 +202,7 @@ export default function EstateCleanoutGuideBlog() {
       </ul>
 
       <div className="my-8 rounded-lg border-l-4 border-purple-500 bg-purple-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Final Thoughts:</strong> There's no "right" timeline for this process. Some
           families complete estate cleanouts in a few weeks, others take months. What matters is
           moving at a pace that feels respectful to your loved one's memory and manageable for your

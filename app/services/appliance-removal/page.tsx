@@ -68,7 +68,7 @@ export default function ApplianceRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="orange"
+      theme="primary"
       title="Appliance Removal Services in Evansville"
       description="Professional appliance removal, old appliance pickup, and appliance disposal with safe disconnection and eco-friendly disposal throughout Southern Indiana. Whether you need refrigerator removal, washer dryer removal, or any appliance disposal, we handle it all with specialized equipment."
       badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, 'Safe Disconnection', 'EPA Compliant']}
@@ -162,13 +162,13 @@ export default function ApplianceRemovalPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="orange"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -176,13 +176,13 @@ export default function ApplianceRemovalPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="orange"
+            theme="primary"
           />
         </div>
       </div>

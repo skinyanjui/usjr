@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function EstateCleanoutsPage() {
   return (
     <ServicePageTemplate
-      theme="orange" // Changed from "amber" to "orange" to match supported themes
+      theme="primary" // Changed from "amber" to "orange" to match supported themes
       title="Estate Cleanouts in Evansville"
       description="Compassionate estate cleanouts, house cleanouts, and property cleanout services for families during difficult times. Whether you need to clean out an inherited home, clear a deceased property, or handle a complete family home cleanout, we provide respectful and thorough service." // Changed from subtitle to description
       badges={['Compassionate Service', 'Complete Cleanout', 'Donation Coordination']} // Added badges array

@@ -88,7 +88,7 @@ export default function ShedRemovalGuideBlog() {
       </p>
 
       <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Prepare for tear-down day with clear access, utility checks, and
           a plan for debris disposal to ensure a smooth, efficient removal process.
         </p>

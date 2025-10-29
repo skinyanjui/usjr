@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function GarageCleanoutPage() {
   return (
     <ServicePageTemplate
-      theme="purple" // Changed from "indigo" to "purple" - indigo is not a supported theme
+      theme="primary" // Changed from "indigo" to "purple" - indigo is not a supported theme
       title="Garage Cleanout in Evansville"
       description="Complete garage cleanout services with sorting, removal, and organization" // Changed from subtitle to description
       badges={['Same-Day Service', 'Complete Cleanout', 'Donation Coordination']} // Added badges array

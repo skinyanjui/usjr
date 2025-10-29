@@ -14,13 +14,13 @@ const OPTIONS = [
 
 export function ServiceSelectionWizard() {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-card py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-4xl">
+          <h2 className="text-2xl font-bold text-foreground sm:text-4xl">
             What do you need removed?
           </h2>
-          <p className="mt-2 text-base text-gray-600 sm:text-lg">
+          <p className="mt-2 text-base text-muted-foreground sm:text-lg">
             Pick a service to jump straight to the right info or quote form
           </p>
         </div>
@@ -33,7 +33,7 @@ export function ServiceSelectionWizard() {
             >
               <Link href={opt.href} className="flex flex-col items-center gap-2">
                 <opt.icon className="h-8 w-8 text-red-600" />
-                <span className="text-sm font-semibold text-gray-900">{opt.label}</span>
+                <span className="text-sm font-semibold text-foreground">{opt.label}</span>
               </Link>
             </GlassCard>
           ))}

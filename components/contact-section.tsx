@@ -97,14 +97,14 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-gray-50 py-12 sm:py-16 md:py-20">
+    <section id="contact" className="bg-muted/30 py-12 sm:py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
         {/* Header Section */}
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl md:text-5xl">
+          <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl md:text-5xl">
             Get Your Free Quote
           </h2>
-          <p className="mx-auto max-w-3xl text-base text-gray-600 sm:text-lg">
+          <p className="text-muted-foreground mx-auto max-w-3xl text-base sm:text-lg">
             Ready to get rid of your junk in Evansville? Contact Uncle Sam Junk Removal today for a
             free, no-obligation quote. We'll beat any written estimate!
           </p>
@@ -114,7 +114,7 @@ export default function ContactSection() {
                 <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-sm text-gray-600 sm:text-base">
+            <span className="text-muted-foreground text-sm sm:text-base">
               4.9/5 from 200+ Evansville customers
             </span>
           </div>
@@ -126,10 +126,10 @@ export default function ContactSection() {
           <div>
             <Card className="glass">
               <CardHeader>
-                <CardTitle className="text-xl font-bold text-gray-900 sm:text-2xl">
+                <CardTitle className="text-foreground text-xl font-bold sm:text-2xl">
                   Request Free Quote
                 </CardTitle>
-                <p className="text-sm text-gray-600 sm:text-base">
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Get an instant estimate for your Evansville project
                 </p>
               </CardHeader>
@@ -140,7 +140,7 @@ export default function ContactSection() {
                     <h3 className="mb-2 text-xl font-bold text-green-600 sm:text-2xl">
                       Thank You!
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-muted-foreground">
                       {"We'll contact you within 30 minutes with your free quote."}
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export default function ContactSection() {
                       <div>
                         <label
                           htmlFor="name"
-                          className="mb-2 block text-sm font-medium text-gray-700"
+                          className="text-muted-foreground mb-2 block text-sm font-medium"
                         >
                           Full Name *
                         </label>
@@ -168,7 +168,7 @@ export default function ContactSection() {
                       <div>
                         <label
                           htmlFor="phone"
-                          className="mb-2 block text-sm font-medium text-gray-700"
+                          className="text-muted-foreground mb-2 block text-sm font-medium"
                         >
                           Phone Number *
                         </label>
@@ -188,7 +188,7 @@ export default function ContactSection() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="mb-2 block text-sm font-medium text-gray-700"
+                        className="text-muted-foreground mb-2 block text-sm font-medium"
                       >
                         Email Address *
                       </label>
@@ -207,7 +207,7 @@ export default function ContactSection() {
                     <div>
                       <label
                         htmlFor="address"
-                        className="mb-2 block text-sm font-medium text-gray-700"
+                        className="text-muted-foreground mb-2 block text-sm font-medium"
                       >
                         Service Address
                       </label>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                       <div>
                         <label
                           htmlFor="service"
-                          className="mb-2 block text-sm font-medium text-gray-700"
+                          className="text-muted-foreground mb-2 block text-sm font-medium"
                         >
                           Service Needed *
                         </label>
@@ -236,7 +236,7 @@ export default function ContactSection() {
                           required
                           value={formData.service}
                           onChange={handleChange}
-                          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
                         >
                           <option value="">Select a service</option>
                           {getServiceOptions().map(option => (
@@ -249,7 +249,7 @@ export default function ContactSection() {
                       <div>
                         <label
                           htmlFor="projectSize"
-                          className="mb-2 block text-sm font-medium text-gray-700"
+                          className="text-muted-foreground mb-2 block text-sm font-medium"
                         >
                           Project Size
                         </label>
@@ -258,7 +258,7 @@ export default function ContactSection() {
                           name="projectSize"
                           value={formData.projectSize}
                           onChange={handleChange}
-                          className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
                         >
                           <option value="">Select size</option>
                           <option value="small">Small (1-2 items)</option>
@@ -272,7 +272,7 @@ export default function ContactSection() {
                     <div>
                       <label
                         htmlFor="message"
-                        className="mb-2 block text-sm font-medium text-gray-700"
+                        className="text-muted-foreground mb-2 block text-sm font-medium"
                       >
                         Project Details
                       </label>
@@ -298,7 +298,7 @@ export default function ContactSection() {
                       {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
                     </Button>
 
-                    <p className="text-center text-sm text-gray-600">
+                    <p className="text-muted-foreground text-center text-sm">
                       By submitting this form, you agree to receive text messages and calls from
                       Uncle Sam Junk Removal.
                     </p>
@@ -313,44 +313,50 @@ export default function ContactSection() {
             <div>
               <Card className="glass">
                 <CardContent className="p-6 sm:p-8">
-                  <h3 className="mb-6 text-2xl font-bold text-gray-900">
+                  <h3 className="text-foreground mb-6 text-2xl font-bold">
                     Contact Uncle Sam Junk Removal
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <Phone className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Phone</h4>
-                        <p className="text-base font-semibold text-gray-600 sm:text-lg">
+                        <h4 className="text-foreground font-semibold">Phone</h4>
+                        <p className="text-muted-foreground text-base font-semibold sm:text-lg">
                           {settings.phone}
                         </p>
-                        <p className="text-sm text-gray-600">Call or text for fastest response</p>
+                        <p className="text-muted-foreground text-sm">
+                          Call or text for fastest response
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Mail className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Email</h4>
-                        <p className="text-gray-600">info@unclesamjunkremoval.com</p>
-                        <p className="text-gray-600">quotes@unclesamjunkremoval.com</p>
+                        <h4 className="text-foreground font-semibold">Email</h4>
+                        <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
+                        <p className="text-muted-foreground">quotes@unclesamjunkremoval.com</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <MapPin className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Service Area</h4>
-                        <p className="text-gray-600">Evansville, IN & Southern Indiana</p>
-                        <p className="text-gray-600">Vanderburgh, Warrick, Posey Counties</p>
-                        <p className="text-sm text-gray-600">Also serving Henderson, KY area</p>
+                        <h4 className="text-foreground font-semibold">Service Area</h4>
+                        <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
+                        <p className="text-muted-foreground">
+                          Vanderburgh, Warrick, Posey Counties
+                        </p>
+                        <p className="text-muted-foreground text-sm">
+                          Also serving Henderson, KY area
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Clock className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
                       <div>
-                        <h4 className="font-semibold text-gray-900">Hours</h4>
-                        <p className="text-gray-600">Monday - Sunday</p>
-                        <p className="text-gray-600">8:00 AM - 8:00 PM</p>
-                        <p className="text-sm text-gray-600">Emergency service available</p>
+                        <h4 className="text-foreground font-semibold">Hours</h4>
+                        <p className="text-muted-foreground">Monday - Sunday</p>
+                        <p className="text-muted-foreground">8:00 AM - 8:00 PM</p>
+                        <p className="text-muted-foreground text-sm">Emergency service available</p>
                       </div>
                     </div>
                   </div>

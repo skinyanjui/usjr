@@ -27,24 +27,24 @@ export function AboutSection() {
   ]
 
   return (
-    <section id="about" className="bg-white py-20">
+    <section id="about" className="bg-card py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+            <h2 className="text-foreground mb-6 text-3xl font-bold sm:text-4xl md:text-5xl">
               About Uncle Sam Junk Removal
             </h2>
-            <p className="mb-6 text-lg leading-relaxed text-gray-600 sm:text-xl">
+            <p className="text-muted-foreground mb-6 text-lg leading-relaxed sm:text-xl">
               Veteran-owned and locally operated in <strong>Evansville, IN</strong>, we handle junk
               removal, light demolition, and full cleanouts with same-day availability and honest,
               upfront pricing.
             </p>
-            <p className="mb-6 text-base leading-relaxed text-gray-600 sm:text-lg">
+            <p className="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
               Founded in 2025 by <strong>Samuel Kinyanjui</strong> (United States Marine Corps), our
               team brings dependable service to Evansville, Newburgh, Henderson, Owensboro,
               Boonville, and Princeton.
             </p>
-            <p className="mb-8 text-base leading-relaxed text-gray-600 sm:text-lg">
+            <p className="text-muted-foreground mb-8 text-base leading-relaxed sm:text-lg">
               Professional cleaning is provided by{' '}
               <a href="https://www.karchercleaners.com/" target="_blank" rel="noopener noreferrer">
                 <strong>Karcher Cleaners</strong>
@@ -82,7 +82,7 @@ export function AboutSection() {
                 <p className="text-red-100">Founded in 2025 in Evansville</p>
               </div>
             </div>
-            <div className="mt-6 grid grid-cols-1 gap-4 text-gray-700 sm:grid-cols-2">
+            <div className="text-muted-foreground mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-red-600" /> Evansville, IN
               </div>
@@ -110,8 +110,8 @@ export function AboutSection() {
           {stats.map((stat, index) => (
             <div key={index} className="glass rounded-2xl p-6 text-center">
               <div className="mb-4 flex justify-center">{stat.icon}</div>
-              <div className="mb-2 text-3xl font-bold text-gray-900">{stat.number}</div>
-              <div className="font-medium text-gray-600">{stat.label}</div>
+              <div className="text-foreground mb-2 text-3xl font-bold">{stat.number}</div>
+              <div className="text-muted-foreground font-medium">{stat.label}</div>
             </div>
           ))}
         </div>

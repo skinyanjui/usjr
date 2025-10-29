@@ -181,7 +181,7 @@ export default function HotTubRemovalPage() {
       </ol>
 
       <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Hot tub removal is typically completed in 2-4 hours when
           properly prepared. Taking time to drain completely and ensure safe electrical
           disconnection prevents delays and ensures the fastest, safest removal possible.

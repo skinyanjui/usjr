@@ -70,7 +70,7 @@ export default function LightDemolitionPage() {
 
   return (
     <ServicePageTemplate
-      theme="red"
+      theme="primary"
       title="Light Demolition Services in Evansville"
       description="Professional light demolition services including interior demo, deck removal, fence removal, and selective demolition throughout Southern Indiana. Safety-first approach with complete debris removal and site cleanup."
       badges={[
@@ -181,13 +181,13 @@ export default function LightDemolitionPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="red"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -195,13 +195,13 @@ export default function LightDemolitionPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="red"
+            theme="primary"
           />
         </div>
       </div>

@@ -91,9 +91,9 @@ export function BreadcrumbsAuto() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="sticky top-0 z-40 border-b border-gray-200 bg-gray-50">
+    <nav aria-label="Breadcrumb" className="sticky top-0 z-40 border-b border-border bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 py-2 text-sm">
-        <ol className="flex items-center gap-2 text-gray-600">
+        <ol className="flex items-center gap-2 text-muted-foreground">
           <li>
             <Link href="/" className="hover:text-red-700 hover:underline">
               Home
@@ -103,7 +103,7 @@ export function BreadcrumbsAuto() {
             <li key={crumb.href} className="flex items-center gap-2">
               <span aria-hidden="true">/</span>
               {index === crumbs.length - 1 ? (
-                <span aria-current="page" className="font-medium text-gray-900">
+                <span aria-current="page" className="font-medium text-foreground">
                   {crumb.name}
                 </span>
               ) : (

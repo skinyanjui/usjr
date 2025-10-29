@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function HotTubRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Hot Tub Removal in Evansville"
       description="Professional hot tub removal, spa removal, and jacuzzi disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we handle it all with specialized equipment." // Changed from subtitle to description
       badges={['Same-Day Service', 'Safe Disconnection', 'Eco-Friendly']} // Added badges array

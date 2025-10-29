@@ -236,7 +236,7 @@ export default function ApplianceDisposalGuidePage() {
       </ul>
 
       <div className="my-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+        <p className="text-foreground text-lg font-medium">
           <strong>Bottom Line:</strong> Professional appliance removal in Evansville costs $89-149
           per appliance and ensures proper environmental handling, legal compliance, and convenient
           service. With same-day availability and guaranteed proper disposal, it's the smart choice

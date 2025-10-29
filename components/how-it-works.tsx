@@ -26,11 +26,11 @@ export function HowItWorks() {
   ]
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-muted/30 py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-10 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-4xl">How It Works</h2>
-          <p className="mt-3 text-base text-gray-600 sm:text-lg">
+          <h2 className="text-2xl font-bold text-foreground sm:text-4xl">How It Works</h2>
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
             Fast, accurate pricing without the hassle
           </p>
         </div>
@@ -38,8 +38,8 @@ export function HowItWorks() {
           {steps.map((step, idx) => (
             <GlassCard key={idx} variant="white" className="p-6 text-center">
               <step.icon className="mx-auto mb-4 h-10 w-10 text-red-600" />
-              <h3 className="mb-1 text-lg font-semibold text-gray-900">{step.title}</h3>
-              <p className="text-sm text-gray-600">{step.description}</p>
+              <h3 className="mb-1 text-lg font-semibold text-foreground">{step.title}</h3>
+              <p className="text-sm text-muted-foreground">{step.description}</p>
             </GlassCard>
           ))}
         </div>

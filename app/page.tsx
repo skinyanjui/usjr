@@ -25,8 +25,10 @@ export default function HomePage() {
       {/* Simple review stats */}
       <div className="px-4 py-6 text-center">
         <div className="mx-auto max-w-4xl">
-          <p className="text-lg text-gray-700">
-            <span className="text-2xl font-bold text-blue-800">{averageRating.toFixed(1)}/5</span>{' '}
+          <p className="text-muted-foreground text-lg">
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              {averageRating.toFixed(1)}/5
+            </span>{' '}
             from {reviewCount} verified reviews
           </p>
         </div>
@@ -37,15 +39,15 @@ export default function HomePage() {
       <ReviewsRow />
 
       {/* Simple CTA Section */}
-      <section className="bg-gray-50 px-4 py-16">
+      <section className="bg-muted px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">Ready to Get Started?</h2>
-          <p className="mb-8 text-lg text-gray-700">
+          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready to Get Started?</h2>
+          <p className="text-muted-foreground mb-8 text-lg">
             Get your free quote today. Same-day service available throughout the Tri-State area.
           </p>
           <Link
             href="/quote"
-            className="inline-flex items-center rounded-lg bg-blue-800 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-900 min-h-[48px]"
+            className="inline-flex min-h-[48px] items-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-700"
           >
             Get Free Quote
           </Link>

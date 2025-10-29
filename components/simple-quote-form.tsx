@@ -69,13 +69,20 @@ export function SimpleQuoteForm() {
 
   const validateForm = (): boolean => {
     const errors: FieldErrors = {}
-    errors.fullName = validateField('fullName', formData.fullName)
-    errors.phoneNumber = validateField('phoneNumber', formData.phoneNumber)
-    errors.emailAddress = validateField('emailAddress', formData.emailAddress)
-    errors.serviceNeeded = validateField('serviceNeeded', formData.serviceNeeded)
+    const fullNameError = validateField('fullName', formData.fullName)
+    if (fullNameError) errors.fullName = fullNameError
+
+    const phoneError = validateField('phoneNumber', formData.phoneNumber)
+    if (phoneError) errors.phoneNumber = phoneError
+
+    const emailError = validateField('emailAddress', formData.emailAddress)
+    if (emailError) errors.emailAddress = emailError
+
+    const serviceError = validateField('serviceNeeded', formData.serviceNeeded)
+    if (serviceError) errors.serviceNeeded = serviceError
 
     setFieldErrors(errors)
-    return !Object.values(errors).some(error => error !== undefined)
+    return Object.keys(errors).length === 0
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -214,7 +221,9 @@ export function SimpleQuoteForm() {
                 required
                 className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                 aria-invalid={touched.fullName && !!fieldErrors.fullName}
-                aria-describedby={touched.fullName && fieldErrors.fullName ? 'fullName-error' : undefined}
+                aria-describedby={
+                  touched.fullName && fieldErrors.fullName ? 'fullName-error' : undefined
+                }
               />
               {touched.fullName && fieldErrors.fullName && (
                 <p id="fullName-error" className="mt-1 text-sm text-red-600">
@@ -235,7 +244,9 @@ export function SimpleQuoteForm() {
                 required
                 className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                 aria-invalid={touched.phoneNumber && !!fieldErrors.phoneNumber}
-                aria-describedby={touched.phoneNumber && fieldErrors.phoneNumber ? 'phoneNumber-error' : undefined}
+                aria-describedby={
+                  touched.phoneNumber && fieldErrors.phoneNumber ? 'phoneNumber-error' : undefined
+                }
               />
               {touched.phoneNumber && fieldErrors.phoneNumber && (
                 <p id="phoneNumber-error" className="mt-1 text-sm text-red-600">
@@ -258,7 +269,9 @@ export function SimpleQuoteForm() {
               required
               className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
               aria-invalid={touched.emailAddress && !!fieldErrors.emailAddress}
-              aria-describedby={touched.emailAddress && fieldErrors.emailAddress ? 'emailAddress-error' : undefined}
+              aria-describedby={
+                touched.emailAddress && fieldErrors.emailAddress ? 'emailAddress-error' : undefined
+              }
             />
             {touched.emailAddress && fieldErrors.emailAddress && (
               <p id="emailAddress-error" className="mt-1 text-sm text-red-600">
@@ -298,7 +311,11 @@ export function SimpleQuoteForm() {
                   className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-red-500 focus:ring-red-500' : ''}`}
                   aria-label="Service Needed"
                   aria-invalid={touched.serviceNeeded && !!fieldErrors.serviceNeeded}
-                  aria-describedby={touched.serviceNeeded && fieldErrors.serviceNeeded ? 'serviceNeeded-error' : undefined}
+                  aria-describedby={
+                    touched.serviceNeeded && fieldErrors.serviceNeeded
+                      ? 'serviceNeeded-error'
+                      : undefined
+                  }
                   fit
                 >
                   <SelectValue placeholder="Select a service" />

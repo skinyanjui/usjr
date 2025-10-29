@@ -1,21 +1,16 @@
 export interface PageHeroProps {
   title: string
   description?: string
-  color?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal' | 'slate'
+  color?: 'primary' | 'neutral'
 }
 
-export function PageHero({ title, description, color = 'blue' }: PageHeroProps) {
+export function PageHero({ title, description, color = 'primary' }: PageHeroProps) {
   const colorMap = {
-    red: 'bg-red-700',
-    blue: 'bg-blue-700',
-    green: 'bg-green-700',
-    orange: 'bg-orange-600',
-    purple: 'bg-purple-700',
-    teal: 'bg-teal-700',
-    slate: 'bg-slate-800',
+    primary: 'bg-primary',
+    neutral: 'bg-foreground',
   } as const
 
-  const backgroundClass = colorMap[color] ?? colorMap.blue
+  const backgroundClass = colorMap[color]
 
   return (
     <section
@@ -25,7 +20,7 @@ export function PageHero({ title, description, color = 'blue' }: PageHeroProps) 
         <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
           <h1 className="mb-2 text-2xl font-bold text-white sm:text-3xl md:text-4xl">{title}</h1>
           {description && (
-            <p className="max-w-3xl text-sm text-white sm:text-base md:text-lg">{description}</p>
+            <p className="max-w-3xl text-sm text-white/90 sm:text-base md:text-lg">{description}</p>
           )}
         </div>
       </div>

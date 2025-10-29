@@ -65,7 +65,7 @@ export default function ShedRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="green"
+      theme="primary"
       title="Shed Removal Services in Evansville"
       description="Professional shed and outbuilding removal, demolition, and cleanup throughout Southern Indiana. Whether you need to remove a small storage shed, large barn, or any outbuilding, we provide complete demolition service with debris removal and site cleanup."
       badges={[
@@ -160,13 +160,13 @@ export default function ShedRemovalPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-muted/30 py-12">
         <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="green"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -174,13 +174,13 @@ export default function ShedRemovalPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
+      <div className="bg-card py-12">
         <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="green"
+            theme="primary"
           />
         </div>
       </div>

@@ -60,15 +60,15 @@ export function ServiceArea() {
   }, [result])
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-muted/30 py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <h2 className="mb-2 text-2xl font-bold text-gray-900 sm:text-4xl">Service Area</h2>
-            <p className="mb-6 text-base text-gray-600 sm:text-lg">
+            <h2 className="text-foreground mb-2 text-2xl font-bold sm:text-4xl">Service Area</h2>
+            <p className="text-muted-foreground mb-6 text-base sm:text-lg">
               We serve Evansville and Southern Indiana within ~50 miles.
             </p>
-            <ul className="mb-6 grid grid-cols-2 gap-2 text-sm text-gray-700">
+            <ul className="text-muted-foreground mb-6 grid grid-cols-2 gap-2 text-sm">
               <li>• Evansville, IN</li>
               <li>• Newburgh, IN</li>
               <li>• Henderson, KY</li>
@@ -85,7 +85,7 @@ export function ServiceArea() {
                 onChange={e => setZip(e.target.value.replace(/[^0-9]/g, '').slice(0, 5))}
                 placeholder="Enter ZIP"
                 aria-label="ZIP code"
-                className="w-32 rounded-md border border-gray-300 px-3 py-2"
+                className="border-border w-32 rounded-md border px-3 py-2"
               />
               <button
                 type="button"
@@ -95,14 +95,14 @@ export function ServiceArea() {
                 Check
               </button>
             </div>
-            <p className="mt-2 text-sm text-gray-700">{message}</p>
-            <p className="mt-1 text-xs text-gray-600">
+            <p className="text-muted-foreground mt-2 text-sm">{message}</p>
+            <p className="text-muted-foreground mt-1 text-xs">
               Some services may be location-limited (e.g., large demolition projects).
             </p>
           </div>
 
           <GlassCard variant="white" className="overflow-hidden p-0">
-            <div className="bg-white">
+            <div className="bg-card">
               <div className="flex items-center gap-2 border-b px-4 py-3">
                 <MapPin className="h-4 w-4 text-red-600" />
                 <span className="text-sm font-semibold">Coverage Map (OpenStreetMap)</span>
@@ -112,7 +112,7 @@ export function ServiceArea() {
                   {/** Client-only Leaflet map for interactivity */}
                   <ClientLeafletMap />
                 </div>
-                <div className="px-4 py-2 text-xs text-gray-600">
+                <div className="text-muted-foreground px-4 py-2 text-xs">
                   <a
                     className="underline"
                     href="https://www.openstreetmap.org/?mlat=37.9716&mlon=-87.5711#map=11/37.9716/-87.5711"

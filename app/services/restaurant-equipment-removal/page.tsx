@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function RestaurantEquipmentRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="orange"
+      theme="primary"
       title="Restaurant Equipment Removal in Evansville"
       description="Professional removal of commercial kitchen equipment including ovens, refrigerators, sinks, and complete restaurant cleanouts"
       badges={['Commercial Equipment', 'Disconnect Coordination', 'Scrap Metal Recovery']}

@@ -109,21 +109,21 @@ export function ReviewsRow() {
           {SOURCES.map(item => (
             <div
               key={item.source}
-              className="glass flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border border-gray-200 px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
+              className="glass flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border border-border px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-500'}`}
+                    className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
                   />
                 ))}
               </div>
               <div className="text-[12px] sm:text-[13px] md:text-sm">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
                 <span className="font-semibold">{item.source}</span>
-                <span className="text-gray-600"> ({item.count}+)</span>
+                <span className="text-muted-foreground"> ({item.count}+)</span>
               </div>
             </div>
           ))}
@@ -141,18 +141,18 @@ export function ReviewsRow() {
             {reviews.map(t => (
               <div
                 key={t.id}
-                className="w-64 shrink-0 snap-start rounded-lg border border-gray-300 bg-white/90 p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
+                className="w-64 shrink-0 snap-start rounded-lg border border-border bg-card/90 p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
               >
                 <div className="mb-1 flex items-center gap-1 sm:mb-2 sm:gap-1.5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-500'}`}
+                      className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
                     />
                   ))}
                 </div>
-                <p className="text-[12px] text-gray-700 sm:text-[13px] md:text-sm">"{t.text}"</p>
-                <div className="mt-2 text-[12px] text-gray-600 sm:text-[12.5px] md:text-[13px]">
+                <p className="text-[12px] text-muted-foreground sm:text-[13px] md:text-sm">"{t.text}"</p>
+                <div className="mt-2 text-[12px] text-muted-foreground sm:text-[12.5px] md:text-[13px]">
                   — {t.name} • {t.location}
                 </div>
               </div>
@@ -164,7 +164,7 @@ export function ReviewsRow() {
             type="button"
             aria-label="Previous review"
             onClick={goToPrev}
-            className="absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white/90 text-gray-700 shadow-sm hover:bg-white md:flex"
+            className="absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-muted-foreground shadow-sm hover:bg-card md:flex"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -172,7 +172,7 @@ export function ReviewsRow() {
             type="button"
             aria-label="Next review"
             onClick={goToNext}
-            className="absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white/90 text-gray-700 shadow-sm hover:bg-white md:flex"
+            className="absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-muted-foreground shadow-sm hover:bg-card md:flex"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

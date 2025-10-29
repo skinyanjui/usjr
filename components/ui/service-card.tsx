@@ -8,7 +8,7 @@ interface ServiceCardProps {
   description: string
   price: string
   icon: LucideIcon
-  color: 'red' | 'orange' | 'green' | 'blue' | 'purple' | 'teal'
+  color?: 'primary' | 'neutral'
   link: string
   category: string
   size?: 'small' | 'medium' | 'large'
@@ -19,75 +19,35 @@ export function ServiceCard({
   description,
   price,
   icon: Icon,
-  color,
+  color = 'primary',
   link,
   category,
   size = 'medium',
 }: ServiceCardProps) {
   const getColorClasses = (color: ServiceCardProps['color']) => {
     const colorMap = {
-      red: {
-        border: 'border-red-200',
-        bg: 'bg-red-50',
-        banner: 'bg-red-200',
-        bannerText: 'text-red-900',
-        text: 'text-red-600',
-        textStrong: 'text-red-700',
-        button: 'bg-red-700 hover:bg-red-800',
-        icon: 'text-red-600',
+      primary: {
+        border: 'border-border',
+        bg: 'bg-muted/30',
+        banner: 'bg-primary',
+        bannerText: 'text-primary-foreground',
+        text: 'text-primary',
+        textStrong: 'text-primary',
+        button: 'bg-primary hover:bg-primary/90',
+        icon: 'text-primary',
       },
-      orange: {
-        border: 'border-orange-200',
-        bg: 'bg-orange-50',
-        banner: 'bg-orange-200',
-        bannerText: 'text-orange-900',
-        text: 'text-orange-700',
-        textStrong: 'text-orange-800',
-        button: 'bg-orange-700 hover:bg-orange-800',
-        icon: 'text-orange-700',
-      },
-      green: {
-        border: 'border-green-200',
-        bg: 'bg-green-50',
-        banner: 'bg-green-200',
-        bannerText: 'text-green-900',
-        text: 'text-green-600',
-        textStrong: 'text-green-700',
-        button: 'bg-green-700 hover:bg-green-800',
-        icon: 'text-green-600',
-      },
-      blue: {
-        border: 'border-blue-200',
-        bg: 'bg-blue-50',
-        banner: 'bg-blue-200',
-        bannerText: 'text-blue-900',
-        text: 'text-blue-600',
-        textStrong: 'text-blue-700',
-        button: 'bg-blue-700 hover:bg-blue-800',
-        icon: 'text-blue-600',
-      },
-      purple: {
-        border: 'border-purple-200',
-        bg: 'bg-purple-50',
-        banner: 'bg-purple-200',
-        bannerText: 'text-purple-900',
-        text: 'text-purple-600',
-        textStrong: 'text-purple-700',
-        button: 'bg-purple-700 hover:bg-purple-800',
-        icon: 'text-purple-600',
-      },
-      teal: {
-        border: 'border-teal-200',
-        bg: 'bg-teal-50',
-        banner: 'bg-teal-200',
-        bannerText: 'text-teal-900',
-        text: 'text-teal-600',
-        textStrong: 'text-teal-700',
-        button: 'bg-teal-700 hover:bg-teal-800',
-        icon: 'text-teal-600',
+      neutral: {
+        border: 'border-border',
+        bg: 'bg-muted/30',
+        banner: 'bg-foreground',
+        bannerText: 'text-background',
+        text: 'text-foreground',
+        textStrong: 'text-foreground',
+        button: 'bg-foreground hover:bg-foreground/90',
+        icon: 'text-foreground',
       },
     } as const
-    return colorMap[color]
+    return colorMap[color || 'primary']
   }
 
   const getSizeClasses = (size: string) => {

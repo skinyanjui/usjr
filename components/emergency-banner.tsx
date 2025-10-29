@@ -78,7 +78,7 @@ export function EmergencyBanner() {
         <div className="flex flex-shrink-0 items-center gap-2">
           <Link
             href="/emergency"
-            className="rounded-md bg-white px-2.5 py-1 text-xs font-bold whitespace-nowrap text-orange-800 transition-colors hover:bg-gray-100"
+            className="bg-card rounded-md px-2.5 py-1 text-xs font-bold whitespace-nowrap text-orange-800 transition-colors hover:bg-gray-100"
           >
             Get Help →
           </Link>

@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 
 export default function ComparePage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-muted/30 min-h-screen">
       <PageHero
         title="Compare Services"
         description="Junk removal vs light demolition vs cleaning"
-        color="slate"
+        color="neutral"
       />
       <div className="mx-auto max-w-7xl px-4 pt-8 pb-16">
         <CompareClient />
