@@ -12,7 +12,6 @@ import {
   Leaf,
   Recycle,
   Phone,
-  CheckCircle,
   Sparkles,
 } from 'lucide-react'
 import { settings } from '@/lib/cms-content'

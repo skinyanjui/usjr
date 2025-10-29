@@ -22,7 +22,7 @@ export function HeroSection() {
       {/* Background Image - Full junk removal truck */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2070&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop"
           alt="Professional junk removal truck loaded with items"
           fill
           priority

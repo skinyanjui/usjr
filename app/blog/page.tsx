@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import type { Metadata } from 'next'
@@ -68,6 +69,16 @@ export default function BlogPage() {
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
               {/* Left: Featured Image */}
               <div className="bg-muted relative aspect-[4/3] overflow-hidden rounded-2xl">
+                {featuredPost.image && (
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                )}
                 <div className="from-primary/20 to-accent/20 absolute inset-0 bg-gradient-to-br" />
                 <div className="absolute inset-0 flex items-center justify-center p-8">
                   <div className="text-center">
