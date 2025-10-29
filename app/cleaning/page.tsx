@@ -194,7 +194,7 @@ export default function CleaningHub() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-gray-300 bg-transparent text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+                      className="border-border bg-transparent text-foreground hover:bg-accent"
                     >
                       <Link href="/quote" prefetch>
                         Quote
@@ -212,8 +212,8 @@ export default function CleaningHub() {
       <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl text-center">
           <div className="bg-card rounded-2xl p-8 shadow-lg">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
-              <Shield className="h-8 w-8 text-gray-900" />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+              <Shield className="h-8 w-8 text-primary-foreground" />
             </div>
             <h2 className="text-foreground mb-4 text-2xl font-bold">48-Hour Re-Clean Guarantee</h2>
             <p className="text-muted-foreground mb-6">
@@ -241,7 +241,7 @@ export default function CleaningHub() {
             <Button
               asChild
               size="lg"
-              className="bg-gray-900 px-8 py-3 text-white hover:bg-gray-900"
+              className="bg-foreground px-8 py-3 text-background hover:brightness-110"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -251,7 +251,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-gray-300 bg-transparent px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+              className="border-border bg-transparent px-8 py-3 text-foreground hover:bg-accent"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -261,7 +261,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="ghost"
-              className="px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+              className="px-8 py-3 text-foreground hover:bg-accent"
             >
               <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </Button>

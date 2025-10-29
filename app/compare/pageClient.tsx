@@ -72,11 +72,9 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-border bg-gray-900 dark:bg-gray-900/30 text-gray-900 dark:text-gray-900',
-    orange:
-      'border-gray-300 dark:border-gray-300 bg-gray-800 dark:bg-gray-800/30 text-gray-900 dark:text-gray-900',
-    green:
-      'border-gray-300 dark:border-gray-300 bg-gray-800 dark:bg-gray-800/30 text-gray-900 dark:text-gray-900',
+    red: 'border-border bg-muted text-foreground',
+    orange: 'border-border bg-muted text-foreground',
+    green: 'border-border bg-muted text-foreground',
   }
   return colors[color]
 }
