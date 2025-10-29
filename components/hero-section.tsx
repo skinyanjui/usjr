@@ -19,11 +19,11 @@ const LOCATIONS = [
 export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[70vh] overflow-hidden">
-      {/* Background Image - Full width junk removal scene */}
+      {/* Background Image - Full width junk removal truck */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2940&auto=format&fit=crop"
-          alt="Professional junk removal and hauling service"
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop"
+          alt="Professional junk removal truck and hauling service"
           fill
           priority
           className="object-cover"

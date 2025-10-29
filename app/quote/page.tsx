@@ -4,6 +4,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { QuoteServiceCard } from '@/components/ui/quote-service-card'
 import {
   Leaf,
@@ -16,6 +17,7 @@ import {
   Phone,
   Camera,
   BadgeDollarSign,
+  CheckCircle,
 } from 'lucide-react'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
