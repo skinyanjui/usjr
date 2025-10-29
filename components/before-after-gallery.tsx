@@ -102,7 +102,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   variant={showBefore ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setShowBefore(true)}
-                  className={showBefore ? 'bg-red-600 hover:bg-red-700' : ''}
+                  className={showBefore ? 'bg-blue-800 hover:bg-blue-900' : ''}
                 >
                   Before
                 </Button>

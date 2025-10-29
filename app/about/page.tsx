@@ -110,11 +110,11 @@ export default function AboutPage() {
             </div>
             <div className="glass rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="rounded-lg bg-muted/30 p-4">
-                  <div className="text-2xl font-bold text-red-600">2025</div>
+                <div className="bg-muted/30 rounded-lg p-4">
+                  <div className="text-2xl font-bold text-blue-800">2025</div>
                   <div className="text-muted-foreground">Founded</div>
                 </div>
-                <div className="rounded-lg bg-muted/30 p-4">
+                <div className="bg-muted/30 rounded-lg p-4">
                   <div className="text-2xl font-bold text-green-600">500+</div>
                   <div className="text-muted-foreground">Satisfied Clients</div>
                 </div>
@@ -140,7 +140,7 @@ export default function AboutPage() {
               <ul className="text-muted-foreground grid gap-3 sm:grid-cols-2">
                 {settings.serviceAreas.map(area => (
                   <li key={area} className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-red-600" />
+                    <MapPin className="h-4 w-4 text-blue-800" />
                     <span>{area}</span>
                   </li>
                 ))}
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   <span>Light demolition, shed, and deck tear-downs</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Shield className="mt-0.5 h-5 w-5 text-red-600" />
+                  <Shield className="mt-0.5 h-5 w-5 text-blue-800" />
                   <span>Estate, garage, attic, and hoarding cleanouts</span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -191,7 +191,7 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             <div className="glass rounded-2xl p-8 text-center">
-              <Shield className="mx-auto mb-4 h-12 w-12 text-red-600" />
+              <Shield className="mx-auto mb-4 h-12 w-12 text-blue-800" />
               <h3 className="mb-4 text-xl font-bold">Reliability</h3>
               <p className="text-muted-foreground">
                 We show up on time, every time. Our customers count on us, and we never let them
@@ -232,7 +232,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
-                <Shield className="h-8 w-8 text-red-600" />
+                <Shield className="h-8 w-8 text-blue-800" />
               </div>
               <h3 className="mb-2 font-bold">Licensed & Insured</h3>
               <p className="text-muted-foreground text-sm">
@@ -286,7 +286,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-3">
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Samuel Kinyanjui</h3>
-              <p className="mb-3 font-medium text-red-600">Founder & Owner</p>
+              <p className="mb-3 font-medium text-blue-800">Founder & Owner</p>
               <p className="text-muted-foreground text-sm">
                 United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel
                 leads with integrity and a commitment to reliable, professional service.
@@ -325,12 +325,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-red-700 py-16 text-white">
+      <section className="bg-blue-900 py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Ready to Experience the Uncle Sam Difference?
           </h2>
-          <p className="mb-8 text-xl text-red-100">
+          <p className="mb-8 text-xl text-blue-100">
             Join thousands of satisfied customers who trust Uncle Sam Junk Removal for their junk
             removal and cleaning needs.
           </p>
@@ -340,7 +340,7 @@ export default function AboutPage() {
             </PhoneButton>
             <Button
               asChild
-              className="bg-card justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-muted/30"
+              className="bg-card hover:bg-muted/30 justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-blue-900 shadow transition-colors"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote

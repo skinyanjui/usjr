@@ -90,7 +90,7 @@ export function ServiceArea() {
               <button
                 type="button"
                 onClick={handleCheck}
-                className="rounded-md bg-red-600 px-4 py-2 font-semibold text-white"
+                className="rounded-md bg-blue-800 px-4 py-2 font-semibold text-white"
               >
                 Check
               </button>
@@ -104,7 +104,7 @@ export function ServiceArea() {
           <GlassCard variant="white" className="overflow-hidden p-0">
             <div className="bg-card">
               <div className="flex items-center gap-2 border-b px-4 py-3">
-                <MapPin className="h-4 w-4 text-red-600" />
+                <MapPin className="h-4 w-4 text-blue-800" />
                 <span className="text-sm font-semibold">Coverage Map (OpenStreetMap)</span>
               </div>
               <div className="p-0">

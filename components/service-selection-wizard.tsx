@@ -17,10 +17,10 @@ export function ServiceSelectionWizard() {
     <section className="bg-card py-16">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-bold text-foreground sm:text-4xl">
+          <h2 className="text-foreground text-2xl font-bold sm:text-4xl">
             What do you need removed?
           </h2>
-          <p className="mt-2 text-base text-muted-foreground sm:text-lg">
+          <p className="text-muted-foreground mt-2 text-base sm:text-lg">
             Pick a service to jump straight to the right info or quote form
           </p>
         </div>
@@ -32,8 +32,8 @@ export function ServiceSelectionWizard() {
               className="p-5 text-center transition-shadow hover:shadow-md"
             >
               <Link href={opt.href} className="flex flex-col items-center gap-2">
-                <opt.icon className="h-8 w-8 text-red-600" />
-                <span className="text-sm font-semibold text-foreground">{opt.label}</span>
+                <opt.icon className="h-8 w-8 text-blue-800" />
+                <span className="text-foreground text-sm font-semibold">{opt.label}</span>
               </Link>
             </GlassCard>
           ))}

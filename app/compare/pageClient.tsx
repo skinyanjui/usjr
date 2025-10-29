@@ -72,9 +72,11 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-border bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400',
-    orange: 'border-orange-600 dark:border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400',
-    green: 'border-green-600 dark:border-green-500 bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400',
+    red: 'border-border bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-red-400',
+    orange:
+      'border-orange-600 dark:border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400',
+    green:
+      'border-green-600 dark:border-green-500 bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400',
   }
   return colors[color]
 }
@@ -91,10 +93,10 @@ export default function CompareClient() {
   return (
     <>
       <div className="mb-12 text-center">
-        <h1 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+        <h1 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
           Compare Our Services
         </h1>
-        <p className="mx-auto max-w-3xl text-lg text-muted-foreground sm:text-xl">
+        <p className="text-muted-foreground mx-auto max-w-3xl text-lg sm:text-xl">
           Not sure which service is right for you? Compare features, pricing, and benefits to make
           the best choice for your project.
         </p>
@@ -136,7 +138,7 @@ export default function CompareClient() {
 
               <CardContent className="space-y-6">
                 <div>
-                  <h4 className="mb-2 flex items-center gap-2 font-semibold text-foreground">
+                  <h4 className="text-foreground mb-2 flex items-center gap-2 font-semibold">
                     <Users className="h-4 w-4" />
                     Best For:
                   </h4>
@@ -144,7 +146,7 @@ export default function CompareClient() {
                 </div>
 
                 <div>
-                  <h4 className="mb-3 font-semibold text-foreground">What's Included:</h4>
+                  <h4 className="text-foreground mb-3 font-semibold">What's Included:</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
@@ -156,10 +158,13 @@ export default function CompareClient() {
                 </div>
 
                 <div>
-                  <h4 className="mb-3 font-semibold text-foreground">Not Included:</h4>
+                  <h4 className="text-foreground mb-3 font-semibold">Not Included:</h4>
                   <ul className="space-y-2">
                     {service.notIncluded.map((item, index) => (
-                      <li key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <li
+                        key={index}
+                        className="text-muted-foreground flex items-center gap-2 text-sm"
+                      >
                         <X className="h-4 w-4 flex-shrink-0 text-red-500" />
                         <span>{item}</span>
                       </li>
@@ -180,7 +185,7 @@ export default function CompareClient() {
                     variant="outline"
                     className={`w-full bg-transparent ${
                       service.color === 'red'
-                        ? 'border-red-700 text-red-700'
+                        ? 'border-red-700 text-blue-900'
                         : service.color === 'orange'
                           ? 'border-orange-700 text-orange-700'
                           : service.color === 'green'
@@ -206,14 +211,14 @@ export default function CompareClient() {
       {selectedServices.length > 0 && (
         <Card className="border-border bg-muted/30">
           <CardContent className="p-8 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-foreground">Ready to Get Started?</h3>
-            <p className="mb-6 text-muted-foreground">
+            <h3 className="text-foreground mb-4 text-2xl font-bold">Ready to Get Started?</h3>
+            <p className="text-muted-foreground mb-6">
               You've selected {selectedServices.length} service
               {selectedServices.length > 1 ? 's' : ''}. Get a free quote or bundle multiple services
               for potential savings.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Button asChild className="bg-red-600 hover:bg-red-700">
+              <Button asChild className="bg-blue-800 hover:bg-blue-900">
                 <Link href="/quote" prefetch>
                   Get Free Quote
                 </Link>
@@ -228,10 +233,10 @@ export default function CompareClient() {
 
       <Card className="mt-12">
         <CardContent className="p-8 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-foreground">
+          <h3 className="text-foreground mb-4 text-2xl font-bold">
             Still Not Sure Which Service You Need?
           </h3>
-          <p className="mb-6 text-muted-foreground">
+          <p className="text-muted-foreground mb-6">
             Our team can help you choose the right service for your project. Get personalized
             recommendations based on your specific needs.
           </p>

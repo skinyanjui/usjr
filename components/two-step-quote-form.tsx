@@ -126,15 +126,17 @@ export function TwoStepQuoteForm() {
         <Card className="glass">
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-gray-800 sm:text-2xl">
-              <MapPin className="h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <MapPin className="h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
               Get Your Free Quote
             </CardTitle>
-            <p className="text-sm text-muted-foreground sm:text-base">Enter your ZIP code to get started</p>
+            <p className="text-muted-foreground text-sm sm:text-base">
+              Enter your ZIP code to get started
+            </p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleZipSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="zipcode" className="text-sm font-medium text-muted-foreground">
+                <Label htmlFor="zipcode" className="text-muted-foreground text-sm font-medium">
                   ZIP Code
                 </Label>
                 <Input
@@ -151,7 +153,7 @@ export function TwoStepQuoteForm() {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-red-600 py-3 font-semibold text-white hover:bg-red-700"
+                className="w-full bg-blue-800 py-3 font-semibold text-white hover:bg-blue-900"
               >
                 Check Service Area
               </Button>
@@ -162,10 +164,10 @@ export function TwoStepQuoteForm() {
         <Card className="glass">
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-gray-800 sm:text-2xl">
-              <Truck className="h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <Truck className="h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
               What needs to be removed?
             </CardTitle>
-            <p className="text-sm text-muted-foreground sm:text-base">
+            <p className="text-muted-foreground text-sm sm:text-base">
               Select items and load size for accurate pricing
             </p>
           </CardHeader>
@@ -173,7 +175,7 @@ export function TwoStepQuoteForm() {
             <form onSubmit={handleFinalSubmit} className="space-y-6">
               {/* Item Selection */}
               <div>
-                <Label className="mb-3 block text-sm font-medium text-muted-foreground">
+                <Label className="text-muted-foreground mb-3 block text-sm font-medium">
                   Select Items to Remove
                 </Label>
                 <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
@@ -186,7 +188,7 @@ export function TwoStepQuoteForm() {
                         onClick={() => handleItemToggle(item.id)}
                         className={`rounded-lg border-2 p-3 text-center transition-all ${
                           selectedItems.includes(item.id)
-                            ? 'border-red-600 bg-red-50 dark:bg-red-950/30 text-red-700'
+                            ? 'border-blue-800 bg-blue-50 text-blue-900 dark:bg-blue-950/30'
                             : 'border-border hover:border-red-300'
                         }`}
                       >
@@ -200,7 +202,7 @@ export function TwoStepQuoteForm() {
 
               {/* Load Size Selection */}
               <div>
-                <Label className="mb-3 block text-sm font-medium text-muted-foreground">
+                <Label className="text-muted-foreground mb-3 block text-sm font-medium">
                   Estimated Load Size
                 </Label>
                 <div className="space-y-2">
@@ -209,7 +211,7 @@ export function TwoStepQuoteForm() {
                       key={size.id}
                       className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${
                         loadSize === size.id
-                          ? 'border-red-600 bg-red-50 dark:bg-red-950/30'
+                          ? 'border-blue-800 bg-blue-50 dark:bg-blue-950/30'
                           : 'border-border hover:border-red-300'
                       }`}
                     >
@@ -224,21 +226,23 @@ export function TwoStepQuoteForm() {
                         />
                         <div>
                           <div className="font-medium text-gray-800">{size.label}</div>
-                          <div className="text-sm text-muted-foreground">{size.description}</div>
+                          <div className="text-muted-foreground text-sm">{size.description}</div>
                         </div>
                       </div>
-                      <div className="font-bold text-red-600">{size.price}</div>
+                      <div className="font-bold text-blue-800">{size.price}</div>
                     </label>
                   ))}
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="text-muted-foreground mt-2 text-xs">
                   *Includes labor, hauling, and dump fees. Final price determined on-site.
                 </p>
               </div>
 
               {/* Contact Information */}
               <div className="space-y-4">
-                <Label className="text-sm font-medium text-muted-foreground">Contact Information</Label>
+                <Label className="text-muted-foreground text-sm font-medium">
+                  Contact Information
+                </Label>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <Input
@@ -263,7 +267,7 @@ export function TwoStepQuoteForm() {
 
               {/* Photo Upload */}
               <div>
-                <Label className="mb-2 flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                <Label className="text-muted-foreground mb-2 flex items-center gap-2 text-sm font-medium">
                   <Camera className="h-4 w-4" />
                   Upload Photos (Optional)
                 </Label>
@@ -273,9 +277,9 @@ export function TwoStepQuoteForm() {
                   multiple
                   capture="environment"
                   onChange={e => setContactInfo(prev => ({ ...prev, photos: e.target.files }))}
-                  className="file:mr-4 file:rounded-full file:border-0 file:bg-red-50 dark:bg-red-950/30 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-red-700 hover:file:bg-red-100"
+                  className="file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-900 hover:file:bg-red-100 dark:bg-blue-950/30"
                 />
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="text-muted-foreground mt-1 text-xs">
                   Photos help us provide more accurate quotes
                 </p>
               </div>
@@ -291,7 +295,7 @@ export function TwoStepQuoteForm() {
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-red-600 py-2 font-semibold text-white hover:bg-red-700 sm:py-3"
+                  className="flex-1 bg-blue-800 py-2 font-semibold text-white hover:bg-blue-900 sm:py-3"
                   disabled={!loadSize || selectedItems.length === 0}
                 >
                   Get My Quote

@@ -385,7 +385,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-xs text-white"
                       aria-label={`Remove file ${file.name}`}
                     >
                       <X className="h-3 w-3" />

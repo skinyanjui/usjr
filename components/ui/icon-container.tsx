@@ -10,13 +10,13 @@ interface IconContainerProps {
 
 export function IconContainer({
   icon: Icon,
-  color = 'red',
+  color = 'blue',
   size = 'md',
   className,
 }: IconContainerProps) {
   const getColorClasses = (color: NonNullable<IconContainerProps['color']>) => {
     const colorMap = {
-      red: 'bg-red-600 text-white',
+      red: 'bg-blue-800 text-white',
       orange: 'bg-orange-600 text-white',
       green: 'bg-green-600 text-white',
       blue: 'bg-blue-600 text-white',

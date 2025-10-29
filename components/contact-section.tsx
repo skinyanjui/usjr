@@ -236,7 +236,7 @@ export default function ContactSection() {
                           required
                           value={formData.service}
                           onChange={handleChange}
-                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-blue-800 focus:outline-none"
                         >
                           <option value="">Select a service</option>
                           {getServiceOptions().map(option => (
@@ -258,7 +258,7 @@ export default function ContactSection() {
                           name="projectSize"
                           value={formData.projectSize}
                           onChange={handleChange}
-                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-red-500 focus:outline-none"
+                          className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-blue-800 focus:outline-none"
                         >
                           <option value="">Select size</option>
                           <option value="small">Small (1-2 items)</option>
@@ -288,12 +288,12 @@ export default function ContactSection() {
                     </div>
 
                     {errorMessage && (
-                      <p className="text-center text-sm text-red-600">{errorMessage}</p>
+                      <p className="text-center text-sm text-blue-800">{errorMessage}</p>
                     )}
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full rounded-full bg-red-600 py-3 text-base font-semibold text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
+                      className="w-full rounded-full bg-blue-800 py-3 text-base font-semibold text-white hover:bg-blue-900 disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
                     >
                       {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
                     </Button>
@@ -318,7 +318,7 @@ export default function ContactSection() {
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <Phone className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+                      <Phone className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
                       <div>
                         <h4 className="text-foreground font-semibold">Phone</h4>
                         <p className="text-muted-foreground text-base font-semibold sm:text-lg">
@@ -330,7 +330,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Mail className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+                      <Mail className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
                       <div>
                         <h4 className="text-foreground font-semibold">Email</h4>
                         <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
@@ -338,7 +338,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <MapPin className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+                      <MapPin className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
                       <div>
                         <h4 className="text-foreground font-semibold">Service Area</h4>
                         <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
@@ -351,7 +351,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Clock className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+                      <Clock className="mt-1 h-5 w-5 text-blue-800 sm:h-6 sm:w-6" />
                       <div>
                         <h4 className="text-foreground font-semibold">Hours</h4>
                         <p className="text-muted-foreground">Monday - Sunday</p>
@@ -365,7 +365,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <Card className="glass bg-red-600 text-white">
+              <Card className="glass bg-blue-800 text-white">
                 <CardContent className="p-6 text-center sm:p-8">
                   <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl">
                     Same Day Service in Evansville!
@@ -376,7 +376,7 @@ export default function ContactSection() {
                   </p>
                   <a
                     href={`tel:${settings.phoneE164}`}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-red-500 px-6 py-2 font-semibold ring-1 ring-white/30 transition-colors hover:bg-red-700/45 sm:w-auto sm:px-8"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-2 font-semibold ring-1 ring-white/30 transition-colors hover:bg-blue-900/45 sm:w-auto sm:px-8"
                   >
                     <Phone className="h-4 w-4" /> Call Now: {settings.phone}
                   </a>

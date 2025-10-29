@@ -159,7 +159,7 @@ export default function EmergencyPage() {
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="mb-3 inline-flex items-center gap-2 bg-red-600 px-4 py-2 text-base text-white">
+                <Badge className="mb-3 inline-flex items-center gap-2 bg-blue-800 px-4 py-2 text-base text-white">
                   <Phone className="h-4 w-4" />
                   Call Now
                 </Badge>
@@ -167,14 +167,14 @@ export default function EmergencyPage() {
                   Speak directly with our on-call dispatcher for immediate scheduling and arrival
                   updates.
                 </p>
-                <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
+                <Button asChild size="lg" className="bg-blue-800 text-white hover:bg-blue-900">
                   <a href={`tel:${settings.phoneE164}`}>{settings.phone}</a>
                 </Button>
                 <p className="mt-2 text-sm text-gray-500">Available 24/7 for emergencies</p>
               </div>
 
               <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-red-700 ring-1 ring-red-200">
+                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-blue-900 ring-1 ring-red-200">
                   <MessageSquare className="h-4 w-4" />
                   Text Photos
                 </Badge>
@@ -185,7 +185,7 @@ export default function EmergencyPage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
+                  className="border-red-700 text-blue-900 hover:bg-blue-900 hover:text-white"
                 >
                   <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>
@@ -199,30 +199,30 @@ export default function EmergencyPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-foreground flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-red-600" />
+                <AlertTriangle className="h-5 w-5 text-blue-800" />
                 Emergency Situations We Handle
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="text-muted-foreground space-y-3 text-left">
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-blue-800" />
                   Property damage cleanup
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-blue-800" />
                   Storm debris and fallen trees
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-blue-800" />
                   Eviction and hoarding cleanouts
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-blue-800" />
                   Biohazard-adjacent junk removal support
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-blue-800" />
                   Commercial emergencies and shutdowns
                 </li>
               </ul>
@@ -273,7 +273,7 @@ export default function EmergencyPage() {
               Need same-hour service? Our emergency team is staffed overnight and on weekends to
               help secure properties, clear access points, and remove hazards fast.
             </p>
-            <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
+            <Button asChild size="lg" className="bg-blue-800 text-white hover:bg-blue-900">
               <QuoteCtaLink location="emergency" label="Get Emergency Quote Now">
                 Get Emergency Quote Now
               </QuoteCtaLink>

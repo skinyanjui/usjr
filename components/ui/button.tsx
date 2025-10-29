@@ -38,7 +38,7 @@ const buttonVariants = cva(
 )
 
 const phoneButtonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors bg-red-700/35 text-white ring-1 ring-white/30 hover:bg-red-700/45',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors bg-blue-900/35 text-white ring-1 ring-white/30 hover:bg-blue-900/45',
   {
     variants: {
       size: {

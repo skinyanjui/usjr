@@ -22,12 +22,12 @@ export function RelatedServices({
   return (
     <section aria-label="Related links" className="py-12">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="mb-6 text-2xl font-bold text-foreground">{title}</h2>
+        <h2 className="text-foreground mb-6 text-2xl font-bold">{title}</h2>
         <div className="grid gap-8 md:grid-cols-2">
           {serviceLinks.length > 0 && (
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-foreground">Explore Our Services</h3>
-              <ul className="list-disc space-y-1 pl-6 text-red-700">
+              <h3 className="text-foreground mb-3 text-lg font-semibold">Explore Our Services</h3>
+              <ul className="list-disc space-y-1 pl-6 text-blue-900">
                 {serviceLinks.map(s => (
                   <li key={s.href}>
                     <Link href={s.href!} className="hover:underline">
@@ -40,8 +40,8 @@ export function RelatedServices({
           )}
           {locationLinks.length > 0 && (
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-foreground">Nearby Service Areas</h3>
-              <ul className="list-disc space-y-1 pl-6 text-red-700">
+              <h3 className="text-foreground mb-3 text-lg font-semibold">Nearby Service Areas</h3>
+              <ul className="list-disc space-y-1 pl-6 text-blue-900">
                 {locationLinks.map(l => (
                   <li key={l.href}>
                     <Link href={l.href!} className="hover:underline">

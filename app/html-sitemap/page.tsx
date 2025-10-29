@@ -107,10 +107,10 @@ function SitemapSection({
       <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
         {links.map(link => (
           <li key={link.href} className="flex items-start">
-            <span className="mr-2 text-red-700">→</span>
+            <span className="mr-2 text-blue-900">→</span>
             <Link
               href={link.href}
-              className="text-muted-foreground hover:text-red-700 hover:underline"
+              className="text-muted-foreground hover:text-blue-900 hover:underline"
             >
               {link.label}
             </Link>
@@ -135,7 +135,7 @@ export default function HtmlSitemapPage() {
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Explore Our Website</h2>
           <p className="text-muted-foreground">
             Browse all pages on our site organized by category. For search engines, see our{' '}
-            <Link href="/sitemap.xml" className="text-red-700 underline">
+            <Link href="/sitemap.xml" className="text-blue-900 underline">
               XML sitemap
             </Link>
             .

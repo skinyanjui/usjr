@@ -80,14 +80,17 @@ export function PricingCalculator() {
           <Calculator className="h-6 w-6 text-blue-600" />
           Pricing Calculator
         </CardTitle>
-        <p className="text-sm text-muted-foreground sm:text-base">
+        <p className="text-muted-foreground text-sm sm:text-base">
           Get an instant estimate for your project
         </p>
       </CardHeader>
 
       <CardContent className="space-y-6">
         <div>
-          <Label htmlFor="pc-service-type" className="mb-2 block text-sm font-medium text-muted-foreground">
+          <Label
+            htmlFor="pc-service-type"
+            className="text-muted-foreground mb-2 block text-sm font-medium"
+          >
             Service Type
           </Label>
           <Select value={service} onValueChange={setService}>
@@ -121,7 +124,7 @@ export function PricingCalculator() {
           <Label
             id="pc-project-size-label"
             htmlFor="pc-project-size"
-            className="mb-2 block text-sm font-medium text-muted-foreground"
+            className="text-muted-foreground mb-2 block text-sm font-medium"
           >
             Project Size: {loadSize[0]}%
           </Label>
@@ -136,7 +139,7 @@ export function PricingCalculator() {
             onChange={e => setLoadSize([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="mt-1 flex justify-between text-[10px] text-muted-foreground sm:text-xs">
+          <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
             <span>10%</span>
             <span>50%</span>
             <span>100%</span>
@@ -147,7 +150,7 @@ export function PricingCalculator() {
           <Label
             id="pc-item-count-label"
             htmlFor="pc-item-count"
-            className="mb-2 block text-sm font-medium text-muted-foreground"
+            className="text-muted-foreground mb-2 block text-sm font-medium"
           >
             Item Count: {itemCount[0]}
           </Label>
@@ -162,7 +165,7 @@ export function PricingCalculator() {
             onChange={e => setItemCount([Number(e.target.value)])}
             className="w-full accent-red-600"
           />
-          <div className="mt-1 flex justify-between text-[10px] text-muted-foreground sm:text-xs">
+          <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
             <span>1</span>
             <span>20</span>
             <span>40</span>
@@ -171,7 +174,10 @@ export function PricingCalculator() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <Label htmlFor="pc-location" className="mb-2 block text-sm font-medium text-muted-foreground">
+            <Label
+              htmlFor="pc-location"
+              className="text-muted-foreground mb-2 block text-sm font-medium"
+            >
               Location
             </Label>
             <Select value={location} onValueChange={setLocation}>
@@ -185,7 +191,10 @@ export function PricingCalculator() {
             </Select>
           </div>
           <div>
-            <Label htmlFor="pc-urgency" className="mb-2 block text-sm font-medium text-muted-foreground">
+            <Label
+              htmlFor="pc-urgency"
+              className="text-muted-foreground mb-2 block text-sm font-medium"
+            >
               Urgency
             </Label>
             <Select value={urgency} onValueChange={setUrgency}>
@@ -201,15 +210,15 @@ export function PricingCalculator() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-red-600 dark:border-red-500 bg-red-50 dark:bg-red-950/30 p-4">
-          <div className="flex items-center gap-2 font-semibold text-red-700 dark:text-red-400">
+        <div className="rounded-lg border border-blue-800 bg-blue-50 p-4 dark:border-red-500 dark:bg-blue-950/30">
+          <div className="flex items-center gap-2 font-semibold text-blue-900 dark:text-red-400">
             <Info className="h-4 w-4" /> Estimated Price Range
           </div>
           <div className="mt-2 text-gray-800">
             {price.min === 0 ? (
               <span>Select options to see pricing</span>
             ) : (
-              <span className="font-bold text-red-700">
+              <span className="font-bold text-blue-900">
                 ${price.min} - ${price.max}
               </span>
             )}
@@ -217,7 +226,7 @@ export function PricingCalculator() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild className="bg-red-700 text-white hover:bg-red-800">
+          <Button asChild className="bg-blue-900 text-white hover:bg-red-800">
             <a href={`tel:${settings.phoneE164}`}>
               <Phone className="h-4 w-4" /> Call {settings.phone}
             </a>
@@ -225,7 +234,7 @@ export function PricingCalculator() {
           <Button
             asChild
             variant="outline"
-            className="border-red-800 bg-transparent text-red-700 dark:text-red-400 hover:bg-red-800 hover:text-white"
+            className="border-blue-950 bg-transparent text-blue-900 hover:bg-red-800 hover:text-white dark:text-red-400"
           >
             <Link href="/quote" prefetch>
               Get Free Quote

@@ -157,12 +157,12 @@ export default function EstateCleanoutGuideBlog() {
         <li>Heavy items need removal (furniture, appliances, exercise equipment)</li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
-        <h3 className="mb-2 text-lg font-semibold text-red-800">Our Estate Cleanout Process</h3>
-        <p className="mb-3 text-red-700">
+      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-blue-50 p-6">
+        <h3 className="mb-2 text-lg font-semibold text-blue-950">Our Estate Cleanout Process</h3>
+        <p className="mb-3 text-blue-900">
           We've developed a compassionate, systematic approach based on years of family feedback:
         </p>
-        <ol className="space-y-1 text-red-700">
+        <ol className="space-y-1 text-blue-900">
           <li>Initial consultation to understand family wishes and timeline</li>
           <li>Careful sorting with family oversight and approval</li>
           <li>Coordination with local charities for maximum donation impact</li>
