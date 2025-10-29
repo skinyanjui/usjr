@@ -12,7 +12,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Professional Cleaning Services in Evansville, IN | Uncle Sam Junk Removal',
+  title: 'Professional Cleaning Evansville IN | Uncle Sam',
   description:
     'Veteran-led residential and commercial cleaning services in Evansville. Natural products, flexible scheduling, and spotless results. Book your cleaning today!',
   keywords:
@@ -27,7 +27,7 @@ export default function CleaningHub() {
       description: 'Comprehensive one-time cleaning for your entire home',
       price: 'From $150',
       href: '/cleaning/deep-clean',
-      color: 'bg-blue-50 border-blue-200',
+      color: 'bg-muted/30 border-border',
       includes: [
         'High-to-low dusting',
         'Kitchen deep clean',
@@ -40,7 +40,7 @@ export default function CleaningHub() {
       description: 'Weekly, bi-weekly, or monthly maintenance cleaning',
       price: 'From $80',
       href: '/cleaning/recurring',
-      color: 'bg-green-50 border-green-200',
+      color: 'bg-muted/30 border-border',
       includes: ['Flexible scheduling', 'Consistent team', 'Supply included', 'Quality guarantee'],
     },
     {
@@ -48,7 +48,7 @@ export default function CleaningHub() {
       description: 'Complete property cleaning for transitions',
       price: 'From $200',
       href: '/cleaning/move-in-move-out',
-      color: 'bg-purple-50 border-purple-200',
+      color: 'bg-muted/30 border-border',
       includes: ['Inside appliances', 'Cabinet interiors', 'Window tracks', 'Deep sanitization'],
     },
     {
@@ -56,7 +56,7 @@ export default function CleaningHub() {
       description: 'Organizing, decluttering, and specialized tasks',
       price: 'From $100',
       href: '/cleaning/specialty',
-      color: 'bg-orange-50 border-orange-200',
+      color: 'bg-muted/30 border-border',
       includes: ['Refrigerator cleaning', 'Oven deep clean', 'Home organizing', 'Decluttering'],
     },
     {
@@ -64,7 +64,7 @@ export default function CleaningHub() {
       description: 'Professional commercial cleaning services',
       price: 'From $120',
       href: '/cleaning/commercial',
-      color: 'bg-gray-50 border-gray-200',
+      color: 'bg-muted/30 border-border',
       includes: ['After-hours service', 'Disinfection', 'Restroom restocking', 'Quality sign-off'],
     },
   ]
@@ -81,24 +81,24 @@ export default function CleaningHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="bg-background min-h-screen">
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        color="green"
+        color="primary"
       />
 
       {/* Subheader badges/CTAs */}
       <section className="px-4 pt-8 pb-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge className="mb-6 border-green-200 bg-green-100 text-green-800">
+          <Badge className="border-border bg-muted text-foreground mb-6">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 px-8 py-3 text-white hover:bg-blue-700"
+              className="bg-foreground text-background px-8 py-3 hover:brightness-110"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -108,7 +108,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-800 hover:bg-green-100"
+              className="border-border text-foreground hover:bg-accent bg-transparent px-8 py-3"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -119,16 +119,16 @@ export default function CleaningHub() {
       </section>
 
       {/* Value Propositions */}
-      <section className="bg-white/50 px-4 py-16">
+      <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {valueProps.map((prop, index) => (
               <div key={index} className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <prop.icon className="h-8 w-8 text-green-600" />
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+                  <prop.icon className="h-8 w-8 text-gray-900" />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-gray-900">{prop.title}</h3>
-                <p className="text-gray-600">{prop.description}</p>
+                <h3 className="text-foreground mb-2 text-lg font-semibold">{prop.title}</h3>
+                <p className="text-muted-foreground">{prop.description}</p>
               </div>
             ))}
           </div>
@@ -139,10 +139,10 @@ export default function CleaningHub() {
       <section className="px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            <h2 className="text-foreground mb-4 text-3xl font-bold md:text-4xl">
               Our Cleaning Services
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-600">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
               From deep cleaning to recurring maintenance, we provide comprehensive cleaning
               solutions for homes and businesses.
             </p>
@@ -153,20 +153,25 @@ export default function CleaningHub() {
               <Card key={index} className={`${service.color} transition-shadow hover:shadow-lg`}>
                 <CardHeader>
                   <div className="mb-2 flex items-start justify-between">
-                    <CardTitle className="text-xl font-bold text-gray-900">
+                    <CardTitle className="text-foreground text-xl font-bold">
                       {service.title}
                     </CardTitle>
-                    <Badge variant="secondary" className="bg-white/80">
+                    <Badge variant="secondary" className="bg-card/80">
                       {service.price}
                     </Badge>
                   </div>
-                  <CardDescription className="text-gray-700">{service.description}</CardDescription>
+                  <CardDescription className="text-muted-foreground">
+                    {service.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="mb-6 space-y-2">
                     {service.includes.map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                        <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-600" />
+                      <li
+                        key={idx}
+                        className="text-muted-foreground flex items-center gap-2 text-sm"
+                      >
+                        <CheckCircle className="h-4 w-4 flex-shrink-0 text-gray-900" />
                         {item}
                       </li>
                     ))}
@@ -175,7 +180,7 @@ export default function CleaningHub() {
                     <Button
                       asChild
                       size="sm"
-                      className="flex-1 bg-blue-600 text-white hover:bg-blue-700"
+                      className="flex-1 bg-gray-900 text-white hover:bg-gray-900"
                     >
                       <Link
                         href={service.href}
@@ -189,7 +194,7 @@ export default function CleaningHub() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-green-800 bg-transparent text-green-800 hover:bg-green-100"
+                      className="border-border bg-transparent text-foreground hover:bg-accent"
                     >
                       <Link href="/quote" prefetch>
                         Quote
@@ -204,14 +209,14 @@ export default function CleaningHub() {
       </section>
 
       {/* Guarantee Section */}
-      <section className="bg-white/50 px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="rounded-2xl bg-white p-8 shadow-lg">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-              <Shield className="h-8 w-8 text-green-600" />
+      <section className="bg-card/50 px-4 py-16">
+        <div className="mx-auto max-w-7xl text-center">
+          <div className="bg-card rounded-2xl p-8 shadow-lg">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+              <Shield className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900">48-Hour Re-Clean Guarantee</h2>
-            <p className="mb-6 text-gray-600">
+            <h2 className="text-foreground mb-4 text-2xl font-bold">48-Hour Re-Clean Guarantee</h2>
+            <p className="text-muted-foreground mb-6">
               Not completely satisfied with our cleaning? We'll return within 48 hours to make it
               right, at no additional cost.
             </p>
@@ -219,7 +224,7 @@ export default function CleaningHub() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-5 w-5 fill-current" />
               ))}
-              <span className="ml-2 text-gray-700">4.9/5 from 200+ reviews</span>
+              <span className="text-muted-foreground ml-2">4.9/5 from 200+ reviews</span>
             </div>
           </div>
         </div>
@@ -228,15 +233,15 @@ export default function CleaningHub() {
       {/* CTA Section */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">Ready for a Spotless Space?</h2>
-          <p className="mb-8 text-xl text-gray-600">
+          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready for a Spotless Space?</h2>
+          <p className="text-muted-foreground mb-8 text-xl">
             Book your cleaning service today or get a free, no-obligation quote.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 px-8 py-3 text-white hover:bg-blue-700"
+              className="bg-foreground px-8 py-3 text-background hover:brightness-110"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -246,7 +251,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-800 hover:bg-green-100"
+              className="border-border bg-transparent px-8 py-3 text-foreground hover:bg-accent"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -256,7 +261,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="ghost"
-              className="px-8 py-3 text-green-800 hover:bg-green-100"
+              className="px-8 py-3 text-foreground hover:bg-accent"
             >
               <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </Button>

@@ -99,21 +99,21 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-md">
           <div className="py-8 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+              <CheckCircle className="h-8 w-8 text-gray-900" />
             </div>
-            <h3 className="mb-2 text-xl font-bold text-gray-900">Quote Request Received!</h3>
-            <p className="mb-6 text-gray-600">
+            <h3 className="text-foreground mb-2 text-xl font-bold">Quote Request Received!</h3>
+            <p className="text-muted-foreground mb-6">
               Thank you for your quote request. We'll review your information and get back to you
               within 2 hours with a detailed estimate.
             </p>
             <div className="mb-6 space-y-3">
-              <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700">
+              <Button asChild className="w-full bg-gray-900 text-white hover:bg-gray-900">
                 <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                   Schedule Call - Calendar Link
                 </a>
               </Button>
-              <p className="text-sm text-gray-600">
+              <p className="text-muted-foreground text-sm">
                 Or text us at <span className="font-semibold">{settings.phone}</span> for immediate
                 assistance
               </p>
@@ -147,8 +147,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               onClick={() => setSegment('residential')}
               className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
                 segment === 'residential'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-card text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Residential
@@ -158,8 +158,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               onClick={() => setSegment('commercial')}
               className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
                 segment === 'commercial'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-card text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Commercial
@@ -354,13 +354,15 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div>
             <Label>Photos (Optional - Up to 6 images)</Label>
             <div className="mt-2">
-              <label className="flex h-28 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 sm:h-32">
+              <label className="border-border bg-muted/30 flex h-28 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed hover:bg-gray-100 sm:h-32">
                 <div className="flex flex-col items-center justify-center pt-4 pb-5">
                   <Upload className="mb-2 h-7 w-7 text-gray-500 sm:h-8 sm:w-8" />
-                  <p className="mb-1 text-xs text-gray-600">
+                  <p className="text-muted-foreground mb-1 text-xs">
                     <span className="font-semibold">Click to upload</span> or drag and drop
                   </p>
-                  <p className="text-[10px] text-gray-600 sm:text-xs">PNG, JPG up to 10MB each</p>
+                  <p className="text-muted-foreground text-[10px] sm:text-xs">
+                    PNG, JPG up to 10MB each
+                  </p>
                 </div>
                 <input
                   type="file"
@@ -383,12 +385,12 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white"
                       aria-label={`Remove file ${file.name}`}
                     >
                       <X className="h-3 w-3" />
                     </button>
-                    <p className="mt-1 truncate text-[10px] text-gray-600 sm:text-xs">
+                    <p className="text-muted-foreground mt-1 truncate text-[10px] sm:text-xs">
                       {file.name}
                     </p>
                   </div>
@@ -427,7 +429,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               type="submit"
-              className="w-full bg-blue-600 text-white hover:bg-blue-700 sm:w-auto"
+              className="w-full bg-gray-900 text-white hover:bg-gray-900 sm:w-auto"
             >
               Submit Request
             </Button>

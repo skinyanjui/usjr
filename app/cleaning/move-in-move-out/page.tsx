@@ -6,7 +6,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Move-In/Move-Out Cleaning Services in Evansville, IN | Uncle Sam Junk Removal',
+  title: 'Move-In/Out Cleaning Evansville IN | Uncle Sam',
   description:
     'Professional move-in and move-out cleaning services in Evansville. Complete property cleaning for transitions using natural products. Book your move cleaning today!',
   keywords:
@@ -19,7 +19,7 @@ export default function MoveInMoveOutPage() {
     <ServicePageTemplate
       title="Move-In/Move-Out Cleaning"
       description="Complete property cleaning for life transitions. Professional move-in and move-out cleaning services in Evansville. Deep cleaning for fresh starts and maximum deposit returns using natural, eco-friendly products."
-      theme="purple"
+      theme="primary"
       badges={['From $200', '4-6 Hours', 'Natural Products']}
       features={[
         {

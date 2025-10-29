@@ -6,7 +6,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Commercial Cleaning Services in Evansville, IN | Uncle Sam Junk Removal',
+  title: 'Commercial Cleaning Evansville IN | Uncle Sam',
   description:
     'Reliable, insured, after-hours business cleaning in Evansville. Professional office cleaning services with natural products. Serving businesses throughout Southern Indiana.',
   keywords:
@@ -19,7 +19,7 @@ export default function CommercialCleaningPage() {
     <ServicePageTemplate
       title="Commercial Cleaning Services"
       description="Reliable, insured, after-hours business cleaning. Professional commercial cleaning services in Evansville and surrounding areas. We provide reliable, after-hours cleaning for offices, retail spaces, medical facilities, and more using eco-friendly products."
-      theme="blue"
+      theme="primary"
       badges={['From $120', 'After-Hours Available', 'Fully Insured']}
       features={[
         {

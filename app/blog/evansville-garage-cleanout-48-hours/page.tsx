@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Evansville Garage Cleanout in 48 Hours: Checklist & Timeline | Uncle Sam Junk Removal',
+  title: 'Garage Cleanout in 48 Hours Evansville | Uncle Sam',
   description:
     'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips for Evansville residents.',
   keywords:
@@ -68,8 +68,8 @@ export default function GarageCleanoutPage() {
       <h3>Afternoon (Hours 5-12): Sort Ruthlessly</h3>
       <p>Use the one-year rule: If you haven't used it in a year, it goes.</p>
 
-      <div className="my-6 rounded-lg bg-blue-50 p-6">
-        <h4 className="mb-2 font-semibold text-blue-800">Quick Sorting Guidelines:</h4>
+      <div className="my-6 rounded-lg bg-gray-900 p-6">
+        <h4 className="mb-2 font-semibold text-gray-900">Quick Sorting Guidelines:</h4>
         <ul>
           <li>
             <strong>Keep:</strong> Used in past year, seasonal items, valuable tools
@@ -178,8 +178,8 @@ export default function GarageCleanoutPage() {
         </li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Success Tip:</strong> The 48-hour timeline works because it creates urgency and
           momentum. Block out a full weekend, get family involved, and you'll be amazed at what you
           can accomplish. Most Evansville families report reclaiming 200+ square feet of usable

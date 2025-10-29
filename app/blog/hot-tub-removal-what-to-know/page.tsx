@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Hot Tub Removal: What to Know Before We Arrive | Uncle Sam Junk Removal',
+  title: 'Hot Tub Removal: What to Know | Uncle Sam Junk Removal',
   description:
     'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
   keywords:
@@ -50,9 +50,9 @@ export default function HotTubRemovalPage() {
       <h2>Critical Preparation Steps</h2>
 
       <h3>1. Electrical Disconnection (CRITICAL)</h3>
-      <div className="my-4 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
-        <p className="font-semibold text-red-800">Safety First!</p>
-        <p className="text-red-700">
+      <div className="my-4 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <p className="font-semibold text-gray-900">Safety First!</p>
+        <p className="text-gray-900">
           Hot tubs operate on 220-240V circuits. Improper disconnection can cause serious injury or
           death. Always hire a licensed electrician if you're unsure about the electrical setup.
         </p>
@@ -180,8 +180,8 @@ export default function HotTubRemovalPage() {
         <li>✓ Someone available to answer questions</li>
       </ol>
 
-      <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Hot tub removal is typically completed in 2-4 hours when
           properly prepared. Taking time to drain completely and ensure safe electrical
           disconnection prevents delays and ensures the fastest, safest removal possible.

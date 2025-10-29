@@ -10,51 +10,55 @@ export function EvansvilleContactSidebar() {
     <div className="space-y-8">
       <Card className="glass">
         <CardContent className="p-6 sm:p-8">
-          <h3 className="mb-6 text-xl font-bold text-gray-900 sm:text-2xl">
+          <h3 className="text-foreground mb-6 text-xl font-bold sm:text-2xl">
             Contact Uncle Sam Junk Removal
           </h3>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <Phone className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <Phone className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
-                <h4 className="font-semibold text-gray-900">Phone</h4>
+                <h4 className="text-foreground font-semibold">Phone</h4>
                 <p className="text-base font-semibold text-gray-800 sm:text-lg">{settings.phone}</p>
-                <p className="text-xs text-gray-600 sm:text-sm">
+                <p className="text-muted-foreground text-xs sm:text-sm">
                   Call or text for fastest response
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Mail className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <Mail className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
-                <h4 className="font-semibold text-gray-900">Email</h4>
-                <p className="text-gray-700">info@unclesamjunkremoval.com</p>
-                <p className="text-gray-700">quotes@unclesamjunkremoval.com</p>
+                <h4 className="text-foreground font-semibold">Email</h4>
+                <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
+                <p className="text-muted-foreground">quotes@unclesamjunkremoval.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <MapPin className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <MapPin className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
-                <h4 className="font-semibold text-gray-900">Service Area</h4>
-                <p className="text-gray-700">Evansville, IN & Southern Indiana</p>
-                <p className="text-gray-700">Vanderburgh, Warrick, Posey Counties</p>
-                <p className="text-xs text-gray-600 sm:text-sm">Also serving Henderson, KY area</p>
+                <h4 className="text-foreground font-semibold">Service Area</h4>
+                <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
+                <p className="text-muted-foreground">Vanderburgh, Warrick, Posey Counties</p>
+                <p className="text-muted-foreground text-xs sm:text-sm">
+                  Also serving Henderson, KY area
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <Clock className="mt-1 h-5 w-5 text-red-600 sm:h-6 sm:w-6" />
+              <Clock className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
               <div>
-                <h4 className="font-semibold text-gray-900">Hours</h4>
-                <p className="text-gray-700">Monday - Sunday</p>
-                <p className="text-gray-700">8:00 AM - 8:00 PM</p>
-                <p className="text-xs text-gray-600 sm:text-sm">Emergency service available</p>
+                <h4 className="text-foreground font-semibold">Hours</h4>
+                <p className="text-muted-foreground">Monday - Sunday</p>
+                <p className="text-muted-foreground">8:00 AM - 8:00 PM</p>
+                <p className="text-muted-foreground text-xs sm:text-sm">
+                  Emergency service available
+                </p>
               </div>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="glass bg-red-600 text-white">
+      <Card className="glass bg-gray-900 text-white">
         <CardContent className="p-6 text-center sm:p-8">
           <h3 className="mb-3 text-lg font-bold text-black sm:mb-4 sm:text-2xl">
             Same Day Service in Evansville!
@@ -65,7 +69,7 @@ export function EvansvilleContactSidebar() {
           </p>
           <Button
             asChild
-            className="mb-4 w-full bg-white px-6 py-3 font-semibold text-red-600 hover:bg-gray-100 sm:w-auto sm:px-8"
+            className="bg-card mb-4 w-full px-6 py-3 font-semibold text-gray-900 hover:bg-gray-100 sm:w-auto sm:px-8"
           >
             <a href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</a>
           </Button>
@@ -77,7 +81,7 @@ export function EvansvilleContactSidebar() {
         </CardContent>
       </Card>
 
-      <Card className="glass bg-blue-600 text-white">
+      <Card className="glass bg-gray-900 text-white">
         <CardContent className="p-6 sm:p-8">
           <h3 className="mb-4 text-lg font-bold sm:text-xl">
             Why Evansville Chooses Uncle Sam Junk Removal

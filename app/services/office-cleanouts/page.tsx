@@ -3,6 +3,8 @@ import { Building, Monitor, FileText, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function OfficeCleanoutsPage() {
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Office Cleanouts in Evansville"
       description="Professional office cleanout services for cubicles, desks, IT equipment, and complete office relocations"
       badges={['Same-Day Service', 'IT Equipment Handling', 'Secure Document Disposal']}
@@ -155,6 +157,17 @@ export default function OfficeCleanoutsPage() {
           tenant turnovers and building preparation for new tenants.
         </p>
       </div>
+
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }

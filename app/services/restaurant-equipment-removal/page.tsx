@@ -3,6 +3,8 @@ import { ChefHat, Refrigerator, Wrench, Truck } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function RestaurantEquipmentRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="orange"
+      theme="primary"
       title="Restaurant Equipment Removal in Evansville"
       description="Professional removal of commercial kitchen equipment including ovens, refrigerators, sinks, and complete restaurant cleanouts"
       badges={['Commercial Equipment', 'Disconnect Coordination', 'Scrap Metal Recovery']}
@@ -150,6 +152,17 @@ export default function RestaurantEquipmentRemovalPage() {
           and landlords clear spaces quickly for the next tenant or renovation project.
         </p>
       </div>
+
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }

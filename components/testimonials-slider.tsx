@@ -51,7 +51,7 @@ export function TestimonialsSlider({
 
   return (
     <div className="relative mx-auto max-w-4xl">
-      <Card className="bg-white/80 backdrop-blur-sm">
+      <Card className="bg-card/80 backdrop-blur-sm">
         <CardContent className="p-8">
           <div className="text-center">
             {/* Rating Stars */}
@@ -67,25 +67,25 @@ export function TestimonialsSlider({
             </div>
 
             {/* Testimonial Text */}
-            <blockquote className="mb-6 text-lg text-gray-700 italic">
+            <blockquote className="text-muted-foreground mb-6 text-lg italic">
               "{currentTestimonial.text}"
             </blockquote>
 
             {/* Customer Info */}
             <div className="mb-2 flex items-center justify-center gap-2">
-              <span className="font-semibold text-gray-900">{currentTestimonial.name}</span>
-              <span className="text-gray-600">•</span>
-              <div className="flex items-center gap-1 text-gray-600">
+              <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
+              <span className="text-muted-foreground">•</span>
+              <div className="text-muted-foreground flex items-center gap-1">
                 <MapPin className="h-4 w-4" />
                 <span className="text-sm">{currentTestimonial.location}</span>
               </div>
             </div>
 
             {/* Service Type */}
-            <div className="text-sm font-medium text-green-600">{currentTestimonial.service}</div>
+            <div className="text-sm font-medium text-gray-900">{currentTestimonial.service}</div>
 
             {/* Date */}
-            <div className="mt-2 text-xs text-gray-600">
+            <div className="text-muted-foreground mt-2 text-xs">
               {new Date(currentTestimonial.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
@@ -103,7 +103,7 @@ export function TestimonialsSlider({
             variant="outline"
             size="sm"
             onClick={prevTestimonial}
-            className="bg-white/80"
+            className="bg-card/80"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -117,7 +117,7 @@ export function TestimonialsSlider({
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 w-2 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-green-600' : 'bg-gray-300'
+                  index === currentIndex ? 'bg-gray-800' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
                 aria-pressed={index === currentIndex}
@@ -129,7 +129,7 @@ export function TestimonialsSlider({
             variant="outline"
             size="sm"
             onClick={nextTestimonial}
-            className="bg-white/80"
+            className="bg-card/80"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-4 w-4" />
@@ -138,7 +138,7 @@ export function TestimonialsSlider({
       )}
 
       {/* Counter */}
-      <div className="mt-4 text-center text-sm text-gray-600">
+      <div className="text-muted-foreground mt-4 text-center text-sm">
         {currentIndex + 1} of {testimonials.length}
       </div>
     </div>

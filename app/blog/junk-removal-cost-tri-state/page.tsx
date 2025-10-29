@@ -138,8 +138,8 @@ export default function JunkRemovalCostPage() {
         <li>Cleaning up the area after removal</li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs from
           $89-649 depending on your project size. With transparent pricing, professional service,
           and eco-friendly disposal, Uncle Sam Junk Removal makes cleanup projects simple and

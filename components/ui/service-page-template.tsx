@@ -33,8 +33,8 @@ export interface ServicePageTemplateProps {
   description: string
   badges?: string[]
 
-  // Theme
-  theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  // Theme (currently only 'primary' is supported)
+  theme?: 'primary'
 
   // Structured data
   serviceCategory?: string
@@ -68,53 +68,13 @@ export interface ServicePageTemplateProps {
 }
 
 const themeClasses = {
-  red: {
-    background: 'bg-red-50',
-    primary: 'bg-red-600 hover:bg-red-700',
-    secondary: 'border-red-700 text-red-700 hover:bg-red-700 hover:text-white',
-    accent: 'text-red-600',
-    icon: 'bg-red-600',
-    badge: 'bg-red-100 text-red-800 border-red-200',
-  },
-  blue: {
-    background: 'bg-blue-50',
-    primary: 'bg-blue-600 hover:bg-blue-700',
-    secondary: 'border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white',
-    accent: 'text-blue-600',
-    icon: 'bg-blue-600',
-    badge: 'bg-blue-100 text-blue-800 border-blue-200',
-  },
-  green: {
-    background: 'bg-green-50',
-    primary: 'bg-green-600 hover:bg-green-700',
-    secondary: 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white',
-    accent: 'text-green-600',
-    icon: 'bg-green-600',
-    badge: 'bg-green-100 text-green-800 border-green-200',
-  },
-  orange: {
-    background: 'bg-orange-50',
-    primary: 'bg-orange-600 hover:bg-orange-700',
-    secondary: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
-    accent: 'text-orange-600',
-    icon: 'bg-orange-600',
-    badge: 'bg-orange-100 text-orange-800 border-orange-200',
-  },
-  purple: {
-    background: 'bg-purple-50',
-    primary: 'bg-purple-600 hover:bg-purple-700',
-    secondary: 'border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white',
-    accent: 'text-purple-600',
-    icon: 'bg-purple-600',
-    badge: 'bg-purple-100 text-purple-800 border-purple-200',
-  },
-  teal: {
-    background: 'bg-teal-50',
-    primary: 'bg-teal-600 hover:bg-teal-700',
-    secondary: 'border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white',
-    accent: 'text-teal-600',
-    icon: 'bg-teal-600',
-    badge: 'bg-teal-100 text-teal-800 border-teal-200',
+  primary: {
+    background: 'bg-background',
+    primary: 'bg-primary hover:bg-primary/90 text-primary-foreground',
+    secondary: 'border-primary text-primary hover:bg-primary hover:text-primary-foreground',
+    accent: 'text-primary',
+    icon: 'bg-primary text-primary-foreground',
+    badge: 'bg-muted text-muted-foreground border-border',
   },
 }
 
@@ -122,7 +82,7 @@ export function ServicePageTemplate({
   title,
   description,
   badges = [],
-  theme,
+  theme = 'primary',
   serviceCategory,
   serviceArea,
   features = [],
@@ -137,28 +97,20 @@ export function ServicePageTemplate({
   children,
 }: ServicePageTemplateProps) {
   const classes = themeClasses[theme]
-  const heroColorMap = {
-    red: 'red',
-    blue: 'blue',
-    green: 'green',
-    orange: 'orange',
-    purple: 'purple',
-    teal: 'teal',
-  } as const
 
   return (
     <main className="min-h-screen">
-      <PageHero title={title} description={description} color={heroColorMap[theme]} />
+      <PageHero title={title} description={description} color="primary" />
       {/* Hero Section */}
       <section className={`pt-12 pb-12 ${classes.background}`}>
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-8 text-center">
-            <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+            <h2 className="text-foreground mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">
               What to Expect
             </h2>
 
             {badges.length > 0 && (
-              <div className="flex items-center justify-center gap-4 text-gray-700">
+              <div className="text-muted-foreground flex items-center justify-center gap-4">
                 {badges.map((badge, index) => (
                   <div key={index} className="flex items-center gap-1">
                     <Clock className={`h-5 w-5 ${classes.accent}`} />
@@ -171,7 +123,7 @@ export function ServicePageTemplate({
 
           <div className="mb-12 grid items-center gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">
+              <h2 className="text-foreground mb-4 text-xl font-bold sm:text-2xl">
                 Why Choose Uncle Sam Junk Removal?
               </h2>
               <div className="space-y-4">
@@ -181,25 +133,25 @@ export function ServicePageTemplate({
                     <div key={index} className="flex items-start gap-3">
                       <IconComponent className={`h-6 w-6 ${classes.accent} mt-1`} />
                       <div>
-                        <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                        <p className="text-gray-600">{feature.description}</p>
+                        <h3 className="text-foreground font-semibold">{feature.title}</h3>
+                        <p className="text-muted-foreground">{feature.description}</p>
                       </div>
                     </div>
                   )
                 })}
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   asChild
-                  className={`${classes.primary} w-full px-6 py-3 text-base font-semibold text-white sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${classes.primary} px-6 py-2.5 text-base font-semibold text-white`}
                 >
                   <a href={`tel:${settings.phoneE164}`}>{ctaPrimary}</a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className={`${classes.secondary} w-full bg-transparent px-6 py-3 text-base font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-lg`}
+                  className={`${classes.secondary} bg-transparent px-6 py-2.5 text-base font-semibold`}
                 >
                   <QuoteCtaLink location="service-template" label={ctaSecondary}>
                     {ctaSecondary}
@@ -210,18 +162,18 @@ export function ServicePageTemplate({
 
             {/* Pricing Card */}
             {pricing.length > 0 && (
-              <div className="rounded-2xl bg-white p-8 shadow-lg">
-                <h3 className="mb-6 text-2xl font-bold text-gray-900">{pricingTitle}</h3>
+              <div className="bg-card rounded-2xl p-8 shadow-lg">
+                <h3 className="text-foreground mb-6 text-2xl font-bold">{pricingTitle}</h3>
                 <div className="space-y-4">
                   {pricing.map((tier, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between border-b border-gray-200 py-3"
+                      className="border-border flex items-center justify-between border-b py-3"
                     >
                       <div>
-                        <span className="font-medium text-gray-900">{tier.name}</span>
+                        <span className="text-foreground font-medium">{tier.name}</span>
                         {tier.description && (
-                          <div className="text-sm text-gray-600">{tier.description}</div>
+                          <div className="text-muted-foreground text-sm">{tier.description}</div>
                         )}
                       </div>
                       <span className={`${classes.accent} font-bold`}>
@@ -232,9 +184,9 @@ export function ServicePageTemplate({
                     </div>
                   ))}
                 </div>
-                {pricingNote && <p className="mt-4 text-sm text-gray-600">{pricingNote}</p>}
+                {pricingNote && <p className="text-muted-foreground mt-4 text-sm">{pricingNote}</p>}
                 {!pricingNote && (
-                  <p className="mt-4 text-sm text-gray-600">
+                  <p className="text-muted-foreground mt-4 text-sm">
                     {PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}.{' '}
                     {PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.
                   </p>
@@ -249,9 +201,9 @@ export function ServicePageTemplate({
 
       {/* Steps Section */}
       {steps.length > 0 && (
-        <section className="bg-white py-16">
+        <section className="bg-card py-16">
           <div className="mx-auto max-w-7xl px-4">
-            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">{stepsTitle}</h2>
+            <h2 className="text-foreground mb-12 text-center text-3xl font-bold">{stepsTitle}</h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, index) => {
                 const IconComponent = step.icon
@@ -266,12 +218,12 @@ export function ServicePageTemplate({
                       >
                         <IconComponent className="h-8 w-8 text-white" />
                       </div>
-                      <CardTitle className="text-xl font-bold text-gray-900">
+                      <CardTitle className="text-foreground text-xl font-bold">
                         {step.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600">{step.description}</p>
+                      <p className="text-muted-foreground">{step.description}</p>
                     </CardContent>
                   </Card>
                 )
@@ -282,26 +234,26 @@ export function ServicePageTemplate({
       )}
 
       {/* Related Services */}
-      <section className="bg-white">
+      <section className="bg-card">
         <RelatedServices />
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="mx-auto max-w-4xl px-4">
-          <h2 className="mb-12 text-center text-3xl font-bold text-gray-900">
+      <section className="bg-muted/30 py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="text-foreground mb-12 text-center text-3xl font-bold">
             Frequently Asked Questions
           </h2>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <Card key={index} className="glass">
                 <CardHeader>
-                  <CardTitle className="text-lg font-semibold text-gray-900">
+                  <CardTitle className="text-foreground text-lg font-semibold">
                     {faq.question}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <p className="text-muted-foreground">{faq.answer}</p>
                 </CardContent>
               </Card>
             ))}

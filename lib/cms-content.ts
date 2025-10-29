@@ -374,13 +374,13 @@ export const galleryImages: GalleryImage[] = [
       label: 'Before',
       description:
         'Grease buildup on the stove, cluttered counters, and dull stainless appliances.',
-      color: 'red',
+      color: 'neutral',
     },
     after: {
       label: 'After',
       description:
         'Sanitized surfaces, polished appliances, and organized cabinets ready for cooking.',
-      color: 'green',
+      color: 'primary',
     },
     active: true,
   },
@@ -393,13 +393,13 @@ export const galleryImages: GalleryImage[] = [
     before: {
       label: 'Before',
       description: 'Dust-covered tile, paint splatters on fixtures, and debris in the shower.',
-      color: 'orange',
+      color: 'neutral',
     },
     after: {
       label: 'After',
       description:
         'Crystal-clear glass, sanitized tile and grout, and sparkling fixtures throughout.',
-      color: 'teal',
+      color: 'primary',
     },
     active: true,
   },
@@ -412,12 +412,12 @@ export const galleryImages: GalleryImage[] = [
     before: {
       label: 'Before',
       description: 'Overflowing trash bins, dusty desks, and streaked conference room glass.',
-      color: 'purple',
+      color: 'neutral',
     },
     after: {
       label: 'After',
       description: 'Freshly sanitized work areas, reset conference rooms, and shining entryways.',
-      color: 'blue',
+      color: 'primary',
     },
     active: true,
   },

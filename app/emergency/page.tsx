@@ -126,7 +126,7 @@ export default function EmergencyPage() {
     <ServicePageTemplate
       title="24/7 Emergency Junk Removal"
       description="Immediate junk removal response throughout Evansville and Southern Indiana. Same-day cleanouts, storm debris removal, and urgent property services with licensed professionals."
-      theme="red"
+      theme="primary"
       badges={['24/7 Emergency Response', '2-Hour Arrival Window', 'Licensed & Insured']}
       features={features}
       steps={steps}
@@ -147,9 +147,9 @@ export default function EmergencyPage() {
       ctaSecondary="Text Photos for Fast Quote"
     >
       <div className="mt-12 space-y-8">
-        <Card className="border-red-200 bg-white shadow-lg">
+        <Card className="bg-card border-gray-300 shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold text-gray-900">
+            <CardTitle className="text-foreground text-2xl font-bold">
               Immediate Support Options
             </CardTitle>
             <CardDescription>
@@ -158,34 +158,34 @@ export default function EmergencyPage() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="mb-3 inline-flex items-center gap-2 bg-red-600 px-4 py-2 text-base text-white">
+              <div className="rounded-lg border border-gray-300 p-6 text-center">
+                <Badge className="mb-3 inline-flex items-center gap-2 bg-gray-900 px-4 py-2 text-base text-white">
                   <Phone className="h-4 w-4" />
                   Call Now
                 </Badge>
-                <p className="mb-4 text-gray-600">
+                <p className="text-muted-foreground mb-4">
                   Speak directly with our on-call dispatcher for immediate scheduling and arrival
                   updates.
                 </p>
-                <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
+                <Button asChild size="lg" className="bg-gray-900 text-white hover:bg-gray-900">
                   <a href={`tel:${settings.phoneE164}`}>{settings.phone}</a>
                 </Button>
                 <p className="mt-2 text-sm text-gray-500">Available 24/7 for emergencies</p>
               </div>
 
-              <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="mb-3 inline-flex items-center gap-2 bg-white px-4 py-2 text-base text-red-700 ring-1 ring-red-200">
+              <div className="rounded-lg border border-gray-300 p-6 text-center">
+                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-gray-900 ring-1 ring-gray-400">
                   <MessageSquare className="h-4 w-4" />
                   Text Photos
                 </Badge>
-                <p className="mb-4 text-gray-600">
+                <p className="text-muted-foreground mb-4">
                   Send photos of the emergency to get pricing confirmed before we arrive on-site.
                 </p>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
+                  className="border-gray-300 text-gray-900 hover:bg-gray-900 hover:text-white"
                 >
                   <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>
@@ -198,31 +198,31 @@ export default function EmergencyPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-gray-900">
-                <AlertTriangle className="h-5 w-5 text-red-600" />
+              <CardTitle className="text-foreground flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5 text-gray-900" />
                 Emergency Situations We Handle
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-left text-gray-600">
+              <ul className="text-muted-foreground space-y-3 text-left">
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-gray-900" />
                   Property damage cleanup
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-gray-900" />
                   Storm debris and fallen trees
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-gray-900" />
                   Eviction and hoarding cleanouts
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-gray-900" />
                   Biohazard-adjacent junk removal support
                 </li>
                 <li className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                  <AlertTriangle className="h-4 w-4 text-gray-900" />
                   Commercial emergencies and shutdowns
                 </li>
               </ul>
@@ -231,31 +231,31 @@ export default function EmergencyPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-gray-900">
-                <Shield className="h-5 w-5 text-green-600" />
+              <CardTitle className="text-foreground flex items-center gap-2">
+                <Shield className="h-5 w-5 text-gray-900" />
                 Emergency Service Features
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-left text-gray-600">
+              <ul className="text-muted-foreground space-y-3 text-left">
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
+                  <Clock className="h-4 w-4 text-gray-900" />
                   2-hour response window for most calls
                 </li>
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-green-600" />
+                  <Clock className="h-4 w-4 text-gray-900" />
                   Same-day service on nights & weekends
                 </li>
                 <li className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-green-600" />
+                  <Shield className="h-4 w-4 text-gray-900" />
                   Licensed, insured, and background-checked crew
                 </li>
                 <li className="flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-green-600" />
+                  <Zap className="h-4 w-4 text-gray-900" />
                   Specialized equipment for heavy or oversized items
                 </li>
                 <li className="flex items-center gap-2">
-                  <Truck className="h-4 w-4 text-green-600" />
+                  <Truck className="h-4 w-4 text-gray-900" />
                   Proper disposal with donation and recycling options
                 </li>
               </ul>
@@ -269,11 +269,11 @@ export default function EmergencyPage() {
               <Zap className="h-4 w-4" />
               Priority Dispatch Available
             </Badge>
-            <p className="mx-auto max-w-2xl text-gray-700">
+            <p className="text-muted-foreground mx-auto max-w-2xl">
               Need same-hour service? Our emergency team is staffed overnight and on weekends to
               help secure properties, clear access points, and remove hazards fast.
             </p>
-            <Button asChild size="lg" className="bg-red-600 text-white hover:bg-red-700">
+            <Button asChild size="lg" className="bg-gray-900 text-white hover:bg-gray-900">
               <QuoteCtaLink location="emergency" label="Get Emergency Quote Now">
                 Get Emergency Quote Now
               </QuoteCtaLink>

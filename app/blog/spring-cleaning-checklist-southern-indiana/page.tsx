@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes | Uncle Sam Junk Removal',
+  title: 'Spring Cleaning Checklist Southern Indiana | Uncle Sam',
   description:
     'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
   keywords:
@@ -200,8 +200,8 @@ export default function SpringCleaningChecklistPage() {
         </li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Sustainability Tip:</strong> Southern Indiana has excellent donation options.
           Instead of trashing unwanted items, consider donating to Habitat ReStore, Goodwill, or
           local charities. It reduces landfill waste and helps neighbors in need.

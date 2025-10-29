@@ -9,7 +9,7 @@ import { buildCanonicalMetadata } from '@/components/canonical'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
-  title: 'Junk Removal Mount Vernon IN | Same-Day Service | Uncle Sam Junk Removal',
+  title: 'Junk Removal Mount Vernon IN | Same-Day | Uncle Sam',
   description: `Professional junk removal in Mount Vernon, Indiana. Same-day service and fair pricing for Posey County homes and businesses. Call ${settings.phone}`,
   keywords:
     'junk removal Mount Vernon, Mount Vernon junk removal, Posey County junk removal, trash removal Mount Vernon IN',

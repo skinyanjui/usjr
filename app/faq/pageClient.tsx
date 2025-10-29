@@ -33,13 +33,18 @@ export default function FAQClient() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: 'text-blue-600',
-      red: 'text-red-600',
-      orange: 'text-orange-600',
-      green: 'text-green-600',
-      purple: 'text-purple-600',
+      accent: 'text-primary',
+      success: 'text-foreground',
+      warning: 'text-foreground',
+      info: 'text-foreground',
+      // Legacy color mapping for backward compatibility
+      blue: 'text-primary',
+      red: 'text-primary',
+      orange: 'text-primary',
+      green: 'text-primary',
+      purple: 'text-primary',
     }
-    return colors[color as keyof typeof colors] || colors.blue
+    return colors[color as keyof typeof colors] || colors.accent
   }
 
   const getIcon = (name: string) => {
@@ -60,22 +65,12 @@ export default function FAQClient() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4">
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-          Frequently Asked Questions
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
-          Find answers to common questions about our junk removal, light demolition, and cleaning
-          services in Evansville and Southern Indiana.
-        </p>
-      </div>
-
+    <div className="mx-auto max-w-7xl px-4">
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="relative">
             <Search
-              className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-gray-500"
+              className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform"
               aria-hidden="true"
             />
             <Input
@@ -110,7 +105,9 @@ export default function FAQClient() {
                       id={faq.question.includes('Price Match') ? 'price-match' : undefined}
                     >
                       <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                      <AccordionContent className="text-gray-600">{faq.answer}</AccordionContent>
+                      <AccordionContent className="text-muted-foreground">
+                        {faq.answer}
+                      </AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
@@ -120,17 +117,17 @@ export default function FAQClient() {
         })}
       </div>
 
-      <Card className="mt-12 border-blue-200 bg-blue-50">
+      <Card className="border-border bg-muted/30 mt-12">
         <CardContent className="p-8 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-gray-900">Still Have Questions?</h3>
-          <p className="mb-6 text-gray-600">
+          <h3 className="text-foreground mb-4 text-2xl font-bold">Still Have Questions?</h3>
+          <p className="text-muted-foreground mb-6">
             Can't find the answer you're looking for? Our friendly team is here to help with any
             questions about our services.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-gray-900"
             >
               <Phone className="h-4 w-4" />
               Call {settings.phone}
@@ -138,7 +135,7 @@ export default function FAQClient() {
             <Link
               href="/quote"
               prefetch
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-800 px-6 py-3 font-semibold text-red-800 transition-colors hover:bg-red-100"
+              className="border-border text-primary inline-flex items-center justify-center gap-2 rounded-lg border px-6 py-2.5 text-base font-semibold transition-colors hover:bg-gray-900 dark:hover:bg-gray-900/30"
             >
               Get Free Quote
             </Link>

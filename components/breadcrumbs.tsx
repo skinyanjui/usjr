@@ -32,6 +32,7 @@ function labelForPath(path: string, defaultLabel: string): string {
   if (path === '/quote') return 'Get Free Quote'
   if (path === '/privacy') return 'Privacy Policy'
   if (path === '/terms') return 'Terms of Service'
+  if (path === '/html-sitemap') return 'html-sitemap'
 
   // If the last segment matches a NAV child, use its label
   const last = path.split('/').filter(Boolean).pop() || defaultLabel
@@ -90,11 +91,11 @@ export function BreadcrumbsAuto() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="sticky top-0 z-40 border-b border-gray-200 bg-gray-50">
+    <nav aria-label="Breadcrumb" className="border-border bg-muted/30 sticky top-0 z-40 border-b">
       <div className="mx-auto max-w-7xl px-4 py-2 text-sm">
-        <ol className="flex items-center gap-2 text-gray-600">
+        <ol className="text-muted-foreground flex items-center gap-2">
           <li>
-            <Link href="/" className="hover:text-red-700 hover:underline">
+            <Link href="/" className="hover:text-gray-900 hover:underline">
               Home
             </Link>
           </li>
@@ -102,11 +103,11 @@ export function BreadcrumbsAuto() {
             <li key={crumb.href} className="flex items-center gap-2">
               <span aria-hidden="true">/</span>
               {index === crumbs.length - 1 ? (
-                <span aria-current="page" className="font-medium text-gray-900">
+                <span aria-current="page" className="text-foreground font-medium">
                   {crumb.name}
                 </span>
               ) : (
-                <Link href={crumb.href} className="hover:text-red-700 hover:underline">
+                <Link href={crumb.href} className="hover:text-gray-900 hover:underline">
                   {crumb.name}
                 </Link>
               )}

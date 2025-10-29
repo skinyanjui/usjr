@@ -3,6 +3,8 @@ import { TreePine, Leaf, Calendar, Recycle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function HolidayTreeRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="green"
+      theme="primary"
       title="Holiday Tree Removal in Evansville"
       description="Convenient Christmas tree removal and seasonal landscaping cleanup services"
       badges={['Seasonal Service', 'Eco-Friendly Disposal', 'Christmas Specialists']}
@@ -155,6 +157,17 @@ export default function HolidayTreeRemovalPage() {
           times.
         </p>
       </div>
+
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }

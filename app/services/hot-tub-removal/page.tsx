@@ -3,6 +3,8 @@ import { Zap, Wrench, Recycle, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function HotTubRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="blue"
+      theme="primary"
       title="Hot Tub Removal in Evansville"
       description="Professional hot tub removal, spa removal, and jacuzzi disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we handle it all with specialized equipment." // Changed from subtitle to description
       badges={['Same-Day Service', 'Safe Disconnection', 'Eco-Friendly']} // Added badges array
@@ -114,6 +116,17 @@ export default function HotTubRemovalPage() {
             'Most hot tub removals take 2-4 hours including disconnection and removal. Complex installations or difficult access may require additional time.',
         },
       ]}
-    />
+    >
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
+    </ServicePageTemplate>
   )
 }

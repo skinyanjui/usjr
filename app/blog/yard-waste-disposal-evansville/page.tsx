@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Yard Waste Disposal in Evansville: Composting and Pickup Basics | Uncle Sam Junk Removal',
+  title: 'Yard Waste Disposal Evansville: Composting | Uncle Sam',
   description:
     'Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.',
   ...buildCanonicalMetadata('/blog/yard-waste-disposal-evansville', baseUrl),
@@ -97,8 +97,8 @@ export default function YardWasteDisposalBlog() {
         landfills.
       </p>
 
-      <div className="my-8 rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Compost, mulch, or schedule a haul-away to keep limbs and leaves
           off your curb. Keeping yard waste separate from regular trash maximizes recycling
           opportunities.

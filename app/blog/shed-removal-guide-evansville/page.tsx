@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Shed Removal in Evansville: Permit Tips, Pricing, and Timeline | Uncle Sam Junk Removal',
+  title: 'Shed Removal Evansville: Permits & Pricing | Uncle Sam',
   description:
     "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
   ...buildCanonicalMetadata('/blog/shed-removal-guide-evansville', baseUrl),
@@ -87,8 +87,8 @@ export default function ShedRemovalGuideBlog() {
         with concrete foundations may take longer.
       </p>
 
-      <div className="my-8 rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Pro Tip:</strong> Prepare for tear-down day with clear access, utility checks, and
           a plan for debris disposal to ensure a smooth, efficient removal process.
         </p>

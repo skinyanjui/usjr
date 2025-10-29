@@ -3,6 +3,8 @@ import { Package, Wrench, Building2, Truck } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { settings } from '@/lib/cms-content'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function WarehouseFixtureRemovalPage() {
   return (
     <ServicePageTemplate
-      theme="purple"
+      theme="primary"
       title="Warehouse & Retail Fixture Removal in Evansville"
       description="Professional removal of warehouse racks, retail shelving, and commercial fixtures for space reconfiguration"
       badges={['Commercial Fixtures', 'Heavy Equipment', 'Space Reconfiguration']}
@@ -157,6 +159,17 @@ export default function WarehouseFixtureRemovalPage() {
           maximizing scrap metal recovery.
         </p>
       </div>
+
+      <StructuredData
+        type="Service"
+        data={{
+          name: serviceInfo.serviceName,
+          description: seoData.description,
+          price: serviceInfo.price,
+          category: serviceInfo.category,
+          serviceArea: settings.serviceAreas,
+        }}
+      />
     </ServicePageTemplate>
   )
 }

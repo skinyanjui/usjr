@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Appliance Disposal & Recycling Guide for Evansville Residents | Uncle Sam Junk Removal',
+  title: 'Appliance Disposal & Recycling Evansville | Uncle Sam',
   description:
     'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
   keywords:
@@ -235,8 +235,8 @@ export default function ApplianceDisposalGuidePage() {
         </li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Bottom Line:</strong> Professional appliance removal in Evansville costs $89-149
           per appliance and ensures proper environmental handling, legal compliance, and convenient
           service. With same-day availability and guaranteed proper disposal, it's the smart choice

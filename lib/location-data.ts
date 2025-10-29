@@ -9,7 +9,7 @@ export interface LocationData {
   locationName: string
   state: string
   tagline: string
-  theme: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme: 'primary'
   features: LocationFeature[]
   landmarks: string[]
   neighborhoods?: string[]
@@ -29,7 +29,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       'Local experts serving Evansville since 2025 with same-day service, transparent pricing, and eco-friendly disposal',
-    theme: 'red',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -134,7 +134,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       "Expert junk removal for Newburgh's historic charm with careful handling and prompt service",
-    theme: 'blue',
+    theme: 'primary',
     driveTime: '15-minute drive from Evansville',
     features: [
       {
@@ -226,7 +226,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       "Respectful junk removal for New Harmony's historic preservation with careful handling and community focus",
-    theme: 'purple',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -317,7 +317,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       'Reliable junk removal for Boonville and rural Warrick County with specialized farm and large property service',
-    theme: 'orange',
+    theme: 'primary',
     driveTime: '25-minute drive from Evansville',
     features: [
       {
@@ -409,7 +409,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Kentucky',
     tagline:
       'Cross-state professional junk removal from Indiana to Henderson, KY with licensed Kentucky service',
-    theme: 'green',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -500,7 +500,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Illinois',
     tagline:
       'Illinois junk removal service with Wabash Valley expertise and agricultural property specialization',
-    theme: 'teal',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -591,7 +591,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       'Posey County junk removal headquarters with local expertise and comprehensive rural service',
-    theme: 'blue',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -682,7 +682,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Kentucky',
     tagline:
       'Western Kentucky junk removal with Daviess County expertise and cross-state professional service',
-    theme: 'purple',
+    theme: 'primary',
     features: [
       {
         icon: Clock,
@@ -773,7 +773,7 @@ export const locationData: Record<string, LocationData> = {
     state: 'Indiana',
     tagline:
       'Gibson County junk removal with rural expertise and agricultural property specialization',
-    theme: 'green',
+    theme: 'primary',
     features: [
       {
         icon: Clock,

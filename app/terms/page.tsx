@@ -15,45 +15,45 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-muted/30 min-h-screen">
       <PageHero
         title="Terms of Service"
         description="Bookings, cancellations, payments, and service limitations"
-        color="slate"
+        color="neutral"
       />
-      <div className="mx-auto max-w-3xl px-4 py-12">
-        <div className="mb-8 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
           >
             Home
           </Link>
           <Link
             href="/quote"
-            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
           >
             Get a Quote
           </Link>
           <Link
             href="/services"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/privacy"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Privacy Policy
           </Link>
         </div>
 
-        <p className="mb-2 text-3xl font-bold text-gray-900">Service terms overview</p>
-        <p className="mb-8 text-gray-600">Effective: January 1, 2025</p>
+        <p className="text-foreground mb-2 text-3xl font-bold">Service terms overview</p>
+        <p className="text-muted-foreground mb-8">Effective: January 1, 2025</p>
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Agreement to Terms</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Agreement to Terms</h2>
+          <p className="text-muted-foreground">
             These Terms of Service ("Terms") constitute a legally binding agreement between you
             ("you" or "Customer") and Uncle Sam Junk Removal ("Company", "we", "us", or "our")
             governing your access to and use of our website and services, including junk removal,
@@ -63,8 +63,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Quotes, Estimates & Booking</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Quotes, Estimates & Booking</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               Quotes are estimates based on the information provided and/or on-site assessment
             </li>
@@ -81,8 +81,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Cancellations & Rescheduling</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Cancellations & Rescheduling</h2>
+          <p className="text-muted-foreground">
             You can cancel or reschedule up to 24 hours in advance at no charge. Same-day
             cancellations may incur a $25 dispatch fee. Missed appointments where we are unable to
             access the property may be treated as a same-day cancellation.
@@ -90,8 +90,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Arrival Windows & Access</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Arrival Windows & Access</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>We provide arrival windows; crews will call or text when en route</li>
             <li>Customer must ensure safe and legal access to items for removal</li>
             <li>We reserve the right to refuse service where conditions are unsafe or unlawful</li>
@@ -99,8 +99,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Payments</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Payments</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>Payment is due upon completion of service unless otherwise agreed in writing</li>
             <li>We accept cash, check, and major credit/debit cards</li>
             <li>Returned checks may incur a service fee</li>
@@ -109,8 +109,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Ownership & Disposal</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Ownership & Disposal</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               By authorizing removal, you represent that you have lawful ownership or authority over
               items
@@ -126,8 +126,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Prohibited Materials</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Prohibited Materials</h2>
+          <p className="text-muted-foreground">
             We cannot remove hazardous materials including paint, chemicals, oils, fuels, asbestos,
             biohazards, medical waste, pressurized tanks, or any materials prohibited by law. Please
             contact us if you are unsure whether an item can be removed.
@@ -135,10 +135,10 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">
             Property Protection & Limitations
           </h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               We take reasonable care to avoid damage. Customer is responsible for clearing pathways
               and protecting floors, walls, and fixtures where feasible
@@ -155,16 +155,16 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Safety</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Safety</h2>
+          <p className="text-muted-foreground">
             Crews may refuse or stop work if conditions are unsafe, unsanitary, or beyond the scope
             of quoted service. Customer must keep pets and bystanders clear of work areas.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Photos, Videos & Reviews</h2>
-          <ul className="list-disc space-y-1 pl-6 text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Photos, Videos & Reviews</h2>
+          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
             <li>
               We may take before/after photos for job documentation, quality assurance, and customer
               communication
@@ -180,8 +180,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Warranties & Disclaimers</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Warranties & Disclaimers</h2>
+          <p className="text-muted-foreground">
             EXCEPT AS EXPRESSLY PROVIDED, SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT
             WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED
             WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
@@ -189,8 +189,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Liability Limitation</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Liability Limitation</h2>
+          <p className="text-muted-foreground">
             TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR LIABILITY FOR ANY CLAIMS ARISING OUT OF OR
             RELATED TO THE SERVICES WILL NOT EXCEED THE AMOUNT YOU PAID FOR THE APPLICABLE SERVICE
             GIVING RISE TO THE CLAIM. IN NO EVENT WILL WE BE LIABLE FOR INDIRECT, INCIDENTAL,
@@ -199,8 +199,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Indemnification</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Indemnification</h2>
+          <p className="text-muted-foreground">
             You agree to defend, indemnify, and hold harmless the Company and its personnel from and
             against claims, damages, liabilities, and expenses arising from your use of the Services
             or breach of these Terms.
@@ -208,8 +208,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Rescheduling; Force Majeure</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Rescheduling; Force Majeure</h2>
+          <p className="text-muted-foreground">
             We are not responsible for delays or failure to perform due to events beyond our
             reasonable control, including weather, accidents, traffic, labor shortages, or disposal
             facility closures. We will make reasonable efforts to reschedule promptly.
@@ -217,10 +217,10 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">
             Governing Law & Dispute Resolution
           </h2>
-          <p className="text-gray-700">
+          <p className="text-muted-foreground">
             These Terms are governed by the laws of the State of Indiana without regard to conflict
             of laws principles. You agree to resolve disputes in the state or federal courts located
             in Vanderburgh County, Indiana, and consent to personal jurisdiction and venue there.
@@ -228,8 +228,8 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Changes to Terms</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Changes to Terms</h2>
+          <p className="text-muted-foreground">
             We may update these Terms from time to time. Changes are effective when posted on our
             website with an updated "Last updated" date. Continued use of the Services after changes
             constitutes acceptance of the updated Terms.
@@ -237,37 +237,37 @@ export default function TermsPage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-2 text-2xl font-bold text-gray-900">Contact</h2>
-          <p className="text-gray-700">
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Contact</h2>
+          <p className="text-muted-foreground">
             Questions about these Terms? Email info@unclesamjunkremoval.com or call {settings.phone}
             . Mail: Uncle Sam Junk Removal, Evansville, IN.
           </p>
         </section>
 
-        <p className="text-sm text-gray-600">Last updated: January 1, 2025</p>
+        <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
 
-        <div className="mt-12 flex flex-wrap gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="border-border bg-card mt-12 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
           >
             Home
           </Link>
           <Link
             href="/quote"
-            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
           >
             Get a Quote
           </Link>
           <Link
             href="/services"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Our Services
           </Link>
           <Link
             href="/privacy"
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Privacy Policy
           </Link>

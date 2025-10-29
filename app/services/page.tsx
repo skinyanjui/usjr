@@ -15,7 +15,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 export const metadata: Metadata = {
   title: 'Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal',
   description:
-    'Comprehensive junk removal, light demolition, and cleaning services in Evansville, Indiana. Eco-friendly disposal, free estimates, and reliable service throughout Southern Indiana.',
+    'Junk removal, light demolition & cleaning in Evansville, IN. Eco-friendly disposal, free estimates. Serving Southern Indiana.',
   keywords:
     'junk removal services, light demolition, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
   ...buildCanonicalMetadata('/services', baseUrl),
@@ -123,23 +123,23 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="min-h-screen bg-gray-900">
       <PageHero
         title="Professional Services in Evansville"
         description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
-        color="blue"
+        color="primary"
       />
 
       {/* Top CTAs */}
       <section className="px-4 py-8">
         <div className="mx-auto max-w-7xl text-center">
-          <div className="mt-2 flex flex-col justify-center gap-4 sm:flex-row">
-            <ThemedButton theme="red" size="lg" asChild>
+          <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <ThemedButton theme="primary" asChild>
               <QuoteCtaLink location="services-hero" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+            <ThemedButton theme="primary" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="red"
+                color="primary"
                 category="Junk Removal"
               />
             ))}
@@ -172,7 +172,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Project Services */}
-      <section className="bg-white/50 px-4 py-16">
+      <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             title="Project Services"
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="orange"
+                color="primary"
                 category="Project"
                 size="small"
               />
@@ -214,7 +214,7 @@ export default function ServicesPage() {
                 price={service.price}
                 link={service.link}
                 icon={service.icon}
-                color="green"
+                color="primary"
                 category="Cleaning"
               />
             ))}
@@ -223,7 +223,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Areas */}
-      <section className="bg-white/50 px-4 py-16">
+      <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             title="Service Areas"
@@ -243,7 +243,7 @@ export default function ServicesPage() {
                 key={index}
                 className="p-4 text-center transition-transform hover:scale-105"
               >
-                <ThemedButton theme="blue" variant="ghost" asChild className="w-full">
+                <ThemedButton theme="primary" variant="ghost" asChild className="w-full">
                   <Link href={location.href}>{location.name}</Link>
                 </ThemedButton>
               </GlassCard>
@@ -255,17 +255,17 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">Ready to Get Started?</h2>
-          <p className="mb-8 text-xl text-gray-600">
+          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready to Get Started?</h2>
+          <p className="text-muted-foreground mb-8 text-xl">
             Book your service today or get a free, no-obligation quote.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <ThemedButton theme="red" size="lg" asChild>
+          <div className="flex flex-wrap justify-center gap-3">
+            <ThemedButton theme="primary" asChild>
               <QuoteCtaLink location="services-cta" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </ThemedButton>
-            <ThemedButton theme="green" variant="outline" size="lg" asChild>
+            <ThemedButton theme="primary" variant="outline" asChild>
               <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
             </ThemedButton>
           </div>

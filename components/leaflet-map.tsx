@@ -126,7 +126,8 @@ export default function LeafletMap() {
         direction: 'top',
         offset: [0, -12],
         opacity: 0.9,
-        className: 'bg-white/90 px-1 py-[2px] rounded text-[10px] font-medium text-gray-700 shadow',
+        className:
+          'bg-card/90 px-1 py-[2px] rounded text-[10px] font-medium text-muted-foreground shadow',
       })
       marker.on('click', () => {
         window.location.href = location.href
@@ -150,12 +151,12 @@ export default function LeafletMap() {
     <div className="relative h-full w-full">
       <div ref={mapContainerRef} className="h-full w-full" aria-label="Service Area Map" />
 
-      <div className="absolute top-2 left-2 rounded-lg bg-white/90 p-2 shadow-sm backdrop-blur-sm">
-        <div className="flex items-center gap-1 text-xs font-medium text-gray-700">
-          <MapPin className="h-3 w-3 text-red-600" />
+      <div className="bg-card/90 absolute top-2 left-2 rounded-lg p-2 shadow-sm backdrop-blur-sm">
+        <div className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
+          <MapPin className="h-3 w-3 text-gray-900" />
           <span>Service Area</span>
         </div>
-        <div className="mt-1 text-xs text-gray-600">{locations.length} cities served</div>
+        <div className="text-muted-foreground mt-1 text-xs">{locations.length} cities served</div>
       </div>
     </div>
   )

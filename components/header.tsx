@@ -67,13 +67,13 @@ export function Header() {
 
   return (
     <header className="glass sticky top-0 z-50">
-      <nav className="border-b border-white/20 bg-white/90 px-4 py-3 backdrop-blur-md">
+      <nav className="bg-background/90 border-b border-white/10 px-4 py-3 backdrop-blur-md dark:border-white/10">
         <div className="mx-auto grid max-w-7xl grid-cols-3 items-center">
           {/* Logo */}
           <div className="col-span-2 flex min-w-0 items-end text-center lg:col-span-1">
             <Link
               href="/"
-              className="max-w-full truncate rounded-lg bg-red-600 px-3 py-2 text-xs font-bold whitespace-nowrap text-white transition-colors hover:bg-red-700 md:text-base"
+              className="bg-foreground text-background max-w-full truncate rounded-lg px-3 py-2 text-xs font-bold whitespace-nowrap transition-all hover:brightness-110 md:text-base"
             >
               UNCLE SAM JUNK REMOVAL
             </Link>
@@ -83,14 +83,14 @@ export function Header() {
           <div className="hidden items-center justify-center space-x-6 lg:flex">
             <Link
               href="/"
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               HOME
             </Link>
 
             <Link
               href="/about"
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               ABOUT
             </Link>
@@ -102,7 +102,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
@@ -133,7 +133,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
@@ -161,14 +161,14 @@ export function Header() {
 
             <Link
               href="/blog"
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               BLOG
             </Link>
 
             <Link
               href="/faq"
-              className="text-sm font-medium text-gray-700 transition-colors hover:text-red-600 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               FAQ
             </Link>
@@ -182,12 +182,15 @@ export function Header() {
               <PhoneButton
                 href={`tel:${settings.phoneE164}`}
                 size="xs"
-                className="bg-transparent text-black ring-1 ring-gray-300 hover:bg-red-700/10"
+                className="text-foreground ring-border hover:bg-accent/10 bg-transparent ring-1"
               >
                 <Phone className="h-3 w-3" /> {settings.phone}
               </PhoneButton>
               <div className="mt-0 text-xs">
-                <a href={`sms:${settings.phoneE164}`} className="text-black hover:text-red-600">
+                <a
+                  href={`sms:${settings.phoneE164}`}
+                  className="text-foreground hover:text-primary underline-offset-2 transition-all hover:underline"
+                >
                   Text photos for quote
                 </a>
               </div>
@@ -195,7 +198,7 @@ export function Header() {
             <Button
               asChild
               size="xs"
-              className="rounded-full bg-red-600 font-semibold text-white hover:bg-red-700"
+              className="bg-foreground text-background rounded-full font-semibold hover:brightness-110"
             >
               <Link
                 href="/quote"
@@ -238,19 +241,19 @@ export function Header() {
         {isMenuOpen && (
           <div
             id="mobile-nav"
-            className="mt-4 max-h-[70vh] overflow-y-auto border-t border-gray-200 pb-4 lg:hidden"
+            className="border-border mt-4 max-h-[70vh] overflow-y-auto border-t pb-4 lg:hidden"
           >
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
-                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 HOME
               </Link>
               <Link
                 href="/about"
-                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 ABOUT
@@ -259,7 +262,7 @@ export function Header() {
               <div className="pt-2">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between py-2 text-sm font-medium text-gray-700"
+                  className="text-foreground flex w-full items-center justify-between py-2 text-sm font-medium"
                   aria-expanded={isMobileServicesOpen}
                   aria-controls="mobile-services-panel"
                   onClick={() => setIsMobileServicesOpen(v => !v)}
@@ -275,7 +278,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block py-1.5 text-sm font-medium text-gray-700 hover:text-red-600"
+                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -288,7 +291,7 @@ export function Header() {
               <div className="pt-2">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between py-2 text-sm font-medium text-gray-700"
+                  className="text-foreground flex w-full items-center justify-between py-2 text-sm font-medium"
                   aria-expanded={isMobileLocationsOpen}
                   aria-controls="mobile-locations-panel"
                   onClick={() => setIsMobileLocationsOpen(v => !v)}
@@ -304,7 +307,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block py-1.5 text-sm font-medium text-gray-700 hover:text-red-600"
+                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -316,20 +319,24 @@ export function Header() {
 
               <Link
                 href="/blog"
-                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 BLOG
               </Link>
               <Link
                 href="/faq"
-                className="py-2 text-sm font-medium text-gray-700 hover:text-red-600"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 FAQ
               </Link>
               <div className="pt-4">
-                <Button asChild size="sm" className="w-full bg-red-600 text-white hover:bg-red-700">
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-foreground text-background w-full hover:brightness-110"
+                >
                   <Link
                     href="/quote"
                     prefetch

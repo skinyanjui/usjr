@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-blue-50 px-4">
+    <div className="bg-background flex min-h-screen items-center justify-center px-4">
       <div className="mx-auto max-w-2xl text-center">
         <SectionHeader
           title="404 - Page Not Found"
@@ -21,16 +21,16 @@ export default function NotFound() {
         />
 
         <GlassCard className="mt-8 p-8">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900">What can you do?</h2>
+          <h2 className="text-foreground mb-4 text-xl font-semibold">What can you do?</h2>
 
-          <div className="mb-8 space-y-4 text-gray-700">
+          <div className="text-muted-foreground mb-8 space-y-4">
             <p>• Check the URL for typos</p>
             <p>• Use our navigation menu to find what you need</p>
             <p>• Visit our homepage to start over</p>
             <p>• Contact us if you think this is an error</p>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button asChild>
               <Link href="/">Go to Homepage</Link>
             </Button>

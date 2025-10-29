@@ -64,7 +64,7 @@ export default function YardWasteRemovalPage() {
 
   return (
     <ServicePageTemplate
-      theme="green"
+      theme="primary"
       title="Yard Waste Removal Services in Evansville"
       description="Fast, reliable yard waste removal, brush pickup, and landscaping debris removal throughout Southern Indiana. Whether you need leaves removed, tree limbs hauled away, or complete yard cleanup, we provide same-day service with 100% eco-friendly composting."
       badges={[
@@ -159,13 +159,13 @@ export default function YardWasteRemovalPage() {
       ]}
     >
       {/* Customer reviews section */}
-      <div className="bg-gray-50 py-12">
-        <div className="mx-auto max-w-4xl px-4">
+      <div className="bg-muted/30 py-12">
+        <div className="mx-auto max-w-7xl px-4">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="detailed"
-            theme="green"
+            theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
           />
@@ -173,13 +173,13 @@ export default function YardWasteRemovalPage() {
       </div>
 
       {/* Internal linking section */}
-      <div className="bg-white py-12">
-        <div className="mx-auto max-w-4xl px-4">
+      <div className="bg-card py-12">
+        <div className="mx-auto max-w-7xl px-4">
           <InternalLinks
             title="Related Services & Helpful Resources"
             links={relatedContent}
             variant="grid"
-            theme="green"
+            theme="primary"
           />
         </div>
       </div>

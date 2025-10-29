@@ -9,12 +9,12 @@ const QuoteFormStandalone = dynamic(
     ssr: false,
     loading: () => (
       <div className="mx-auto max-w-4xl">
-        <div className="animate-pulse rounded-lg border bg-white p-6 sm:p-8">
-          <div className="mb-4 h-6 w-56 rounded bg-gray-200" />
+        <div className="animate-pulse rounded-lg border bg-card p-6 sm:p-8">
+          <div className="mb-4 h-6 w-56 rounded bg-muted" />
           <div className="space-y-3">
-            <div className="h-10 rounded bg-gray-100" />
-            <div className="h-10 rounded bg-gray-100" />
-            <div className="h-10 rounded bg-gray-100" />
+            <div className="h-10 rounded bg-muted/50" />
+            <div className="h-10 rounded bg-muted/50" />
+            <div className="h-10 rounded bg-muted/50" />
           </div>
         </div>
       </div>

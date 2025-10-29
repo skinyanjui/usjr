@@ -72,9 +72,9 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-red-200 bg-red-50 text-red-700',
-    orange: 'border-orange-200 bg-orange-50 text-orange-700',
-    green: 'border-green-200 bg-green-50 text-green-700',
+    red: 'border-border bg-muted text-foreground',
+    orange: 'border-border bg-muted text-foreground',
+    green: 'border-border bg-muted text-foreground',
   }
   return colors[color]
 }
@@ -91,10 +91,10 @@ export default function CompareClient() {
   return (
     <>
       <div className="mb-12 text-center">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
+        <h1 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
           Compare Our Services
         </h1>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
+        <p className="text-muted-foreground mx-auto max-w-3xl text-lg sm:text-xl">
           Not sure which service is right for you? Compare features, pricing, and benefits to make
           the best choice for your project.
         </p>
@@ -109,7 +109,7 @@ export default function CompareClient() {
             <Card
               key={service.id}
               className={`relative transition-all duration-300 hover:shadow-lg ${
-                isSelected ? 'shadow-lg ring-2 ring-blue-500' : ''
+                isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
               }`}
             >
               <CardHeader className="pb-4 text-center">
@@ -121,7 +121,7 @@ export default function CompareClient() {
                   <Icon className="h-8 w-8" />
                 </div>
                 <CardTitle className="text-2xl font-bold">{service.name}</CardTitle>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-muted-foreground">{service.description}</p>
                 <div className="mt-4 flex items-center justify-center gap-4">
                   <Badge variant="outline" className="flex items-center gap-1">
                     <DollarSign className="h-3 w-3" />
@@ -136,19 +136,19 @@ export default function CompareClient() {
 
               <CardContent className="space-y-6">
                 <div>
-                  <h4 className="mb-2 flex items-center gap-2 font-semibold text-gray-900">
+                  <h4 className="text-foreground mb-2 flex items-center gap-2 font-semibold">
                     <Users className="h-4 w-4" />
                     Best For:
                   </h4>
-                  <p className="text-gray-600">{service.bestFor}</p>
+                  <p className="text-muted-foreground">{service.bestFor}</p>
                 </div>
 
                 <div>
-                  <h4 className="mb-3 font-semibold text-gray-900">What's Included:</h4>
+                  <h4 className="text-foreground mb-3 font-semibold">What's Included:</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
-                        <Check className="h-4 w-4 flex-shrink-0 text-green-600" />
+                        <Check className="h-4 w-4 flex-shrink-0 text-gray-900" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -156,11 +156,14 @@ export default function CompareClient() {
                 </div>
 
                 <div>
-                  <h4 className="mb-3 font-semibold text-gray-900">Not Included:</h4>
+                  <h4 className="text-foreground mb-3 font-semibold">Not Included:</h4>
                   <ul className="space-y-2">
                     {service.notIncluded.map((item, index) => (
-                      <li key={index} className="flex items-center gap-2 text-sm text-gray-600">
-                        <X className="h-4 w-4 flex-shrink-0 text-red-500" />
+                      <li
+                        key={index}
+                        className="text-muted-foreground flex items-center gap-2 text-sm"
+                      >
+                        <X className="text-destructive h-4 w-4 flex-shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -180,11 +183,11 @@ export default function CompareClient() {
                     variant="outline"
                     className={`w-full bg-transparent ${
                       service.color === 'red'
-                        ? 'border-red-700 text-red-700'
+                        ? 'border-gray-300 text-gray-900'
                         : service.color === 'orange'
-                          ? 'border-orange-700 text-orange-700'
+                          ? 'border-gray-300 text-gray-900'
                           : service.color === 'green'
-                            ? 'border-green-700 text-green-700'
+                            ? 'border-gray-300 text-gray-900'
                             : ''
                     }`}
                   >
@@ -204,16 +207,16 @@ export default function CompareClient() {
       </div>
 
       {selectedServices.length > 0 && (
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-border bg-muted/30">
           <CardContent className="p-8 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">Ready to Get Started?</h3>
-            <p className="mb-6 text-gray-600">
+            <h3 className="text-foreground mb-4 text-2xl font-bold">Ready to Get Started?</h3>
+            <p className="text-muted-foreground mb-6">
               You've selected {selectedServices.length} service
               {selectedServices.length > 1 ? 's' : ''}. Get a free quote or bundle multiple services
               for potential savings.
             </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild className="bg-red-600 hover:bg-red-700">
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button asChild className="bg-gray-900 hover:bg-gray-900">
                 <Link href="/quote" prefetch>
                   Get Free Quote
                 </Link>
@@ -228,15 +231,15 @@ export default function CompareClient() {
 
       <Card className="mt-12">
         <CardContent className="p-8 text-center">
-          <h3 className="mb-4 text-2xl font-bold text-gray-900">
+          <h3 className="text-foreground mb-4 text-2xl font-bold">
             Still Not Sure Which Service You Need?
           </h3>
-          <p className="mb-6 text-gray-600">
+          <p className="text-muted-foreground mb-6">
             Our team can help you choose the right service for your project. Get personalized
             recommendations based on your specific needs.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button asChild className="bg-green-600 hover:bg-green-700">
+            <Button asChild className="bg-gray-800 hover:bg-gray-800">
               <Link href="/quote" prefetch>
                 Get Personalized Quote
               </Link>

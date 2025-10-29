@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Compassionate Estate Cleanout Guide | Step-by-Step Planning | Uncle Sam Junk Removal',
+  title: 'Estate Cleanout Guide: Planning & Donation | Uncle Sam',
   description:
     'Comprehensive estate cleanout guide with 8+ years of experience. Step-by-step planning, local donation options, legal considerations, and emotional support strategies for Southern Indiana families.',
   keywords:
@@ -49,9 +49,9 @@ export default function EstateCleanoutGuideBlog() {
         transitions.
       </p>
 
-      <div className="my-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
-        <h3 className="mb-2 text-lg font-semibold text-blue-800">Our Promise to Families</h3>
-        <p className="text-blue-700">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <h3 className="mb-2 text-lg font-semibold text-gray-900">Our Promise to Families</h3>
+        <p className="text-gray-900">
           We treat every estate cleanout with the same respect and care we'd want for our own
           family's belongings. We're here to support you, not rush you, through this emotional
           process.
@@ -100,8 +100,8 @@ export default function EstateCleanoutGuideBlog() {
         Schedule a family meeting (in-person or virtual) before anyone begins removing items.
       </p>
 
-      <div className="my-6 rounded-lg bg-green-50 p-6">
-        <h4 className="mb-2 font-semibold text-green-800">Recommended Family Meeting Agenda:</h4>
+      <div className="my-6 rounded-lg bg-gray-800 p-6">
+        <h4 className="mb-2 font-semibold text-gray-900">Recommended Family Meeting Agenda:</h4>
         <ol>
           <li>Review will and specific bequests</li>
           <li>Identify items with strong sentimental value to family members</li>
@@ -157,12 +157,12 @@ export default function EstateCleanoutGuideBlog() {
         <li>Heavy items need removal (furniture, appliances, exercise equipment)</li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
-        <h3 className="mb-2 text-lg font-semibold text-red-800">Our Estate Cleanout Process</h3>
-        <p className="mb-3 text-red-700">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
+        <h3 className="mb-2 text-lg font-semibold text-gray-900">Our Estate Cleanout Process</h3>
+        <p className="mb-3 text-gray-900">
           We've developed a compassionate, systematic approach based on years of family feedback:
         </p>
-        <ol className="space-y-1 text-red-700">
+        <ol className="space-y-1 text-gray-900">
           <li>Initial consultation to understand family wishes and timeline</li>
           <li>Careful sorting with family oversight and approval</li>
           <li>Coordination with local charities for maximum donation impact</li>
@@ -201,8 +201,8 @@ export default function EstateCleanoutGuideBlog() {
         </li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-purple-500 bg-purple-50 p-6">
-        <p className="text-lg font-medium text-gray-900">
+      <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">
+        <p className="text-foreground text-lg font-medium">
           <strong>Final Thoughts:</strong> There's no "right" timeline for this process. Some
           families complete estate cleanouts in a few weeks, others take months. What matters is
           moving at a pace that feels respectful to your loved one's memory and manageable for your
