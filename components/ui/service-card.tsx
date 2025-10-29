@@ -22,7 +22,6 @@ export function ServiceCard({
   price,
   color = 'primary',
   link,
-  category,
   size = 'medium',
   image,
 }: ServiceCardProps) {
