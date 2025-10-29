@@ -58,11 +58,11 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         </div>
       </header>
 
-      {/* Hero section with Linear-style design */}
-      <div className="border-border/30 from-muted/30 to-background border-b bg-gradient-to-b">
-        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      {/* Compact hero section - Linear-style */}
+      <div className="border-border/30 border-b">
+        <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
           {/* Category badge */}
-          <div className="mb-6">
+          <div className="mb-4">
             <span className="linear-border bg-background inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium">
               <Tag className="h-3.5 w-3.5" />
               {meta.category}
@@ -70,12 +70,12 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
 
           {/* Title */}
-          <h1 className="text-foreground mb-6 text-[28px] leading-tight font-semibold tracking-tight sm:text-[36px] lg:text-[40px]">
+          <h1 className="text-foreground mb-3 text-[24px] leading-tight font-semibold tracking-tight sm:text-[28px] lg:text-[32px]">
             {meta.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-muted-foreground mb-8 text-[15px] leading-relaxed sm:text-[16px]">
+          <p className="text-muted-foreground mb-6 text-[14px] leading-relaxed sm:text-[15px]">
             {meta.excerpt}
           </p>
 

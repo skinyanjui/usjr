@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/hero-section'
 import { HomeServiceCards } from '@/components/home-service-cards'
+import { ReviewsRow } from '@/components/reviews-row'
 import { GoogleReviews } from '@/components/google-reviews'
 import { StructuredData } from '@/components/structured-data'
 import { getAggregateTestimonialStats } from '@/lib/cms-content'
@@ -34,6 +35,8 @@ export default function HomePage() {
       </div>
 
       <GoogleReviews />
+
+      <ReviewsRow />
 
       {/* Simple CTA Section */}
       <section className="bg-muted px-4 py-16">

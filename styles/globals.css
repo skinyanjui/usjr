@@ -82,6 +82,12 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family:
+      var(--font-inter),
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
     font-size: 14px; /* Linear.app base font size */
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
