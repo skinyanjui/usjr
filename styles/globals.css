@@ -3,50 +3,52 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Linear.app-inspired color system with brand accent */
+/* Linear.app-inspired color system based on reference palette */
 :root {
+  /* Light mode - clean and minimal */
   --background: 255 255 255;
   --foreground: 23 23 23;
   --card: 255 255 255;
   --card-foreground: 23 23 23;
   --popover: 255 255 255;
   --popover-foreground: 23 23 23;
-  --primary: 61 99 221; /* Accent blue #3D63DD */
+  --primary: 61 99 221; /* Accent blue #3D63DD - Interactive */
   --primary-foreground: 255 255 255;
   --secondary: 245 245 245;
   --secondary-foreground: 23 23 23;
   --muted: 250 250 250;
   --muted-foreground: 139 141 152; /* Gray #8B8D98 */
-  --accent: 61 99 221; /* Accent blue #3D63DD */
+  --accent: 107 143 221; /* Bright blue #6B8FDD - Solid color */
   --accent-foreground: 255 255 255;
   --destructive: 220 38 38;
   --destructive-foreground: 255 255 255;
   --border: 229 229 229;
   --input: 229 229 229;
-  --ring: 61 99 221; /* Accent blue for focus rings */
+  --ring: 61 99 221; /* Accent blue for focus */
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 17 17 17; /* Background #111111 */
-  --foreground: 250 250 250;
-  --card: 24 24 27;
-  --card-foreground: 250 250 250;
-  --popover: 24 24 27;
-  --popover-foreground: 250 250 250;
-  --primary: 61 99 221; /* Accent blue #3D63DD */
+  /* Dark mode - sophisticated blues and grays from palette */
+  --background: 10 14 39; /* Very dark blue-black (Swatch 1) */
+  --foreground: 232 234 239; /* Accessible text light (Swatch 11) */
+  --card: 26 35 50; /* Dark navy (Swatch 2) */
+  --card-foreground: 232 234 239;
+  --popover: 26 35 50;
+  --popover-foreground: 232 234 239;
+  --primary: 107 143 221; /* Bright blue (Swatch 9) - Primary accent */
   --primary-foreground: 255 255 255;
-  --secondary: 39 39 42;
-  --secondary-foreground: 250 250 250;
-  --muted: 39 39 42;
-  --muted-foreground: 139 141 152; /* Gray #8B8D98 */
-  --accent: 61 99 221; /* Accent blue #3D63DD */
+  --secondary: 42 59 90; /* Dark blue (Swatch 3) */
+  --secondary-foreground: 232 234 239;
+  --muted: 42 59 90;
+  --muted-foreground: 139 153 179; /* Blue-gray (Swatch 8) */
+  --accent: 107 143 221; /* Bright blue accent */
   --accent-foreground: 255 255 255;
   --destructive: 220 38 38;
   --destructive-foreground: 255 255 255;
-  --border: 39 39 42;
-  --input: 39 39 42;
-  --ring: 61 99 221; /* Accent blue for focus rings */
+  --border: 90 111 143; /* Border gray-blue (Swatch 6) */
+  --input: 61 88 128; /* Medium blue (Swatch 4) */
+  --ring: 107 143 221; /* Bright blue for focus */
 }
 
 @theme inline {
@@ -140,17 +142,17 @@
 
   /* Linear.app-inspired border styles - subtle and refined */
   .linear-border {
-    border: 1px solid rgb(var(--border) / 0.5);
+    border: 1px solid rgb(var(--border) / 0.6);
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.04),
       0 0 0 1px rgb(0 0 0 / 0.02);
   }
 
   .dark .linear-border {
-    border: 1px solid rgb(var(--border));
+    border: 1px solid rgb(var(--border) / 0.8);
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.3),
-      0 0 0 1px rgb(255 255 255 / 0.05);
+      0 1px 2px rgb(0 0 0 / 0.4),
+      0 0 0 1px rgb(107 143 221 / 0.08); /* Subtle blue glow */
   }
 
   /* Linear.app card style - clean and minimal */
@@ -161,14 +163,30 @@
       0 1px 3px rgb(0 0 0 / 0.05),
       0 0 0 1px rgb(0 0 0 / 0.02);
     backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+  }
+
+  .linear-card:hover {
+    border-color: rgb(var(--primary) / 0.3);
+    box-shadow:
+      0 4px 12px rgb(0 0 0 / 0.08),
+      0 0 0 1px rgb(var(--primary) / 0.1);
   }
 
   .dark .linear-card {
     background: rgb(var(--card));
-    border: 1px solid rgb(var(--border));
+    border: 1px solid rgb(var(--border) / 0.6);
     box-shadow:
-      0 1px 3px rgb(0 0 0 / 0.3),
-      0 0 0 1px rgb(255 255 255 / 0.05);
+      0 1px 3px rgb(0 0 0 / 0.4),
+      0 0 0 1px rgb(107 143 221 / 0.05);
+  }
+
+  .dark .linear-card:hover {
+    border-color: rgb(var(--primary) / 0.5);
+    box-shadow:
+      0 4px 16px rgb(0 0 0 / 0.6),
+      0 0 0 1px rgb(var(--primary) / 0.2),
+      0 0 20px rgb(var(--primary) / 0.1); /* Subtle blue glow on hover */
   }
 
   /* Linear-style button */
@@ -177,17 +195,68 @@
     @apply bg-primary text-primary-foreground;
     @apply text-[14px] font-medium;
     @apply px-4 py-2;
-    @apply transition-all duration-150;
-    @apply hover:bg-gray-800 dark:hover:bg-gray-200;
+    @apply transition-all duration-200;
     @apply active:scale-[0.98];
+    border: 1px solid transparent;
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.08),
       0 0 0 1px rgb(0 0 0 / 0.05);
   }
 
+  .linear-button:hover {
+    @apply brightness-110;
+    box-shadow:
+      0 4px 12px rgb(var(--primary) / 0.3),
+      0 0 0 1px rgb(var(--primary) / 0.2);
+  }
+
   .dark .linear-button {
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.3),
-      0 0 0 1px rgb(255 255 255 / 0.1);
+      0 1px 2px rgb(0 0 0 / 0.4),
+      0 0 0 1px rgb(var(--primary) / 0.3);
+  }
+
+  .dark .linear-button:hover {
+    box-shadow:
+      0 4px 16px rgb(var(--primary) / 0.4),
+      0 0 0 1px rgb(var(--primary) / 0.5),
+      0 0 24px rgb(var(--primary) / 0.2);
+  }
+
+  /* Interactive elements - hover and focus states */
+  .linear-interactive {
+    @apply transition-all duration-200;
+    @apply cursor-pointer;
+  }
+
+  .linear-interactive:hover {
+    @apply brightness-105;
+    transform: translateY(-1px);
+  }
+
+  .linear-interactive:active {
+    transform: translateY(0);
+  }
+
+  /* Separator line - for sections */
+  .linear-separator {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--border) / 0.5) 20%,
+      rgb(var(--border) / 0.5) 80%,
+      transparent
+    );
+  }
+
+  .dark .linear-separator {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--border) / 0.6) 20%,
+      rgb(var(--border) / 0.6) 80%,
+      transparent
+    );
   }
 }

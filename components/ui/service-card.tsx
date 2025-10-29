@@ -93,7 +93,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`glass dark:glass-dark transition-all duration-300 hover:scale-105 hover:shadow-xl ${colors.border} overflow-hidden ${sizes.card} text-sm sm:text-base`}
+      className={`linear-card linear-interactive overflow-hidden ${sizes.card} text-sm sm:text-base`}
     >
       <div className={`relative ${sizes.banner} w-full overflow-hidden`}>
         {image ? (

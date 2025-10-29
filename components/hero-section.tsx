@@ -49,13 +49,13 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/quote"
-              className="flex min-h-[48px] items-center rounded-lg bg-white px-6 py-3 text-base font-semibold text-gray-900 transition-all hover:bg-gray-100"
+              className="linear-button flex min-h-[48px] items-center"
             >
               Get Free Quote
             </Link>
             <Link
               href="/services/junk-removal"
-              className="flex min-h-[48px] items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10"
+              className="linear-border flex min-h-[48px] items-center rounded-lg border-2 border-white bg-transparent px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10 hover:shadow-lg"
             >
               View Services
             </Link>
