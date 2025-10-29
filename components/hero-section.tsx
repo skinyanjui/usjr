@@ -19,18 +19,18 @@ const LOCATIONS = [
 export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[60vh] overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Full junk removal truck */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop"
-          alt="Professional junk removal truck and team"
+          src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2070&auto=format&fit=crop"
+          alt="Professional junk removal truck loaded with items"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/75 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70" />
       </div>
 
       {/* Content */}

@@ -14,6 +14,7 @@ export function HomeServiceCards() {
       color: 'primary' as const,
       link: '/services/junk-removal',
       category: 'Service',
+      image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2070&auto=format&fit=crop',
     },
     {
       title: 'Cleaning Services',
@@ -23,6 +24,7 @@ export function HomeServiceCards() {
       color: 'primary' as const,
       link: '/cleaning',
       category: 'Service',
+      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop',
     },
     {
       title: 'Light Demolition',
@@ -32,6 +34,7 @@ export function HomeServiceCards() {
       color: 'primary' as const,
       link: '/services/light-demolition',
       category: 'Service',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
     },
   ]
 
@@ -53,6 +56,7 @@ export function HomeServiceCards() {
               link={card.link}
               category={card.category}
               size="small"
+              image={card.image}
             />
           ))}
         </div>

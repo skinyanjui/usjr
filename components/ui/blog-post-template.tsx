@@ -50,7 +50,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-[13px] font-medium transition-colors"
+            className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
             Back to Blog
@@ -63,24 +63,24 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
           {/* Category badge */}
           <div className="mb-4">
-            <span className="linear-border bg-background inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium">
+            <span className="linear-border bg-background inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium">
               <Tag className="h-3.5 w-3.5" />
               {meta.category}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-foreground mb-3 text-[24px] leading-tight font-semibold tracking-tight sm:text-[28px] lg:text-[32px]">
+          <h1 className="text-foreground mb-3 text-[24px] font-semibold leading-tight tracking-tight sm:text-[28px] lg:text-[32px]">
             {meta.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-muted-foreground mb-6 text-[14px] leading-relaxed sm:text-[15px]">
+          <p className="text-muted-foreground mb-6 text-[15px] leading-relaxed sm:text-base">
             {meta.excerpt}
           </p>
 
           {/* Meta information */}
-          <div className="text-muted-foreground flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px]">
+          <div className="text-muted-foreground flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <div className="flex items-center gap-2">
               <User className="h-3.5 w-3.5" />
               <span className="font-medium">{meta.author}</span>
@@ -95,7 +95,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             </div>
             <button
               onClick={handleShare}
-              className="linear-border bg-background hover:bg-muted/50 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-[13px] font-medium transition-all"
+              className="linear-border bg-background hover:bg-muted/50 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all"
               aria-label="Share article"
             >
               <Share2 className="h-3.5 w-3.5" />

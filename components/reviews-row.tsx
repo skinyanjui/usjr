@@ -144,7 +144,7 @@ export function ReviewsRow() {
                   />
                 ))}
               </div>
-              <div className="text-[12px] sm:text-[13px] md:text-sm">
+              <div className="text-sm sm:text-base">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
                 <span className="font-semibold">{item.source}</span>
                 <span className="text-muted-foreground"> ({item.count}+)</span>
@@ -175,10 +175,8 @@ export function ReviewsRow() {
                     />
                   ))}
                 </div>
-                <p className="text-muted-foreground text-[12px] sm:text-[13px] md:text-sm">
-                  "{t.text}"
-                </p>
-                <div className="text-muted-foreground mt-2 text-[12px] sm:text-[12.5px] md:text-[13px]">
+                <p className="text-muted-foreground text-sm sm:text-base">"{t.text}"</p>
+                <div className="text-muted-foreground mt-2 text-sm">
                   — {t.name} • {t.location}
                 </div>
               </div>
