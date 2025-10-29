@@ -147,7 +147,7 @@ export default function EmergencyPage() {
       ctaSecondary="Text Photos for Fast Quote"
     >
       <div className="mt-12 space-y-8">
-        <Card className="bg-card border-red-200 shadow-lg">
+        <Card className="bg-card border-blue-200 shadow-lg">
           <CardHeader className="text-center">
             <CardTitle className="text-foreground text-2xl font-bold">
               Immediate Support Options
@@ -158,7 +158,7 @@ export default function EmergencyPage() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-lg border border-red-100 p-6 text-center">
+              <div className="rounded-lg border border-blue-100 p-6 text-center">
                 <Badge className="mb-3 inline-flex items-center gap-2 bg-blue-800 px-4 py-2 text-base text-white">
                   <Phone className="h-4 w-4" />
                   Call Now
@@ -173,8 +173,8 @@ export default function EmergencyPage() {
                 <p className="mt-2 text-sm text-gray-500">Available 24/7 for emergencies</p>
               </div>
 
-              <div className="rounded-lg border border-red-100 p-6 text-center">
-                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-blue-900 ring-1 ring-red-200">
+              <div className="rounded-lg border border-blue-100 p-6 text-center">
+                <Badge className="bg-card mb-3 inline-flex items-center gap-2 px-4 py-2 text-base text-blue-900 ring-1 ring-blue-200">
                   <MessageSquare className="h-4 w-4" />
                   Text Photos
                 </Badge>
@@ -185,7 +185,7 @@ export default function EmergencyPage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-red-700 text-blue-900 hover:bg-blue-900 hover:text-white"
+                  className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
                 >
                   <a href={`sms:${settings.phoneE164}`}>Text {settings.phone}</a>
                 </Button>

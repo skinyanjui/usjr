@@ -138,7 +138,7 @@ export default function JunkRemovalCostPage() {
         <li>Cleaning up the area after removal</li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-blue-50 p-6">
+      <div className="my-8 rounded-lg border-l-4 border-blue-700 bg-blue-50 p-6">
         <p className="text-foreground text-lg font-medium">
           <strong>Bottom Line:</strong> Junk removal in the Tri-State area typically costs from
           $89-649 depending on your project size. With transparent pricing, professional service,

@@ -50,7 +50,7 @@ export default function HotTubRemovalPage() {
       <h2>Critical Preparation Steps</h2>
 
       <h3>1. Electrical Disconnection (CRITICAL)</h3>
-      <div className="my-4 rounded-lg border-l-4 border-red-500 bg-blue-50 p-6">
+      <div className="my-4 rounded-lg border-l-4 border-blue-700 bg-blue-50 p-6">
         <p className="font-semibold text-blue-950">Safety First!</p>
         <p className="text-blue-900">
           Hot tubs operate on 220-240V circuits. Improper disconnection can cause serious injury or

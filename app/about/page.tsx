@@ -231,7 +231,7 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
                 <Shield className="h-8 w-8 text-blue-800" />
               </div>
               <h3 className="mb-2 font-bold">Licensed & Insured</h3>

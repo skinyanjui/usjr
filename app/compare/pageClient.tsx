@@ -72,7 +72,7 @@ type Service = (typeof services)[number]
 
 function getColorClasses(color: Service['color']) {
   const colors = {
-    red: 'border-border bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-red-400',
+    red: 'border-border bg-blue-50 dark:bg-blue-950/30 text-blue-900 dark:text-blue-400',
     orange:
       'border-orange-600 dark:border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400',
     green:
@@ -185,7 +185,7 @@ export default function CompareClient() {
                     variant="outline"
                     className={`w-full bg-transparent ${
                       service.color === 'red'
-                        ? 'border-red-700 text-blue-900'
+                        ? 'border-blue-900 text-blue-900'
                         : service.color === 'orange'
                           ? 'border-orange-700 text-orange-700'
                           : service.color === 'green'

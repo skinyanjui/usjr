@@ -189,7 +189,7 @@ export function TwoStepQuoteForm() {
                         className={`rounded-lg border-2 p-3 text-center transition-all ${
                           selectedItems.includes(item.id)
                             ? 'border-blue-800 bg-blue-50 text-blue-900 dark:bg-blue-950/30'
-                            : 'border-border hover:border-red-300'
+                            : 'border-border hover:border-blue-300'
                         }`}
                       >
                         <Icon className="mx-auto mb-1 h-5 w-5 sm:h-6 sm:w-6" />
@@ -212,7 +212,7 @@ export function TwoStepQuoteForm() {
                       className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${
                         loadSize === size.id
                           ? 'border-blue-800 bg-blue-50 dark:bg-blue-950/30'
-                          : 'border-border hover:border-red-300'
+                          : 'border-border hover:border-blue-300'
                       }`}
                     >
                       <div className="flex items-center">
@@ -277,7 +277,7 @@ export function TwoStepQuoteForm() {
                   multiple
                   capture="environment"
                   onChange={e => setContactInfo(prev => ({ ...prev, photos: e.target.files }))}
-                  className="file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-900 hover:file:bg-red-100 dark:bg-blue-950/30"
+                  className="file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-900 hover:file:bg-blue-100 dark:bg-blue-950/30"
                 />
                 <p className="text-muted-foreground mt-1 text-xs">
                   Photos help us provide more accurate quotes

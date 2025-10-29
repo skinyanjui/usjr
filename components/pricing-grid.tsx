@@ -118,7 +118,7 @@ export function PricingGrid() {
 
         <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {pricingTiers.map(tier => (
-            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-red-600' : ''}`}>
+            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-blue-800' : ''}`}>
               <CardHeader>
                 <CardTitle className="text-foreground flex items-center justify-between text-lg font-bold">
                   <span>{tier.name}</span>
@@ -180,7 +180,7 @@ export function PricingGrid() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-red-200 pt-6">
+          <div className="mt-8 border-t border-blue-200 pt-6">
             <p className="text-muted-foreground mb-4 font-medium">
               Ready to see exactly what your project will cost?
             </p>
@@ -193,7 +193,7 @@ export function PricingGrid() {
               </a>
               <a
                 href={`sms:${settings.phoneE164}`}
-                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-blue-950 bg-transparent px-6 text-center font-semibold text-blue-950 transition-colors hover:bg-red-800 hover:text-white sm:flex-initial"
+                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-blue-950 bg-transparent px-6 text-center font-semibold text-blue-950 transition-colors hover:bg-blue-950 hover:text-white sm:flex-initial"
               >
                 Text Photos for Instant Quote
               </a>

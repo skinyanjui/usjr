@@ -176,7 +176,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mb-4 border-t border-red-700/60 pt-4">
+          <div className="mb-4 border-t border-blue-900/60 pt-4">
             <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
               <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
                 <Phone className="h-4 w-4" />
@@ -201,7 +201,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-red-700/60 pt-3">
+          <div className="border-t border-blue-900/60 pt-3">
             <div className="flex flex-col items-center justify-between gap-1 text-xs text-white sm:text-sm md:flex-row">
               <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
               <div className="flex gap-4">

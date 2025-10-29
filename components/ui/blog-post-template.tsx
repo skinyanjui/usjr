@@ -107,7 +107,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-6 py-10 md:px-4 md:py-16">
-        <div className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-16 prose-h2:mb-6 prose-h2:text-3xl prose-h2:leading-tight prose-h2:scroll-mt-20 prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-2xl prose-h3:leading-snug prose-h3:scroll-mt-20 prose-h4:mt-8 prose-h4:mb-3 prose-h4:text-xl prose-h4:scroll-mt-20 prose-p:mb-6 prose-p:leading-relaxed prose-p:text-base prose-a:font-medium prose-a:text-blue-800 dark:prose-a:text-red-400 prose-a:no-underline prose-a:transition-colors hover:prose-a:underline hover:prose-a:text-blue-900 dark:hover:prose-a:text-red-300 prose-strong:font-semibold prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-2 prose-li:pl-2 prose-li:leading-relaxed prose-blockquote:border-l-4 prose-blockquote:border-red-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/30 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:not-italic prose-code:rounded prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 mx-auto max-w-3xl">
+        <div className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-16 prose-h2:mb-6 prose-h2:text-3xl prose-h2:leading-tight prose-h2:scroll-mt-20 prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-2xl prose-h3:leading-snug prose-h3:scroll-mt-20 prose-h4:mt-8 prose-h4:mb-3 prose-h4:text-xl prose-h4:scroll-mt-20 prose-p:mb-6 prose-p:leading-relaxed prose-p:text-base prose-a:font-medium prose-a:text-blue-800 dark:prose-a:text-blue-400 prose-a:no-underline prose-a:transition-colors hover:prose-a:underline hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-300 prose-strong:font-semibold prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-2 prose-li:pl-2 prose-li:leading-relaxed prose-blockquote:border-l-4 prose-blockquote:border-blue-700 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/30 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:not-italic prose-code:rounded prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8 mx-auto max-w-3xl">
           <style jsx global>{`
             /* Enhanced callout boxes */
             .prose .my-6.rounded-lg,
@@ -266,14 +266,14 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                 <Link
                   key={post.href}
                   href={post.href}
-                  className="group border-border bg-card rounded-xl border p-6 shadow-sm transition-all hover:border-blue-800 hover:shadow-md dark:hover:border-red-400"
+                  className="group border-border bg-card rounded-xl border p-6 shadow-sm transition-all hover:border-blue-800 hover:shadow-md dark:hover:border-blue-400"
                 >
                   <div className="mb-2">
-                    <span className="text-xs font-semibold tracking-wide text-blue-800 uppercase dark:text-red-400">
+                    <span className="text-xs font-semibold tracking-wide text-blue-800 uppercase dark:text-blue-400">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground mb-2 text-lg font-bold group-hover:text-blue-800 dark:group-hover:text-red-400">
+                  <h3 className="text-foreground mb-2 text-lg font-bold group-hover:text-blue-800 dark:group-hover:text-blue-400">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-sm">{post.excerpt}</p>

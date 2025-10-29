@@ -137,7 +137,7 @@ export function PricingCalculator() {
             step={5}
             value={loadSize[0]}
             onChange={e => setLoadSize([Number(e.target.value)])}
-            className="w-full accent-red-600"
+            className="w-full accent-blue-800"
           />
           <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
             <span>10%</span>
@@ -163,7 +163,7 @@ export function PricingCalculator() {
             step={1}
             value={itemCount[0]}
             onChange={e => setItemCount([Number(e.target.value)])}
-            className="w-full accent-red-600"
+            className="w-full accent-blue-800"
           />
           <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
             <span>1</span>
@@ -211,7 +211,7 @@ export function PricingCalculator() {
         </div>
 
         <div className="rounded-lg border border-blue-800 bg-blue-50 p-4 dark:border-red-500 dark:bg-blue-950/30">
-          <div className="flex items-center gap-2 font-semibold text-blue-900 dark:text-red-400">
+          <div className="flex items-center gap-2 font-semibold text-blue-900 dark:text-blue-400">
             <Info className="h-4 w-4" /> Estimated Price Range
           </div>
           <div className="mt-2 text-gray-800">
@@ -226,7 +226,7 @@ export function PricingCalculator() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild className="bg-blue-900 text-white hover:bg-red-800">
+          <Button asChild className="bg-blue-900 text-white hover:bg-blue-950">
             <a href={`tel:${settings.phoneE164}`}>
               <Phone className="h-4 w-4" /> Call {settings.phone}
             </a>
@@ -234,7 +234,7 @@ export function PricingCalculator() {
           <Button
             asChild
             variant="outline"
-            className="border-blue-950 bg-transparent text-blue-900 hover:bg-red-800 hover:text-white dark:text-red-400"
+            className="border-blue-950 bg-transparent text-blue-900 hover:bg-blue-950 hover:text-white dark:text-blue-400"
           >
             <Link href="/quote" prefetch>
               Get Free Quote

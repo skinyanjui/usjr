@@ -114,7 +114,7 @@ export function BentoGrid() {
                   onChange={e => setFormData({ ...formData, details: e.target.value })}
                   className="min-h-[60px] text-sm"
                 />
-                <Button asChild className="w-full bg-blue-900 text-sm hover:bg-red-800">
+                <Button asChild className="w-full bg-blue-900 text-sm hover:bg-blue-950">
                   <Link href="/quote" prefetch>
                     Get Free Quote
                   </Link>

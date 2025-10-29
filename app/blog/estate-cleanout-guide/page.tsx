@@ -157,7 +157,7 @@ export default function EstateCleanoutGuideBlog() {
         <li>Heavy items need removal (furniture, appliances, exercise equipment)</li>
       </ul>
 
-      <div className="my-8 rounded-lg border-l-4 border-red-500 bg-blue-50 p-6">
+      <div className="my-8 rounded-lg border-l-4 border-blue-700 bg-blue-50 p-6">
         <h3 className="mb-2 text-lg font-semibold text-blue-950">Our Estate Cleanout Process</h3>
         <p className="mb-3 text-blue-900">
           We've developed a compassionate, systematic approach based on years of family feedback:

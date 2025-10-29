@@ -835,7 +835,7 @@ export function QuoteFormStandalone() {
           {/* Submit Button */}
           <div className="border-t pt-8">
             {submitError && (
-              <div className="mb-4 rounded-lg border border-blue-800 bg-blue-50 p-4 text-sm text-blue-900 dark:border-red-500 dark:bg-blue-950/30 dark:text-red-400">
+              <div className="mb-4 rounded-lg border border-blue-800 bg-blue-50 p-4 text-sm text-blue-900 dark:border-red-500 dark:bg-blue-950/30 dark:text-blue-400">
                 {submitError}
               </div>
             )}
