@@ -33,6 +33,9 @@ export interface ServicePageTemplateProps {
   description: string
   badges?: string[]
 
+  // Theme (currently only 'primary' is supported)
+  theme?: 'primary'
+
   // Structured data
   serviceCategory?: string
   serviceArea?: string[]
@@ -79,6 +82,7 @@ export function ServicePageTemplate({
   title,
   description,
   badges = [],
+  theme = 'primary',
   serviceCategory,
   serviceArea,
   features = [],
@@ -92,7 +96,7 @@ export function ServicePageTemplate({
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
   children,
 }: ServicePageTemplateProps) {
-  const classes = themeClasses.primary
+  const classes = themeClasses[theme]
 
   return (
     <main className="min-h-screen">
