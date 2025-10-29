@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle, type LucideIcon } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 
 export interface QuoteServiceCardProps {
   title: string
