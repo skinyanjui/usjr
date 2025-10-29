@@ -11,7 +11,7 @@ export function HomeServiceCards() {
         'Fast, professional removal for homes, offices, and properties. Same-day service available.',
       price: 'Free quotes',
       icon: Trash2,
-      color: 'red' as const,
+      color: 'primary' as const,
       link: '/services/junk-removal',
       category: 'Service',
     },
@@ -20,7 +20,7 @@ export function HomeServiceCards() {
       description: 'Eco-friendly residential and commercial cleaning tailored to your needs.',
       price: 'Free estimates',
       icon: Sparkles,
-      color: 'green' as const,
+      color: 'primary' as const,
       link: '/cleaning',
       category: 'Service',
     },
@@ -29,7 +29,7 @@ export function HomeServiceCards() {
       description: 'Shed removal, deck tear-downs, and storm debris cleanup made simple.',
       price: 'On-site estimates',
       icon: Hammer,
-      color: 'orange' as const,
+      color: 'primary' as const,
       link: '/services/light-demolition',
       category: 'Service',
     },
@@ -38,7 +38,7 @@ export function HomeServiceCards() {
   return (
     <section className="px-4 py-12">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center text-2xl font-bold text-foreground sm:text-3xl">
+        <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:text-3xl">
           Our Services
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

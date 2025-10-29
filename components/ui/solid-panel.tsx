@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from 'react'
 import clsx from 'clsx'
 
-type SolidPanelColor = 'primary' | 'neutral'
+export type SolidPanelColor = 'primary' | 'neutral'
 
 const colorStyles: Record<SolidPanelColor, { background: string; text: string }> = {
   primary: { background: 'bg-primary', text: 'text-primary-foreground' },
@@ -20,14 +20,16 @@ export function SolidPanel({ color = 'primary', className, label, children }: So
   return (
     <div
       className={clsx(
-        'flex h-full w-full items-center justify-center rounded-lg border border-border p-6 text-center shadow-sm',
+        'border-border flex h-full w-full items-center justify-center rounded-lg border p-6 text-center shadow-sm',
         palette.background,
         palette.text,
         className
       )}
     >
       <div className="space-y-2">
-        {label && <p className="text-sm font-semibold tracking-wide uppercase opacity-70">{label}</p>}
+        {label && (
+          <p className="text-sm font-semibold tracking-wide uppercase opacity-70">{label}</p>
+        )}
         <div className="text-base font-semibold sm:text-lg">{children}</div>
       </div>
     </div>
