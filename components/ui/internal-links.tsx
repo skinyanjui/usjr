@@ -16,33 +16,17 @@ interface InternalLinksProps {
   title?: string
   links: InternalLink[]
   variant?: 'grid' | 'list' | 'compact'
-  theme?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme?: 'primary' | 'neutral'
 }
 
 const themeColors = {
-  red: {
-    button: 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white',
-    badge: 'bg-red-100 text-red-800 border-red-200',
+  primary: {
+    button: 'border-primary text-primary hover:bg-primary hover:text-primary-foreground',
+    badge: 'bg-primary/10 text-primary border-primary/20',
   },
-  blue: {
-    button: 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
-    badge: 'bg-blue-100 text-blue-800 border-blue-200',
-  },
-  green: {
-    button: 'border-green-600 text-green-600 hover:bg-green-600 hover:text-white',
-    badge: 'bg-green-100 text-green-800 border-green-200',
-  },
-  orange: {
-    button: 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white',
-    badge: 'bg-orange-100 text-orange-800 border-orange-200',
-  },
-  purple: {
-    button: 'border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white',
-    badge: 'bg-purple-100 text-purple-800 border-purple-200',
-  },
-  teal: {
-    button: 'border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white',
-    badge: 'bg-teal-100 text-teal-800 border-teal-200',
+  neutral: {
+    button: 'border-border text-foreground hover:bg-muted',
+    badge: 'bg-muted text-muted-foreground border-border',
   },
 }
 
@@ -63,7 +47,7 @@ export function InternalLinks({
   title = 'Related Content',
   links,
   variant = 'grid',
-  theme = 'red',
+  theme = 'primary',
 }: InternalLinksProps) {
   const colors = themeColors[theme]
 

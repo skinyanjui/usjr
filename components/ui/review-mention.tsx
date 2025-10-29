@@ -8,40 +8,20 @@ interface ReviewMentionProps {
   reviewCount: number
   showStructuredData?: boolean
   variant?: 'compact' | 'detailed' | 'banner'
-  theme?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme?: 'primary' | 'neutral'
   location?: string
 }
 
 const themeColors = {
-  red: {
-    bg: 'bg-red-50',
-    text: 'text-red-600',
-    border: 'border-red-200',
+  primary: {
+    bg: 'bg-primary/5',
+    text: 'text-primary',
+    border: 'border-primary/20',
   },
-  blue: {
-    bg: 'bg-blue-50',
-    text: 'text-blue-600',
-    border: 'border-blue-200',
-  },
-  green: {
-    bg: 'bg-green-50',
-    text: 'text-green-600',
-    border: 'border-green-200',
-  },
-  orange: {
-    bg: 'bg-orange-50',
-    text: 'text-orange-600',
-    border: 'border-orange-200',
-  },
-  purple: {
-    bg: 'bg-purple-50',
-    text: 'text-purple-600',
-    border: 'border-purple-200',
-  },
-  teal: {
-    bg: 'bg-teal-50',
-    text: 'text-teal-600',
-    border: 'border-teal-200',
+  neutral: {
+    bg: 'bg-muted/30',
+    text: 'text-foreground',
+    border: 'border-border',
   },
 }
 
@@ -50,7 +30,7 @@ export function ReviewMention({
   reviewCount,
   showStructuredData = true,
   variant = 'compact',
-  theme = 'red',
+  theme = 'primary',
   location,
 }: ReviewMentionProps) {
   const colors = themeColors[theme]

@@ -15,53 +15,29 @@ interface PromotionOffer {
 interface PromotionHighlightProps {
   location?: string
   offers: PromotionOffer[]
-  theme?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'teal'
+  theme?: 'primary' | 'neutral'
   showStructuredData?: boolean
 }
 
 const themeColors = {
-  red: {
-    bg: 'bg-red-50',
-    border: 'border-red-200',
-    text: 'text-red-800',
-    accent: 'text-red-600',
+  primary: {
+    bg: 'bg-primary/5',
+    border: 'border-primary/20',
+    text: 'text-primary',
+    accent: 'text-primary',
   },
-  blue: {
-    bg: 'bg-blue-50',
-    border: 'border-blue-200',
-    text: 'text-blue-800',
-    accent: 'text-blue-600',
-  },
-  green: {
-    bg: 'bg-green-50',
-    border: 'border-green-200',
-    text: 'text-green-800',
-    accent: 'text-green-600',
-  },
-  orange: {
-    bg: 'bg-orange-50',
-    border: 'border-orange-200',
-    text: 'text-orange-800',
-    accent: 'text-orange-700',
-  },
-  purple: {
-    bg: 'bg-purple-50',
-    border: 'border-purple-200',
-    text: 'text-purple-800',
-    accent: 'text-purple-600',
-  },
-  teal: {
-    bg: 'bg-teal-50',
-    border: 'border-teal-200',
-    text: 'text-teal-800',
-    accent: 'text-teal-600',
+  neutral: {
+    bg: 'bg-muted/30',
+    border: 'border-border',
+    text: 'text-foreground',
+    accent: 'text-muted-foreground',
   },
 }
 
 export function PromotionHighlight({
   location,
   offers,
-  theme = 'red',
+  theme = 'primary',
   showStructuredData = true,
 }: PromotionHighlightProps) {
   const colors = themeColors[theme]
