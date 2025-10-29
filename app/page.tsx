@@ -45,7 +45,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/quote"
-            className="inline-flex min-h-[48px] items-center rounded-lg bg-gray-900 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-gray-900"
+            className="bg-foreground text-background inline-flex min-h-[48px] items-center rounded-lg px-6 py-3 text-base font-semibold transition-all hover:brightness-110"
           >
             Get Free Quote
           </Link>

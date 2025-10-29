@@ -60,20 +60,64 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Hero Section */}
-      <div className="bg-gray-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
-              Junk Removal Insights & Guides
-            </h1>
-            <p className="text-lg text-white/90 md:text-xl">
-              Expert tips, local guides, and professional insights to help you tackle any cleanup
-              project with confidence
-            </p>
+      {/* Two-Column Hero Section with Featured Post */}
+      {featuredPosts.length > 0 && (
+        <div className="bg-card border-border border-b">
+          <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+              {/* Left: Featured Image */}
+              <div className="bg-muted relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <div className="from-primary/20 to-accent/20 absolute inset-0 bg-gradient-to-br" />
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                  <div className="text-center">
+                    <span className="bg-primary/10 text-primary inline-block rounded-full px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                      {featuredPosts[0].category}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Blog Preview */}
+              <div className="space-y-6">
+                <div>
+                  <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                    Featured Article
+                  </span>
+                  <h1 className="text-foreground mt-3 text-3xl leading-tight font-bold md:text-4xl lg:text-5xl">
+                    {featuredPosts[0].title}
+                  </h1>
+                </div>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {featuredPosts[0].excerpt}
+                </p>
+                <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span>{featuredPosts[0].author}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>{featuredPosts[0].date}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span>{featuredPosts[0].readTime}</span>
+                  </div>
+                </div>
+                <div className="flex gap-3 pt-4">
+                  <Link
+                    href={`/blog/${featuredPosts[0].slug}`}
+                    className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-all hover:brightness-110"
+                  >
+                    Read Article
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
         {/* Featured Posts */}
@@ -110,7 +154,7 @@ export default function BlogPage() {
                   <div className="p-6">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 font-semibold text-gray-900 transition-colors hover:text-gray-900"
+                      className="text-primary hover:text-primary/80 inline-flex items-center gap-2 font-semibold underline-offset-2 transition-all hover:underline"
                     >
                       Read Article
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -133,15 +177,15 @@ export default function BlogPage() {
               >
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="text-xs font-semibold tracking-wide text-gray-900 uppercase">
+                    <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground mb-3 text-xl font-bold transition-colors group-hover:text-gray-900">
+                  <h3 className="text-foreground group-hover:text-primary mb-3 text-xl font-bold transition-colors">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
                   <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                  <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                  <div className="text-muted-foreground mb-4 flex flex-wrap items-center gap-4 text-sm">
                     <div className="flex items-center gap-1.5">
                       <Calendar className="h-3.5 w-3.5" />
                       <span>{post.date}</span>
@@ -153,7 +197,7 @@ export default function BlogPage() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 transition-colors hover:text-gray-900"
+                    className="text-primary hover:text-primary/80 inline-flex items-center gap-2 text-sm font-semibold underline-offset-2 transition-all hover:underline"
                   >
                     Read More
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -177,13 +221,13 @@ export default function BlogPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/quote"
-                className="inline-flex items-center justify-center rounded-lg bg-gray-900 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-gray-900"
+                className="bg-foreground text-background inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-base font-semibold transition-all hover:brightness-110"
               >
                 Get Free Quote
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 bg-transparent px-6 py-2.5 text-base font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white"
+                className="border-border text-foreground hover:bg-accent inline-flex items-center justify-center rounded-lg border-2 bg-transparent px-6 py-2.5 text-base font-semibold transition-all"
               >
                 View Services
               </Link>

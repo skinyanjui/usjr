@@ -20,7 +20,6 @@ export function ServiceCard({
   title,
   description,
   price,
-  icon: Icon,
   color = 'primary',
   link,
   category,

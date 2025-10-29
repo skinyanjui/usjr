@@ -234,7 +234,7 @@ export function PricingCalculator() {
           <Button
             asChild
             variant="outline"
-            className="border-gray-300 bg-transparent text-gray-900 hover:bg-gray-900 hover:text-white dark:text-gray-900"
+            className="border-border text-foreground hover:bg-accent"
           >
             <Link href="/quote" prefetch>
               Get Free Quote
