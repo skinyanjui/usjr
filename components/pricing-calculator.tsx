@@ -210,11 +210,11 @@ export function PricingCalculator() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-gray-300 bg-gray-900 p-4 dark:border-red-500 dark:bg-gray-900/30">
-          <div className="flex items-center gap-2 font-semibold text-gray-900 dark:text-gray-900">
+        <div className="border-border bg-muted/30 rounded-lg border p-4">
+          <div className="text-foreground flex items-center gap-2 font-semibold">
             <Info className="h-4 w-4" /> Estimated Price Range
           </div>
-          <div className="mt-2 text-gray-800">
+          <div className="text-muted-foreground mt-2">
             {price.min === 0 ? (
               <span>Select options to see pricing</span>
             ) : (
@@ -234,7 +234,7 @@ export function PricingCalculator() {
           <Button
             asChild
             variant="outline"
-            className="border-gray-300 bg-transparent text-gray-900 hover:bg-gray-900 hover:text-white dark:text-gray-900"
+            className="border-border text-foreground hover:bg-accent"
           >
             <Link href="/quote" prefetch>
               Get Free Quote

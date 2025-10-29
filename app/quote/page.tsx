@@ -1,24 +1,24 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   Leaf,
   Shield,
   Clock,
   Star,
-  CheckCircle,
   Truck,
   Wrench,
   Sparkles,
   Phone,
   Camera,
   BadgeDollarSign,
+  CheckCircle,
 } from 'lucide-react'
-import Link from 'next/link'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
@@ -54,19 +54,19 @@ export default function QuotePage() {
           {/* Header Section */}
           <div className="mt-8 mb-16 text-center">
             <div className="mb-6 flex justify-center gap-2">
-              <Badge className="border-border bg-gray-800 text-gray-900 dark:text-gray-900">
+              <Badge className="border-border bg-muted text-foreground">
                 <Leaf className="mr-1 h-3 w-3" />
                 Eco-Friendly
               </Badge>
-              <Badge className="border-border bg-gray-900 text-gray-900 dark:text-gray-900">
+              <Badge className="border-border bg-muted text-foreground">
                 <Shield className="mr-1 h-3 w-3" />
                 Fully Insured
               </Badge>
-              <Badge className="border-gray-300 bg-gray-800 text-gray-900">
+              <Badge className="border-border bg-muted text-foreground">
                 <Star className="mr-1 h-3 w-3" />
                 Woman-Owned
               </Badge>
-              <Badge className="border-border bg-gray-800 text-gray-900 dark:text-gray-900">
+              <Badge className="border-border bg-muted text-foreground">
                 <Clock className="mr-1 h-3 w-3" />
                 Same-Day Service
               </Badge>
@@ -84,7 +84,7 @@ export default function QuotePage() {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button
                 asChild
-                className="bg-gray-900 px-6 py-2.5 text-base text-white hover:bg-gray-900"
+                className="bg-foreground px-6 py-2.5 text-base text-background hover:brightness-110"
               >
                 <a href={`tel:${settings.phoneE164}`}>
                   <Phone className="mr-2 h-4 w-4" />
@@ -94,7 +94,7 @@ export default function QuotePage() {
               <Button
                 asChild
                 variant="outline"
-                className="border-gray-300 bg-transparent px-6 py-2.5 text-base text-gray-900 hover:bg-gray-900 dark:text-gray-900"
+                className="border-border bg-transparent px-6 py-2.5 text-base text-foreground hover:bg-accent"
               >
                 <a href={`sms:${settings.phoneE164}`}>
                   <Camera className="mr-2 h-4 w-4" />
@@ -107,11 +107,11 @@ export default function QuotePage() {
           {/* Service Selection Cards */}
           <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Junk Removal Service */}
-            <Card className="glass border-border border-2 transition-all duration-300 hover:border-gray-300">
+            <Card className="glass border-border border-2 transition-all duration-300 hover:border-primary/50">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 sm:h-16 sm:w-16">
-                    <Truck className="h-6 w-6 text-gray-900 sm:h-8 sm:w-8" />
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary sm:h-16 sm:w-16">
+                    <Truck className="h-6 w-6 text-primary-foreground sm:h-8 sm:w-8" />
                   </div>
                   <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
                     Junk Removal
@@ -121,8 +121,8 @@ export default function QuotePage() {
 
                 <div className="mb-6 space-y-4">
                   <div className="bg-muted/30 rounded-lg p-4">
-                    <h3 className="mb-2 font-semibold text-gray-900">Starting Prices:</h3>
-                    <ul className="space-y-1 text-sm text-gray-900 dark:text-gray-900">
+                    <h3 className="mb-2 font-semibold text-foreground">Starting Prices:</h3>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
                       {junkRemovalTiers.map(t => (
                         <li key={t.id}>
                           • {t.name}: {t.price}
@@ -133,32 +133,32 @@ export default function QuotePage() {
 
                   <div className="space-y-2">
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Furniture & appliance removal
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Construction debris cleanup
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Estate & garage cleanouts
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Same-day availability
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-gray-900 text-white hover:bg-gray-900">
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:brightness-110">
                     <Link href="/services/junk-removal">Get Junk Removal Quote</Link>
                   </Button>
                   <Link href="/services/junk-removal">
                     <Button
                       variant="outline"
-                      className="w-full border-gray-300 bg-transparent text-gray-900 hover:bg-gray-900 dark:text-gray-900"
+                      className="w-full border-border bg-transparent text-foreground hover:bg-accent"
                     >
                       Junk Removal Services & Pricing
                     </Button>
@@ -168,11 +168,11 @@ export default function QuotePage() {
             </Card>
 
             {/* Light Demolition Service */}
-            <Card className="glass border-border border-2 transition-all duration-300 hover:border-gray-300">
+            <Card className="glass border-border border-2 transition-all duration-300 hover:border-primary/50">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 sm:h-16 sm:w-16">
-                    <Wrench className="h-6 w-6 text-gray-900 sm:h-8 sm:w-8" />
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary sm:h-16 sm:w-16">
+                    <Wrench className="h-6 w-6 text-primary-foreground sm:h-8 sm:w-8" />
                   </div>
                   <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
                     Light Demolition
@@ -184,8 +184,8 @@ export default function QuotePage() {
 
                 <div className="mb-6 space-y-4">
                   <div className="bg-muted/30 rounded-lg p-4">
-                    <h3 className="mb-2 font-semibold text-gray-900">Starting Prices:</h3>
-                    <ul className="space-y-1 text-sm text-gray-900 dark:text-gray-900">
+                    <h3 className="mb-2 font-semibold text-foreground">Starting Prices:</h3>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
                       {lightDemolitionPricing.map(item => (
                         <li key={item}>{item}</li>
                       ))}
@@ -194,32 +194,32 @@ export default function QuotePage() {
 
                   <div className="space-y-2">
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Sheds, decks, playsets, and swing sets
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Licensed & insured crew
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Responsible debris hauling
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Permitting guidance when needed
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-gray-800 text-white hover:bg-gray-800">
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:brightness-110">
                     <Link href="/services/light-demolition">Get Demolition Quote</Link>
                   </Button>
                   <Link href="/services/light-demolition">
                     <Button
                       variant="outline"
-                      className="w-full border-gray-300 bg-transparent text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+                      className="w-full border-border bg-transparent text-foreground hover:bg-accent"
                     >
                       Light Demolition Services & Pricing
                     </Button>
@@ -229,11 +229,11 @@ export default function QuotePage() {
             </Card>
 
             {/* Cleaning Service */}
-            <Card className="glass border-border border-2 transition-all duration-300 hover:border-gray-300">
+            <Card className="glass border-border border-2 transition-all duration-300 hover:border-primary/50">
               <CardContent className="p-6 sm:p-8">
                 <div className="mb-6 text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 sm:h-16 sm:w-16">
-                    <Sparkles className="h-6 w-6 text-gray-900 sm:h-8 sm:w-8" />
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary sm:h-16 sm:w-16">
+                    <Sparkles className="h-6 w-6 text-primary-foreground sm:h-8 sm:w-8" />
                   </div>
                   <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
                     Cleaning Services
@@ -243,8 +243,8 @@ export default function QuotePage() {
 
                 <div className="mb-6 space-y-4">
                   <div className="bg-muted/30 rounded-lg p-4">
-                    <h3 className="mb-2 font-semibold text-gray-900">Service Prices:</h3>
-                    <ul className="space-y-1 text-sm text-gray-900 dark:text-gray-900">
+                    <h3 className="mb-2 font-semibold text-foreground">Service Prices:</h3>
+                    <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>• Deep clean: From $150-$400</li>
                       <li>• Recurring: From $80-$200</li>
                       <li>• Move-in/out: From $200-$500</li>
@@ -254,32 +254,32 @@ export default function QuotePage() {
 
                   <div className="space-y-2">
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       100% natural cleaning products
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Residential & commercial
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       After-hours availability
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-gray-900" />
+                      <CheckCircle className="h-4 w-4 text-primary" />
                       Satisfaction guaranteed
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Button asChild className="w-full bg-gray-800 text-white hover:bg-gray-800">
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:brightness-110">
                     <Link href="/cleaning">Get Cleaning Quote</Link>
                   </Button>
                   <Link href="/cleaning">
                     <Button
                       variant="outline"
-                      className="w-full border-gray-300 bg-transparent text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+                      className="w-full border-border bg-transparent text-foreground hover:bg-accent"
                     >
                       Eco-Friendly Cleaning Services & Packages
                     </Button>

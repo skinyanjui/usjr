@@ -28,7 +28,7 @@ export function Footer() {
               <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
                 <Button
                   asChild
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow transition-colors hover:bg-gray-900 sm:px-5 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-900"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow transition-all hover:brightness-95 sm:px-5"
                 >
                   <QuoteCtaLink location="footer-primary" label="Get Free Quote">
                     Get Free Quote
@@ -53,7 +53,7 @@ export function Footer() {
                   <li key={s.href}>
                     <Link
                       href={s.href!}
-                      className="text-white transition-colors hover:text-gray-900"
+                      className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                     >
                       {s.label}
                     </Link>
@@ -73,7 +73,7 @@ export function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href!}
-                      className="text-white transition-colors hover:text-gray-900"
+                      className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                     >
                       {l.label}
                     </Link>
@@ -88,7 +88,7 @@ export function Footer() {
               <p className="mb-3 text-xs text-white sm:text-sm">
                 Evansville's premier junk removal service. Locally owned and operated.
               </p>
-              <div className="mb-2 flex items-center gap-2 text-xs text-gray-900 sm:text-sm">
+              <div className="mb-2 flex items-center gap-2 text-xs text-white/70 sm:text-sm">
                 <Clock className="h-4 w-4" />
                 <span>Same Day Service</span>
               </div>
@@ -100,17 +100,26 @@ export function Footer() {
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Quick Links</h3>
               <ul className="space-y-2 text-xs text-white sm:text-sm">
                 <li>
-                  <Link href="/about" className="text-white transition-colors hover:text-gray-900">
+                  <Link
+                    href="/about"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-white transition-colors hover:text-gray-900">
+                  <Link
+                    href="/blog"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faq" className="text-white transition-colors hover:text-gray-900">
+                  <Link
+                    href="/faq"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     FAQ
                   </Link>
                 </li>
@@ -119,20 +128,23 @@ export function Footer() {
                     href="https://www.karchercleaners.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white transition-colors hover:text-gray-900"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                   >
                     Karcher Cleaners
                   </a>
                 </li>
                 <li>
-                  <Link href="/quote" className="text-white transition-colors hover:text-gray-900">
+                  <Link
+                    href="/quote"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     Get Free Quote
                   </Link>
                 </li>
                 <li>
                   <a
                     href="/sitemap.xml"
-                    className="text-white transition-colors hover:text-gray-900"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                   >
                     XML Sitemap
                   </a>
@@ -145,30 +157,42 @@ export function Footer() {
               <h3 className="mb-3 text-base font-semibold sm:text-lg">Blog Feeds</h3>
               <ul className="space-y-2 text-xs text-white sm:text-sm">
                 <li>
-                  <a href="/rss.xml" className="text-white transition-colors hover:text-gray-900">
+                  <a
+                    href="/rss.xml"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     RSS 2.0
                   </a>
                 </li>
                 <li>
-                  <a href="/atom.xml" className="text-white transition-colors hover:text-gray-900">
+                  <a
+                    href="/atom.xml"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     Atom 1.0
                   </a>
                 </li>
                 <li>
                   <a
                     href="/atom03.xml"
-                    className="text-white transition-colors hover:text-gray-900"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                   >
                     Atom 0.3
                   </a>
                 </li>
                 <li>
-                  <a href="/mrss.xml" className="text-white transition-colors hover:text-gray-900">
+                  <a
+                    href="/mrss.xml"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     Media RSS
                   </a>
                 </li>
                 <li>
-                  <a href="/feed.txt" className="text-white transition-colors hover:text-gray-900">
+                  <a
+                    href="/feed.txt"
+                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                  >
                     Text Feed
                   </a>
                 </li>
@@ -182,21 +206,21 @@ export function Footer() {
                 <Phone className="h-4 w-4" />
                 <div>
                   <div className="font-semibold">{settings.phone}</div>
-                  <div className="text-gray-900">Call or Text</div>
+                  <div className="text-white/70">Call or Text</div>
                 </div>
               </div>
               <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
                 <Mail className="h-4 w-4" />
                 <a
                   href={`mailto:${settings.email}`}
-                  className="text-white transition-colors hover:text-gray-900"
+                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
                 >
                   {settings.email}
                 </a>
               </div>
               <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
                 <MapPin className="h-4 w-4" />
-                <div className="text-gray-900">Evansville, Indiana & Southern Indiana</div>
+                <div className="text-white/70">Evansville, Indiana & Southern Indiana</div>
               </div>
             </div>
           </div>
@@ -205,20 +229,26 @@ export function Footer() {
             <div className="flex flex-col items-center justify-between gap-1 text-xs text-white sm:text-sm md:flex-row">
               <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
               <div className="flex gap-4">
-                <Link href="/privacy" className="text-white transition-colors hover:text-gray-900">
+                <Link
+                  href="/privacy"
+                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                >
                   Privacy Policy
                 </Link>
-                <Link href="/terms" className="text-white transition-colors hover:text-gray-900">
+                <Link
+                  href="/terms"
+                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
+                >
                   Terms of Service
                 </Link>
               </div>
             </div>
-            <div className="mt-3 text-center text-xs text-gray-900">
+            <div className="mt-3 text-center text-xs text-white/60">
               <p>
                 We improve our products and advertising by using Microsoft Clarity to see how you
                 use our website. By using our site, you agree that we and Microsoft can collect and
                 use this data. Our{' '}
-                <Link href="/privacy" className="underline hover:text-white">
+                <Link href="/privacy" className="underline transition-colors hover:text-white">
                   privacy statement
                 </Link>{' '}
                 has more details.

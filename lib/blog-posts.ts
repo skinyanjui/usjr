@@ -21,6 +21,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     category: 'Local Guide',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'spring-cleaning-checklist-southern-indiana',
@@ -32,6 +33,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '12 min read',
     category: 'Spring Cleaning',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'appliance-disposal-recycling-guide',
@@ -42,6 +44,7 @@ export const blogPosts: BlogPost[] = [
     date: 'November 20, 2024',
     readTime: '10 min read',
     category: 'Appliance Disposal',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'junk-removal-cost-tri-state',
@@ -52,6 +55,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 15, 2025',
     readTime: '8 min read',
     category: 'Pricing Guide',
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'estate-cleanout-guide',
@@ -62,6 +66,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 24, 2025',
     readTime: '9 min read',
     category: 'Estate Cleanouts',
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2074&auto=format&fit=crop',
   },
   {
     slug: 'mattress-disposal-evansville',
@@ -72,6 +77,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 20, 2025',
     readTime: '6 min read',
     category: 'Mattress Removal',
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'shed-removal-guide-evansville',
@@ -82,6 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 22, 2025',
     readTime: '7 min read',
     category: 'Light Demolition',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
   },
   {
     slug: 'yard-waste-disposal-evansville',
@@ -92,6 +99,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 26, 2025',
     readTime: '6 min read',
     category: 'Yard Waste',
+    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'evansville-garage-cleanout-48-hours',
@@ -102,6 +110,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 12, 2025',
     readTime: '6 min read',
     category: 'How-To Guide',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'hot-tub-removal-what-to-know',
@@ -112,6 +121,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 8, 2025',
     readTime: '5 min read',
     category: 'Service Guide',
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'property-manager-turnover-playbook',
@@ -122,6 +132,7 @@ export const blogPosts: BlogPost[] = [
     date: 'January 6, 2025',
     readTime: '10 min read',
     category: 'Property Management',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop',
   },
   {
     slug: 'commercial-office-cleaning-guide-evansville',
@@ -133,6 +144,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '9 min read',
     category: 'Commercial Cleaning',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
   },
   {
     slug: 'summer-cleanup-checklist-tri-state',
@@ -143,6 +155,7 @@ export const blogPosts: BlogPost[] = [
     date: 'October 27, 2025',
     readTime: '8 min read',
     category: 'Seasonal Guide',
+    image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2074&auto=format&fit=crop',
   },
   {
     slug: 'moving-cleanout-guide-evansville',
@@ -153,6 +166,7 @@ export const blogPosts: BlogPost[] = [
     date: 'October 27, 2025',
     readTime: '10 min read',
     category: 'Moving Guide',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop',
   },
   {
     slug: 'fall-cleanup-checklist-tri-state',
@@ -164,6 +178,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '12 min read',
     category: 'Seasonal Tips',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2074&auto=format&fit=crop',
   },
   {
     slug: 'winter-storm-cleanup-guide-tri-state',
@@ -175,6 +190,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '13 min read',
     category: 'Emergency Services',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=2070&auto=format&fit=crop',
   },
 ]
 

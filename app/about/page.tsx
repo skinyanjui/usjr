@@ -12,11 +12,12 @@ import {
   Leaf,
   Recycle,
   Phone,
+  Sparkles,
 } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { Box, Container, Flex, Grid, Text, Heading, Badge as RadixBadge } from '@radix-ui/themes'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -32,13 +33,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-muted/30 min-h-screen">
-      <PageHero
-        title="About Uncle Sam Junk Removal"
-        description="Veteran-owned junk removal and professional cleaning in Evansville, IN and the Tri-State."
-        color="primary"
-      />
-
+    <div className="min-h-screen">
       {/* SEO: LocalBusiness JSON-LD */}
       <Script id="jsonld-localbusiness" type="application/ld+json">
         {JSON.stringify({
@@ -75,18 +70,46 @@ export default function AboutPage() {
         })}
       </Script>
 
-      {/* Our Story */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">Our Story</h2>
-              <div className="text-muted-foreground space-y-4 leading-relaxed">
+      {/* Hero Section - Linear.app inspired */}
+      <section className="relative border-b border-border bg-card">
+        <Container className="mx-auto max-w-7xl px-4 py-20 md:py-28">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-6 flex justify-center gap-2">
+              <RadixBadge size="2" variant="soft" color="blue">
+                <Shield className="mr-1 h-3 w-3" />
+                Veteran-Owned
+              </RadixBadge>
+              <RadixBadge size="2" variant="soft" color="purple">
+                <Sparkles className="mr-1 h-3 w-3" />
+                Woman-Owned Partner
+              </RadixBadge>
+            </div>
+            <Heading size="9" className="mb-6 text-foreground">
+              About Uncle Sam Junk Removal
+            </Heading>
+            <Text size="5" className="text-muted-foreground leading-relaxed">
+              Veteran-owned junk removal and professional cleaning serving Evansville, IN and the
+              Tri-State with integrity, reliability, and excellence.
+            </Text>
+          </div>
+        </Container>
+      </section>
+
+      {/* Our Story - Supabase inspired two-column */}
+      <section className="border-b border-border py-20">
+        <Container className="mx-auto max-w-7xl px-4">
+          <Grid columns={{ initial: '1', md: '2' }} gap="9" align="center">
+            <Box>
+              <Heading size="8" className="mb-6 text-foreground">
+                Our Story
+              </Heading>
+              <div className="text-muted-foreground space-y-6 text-[15px] leading-relaxed">
                 <p>
-                  Founded in 2025 by <strong>Samuel Kinyanjui</strong> — a United States Marine
-                  Corps veteran — Uncle Sam Junk Removal serves <strong>Evansville, IN</strong> and
-                  the Tri-State with dependable, same-day junk removal and light demolition support.
-                  We built this company on Marine Corps values: integrity, respect, and service.
+                  Founded in 2025 by <strong className="text-foreground">Samuel Kinyanjui</strong> — a
+                  United States Marine Corps veteran — Uncle Sam Junk Removal serves{' '}
+                  <strong className="text-foreground">Evansville, IN</strong> and the Tri-State with
+                  dependable, same-day junk removal and light demolition support. We built this company
+                  on Marine Corps values: integrity, respect, and service.
                 </p>
                 <p>
                   Our professional cleaning services are provided by{' '}
@@ -94,260 +117,331 @@ export default function AboutPage() {
                     href="https://www.karchercleaners.com/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-primary hover:underline underline-offset-2 transition-all"
                   >
                     <strong>Karcher Cleaners</strong>
                   </a>{' '}
-                  — a women-owned company led by <strong>Chelsey Karcher</strong>. Together, we
-                  deliver spotless homes and businesses with eco-conscious products and consistent,
-                  high-quality results.
+                  — a women-owned company led by{' '}
+                  <strong className="text-foreground">Chelsey Karcher</strong>. Together, we deliver
+                  spotless homes and businesses with eco-conscious products and consistent, high-quality
+                  results.
                 </p>
                 <p>
-                  Whether you need a single item picked up, a full estate cleanout, or recurring
-                  office cleaning, we make it easy with clear communication, honest pricing, and
-                  friendly, local professionals.
+                  Whether you need a single item picked up, a full estate cleanout, or recurring office
+                  cleaning, we make it easy with clear communication, honest pricing, and friendly, local
+                  professionals.
                 </p>
               </div>
-            </div>
-            <div className="glass rounded-2xl p-8">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-muted/30 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-gray-900">2025</div>
-                  <div className="text-muted-foreground">Founded</div>
-                </div>
-                <div className="bg-muted/30 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-gray-900">500+</div>
-                  <div className="text-muted-foreground">Satisfied Clients</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            </Box>
+            <Box className="linear-card p-8">
+              <Grid columns="2" gap="4">
+                <Box className="rounded-lg bg-muted/30 p-6 text-center">
+                  <div className="mb-2 text-4xl font-bold text-foreground">2025</div>
+                  <div className="text-sm text-muted-foreground">Founded</div>
+                </Box>
+                <Box className="rounded-lg bg-muted/30 p-6 text-center">
+                  <div className="mb-2 text-4xl font-bold text-foreground">500+</div>
+                  <div className="text-sm text-muted-foreground">Satisfied Clients</div>
+                </Box>
+                <Box className="rounded-lg bg-muted/30 p-6 text-center">
+                  <div className="mb-2 text-4xl font-bold text-foreground">9</div>
+                  <div className="text-sm text-muted-foreground">Service Areas</div>
+                </Box>
+                <Box className="rounded-lg bg-muted/30 p-6 text-center">
+                  <div className="mb-2 text-4xl font-bold text-foreground">4.9</div>
+                  <div className="text-sm text-muted-foreground">Average Rating</div>
+                </Box>
+              </Grid>
+            </Box>
+          </Grid>
+        </Container>
       </section>
 
-      {/* Local Service Areas */}
-      <section className="bg-muted/30 py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid items-start gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
+      {/* Service Areas */}
+      <section className="border-b border-border bg-muted/30 py-20">
+        <Container className="mx-auto max-w-7xl px-4">
+          <Grid columns={{ initial: '1', md: '2' }} gap="9">
+            <Box>
+              <Heading size="8" className="mb-6 text-foreground">
                 Proudly Serving Evansville & The Tri-State
-              </h2>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                We’re based in Evansville and serve nearby communities across Southern Indiana and
-                Western Kentucky. Expect on-time arrivals, friendly crews, and efficient
-                service—every time.
-              </p>
-              <ul className="text-muted-foreground grid gap-3 sm:grid-cols-2">
+              </Heading>
+              <Text size="4" className="text-muted-foreground mb-6 leading-relaxed">
+                We're based in Evansville and serve nearby communities across Southern Indiana and
+                Western Kentucky. Expect on-time arrivals, friendly crews, and efficient service—every
+                time.
+              </Text>
+              <Grid columns="2" gap="3">
                 {settings.serviceAreas.map(area => (
-                  <li key={area} className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-gray-900" />
-                    <span>{area}</span>
-                  </li>
+                  <Flex key={area} align="center" gap="2">
+                    <MapPin className="h-4 w-4 text-primary flex-shrink-0" />
+                    <Text size="3" className="text-muted-foreground">
+                      {area}
+                    </Text>
+                  </Flex>
                 ))}
-              </ul>
-            </div>
-            <div className="glass rounded-2xl p-8">
-              <h3 className="mb-4 text-xl font-bold text-gray-800">What We Do</h3>
-              <div className="text-muted-foreground grid gap-4 text-sm sm:grid-cols-2">
-                <div className="flex items-start gap-3">
-                  <Truck className="mt-0.5 h-5 w-5 text-gray-900" />
-                  <span>Full-service junk removal & curbside pick-ups</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Truck className="mt-0.5 h-5 w-5 text-gray-900" />
-                  <span>Light demolition, shed, and deck tear-downs</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Shield className="mt-0.5 h-5 w-5 text-gray-900" />
-                  <span>Estate, garage, attic, and hoarding cleanouts</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Users className="mt-0.5 h-5 w-5 text-gray-900" />
-                  <span>Commercial, office, and rental turnovers</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Recycle className="mt-0.5 h-5 w-5 text-yellow-600" />
-                  <span>Appliance, mattress, and furniture recycling</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Leaf className="mt-0.5 h-5 w-5 text-emerald-600" />
-                  <span>Eco-friendly residential and office cleaning</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Grid>
+            </Box>
+            <Box className="linear-card p-8">
+              <Heading size="6" className="mb-6 text-foreground">
+                What We Do
+              </Heading>
+              <Grid columns="1" gap="4">
+                <Flex align="start" gap="3">
+                  <Truck className="mt-1 h-5 w-5 text-primary flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Full-service junk removal & curbside pick-ups
+                  </Text>
+                </Flex>
+                <Flex align="start" gap="3">
+                  <Shield className="mt-1 h-5 w-5 text-primary flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Light demolition, shed, and deck tear-downs
+                  </Text>
+                </Flex>
+                <Flex align="start" gap="3">
+                  <Users className="mt-1 h-5 w-5 text-primary flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Estate, garage, attic, and hoarding cleanouts
+                  </Text>
+                </Flex>
+                <Flex align="start" gap="3">
+                  <Truck className="mt-1 h-5 w-5 text-primary flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Commercial, office, and rental turnovers
+                  </Text>
+                </Flex>
+                <Flex align="start" gap="3">
+                  <Recycle className="mt-1 h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Appliance, mattress, and furniture recycling
+                  </Text>
+                </Flex>
+                <Flex align="start" gap="3">
+                  <Leaf className="mt-1 h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <Text size="3" className="text-muted-foreground">
+                    Eco-friendly residential and office cleaning
+                  </Text>
+                </Flex>
+              </Grid>
+            </Box>
+          </Grid>
+        </Container>
       </section>
 
-      {/* Values */}
-      <section className="bg-muted/30 py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">Our Values</h2>
-            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
+      {/* Values - Linear cards style */}
+      <section className="border-b border-border py-20">
+        <Container className="mx-auto max-w-7xl px-4">
+          <div className="mb-16 text-center">
+            <Heading size="8" className="mb-4 text-foreground">
+              Our Values
+            </Heading>
+            <Text size="5" className="text-muted-foreground">
               The principles that guide everything we do
-            </p>
+            </Text>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="glass rounded-2xl p-8 text-center">
-              <Shield className="mx-auto mb-4 h-12 w-12 text-gray-900" />
-              <h3 className="mb-4 text-xl font-bold">Reliability</h3>
-              <p className="text-muted-foreground">
-                We show up on time, every time. Our customers count on us, and we never let them
-                down.
-              </p>
-            </div>
+          <Grid columns={{ initial: '1', md: '3' }} gap="6">
+            <Box className="linear-card linear-interactive p-8 text-center">
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <Shield className="h-7 w-7 text-primary" />
+              </div>
+              <Heading size="5" className="mb-4 text-foreground">
+                Reliability
+              </Heading>
+              <Text size="3" className="text-muted-foreground">
+                We show up on time, every time. Our customers count on us, and we never let them down.
+              </Text>
+            </Box>
 
-            <div className="glass rounded-2xl p-8 text-center">
-              <Users className="mx-auto mb-4 h-12 w-12 text-gray-900" />
-              <h3 className="mb-4 text-xl font-bold">Community</h3>
-              <p className="text-muted-foreground">
-                We're your neighbors. Supporting local families and businesses is at the heart of
-                what we do.
-              </p>
-            </div>
+            <Box className="linear-card linear-interactive p-8 text-center">
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <Users className="h-7 w-7 text-primary" />
+              </div>
+              <Heading size="5" className="mb-4 text-foreground">
+                Community
+              </Heading>
+              <Text size="3" className="text-muted-foreground">
+                We're your neighbors. Supporting local families and businesses is at the heart of what
+                we do.
+              </Text>
+            </Box>
 
-            <div className="glass rounded-2xl p-8 text-center">
-              <Award className="mx-auto mb-4 h-12 w-12 text-gray-900" />
-              <h3 className="mb-4 text-xl font-bold">Excellence</h3>
-              <p className="text-muted-foreground">
-                From our first interaction to job completion, we strive for excellence in every
-                detail.
-              </p>
-            </div>
-          </div>
-        </div>
+            <Box className="linear-card linear-interactive p-8 text-center">
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                <Award className="h-7 w-7 text-primary" />
+              </div>
+              <Heading size="5" className="mb-4 text-foreground">
+                Excellence
+              </Heading>
+              <Text size="3" className="text-muted-foreground">
+                From our first interaction to job completion, we strive for excellence in every detail.
+              </Text>
+            </Box>
+          </Grid>
+        </Container>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+      <section className="border-b border-border bg-muted/30 py-20">
+        <Container className="mx-auto max-w-7xl px-4">
+          <div className="mb-16 text-center">
+            <Heading size="8" className="mb-4 text-foreground">
               Why Choose Uncle Sam Junk Removal?
-            </h2>
+            </Heading>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-900">
-                <Shield className="h-8 w-8 text-gray-900" />
+          <Grid columns={{ initial: '1', sm: '2', lg: '4' }} gap="6">
+            <Box className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                <Shield className="h-8 w-8 text-primary-foreground" />
               </div>
-              <h3 className="mb-2 font-bold">Licensed & Insured</h3>
-              <p className="text-muted-foreground text-sm">
+              <Heading size="4" className="mb-2 text-foreground">
+                Licensed & Insured
+              </Heading>
+              <Text size="2" className="text-muted-foreground">
                 Full liability insurance and proper licensing for your peace of mind
-              </p>
-            </div>
+              </Text>
+            </Box>
 
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
-                <Clock className="h-8 w-8 text-gray-900" />
+            <Box className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                <Clock className="h-8 w-8 text-primary-foreground" />
               </div>
-              <h3 className="mb-2 font-bold">Same-Day Service</h3>
-              <p className="text-muted-foreground text-sm">
+              <Heading size="4" className="mb-2 text-foreground">
+                Same-Day Service
+              </Heading>
+              <Text size="2" className="text-muted-foreground">
                 Available 7 days a week for urgent junk removal needs
-              </p>
-            </div>
+              </Text>
+            </Box>
 
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-900">
-                <Truck className="h-8 w-8 text-gray-900" />
+            <Box className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600">
+                <Leaf className="h-8 w-8 text-white" />
               </div>
-              <h3 className="mb-2 font-bold">Eco-Friendly</h3>
-              <p className="text-muted-foreground text-sm">
+              <Heading size="4" className="mb-2 text-foreground">
+                Eco-Friendly
+              </Heading>
+              <Text size="2" className="text-muted-foreground">
                 We donate, recycle, and dispose responsibly whenever possible
-              </p>
-            </div>
+              </Text>
+            </Box>
 
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-100">
-                <Star className="h-8 w-8 text-yellow-600" />
+            <Box className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-500">
+                <Star className="h-8 w-8 text-white fill-current" />
               </div>
-              <h3 className="mb-2 font-bold">5-Star Service</h3>
-              <p className="text-muted-foreground text-sm">
+              <Heading size="4" className="mb-2 text-foreground">
+                5-Star Service
+              </Heading>
+              <Text size="2" className="text-muted-foreground">
                 Consistently rated 4.9/5 stars by our satisfied customers
-              </p>
-            </div>
-          </div>
-        </div>
+              </Text>
+            </Box>
+          </Grid>
+        </Container>
       </section>
 
-      {/* Team */}
-      <section className="bg-muted/30 py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">Meet Our Team</h2>
-            <p className="text-muted-foreground text-xl">
+      {/* Team - Clean Supabase-style cards */}
+      <section className="border-b border-border py-20">
+        <Container className="mx-auto max-w-7xl px-4">
+          <div className="mb-16 text-center">
+            <Heading size="8" className="mb-4 text-foreground">
+              Meet Our Team
+            </Heading>
+            <Text size="5" className="text-muted-foreground">
               The dedicated professionals who make it all happen
-            </p>
+            </Text>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="glass rounded-2xl p-8 text-center">
-              <h3 className="mb-2 text-xl font-bold">Samuel Kinyanjui</h3>
-              <p className="mb-3 font-medium text-gray-900">Founder & Owner</p>
-              <p className="text-muted-foreground text-sm">
-                United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel
-                leads with integrity and a commitment to reliable, professional service.
-              </p>
-            </div>
+          <Grid columns={{ initial: '1', md: '3' }} gap="6">
+            <Box className="linear-card p-8 text-center">
+              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-3xl font-bold text-primary">
+                SK
+              </div>
+              <Heading size="5" className="mb-2 text-foreground">
+                Samuel Kinyanjui
+              </Heading>
+              <Text size="3" className="mb-3 font-medium text-primary">
+                Founder & Owner
+              </Text>
+              <Text size="2" className="text-muted-foreground">
+                United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel leads
+                with integrity and a commitment to reliable, professional service.
+              </Text>
+            </Box>
 
-            <div className="glass rounded-2xl p-8 text-center">
-              <h3 className="mb-2 text-xl font-bold">Chelsey Karcher</h3>
-              <p className="mb-3 font-medium text-gray-900">
+            <Box className="linear-card p-8 text-center">
+              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 text-3xl font-bold text-purple-600">
+                CK
+              </div>
+              <Heading size="5" className="mb-2 text-foreground">
+                Chelsey Karcher
+              </Heading>
+              <Text size="3" className="mb-3 font-medium text-primary">
                 Owner,{' '}
                 <a
                   href="https://www.karchercleaners.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="hover:underline underline-offset-2"
                 >
                   Karcher Cleaners
                 </a>
-              </p>
-              <p className="text-muted-foreground text-sm">
-                Leads our women-owned cleaning partner, delivering professional cleaning services
-                with exceptional attention to detail.
-              </p>
-            </div>
+              </Text>
+              <Text size="2" className="text-muted-foreground">
+                Leads our women-owned cleaning partner, delivering professional cleaning services with
+                exceptional attention to detail.
+              </Text>
+            </Box>
 
-            <div className="glass rounded-2xl p-8 text-center">
-              <h3 className="mb-2 text-xl font-bold">Our Local Team</h3>
-              <p className="mb-3 font-medium text-gray-900">Operations</p>
-              <p className="text-muted-foreground text-sm">
+            <Box className="linear-card p-8 text-center">
+              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-100">
+                <Users className="h-10 w-10 text-emerald-600" />
+              </div>
+              <Heading size="5" className="mb-2 text-foreground">
+                Our Local Team
+              </Heading>
+              <Text size="3" className="mb-3 font-medium text-primary">
+                Operations
+              </Text>
+              <Text size="2" className="text-muted-foreground">
                 Friendly professionals serving Evansville and surrounding areas with efficient,
                 respectful service.
-              </p>
-            </div>
-          </div>
-        </div>
+              </Text>
+            </Box>
+          </Grid>
+        </Container>
       </section>
 
-      {/* CTA */}
-      <section className="bg-gray-900 py-16 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
+      {/* CTA Section - Linear gradient style */}
+      <section className="relative overflow-hidden bg-foreground py-20 text-background">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <Container className="relative mx-auto max-w-4xl px-4 text-center">
+          <Heading size="8" className="mb-6">
             Ready to Experience the Uncle Sam Difference?
-          </h2>
-          <p className="mb-8 text-xl text-gray-900">
+          </Heading>
+          <Text size="5" className="text-background/80 mb-8">
             Join thousands of satisfied customers who trust Uncle Sam Junk Removal for their junk
             removal and cleaning needs.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <PhoneButton href={`tel:${settings.phoneE164}`} className="justify-center">
+          </Text>
+          <Flex justify="center" gap="3" wrap="wrap">
+            <PhoneButton
+              href={`tel:${settings.phoneE164}`}
+              className="bg-background text-foreground hover:bg-background/90"
+            >
               <Phone className="h-4 w-4" /> Call {settings.phone}
             </PhoneButton>
             <Button
               asChild
-              className="bg-card hover:bg-muted/30 justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-gray-900 shadow transition-colors"
+              className="bg-primary text-primary-foreground hover:brightness-110"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote
               </QuoteCtaLink>
             </Button>
-          </div>
-        </div>
+          </Flex>
+        </Container>
       </section>
     </div>
   )

@@ -70,7 +70,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
 
           {/* Title */}
-          <h1 className="text-foreground mb-3 text-[24px] font-semibold leading-tight tracking-tight sm:text-[28px] lg:text-[32px]">
+          <h1 className="text-foreground mb-3 text-[24px] leading-tight font-semibold tracking-tight sm:text-[28px] lg:text-[32px]">
             {meta.title}
           </h1>
 
@@ -359,7 +359,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
               <div className="flex flex-wrap gap-3">
                 <Button
                   asChild
-                  className="h-10 rounded-lg bg-gray-900 px-4 text-[14px] font-semibold text-white hover:bg-gray-900"
+                  className="bg-foreground text-background h-10 rounded-lg px-4 text-[14px] font-semibold hover:brightness-110"
                 >
                   <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
                 </Button>
@@ -387,11 +387,11 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                   className="linear-card group block rounded-xl p-6 transition-all hover:shadow-md"
                 >
                   <div className="mb-2">
-                    <span className="text-[12px] font-semibold tracking-wide text-gray-900 uppercase dark:text-gray-900">
+                    <span className="text-muted-foreground text-[12px] font-semibold tracking-wide uppercase">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground mb-2 text-[16px] leading-snug font-semibold group-hover:text-gray-900 dark:group-hover:text-gray-900">
+                  <h3 className="text-foreground group-hover:text-primary mb-2 text-[16px] leading-snug font-semibold transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-[14px] leading-relaxed">
