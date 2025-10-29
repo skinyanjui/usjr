@@ -17,7 +17,7 @@ import {
 import { settings } from '@/lib/cms-content'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { Box, Container, Flex, Grid, Section, Text, Heading, Badge as RadixBadge } from '@radix-ui/themes'
+import { Box, Container, Flex, Grid, Text, Heading, Badge as RadixBadge } from '@radix-ui/themes'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
