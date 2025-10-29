@@ -102,7 +102,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   variant={showBefore ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setShowBefore(true)}
-                  className={showBefore ? 'bg-red-600 hover:bg-red-700' : ''}
+                  className={showBefore ? 'bg-gray-900 hover:bg-gray-900' : ''}
                 >
                   Before
                 </Button>
@@ -110,7 +110,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
                   variant={!showBefore ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setShowBefore(false)}
-                  className={!showBefore ? 'bg-green-600 hover:bg-green-700' : ''}
+                  className={!showBefore ? 'bg-gray-800 hover:bg-gray-800' : ''}
                 >
                   After
                 </Button>

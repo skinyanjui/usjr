@@ -26,7 +26,7 @@ export default function HomePage() {
       <div className="px-4 py-6 text-center">
         <div className="mx-auto max-w-4xl">
           <p className="text-muted-foreground text-lg">
-            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <span className="text-2xl font-bold text-gray-900 dark:text-gray-900">
               {averageRating.toFixed(1)}/5
             </span>{' '}
             from {reviewCount} verified reviews
@@ -47,7 +47,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/quote"
-            className="inline-flex min-h-[48px] items-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-blue-700"
+            className="inline-flex min-h-[48px] items-center rounded-lg bg-gray-900 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-gray-900"
           >
             Get Free Quote
           </Link>

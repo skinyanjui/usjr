@@ -81,7 +81,7 @@ export default function CleaningHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
@@ -91,14 +91,14 @@ export default function CleaningHub() {
       {/* Subheader badges/CTAs */}
       <section className="px-4 pt-8 pb-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge className="mb-6 border-border bg-green-100 text-green-700 dark:text-green-400">
+          <Badge className="border-border mb-6 bg-gray-800 text-gray-900 dark:text-gray-900">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 px-8 py-3 text-white hover:bg-blue-700"
+              className="bg-gray-900 px-8 py-3 text-white hover:bg-gray-900"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -108,7 +108,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
+              className="border-gray-300 bg-transparent px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -124,8 +124,8 @@ export default function CleaningHub() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {valueProps.map((prop, index) => (
               <div key={index} className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <prop.icon className="h-8 w-8 text-green-600" />
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+                  <prop.icon className="h-8 w-8 text-gray-900" />
                 </div>
                 <h3 className="text-foreground mb-2 text-lg font-semibold">{prop.title}</h3>
                 <p className="text-muted-foreground">{prop.description}</p>
@@ -171,7 +171,7 @@ export default function CleaningHub() {
                         key={idx}
                         className="text-muted-foreground flex items-center gap-2 text-sm"
                       >
-                        <CheckCircle className="h-4 w-4 flex-shrink-0 text-green-600" />
+                        <CheckCircle className="h-4 w-4 flex-shrink-0 text-gray-900" />
                         {item}
                       </li>
                     ))}
@@ -180,7 +180,7 @@ export default function CleaningHub() {
                     <Button
                       asChild
                       size="sm"
-                      className="flex-1 bg-blue-600 text-white hover:bg-blue-700"
+                      className="flex-1 bg-gray-900 text-white hover:bg-gray-900"
                     >
                       <Link
                         href={service.href}
@@ -194,7 +194,7 @@ export default function CleaningHub() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-green-800 bg-transparent text-green-700 dark:text-green-400 hover:bg-green-100"
+                      className="border-gray-300 bg-transparent text-gray-900 hover:bg-gray-800 dark:text-gray-900"
                     >
                       <Link href="/quote" prefetch>
                         Quote
@@ -212,8 +212,8 @@ export default function CleaningHub() {
       <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl text-center">
           <div className="bg-card rounded-2xl p-8 shadow-lg">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-              <Shield className="h-8 w-8 text-green-600" />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+              <Shield className="h-8 w-8 text-gray-900" />
             </div>
             <h2 className="text-foreground mb-4 text-2xl font-bold">48-Hour Re-Clean Guarantee</h2>
             <p className="text-muted-foreground mb-6">
@@ -241,7 +241,7 @@ export default function CleaningHub() {
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 px-8 py-3 text-white hover:bg-blue-700"
+              className="bg-gray-900 px-8 py-3 text-white hover:bg-gray-900"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -251,7 +251,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-green-800 bg-transparent px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
+              className="border-gray-300 bg-transparent px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote
@@ -261,7 +261,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="ghost"
-              className="px-8 py-3 text-green-700 dark:text-green-400 hover:bg-green-100"
+              className="px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
             >
               <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
             </Button>

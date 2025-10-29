@@ -26,7 +26,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
         {trigger ?? (
           <button
             type="button"
-            className={className ?? 'text-red-700 underline underline-offset-2'}
+            className={className ?? 'text-gray-900 underline underline-offset-2'}
           >
             Price Match Terms
           </button>
@@ -35,16 +35,16 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <Info className="h-4 w-4 text-red-600" /> Price Match Guarantee Terms
+            <Info className="h-4 w-4 text-gray-900" /> Price Match Guarantee Terms
           </DialogTitle>
           <DialogDescription>
             We stand behind transparent, competitive pricing. If you find a lower written quote for
             the same service, we’ll match it.
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 text-sm text-muted-foreground">
+        <div className="text-muted-foreground space-y-4 text-sm">
           <div>
-            <h3 className="mb-1 font-semibold text-foreground">What qualifies</h3>
+            <h3 className="text-foreground mb-1 font-semibold">What qualifies</h3>
             <ul className="list-disc space-y-1 pl-5">
               <li>Written quote from a local competitor within our service area</li>
               <li>Same scope of work, materials, and disposal requirements</li>
@@ -52,7 +52,7 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
             </ul>
           </div>
           <div>
-            <h3 className="mb-1 font-semibold text-foreground">What doesn’t qualify</h3>
+            <h3 className="text-foreground mb-1 font-semibold">What doesn’t qualify</h3>
             <ul className="list-disc space-y-1 pl-5">
               <li>Verbal estimates or non-itemized texts</li>
               <li>One-time promotions, coupons, or bundled offers</li>
@@ -60,14 +60,14 @@ export function PriceMatchTerms({ trigger, className }: PriceMatchTermsProps) {
             </ul>
           </div>
           <div>
-            <h3 className="mb-1 font-semibold text-foreground">How to submit</h3>
+            <h3 className="text-foreground mb-1 font-semibold">How to submit</h3>
             <ul className="list-disc space-y-1 pl-5">
               <li>Text a photo or PDF of the competitor’s quote to {settings.phone}</li>
               <li>Include your address and preferred service date</li>
               <li>We’ll verify and reply with a matched quote—often within minutes</li>
             </ul>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             Note: We may request photos to confirm the exact scope and ensure apples-to-apples
             pricing.
           </p>

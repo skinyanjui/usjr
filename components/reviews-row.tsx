@@ -24,19 +24,32 @@ export function ReviewsRow() {
   const [reviews, setReviews] = useState<Testimonial[]>([])
   const cachedOffsetsRef = useRef<number[] | null>(null)
   const writeFrameRef = useRef<number | null>(null)
+  const resizeObserverRef = useRef<ResizeObserver | null>(null)
 
   useEffect(() => {
     setReviews(getActiveTestimonials(12))
   }, [])
 
-  // Compute and cache card offsets in one read pass to avoid repeated reflows
+  // Compute and cache card offsets using ResizeObserver to avoid forced synchronous layout
+  const updateCardOffsets = () => {
+    requestAnimationFrame(() => {
+      const container = carouselRef.current
+      if (!container) return
+      const children = Array.from(container.children) as HTMLElement[]
+      cachedOffsetsRef.current = children.map(child => {
+        // eslint-disable-next-line no-restricted-syntax
+        const childRect = child.getBoundingClientRect()
+        // eslint-disable-next-line no-restricted-syntax
+        const containerRect = container.getBoundingClientRect()
+        // eslint-disable-next-line no-restricted-syntax
+        return childRect.left - containerRect.left + container.scrollLeft
+      })
+    })
+  }
+
   const getCardOffsets = (): number[] => {
     if (cachedOffsetsRef.current) return cachedOffsetsRef.current
-    const container = carouselRef.current
-    if (!container) return []
-    const children = Array.from(container.children) as HTMLElement[]
-    cachedOffsetsRef.current = children.map(child => child.offsetLeft)
-    return cachedOffsetsRef.current
+    return []
   }
 
   const scrollToIndex = (index: number) => {
@@ -67,6 +80,29 @@ export function ReviewsRow() {
     setCurrentIndex(prev => (prev - 1 + count) % count)
   }
 
+  // Set up ResizeObserver to update offsets when layout changes
+  useEffect(() => {
+    const container = carouselRef.current
+    if (!container) return
+
+    // Initial offset calculation
+    updateCardOffsets()
+
+    // Set up ResizeObserver to recalculate on layout changes
+    resizeObserverRef.current = new ResizeObserver(() => {
+      cachedOffsetsRef.current = null
+      updateCardOffsets()
+    })
+
+    resizeObserverRef.current.observe(container)
+
+    return () => {
+      if (resizeObserverRef.current) {
+        resizeObserverRef.current.disconnect()
+      }
+    }
+  }, [reviews])
+
   // Sync scrolling when index changes
   useEffect(() => {
     scrollToIndex(currentIndex)
@@ -81,18 +117,6 @@ export function ReviewsRow() {
     }, 4000)
     return () => clearInterval(interval)
   }, [isPaused])
-
-  // Recompute snapping target on resize to keep alignment
-  useEffect(() => {
-    const handle = () => {
-      // Re-align to current index after layout changes
-      cachedOffsetsRef.current = null
-      scrollToIndex(currentIndex)
-    }
-    window.addEventListener('resize', handle)
-    return () => window.removeEventListener('resize', handle)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // Cleanup any scheduled writes on unmount
   useEffect(() => {
@@ -109,7 +133,7 @@ export function ReviewsRow() {
           {SOURCES.map(item => (
             <div
               key={item.source}
-              className="glass flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border border-border px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
+              className="glass border-border flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
               <div className="flex">
@@ -120,7 +144,7 @@ export function ReviewsRow() {
                   />
                 ))}
               </div>
-              <div className="text-[12px] sm:text-[13px] md:text-sm">
+              <div className="text-sm sm:text-base">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
                 <span className="font-semibold">{item.source}</span>
                 <span className="text-muted-foreground"> ({item.count}+)</span>
@@ -141,7 +165,7 @@ export function ReviewsRow() {
             {reviews.map(t => (
               <div
                 key={t.id}
-                className="w-64 shrink-0 snap-start rounded-lg border border-border bg-card/90 p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
+                className="border-border bg-card/90 w-64 shrink-0 snap-start rounded-lg border p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
               >
                 <div className="mb-1 flex items-center gap-1 sm:mb-2 sm:gap-1.5">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -151,8 +175,8 @@ export function ReviewsRow() {
                     />
                   ))}
                 </div>
-                <p className="text-[12px] text-muted-foreground sm:text-[13px] md:text-sm">"{t.text}"</p>
-                <div className="mt-2 text-[12px] text-muted-foreground sm:text-[12.5px] md:text-[13px]">
+                <p className="text-muted-foreground text-sm sm:text-base">"{t.text}"</p>
+                <div className="text-muted-foreground mt-2 text-sm">
                   — {t.name} • {t.location}
                 </div>
               </div>
@@ -164,7 +188,7 @@ export function ReviewsRow() {
             type="button"
             aria-label="Previous review"
             onClick={goToPrev}
-            className="absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-muted-foreground shadow-sm hover:bg-card md:flex"
+            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -172,7 +196,7 @@ export function ReviewsRow() {
             type="button"
             aria-label="Next review"
             onClick={goToNext}
-            className="absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-muted-foreground shadow-sm hover:bg-card md:flex"
+            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

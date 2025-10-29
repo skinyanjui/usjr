@@ -25,13 +25,13 @@ export default function TermsPage() {
         <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
           >
             Home
           </Link>
           <Link
             href="/quote"
-            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
           >
             Get a Quote
           </Link>
@@ -249,13 +249,13 @@ export default function TermsPage() {
         <div className="border-border bg-card mt-12 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
           <Link
             href="/"
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
           >
             Home
           </Link>
           <Link
             href="/quote"
-            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
           >
             Get a Quote
           </Link>

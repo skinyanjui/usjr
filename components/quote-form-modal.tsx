@@ -99,8 +99,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="max-w-md">
           <div className="py-8 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+              <CheckCircle className="h-8 w-8 text-gray-900" />
             </div>
             <h3 className="text-foreground mb-2 text-xl font-bold">Quote Request Received!</h3>
             <p className="text-muted-foreground mb-6">
@@ -108,7 +108,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               within 2 hours with a detailed estimate.
             </p>
             <div className="mb-6 space-y-3">
-              <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700">
+              <Button asChild className="w-full bg-gray-900 text-white hover:bg-gray-900">
                 <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                   Schedule Call - Calendar Link
                 </a>
@@ -385,7 +385,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white"
                       aria-label={`Remove file ${file.name}`}
                     >
                       <X className="h-3 w-3" />
@@ -429,7 +429,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               type="submit"
-              className="w-full bg-blue-600 text-white hover:bg-blue-700 sm:w-auto"
+              className="w-full bg-gray-900 text-white hover:bg-gray-900 sm:w-auto"
             >
               Submit Request
             </Button>

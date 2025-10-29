@@ -247,15 +247,15 @@ export default function SummerCleanupChecklistPage() {
         overseeding
       </p>
 
-      <div className="mt-8 rounded-lg bg-green-50 p-6">
-        <h3 className="mb-3 text-xl font-bold text-green-900">Need Help with Summer Cleanup?</h3>
+      <div className="mt-8 rounded-lg bg-gray-800 p-6">
+        <h3 className="mb-3 text-xl font-bold text-gray-900">Need Help with Summer Cleanup?</h3>
         <p className="text-muted-foreground mb-4">
           Our team provides professional junk removal, yard waste disposal, and garage cleanout
           services throughout the Tri-State area. Same-day service available.
         </p>
         <a
           href="/quote"
-          className="inline-block rounded-lg bg-green-600 px-6 py-2.5 font-semibold text-white hover:bg-green-700"
+          className="inline-block rounded-lg bg-gray-800 px-6 py-2.5 font-semibold text-white hover:bg-gray-800"
         >
           Get Free Quote
         </a>

@@ -110,12 +110,12 @@ export default function AboutPage() {
             </div>
             <div className="glass rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="rounded-lg bg-muted/30 p-4">
-                  <div className="text-2xl font-bold text-red-600">2025</div>
+                <div className="bg-muted/30 rounded-lg p-4">
+                  <div className="text-2xl font-bold text-gray-900">2025</div>
                   <div className="text-muted-foreground">Founded</div>
                 </div>
-                <div className="rounded-lg bg-muted/30 p-4">
-                  <div className="text-2xl font-bold text-green-600">500+</div>
+                <div className="bg-muted/30 rounded-lg p-4">
+                  <div className="text-2xl font-bold text-gray-900">500+</div>
                   <div className="text-muted-foreground">Satisfied Clients</div>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function AboutPage() {
               <ul className="text-muted-foreground grid gap-3 sm:grid-cols-2">
                 {settings.serviceAreas.map(area => (
                   <li key={area} className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-red-600" />
+                    <MapPin className="h-4 w-4 text-gray-900" />
                     <span>{area}</span>
                   </li>
                 ))}
@@ -150,19 +150,19 @@ export default function AboutPage() {
               <h3 className="mb-4 text-xl font-bold text-gray-800">What We Do</h3>
               <div className="text-muted-foreground grid gap-4 text-sm sm:grid-cols-2">
                 <div className="flex items-start gap-3">
-                  <Truck className="mt-0.5 h-5 w-5 text-blue-600" />
+                  <Truck className="mt-0.5 h-5 w-5 text-gray-900" />
                   <span>Full-service junk removal & curbside pick-ups</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Truck className="mt-0.5 h-5 w-5 text-blue-600" />
+                  <Truck className="mt-0.5 h-5 w-5 text-gray-900" />
                   <span>Light demolition, shed, and deck tear-downs</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Shield className="mt-0.5 h-5 w-5 text-red-600" />
+                  <Shield className="mt-0.5 h-5 w-5 text-gray-900" />
                   <span>Estate, garage, attic, and hoarding cleanouts</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Users className="mt-0.5 h-5 w-5 text-green-600" />
+                  <Users className="mt-0.5 h-5 w-5 text-gray-900" />
                   <span>Commercial, office, and rental turnovers</span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -191,7 +191,7 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             <div className="glass rounded-2xl p-8 text-center">
-              <Shield className="mx-auto mb-4 h-12 w-12 text-red-600" />
+              <Shield className="mx-auto mb-4 h-12 w-12 text-gray-900" />
               <h3 className="mb-4 text-xl font-bold">Reliability</h3>
               <p className="text-muted-foreground">
                 We show up on time, every time. Our customers count on us, and we never let them
@@ -200,7 +200,7 @@ export default function AboutPage() {
             </div>
 
             <div className="glass rounded-2xl p-8 text-center">
-              <Users className="mx-auto mb-4 h-12 w-12 text-green-600" />
+              <Users className="mx-auto mb-4 h-12 w-12 text-gray-900" />
               <h3 className="mb-4 text-xl font-bold">Community</h3>
               <p className="text-muted-foreground">
                 We're your neighbors. Supporting local families and businesses is at the heart of
@@ -209,7 +209,7 @@ export default function AboutPage() {
             </div>
 
             <div className="glass rounded-2xl p-8 text-center">
-              <Award className="mx-auto mb-4 h-12 w-12 text-blue-600" />
+              <Award className="mx-auto mb-4 h-12 w-12 text-gray-900" />
               <h3 className="mb-4 text-xl font-bold">Excellence</h3>
               <p className="text-muted-foreground">
                 From our first interaction to job completion, we strive for excellence in every
@@ -231,8 +231,8 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
-                <Shield className="h-8 w-8 text-red-600" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-900">
+                <Shield className="h-8 w-8 text-gray-900" />
               </div>
               <h3 className="mb-2 font-bold">Licensed & Insured</h3>
               <p className="text-muted-foreground text-sm">
@@ -241,8 +241,8 @@ export default function AboutPage() {
             </div>
 
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                <Clock className="h-8 w-8 text-green-600" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+                <Clock className="h-8 w-8 text-gray-900" />
               </div>
               <h3 className="mb-2 font-bold">Same-Day Service</h3>
               <p className="text-muted-foreground text-sm">
@@ -251,8 +251,8 @@ export default function AboutPage() {
             </div>
 
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
-                <Truck className="h-8 w-8 text-blue-600" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-900">
+                <Truck className="h-8 w-8 text-gray-900" />
               </div>
               <h3 className="mb-2 font-bold">Eco-Friendly</h3>
               <p className="text-muted-foreground text-sm">
@@ -286,7 +286,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-3">
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Samuel Kinyanjui</h3>
-              <p className="mb-3 font-medium text-red-600">Founder & Owner</p>
+              <p className="mb-3 font-medium text-gray-900">Founder & Owner</p>
               <p className="text-muted-foreground text-sm">
                 United States Marine Corps veteran and founder of Uncle Sam Junk Removal. Samuel
                 leads with integrity and a commitment to reliable, professional service.
@@ -295,7 +295,7 @@ export default function AboutPage() {
 
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Chelsey Karcher</h3>
-              <p className="mb-3 font-medium text-green-600">
+              <p className="mb-3 font-medium text-gray-900">
                 Owner,{' '}
                 <a
                   href="https://www.karchercleaners.com/"
@@ -314,7 +314,7 @@ export default function AboutPage() {
 
             <div className="glass rounded-2xl p-8 text-center">
               <h3 className="mb-2 text-xl font-bold">Our Local Team</h3>
-              <p className="mb-3 font-medium text-blue-600">Operations</p>
+              <p className="mb-3 font-medium text-gray-900">Operations</p>
               <p className="text-muted-foreground text-sm">
                 Friendly professionals serving Evansville and surrounding areas with efficient,
                 respectful service.
@@ -325,12 +325,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-red-700 py-16 text-white">
+      <section className="bg-gray-900 py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Ready to Experience the Uncle Sam Difference?
           </h2>
-          <p className="mb-8 text-xl text-red-100">
+          <p className="mb-8 text-xl text-gray-900">
             Join thousands of satisfied customers who trust Uncle Sam Junk Removal for their junk
             removal and cleaning needs.
           </p>
@@ -340,7 +340,7 @@ export default function AboutPage() {
             </PhoneButton>
             <Button
               asChild
-              className="bg-card justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-red-700 shadow transition-colors hover:bg-muted/30"
+              className="bg-card hover:bg-muted/30 justify-center rounded-lg px-6 py-2.5 text-base font-semibold text-gray-900 shadow transition-colors"
             >
               <QuoteCtaLink location="about-page-cta" label="Get Free Quote">
                 Get Free Quote

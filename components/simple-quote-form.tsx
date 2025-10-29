@@ -176,8 +176,8 @@ export function SimpleQuoteForm() {
     return (
       <Card className="mx-auto w-full max-w-2xl">
         <CardContent className="py-12 text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-8 w-8 text-green-600" />
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+            <CheckCircle className="h-8 w-8 text-gray-900" />
           </div>
           <h3 className="mb-4 text-2xl font-bold text-gray-900">Quote Request Received!</h3>
           <p className="mx-auto mb-8 max-w-md text-gray-600">
@@ -187,7 +187,7 @@ export function SimpleQuoteForm() {
           <div className="space-y-4">
             <a
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg bg-red-700/35 px-5 py-2.5 font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-red-700/45"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg bg-gray-900/35 px-5 py-2.5 font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-gray-900/45"
             >
               <Phone className="h-4 w-4" /> Call {settings.phone} for Immediate Service
             </a>
@@ -219,14 +219,14 @@ export function SimpleQuoteForm() {
                 onChange={e => handleInputChange('fullName', e.target.value)}
                 onBlur={() => handleBlur('fullName')}
                 required
-                className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
                 aria-invalid={touched.fullName && !!fieldErrors.fullName}
                 aria-describedby={
                   touched.fullName && fieldErrors.fullName ? 'fullName-error' : undefined
                 }
               />
               {touched.fullName && fieldErrors.fullName && (
-                <p id="fullName-error" className="mt-1 text-sm text-red-600">
+                <p id="fullName-error" className="mt-1 text-sm text-gray-900">
                   {fieldErrors.fullName}
                 </p>
               )}
@@ -242,14 +242,14 @@ export function SimpleQuoteForm() {
                 onChange={e => handleInputChange('phoneNumber', e.target.value)}
                 onBlur={() => handleBlur('phoneNumber')}
                 required
-                className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
                 aria-invalid={touched.phoneNumber && !!fieldErrors.phoneNumber}
                 aria-describedby={
                   touched.phoneNumber && fieldErrors.phoneNumber ? 'phoneNumber-error' : undefined
                 }
               />
               {touched.phoneNumber && fieldErrors.phoneNumber && (
-                <p id="phoneNumber-error" className="mt-1 text-sm text-red-600">
+                <p id="phoneNumber-error" className="mt-1 text-sm text-gray-900">
                   {fieldErrors.phoneNumber}
                 </p>
               )}
@@ -267,14 +267,14 @@ export function SimpleQuoteForm() {
               onChange={e => handleInputChange('emailAddress', e.target.value)}
               onBlur={() => handleBlur('emailAddress')}
               required
-              className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+              className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
               aria-invalid={touched.emailAddress && !!fieldErrors.emailAddress}
               aria-describedby={
                 touched.emailAddress && fieldErrors.emailAddress ? 'emailAddress-error' : undefined
               }
             />
             {touched.emailAddress && fieldErrors.emailAddress && (
-              <p id="emailAddress-error" className="mt-1 text-sm text-red-600">
+              <p id="emailAddress-error" className="mt-1 text-sm text-gray-900">
                 {fieldErrors.emailAddress}
               </p>
             )}
@@ -308,7 +308,7 @@ export function SimpleQuoteForm() {
               >
                 <SelectTrigger
                   id="serviceNeeded"
-                  className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-red-500 focus:ring-red-500' : ''}`}
+                  className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-red-500 focus:ring-gray-400' : ''}`}
                   aria-label="Service Needed"
                   aria-invalid={touched.serviceNeeded && !!fieldErrors.serviceNeeded}
                   aria-describedby={
@@ -329,7 +329,7 @@ export function SimpleQuoteForm() {
                 </SelectContent>
               </Select>
               {touched.serviceNeeded && fieldErrors.serviceNeeded && (
-                <p id="serviceNeeded-error" className="mt-1 text-sm text-red-600">
+                <p id="serviceNeeded-error" className="mt-1 text-sm text-gray-900">
                   {fieldErrors.serviceNeeded}
                 </p>
               )}
@@ -370,11 +370,11 @@ export function SimpleQuoteForm() {
           </div>
 
           <div className="space-y-4">
-            {errorMessage && <p className="text-center text-sm text-red-600">{errorMessage}</p>}
+            {errorMessage && <p className="text-center text-sm text-gray-900">{errorMessage}</p>}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-red-600 py-3 text-lg font-semibold text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
+              className="w-full bg-gray-900 py-3 text-lg font-semibold text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
             </Button>

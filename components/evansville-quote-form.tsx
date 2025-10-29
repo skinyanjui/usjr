@@ -106,13 +106,13 @@ export function EvansvilleQuoteForm() {
     return (
       <Card className="w-full">
         <CardContent className="py-10 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-8 w-8 text-green-600" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-800">
+            <CheckCircle className="h-8 w-8 text-gray-900" />
           </div>
-          <h3 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
+          <h3 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">
             Thanks! We received your request.
           </h3>
-          <p className="mx-auto max-w-md text-sm text-muted-foreground sm:text-base">
+          <p className="text-muted-foreground mx-auto max-w-md text-sm sm:text-base">
             We'll text or call you shortly with your free estimate. For fastest service, call or
             text {settings.phone}.
           </p>
@@ -223,15 +223,15 @@ export function EvansvilleQuoteForm() {
           </div>
 
           <div className="space-y-3">
-            {errorMessage && <p className="text-center text-sm text-red-600">{errorMessage}</p>}
+            {errorMessage && <p className="text-center text-sm text-gray-900">{errorMessage}</p>}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 py-3 text-base text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
+              className="w-full bg-gray-900 py-3 text-base text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-70 sm:text-lg"
             >
               {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
             </Button>
-            <p className="text-xs text-muted-foreground sm:text-sm">
+            <p className="text-muted-foreground text-xs sm:text-sm">
               By submitting this form, you agree to receive text messages and calls from Uncle Sam
               Junk Removal.
             </p>

@@ -1,6 +1,6 @@
 import type React from 'react'
 import type { Metadata } from 'next'
-import { IBM_Plex_Sans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import '@radix-ui/themes/styles.css'
 import './globals.css'
 import Script from 'next/script'
@@ -14,11 +14,11 @@ import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
 import { Theme } from '@radix-ui/themes'
 
-const ibmPlexSans = IBM_Plex_Sans({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-ibm-plex-sans',
+  variable: '--font-inter',
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
         <Script

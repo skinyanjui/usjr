@@ -118,11 +118,11 @@ export function PricingGrid() {
 
         <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {pricingTiers.map(tier => (
-            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-red-600' : ''}`}>
+            <Card key={tier.id} className={`glass ${tier.popular ? 'ring-2 ring-gray-400' : ''}`}>
               <CardHeader>
                 <CardTitle className="text-foreground flex items-center justify-between text-lg font-bold">
                   <span>{tier.name}</span>
-                  <span className="text-red-700">{tier.price}</span>
+                  <span className="text-gray-900">{tier.price}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -145,7 +145,7 @@ export function PricingGrid() {
           </h3>
           <div className="grid gap-6 text-left sm:grid-cols-2 md:grid-cols-3">
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">No Hidden Fees</h4>
                 <p className="text-muted-foreground text-sm">
@@ -154,7 +154,7 @@ export function PricingGrid() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">Upfront Estimates</h4>
                 <p className="text-muted-foreground text-sm">
@@ -163,14 +163,14 @@ export function PricingGrid() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <IconContainer icon={Check} color="red" size="sm" />
+              <IconContainer icon={Check} variant="default" size="sm" />
               <div>
                 <h4 className="text-foreground mb-1 font-semibold">Price Match Guarantee</h4>
                 <p className="text-muted-foreground text-sm">
                   Find a lower written quote for the same service? We’ll match it.{' '}
                   <PriceMatchTerms
                     trigger={
-                      <span className="cursor-pointer font-semibold text-red-700 underline">
+                      <span className="cursor-pointer font-semibold text-gray-900 underline">
                         See terms
                       </span>
                     }
@@ -180,20 +180,20 @@ export function PricingGrid() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-red-200 pt-6">
+          <div className="mt-8 border-t border-gray-300 pt-6">
             <p className="text-muted-foreground mb-4 font-medium">
               Ready to see exactly what your project will cost?
             </p>
             <div className="flex flex-row justify-center gap-4">
               <a
                 href={`tel:${settings.phoneE164}`}
-                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-red-700 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-red-700/45 sm:flex-initial"
+                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-gray-900/45 sm:flex-initial"
               >
                 <Phone className="h-4 w-4" /> Call {settings.phone}
               </a>
               <a
                 href={`sms:${settings.phoneE164}`}
-                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-800 bg-transparent px-6 text-center font-semibold text-red-800 transition-colors hover:bg-red-800 hover:text-white sm:flex-initial"
+                className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-transparent px-6 text-center font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white sm:flex-initial"
               >
                 Text Photos for Instant Quote
               </a>

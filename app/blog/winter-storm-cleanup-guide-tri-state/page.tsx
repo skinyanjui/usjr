@@ -535,22 +535,22 @@ export default function WinterStormCleanupGuide() {
           severe weather strikes.
         </p>
 
-        <div className="not-prose my-8 rounded-lg border border-orange-200 bg-orange-50 p-6">
-          <h3 className="mb-4 text-xl font-bold text-orange-900">Need Emergency Storm Cleanup?</h3>
-          <p className="mb-4 text-orange-800">
+        <div className="not-prose my-8 rounded-lg border border-gray-300 bg-gray-800 p-6">
+          <h3 className="mb-4 text-xl font-bold text-gray-900">Need Emergency Storm Cleanup?</h3>
+          <p className="mb-4 text-gray-900">
             We provide rapid response for storm damage emergencies throughout the Tri-State area.
             Available 24/7 for urgent situations.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
               href="/emergency"
-              className="inline-block rounded-lg bg-orange-700 px-6 py-3 font-semibold text-white hover:bg-orange-800"
+              className="inline-block rounded-lg bg-gray-800 px-6 py-3 font-semibold text-white hover:bg-gray-800"
             >
               Emergency Service
             </a>
             <a
               href="/quote"
-              className="bg-card inline-block rounded-lg border-2 border-orange-700 px-6 py-3 font-semibold text-orange-700 hover:bg-orange-50"
+              className="bg-card inline-block rounded-lg border-2 border-gray-300 px-6 py-3 font-semibold text-gray-900 hover:bg-gray-800"
             >
               Request Quote
             </a>

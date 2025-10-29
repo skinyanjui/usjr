@@ -123,7 +123,7 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="min-h-screen bg-gray-900">
       <PageHero
         title="Professional Services in Evansville"
         description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"

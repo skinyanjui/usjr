@@ -262,38 +262,38 @@ export function QuoteFormStandalone() {
     return (
       <Card className="mx-auto flex max-w-2xl flex-col">
         <CardContent className="p-6 text-center sm:p-12">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-10 w-10 text-green-600" />
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-800">
+            <CheckCircle className="h-10 w-10 text-gray-900" />
           </div>
-          <h2 className="mb-4 text-2xl font-bold text-foreground">Quote Request Received!</h2>
-          <p className="mx-auto mb-8 max-w-md text-muted-foreground">
+          <h2 className="text-foreground mb-4 text-2xl font-bold">Quote Request Received!</h2>
+          <p className="text-muted-foreground mx-auto mb-8 max-w-md">
             Thank you for your detailed quote request. We'll review your information and photos,
             then get back to you within 2 hours with a comprehensive estimate.
           </p>
 
           <div className="mb-8 space-y-4">
-            <Button asChild className="w-full max-w-sm bg-blue-600 text-white hover:bg-blue-700">
+            <Button asChild className="w-full max-w-sm bg-gray-900 text-white hover:bg-gray-900">
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Schedule Call - Calendar Link
               </a>
             </Button>
             <div className="text-center">
-              <p className="mb-2 text-sm text-muted-foreground">Need immediate assistance?</p>
-              <p className="text-lg font-semibold text-foreground">Text us at {settings.phone}</p>
+              <p className="text-muted-foreground mb-2 text-sm">Need immediate assistance?</p>
+              <p className="text-foreground text-lg font-semibold">Text us at {settings.phone}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
             <div className="flex items-center justify-center gap-2">
-              <Clock className="h-4 w-4 text-blue-600" />
+              <Clock className="h-4 w-4 text-gray-900" />
               <span>2-hour response</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Leaf className="h-4 w-4 text-green-600" />
+              <Leaf className="h-4 w-4 text-gray-900" />
               <span>Natural products</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Shield className="h-4 w-4 text-purple-600" />
+              <Shield className="h-4 w-4 text-gray-900" />
               <span>Fully insured</span>
             </div>
           </div>
@@ -312,7 +312,9 @@ export function QuoteFormStandalone() {
               Detailed form for accurate pricing - we'll respond within 2 hours
             </CardDescription>
           </div>
-          <Badge className="border-green-600 dark:border-green-500 bg-green-100 text-green-700 dark:text-green-400">Free Estimate</Badge>
+          <Badge className="border-gray-300 bg-gray-800 text-gray-900 dark:border-gray-300 dark:text-gray-900">
+            Free Estimate
+          </Badge>
         </div>
 
         {/* Sector + Segment Toggle */}
@@ -334,7 +336,7 @@ export function QuoteFormStandalone() {
             </Select>
           </div>
 
-          <div className="flex w-full max-w-md gap-2 rounded-lg bg-muted/50 p-1">
+          <div className="bg-muted/50 flex w-full max-w-md gap-2 rounded-lg p-1">
             <button
               type="button"
               onClick={() => setSegment('residential')}
@@ -365,7 +367,7 @@ export function QuoteFormStandalone() {
         <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           {/* Contact Information */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base font-semibold text-foreground sm:text-lg">
+            <h3 className="text-foreground text-base font-semibold sm:text-lg">
               Contact Information
             </h3>
             <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
@@ -403,7 +405,7 @@ export function QuoteFormStandalone() {
 
           {/* Property Information */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base font-semibold text-foreground sm:text-lg">Property Details</h3>
+            <h3 className="text-foreground text-base font-semibold sm:text-lg">Property Details</h3>
             <div>
               <Label htmlFor="address">Property Address *</Label>
               <Input
@@ -504,7 +506,7 @@ export function QuoteFormStandalone() {
 
           {/* Service Selection */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-base font-semibold text-foreground sm:text-lg">Service Details</h3>
+            <h3 className="text-foreground text-base font-semibold sm:text-lg">Service Details</h3>
             <div>
               <Label htmlFor="qfs-service">Service Needed *</Label>
               <Select
@@ -558,7 +560,7 @@ export function QuoteFormStandalone() {
           {/* Sector-specific Details */}
           {sector === 'junk-removal' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base font-semibold text-foreground sm:text-lg">
+              <h3 className="text-foreground text-base font-semibold sm:text-lg">
                 Junk Removal Details
               </h3>
               <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
@@ -596,7 +598,7 @@ export function QuoteFormStandalone() {
 
           {sector === 'light-demolition' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base font-semibold text-foreground sm:text-lg">
+              <h3 className="text-foreground text-base font-semibold sm:text-lg">
                 Demolition Details
               </h3>
               <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
@@ -673,7 +675,7 @@ export function QuoteFormStandalone() {
 
           {sector === 'estate-cleanouts' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-base font-semibold text-foreground sm:text-lg">
+              <h3 className="text-foreground text-base font-semibold sm:text-lg">
                 Estate Cleanout Details
               </h3>
               <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
@@ -741,22 +743,22 @@ export function QuoteFormStandalone() {
 
           {/* Photo Upload */}
           <div className="space-y-4 sm:space-y-5">
-            <h3 className="text-base font-semibold text-foreground sm:text-lg">
+            <h3 className="text-foreground text-base font-semibold sm:text-lg">
               Photos for Accurate Pricing
             </h3>
-            <p className="text-xs text-muted-foreground sm:text-sm">
+            <p className="text-muted-foreground text-xs sm:text-sm">
               Upload up to 6 photos of the areas/items for the job to help us provide the most
               accurate estimate
             </p>
 
             <div>
-              <label className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted/30 transition-colors hover:bg-muted/50 sm:h-40">
+              <label className="border-border bg-muted/30 hover:bg-muted/50 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed transition-colors sm:h-40">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="mb-3 h-8 w-8 text-muted-foreground sm:h-10 sm:w-10" />
-                  <p className="mb-2 text-xs text-muted-foreground sm:text-sm">
+                  <Upload className="text-muted-foreground mb-3 h-8 w-8 sm:h-10 sm:w-10" />
+                  <p className="text-muted-foreground mb-2 text-xs sm:text-sm">
                     <span className="font-semibold">Click to upload photos</span> or drag and drop
                   </p>
-                  <p className="text-[10px] text-muted-foreground sm:text-xs">
+                  <p className="text-muted-foreground text-[10px] sm:text-xs">
                     PNG, JPG up to 10MB each (max 6 photos)
                   </p>
                 </div>
@@ -775,18 +777,18 @@ export function QuoteFormStandalone() {
               <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className="relative">
-                    <div className="flex aspect-square items-center justify-center rounded-lg border bg-muted/50">
-                      <Camera className="h-6 w-6 text-muted-foreground sm:h-8 sm:w-8" />
+                    <div className="bg-muted/50 flex aspect-square items-center justify-center rounded-lg border">
+                      <Camera className="text-muted-foreground h-6 w-6 sm:h-8 sm:w-8" />
                     </div>
                     <button
                       type="button"
                       onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-50 dark:bg-red-950/300 text-xs text-white"
+                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white dark:bg-gray-900/300"
                       aria-label={`Remove file ${file.name}`}
                     >
                       <X className="h-3 w-3" />
                     </button>
-                    <p className="mt-1 truncate text-[10px] text-muted-foreground sm:text-xs">
+                    <p className="text-muted-foreground mt-1 truncate text-[10px] sm:text-xs">
                       {file.name}
                     </p>
                   </div>
@@ -798,7 +800,7 @@ export function QuoteFormStandalone() {
           {/* Preferences (cleaning only) */}
           {sector === 'cleaning' && (
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-lg font-semibold text-foreground">Preferences</h3>
+              <h3 className="text-foreground text-lg font-semibold">Preferences</h3>
               <div className="flex items-center space-x-3">
                 <Checkbox
                   id="ecoFriendly"
@@ -808,7 +810,7 @@ export function QuoteFormStandalone() {
                   }
                 />
                 <Label htmlFor="ecoFriendly" className="flex items-center gap-2 text-sm">
-                  <Leaf className="h-4 w-4 text-green-600" />
+                  <Leaf className="h-4 w-4 text-gray-900" />
                   Use eco-friendly, natural products only (recommended)
                 </Label>
               </div>
@@ -817,7 +819,7 @@ export function QuoteFormStandalone() {
 
           {/* Additional Message */}
           <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-lg font-semibold text-foreground">Additional Information</h3>
+            <h3 className="text-foreground text-lg font-semibold">Additional Information</h3>
             <div>
               <Label htmlFor="message">Special Requirements or Questions</Label>
               <Textarea
@@ -833,18 +835,18 @@ export function QuoteFormStandalone() {
           {/* Submit Button */}
           <div className="border-t pt-8">
             {submitError && (
-              <div className="mb-4 rounded-lg border border-red-600 dark:border-red-500 bg-red-50 dark:bg-red-950/30 p-4 text-sm text-red-700 dark:text-red-400">
+              <div className="mb-4 rounded-lg border border-gray-300 bg-gray-900 p-4 text-sm text-gray-900 dark:border-red-500 dark:bg-gray-900/30 dark:text-gray-900">
                 {submitError}
               </div>
             )}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-green-600 py-3 text-lg text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full bg-gray-800 py-3 text-lg text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
             </Button>
-            <p className="mt-4 text-center text-sm text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-center text-sm">
               We'll review your request and respond within 2 hours with a detailed estimate
             </p>
           </div>

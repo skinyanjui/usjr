@@ -51,7 +51,7 @@ export function EmergencyBanner() {
   if (!isClient || !isVisible) return null
 
   return (
-    <div className="relative z-50 bg-orange-700 px-4 py-1.5">
+    <div className="relative z-50 bg-gray-800 px-4 py-1.5">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
         <div className="flex min-w-0 flex-1 items-center gap-2 text-white">
           <svg
@@ -78,7 +78,7 @@ export function EmergencyBanner() {
         <div className="flex flex-shrink-0 items-center gap-2">
           <Link
             href="/emergency"
-            className="bg-card rounded-md px-2.5 py-1 text-xs font-bold whitespace-nowrap text-orange-800 transition-colors hover:bg-gray-100"
+            className="bg-card rounded-md px-2.5 py-1 text-xs font-bold whitespace-nowrap text-gray-900 transition-colors hover:bg-gray-100"
           >
             Get Help →
           </Link>
