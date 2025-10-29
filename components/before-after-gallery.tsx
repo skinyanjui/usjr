@@ -42,7 +42,7 @@ export function BeforeAfterGallery({ limit, service }: BeforeAfterGalleryProps) 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {images.map(image => (
           <Card key={image.id} className="overflow-hidden transition-shadow hover:shadow-lg">
-            <SolidPanel color="slate" label={image.service} className="aspect-video p-8">
+            <SolidPanel color="neutral" label={image.service} className="aspect-video p-8">
               <div className="text-foreground flex flex-col items-center gap-2">
                 <span className="text-foreground text-base font-semibold">{image.title}</span>
                 <p className="text-muted-foreground text-sm font-medium">{image.summary}</p>
