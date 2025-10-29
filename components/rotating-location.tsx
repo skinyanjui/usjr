@@ -71,7 +71,9 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
         }
       } catch (error) {
         // Silently fail and use default (index 0)
-        console.log('Could not detect location, using default')
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Could not detect location, using default')
+        }
       } finally {
         setIsInitialized(true)
       }
