@@ -22,8 +22,8 @@ export function HeroSection() {
       {/* Background Image - Full junk removal truck */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2070&auto=format&fit=crop"
-          alt="Professional junk removal truck loaded with items"
+          src="https://images.pexels.com/photos/1051816/pexels-photo-1051816.jpeg?auto=compress&cs=tinysrgb&w=2070"
+          alt="Professional dump truck for junk removal services"
           fill
           priority
           className="object-cover"
