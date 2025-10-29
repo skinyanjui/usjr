@@ -105,7 +105,11 @@ export function PricingGrid() {
           <div className="mt-4 flex flex-col items-center justify-center gap-2">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-current text-yellow-400" />
+                <Star
+                  key={i}
+                  className="h-3.5 w-3.5 fill-current text-yellow-400"
+                  aria-hidden="true"
+                />
               ))}
             </div>
             <span className="text-muted-foreground">4.9/5 from 200+ customers</span>
