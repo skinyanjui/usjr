@@ -2,15 +2,14 @@ import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { QuoteServiceCard } from '@/components/ui/quote-service-card'
 import {
   Leaf,
   Shield,
   Clock,
   Star,
-  CheckCircle,
   Truck,
   Wrench,
   Sparkles,
@@ -18,7 +17,6 @@ import {
   Camera,
   BadgeDollarSign,
 } from 'lucide-react'
-import Link from 'next/link'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
