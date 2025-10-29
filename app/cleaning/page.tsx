@@ -91,14 +91,14 @@ export default function CleaningHub() {
       {/* Subheader badges/CTAs */}
       <section className="px-4 pt-8 pb-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge className="border-border mb-6 bg-gray-800 text-gray-900 dark:text-gray-900">
+          <Badge className="border-border bg-muted text-foreground mb-6">
             Natural Products • Woman-Owned • Veteran-Led
           </Badge>
           <div className="flex flex-wrap justify-center gap-3">
             <Button
               asChild
               size="lg"
-              className="bg-gray-900 px-8 py-3 text-white hover:bg-gray-900"
+              className="bg-foreground text-background px-8 py-3 hover:brightness-110"
             >
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Book Now
@@ -108,7 +108,7 @@ export default function CleaningHub() {
               asChild
               size="lg"
               variant="outline"
-              className="border-gray-300 bg-transparent px-8 py-3 text-gray-900 hover:bg-gray-800 dark:text-gray-900"
+              className="border-border text-foreground hover:bg-accent bg-transparent px-8 py-3"
             >
               <Link href="/quote" prefetch>
                 Get Free Quote

@@ -32,6 +32,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
+  const featuredPost = featuredPosts[0]
 
   // Structured data for SEO
   const structuredData = {
@@ -61,7 +62,7 @@ export default function BlogPage() {
       />
 
       {/* Two-Column Hero Section with Featured Post */}
-      {featuredPosts.length > 0 && (
+      {featuredPost && (
         <div className="bg-card border-border border-b">
           <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
@@ -71,7 +72,7 @@ export default function BlogPage() {
                 <div className="absolute inset-0 flex items-center justify-center p-8">
                   <div className="text-center">
                     <span className="bg-primary/10 text-primary inline-block rounded-full px-4 py-2 text-sm font-semibold backdrop-blur-sm">
-                      {featuredPosts[0].category}
+                      {featuredPost.category}
                     </span>
                   </div>
                 </div>
@@ -84,29 +85,29 @@ export default function BlogPage() {
                     Featured Article
                   </span>
                   <h1 className="text-foreground mt-3 text-3xl leading-tight font-bold md:text-4xl lg:text-5xl">
-                    {featuredPosts[0].title}
+                    {featuredPost.title}
                   </h1>
                 </div>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  {featuredPosts[0].excerpt}
+                  {featuredPost.excerpt}
                 </p>
                 <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <User className="h-4 w-4" />
-                    <span>{featuredPosts[0].author}</span>
+                    <span>{featuredPost.author}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                    <span>{featuredPosts[0].date}</span>
+                    <span>{featuredPost.date}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    <span>{featuredPosts[0].readTime}</span>
+                    <span>{featuredPost.readTime}</span>
                   </div>
                 </div>
                 <div className="flex gap-3 pt-4">
                   <Link
-                    href={`/blog/${featuredPosts[0].slug}`}
+                    href={`/blog/${featuredPost.slug}`}
                     className="bg-primary text-primary-foreground inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-all hover:brightness-110"
                   >
                     Read Article
