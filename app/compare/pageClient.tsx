@@ -165,7 +165,7 @@ export default function CompareClient() {
                         key={index}
                         className="text-muted-foreground flex items-center gap-2 text-sm"
                       >
-                        <X className="h-4 w-4 flex-shrink-0 text-red-500" />
+                        <X className="text-destructive h-4 w-4 flex-shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}

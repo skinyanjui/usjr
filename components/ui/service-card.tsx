@@ -97,30 +97,18 @@ export function ServiceCard({
     >
       <div className={`relative ${sizes.banner} w-full overflow-hidden`}>
         {image ? (
-          <>
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-gray-900/40" />
-            {/* Content overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-              <Icon className={`h-8 w-8 text-white drop-shadow-lg`} />
-              <span className={`text-white ${sizes.category} drop-shadow-lg`}>{category}</span>
-            </div>
-          </>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         ) : (
           <div
-            className={`flex ${sizes.banner} w-full flex-col items-center justify-center gap-2 ${colors.banner}`}
+            className={`flex ${sizes.banner} w-full items-center justify-center ${colors.banner}`}
             aria-hidden
-          >
-            <Icon className={`h-8 w-8 ${colors.icon}`} />
-            <span className={`${colors.bannerText} ${sizes.category}`}>{category}</span>
-          </div>
+          />
         )}
       </div>
       <CardContent className={`${sizes.content}`}>

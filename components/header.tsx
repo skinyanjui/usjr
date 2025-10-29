@@ -73,7 +73,7 @@ export function Header() {
           <div className="col-span-2 flex min-w-0 items-end text-center lg:col-span-1">
             <Link
               href="/"
-              className="max-w-full truncate rounded-lg bg-gray-900 px-3 py-2 text-xs font-bold whitespace-nowrap text-white transition-colors hover:bg-gray-900 md:text-base"
+              className="bg-foreground text-background max-w-full truncate rounded-lg px-3 py-2 text-xs font-bold whitespace-nowrap transition-all hover:brightness-110 md:text-base"
             >
               UNCLE SAM JUNK REMOVAL
             </Link>
@@ -83,14 +83,14 @@ export function Header() {
           <div className="hidden items-center justify-center space-x-6 lg:flex">
             <Link
               href="/"
-              className="text-foreground text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               HOME
             </Link>
 
             <Link
               href="/about"
-              className="text-foreground text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               ABOUT
             </Link>
@@ -102,7 +102,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-foreground flex items-center gap-1 text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
@@ -133,7 +133,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="text-foreground flex items-center gap-1 text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
@@ -161,14 +161,14 @@ export function Header() {
 
             <Link
               href="/blog"
-              className="text-foreground text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               BLOG
             </Link>
 
             <Link
               href="/faq"
-              className="text-foreground text-sm font-medium transition-colors hover:text-gray-900 hover:underline"
+              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
             >
               FAQ
             </Link>
@@ -182,14 +182,14 @@ export function Header() {
               <PhoneButton
                 href={`tel:${settings.phoneE164}`}
                 size="xs"
-                className="text-foreground ring-border bg-transparent ring-1 hover:bg-gray-900/10"
+                className="text-foreground ring-border hover:bg-accent/10 bg-transparent ring-1"
               >
                 <Phone className="h-3 w-3" /> {settings.phone}
               </PhoneButton>
               <div className="mt-0 text-xs">
                 <a
                   href={`sms:${settings.phoneE164}`}
-                  className="text-foreground hover:text-gray-900"
+                  className="text-foreground hover:text-primary underline-offset-2 transition-all hover:underline"
                 >
                   Text photos for quote
                 </a>
@@ -198,7 +198,7 @@ export function Header() {
             <Button
               asChild
               size="xs"
-              className="rounded-full bg-gray-900 font-semibold text-white hover:bg-gray-900"
+              className="bg-foreground text-background rounded-full font-semibold hover:brightness-110"
             >
               <Link
                 href="/quote"
@@ -246,14 +246,14 @@ export function Header() {
             <div className="flex flex-col space-y-2 pt-4">
               <Link
                 href="/"
-                className="text-foreground py-2 text-sm font-medium hover:text-gray-900"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 HOME
               </Link>
               <Link
                 href="/about"
-                className="text-foreground py-2 text-sm font-medium hover:text-gray-900"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 ABOUT
@@ -278,7 +278,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="text-foreground block py-1.5 text-sm font-medium hover:text-gray-900"
+                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -307,7 +307,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="text-foreground block py-1.5 text-sm font-medium hover:text-gray-900"
+                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -319,14 +319,14 @@ export function Header() {
 
               <Link
                 href="/blog"
-                className="text-foreground py-2 text-sm font-medium hover:text-gray-900"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 BLOG
               </Link>
               <Link
                 href="/faq"
-                className="text-foreground py-2 text-sm font-medium hover:text-gray-900"
+                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
                 onClick={closeMobileMenuAndSections}
               >
                 FAQ
@@ -335,7 +335,7 @@ export function Header() {
                 <Button
                   asChild
                   size="sm"
-                  className="w-full bg-gray-900 text-white hover:bg-gray-900"
+                  className="bg-foreground text-background w-full hover:brightness-110"
                 >
                   <Link
                     href="/quote"

@@ -26,9 +26,7 @@ export default function HomePage() {
       <div className="px-4 py-6 text-center">
         <div className="mx-auto max-w-4xl">
           <p className="text-muted-foreground text-lg">
-            <span className="text-2xl font-bold text-gray-900 dark:text-gray-900">
-              {averageRating.toFixed(1)}/5
-            </span>{' '}
+            <span className="text-foreground text-2xl font-bold">{averageRating.toFixed(1)}/5</span>{' '}
             from {reviewCount} verified reviews
           </p>
         </div>

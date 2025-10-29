@@ -219,14 +219,14 @@ export function SimpleQuoteForm() {
                 onChange={e => handleInputChange('fullName', e.target.value)}
                 onBlur={() => handleBlur('fullName')}
                 required
-                className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
+                className={`mt-1 ${touched.fullName && fieldErrors.fullName ? 'border-destructive focus-visible:ring-destructive/20' : ''}`}
                 aria-invalid={touched.fullName && !!fieldErrors.fullName}
                 aria-describedby={
                   touched.fullName && fieldErrors.fullName ? 'fullName-error' : undefined
                 }
               />
               {touched.fullName && fieldErrors.fullName && (
-                <p id="fullName-error" className="mt-1 text-sm text-gray-900">
+                <p id="fullName-error" className="text-destructive mt-1 text-sm">
                   {fieldErrors.fullName}
                 </p>
               )}
@@ -242,14 +242,14 @@ export function SimpleQuoteForm() {
                 onChange={e => handleInputChange('phoneNumber', e.target.value)}
                 onBlur={() => handleBlur('phoneNumber')}
                 required
-                className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
+                className={`mt-1 ${touched.phoneNumber && fieldErrors.phoneNumber ? 'border-destructive focus-visible:ring-destructive/20' : ''}`}
                 aria-invalid={touched.phoneNumber && !!fieldErrors.phoneNumber}
                 aria-describedby={
                   touched.phoneNumber && fieldErrors.phoneNumber ? 'phoneNumber-error' : undefined
                 }
               />
               {touched.phoneNumber && fieldErrors.phoneNumber && (
-                <p id="phoneNumber-error" className="mt-1 text-sm text-gray-900">
+                <p id="phoneNumber-error" className="text-destructive mt-1 text-sm">
                   {fieldErrors.phoneNumber}
                 </p>
               )}
@@ -267,14 +267,14 @@ export function SimpleQuoteForm() {
               onChange={e => handleInputChange('emailAddress', e.target.value)}
               onBlur={() => handleBlur('emailAddress')}
               required
-              className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-red-500 focus-visible:ring-gray-400' : ''}`}
+              className={`mt-1 ${touched.emailAddress && fieldErrors.emailAddress ? 'border-destructive focus-visible:ring-destructive/20' : ''}`}
               aria-invalid={touched.emailAddress && !!fieldErrors.emailAddress}
               aria-describedby={
                 touched.emailAddress && fieldErrors.emailAddress ? 'emailAddress-error' : undefined
               }
             />
             {touched.emailAddress && fieldErrors.emailAddress && (
-              <p id="emailAddress-error" className="mt-1 text-sm text-gray-900">
+              <p id="emailAddress-error" className="text-destructive mt-1 text-sm">
                 {fieldErrors.emailAddress}
               </p>
             )}
@@ -308,7 +308,7 @@ export function SimpleQuoteForm() {
               >
                 <SelectTrigger
                   id="serviceNeeded"
-                  className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-red-500 focus:ring-gray-400' : ''}`}
+                  className={`mt-1 ${touched.serviceNeeded && fieldErrors.serviceNeeded ? 'border-destructive focus:ring-destructive/20' : ''}`}
                   aria-label="Service Needed"
                   aria-invalid={touched.serviceNeeded && !!fieldErrors.serviceNeeded}
                   aria-describedby={
