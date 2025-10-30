@@ -51,7 +51,7 @@ export function HeroSection() {
             <div className="flex flex-nowrap items-center gap-4">
               <Link
                 href="/quote"
-                className="linear-button flex min-h-[52px] items-center border border-white/20 px-8 text-lg hover:border-white/40"
+                className="linear-button flex min-h-[52px] items-center border-2 border-white px-8 text-lg hover:border-white/80"
               >
                 Get Free Quote
               </Link>
