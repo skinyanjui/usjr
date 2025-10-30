@@ -45,7 +45,11 @@ export function BentoGrid() {
                 <div className="mt-2 flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="h-3 w-3 fill-yellow-400 text-yellow-400"
+                        aria-hidden="true"
+                      />
                     ))}
                   </div>
                   <span className="text-sm font-medium">4.9/5 from 200+ Evansville customers</span>

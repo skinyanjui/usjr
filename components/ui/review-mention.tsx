@@ -44,7 +44,8 @@ export function ReviewMention({
             {stars.map((filled, index) => (
               <Star
                 key={index}
-                className={`h-4 w-4 ${filled ? `fill-current ${colors.text}` : 'text-gray-300'}`}
+                className={`h-3 w-3 ${filled ? `fill-current ${colors.text}` : 'text-gray-300'}`}
+                aria-hidden="true"
               />
             ))}
           </div>

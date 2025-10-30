@@ -59,9 +59,10 @@ export function TestimonialsSlider({
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`h-5 w-5 ${
+                  className={`h-3.5 w-3.5 ${
                     i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
                   }`}
+                  aria-hidden="true"
                 />
               ))}
             </div>

@@ -140,7 +140,8 @@ export function ReviewsRow() {
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                    aria-hidden="true"
                   />
                 ))}
               </div>
@@ -171,7 +172,8 @@ export function ReviewsRow() {
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                      className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                      aria-hidden="true"
                     />
                   ))}
                 </div>
