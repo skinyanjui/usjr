@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
 import { junkRemovalTiers } from '@/lib/pricing'
 
 export const metadata: Metadata = {
@@ -21,24 +20,29 @@ export const metadata: Metadata = {
 
 export default function QuotePage() {
   return (
-    <div className="bg-muted/30 min-h-screen">
-      <PageHero
-        title="Get Your Free Quote"
-        description="Call us or fill out the form below for pricing"
-        color="primary"
-      />
-      <div className="px-4 pb-16">
+    <div className="bg-background min-h-screen">
+      <div className="px-4 py-16">
         <div className="mx-auto max-w-4xl">
+          {/* Page Title */}
+          <div className="mb-12 text-center">
+            <h1 className="text-foreground mb-3 text-3xl font-bold sm:text-4xl md:text-5xl">
+              Get Your Free Quote
+            </h1>
+            <p className="text-muted-foreground text-base sm:text-lg">
+              Call us or fill out the form below for pricing
+            </p>
+          </div>
+
           {/* Primary CTA - Phone */}
-          <div className="mt-8 mb-12 text-center">
-            <p className="text-muted-foreground mb-4 text-base">
+          <div className="mb-12 text-center">
+            <p className="text-foreground mb-4 text-base font-medium">
               For fastest service, call or text us now
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button
                 asChild
                 size="lg"
-                className="bg-primary px-8 py-3 text-lg text-primary-foreground hover:brightness-110"
+                className="bg-primary px-8 py-3 text-lg text-primary-foreground hover:bg-primary/90"
               >
                 <a href={`tel:${settings.phoneE164}`}>
                   Call {settings.phone}
@@ -48,7 +52,7 @@ export default function QuotePage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-border px-8 py-3 text-lg hover:bg-accent"
+                className="px-8 py-3 text-lg"
               >
                 <a href={`sms:${settings.phoneE164}`}>
                   Text Photos
@@ -60,10 +64,10 @@ export default function QuotePage() {
           {/* Divider */}
           <div className="relative mb-12">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border"></div>
+              <div className="w-full border-t-2 border-border"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-muted/30 px-4 text-muted-foreground">Or fill out the form</span>
+              <span className="bg-background px-4 text-muted-foreground font-medium">Or fill out the form</span>
             </div>
           </div>
 
@@ -78,32 +82,32 @@ export default function QuotePage() {
               Our Services
             </h2>
             <div className="grid gap-6 sm:grid-cols-3">
-              <Card className="glass border-border">
-                <CardContent className="p-4 text-center">
-                  <h3 className="text-foreground mb-2 font-bold">Junk Removal</h3>
-                  <p className="text-muted-foreground mb-2 text-sm">Starting at {junkRemovalTiers[0]?.price ?? '$149'}</p>
-                  <Button asChild variant="link" className="p-0 h-auto text-sm">
-                    <a href="/services/junk-removal">View pricing details</a>
+              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-foreground mb-3 text-lg font-bold">Junk Removal</h3>
+                  <p className="text-foreground mb-4 text-base font-semibold">Starting at {junkRemovalTiers[0]?.price ?? '$149'}</p>
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <a href="/services/junk-removal">View Details</a>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="glass border-border">
-                <CardContent className="p-4 text-center">
-                  <h3 className="text-foreground mb-2 font-bold">Light Demolition</h3>
-                  <p className="text-muted-foreground mb-2 text-sm">Starting at $299</p>
-                  <Button asChild variant="link" className="p-0 h-auto text-sm">
-                    <a href="/services/light-demolition">View pricing details</a>
+              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-foreground mb-3 text-lg font-bold">Light Demolition</h3>
+                  <p className="text-foreground mb-4 text-base font-semibold">Starting at $299</p>
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <a href="/services/light-demolition">View Details</a>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="glass border-border">
-                <CardContent className="p-4 text-center">
-                  <h3 className="text-foreground mb-2 font-bold">Cleaning Services</h3>
-                  <p className="text-muted-foreground mb-2 text-sm">Starting at $80</p>
-                  <Button asChild variant="link" className="p-0 h-auto text-sm">
-                    <a href="/cleaning">View pricing details</a>
+              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-foreground mb-3 text-lg font-bold">Cleaning Services</h3>
+                  <p className="text-foreground mb-4 text-base font-semibold">Starting at $80</p>
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <a href="/cleaning">View Details</a>
                   </Button>
                 </CardContent>
               </Card>
@@ -112,11 +116,19 @@ export default function QuotePage() {
 
           {/* Trust Indicators */}
           <div className="text-center">
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-              <span>✓ Same-Day Service</span>
-              <span>✓ Fully Insured</span>
-              <span>✓ Eco-Friendly</span>
-              <span>✓ No Hidden Fees</span>
+            <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-foreground">
+              <span className="flex items-center gap-1">
+                <span className="text-primary">✓</span> Same-Day Service
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="text-primary">✓</span> Fully Insured
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="text-primary">✓</span> Eco-Friendly
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="text-primary">✓</span> No Hidden Fees
+              </span>
             </div>
           </div>
         </div>
