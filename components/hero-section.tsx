@@ -19,11 +19,11 @@ const LOCATIONS = [
 export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[70vh] overflow-hidden">
-      {/* Background Image - Clear debris-free yard */}
+      {/* Background Image - Junk removal and hauling services */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2940&auto=format&fit=crop"
-          alt="Clean and well-maintained yard"
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2940&auto=format&fit=crop"
+          alt="Professional junk removal and hauling services"
           fill
           priority
           className="object-cover"
