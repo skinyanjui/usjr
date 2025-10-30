@@ -81,7 +81,7 @@ export default function QuotePage() {
               <Card className="glass border-border">
                 <CardContent className="p-4 text-center">
                   <h3 className="text-foreground mb-2 font-bold">Junk Removal</h3>
-                  <p className="text-muted-foreground mb-2 text-sm">Starting at {junkRemovalTiers[0].price}</p>
+                  <p className="text-muted-foreground mb-2 text-sm">Starting at {junkRemovalTiers[0]?.price ?? '$149'}</p>
                   <Button asChild variant="link" className="p-0 h-auto text-sm">
                     <a href="/services/junk-removal">View pricing details</a>
                   </Button>
