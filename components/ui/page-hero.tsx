@@ -14,15 +14,15 @@ export function PageHero({ title, description, color = 'primary' }: PageHeroProp
 
   return (
     <section
-      className={`flex min-h-[30vh] items-center md:min-h-[35vh] ${backgroundClass} text-white`}
+      className={`flex min-h-[20vh] items-center md:min-h-[25vh] ${backgroundClass} text-white`}
     >
       <div className="w-full">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-          <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+          <h1 className="mb-4 text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             {title}
           </h1>
           {description && (
-            <p className="max-w-3xl text-lg text-white/90 sm:text-xl md:text-2xl">{description}</p>
+            <p className="max-w-3xl text-base text-white/90 sm:text-lg md:text-xl">{description}</p>
           )}
         </div>
       </div>
