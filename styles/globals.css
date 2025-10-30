@@ -197,7 +197,7 @@
     @apply px-4 py-2;
     @apply transition-all duration-200;
     @apply active:scale-[0.98];
-    border: 1px solid transparent;
+    border: 1px solid rgb(var(--border) / 0.3);
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.08),
       0 0 0 1px rgb(0 0 0 / 0.05);
@@ -205,18 +205,23 @@
 
   .linear-button:hover {
     @apply brightness-110;
+    border-color: rgb(var(--primary) / 0.5);
+    transform: translateY(-1px);
     box-shadow:
       0 4px 12px rgb(var(--primary) / 0.3),
       0 0 0 1px rgb(var(--primary) / 0.2);
   }
 
   .dark .linear-button {
+    border: 1px solid rgb(var(--border) / 0.4);
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.4),
       0 0 0 1px rgb(var(--primary) / 0.3);
   }
 
   .dark .linear-button:hover {
+    border-color: rgb(var(--primary) / 0.6);
+    transform: translateY(-1px);
     box-shadow:
       0 4px 16px rgb(var(--primary) / 0.4),
       0 0 0 1px rgb(var(--primary) / 0.5),

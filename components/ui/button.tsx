@@ -6,17 +6,17 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border border-transparent",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border",
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground border-primary/20 shadow-xs hover:bg-primary/90 hover:brightness-110',
+        default: 'bg-primary text-primary-foreground border-border/30 shadow-xs hover:bg-primary/90 hover:brightness-110 hover:border-primary/50 hover:-translate-y-0.5',
         destructive:
-          'bg-destructive text-white border-destructive/20 shadow-xs hover:bg-destructive/90 hover:brightness-110 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+          'bg-destructive text-white border-border/30 shadow-xs hover:bg-destructive/90 hover:brightness-110 hover:border-destructive/50 hover:-translate-y-0.5 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
-          'border-border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground hover:border-primary/30 dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
-        secondary: 'bg-secondary text-secondary-foreground border-secondary/20 shadow-xs hover:bg-secondary/80 hover:brightness-105',
-        ghost: 'border-transparent hover:bg-accent hover:text-accent-foreground hover:border-accent/20 dark:hover:bg-accent/50',
+          'border-border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground hover:border-primary/40 hover:-translate-y-0.5 dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+        secondary: 'bg-secondary text-secondary-foreground border-border/30 shadow-xs hover:bg-secondary/80 hover:brightness-105 hover:border-border/50 hover:-translate-y-0.5',
+        ghost: 'border-transparent hover:bg-accent hover:text-accent-foreground hover:border-border/30 hover:-translate-y-0.5 dark:hover:bg-accent/50',
         link: 'text-primary underline-offset-4 hover:underline border-transparent',
       },
       size: {
@@ -38,7 +38,7 @@ const buttonVariants = cva(
 )
 
 const phoneButtonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-colors bg-gray-900/35 text-white ring-1 ring-white/30 hover:bg-gray-900/45',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition-all bg-gray-900/35 text-white border border-white/30 hover:bg-gray-900/50 hover:border-white/50 hover:-translate-y-0.5 hover:shadow-lg',
   {
     variants: {
       size: {
