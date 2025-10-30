@@ -144,14 +144,14 @@
   .linear-border {
     border: 1px solid rgb(var(--border) / 0.6);
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.04),
-      0 0 0 1px rgb(0 0 0 / 0.02);
+      0 1px 2px rgb(255 245 215 / 0.04),
+      0 0 0 1px rgb(255 245 215 / 0.02);
   }
 
   .dark .linear-border {
     border: 1px solid rgb(var(--border) / 0.8);
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.4),
+      0 1px 2px rgb(255 245 215 / 0.4),
       0 0 0 1px rgb(107 143 221 / 0.08); /* Subtle blue glow */
   }
 
@@ -160,8 +160,8 @@
     background: rgb(var(--card));
     border: 1px solid rgb(var(--border) / 0.5);
     box-shadow:
-      0 1px 3px rgb(0 0 0 / 0.05),
-      0 0 0 1px rgb(0 0 0 / 0.02);
+      0 1px 3px rgb(255 245 215 / 0.05),
+      0 0 0 1px rgb(255 245 215 / 0.02);
     backdrop-filter: blur(10px);
     transition: all 0.2s ease;
   }
@@ -169,7 +169,7 @@
   .linear-card:hover {
     border-color: rgb(var(--primary) / 0.3);
     box-shadow:
-      0 4px 12px rgb(0 0 0 / 0.08),
+      0 4px 12px rgb(255 245 215 / 0.08),
       0 0 0 1px rgb(var(--primary) / 0.1);
   }
 
@@ -177,14 +177,14 @@
     background: rgb(var(--card));
     border: 1px solid rgb(var(--border) / 0.6);
     box-shadow:
-      0 1px 3px rgb(0 0 0 / 0.4),
+      0 1px 3px rgb(255 245 215 / 0.4),
       0 0 0 1px rgb(107 143 221 / 0.05);
   }
 
   .dark .linear-card:hover {
     border-color: rgb(var(--primary) / 0.5);
     box-shadow:
-      0 4px 16px rgb(0 0 0 / 0.6),
+      0 4px 16px rgb(255 245 215 / 0.6),
       0 0 0 1px rgb(var(--primary) / 0.2),
       0 0 20px rgb(var(--primary) / 0.1); /* Subtle blue glow on hover */
   }
@@ -199,8 +199,8 @@
     @apply active:scale-[0.98];
     border: 1px solid rgb(var(--border) / 0.3);
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.08),
-      0 0 0 1px rgb(0 0 0 / 0.05);
+      0 1px 2px rgb(255 245 215 / 0.08),
+      0 0 0 1px rgb(255 245 215 / 0.05);
   }
 
   .linear-button:hover {
@@ -215,7 +215,7 @@
   .dark .linear-button {
     border: 1px solid rgb(var(--border) / 0.4);
     box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.4),
+      0 1px 2px rgb(255 245 215 / 0.4),
       0 0 0 1px rgb(var(--primary) / 0.3);
   }
 
