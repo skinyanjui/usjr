@@ -22,7 +22,7 @@ export function HeroSection() {
       {/* Background Image - Junk removal and hauling services */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.pexels.com/photos/128421/pexels-photo-128421.jpeg?auto=compress&cs=tinysrgb&w=2940"
+          src="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=2940"
           alt="Professional junk removal and waste hauling services"
           fill
           priority
