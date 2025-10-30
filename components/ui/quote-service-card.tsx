@@ -1,7 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle } from 'lucide-react'
 
 export interface QuoteServiceCardProps {
   title: string
@@ -48,9 +47,8 @@ export function QuoteServiceCard({
 
           <div className="space-y-2">
             {features.map((feature, index) => (
-              <div key={index} className="text-muted-foreground flex items-center gap-2 text-sm">
-                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                {feature}
+              <div key={index} className="text-muted-foreground text-sm">
+                • {feature}
               </div>
             ))}
           </div>
