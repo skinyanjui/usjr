@@ -2,14 +2,12 @@ import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
 import { junkRemovalTiers } from '@/lib/pricing'
-import { QuoteServiceCard } from '@/components/ui/quote-service-card'
 
 export const metadata: Metadata = {
   title: 'Free Quote | Uncle Sam Junk Removal - Tri-State Area',
@@ -22,52 +20,25 @@ export const metadata: Metadata = {
 }
 
 export default function QuotePage() {
-  const lightDemolitionPricing = [
-    '• Shed removal up to 120 sq ft: From $399',
-    '• Deck or fence tear-out: From $499',
-    '• Playset removal: From $299',
-    '• Small interior demo projects: Custom quote',
-  ]
-
   return (
     <div className="bg-muted/30 min-h-screen">
       <PageHero
-        title="Get Your Free Quote Today"
-        description="Professional junk removal, light demolition, and cleaning services in Evansville and Southern Indiana"
+        title="Get Your Free Quote"
+        description="Call us or fill out the form below for pricing"
         color="primary"
       />
       <div className="px-4 pb-16">
-        <div className="mx-auto max-w-7xl">
-          {/* Header Section */}
-          <div className="mt-8 mb-16 text-center">
-            <div className="mb-6 flex justify-center gap-2">
-              <Badge className="border-border bg-muted text-foreground">
-                Eco-Friendly
-              </Badge>
-              <Badge className="border-border bg-muted text-foreground">
-                Fully Insured
-              </Badge>
-              <Badge className="border-border bg-muted text-foreground">
-                Woman-Owned
-              </Badge>
-              <Badge className="border-border bg-muted text-foreground">
-                Same-Day Service
-              </Badge>
-            </div>
-
-            <h2 className="text-foreground mb-6 text-2xl font-bold sm:text-4xl md:text-5xl">
-              Pick the fastest way to get your quote
-            </h2>
-            <p className="text-muted-foreground mx-auto mb-8 max-w-4xl text-base sm:text-lg">
-              Professional junk removal, light demolition, and cleaning services in Evansville and
-              Southern Indiana. Choose your service below for instant pricing and same-day
-              availability.
+        <div className="mx-auto max-w-4xl">
+          {/* Primary CTA - Phone */}
+          <div className="mt-8 mb-12 text-center">
+            <p className="text-muted-foreground mb-4 text-base">
+              For fastest service, call or text us now
             </p>
-
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button
                 asChild
-                className="bg-foreground px-6 py-2.5 text-base text-background hover:brightness-110"
+                size="lg"
+                className="bg-primary px-8 py-3 text-lg text-primary-foreground hover:brightness-110"
               >
                 <a href={`tel:${settings.phoneE164}`}>
                   Call {settings.phone}
@@ -75,8 +46,9 @@ export default function QuotePage() {
               </Button>
               <Button
                 asChild
+                size="lg"
                 variant="outline"
-                className="border-border bg-transparent px-6 py-2.5 text-base text-foreground hover:bg-accent"
+                className="border-border px-8 py-3 text-lg hover:bg-accent"
               >
                 <a href={`sms:${settings.phoneE164}`}>
                   Text Photos
@@ -85,105 +57,68 @@ export default function QuotePage() {
             </div>
           </div>
 
-          {/* Service Selection Cards */}
-          <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <QuoteServiceCard
-              title="Junk Removal"
-              description="Same-day pickup and hauling services"
-              pricing={junkRemovalTiers}
-              features={[
-                'Furniture & appliance removal',
-                'Construction debris cleanup',
-                'Estate & garage cleanouts',
-                'Same-day availability',
-              ]}
-              primaryLink="/services/junk-removal"
-              primaryButtonText="Get Junk Removal Quote"
-              secondaryLink="/services/junk-removal"
-              secondaryButtonText="Junk Removal Services & Pricing"
-            />
-
-            <QuoteServiceCard
-              title="Light Demolition"
-              description="Careful tear-downs for sheds, decks, and more"
-              pricing={lightDemolitionPricing}
-              features={[
-                'Sheds, decks, playsets, and swing sets',
-                'Licensed & insured crew',
-                'Responsible debris hauling',
-                'Permitting guidance when needed',
-              ]}
-              primaryLink="/services/light-demolition"
-              primaryButtonText="Get Demolition Quote"
-              secondaryLink="/services/light-demolition"
-              secondaryButtonText="Light Demolition Services & Pricing"
-            />
-
-            <QuoteServiceCard
-              title="Cleaning Services"
-              description="Natural products for home & business"
-              pricing={[
-                '• Deep clean: From $150-$400',
-                '• Recurring: From $80-$200',
-                '• Move-in/out: From $200-$500',
-                '• Commercial: Custom quote',
-              ]}
-              features={[
-                '100% natural cleaning products',
-                'Residential & commercial',
-                'After-hours availability',
-                'Satisfaction guaranteed',
-              ]}
-              primaryLink="/cleaning"
-              primaryButtonText="Get Cleaning Quote"
-              secondaryLink="/cleaning"
-              secondaryButtonText="Eco-Friendly Cleaning Services & Packages"
-            />
+          {/* Divider */}
+          <div className="relative mb-12">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-muted/30 px-4 text-muted-foreground">Or fill out the form</span>
+            </div>
           </div>
 
           {/* Quote Form Section */}
           <div className="mb-16">
-            <div className="mb-8 text-center">
-              <h2 className="text-foreground mb-4 text-2xl font-bold sm:text-3xl">
-                Get Your Detailed Quote
-              </h2>
-              <p className="text-muted-foreground mx-auto max-w-3xl text-base sm:text-lg">
-                Fill out the form below or upload photos for the most accurate pricing. We'll
-                respond within 2 hours with your detailed estimate.
-              </p>
-            </div>
             <QuoteFormClient />
           </div>
 
-          {/* Why Choose Us Section */}
-          <Card className="glass">
-            <CardContent className="p-6 sm:p-8">
-              <h2 className="text-foreground mb-8 text-center text-2xl font-bold sm:text-3xl">
-                Why Choose Uncle Sam Junk Removal?
-              </h2>
+          {/* Service Reference Cards - Simplified */}
+          <div className="mb-12">
+            <h2 className="text-foreground mb-6 text-center text-xl font-bold sm:text-2xl">
+              Our Services
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-3">
+              <Card className="glass border-border">
+                <CardContent className="p-4 text-center">
+                  <h3 className="text-foreground mb-2 font-bold">Junk Removal</h3>
+                  <p className="text-muted-foreground mb-2 text-sm">Starting at {junkRemovalTiers[0].price}</p>
+                  <Button asChild variant="link" className="p-0 h-auto text-sm">
+                    <a href="/services/junk-removal">View pricing details</a>
+                  </Button>
+                </CardContent>
+              </Card>
 
-              <div className="mb-8 grid gap-8 md:grid-cols-3">
-                <div className="text-center">
-                  <h3 className="mb-2 font-bold">Fast Scheduling</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Same-day and next-day availability
-                  </p>
-                </div>
-                <div className="text-center">
-                  <h3 className="mb-2 font-bold">Eco-Friendly</h3>
-                  <p className="text-muted-foreground text-sm">
-                    We donate and recycle whenever possible
-                  </p>
-                </div>
-                <div className="text-center">
-                  <h3 className="mb-2 font-bold">All-Inclusive Pricing</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Transparent quotes with no hidden fees
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              <Card className="glass border-border">
+                <CardContent className="p-4 text-center">
+                  <h3 className="text-foreground mb-2 font-bold">Light Demolition</h3>
+                  <p className="text-muted-foreground mb-2 text-sm">Starting at $299</p>
+                  <Button asChild variant="link" className="p-0 h-auto text-sm">
+                    <a href="/services/light-demolition">View pricing details</a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="glass border-border">
+                <CardContent className="p-4 text-center">
+                  <h3 className="text-foreground mb-2 font-bold">Cleaning Services</h3>
+                  <p className="text-muted-foreground mb-2 text-sm">Starting at $80</p>
+                  <Button asChild variant="link" className="p-0 h-auto text-sm">
+                    <a href="/cleaning">View pricing details</a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="text-center">
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <span>✓ Same-Day Service</span>
+              <span>✓ Fully Insured</span>
+              <span>✓ Eco-Friendly</span>
+              <span>✓ No Hidden Fees</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
