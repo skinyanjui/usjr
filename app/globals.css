@@ -10,13 +10,13 @@
 :root {
   /* Base surfaces - Pure white with subtle elevations */
   --background: oklch(1 0 0); /* Pure white background */
-  --foreground: oklch(0.96 0.05 95); /* Cream text (#fff5d7) */
+  --foreground: oklch(0.15 0 0); /* Near black text */
 
   /* Surface elevations using LCH lightness */
   --card: oklch(0.99 0 0); /* Slightly elevated surface */
-  --card-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --card-foreground: oklch(0.15 0 0);
   --popover: oklch(0.98 0 0); /* Dialog/modal surface */
-  --popover-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --popover-foreground: oklch(0.15 0 0);
 
   /* Brand accent - Red from logo only */
   --primary: oklch(0.55 0.22 27); /* Brand red */
@@ -24,11 +24,11 @@
 
   /* Neutrals - Gray scale only */
   --secondary: oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --secondary-foreground: oklch(0.15 0 0);
   --muted: oklch(0.96 0 0);
   --muted-foreground: oklch(0.5 0 0); /* Mid gray for less emphasis */
   --accent: oklch(0.96 0 0);
-  --accent-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --accent-foreground: oklch(0.15 0 0);
 
   /* Destructive uses brand red */
   --destructive: oklch(0.55 0.22 27);
@@ -50,24 +50,24 @@
 
   /* Sidebar */
   --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
-  --sidebar-primary: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.15 0 0);
   --sidebar-primary-foreground: oklch(0.98 0 0);
   --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --sidebar-accent-foreground: oklch(0.15 0 0);
   --sidebar-border: oklch(0.9 0 0);
   --sidebar-ring: oklch(0.55 0.22 27);
 }
 
 .dark {
-  /* Base surfaces - Cream backgrounds replacing black */
-  --background: oklch(0.96 0.05 95); /* Cream background (#fff5d7) */
+  /* Base surfaces - Deep black with elevated surfaces */
+  --background: oklch(0.1 0 0); /* Deep black background */
   --foreground: oklch(0.98 0 0); /* Near white text */
 
   /* Surface elevations - Progressively lighter for depth */
-  --card: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --card: oklch(0.14 0 0); /* Elevated panel */
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --popover: oklch(0.16 0 0); /* Dialog/modal - highest elevation */
   --popover-foreground: oklch(0.98 0 0);
 
   /* Brand accent - Red from logo only */
@@ -75,11 +75,11 @@
   --primary-foreground: oklch(1 0 0); /* White text on red buttons in dark mode */
 
   /* Neutrals - Gray scale only */
-  --secondary: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --secondary: oklch(0.18 0 0);
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --muted: oklch(0.18 0 0);
   --muted-foreground: oklch(0.6 0 0); /* Mid gray for less emphasis */
-  --accent: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --accent: oklch(0.18 0 0);
   --accent-foreground: oklch(0.98 0 0);
 
   /* Destructive uses brand red */
@@ -99,11 +99,11 @@
   --chart-5: oklch(0.7 0 0);
 
   /* Sidebar */
-  --sidebar: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --sidebar: oklch(0.12 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
   --sidebar-primary: oklch(0.98 0 0);
-  --sidebar-primary-foreground: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
-  --sidebar-accent: oklch(0.96 0.05 95); /* Cream (#fff5d7) */
+  --sidebar-primary-foreground: oklch(0.12 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.22 0 0);
   --sidebar-ring: oklch(0.65 0.22 27);
@@ -167,7 +167,7 @@
 
 :root:not(.dark) .glass {
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 245, 215, 0.08); /* Cream (#fff5d7) */
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Darker border specifically for pricing cards */
@@ -176,11 +176,11 @@
 }
 
 :root:not(.dark) .pricing-card {
-  border-color: rgba(255, 245, 215, 0.2); /* Cream (#fff5d7) */
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .glass-dark {
-  background: rgba(255, 245, 215, 0.5); /* Cream (#fff5d7) */
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
