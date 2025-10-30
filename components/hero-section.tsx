@@ -48,16 +48,16 @@ export function HeroSection() {
               Veteran-owned and operated. Serving the Tri-State area with same-day service.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-nowrap items-center gap-4">
               <Link
                 href="/quote"
-                className="linear-button flex min-h-[52px] items-center px-8 text-lg"
+                className="linear-button flex min-h-[52px] items-center border border-white/20 px-8 text-lg hover:border-white/40"
               >
                 Get Free Quote
               </Link>
               <Link
                 href="/services/junk-removal"
-                className="linear-border flex min-h-[52px] items-center rounded-lg border border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:shadow-lg"
+                className="flex min-h-[52px] items-center rounded-lg border-2 border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:border-white/80 hover:shadow-lg"
               >
                 View Services
               </Link>
