@@ -63,8 +63,8 @@ export function HeroSection() {
               </Link>
             </div>
 
-            {/* Trust Badges - Always in single row */}
-            <div className="mt-10 flex flex-nowrap items-center gap-3 overflow-x-auto sm:gap-4 lg:gap-6">
+            {/* Trust Badges - Stack in two rows on mobile */}
+            <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6">
               {/* Licensed & Insured */}
               <div className="flex flex-shrink-0 items-center gap-2 text-white/90">
                 <svg
