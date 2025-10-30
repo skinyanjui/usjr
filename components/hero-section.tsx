@@ -51,13 +51,13 @@ export function HeroSection() {
             <div className="flex flex-nowrap items-center gap-4">
               <Link
                 href="/quote"
-                className="linear-button flex min-h-[52px] items-center border-2 border-white px-8 text-lg hover:border-white/80"
+                className="linear-button flex min-h-[52px] items-center border-2 border-white px-8 text-lg font-bold shadow-lg hover:border-white hover:shadow-xl hover:scale-105"
               >
                 Get Free Quote
               </Link>
               <Link
                 href="/services/junk-removal"
-                className="flex min-h-[52px] items-center rounded-lg border-2 border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:border-white/80 hover:shadow-lg"
+                className="flex min-h-[52px] items-center rounded-lg border border-white/60 bg-transparent px-8 py-3 text-base font-medium text-white/90 transition-all hover:bg-white/10 hover:border-white hover:text-white"
               >
                 View Services
               </Link>
