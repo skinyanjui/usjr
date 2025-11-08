@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/dialog'
 import { X, Upload, Camera, CheckCircle } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
+import { useFileUpload } from '@/lib/hooks/useFileUpload'
 
 interface QuoteFormModalProps {
   isOpen: boolean
@@ -48,7 +49,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     ecoFriendly: true,
     message: '',
   })
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
+  const { files: uploadedFiles, handleUpload: handleFileUpload, removeFile } = useFileUpload(6)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const residentialServices = [
@@ -73,17 +74,6 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     'Restaurant Cleaning',
     'After-Hours Cleaning',
   ]
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || [])
-    if (uploadedFiles.length + files.length <= 6) {
-      setUploadedFiles([...uploadedFiles, ...files])
-    }
-  }
-
-  const removeFile = (index: number) => {
-    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index))
-  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

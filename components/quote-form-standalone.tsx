@@ -19,6 +19,8 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
+import { useFileUpload } from '@/lib/hooks/useFileUpload'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 export function QuoteFormStandalone() {
   const [segment, setSegment] = useState<'residential' | 'commercial'>('residential')
@@ -53,7 +55,7 @@ export function QuoteFormStandalone() {
     estateAccess: '',
     estateTimeline: '',
   })
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
+  const { files: uploadedFiles, handleUpload: handleFileUpload, removeFile } = useFileUpload(6)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
@@ -107,17 +109,6 @@ export function QuoteFormStandalone() {
     'Shed Tear-Down',
   ]
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || [])
-    if (uploadedFiles.length + files.length <= 6) {
-      setUploadedFiles([...uploadedFiles, ...files])
-    }
-  }
-
-  const removeFile = (index: number) => {
-    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index))
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -136,56 +127,23 @@ export function QuoteFormStandalone() {
       return
     }
 
-    try {
-      // Prepare the data to send to the API
-      const quoteData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        service: formData.service,
-        details: buildDetailsString(),
-        source: 'quote-form',
-      }
-
-      const response = await fetch('/api/quote', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(quoteData),
-      })
-
-      const result = await response.json()
-
-      if (!response.ok || !result.ok) {
-        // Handle both 'error' (string) and 'errors' (validation errors object)
-        let errorMessage = 'Failed to submit quote request'
-        if (result.error) {
-          errorMessage = result.error
-        } else if (result.errors) {
-          // Extract field errors from zod validation
-          const fieldErrors = result.errors.fieldErrors || {}
-          const errorMessages = Object.entries(fieldErrors)
-            .map(
-              ([field, messages]) =>
-                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
-            )
-            .join('; ')
-          errorMessage = errorMessages || 'Please check your form and try again'
-        }
-        throw new Error(errorMessage)
-      }
-
-      setIsSubmitted(true)
-    } catch (error) {
-      console.error('Error submitting quote:', error)
-      setSubmitError(
-        error instanceof Error ? error.message : 'Failed to submit quote. Please try again.'
-      )
-    } finally {
-      setIsSubmitting(false)
+    // Prepare the data to send to the API
+    const quoteData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      address: formData.address,
+      service: formData.service,
+      details: buildDetailsString(),
     }
+
+    await submitQuoteForm({
+      formData: quoteData,
+      source: 'quote-form',
+      onSuccess: () => setIsSubmitted(true),
+      onError: errorMessage => setSubmitError(errorMessage),
+      onFinally: () => setIsSubmitting(false),
+    })
   }
 
   // Build a comprehensive details string from all form fields
