@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -43,48 +44,24 @@ export default function ContactSection() {
       return
     }
 
-    try {
-      const res = await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source: 'contact-section' }),
-      })
-      const result = await res.json()
-      if (!res.ok || !result.ok) {
-        // Handle both 'error' (string) and 'errors' (validation errors object)
-        let errorMsg = 'Failed to submit'
-        if (result.error) {
-          errorMsg = result.error
-        } else if (result.errors) {
-          const fieldErrors = result.errors.fieldErrors || {}
-          const errorMessages = Object.entries(fieldErrors)
-            .map(
-              ([field, messages]) =>
-                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
-            )
-            .join('; ')
-          errorMsg = errorMessages || 'Please check your form and try again'
-        }
-        throw new Error(errorMsg)
-      }
-      setIsSubmitted(true)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-        service: '',
-        projectSize: '',
-        message: '',
-      })
-    } catch (err) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error(err)
-      }
-      setErrorMessage('Something went wrong. Please try again or call us.')
-    } finally {
-      setIsSubmitting(false)
-    }
+    await submitQuoteForm({
+      formData,
+      source: 'contact-section',
+      onSuccess: () => {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          address: '',
+          service: '',
+          projectSize: '',
+          message: '',
+        })
+      },
+      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      onFinally: () => setIsSubmitting(false),
+    })
   }
 
   const handleChange = (

@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { CheckCircle } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 export function EvansvilleQuoteForm() {
   const [formData, setFormData] = useState({
@@ -49,57 +50,32 @@ export function EvansvilleQuoteForm() {
       return
     }
 
-    try {
-      const res = await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          address: formData.address,
-          service: formData.service,
-          projectSize: formData.projectSize,
-          details: formData.details,
-          source: 'evansville-quote-form',
-        }),
-      })
-      const result = await res.json()
-      if (!res.ok || !result.ok) {
-        // Handle both 'error' (string) and 'errors' (validation errors object)
-        let errorMsg = 'Failed to submit'
-        if (result.error) {
-          errorMsg = result.error
-        } else if (result.errors) {
-          const fieldErrors = result.errors.fieldErrors || {}
-          const errorMessages = Object.entries(fieldErrors)
-            .map(
-              ([field, messages]) =>
-                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
-            )
-            .join('; ')
-          errorMsg = errorMessages || 'Please check your form and try again'
-        }
-        throw new Error(errorMsg)
-      }
-      setIsSubmitted(true)
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        address: '',
-        service: '',
-        projectSize: '',
-        details: '',
-      })
-    } catch (err) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error(err)
-      }
-      setErrorMessage('Something went wrong. Please try again or call us.')
-    } finally {
-      setIsSubmitting(false)
-    }
+    await submitQuoteForm({
+      formData: {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        address: formData.address,
+        service: formData.service,
+        projectSize: formData.projectSize,
+        details: formData.details,
+      },
+      source: 'evansville-quote-form',
+      onSuccess: () => {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          address: '',
+          service: '',
+          projectSize: '',
+          details: '',
+        })
+      },
+      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      onFinally: () => setIsSubmitting(false),
+    })
   }
 
   if (isSubmitted) {

@@ -1,6 +1,5 @@
 'use client'
 
-import type React from 'react'
 import { CheckCircle, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
@@ -17,6 +16,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 interface FieldErrors {
   fullName?: string
@@ -105,57 +105,32 @@ export function SimpleQuoteForm() {
 
     setIsSubmitting(true)
 
-    try {
-      const res = await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          phoneNumber: formData.phoneNumber,
-          emailAddress: formData.emailAddress,
-          serviceAddress: formData.serviceAddress,
-          serviceNeeded: formData.serviceNeeded,
-          projectSize: formData.projectSize,
-          projectDetails: formData.projectDetails,
-          source: 'simple-quote-form',
-        }),
-      })
-      const result = await res.json()
-      if (!res.ok || !result.ok) {
-        // Handle both 'error' (string) and 'errors' (validation errors object)
-        let errorMsg = 'Failed to submit'
-        if (result.error) {
-          errorMsg = result.error
-        } else if (result.errors) {
-          const fieldErrors = result.errors.fieldErrors || {}
-          const errorMessages = Object.entries(fieldErrors)
-            .map(
-              ([field, messages]) =>
-                `${field}: ${Array.isArray(messages) ? messages.join(', ') : messages}`
-            )
-            .join('; ')
-          errorMsg = errorMessages || 'Please check your form and try again'
-        }
-        throw new Error(errorMsg)
-      }
-      setIsSubmitted(true)
-      setFormData({
-        fullName: '',
-        phoneNumber: '',
-        emailAddress: '',
-        serviceAddress: '',
-        serviceNeeded: '',
-        projectSize: '',
-        projectDetails: '',
-      })
-    } catch (err) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error(err)
-      }
-      setErrorMessage('Something went wrong. Please try again or call us.')
-    } finally {
-      setIsSubmitting(false)
-    }
+    await submitQuoteForm({
+      formData: {
+        fullName: formData.fullName,
+        phoneNumber: formData.phoneNumber,
+        emailAddress: formData.emailAddress,
+        serviceAddress: formData.serviceAddress,
+        serviceNeeded: formData.serviceNeeded,
+        projectSize: formData.projectSize,
+        projectDetails: formData.projectDetails,
+      },
+      source: 'simple-quote-form',
+      onSuccess: () => {
+        setIsSubmitted(true)
+        setFormData({
+          fullName: '',
+          phoneNumber: '',
+          emailAddress: '',
+          serviceAddress: '',
+          serviceNeeded: '',
+          projectSize: '',
+          projectDetails: '',
+        })
+      },
+      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      onFinally: () => setIsSubmitting(false),
+    })
   }
 
   const handleInputChange = (field: string, value: string) => {
