@@ -153,23 +153,38 @@ export default function PricingPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative rounded-2xl border border-border bg-muted/50 p-8 text-center ring-1 ring-border/50">
-                            {/* Abstract Truck Visualization */}
-                            <div className="mx-auto mb-6 flex h-48 w-full max-w-sm items-center justify-center rounded-xl bg-card border-2 border-dashed border-primary/20 p-4">
-                                <Truck className="h-24 w-24 text-primary/40" />
-                                <div className="ml-4 text-left">
-                                    <p className="font-bold text-foreground">Our Big Red Truck</p>
-                                    <p className="text-sm text-muted-foreground">
-                                        12ft Long x 8ft Wide x 5ft High
-                                    </p>
-                                    <p className="text-xs text-muted-foreground mt-1">
-                                        Equivalent to ~5 Pickup Truck Loads
-                                    </p>
+                        <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:shadow-md">
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50" />
+                            <div className="relative p-8 text-center">
+                                {/* Truck Visualization */}
+                                <div className="mx-auto mb-8 flex items-center justify-center">
+                                    <div className="relative h-48 w-full max-w-sm overflow-hidden rounded-xl">
+                                        <img
+                                            src="/images/red-truck.png"
+                                            alt="Our Big Red Junk Removal Truck"
+                                            className="h-full w-full object-contain drop-shadow-xl transform transition-transform hover:scale-105 duration-500"
+                                        />
+                                    </div>
                                 </div>
+
+                                <h3 className="mb-2 text-xl font-bold text-foreground">Our 15-Yard Dump Truck</h3>
+                                <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-primary" />
+
+                                <div className="grid gap-4 text-left sm:grid-cols-2">
+                                    <div className="rounded-lg bg-muted/50 p-3">
+                                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Dimensions</p>
+                                        <p className="font-medium text-foreground">12ft x 8ft x 5ft</p>
+                                    </div>
+                                    <div className="rounded-lg bg-muted/50 p-3">
+                                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Capacity</p>
+                                        <p className="font-medium text-foreground">~5 Pickup Loads</p>
+                                    </div>
+                                </div>
+
+                                <p className="mt-6 text-sm text-muted-foreground">
+                                    We fill it up, you watch the junk disappear.
+                                </p>
                             </div>
-                            <p className="text-sm font-medium text-muted-foreground">
-                                We fill it up, you watch the junk disappear.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -265,19 +280,19 @@ export default function PricingPage() {
                             </h3>
                             <ul className="space-y-4">
                                 <li className="flex items-start gap-3 text-muted-foreground">
-                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-red-500" />
+                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                                     <span>You do all the heavy lifting and loading yourself.</span>
                                 </li>
                                 <li className="flex items-start gap-3 text-muted-foreground">
-                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-red-500" />
+                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                                     <span>Ugly dumpster sits in your driveway for days/weeks.</span>
                                 </li>
                                 <li className="flex items-start gap-3 text-muted-foreground">
-                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-red-500" />
+                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                                     <span>Risk of damage to driveway or lawn.</span>
                                 </li>
                                 <li className="flex items-start gap-3 text-muted-foreground">
-                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-red-500" />
+                                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                                     <span>Pay full price even if you only fill it halfway.</span>
                                 </li>
                             </ul>
@@ -423,30 +438,6 @@ export default function PricingPage() {
                 </div>
             </section>
 
-            {/* 7. FINAL CTA */}
-            <section className="border-t border-border bg-card py-20 text-center">
-                <div className="mx-auto max-w-4xl px-4">
-                    <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                        Ready to reclaim your space?
-                    </h2>
-                    <p className="mb-8 text-lg text-muted-foreground">
-                        Get your free, no-obligation quite today.
-                    </p>
-                    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button asChild size="lg" className="min-w-[200px] text-lg font-semibold">
-                            <Link href="/booking">Book Online Now</Link>
-                        </Button>
-                        <Button
-                            asChild
-                            size="lg"
-                            variant="outline"
-                            className="min-w-[200px] text-lg font-semibold"
-                        >
-                            <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
-                        </Button>
-                    </div>
-                </div>
-            </section>
         </div>
     )
 }

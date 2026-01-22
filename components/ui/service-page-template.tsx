@@ -105,7 +105,7 @@ export function ServicePageTemplate({
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={`tel:${settings.phoneE164}`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   <Phone className="h-4 w-4" />
                   {ctaPrimary}
@@ -113,7 +113,7 @@ export function ServicePageTemplate({
                 <QuoteCtaLink
                   location="service-template"
                   label={ctaSecondary}
-                  className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/80"
                 >
                   {ctaSecondary}
                   <ArrowRight className="h-4 w-4" />

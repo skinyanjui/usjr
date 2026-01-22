@@ -27,9 +27,9 @@ function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): nu
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2)
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
   return R * c
 }
@@ -39,7 +39,10 @@ function findClosestCityIndex(userLat: number, userLng: number, locations: strin
   let minDistance = Infinity
 
   locations.forEach((location, index) => {
-    const coords = CITY_COORDINATES[location]
+    // Extract city name (e.g. "Evansville, IN" -> "Evansville")
+    const cityName = location.split(',')[0].trim()
+    const coords = CITY_COORDINATES[cityName] || CITY_COORDINATES[location]
+
     if (coords) {
       const distance = getDistance(userLat, userLng, coords.lat, coords.lng)
       if (distance < minDistance) {

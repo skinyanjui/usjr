@@ -77,7 +77,7 @@ export function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter('services')}
@@ -103,6 +103,8 @@ export function Header() {
               )}
             </div>
 
+            <div className="h-4 w-px bg-border" aria-hidden="true" />
+
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter('locations')}
@@ -127,6 +129,8 @@ export function Header() {
                 />
               )}
             </div>
+
+            <div className="h-4 w-px bg-border" aria-hidden="true" />
 
             <div
               className="relative"
@@ -173,7 +177,7 @@ export function Header() {
                   destination: '/quote',
                 })
               }
-              className="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+              className="rounded-lg border border-primary/30 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
               Get Free Quote
             </Link>
@@ -293,7 +297,7 @@ export function Header() {
                     })
                     closeMobileMenuAndSections()
                   }}
-                  className="block w-full rounded-lg bg-foreground py-3 text-center text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                  className="block w-full rounded-lg border border-primary/30 bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   Get Free Quote
                 </Link>

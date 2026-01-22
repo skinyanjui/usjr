@@ -3,110 +3,130 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Linear.app inspired design system using LCH color space */
-/* LCH provides perceptually uniform colors closest to human vision */
-/* Pure black/white base with subtle elevations for surfaces */
+/* SaaS-inspired Design System */
+/* Using OKLCH for perceptual uniformity */
 
 :root {
-  /* Base surfaces - Pure white with subtle elevations */
-  --background: oklch(1 0 0); /* Pure white background */
-  --foreground: oklch(0.15 0 0); /* Near black text */
+  /* Nuanced White/Slate Backgrounds */
+  --background: oklch(1 0 0);
+  /* Pure white */
+  --foreground: oklch(0.14 0.005 285);
+  /* Slate 950 - softer than pure black */
 
-  /* Surface elevations using LCH lightness */
-  --card: oklch(0.99 0 0); /* Slightly elevated surface */
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(0.98 0 0); /* Dialog/modal surface */
-  --popover-foreground: oklch(0.15 0 0);
+  /* Modern Card/Surface Hierarchy */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.14 0.005 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.14 0.005 285);
 
-  /* Brand accent - Red from logo only */
-  --primary: oklch(0.55 0.22 27); /* Brand red */
-  --primary-foreground: oklch(1 0 0);
+  /* Primary Brand - Lighter SaaS Blue */
+  --primary: oklch(0.55 0.2 250);
+  /* Friendly Blue */
+  --primary-foreground: oklch(0.98 0 0);
 
-  /* Neutrals - Gray scale only */
-  --secondary: oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.5 0 0); /* Mid gray for less emphasis */
-  --accent: oklch(0.96 0 0);
-  --accent-foreground: oklch(0.15 0 0);
+  /* Secondary - Slate Neutrals */
+  --secondary: oklch(0.96 0.003 285);
+  /* Slate 100 */
+  --secondary-foreground: oklch(0.14 0.005 285);
 
-  /* Destructive uses brand red */
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(1 0 0);
+  /* Muted - Subtler Grays */
+  --muted: oklch(0.96 0.003 285);
+  --muted-foreground: oklch(0.55 0.01 285);
+  /* Slate 500 */
 
-  /* Borders - Subtle gray */
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  --ring: oklch(0.55 0.22 27); /* Focus ring uses brand color */
+  /* Accents */
+  --accent: oklch(0.96 0.003 285);
+  --accent-foreground: oklch(0.14 0.005 285);
 
-  /* Chart colors removed - use brand red or grayscale */
-  --chart-1: oklch(0.55 0.22 27);
-  --chart-2: oklch(0.7 0 0);
-  --chart-3: oklch(0.5 0 0);
-  --chart-4: oklch(0.3 0 0);
-  --chart-5: oklch(0.85 0 0);
+  /* Semantic Colors - Softened/Calm */
+  --destructive: oklch(0.65 0.15 30);
+  /* Muted Salmon */
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Borders & Inputs */
+  --border: oklch(0.92 0.004 285);
+  /* Slate 200 */
+  --input: oklch(0.92 0.004 285);
+  --ring: oklch(0.55 0.2 250);
+
+  /* Charts */
+  --chart-1: oklch(0.55 0.2 250);
+  --chart-2: oklch(0.50 0.15 250);
+  --chart-3: oklch(0.30 0.1 285);
+  --chart-4: oklch(0.7 0.12 80);
+  --chart-5: oklch(0.8 0.12 40);
 
   --radius: 0.5rem;
 
   /* Sidebar */
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.15 0 0);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.15 0 0);
-  --sidebar-border: oklch(0.9 0 0);
-  --sidebar-ring: oklch(0.55 0.22 27);
+  --sidebar: oklch(0.98 0.002 285);
+  --sidebar-foreground: oklch(0.14 0.005 285);
+  --sidebar-primary: oklch(0.14 0.005 285);
+  --sidebar-primary-foreground: oklch(0.98 0.002 285);
+  --sidebar-accent: oklch(0.96 0.003 285);
+  --sidebar-accent-foreground: oklch(0.14 0.005 285);
+  --sidebar-border: oklch(0.92 0.004 285);
+  --sidebar-ring: oklch(0.60 0.14 250);
 }
 
 .dark {
-  /* Base surfaces - Deep black with elevated surfaces */
-  --background: oklch(0.1 0 0); /* Deep black background */
-  --foreground: oklch(0.98 0 0); /* Near white text */
+  /* Rich Dark Slate Backgrounds */
+  --background: oklch(0.12 0.01 285);
+  /* Slate 950 */
+  --foreground: oklch(0.98 0.002 285);
+  /* Slate 50 */
 
-  /* Surface elevations - Progressively lighter for depth */
-  --card: oklch(0.14 0 0); /* Elevated panel */
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.16 0 0); /* Dialog/modal - highest elevation */
-  --popover-foreground: oklch(0.98 0 0);
+  /* Elevated Surfaces */
+  --card: oklch(0.17 0.015 285);
+  /* Slate 900 */
+  --card-foreground: oklch(0.98 0.002 285);
+  --popover: oklch(0.17 0.015 285);
+  --popover-foreground: oklch(0.98 0.002 285);
 
-  /* Brand accent - Red from logo only */
-  --primary: oklch(0.65 0.22 27); /* Brighter red for dark mode */
-  --primary-foreground: oklch(1 0 0); /* White text on red buttons in dark mode */
+  /* Primary - Lighter SaaS Blue in Dark Mode */
+  --primary: oklch(0.60 0.2 250);
+  --primary-foreground: oklch(0.98 0 0);
 
-  /* Neutrals - Gray scale only */
-  --secondary: oklch(0.18 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.6 0 0); /* Mid gray for less emphasis */
-  --accent: oklch(0.18 0 0);
-  --accent-foreground: oklch(0.98 0 0);
+  /* Secondary */
+  --secondary: oklch(0.22 0.015 285);
+  /* Slate 800 */
+  --secondary-foreground: oklch(0.98 0.002 285);
 
-  /* Destructive uses brand red */
-  --destructive: oklch(0.65 0.22 27);
-  --destructive-foreground: oklch(1 0 0); /* White text on destructive buttons in dark mode */
+  /* Muted */
+  --muted: oklch(0.22 0.015 285);
+  --muted-foreground: oklch(0.7 0.01 285);
+  /* Slate 400 */
 
-  /* Borders - Subtle on dark */
-  --border: oklch(0.22 0 0);
-  --input: oklch(0.22 0 0);
-  --ring: oklch(0.65 0.22 27); /* Focus ring uses brand color */
+  /* Accents */
+  --accent: oklch(0.22 0.015 285);
+  --accent-foreground: oklch(0.98 0.002 285);
 
-  /* Chart colors - grayscale with brand accent */
-  --chart-1: oklch(0.65 0.22 27);
-  --chart-2: oklch(0.6 0 0);
-  --chart-3: oklch(0.5 0 0);
-  --chart-4: oklch(0.4 0 0);
-  --chart-5: oklch(0.7 0 0);
+  /* Destructive - Muted */
+  --destructive: oklch(0.6 0.15 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Borders */
+  --border: oklch(0.25 0.015 285);
+  /* Slate 700/800 */
+  --input: oklch(0.25 0.015 285);
+  --ring: oklch(0.58 0.23 28);
+
+  /* Charts */
+  --chart-1: oklch(0.65 0.22 28);
+  --chart-2: oklch(0.5 0.15 28);
+  --chart-3: oklch(0.8 0.1 285);
+  --chart-4: oklch(0.7 0.15 80);
+  --chart-5: oklch(0.8 0.15 40);
 
   /* Sidebar */
-  --sidebar: oklch(0.12 0 0);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.98 0 0);
-  --sidebar-primary-foreground: oklch(0.12 0 0);
-  --sidebar-accent: oklch(0.18 0 0);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: oklch(0.65 0.22 27);
+  --sidebar: oklch(0.15 0.015 285);
+  --sidebar-foreground: oklch(0.98 0.002 285);
+  --sidebar-primary: oklch(0.65 0.22 28);
+  --sidebar-primary-foreground: oklch(0.98 0.002 285);
+  --sidebar-accent: oklch(0.22 0.015 285);
+  --sidebar-accent-foreground: oklch(0.98 0.002 285);
+  --sidebar-border: oklch(0.25 0.015 285);
+  --sidebar-ring: oklch(0.65 0.22 28);
 }
 
 @theme inline {
@@ -152,11 +172,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
   }
-  code, pre, kbd {
+
+  code,
+  pre,
+  kbd {
     font-family: var(--font-geist-mono), monospace;
   }
 }
@@ -195,6 +219,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

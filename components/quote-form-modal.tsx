@@ -98,7 +98,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               within 2 hours with a detailed estimate.
             </p>
             <div className="mb-6 space-y-3">
-              <Button asChild className="w-full bg-gray-900 text-white hover:bg-gray-900">
+              <Button asChild className="w-full">
                 <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                   Schedule Call - Calendar Link
                 </a>
@@ -108,7 +108,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
                 assistance
               </p>
             </div>
-            <Button variant="outline" onClick={onClose} className="w-full bg-transparent">
+            <Button variant="outline" onClick={onClose} className="w-full">
               Close
             </Button>
           </div>
@@ -135,22 +135,20 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <button
               type="button"
               onClick={() => setSegment('residential')}
-              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
-                segment === 'residential'
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'residential'
                   ? 'bg-card text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               Residential
             </button>
             <button
               type="button"
               onClick={() => setSegment('commercial')}
-              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
-                segment === 'commercial'
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'commercial'
                   ? 'bg-card text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               Commercial
             </button>

@@ -25,7 +25,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/quote"
-              className="rounded-lg bg-background px-6 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
+              className="rounded-lg border border-foreground/30 bg-background px-6 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
             >
               Get Free Quote
             </Link>

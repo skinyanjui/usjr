@@ -88,13 +88,13 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <Theme
-          appearance="dark"
+          appearance="light"
           accentColor="blue"
           grayColor="slate"
           radius="medium"
           scaling="100%"
         >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <EmergencyBanner />
             <Header />
             <BreadcrumbsAuto />

@@ -101,7 +101,7 @@ export function HeroQuoteForm() {
                 <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-foreground text-background hover:opacity-90"
+                    className="w-full"
                 >
                     {isSubmitting ? 'Submitting...' : 'Get Free Quote'}
                 </Button>

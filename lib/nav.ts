@@ -1,8 +1,26 @@
-export type NavItem = { label: string; href?: string; children?: NavItem[] }
+export type NavItem = {
+  label: string
+  href?: string
+  children?: NavItem[]
+  promo?: {
+    title: string
+    description: string
+    image?: string
+    href: string
+    ctaLabel: string
+  }
+}
 
 export const NAV: NavItem[] = [
   {
     label: 'Services',
+    promo: {
+      title: 'Spring Cleaning Sale',
+      description: 'Get $50 off your first whole-home deep cleaning service. Limited time offer!',
+      href: '/quote',
+      ctaLabel: 'Claim Offer',
+      image: '/promo-image.jpg' // Placeholder, in real app we'd use a real image or omit
+    },
     children: [
       { label: 'Junk Removal', href: '/services/junk-removal' },
       { label: 'Cleaning', href: '/cleaning' },

@@ -69,11 +69,11 @@ const DEFAULT_CONFIG: BannerConfig = {
 // Style configurations for different banner types
 const BANNER_STYLES = {
   emergency: {
-    background: 'bg-red-600',
-    text: 'text-white',
+    background: 'bg-destructive',
+    text: 'text-destructive-foreground',
     icon: AlertTriangle,
-    ctaButton: 'bg-white text-red-600 hover:bg-gray-100',
-    closeButton: 'text-white hover:text-red-100',
+    ctaButton: 'bg-destructive-foreground text-destructive hover:bg-destructive-foreground/90',
+    closeButton: 'text-destructive-foreground hover:text-destructive-foreground/80',
   },
   promo: {
     background: 'bg-gradient-to-r from-green-600 to-emerald-600',

@@ -226,7 +226,7 @@ export function PricingCalculator() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild className="bg-gray-900 text-white hover:bg-gray-900">
+          <Button asChild className="w-full">
             <a href={`tel:${settings.phoneE164}`}>
               <Phone className="h-4 w-4" /> Call {settings.phone}
             </a>

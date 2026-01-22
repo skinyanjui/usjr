@@ -227,7 +227,7 @@ export function QuoteFormStandalone() {
           </p>
 
           <div className="mb-8 space-y-3">
-            <Button asChild className="w-full max-w-xs h-10 bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button asChild className="w-full max-w-xs">
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
                 Schedule Call
               </a>

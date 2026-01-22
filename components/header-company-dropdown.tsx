@@ -21,21 +21,23 @@ export default function CompanyDropdown({
             id={companyMenuId}
             role="menu"
             aria-labelledby={companyMenuId}
-            className="absolute top-full left-1/2 z-50 mt-2 w-[200px] -translate-x-1/2 transform rounded-xl border border-border bg-card p-2 shadow-lg"
+            className="absolute left-1/2 top-full z-50 mt-2 w-[240px] -translate-x-1/2 transform px-4 sm:px-0"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            <div className="space-y-0.5">
-                {companyLinks.map(item => (
-                    <Link
-                        key={item.href}
-                        href={item.href!}
-                        className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        role="menuitem"
-                    >
-                        {item.label}
-                    </Link>
-                ))}
+            <div className="overflow-hidden rounded-xl border border-border/50 bg-background/95 p-3 shadow-xl backdrop-blur-xl ring-1 ring-black/5 dark:ring-white/5">
+                <div className="space-y-1">
+                    {companyLinks.map(item => (
+                        <Link
+                            key={item.href}
+                            href={item.href!}
+                            className="group flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-muted/50 hover:text-foreground hover:pl-4"
+                            role="menuitem"
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     )
