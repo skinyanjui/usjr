@@ -40,7 +40,7 @@ function findClosestCityIndex(userLat: number, userLng: number, locations: strin
 
   locations.forEach((location, index) => {
     // Extract city name (e.g. "Evansville, IN" -> "Evansville")
-    const cityName = location.split(',')[0].trim()
+    const cityName = (location.split(',')[0] || '').trim()
     const coords = CITY_COORDINATES[cityName] || CITY_COORDINATES[location]
 
     if (coords) {
