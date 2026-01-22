@@ -6,7 +6,7 @@ import { StructuredData } from '@/components/structured-data'
 import { getAggregateTestimonialStats } from '@/lib/cms-content'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import Link from 'next/link'
+
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -16,41 +16,29 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const { averageRating, reviewCount } = getAggregateTestimonialStats()
+
   return (
     <main className="min-h-screen">
       <HeroSection />
 
       <HomeServiceCards />
 
-      {/* Simple review stats */}
-      <div className="px-4 py-6 text-center">
-        <div className="mx-auto max-w-4xl">
+      {/* Reviews summary */}
+      <section className="border-b border-border py-12">
+        <div className="mx-auto max-w-5xl px-4 text-center">
           <p className="text-muted-foreground text-lg">
-            <span className="text-foreground text-2xl font-bold">{averageRating.toFixed(1)}/5</span>{' '}
-            from {reviewCount} verified reviews
+            <span className="text-foreground text-3xl font-bold">{averageRating.toFixed(1)}</span>
+            <span className="text-muted-foreground">/5</span>
+            {' '}from {reviewCount} verified reviews
           </p>
         </div>
-      </div>
+      </section>
 
       <GoogleReviews />
 
       <ReviewsRow />
 
-      {/* Simple CTA Section */}
-      <section className="bg-muted px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready to Get Started?</h2>
-          <p className="text-muted-foreground mb-8 text-lg">
-            Get your free quote today. Same-day service available throughout the Tri-State area.
-          </p>
-          <Link
-            href="/quote"
-            className="bg-foreground text-background inline-flex min-h-[48px] items-center rounded-lg px-6 py-3 text-base font-semibold transition-all hover:brightness-110"
-          >
-            Get Free Quote
-          </Link>
-        </div>
-      </section>
+
 
       <StructuredData type="LocalBusiness" />
     </main>

@@ -15,17 +15,16 @@ export const metadata: Metadata = {
 }
 
 export default function FAQPage() {
-  // Flatten FAQ items for structured data injection only
   const allFaqs = getAllFaqs()
 
   return (
-    <div className="bg-muted/30 min-h-screen">
+    <div className="min-h-screen">
       <PageHero
         title="Frequently Asked Questions"
-        description="Answers about junk removal, light demolition, and cleaning services in Southern Indiana."
-        color="primary"
+        description="Answers about junk removal, light demolition, and cleaning services"
+        eyebrow="Help Center"
       />
-      <div className="pt-8 pb-16">
+      <div className="bg-muted/30 py-16">
         <StructuredData
           type="FAQPage"
           data={{

@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
-import { InternalLinks } from '@/components/ui/internal-links'
 import { ReviewMention } from '@/components/ui/review-mention'
 import { getAggregateTestimonialStats } from '@/lib/cms-content'
 
@@ -179,6 +178,7 @@ export default function LightDemolitionPage() {
             'We follow OSHA safety standards, use proper protective equipment, secure work areas, disconnect utilities safely, and ensure proper dust and debris containment.',
         },
       ]}
+      relatedContent={relatedContent}
     >
       {/* Customer reviews section */}
       <div className="bg-muted/30 py-12">
@@ -190,18 +190,6 @@ export default function LightDemolitionPage() {
             theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
-          />
-        </div>
-      </div>
-
-      {/* Internal linking section */}
-      <div className="bg-card py-12">
-        <div className="mx-auto max-w-7xl px-4">
-          <InternalLinks
-            title="Related Services & Helpful Resources"
-            links={relatedContent}
-            variant="grid"
-            theme="primary"
           />
         </div>
       </div>

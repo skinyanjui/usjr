@@ -1,7 +1,6 @@
 'use client'
 
 import type React from 'react'
-
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -218,41 +217,40 @@ export function QuoteFormStandalone() {
 
   if (isSubmitted) {
     return (
-      <Card className="mx-auto flex max-w-2xl flex-col">
-        <CardContent className="p-6 text-center sm:p-12">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-800">
-            <CheckCircle className="h-10 w-10 text-gray-900" />
+      <Card className="mx-auto flex max-w-2xl flex-col shadow-sm">
+        <CardContent className="p-8 text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+            <CheckCircle className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="text-foreground mb-4 text-2xl font-bold">Quote Request Received!</h2>
-          <p className="text-muted-foreground mx-auto mb-8 max-w-md">
-            Thank you for your detailed quote request. We'll review your information and photos,
-            then get back to you within 2 hours with a comprehensive estimate.
+          <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground">Quote Request Received!</h2>
+          <p className="mx-auto mb-8 max-w-md text-muted-foreground">
+            Thank you for your detailed request. We'll review your information and get back to you within 2 hours.
           </p>
 
-          <div className="mb-8 space-y-4">
-            <Button asChild className="w-full max-w-sm bg-gray-900 text-white hover:bg-gray-900">
+          <div className="mb-8 space-y-3">
+            <Button asChild className="w-full max-w-xs h-10 bg-primary text-primary-foreground hover:bg-primary/90">
               <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
-                Schedule Call - Calendar Link
+                Schedule Call
               </a>
             </Button>
             <div className="text-center">
-              <p className="text-muted-foreground mb-2 text-sm">Need immediate assistance?</p>
-              <p className="text-foreground text-lg font-semibold">Text us at {settings.phone}</p>
+              <p className="mb-1 text-sm text-muted-foreground">Need immediate assistance?</p>
+              <p className="font-semibold text-foreground">Text {settings.phone}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-3">
-            <div className="flex items-center justify-center gap-2">
-              <Clock className="h-4 w-4 text-gray-900" />
+          <div className="flex justify-center gap-6 text-xs text-muted-foreground">
+            <div className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5" />
               <span>2-hour response</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Leaf className="h-4 w-4 text-gray-900" />
-              <span>Natural products</span>
+            <div className="flex items-center gap-1.5">
+              <Leaf className="h-3.5 w-3.5" />
+              <span>Eco-friendly</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Shield className="h-4 w-4 text-gray-900" />
-              <span>Fully insured</span>
+            <div className="flex items-center gap-1.5">
+              <Shield className="h-3.5 w-3.5" />
+              <span>Insured</span>
             </div>
           </div>
         </CardContent>
@@ -261,28 +259,25 @@ export function QuoteFormStandalone() {
   }
 
   return (
-    <Card className="mx-auto flex max-w-4xl flex-col">
-      <CardHeader className="p-6 pb-4 sm:p-8">
-        <div className="mb-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+    <Card className="mx-auto flex max-w-4xl flex-col shadow-sm">
+      <CardHeader className="p-6 pb-2">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <CardTitle className="text-xl font-bold sm:text-2xl">Request Your Free Quote</CardTitle>
-            <CardDescription className="text-sm sm:text-base">
-              Detailed form for accurate pricing - we'll respond within 2 hours
+            <CardTitle className="text-xl font-bold">Request Quote</CardTitle>
+            <CardDescription className="text-sm">
+              We'll respond within 2 hours
             </CardDescription>
           </div>
-          <Badge className="border-gray-300 bg-gray-800 text-gray-900 dark:border-gray-300 dark:text-gray-900">
+          <Badge variant="outline" className="w-fit border-primary/50 text-primary">
             Free Estimate
           </Badge>
         </div>
 
-        {/* Sector + Segment Toggle */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
-          <div className="w-full max-w-md">
-            <Label htmlFor="sector" className="mb-1 block text-sm">
-              Service Sector
-            </Label>
+        {/* Sector + Segment - Compact Row */}
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="w-full sm:w-1/2">
             <Select value={sector} onValueChange={value => setSector(value as typeof sector)}>
-              <SelectTrigger id="sector" aria-label="Service Sector" fit>
+              <SelectTrigger id="sector" className="h-9">
                 <SelectValue placeholder="Select sector" />
               </SelectTrigger>
               <SelectContent>
@@ -294,26 +289,24 @@ export function QuoteFormStandalone() {
             </Select>
           </div>
 
-          <div className="bg-muted/50 flex w-full max-w-md gap-2 rounded-lg p-1">
+          <div className="flex w-full sm:w-1/2 rounded-md bg-muted/50 p-1">
             <button
               type="button"
               onClick={() => setSegment('residential')}
-              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors sm:px-6 sm:py-3 ${
-                segment === 'residential'
-                  ? 'bg-card text-foreground shadow-sm'
+              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'residential'
+                  ? 'bg-background text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               Residential
             </button>
             <button
               type="button"
               onClick={() => setSegment('commercial')}
-              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors sm:px-6 sm:py-3 ${
-                segment === 'commercial'
-                  ? 'bg-card text-foreground shadow-sm'
+              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'commercial'
+                  ? 'bg-background text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               Commercial
             </button>
@@ -321,159 +314,72 @@ export function QuoteFormStandalone() {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6 pt-0 sm:p-8">
-        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-          {/* Contact Information */}
-          <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-foreground text-base font-semibold sm:text-lg">
-              Contact Information
-            </h3>
-            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-              <div>
-                <Label htmlFor="name">Full Name *</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone Number *</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                  required
-                />
-              </div>
-              <div className="md:col-span-2">
-                <Label htmlFor="email">Email Address *</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
+      <CardContent className="p-6 pt-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Main Form Grid */}
+          <div className="grid gap-x-6 gap-y-4 md:grid-cols-2">
+            {/* Contact Info Group */}
+            <div className="space-y-4 md:col-span-2">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contact</h3>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-1.5">
+                  <Label htmlFor="name" className="text-xs">Full Name *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="h-9"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="email" className="text-xs">Email *</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="h-9"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="phone" className="text-xs">Phone *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                    className="h-9"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="address" className="text-xs">Address *</Label>
+                  <Input
+                    id="address"
+                    value={formData.address}
+                    onChange={e => setFormData({ ...formData, address: e.target.value })}
+                    placeholder="Street, City, Zip"
+                    required
+                    className="h-9"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Property Information */}
-          <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-foreground text-base font-semibold sm:text-lg">Property Details</h3>
-            <div>
-              <Label htmlFor="address">Property Address *</Label>
-              <Input
-                id="address"
-                value={formData.address}
-                onChange={e => setFormData({ ...formData, address: e.target.value })}
-                placeholder="Street address, city, state, zip"
-                required
-              />
-            </div>
+            <div className="my-2 h-px bg-border md:col-span-2" />
 
-            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
-              <div>
-                <Label htmlFor="sqft">Square Footage (Optional)</Label>
-                <Input
-                  id="sqft"
-                  value={formData.sqft}
-                  onChange={e => setFormData({ ...formData, sqft: e.target.value })}
-                  placeholder="e.g., 1500"
-                />
-              </div>
-
-              {sector === 'cleaning' && segment === 'residential' ? (
-                <>
-                  <div>
-                    <Label htmlFor="qfs-bedrooms">Bedrooms</Label>
-                    <Select
-                      value={formData.bedrooms}
-                      onValueChange={value => setFormData({ ...formData, bedrooms: value })}
-                    >
-                      <SelectTrigger id="qfs-bedrooms" aria-label="Bedrooms" fit>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
-                        <SelectItem value="3">3</SelectItem>
-                        <SelectItem value="4">4</SelectItem>
-                        <SelectItem value="5+">5+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="qfs-bathrooms">Bathrooms</Label>
-                    <Select
-                      value={formData.bathrooms}
-                      onValueChange={value => setFormData({ ...formData, bathrooms: value })}
-                    >
-                      <SelectTrigger id="qfs-bathrooms" aria-label="Bathrooms" fit>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="1.5">1.5</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
-                        <SelectItem value="2.5">2.5</SelectItem>
-                        <SelectItem value="3+">3+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </>
-              ) : segment === 'commercial' ? (
-                <>
-                  <div>
-                    <Label htmlFor="qfs-business-type">Business Type</Label>
-                    <Select
-                      value={formData.businessType}
-                      onValueChange={value => setFormData({ ...formData, businessType: value })}
-                    >
-                      <SelectTrigger id="qfs-business-type" aria-label="Business Type" fit>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="office">Office</SelectItem>
-                        <SelectItem value="retail">Retail Store</SelectItem>
-                        <SelectItem value="medical">Medical Practice</SelectItem>
-                        <SelectItem value="restaurant">Restaurant</SelectItem>
-                        <SelectItem value="warehouse">Warehouse</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="suiteAccess">Suite Access Notes</Label>
-                    <Input
-                      id="suiteAccess"
-                      value={formData.suiteAccess}
-                      onChange={e => setFormData({ ...formData, suiteAccess: e.target.value })}
-                      placeholder="Access codes, key location, etc."
-                    />
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-
-          {/* Service Selection */}
-          <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-foreground text-base font-semibold sm:text-lg">Service Details</h3>
-            <div>
-              <Label htmlFor="qfs-service">Service Needed *</Label>
+            {/* Service Selection */}
+            <div className="space-y-1.5 md:col-span-2">
+              <Label htmlFor="qfs-service" className="text-xs">Service Type *</Label>
               <Select
                 value={formData.service}
                 onValueChange={value => setFormData({ ...formData, service: value })}
                 required
               >
-                <SelectTrigger id="qfs-service" aria-label="Service Needed" fit>
-                  <SelectValue placeholder="Select a service" />
+                <SelectTrigger id="qfs-service" className="h-9">
+                  <SelectValue placeholder="Select service..." />
                 </SelectTrigger>
                 <SelectContent>
                   {getSectorServiceOptions().map(service => (
@@ -485,328 +391,153 @@ export function QuoteFormStandalone() {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-              <div>
-                <Label htmlFor="preferredDate">Preferred Date</Label>
-                <Input
-                  id="preferredDate"
-                  type="date"
-                  value={formData.preferredDate}
-                  onChange={e => setFormData({ ...formData, preferredDate: e.target.value })}
-                />
-              </div>
-              <div>
-                <Label htmlFor="qfs-preferred-time">Preferred Time Window</Label>
-                <Select
-                  value={formData.preferredTime}
-                  onValueChange={value => setFormData({ ...formData, preferredTime: value })}
-                >
-                  <SelectTrigger id="qfs-preferred-time" aria-label="Preferred Time Window" fit>
-                    <SelectValue placeholder="Select time" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="morning">Morning (8AM - 12PM)</SelectItem>
-                    <SelectItem value="afternoon">Afternoon (12PM - 5PM)</SelectItem>
-                    <SelectItem value="evening">Evening (5PM - 8PM)</SelectItem>
-                    <SelectItem value="flexible">Flexible</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            {/* Date/Time */}
+            <div className="space-y-1.5">
+              <Label htmlFor="preferredDate" className="text-xs">Preferred Date</Label>
+              <Input
+                id="preferredDate"
+                type="date"
+                value={formData.preferredDate}
+                onChange={e => setFormData({ ...formData, preferredDate: e.target.value })}
+                className="h-9"
+              />
             </div>
-          </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="qfs-preferred-time" className="text-xs">Time Window</Label>
+              <Select
+                value={formData.preferredTime}
+                onValueChange={value => setFormData({ ...formData, preferredTime: value })}
+              >
+                <SelectTrigger id="qfs-preferred-time" className="h-9">
+                  <SelectValue placeholder="Any time" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="morning">Morning (8-12)</SelectItem>
+                  <SelectItem value="afternoon">Afternoon (12-5)</SelectItem>
+                  <SelectItem value="evening">Evening (5-8)</SelectItem>
+                  <SelectItem value="flexible">Flexible</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {/* Sector-specific Details */}
-          {sector === 'junk-removal' && (
-            <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-foreground text-base font-semibold sm:text-lg">
-                Junk Removal Details
-              </h3>
-              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-                <div>
-                  <Label htmlFor="jr-load-size">Estimated Load Size</Label>
-                  <Select
-                    value={formData.loadSize}
-                    onValueChange={value => setFormData({ ...formData, loadSize: value })}
-                  >
-                    <SelectTrigger id="jr-load-size" aria-label="Estimated Load Size" fit>
-                      <SelectValue placeholder="Select size" />
-                    </SelectTrigger>
+            {/* Dynamic Sector Fields */}
+            {sector === 'junk-removal' && (
+              <>
+                <div className="space-y-1.5">
+                  <Label htmlFor="jr-load-size" className="text-xs">Est. Load Size</Label>
+                  <Select value={formData.loadSize} onValueChange={value => setFormData({ ...formData, loadSize: value })}>
+                    <SelectTrigger id="jr-load-size" className="h-9"><SelectValue placeholder="Select size" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="single">Single Item</SelectItem>
-                      <SelectItem value="quarter">¼ Truck Load</SelectItem>
-                      <SelectItem value="half">½ Truck Load</SelectItem>
-                      <SelectItem value="three-quarter">¾ Truck Load</SelectItem>
-                      <SelectItem value="full">Full Truck Load</SelectItem>
+                      <SelectItem value="quarter">¼ Truck</SelectItem>
+                      <SelectItem value="half">½ Truck</SelectItem>
+                      <SelectItem value="full">Full Truck</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="jr-items">Items or Areas to Clear</Label>
+                <div className="space-y-1.5 md:col-span-2">
+                  <Label htmlFor="jr-items" className="text-xs">Items Description</Label>
                   <Textarea
                     id="jr-items"
-                    rows={3}
-                    placeholder="List items or rooms to clear (e.g., sofa, fridge, garage, attic)"
+                    rows={2}
+                    placeholder="Sofa, fridge, garage clutter..."
                     value={formData.itemsDescription}
                     onChange={e => setFormData({ ...formData, itemsDescription: e.target.value })}
+                    className="resize-none"
                   />
                 </div>
-              </div>
-            </div>
-          )}
+              </>
+            )}
 
-          {sector === 'light-demolition' && (
-            <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-foreground text-base font-semibold sm:text-lg">
-                Demolition Details
-              </h3>
-              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-                <div>
-                  <Label htmlFor="ld-structure">Structure Type</Label>
-                  <Select
-                    value={formData.structureType}
-                    onValueChange={value => setFormData({ ...formData, structureType: value })}
-                  >
-                    <SelectTrigger id="ld-structure" aria-label="Structure Type" fit>
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
+            {sector === 'light-demolition' && (
+              <>
+                <div className="space-y-1.5">
+                  <Label htmlFor="ld-structure" className="text-xs">Structure</Label>
+                  <Select value={formData.structureType} onValueChange={value => setFormData({ ...formData, structureType: value })}>
+                    <SelectTrigger id="ld-structure" className="h-9"><SelectValue placeholder="Type" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="shed">Shed</SelectItem>
                       <SelectItem value="deck">Deck</SelectItem>
                       <SelectItem value="fence">Fence</SelectItem>
-                      <SelectItem value="interior">Interior Wall/Room</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div>
-                  <Label htmlFor="ld-size">Approximate Size</Label>
-                  <Input
-                    id="ld-size"
-                    placeholder="e.g., 10x12, 200 sq ft"
-                    value={formData.approxSize}
-                    onChange={e => setFormData({ ...formData, approxSize: e.target.value })}
-                  />
+                <div className="space-y-1.5">
+                  <Label htmlFor="ld-size" className="text-xs">Approx Size</Label>
+                  <Input id="ld-size" className="h-9" placeholder="e.g. 10x12" value={formData.approxSize} onChange={e => setFormData({ ...formData, approxSize: e.target.value })} />
                 </div>
-                <div>
-                  <Label htmlFor="ld-material">Primary Material</Label>
-                  <Select
-                    value={formData.demolitionMaterial}
-                    onValueChange={value => setFormData({ ...formData, demolitionMaterial: value })}
-                  >
-                    <SelectTrigger id="ld-material" aria-label="Primary Material" fit>
-                      <SelectValue placeholder="Select material" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="wood">Wood</SelectItem>
-                      <SelectItem value="metal">Metal</SelectItem>
-                      <SelectItem value="masonry">Masonry/Drywall</SelectItem>
-                      <SelectItem value="mixed">Mixed</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Checkbox
-                    id="ld-utilities"
-                    checked={formData.utilitiesDisconnected}
-                    onCheckedChange={checked =>
-                      setFormData({ ...formData, utilitiesDisconnected: checked as boolean })
-                    }
-                  />
-                  <Label htmlFor="ld-utilities" className="text-sm">
-                    Utilities disconnected (electric/water/gas)
-                  </Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Checkbox
-                    id="ld-haulaway"
-                    checked={formData.haulAway}
-                    onCheckedChange={checked =>
-                      setFormData({ ...formData, haulAway: checked as boolean })
-                    }
-                  />
-                  <Label htmlFor="ld-haulaway" className="text-sm">
-                    Include debris haul-away
-                  </Label>
-                </div>
-              </div>
-            </div>
-          )}
+              </>
+            )}
 
-          {sector === 'estate-cleanouts' && (
-            <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-foreground text-base font-semibold sm:text-lg">
-                Estate Cleanout Details
-              </h3>
-              <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
-                <div>
-                  <Label htmlFor="ec-type">Property Type</Label>
-                  <Select
-                    value={formData.estatePropertyType}
-                    onValueChange={value => setFormData({ ...formData, estatePropertyType: value })}
-                  >
-                    <SelectTrigger id="ec-type" aria-label="Property Type" fit>
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
+            {sector === 'cleaning' && segment === 'residential' && (
+              <>
+                <div className="space-y-1.5">
+                  <Label htmlFor="qfs-bedrooms" className="text-xs">Bedrooms</Label>
+                  <Select value={formData.bedrooms} onValueChange={v => setFormData({ ...formData, bedrooms: v })}>
+                    <SelectTrigger id="qfs-bedrooms" className="h-9"><SelectValue placeholder="#" /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="house">House</SelectItem>
-                      <SelectItem value="apartment">Apartment</SelectItem>
-                      <SelectItem value="storage">Storage Unit</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      {[1, 2, 3, 4, 5].map(n => <SelectItem key={n} value={n.toString()}>{n}{n === 5 && '+'}</SelectItem>)}
                     </SelectContent>
                   </Select>
                 </div>
-                <div>
-                  <Label htmlFor="ec-rooms">Rooms/Areas</Label>
-                  <Select
-                    value={formData.estateRooms}
-                    onValueChange={value => setFormData({ ...formData, estateRooms: value })}
-                  >
-                    <SelectTrigger id="ec-rooms" aria-label="Rooms/Areas" fit>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
+                <div className="space-y-1.5">
+                  <Label htmlFor="qfs-bathrooms" className="text-xs">Bathrooms</Label>
+                  <Select value={formData.bathrooms} onValueChange={v => setFormData({ ...formData, bathrooms: v })}>
+                    <SelectTrigger id="qfs-bathrooms" className="h-9"><SelectValue placeholder="#" /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="few">1-3</SelectItem>
-                      <SelectItem value="several">4-6</SelectItem>
-                      <SelectItem value="many">7+</SelectItem>
+                      {[1, 1.5, 2, 2.5, 3].map(n => <SelectItem key={n} value={n.toString()}>{n}{n === 3 && '+'}</SelectItem>)}
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="md:col-span-2">
-                  <Label htmlFor="ec-access">Access Constraints</Label>
-                  <Input
-                    id="ec-access"
-                    placeholder="Stairs only, limited parking, narrow hallways, etc."
-                    value={formData.estateAccess}
-                    onChange={e => setFormData({ ...formData, estateAccess: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="ec-timeline">Timeline/Urgency</Label>
-                  <Select
-                    value={formData.estateTimeline}
-                    onValueChange={value => setFormData({ ...formData, estateTimeline: value })}
-                  >
-                    <SelectTrigger id="ec-timeline" aria-label="Timeline/Urgency" fit>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="flexible">Flexible</SelectItem>
-                      <SelectItem value="this-week">This Week</SelectItem>
-                      <SelectItem value="next-48h">Next 24-48 Hours</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
-          )}
+              </>
+            )}
 
-          {/* Photo Upload */}
-          <div className="space-y-4 sm:space-y-5">
-            <h3 className="text-foreground text-base font-semibold sm:text-lg">
-              Photos for Accurate Pricing
-            </h3>
-            <p className="text-muted-foreground text-xs sm:text-sm">
-              Upload up to 6 photos of the areas/items for the job to help us provide the most
-              accurate estimate
-            </p>
-
-            <div>
-              <label className="border-border bg-muted/30 hover:bg-muted/50 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed transition-colors sm:h-40">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <Upload className="text-muted-foreground mb-3 h-8 w-8 sm:h-10 sm:w-10" />
-                  <p className="text-muted-foreground mb-2 text-xs sm:text-sm">
-                    <span className="font-semibold">Click to upload photos</span> or drag and drop
-                  </p>
-                  <p className="text-muted-foreground text-[10px] sm:text-xs">
-                    PNG, JPG up to 10MB each (max 6 photos)
-                  </p>
-                </div>
-                <input
-                  type="file"
-                  className="hidden"
-                  multiple
-                  accept="image/*"
-                  capture="environment"
-                  onChange={handleFileUpload}
-                />
-              </label>
-            </div>
-
-            {uploadedFiles.length > 0 && (
-              <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
-                {uploadedFiles.map((file, index) => (
-                  <div key={index} className="relative">
-                    <div className="bg-muted/50 flex aspect-square items-center justify-center rounded-lg border">
-                      <Camera className="text-muted-foreground h-6 w-6 sm:h-8 sm:w-8" />
+            {/* Photos */}
+            <div className="md:col-span-2 space-y-2">
+              <Label className="text-xs">Photos (Optional)</Label>
+              <div className="grid grid-cols-4 gap-2">
+                <label className="border-border hover:bg-muted/50 flex aspect-square cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed transition-colors">
+                  <Upload className="h-4 w-4 text-muted-foreground" />
+                  <span className="mt-1 text-[10px] text-muted-foreground">Upload</span>
+                  <input type="file" className="hidden" multiple accept="image/*" onChange={handleFileUpload} />
+                </label>
+                {uploadedFiles.map((file, i) => (
+                  <div key={i} className="relative aspect-square rounded-md border bg-muted/30 p-1">
+                    <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-sm">
+                      <Camera className="h-4 w-4 text-muted-foreground/50" />
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => removeFile(index)}
-                      className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white dark:bg-gray-900/300"
-                      aria-label={`Remove file ${file.name}`}
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                    <p className="text-muted-foreground mt-1 truncate text-[10px] sm:text-xs">
-                      {file.name}
-                    </p>
+                    <button type="button" onClick={() => removeFile(i)} className="absolute -top-1 -right-1 rounded-full bg-destructive text-destructive-foreground p-0.5"><X className="h-2.5 w-2.5" /></button>
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-
-          {/* Preferences (cleaning only) */}
-          {sector === 'cleaning' && (
-            <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-foreground text-lg font-semibold">Preferences</h3>
-              <div className="flex items-center space-x-3">
-                <Checkbox
-                  id="ecoFriendly"
-                  checked={formData.ecoFriendly}
-                  onCheckedChange={checked =>
-                    setFormData({ ...formData, ecoFriendly: checked as boolean })
-                  }
-                />
-                <Label htmlFor="ecoFriendly" className="flex items-center gap-2 text-sm">
-                  <Leaf className="h-4 w-4 text-gray-900" />
-                  Use eco-friendly, natural products only (recommended)
-                </Label>
-              </div>
             </div>
-          )}
 
-          {/* Additional Message */}
-          <div className="space-y-5 sm:space-y-6">
-            <h3 className="text-foreground text-lg font-semibold">Additional Information</h3>
-            <div>
-              <Label htmlFor="message">Special Requirements or Questions</Label>
+            {/* Notes */}
+            <div className="md:col-span-2 space-y-1.5">
+              <Label htmlFor="message" className="text-xs">Notes</Label>
               <Textarea
                 id="message"
+                className="min-h-[60px] resize-none"
+                placeholder="Any access codes, parking info, or specific questions..."
                 value={formData.message}
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Any specific requirements, access details, hazards, or questions you'd like to discuss..."
-                rows={4}
               />
             </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="border-t pt-8">
+          <div className="pt-2">
             {submitError && (
-              <div className="border-destructive bg-destructive/10 text-destructive mb-4 rounded-lg border p-4 text-sm">
+              <div className="mb-4 rounded-md border border-destructive/20 bg-destructive/10 p-3 text-xs text-destructive">
                 {submitError}
               </div>
             )}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gray-800 py-3 text-lg text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full h-11 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              {isSubmitting ? 'Submitting...' : 'Get My Free Quote'}
+              {isSubmitting ? 'Sending Request...' : 'Get Free Quote'}
             </Button>
-            <p className="text-muted-foreground mt-4 text-center text-sm">
-              We'll review your request and respond within 2 hours with a detailed estimate
-            </p>
           </div>
         </form>
       </CardContent>

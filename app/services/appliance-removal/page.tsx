@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildServiceMetadata } from '@/lib/seo-metadata'
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
-import { InternalLinks } from '@/components/ui/internal-links'
 import { ReviewMention } from '@/components/ui/review-mention'
 import { getAggregateTestimonialStats, settings } from '@/lib/cms-content'
 import { StructuredData } from '@/components/structured-data'
@@ -160,6 +159,7 @@ export default function ApplianceRemovalPage() {
             'We recycle metals, donate working appliances when possible, and ensure proper disposal of refrigerants and hazardous materials following EPA guidelines.',
         },
       ]}
+      relatedContent={relatedContent}
     >
       {/* Customer reviews section */}
       <div className="bg-muted/30 py-12">
@@ -171,18 +171,6 @@ export default function ApplianceRemovalPage() {
             theme="primary"
             location="Evansville"
             showStructuredData={false} // Avoid duplicate structured data
-          />
-        </div>
-      </div>
-
-      {/* Internal linking section */}
-      <div className="bg-card py-12">
-        <div className="mx-auto max-w-7xl px-4">
-          <InternalLinks
-            title="Related Services & Helpful Resources"
-            links={relatedContent}
-            variant="grid"
-            theme="primary"
           />
         </div>
       </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Button, PhoneButton } from '@/components/ui/button'
 import { Menu, X, ChevronDown, Phone } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -30,15 +29,13 @@ export function Header() {
     }
     setActiveDropdown(dropdown)
 
-    // Prefetch dropdown routes eagerly when menu is opened
     const items =
-      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ??
-      []
+      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ?? []
     for (const item of items) {
       if (item.href) {
         try {
           router.prefetch(item.href)
-        } catch {}
+        } catch { }
       }
     }
   }
@@ -66,56 +63,48 @@ export function Header() {
   }
 
   return (
-    <header className="glass sticky top-0 z-50">
-      <nav className="bg-background/90 border-b border-white/10 px-4 py-3 backdrop-blur-md dark:border-white/10">
-        <div className="mx-auto grid max-w-7xl grid-cols-3 items-center">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+      <nav className="mx-auto max-w-7xl px-4 py-3">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="col-span-2 flex min-w-0 items-end text-center lg:col-span-1">
-            <Link
-              href="/"
-              className="bg-foreground text-background max-w-full truncate rounded-lg px-3 py-2 text-xs font-bold whitespace-nowrap transition-all hover:brightness-110 md:text-base"
-            >
-              UNCLE SAM JUNK REMOVAL
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="rounded-lg bg-foreground px-3 py-2 text-xs font-bold text-background transition-opacity hover:opacity-90 sm:text-sm"
+          >
+            UNCLE SAM JUNK REMOVAL
+          </Link>
 
-          {/* Centered desktop nav */}
-          <div className="hidden items-center justify-center space-x-6 lg:flex">
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-8 lg:flex">
             <Link
               href="/"
-              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              HOME
+              Home
             </Link>
 
             <Link
               href="/about"
-              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              ABOUT
+              About
             </Link>
 
             <div
-              className="group relative"
+              className="relative"
               onMouseEnter={() => handleDropdownEnter('services')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 type="button"
-                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
                 onClick={() => setActiveDropdown(prev => (prev === 'services' ? null : 'services'))}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    setActiveDropdown(prev => (prev === 'services' ? null : 'services'))
-                  }
-                }}
               >
-                SERVICES
-                <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                Services
+                <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
               </button>
               {activeDropdown === 'services' && (
                 <ServicesDropdown
@@ -127,28 +116,20 @@ export function Header() {
             </div>
 
             <div
-              className="group relative"
+              className="relative"
               onMouseEnter={() => handleDropdownEnter('locations')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 type="button"
-                className="text-foreground hover:text-primary flex items-center gap-1 text-sm font-medium underline-offset-4 transition-all hover:underline"
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
-                onClick={() =>
-                  setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))
-                }
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))
-                  }
-                }}
+                onClick={() => setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))}
               >
-                LOCATIONS
-                <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                Locations
+                <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
               </button>
               {activeDropdown === 'locations' && (
                 <LocationsDropdown
@@ -161,75 +142,57 @@ export function Header() {
 
             <Link
               href="/blog"
-              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              BLOG
+              Blog
             </Link>
 
             <Link
               href="/faq"
-              className="text-foreground hover:text-primary text-sm font-medium underline-offset-4 transition-all hover:underline"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               FAQ
             </Link>
-
-            {/* Price Match link removed */}
           </div>
 
-          {/* Right desktop actions */}
-          <div className="ml-4 hidden items-center justify-end gap-4 pl-4 lg:flex">
-            <div className="text-center">
-              <PhoneButton
-                href={`tel:${settings.phoneE164}`}
-                size="xs"
-                className="text-foreground ring-border hover:bg-accent/10 bg-transparent ring-1"
-              >
-                <Phone className="h-3 w-3" /> {settings.phone}
-              </PhoneButton>
-              <div className="mt-0 text-xs">
-                <a
-                  href={`sms:${settings.phoneE164}`}
-                  className="text-foreground hover:text-primary underline-offset-2 transition-all hover:underline"
-                >
-                  Text photos for quote
-                </a>
-              </div>
-            </div>
-            <Button
-              asChild
-              size="xs"
-              className="bg-foreground text-background rounded-full font-semibold hover:brightness-110"
+          {/* Desktop actions */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <a
+              href={`tel:${settings.phoneE164}`}
+              className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              <Link
-                href="/quote"
-                prefetch
-                onClick={() =>
-                  trackQuoteClick({
-                    location: 'header-desktop',
-                    label: 'Get Free Quote',
-                    destination: '/quote',
-                  })
-                }
-              >
-                Get Free Quote
-              </Link>
-            </Button>
+              <Phone className="h-4 w-4" />
+              {settings.phone}
+            </a>
+            <Link
+              href="/quote"
+              prefetch
+              onClick={() =>
+                trackQuoteClick({
+                  location: 'header-desktop',
+                  label: 'Get Free Quote',
+                  destination: '/quote',
+                })
+              }
+              className="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+            >
+              Get Free Quote
+            </Link>
           </div>
 
           {/* Mobile menu button */}
           <button
             type="button"
-            className="justify-self-end lg:hidden"
-            onClick={() =>
+            className="lg:hidden"
+            onClick={() => {
               setIsMenuOpen(prev => {
-                const next = !prev
-                if (!next) {
+                if (!prev === false) {
                   setIsMobileServicesOpen(false)
                   setIsMobileLocationsOpen(false)
                 }
-                return next
+                return !prev
               })
-            }
+            }}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -238,47 +201,48 @@ export function Header() {
           </button>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen && (
           <div
             id="mobile-nav"
-            className="border-border mt-4 max-h-[70vh] overflow-y-auto border-t pb-4 lg:hidden"
+            className="mt-4 max-h-[70vh] overflow-y-auto border-t border-border pt-4 lg:hidden"
           >
-            <div className="flex flex-col space-y-2 pt-4">
+            <div className="flex flex-col space-y-1">
               <Link
                 href="/"
-                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 onClick={closeMobileMenuAndSections}
               >
-                HOME
+                Home
               </Link>
               <Link
                 href="/about"
-                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 onClick={closeMobileMenuAndSections}
               >
-                ABOUT
+                About
               </Link>
 
-              <div className="pt-2">
+              {/* Services accordion */}
+              <div>
                 <button
                   type="button"
-                  className="text-foreground flex w-full items-center justify-between py-2 text-sm font-medium"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   aria-expanded={isMobileServicesOpen}
-                  aria-controls="mobile-services-panel"
                   onClick={() => setIsMobileServicesOpen(v => !v)}
                 >
-                  <span>SERVICES</span>
+                  Services
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
                 {isMobileServicesOpen && (
-                  <div id="mobile-services-panel" className="pl-3">
+                  <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
                     {(NAV.find(i => i.label === 'Services')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
+                        className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -288,26 +252,26 @@ export function Header() {
                 )}
               </div>
 
-              <div className="pt-2">
+              {/* Locations accordion */}
+              <div>
                 <button
                   type="button"
-                  className="text-foreground flex w-full items-center justify-between py-2 text-sm font-medium"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   aria-expanded={isMobileLocationsOpen}
-                  aria-controls="mobile-locations-panel"
                   onClick={() => setIsMobileLocationsOpen(v => !v)}
                 >
-                  <span>LOCATIONS</span>
+                  Locations
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${isMobileLocationsOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
                 {isMobileLocationsOpen && (
-                  <div id="mobile-locations-panel" className="pl-3">
+                  <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
                     {(NAV.find(i => i.label === 'Locations')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="text-foreground hover:text-primary block py-1.5 text-sm font-medium transition-all"
+                        className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -319,39 +283,35 @@ export function Header() {
 
               <Link
                 href="/blog"
-                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 onClick={closeMobileMenuAndSections}
               >
-                BLOG
+                Blog
               </Link>
               <Link
                 href="/faq"
-                className="text-foreground hover:text-primary py-2 text-sm font-medium transition-all"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 onClick={closeMobileMenuAndSections}
               >
                 FAQ
               </Link>
+
               <div className="pt-4">
-                <Button
-                  asChild
-                  size="sm"
-                  className="bg-foreground text-background w-full hover:brightness-110"
+                <Link
+                  href="/quote"
+                  prefetch
+                  onClick={() => {
+                    trackQuoteClick({
+                      location: 'header-mobile',
+                      label: 'Get Free Quote',
+                      destination: '/quote',
+                    })
+                    closeMobileMenuAndSections()
+                  }}
+                  className="block w-full rounded-lg bg-foreground py-3 text-center text-sm font-semibold text-background transition-opacity hover:opacity-90"
                 >
-                  <Link
-                    href="/quote"
-                    prefetch
-                    onClick={() => {
-                      trackQuoteClick({
-                        location: 'header-mobile',
-                        label: 'Get Free Quote',
-                        destination: '/quote',
-                      })
-                      closeMobileMenuAndSections()
-                    }}
-                  >
-                    Get Free Quote
-                  </Link>
-                </Button>
+                  Get Free Quote
+                </Link>
               </div>
             </div>
           </div>

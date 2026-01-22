@@ -1,13 +1,8 @@
 import type { Metadata } from 'next'
-import { ServiceCard } from '@/components/ui/service-card'
-import { SectionHeader } from '@/components/ui/section-header'
-import { ThemedButton } from '@/components/ui/themed-button'
-import { GlassCard } from '@/components/ui/glass-card'
-import { Truck, Recycle, Home, Building2, Trash2, Wrench } from 'lucide-react'
+import { Truck, Recycle, Home, Building2, Trash2, Wrench, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { settings } from '@/lib/cms-content'
+
 import { PageHero } from '@/components/ui/page-hero'
-import { QuoteCtaLink } from '@/components/quote-cta-link'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -122,155 +117,138 @@ export default function ServicesPage() {
     },
   ]
 
+  const serviceAreas = [
+    { name: 'Evansville', href: '/locations/evansville' },
+    { name: 'Newburgh', href: '/locations/newburgh' },
+    { name: 'Henderson, KY', href: '/locations/henderson-ky' },
+    { name: 'Owensboro, KY', href: '/locations/owensboro-ky' },
+    { name: 'Boonville', href: '/locations/boonville' },
+    { name: 'Princeton', href: '/locations/princeton' },
+  ]
+
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
       <PageHero
-        title="Professional Services in Evansville"
+        title="Professional Services"
         description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
-        color="primary"
+        eyebrow="What We Do"
       />
 
-      {/* Top CTAs */}
-      <section className="px-4 py-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <div className="mt-2 flex flex-wrap justify-center gap-3">
-            <ThemedButton theme="primary" asChild>
-              <QuoteCtaLink location="services-hero" label="Get Free Quote">
-                Get Free Quote
-              </QuoteCtaLink>
-            </ThemedButton>
-            <ThemedButton theme="primary" variant="outline" asChild>
-              <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
-            </ThemedButton>
-          </div>
-        </div>
-      </section>
-
       {/* Junk Removal Services */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title="Junk Removal Services"
-            subtitle="Professional removal services for homes and businesses"
-          />
+      <section className="border-b border-border py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-foreground">Junk Removal Services</h2>
+            <p className="text-muted-foreground">Professional removal services for homes and businesses</p>
+          </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {junkRemovalServices.map((service, index) => (
-              <ServiceCard
+              <Link
                 key={index}
-                title={service.title}
-                description={service.description}
-                price={service.price}
-                link={service.link}
-                icon={service.icon}
-                color="primary"
-                category="Junk Removal"
-              />
+                href={service.link}
+                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+              >
+                <div className="mb-4 flex items-start justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-foreground">
+                    <service.icon className="h-6 w-6" />
+                  </div>
+                  <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                    {service.price}
+                  </span>
+                </div>
+                <h3 className="mb-2 text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="mb-4 text-sm text-muted-foreground">{service.description}</p>
+                <div className="flex items-center text-sm font-medium text-foreground group-hover:gap-2 transition-all">
+                  View Details <ArrowRight className="ml-1 h-4 w-4" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Project Services */}
-      <section className="bg-card/50 px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title="Project Services"
-            subtitle="Demolition, debris removal, and seasonal cleanup support"
-          />
+      <section className="border-b border-border bg-muted/30 py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-foreground">Project Services</h2>
+            <p className="text-muted-foreground">Demolition, debris removal, and seasonal cleanup support</p>
+          </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {projectServices.map((service, index) => (
-              <ServiceCard
+              <Link
                 key={index}
-                title={service.title}
-                description={service.description}
-                price={service.price}
-                link={service.link}
-                icon={service.icon}
-                color="primary"
-                category="Project"
-                size="small"
-              />
+                href={service.link}
+                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+              >
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-foreground">
+                  <service.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mb-2 font-bold text-foreground">{service.title}</h3>
+                <p className="mb-3 text-sm text-muted-foreground">{service.description}</p>
+                <p className="text-xs font-medium text-foreground/80">{service.price}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Cleaning Services */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title="Professional Cleaning Services"
-            subtitle="Eco-friendly cleaning with natural products"
-          />
+      <section className="border-b border-border py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-foreground">Cleaning Services</h2>
+            <p className="text-muted-foreground">Eco-friendly cleaning with natural products</p>
+          </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {cleaningServices.map((service, index) => (
-              <ServiceCard
+              <Link
                 key={index}
-                title={service.title}
-                description={service.description}
-                price={service.price}
-                link={service.link}
-                icon={service.icon}
-                color="primary"
-                category="Cleaning"
-              />
+                href={service.link}
+                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-bold text-foreground">{service.title}</h3>
+                <p className="mb-4 text-sm text-muted-foreground">{service.description}</p>
+                <div className="flex items-center text-sm font-medium text-foreground">
+                  View Details
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Service Areas */}
-      <section className="bg-card/50 px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            title="Service Areas"
-            subtitle="Proudly serving Southern Indiana and Western Kentucky"
-          />
+      <section className="border-b border-border bg-muted/30 py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-10 text-center">
+            <h2 className="text-2xl font-bold text-foreground">Service Areas</h2>
+            <p className="text-muted-foreground">Proudly serving Southern Indiana and Western Kentucky</p>
+          </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {[
-              { name: 'Evansville', href: '/locations/evansville' },
-              { name: 'Newburgh', href: '/locations/newburgh' },
-              { name: 'Henderson, KY', href: '/locations/henderson-ky' },
-              { name: 'Owensboro, KY', href: '/locations/owensboro-ky' },
-              { name: 'Boonville', href: '/locations/boonville' },
-              { name: 'Princeton', href: '/locations/princeton' },
-            ].map((location, index) => (
-              <GlassCard
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {serviceAreas.map((location, index) => (
+              <Link
                 key={index}
-                className="p-4 text-center transition-transform hover:scale-105"
+                href={location.href}
+                className="flex items-center justify-center rounded-xl border border-border bg-card p-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
               >
-                <ThemedButton theme="primary" variant="ghost" asChild className="w-full">
-                  <Link href={location.href}>{location.name}</Link>
-                </ThemedButton>
-              </GlassCard>
+                {location.name}
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready to Get Started?</h2>
-          <p className="text-muted-foreground mb-8 text-xl">
-            Book your service today or get a free, no-obligation quote.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <ThemedButton theme="primary" asChild>
-              <QuoteCtaLink location="services-cta" label="Get Free Quote">
-                Get Free Quote
-              </QuoteCtaLink>
-            </ThemedButton>
-            <ThemedButton theme="primary" variant="outline" asChild>
-              <Link href={`tel:${settings.phoneE164}`}>Call {settings.phone}</Link>
-            </ThemedButton>
-          </div>
-        </div>
-      </section>
+
     </div>
   )
 }

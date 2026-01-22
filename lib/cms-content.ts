@@ -426,7 +426,7 @@ export const galleryImages: GalleryImage[] = [
 export const settings: Settings = {
   phone: '(812) 610-1657',
   phoneE164: '+18126101657',
-  email: 'info@unclesamjunkremoval.com',
+  email: 'unclesamjunkremoval@gmail.com',
   squareBookingUrl: 'https://square.site/book/PLACEHOLDER_BOOKING_URL',
   businessHours: {
     monday: '8:00 AM - 6:00 PM',

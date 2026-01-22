@@ -21,7 +21,6 @@ export default function PrivacyPolicyPage() {
       <PageHero
         title="Privacy Policy"
         description="How we collect, use, and protect your information"
-        color="neutral"
       />
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
@@ -324,32 +323,7 @@ export default function PrivacyPolicyPage() {
 
         <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
 
-        <div className="border-border bg-card mt-12 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
-          <Link
-            href="/"
-            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
-          >
-            Home
-          </Link>
-          <Link
-            href="/quote"
-            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
-          >
-            Get a Quote
-          </Link>
-          <Link
-            href="/services"
-            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            Our Services
-          </Link>
-          <Link
-            href="/terms"
-            className="text-muted-foreground border-border hover:bg-muted/30 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            Terms of Service
-          </Link>
-        </div>
+
       </div>
     </main>
   )

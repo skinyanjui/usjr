@@ -85,7 +85,6 @@ export default function CleaningHub() {
       <PageHero
         title="Professional Cleaning Services in Evansville, IN"
         description="Veteran-led residential and commercial cleaning using natural products"
-        color="primary"
       />
 
       {/* Subheader badges/CTAs */}
@@ -230,44 +229,7 @@ export default function CleaningHub() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-foreground mb-4 text-3xl font-bold">Ready for a Spotless Space?</h2>
-          <p className="text-muted-foreground mb-8 text-xl">
-            Book your cleaning service today or get a free, no-obligation quote.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="bg-foreground px-8 py-3 text-background hover:brightness-110"
-            >
-              <a href={settings.squareBookingUrl} target="_blank" rel="noopener noreferrer">
-                Book Now
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-border bg-transparent px-8 py-3 text-foreground hover:bg-accent"
-            >
-              <Link href="/quote" prefetch>
-                Get Free Quote
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="ghost"
-              className="px-8 py-3 text-foreground hover:bg-accent"
-            >
-              <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
-            </Button>
-          </div>
-        </div>
-      </section>
+
 
       {/* JSON-LD Schema */}
       <StructuredData type="LocalBusiness" />

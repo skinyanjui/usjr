@@ -1,259 +1,156 @@
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import { StructuredData } from '@/components/structured-data'
-import { Button, PhoneButton } from '@/components/ui/button'
 import { settings } from '@/lib/cms-content'
 import { NAV } from '@/lib/nav'
-import { QuoteCtaLink } from '@/components/quote-cta-link'
 
 export function Footer() {
-  const phoneHref = settings.phoneE164
   const services = NAV.find(i => i.label === 'Services')?.children ?? []
   const locations = NAV.find(i => i.label === 'Locations')?.children ?? []
 
   return (
-    <footer role="contentinfo" className="relative z-[2000] text-white">
-      <div className="bg-gray-900">
-        <div className="mx-auto max-w-7xl px-4 py-6">
-          <div className="mb-6 rounded-lg bg-gray-900 p-4">
-            <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
-              <div className="flex-1">
-                <h3 className="text-lg font-bold sm:text-xl md:text-2xl">
-                  Ready to reclaim your space?
-                </h3>
-                <p className="mt-1 text-sm text-white">
-                  Same-day service, 7 days a week. Locally owned and insured.
-                </p>
-              </div>
-              <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
-                <Button
-                  asChild
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow transition-all hover:brightness-95 sm:px-5"
-                >
-                  <QuoteCtaLink location="footer-primary" label="Get Free Quote">
-                    Get Free Quote
-                  </QuoteCtaLink>
-                </Button>
-                <PhoneButton href={`tel:${phoneHref}`} size="sm" className="justify-center">
-                  <Phone className="h-4 w-4" /> Call {settings.phone}
-                </PhoneButton>
-              </div>
-            </div>
-          </div>
+    <footer role="contentinfo" className="border-t border-border bg-foreground text-background">
+      {/* Main Footer */}
+      <div className="mx-auto max-w-7xl px-4 py-12">
 
-          <div className="mb-4 flex flex-wrap gap-4 text-white">
-            {/* Services */}
-            <nav
-              aria-label="Our services"
-              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]"
+
+        {/* CTA Banner */}
+        <div className="mb-12 rounded-xl bg-background/10 p-6 text-center sm:p-8">
+          <h3 className="mb-2 text-xl font-bold sm:text-2xl">
+            Ready to reclaim your space?
+          </h3>
+          <p className="mb-6 text-sm text-background/80">
+            Same-day service available. Locally owned and insured.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/quote"
+              className="rounded-lg bg-background px-6 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
             >
-              <h3 className="mb-3 text-base font-semibold sm:text-lg">Our Services</h3>
-              <ul className="space-y-2 text-xs text-white sm:text-sm">
-                {services.map(s => (
-                  <li key={s.href}>
-                    <Link
-                      href={s.href!}
-                      className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                    >
-                      {s.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Service Areas */}
-            <nav
-              aria-label="Service areas"
-              className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]"
+              Get Free Quote
+            </Link>
+            <a
+              href={`tel:${settings.phoneE164}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-6 py-2.5 text-sm font-semibold transition-colors hover:bg-background/10"
             >
-              <h3 className="mb-3 text-base font-semibold sm:text-lg">Service Areas</h3>
-              <ul className="space-y-2 text-xs text-white sm:text-sm">
-                {locations.map(l => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href!}
-                      className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                    >
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Company Info */}
-            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
-              <h3 className="mb-3 text-base font-semibold sm:text-lg">Uncle Sam Junk Removal</h3>
-              <p className="mb-3 text-xs text-white sm:text-sm">
-                Evansville's premier junk removal service. Locally owned and operated.
-              </p>
-              <div className="mb-2 flex items-center gap-2 text-xs text-white/70 sm:text-sm">
-                <Clock className="h-4 w-4" />
-                <span>Same Day Service</span>
-              </div>
-              <div className="text-xs text-white sm:text-sm">Available 7 Days a Week</div>
-            </div>
-
-            {/* Quick Links */}
-            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
-              <h3 className="mb-3 text-base font-semibold sm:text-lg">Quick Links</h3>
-              <ul className="space-y-2 text-xs text-white sm:text-sm">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/faq"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="https://www.karchercleaners.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Karcher Cleaners
-                  </a>
-                </li>
-                <li>
-                  <Link
-                    href="/quote"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Get Free Quote
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="/sitemap.xml"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    XML Sitemap
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Blog Feeds */}
-            <div className="w-1/2 sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]">
-              <h3 className="mb-3 text-base font-semibold sm:text-lg">Blog Feeds</h3>
-              <ul className="space-y-2 text-xs text-white sm:text-sm">
-                <li>
-                  <a
-                    href="/rss.xml"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    RSS 2.0
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/atom.xml"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Atom 1.0
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/atom03.xml"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Atom 0.3
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/mrss.xml"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Media RSS
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/feed.txt"
-                    className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                  >
-                    Text Feed
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <Phone className="h-4 w-4" />
+              {settings.phone}
+            </a>
           </div>
+        </div>
 
-          <div className="mb-4 border-t border-gray-300/60 pt-4">
-            <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
-              <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
-                <Phone className="h-4 w-4" />
-                <div>
-                  <div className="font-semibold">{settings.phone}</div>
-                  <div className="text-white/70">Call or Text</div>
-                </div>
-              </div>
-              <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
-                <Mail className="h-4 w-4" />
-                <a
-                  href={`mailto:${settings.email}`}
-                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                >
-                  {settings.email}
-                </a>
-              </div>
-              <div className="flex w-1/2 items-center gap-2 sm:w-[calc(33.333%-0.75rem)]">
-                <MapPin className="h-4 w-4" />
-                <div className="text-white/70">Evansville, Indiana & Southern Indiana</div>
-              </div>
-            </div>
-          </div>
+        {/* Links Grid */}
+        <div className="mb-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          {/* Services */}
+          <nav aria-label="Services">
+            <h4 className="mb-4 text-sm font-semibold">Services</h4>
+            <ul className="space-y-2">
+              {services.slice(0, 8).map(s => (
+                <li key={s.href}>
+                  <Link
+                    href={s.href!}
+                    className="text-sm text-background/70 transition-colors hover:text-background"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <div className="border-t border-gray-300/60 pt-3">
-            <div className="flex flex-col items-center justify-between gap-1 text-xs text-white sm:text-sm md:flex-row">
-              <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
-              <div className="flex gap-4">
-                <Link
-                  href="/privacy"
-                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                >
+          {/* Locations */}
+          <nav aria-label="Locations">
+            <h4 className="mb-4 text-sm font-semibold">Locations</h4>
+            <ul className="space-y-2">
+              {locations.map(l => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href!}
+                    className="text-sm text-background/70 transition-colors hover:text-background"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Company */}
+          <nav aria-label="Company">
+            <h4 className="mb-4 text-sm font-semibold">Company</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about" className="text-sm text-background/70 transition-colors hover:text-background">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-sm text-background/70 transition-colors hover:text-background">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-sm text-background/70 transition-colors hover:text-background">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/quote" className="text-sm text-background/70 transition-colors hover:text-background">
+                  Get Quote
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Legal */}
+          <nav aria-label="Legal">
+            <h4 className="mb-4 text-sm font-semibold">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/privacy" className="text-sm text-background/70 transition-colors hover:text-background">
                   Privacy Policy
                 </Link>
-                <Link
-                  href="/terms"
-                  className="text-white/80 underline-offset-2 transition-all hover:text-white hover:underline"
-                >
+              </li>
+              <li>
+                <Link href="/terms" className="text-sm text-background/70 transition-colors hover:text-background">
                   Terms of Service
                 </Link>
-              </div>
-            </div>
-            <div className="mt-3 text-center text-xs text-white/60">
-              <p>
-                We improve our products and advertising by using Microsoft Clarity to see how you
-                use our website. By using our site, you agree that we and Microsoft can collect and
-                use this data. Our{' '}
-                <Link href="/privacy" className="underline transition-colors hover:text-white">
-                  privacy statement
-                </Link>{' '}
-                has more details.
-              </p>
-            </div>
+              </li>
+              <li>
+                <a href="/sitemap.xml" className="text-sm text-background/70 transition-colors hover:text-background">
+                  Sitemap
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Contact */}
+          <div>
+            <h4 className="mb-4 text-sm font-semibold">Contact</h4>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2 text-sm">
+                <Phone className="h-4 w-4 text-background/70" />
+                <span>{settings.phone}</span>
+              </li>
+              <li className="flex items-center gap-2 text-sm">
+                <Mail className="h-4 w-4 text-background/70" />
+                <a href={`mailto:${settings.email}`} className="text-background/70 hover:text-background">
+                  {settings.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-background/70">
+                <MapPin className="h-4 w-4" />
+                <span>Evansville, IN</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-background/20 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-background/60 sm:flex-row">
+            <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
+            <p>Veteran-Owned · Licensed & Insured</p>
           </div>
         </div>
       </div>

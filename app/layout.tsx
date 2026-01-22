@@ -1,6 +1,7 @@
 import type React from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import '@radix-ui/themes/styles.css'
 import './globals.css'
 import Script from 'next/script'
@@ -13,13 +14,6 @@ import { RoutePrefetcher } from '@/components/route-prefetcher'
 import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
 import { Theme } from '@radix-ui/themes'
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -65,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
         <Script

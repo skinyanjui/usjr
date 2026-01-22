@@ -2,9 +2,7 @@
 
 import type React from 'react'
 import Link from 'next/link'
-import { Calendar, Clock, User, Share2, ArrowLeft, Tag, BookOpen } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { settings } from '@/lib/cms-content'
+import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
 import Script from 'next/script'
 
 export interface BlogPostMeta {
@@ -63,8 +61,8 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
           {/* Category badge */}
           <div className="mb-4">
-            <span className="linear-border bg-background inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium">
-              <Tag className="h-3.5 w-3.5" />
+            <span className="bg-muted/50 text-foreground border border-border/50 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium tracking-wide">
+              <Tag className="h-3 w-3 text-muted-foreground" />
               {meta.category}
             </span>
           </div>
@@ -95,7 +93,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             </div>
             <button
               onClick={handleShare}
-              className="linear-border bg-background hover:bg-muted/50 ml-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all"
+              className="border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground ml-auto flex items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label="Share article"
             >
               <Share2 className="h-3.5 w-3.5" />
@@ -329,11 +327,11 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         {meta.tags && meta.tags.length > 0 && (
           <div className="border-border/50 mt-12 border-t pt-8">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-foreground text-[13px] font-semibold">Tags:</span>
+              <span className="text-foreground text-xs font-semibold uppercase tracking-wider mr-2">Tags:</span>
               {meta.tags.map(tag => (
                 <span
                   key={tag}
-                  className="linear-border bg-muted/50 text-muted-foreground rounded-full px-3 py-1 text-[13px] font-medium"
+                  className="bg-muted text-muted-foreground border border-transparent hover:border-border rounded-md px-2.5 py-1 text-xs font-medium transition-colors"
                 >
                   {tag}
                 </span>
@@ -342,38 +340,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
         )}
 
-        {/* CTA section with Linear-style card */}
-        <div className="linear-card mt-16 rounded-2xl p-8">
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-white">
-              <BookOpen className="h-6 w-6" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-foreground mb-2 text-[20px] font-semibold">
-                Need Professional Help?
-              </h2>
-              <p className="text-muted-foreground mb-6 text-[15px] leading-relaxed">
-                Our experienced team is ready to help with your junk removal project. Get your free
-                quote today!
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  className="bg-foreground text-background h-10 rounded-lg px-4 text-[14px] font-semibold hover:brightness-110"
-                >
-                  <a href={`tel:${settings.phoneE164}`}>📞 Call {settings.phone}</a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="linear-border bg-background hover:bg-muted/50 h-10 rounded-lg px-4 text-[14px] font-semibold"
-                >
-                  <Link href="/quote">Get Free Quote</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         {/* Related posts with Linear-style cards */}
         {relatedPosts && relatedPosts.length > 0 && (
@@ -384,17 +351,17 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                 <Link
                   key={post.href}
                   href={post.href}
-                  className="linear-card group block rounded-xl p-6 transition-all hover:shadow-md"
+                  className="group block border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:bg-muted/30"
                 >
                   <div className="mb-2">
-                    <span className="text-muted-foreground text-[12px] font-semibold tracking-wide uppercase">
+                    <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="text-foreground group-hover:text-primary mb-2 text-[16px] leading-snug font-semibold transition-colors">
+                  <h3 className="text-foreground group-hover:text-primary mb-2 text-base leading-snug font-bold transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground text-[14px] leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </Link>

@@ -85,8 +85,8 @@ export async function POST(req: Request) {
         console.warn('RESEND_API_KEY not configured - skipping email notifications')
       } else {
         await resendClient.emails.send({
-          from: 'Quote Form <samuel.kinyanjui.sk@gmail.com>',
-          to: 'samuel.kinyanjui.sk@gmail.com',
+          from: 'Quote Form <unclesamjunkremoval@gmail.com>',
+          to: 'unclesamjunkremoval@gmail.com',
           replyTo: parsed.data.email,
           subject: `New Quote Request from ${parsed.data.name}`,
           html: `
@@ -115,7 +115,7 @@ export async function POST(req: Request) {
         console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
       } else {
         await resendClient.emails.send({
-          from: 'US Junk Removal <samuel.kinyanjui.sk@gmail.com>',
+          from: 'US Junk Removal <unclesamjunkremoval@gmail.com>',
           to: parsed.data.email,
           subject: 'Your Quote Request - US Junk Removal & Cleaning',
           html: `
@@ -138,40 +138,37 @@ export async function POST(req: Request) {
                 <td style="padding: 10px 0; font-weight: bold;">Email:</td>
                 <td style="padding: 10px 0;">${parsed.data.email}</td>
               </tr>
-              ${
-                parsed.data.address
-                  ? `
+              ${parsed.data.address
+              ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Property Address:</td>
                 <td style="padding: 10px 0;">${parsed.data.address}</td>
               </tr>
               `
-                  : ''
-              }
+              : ''
+            }
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Service Requested:</td>
                 <td style="padding: 10px 0;">${parsed.data.service}</td>
               </tr>
-              ${
-                parsed.data.projectSize
-                  ? `
+              ${parsed.data.projectSize
+              ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Project Size:</td>
                 <td style="padding: 10px 0;">${parsed.data.projectSize}</td>
               </tr>
               `
-                  : ''
-              }
-              ${
-                parsed.data.details
-                  ? `
+              : ''
+            }
+              ${parsed.data.details
+              ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold; vertical-align: top;">Additional Details:</td>
                 <td style="padding: 10px 0;">${parsed.data.details}</td>
               </tr>
               `
-                  : ''
-              }
+              : ''
+            }
             </table>
 
             <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-left: 4px solid #16a34a;">

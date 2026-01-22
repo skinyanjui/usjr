@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Check, X, Truck, Wrench, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
-import { settings } from '@/lib/cms-content'
+
 
 const services = [
   {
@@ -108,9 +108,8 @@ export default function CompareClient() {
           return (
             <Card
               key={service.id}
-              className={`relative transition-all duration-300 hover:shadow-lg ${
-                isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
-              }`}
+              className={`relative transition-all duration-300 hover:shadow-lg ${isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
+                }`}
             >
               <CardHeader className="pb-4 text-center">
                 <div
@@ -181,15 +180,14 @@ export default function CompareClient() {
                   <Button
                     asChild
                     variant="outline"
-                    className={`w-full bg-transparent ${
-                      service.color === 'red'
+                    className={`w-full bg-transparent ${service.color === 'red'
+                      ? 'border-gray-300 text-gray-900'
+                      : service.color === 'orange'
                         ? 'border-gray-300 text-gray-900'
-                        : service.color === 'orange'
+                        : service.color === 'green'
                           ? 'border-gray-300 text-gray-900'
-                          : service.color === 'green'
-                            ? 'border-gray-300 text-gray-900'
-                            : ''
-                    }`}
+                          : ''
+                      }`}
                   >
                     <Link
                       href={service.id === 'cleaning' ? '/cleaning' : `/services/${service.id}`}
@@ -206,50 +204,7 @@ export default function CompareClient() {
         })}
       </div>
 
-      {selectedServices.length > 0 && (
-        <Card className="border-border bg-muted/30">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-foreground mb-4 text-2xl font-bold">Ready to Get Started?</h3>
-            <p className="text-muted-foreground mb-6">
-              You've selected {selectedServices.length} service
-              {selectedServices.length > 1 ? 's' : ''}. Get a free quote or bundle multiple services
-              for potential savings.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button asChild className="bg-gray-900 hover:bg-gray-900">
-                <Link href="/quote" prefetch>
-                  Get Free Quote
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      <Card className="mt-12">
-        <CardContent className="p-8 text-center">
-          <h3 className="text-foreground mb-4 text-2xl font-bold">
-            Still Not Sure Which Service You Need?
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            Our team can help you choose the right service for your project. Get personalized
-            recommendations based on your specific needs.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button asChild className="bg-gray-800 hover:bg-gray-800">
-              <Link href="/quote" prefetch>
-                Get Personalized Quote
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/faq">View FAQ</Link>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
     </>
   )
 }

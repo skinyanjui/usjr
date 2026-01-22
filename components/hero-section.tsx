@@ -1,154 +1,50 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { RotatingLocation } from '@/components/rotating-location'
-
-const LOCATIONS = [
-  'Evansville',
-  'Newburgh',
-  'Henderson',
-  'Owensboro',
-  'Boonville',
-  'Princeton',
-  'Mount Carmel',
-  'Mount Vernon',
-  'New Harmony',
-]
+import { Shield, Clock } from 'lucide-react'
+import { HeroQuoteForm } from '@/components/hero-quote-form'
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-[70vh] overflow-hidden">
-      {/* Background Image - Clear debris-free yard */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2940&auto=format&fit=crop"
-          alt="Clean and well-maintained yard"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        {/* Gradient overlay - stronger on left for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/75 to-gray-900/40" />
-      </div>
-
-      {/* Hero Content */}
-      <div className="relative z-10 flex min-h-[70vh] items-center">
-        <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="flex max-w-4xl flex-col justify-center">
-            <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              Junk Removal & Cleaning Services in{' '}
-              <span className="text-primary">
-                <RotatingLocation locations={LOCATIONS} />
-              </span>
-            </h1>
-
-            <p className="mb-8 text-lg text-white/90 sm:text-xl lg:text-2xl">
-              Veteran-owned and operated. Serving the Tri-State area with same-day service.
+    <section className="bg-background border-b border-border">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        {/* Split layout: Story + Quote Form */}
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left: Story-focused content */}
+          <div>
+            {/* Eyebrow */}
+            <p className="text-muted-foreground mb-4 text-sm font-medium tracking-wide uppercase">
+              Veteran-Owned · Serving the Tri-State Area
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/quote"
-                className="linear-button flex min-h-[52px] items-center px-8 text-lg"
-              >
-                Get Free Quote
-              </Link>
-              <Link
-                href="/services/junk-removal"
-                className="linear-border flex min-h-[52px] items-center rounded-lg border border-white bg-transparent px-8 py-3 text-lg font-semibold text-white transition-all hover:bg-white/10 hover:shadow-lg"
-              >
-                View Services
-              </Link>
-            </div>
+            {/* Main headline - Problem → Solution */}
+            <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-5xl">
+              Your Space, Cleared.
+              <br />
+              <span className="text-muted-foreground">Your Peace of Mind, Restored.</span>
+            </h1>
 
-            {/* Trust Badges - Stack in two rows on mobile */}
-            <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6">
-              {/* Licensed & Insured */}
-              <div className="flex flex-shrink-0 items-center gap-2 text-white/90">
-                <svg
-                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-                <span className="text-xs font-medium whitespace-nowrap sm:text-sm lg:text-base">
-                  Licensed & Insured
-                </span>
+            {/* Supporting copy */}
+            <p className="text-muted-foreground mb-8 text-lg">
+              From cluttered garages to full estate cleanouts, we handle the heavy lifting
+              so you can reclaim your space. Same-day service available.
+            </p>
+
+            {/* Trust indicators */}
+            <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5" aria-hidden="true" />
+                <span className="text-sm font-medium">Licensed & Insured</span>
               </div>
-
-              {/* Same-Day Service */}
-              <div className="flex flex-shrink-0 items-center gap-2 text-white/90">
-                <svg
-                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span className="text-xs font-medium whitespace-nowrap sm:text-sm lg:text-base">
-                  Same-Day Service
-                </span>
-              </div>
-
-              {/* Eco-Friendly */}
-              <div className="flex flex-shrink-0 items-center gap-2 text-white/90">
-                <svg
-                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span className="text-xs font-medium whitespace-nowrap sm:text-sm lg:text-base">
-                  Eco-Friendly
-                </span>
-              </div>
-
-              {/* Veteran-Owned */}
-              <div className="flex flex-shrink-0 items-center gap-2 text-white/90">
-                <svg
-                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                  />
-                </svg>
-                <span className="text-xs font-medium whitespace-nowrap sm:text-sm lg:text-base">
-                  Veteran-Owned
-                </span>
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5" aria-hidden="true" />
+                <span className="text-sm font-medium">Same-Day Service</span>
               </div>
             </div>
+          </div>
+
+          {/* Right: Quote Form */}
+          <div className="lg:justify-self-end lg:max-w-md w-full">
+            <HeroQuoteForm />
           </div>
         </div>
       </div>

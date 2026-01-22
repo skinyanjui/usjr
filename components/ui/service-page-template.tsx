@@ -1,12 +1,10 @@
 import type React from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Clock } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { Phone, ArrowRight } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
 import { QuoteCtaLink } from '@/components/quote-cta-link'
-import { RelatedServices } from '@/components/related-services'
+import { InternalLinks } from '@/components/ui/internal-links'
 import { StructuredData } from '@/components/structured-data'
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
 
@@ -28,63 +26,38 @@ export interface PricingTier {
 }
 
 export interface ServicePageTemplateProps {
-  // Hero section
   title: string
   description: string
   badges?: string[]
-
-  // Theme (currently only 'primary' is supported)
   theme?: 'primary'
-
-  // Structured data
   serviceCategory?: string
   serviceArea?: string[]
-
-  // Features section
   features: Array<{
     icon: LucideIcon
     title: string
     description: string
   }>
-
-  // Steps/Process section
   steps: ServiceStep[]
   stepsTitle?: string
-
-  // Pricing section
   pricing: PricingTier[]
   pricingTitle?: string
   pricingNote?: string
-
-  // FAQ section
   faqs: FAQ[]
-
-  // CTA section
   ctaPrimary?: string
   ctaSecondary?: string
-
-  // Additional content
+  relatedContent?: {
+    title: string
+    href: string
+    description: string
+    type: 'service' | 'blog' | 'location'
+    category?: string
+  }[]
   children?: React.ReactNode
-}
-
-const themeClasses = {
-  primary: {
-    background: 'bg-background',
-    primary: 'bg-primary hover:bg-primary/90 text-primary-foreground',
-    secondary: 'border-primary text-primary hover:bg-primary hover:text-primary-foreground',
-    accent: 'text-primary',
-    icon: 'bg-primary text-primary-foreground',
-    badge: 'bg-muted text-muted-foreground border-border',
-  },
 }
 
 export function ServicePageTemplate({
   title,
   description,
-  badges = [],
-  theme = 'primary',
-  serviceCategory,
-  serviceArea,
   features = [],
   steps = [],
   stepsTitle = 'How It Works',
@@ -92,49 +65,37 @@ export function ServicePageTemplate({
   pricingTitle = 'Pricing',
   pricingNote,
   faqs = [],
-  ctaPrimary = `📞 ${UNIFORM_OFFERS.CALL_NOW}`,
+  ctaPrimary = `Call ${settings.phone}`,
   ctaSecondary = UNIFORM_OFFERS.GET_FREE_QUOTE,
+  relatedContent = [],
+  serviceCategory,
+  serviceArea,
   children,
 }: ServicePageTemplateProps) {
-  const classes = themeClasses[theme]
-
   return (
     <main className="min-h-screen">
-      <PageHero title={title} description={description} color="primary" />
-      {/* Hero Section */}
-      <section className={`pt-12 pb-12 ${classes.background}`}>
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-8 text-center">
-            <h2 className="text-foreground mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">
-              What to Expect
-            </h2>
+      <PageHero title={title} description={description} />
 
-            {badges.length > 0 && (
-              <div className="text-muted-foreground flex items-center justify-center gap-4">
-                {badges.map((badge, index) => (
-                  <div key={index} className="flex items-center gap-1">
-                    <Clock className={`h-5 w-5 ${classes.accent}`} />
-                    <span>{badge}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="mb-12 grid items-center gap-8 lg:grid-cols-2">
+      {/* Features Section */}
+      <section className="border-b border-border py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Left: Features */}
             <div>
-              <h2 className="text-foreground mb-4 text-xl font-bold sm:text-2xl">
+              <h2 className="mb-6 text-2xl font-bold text-foreground">
                 Why Choose Uncle Sam Junk Removal?
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {features.map((feature, index) => {
                   const IconComponent = feature.icon
                   return (
-                    <div key={index} className="flex items-start gap-3">
-                      <IconComponent className={`h-6 w-6 ${classes.accent} mt-1`} />
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted">
+                        <IconComponent className="h-5 w-5 text-foreground" />
+                      </div>
                       <div>
-                        <h3 className="text-foreground font-semibold">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
+                        <h3 className="font-semibold text-foreground">{feature.title}</h3>
+                        <p className="text-sm text-muted-foreground">{feature.description}</p>
                       </div>
                     </div>
                   )
@@ -142,41 +103,41 @@ export function ServicePageTemplate({
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  className={`${classes.primary} px-6 py-2.5 text-base font-semibold text-white`}
+                <a
+                  href={`tel:${settings.phoneE164}`}
+                  className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
                 >
-                  <a href={`tel:${settings.phoneE164}`}>{ctaPrimary}</a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className={`${classes.secondary} bg-transparent px-6 py-2.5 text-base font-semibold`}
+                  <Phone className="h-4 w-4" />
+                  {ctaPrimary}
+                </a>
+                <QuoteCtaLink
+                  location="service-template"
+                  label={ctaSecondary}
+                  className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
                 >
-                  <QuoteCtaLink location="service-template" label={ctaSecondary}>
-                    {ctaSecondary}
-                  </QuoteCtaLink>
-                </Button>
+                  {ctaSecondary}
+                  <ArrowRight className="h-4 w-4" />
+                </QuoteCtaLink>
               </div>
             </div>
 
-            {/* Pricing Card */}
+            {/* Right: Pricing */}
             {pricing.length > 0 && (
-              <div className="bg-card rounded-2xl p-8 shadow-lg">
-                <h3 className="text-foreground mb-6 text-2xl font-bold">{pricingTitle}</h3>
+              <div className="rounded-xl border border-border bg-card p-6">
+                <h3 className="mb-6 text-xl font-bold text-foreground">{pricingTitle}</h3>
                 <div className="space-y-4">
                   {pricing.map((tier, index) => (
                     <div
                       key={index}
-                      className="border-border flex items-center justify-between border-b py-3"
+                      className="flex items-center justify-between border-b border-border pb-3 last:border-0"
                     >
                       <div>
-                        <span className="text-foreground font-medium">{tier.name}</span>
+                        <span className="font-medium text-foreground">{tier.name}</span>
                         {tier.description && (
-                          <div className="text-muted-foreground text-sm">{tier.description}</div>
+                          <p className="text-sm text-muted-foreground">{tier.description}</p>
                         )}
                       </div>
-                      <span className={`${classes.accent} font-bold`}>
+                      <span className="font-semibold text-foreground">
                         {tier.price.startsWith('From')
                           ? tier.price
                           : `${UNIFORM_OFFERS.STARTING_AT} ${tier.price}`}
@@ -184,13 +145,9 @@ export function ServicePageTemplate({
                     </div>
                   ))}
                 </div>
-                {pricingNote && <p className="text-muted-foreground mt-4 text-sm">{pricingNote}</p>}
-                {!pricingNote && (
-                  <p className="text-muted-foreground mt-4 text-sm">
-                    {PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}.{' '}
-                    {PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.
-                  </p>
-                )}
+                <p className="mt-4 text-sm text-muted-foreground">
+                  {pricingNote || `${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.`}
+                </p>
               </div>
             )}
           </div>
@@ -201,31 +158,22 @@ export function ServicePageTemplate({
 
       {/* Steps Section */}
       {steps.length > 0 && (
-        <section className="bg-card py-16">
-          <div className="mx-auto max-w-7xl px-4">
-            <h2 className="text-foreground mb-12 text-center text-3xl font-bold">{stepsTitle}</h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <section className="border-b border-border bg-muted/30 py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <h2 className="mb-10 text-center text-2xl font-bold text-foreground">
+              {stepsTitle}
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, index) => {
                 const IconComponent = step.icon
                 return (
-                  <Card
-                    key={index}
-                    className="glass text-center transition-transform duration-300 hover:scale-105"
-                  >
-                    <CardHeader>
-                      <div
-                        className={`${classes.icon} mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full`}
-                      >
-                        <IconComponent className="h-8 w-8 text-white" />
-                      </div>
-                      <CardTitle className="text-foreground text-xl font-bold">
-                        {step.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">{step.description}</p>
-                    </CardContent>
-                  </Card>
+                  <div key={index} className="rounded-xl border border-border bg-card p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
+                      <IconComponent className="h-6 w-6 text-foreground" />
+                    </div>
+                    <h3 className="mb-2 font-semibold text-foreground">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </div>
                 )
               })}
             </div>
@@ -233,33 +181,41 @@ export function ServicePageTemplate({
         </section>
       )}
 
-      {/* Related Services */}
-      <section className="bg-card">
-        <RelatedServices />
-      </section>
+      {/* Related Services & Internal Links */}
+      {relatedContent && relatedContent.length > 0 && (
+        <section className="bg-card py-12 border-t border-border">
+          <div className="mx-auto max-w-7xl px-4">
+            <InternalLinks
+              title="Related Services & Helpful Resources"
+              links={relatedContent}
+              variant="grid"
+              theme="primary"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Internal linking section (legacy support if children passed) */}
+      {/* {children} is now strictly for other injected content, not links usually } */}
 
       {/* FAQ Section */}
-      <section className="bg-muted/30 py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-foreground mb-12 text-center text-3xl font-bold">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <Card key={index} className="glass">
-                <CardHeader>
-                  <CardTitle className="text-foreground text-lg font-semibold">
-                    {faq.question}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
+      {faqs.length > 0 && (
+        <section className="border-t border-border py-16">
+          <div className="mx-auto max-w-4xl px-4">
+            <h2 className="mb-10 text-center text-2xl font-bold text-foreground">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="rounded-xl border border-border bg-card p-6">
+                  <h3 className="mb-2 font-semibold text-foreground">{faq.question}</h3>
+                  <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Structured Data */}
       <StructuredData
@@ -268,8 +224,7 @@ export function ServicePageTemplate({
           name: title,
           description: description,
           category: serviceCategory || 'Junk Removal Service',
-          price:
-            pricing.length > 0 ? pricing[0]?.price || 'Contact for pricing' : 'Contact for pricing',
+          price: pricing.length > 0 ? pricing[0]?.price || 'Contact for pricing' : 'Contact for pricing',
           serviceArea: serviceArea || settings.serviceAreas,
           offers: [
             {
@@ -285,7 +240,6 @@ export function ServicePageTemplate({
         }}
       />
 
-      {/* FAQ Structured Data */}
       {faqs.length > 0 && <StructuredData type="FAQPage" data={{ faqs: faqs }} />}
     </main>
   )
