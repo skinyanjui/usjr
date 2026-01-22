@@ -11,6 +11,7 @@ import { NAV } from '@/lib/nav'
 
 const ServicesDropdown = dynamic(() => import('./header-services-dropdown'), { ssr: false })
 const LocationsDropdown = dynamic(() => import('./header-locations-dropdown'), { ssr: false })
+const CompanyDropdown = dynamic(() => import('./header-company-dropdown'), { ssr: false })
 
 export function Header() {
   const router = useRouter()
@@ -21,6 +22,7 @@ export function Header() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const servicesMenuId = 'services-menu'
   const locationsMenuId = 'locations-menu'
+  const companyMenuId = 'company-menu'
 
   const handleDropdownEnter = (dropdown: string) => {
     if (timeoutRef.current) {
@@ -76,20 +78,6 @@ export function Header() {
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 lg:flex">
-            <Link
-              href="/"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/about"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              About
-            </Link>
-
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter('services')}
@@ -140,19 +128,30 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            <div
+              className="relative"
+              onMouseEnter={() => handleDropdownEnter('company')}
+              onMouseLeave={handleDropdownLeave}
             >
-              Blog
-            </Link>
-
-            <Link
-              href="/faq"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              FAQ
-            </Link>
+              <button
+                type="button"
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                aria-haspopup="menu"
+                aria-expanded={activeDropdown === 'company'}
+                aria-controls={companyMenuId}
+                onClick={() => setActiveDropdown(prev => (prev === 'company' ? null : 'company'))}
+              >
+                Company
+                <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+              {activeDropdown === 'company' && (
+                <CompanyDropdown
+                  companyMenuId={companyMenuId}
+                  onMouseEnter={() => handleDropdownEnter('company')}
+                  onMouseLeave={handleDropdownLeave}
+                />
+              )}
+            </div>
           </div>
 
           {/* Desktop actions */}
@@ -208,21 +207,6 @@ export function Header() {
             className="mt-4 max-h-[70vh] overflow-y-auto border-t border-border pt-4 lg:hidden"
           >
             <div className="flex flex-col space-y-1">
-              <Link
-                href="/"
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                onClick={closeMobileMenuAndSections}
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                onClick={closeMobileMenuAndSections}
-              >
-                About
-              </Link>
-
               {/* Services accordion */}
               <div>
                 <button
@@ -281,20 +265,21 @@ export function Header() {
                 )}
               </div>
 
-              <Link
-                href="/blog"
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                onClick={closeMobileMenuAndSections}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/faq"
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                onClick={closeMobileMenuAndSections}
-              >
-                FAQ
-              </Link>
+              {/* Company accordion - simplified for mobile as direct links or accordion? Let's do accordion for consistency */}
+              <div>
+                <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
+                  {(NAV.find(i => i.label === 'Company')?.children ?? []).map(item => (
+                    <Link
+                      key={item.href}
+                      href={item.href!}
+                      className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      onClick={closeMobileMenuAndSections}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
               <div className="pt-4">
                 <Link

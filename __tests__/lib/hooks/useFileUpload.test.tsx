@@ -26,7 +26,7 @@ describe('useFileUpload', () => {
     })
 
     expect(result.current.files).toHaveLength(1)
-    expect(result.current.files[0].name).toBe('test.jpg')
+    expect(result.current.files[0]?.name).toBe('test.jpg')
   })
 
   it('should not exceed max files limit', () => {
@@ -73,7 +73,7 @@ describe('useFileUpload', () => {
     })
 
     expect(result.current.files).toHaveLength(1)
-    expect(result.current.files[0].name).toBe('file2.jpg')
+    expect(result.current.files[0]?.name).toBe('file2.jpg')
   })
 
   it('should reset files', () => {

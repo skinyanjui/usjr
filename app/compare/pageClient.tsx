@@ -33,7 +33,7 @@ const services = [
     name: 'Light Demolition',
     icon: Wrench,
     description: 'Shed, deck, and playset tear-down with debris hauling',
-    priceRange: 'From $399',
+    priceRange: 'From $389',
     timeframe: 'Scheduled within 3-5 days',
     bestFor: 'Small structure removal & exterior projects',
     features: [

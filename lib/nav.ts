@@ -1,8 +1,6 @@
 export type NavItem = { label: string; href?: string; children?: NavItem[] }
 
 export const NAV: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   {
     label: 'Services',
     children: [
@@ -39,9 +37,15 @@ export const NAV: NavItem[] = [
       { label: 'New Harmony, IN', href: '/locations/new-harmony-in' },
     ],
   },
-  { label: 'Blog', href: '/blog' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Get Free Quote', href: '/quote' },
+  {
+    label: 'Company',
+    children: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Pricing', href: '/pricing' },
+    ],
+  },
 ]
 
 export const CTAS = {
