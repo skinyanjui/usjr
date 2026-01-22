@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, MapPin, Wrench } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+
 
 interface RelatedServicesProps {
   currentPath?: string

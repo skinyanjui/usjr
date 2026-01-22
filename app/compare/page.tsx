@@ -18,7 +18,6 @@ export default function ComparePage() {
       <PageHero
         title="Compare Services"
         description="Junk removal vs light demolition vs cleaning"
-        color="neutral"
       />
       <div className="mx-auto max-w-7xl px-4 pt-8 pb-16">
         <CompareClient />

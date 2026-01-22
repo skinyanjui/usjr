@@ -14,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
@@ -294,8 +293,8 @@ export function QuoteFormStandalone() {
               type="button"
               onClick={() => setSegment('residential')}
               className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'residential'
-                  ? 'bg-background text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-background text-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               Residential
@@ -304,8 +303,8 @@ export function QuoteFormStandalone() {
               type="button"
               onClick={() => setSegment('commercial')}
               className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'commercial'
-                  ? 'bg-background text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-background text-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               Commercial
@@ -501,7 +500,7 @@ export function QuoteFormStandalone() {
                   <span className="mt-1 text-[10px] text-muted-foreground">Upload</span>
                   <input type="file" className="hidden" multiple accept="image/*" onChange={handleFileUpload} />
                 </label>
-                {uploadedFiles.map((file, i) => (
+                {uploadedFiles.map((_, i) => (
                   <div key={i} className="relative aspect-square rounded-md border bg-muted/30 p-1">
                     <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-sm">
                       <Camera className="h-4 w-4 text-muted-foreground/50" />
