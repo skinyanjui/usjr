@@ -201,7 +201,8 @@ export function parsePostDate(dateString: string): Date {
 
 // Get posts sorted by date (newest first)
 export function getSortedPosts(): BlogPost[] {
-  return [...blogPosts].sort((a, b) => {
-    return parsePostDate(b.date).getTime() - parsePostDate(a.date).getTime()
-  })
+  return blogPosts
+    .map((post) => ({ post, time: parsePostDate(post.date).getTime() }))
+    .sort((a, b) => b.time - a.time)
+    .map((item) => item.post)
 }
