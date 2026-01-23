@@ -91,7 +91,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`linear-card linear-interactive overflow-hidden ${sizes.card} text-sm sm:text-base`}
+      className={`overflow-hidden transition-all hover:shadow-md ${sizes.card} text-sm sm:text-base`}
     >
       <div className={`relative ${sizes.banner} w-full overflow-hidden`}>
         {image ? (
@@ -116,7 +116,7 @@ export function ServiceCard({
         </div>
         <p className={`${sizes.description} text-muted-foreground`}>{description}</p>
         <div className="pt-2">
-          <Button asChild size="xs" className={`${colors.button} text-primary-foreground`}>
+          <Button asChild size="sm" className={`${colors.button} text-primary-foreground`}>
             <Link href={link} aria-label={`View ${title} details`} title={`View ${title} details`}>
               View {title} details
             </Link>
