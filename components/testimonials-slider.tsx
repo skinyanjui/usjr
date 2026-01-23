@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
 import { type Testimonial } from '@/lib/cms-content'
+import { cn } from '@/lib/utils'
 
 const STAR_ICONS = [0, 1, 2, 3, 4]
 
@@ -20,16 +21,17 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
   showNavigation = true,
 }: TestimonialsSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
-    if (!autoPlay || testimonials.length <= 1) return
+    if (!autoPlay || isPaused || testimonials.length <= 1) return
 
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % testimonials.length)
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [autoPlay, testimonials.length])
+  }, [autoPlay, isPaused, testimonials.length])
 
   const nextTestimonial = () => {
     setCurrentIndex(prev => (prev + 1) % testimonials.length)
@@ -47,18 +49,31 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
   if (!currentTestimonial) return null
 
   return (
-    <div className="relative mx-auto max-w-4xl">
+    <div
+      className="relative mx-auto max-w-4xl"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
       <Card className="bg-card/80 backdrop-blur-sm">
         <CardContent className="p-8">
-          <div className="text-center">
+          <div
+            className="text-center testimonial-content"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             {/* Rating Stars */}
             <div className="mb-4 flex justify-center">
               {STAR_ICONS.map(i => (
                 <Star
                   key={i}
-                  className={`h-3.5 w-3.5 ${
-                    i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
-                  }`}
+                  className={cn(
+                    'h-3.5 w-3.5',
+                    i < currentTestimonial.rating
+                      ? 'fill-current text-yellow-400'
+                      : 'text-gray-500'
+                  )}
                   aria-hidden="true"
                 />
               ))}
@@ -71,7 +86,9 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
 
             {/* Customer Info */}
             <div className="mb-2 flex items-center justify-center gap-2">
-              <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
+              <span className="text-foreground font-semibold">
+                {currentTestimonial.name}
+              </span>
               <span className="text-muted-foreground">•</span>
               <div className="text-muted-foreground flex items-center gap-1">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -80,7 +97,9 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
             </div>
 
             {/* Service Type */}
-            <div className="text-sm font-medium text-gray-900">{currentTestimonial.service}</div>
+            <div className="text-sm font-medium text-gray-900">
+              {currentTestimonial.service}
+            </div>
 
             {/* Date */}
             <div className="text-muted-foreground mt-2 text-xs">
@@ -114,9 +133,10 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
                 type="button"
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 w-2 rounded-full transition-colors ${
+                className={cn(
+                  'h-2 w-2 rounded-full transition-colors',
                   index === currentIndex ? 'bg-gray-800' : 'bg-gray-300'
-                }`}
+                )}
                 aria-label={`Go to testimonial ${index + 1}`}
                 aria-pressed={index === currentIndex}
               />

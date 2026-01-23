@@ -126,6 +126,8 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
     }
   }, [])
 
+  const currentReview = reviews[currentIndex]
+
   return (
     <section className="px-4 py-6">
       <div className="mx-auto max-w-7xl">
@@ -156,13 +158,17 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
         </div>
 
         {/* Review cards carousel */}
-        <div className="relative mt-4">
+        <div
+          className="relative mt-4"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
           {/* Carousel viewport */}
           <div
             ref={carouselRef}
             className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 md:gap-5"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
           >
             {reviews.map(t => (
               <div
@@ -203,6 +209,12 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
+        </div>
+
+        {/* Screen reader announcement for auto-playing reviews */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {currentReview &&
+            `Review ${currentIndex + 1} of ${reviews.length}: ${currentReview.name} says ${currentReview.text}`}
         </div>
       </div>
     </section>
