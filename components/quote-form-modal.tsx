@@ -96,7 +96,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
       formData: {
         ...formData,
         details,
-        attachments: uploadedFiles,
+        attachments: uploadedFiles.map(f => f.file),
       },
       source: `quote-modal-${segment}`,
       onSuccess: () => setIsSubmitted(true),
@@ -386,21 +386,21 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
 
             {uploadedFiles.length > 0 && (
               <div className="mt-3 grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3">
-                {uploadedFiles.map((file, index) => (
-                  <div key={index} className="relative">
+                {uploadedFiles.map((fileWrapper) => (
+                  <div key={fileWrapper.id} className="relative">
                     <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-100">
                       <Camera className="h-5 w-5 text-gray-500 sm:h-6 sm:w-6" />
                     </div>
                     <button
                       type="button"
-                      onClick={() => removeFile(index)}
+                      onClick={() => removeFile(fileWrapper.id)}
                       className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-gray-900 text-xs text-white"
-                      aria-label={`Remove file ${file.name}`}
+                      aria-label={`Remove file ${fileWrapper.file.name}`}
                     >
                       <X className="h-3 w-3" />
                     </button>
                     <p className="text-muted-foreground mt-1 truncate text-[10px] sm:text-xs">
-                      {file.name}
+                      {fileWrapper.file.name}
                     </p>
                   </div>
                 ))}
