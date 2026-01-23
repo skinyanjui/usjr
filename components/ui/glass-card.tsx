@@ -7,26 +7,19 @@ interface GlassCardProps extends CardProps {
   hover?: boolean
 }
 
-// Deprecated "GlassCard" - now just a clean Geist card
 export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
   ({ className, variant = 'default', hover = true, ...props }, ref) => {
-    // Geist doesn't use glass. We map "glass" concepts to Geist surfaces.
-    // default -> standard card (white w/ border)
-    // elevated -> slightly more shadow
-    // white -> standard card
-
     const baseClasses = cn(
-      'bg-card text-card-foreground border-border', // Standard clean card
-      'px-6 py-6 space-y-4',
-      className
+      variant === 'white' ? 'bg-card text-foreground' :
+      variant === 'elevated' ? 'bg-popover text-popover-foreground border-border' :
+      'glass dark:glass-dark',
+      'px-6 py-6 space-y-4 text-foreground'
     )
-
-    // Geist cards are usually static or have very subtle hover
-    const hoverClasses = hover ? 'hover:border-foreground/20 transition-colors duration-200' : ''
+    const hoverClasses = hover ? 'hover:shadow-xl transition-all duration-300' : ''
 
     return (
       <Card
-        className={cn(baseClasses, hoverClasses)}
+        className={cn(baseClasses, hoverClasses, className)}
         ref={ref}
         {...props}
       />

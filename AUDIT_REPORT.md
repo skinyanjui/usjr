@@ -2,36 +2,33 @@
 
 ## 1. Design System & UX
 **Current State:**
-- The project is now fully aligned with the **Geist Design System** (Vercel's design language).
-- **Fonts:** Correctly using `Geist Sans` and `Geist Mono`.
-- **Colors:** Updated `globals.css` to use a strict monochrome palette (Black/White/Gray) with `hsl` variables, replacing the previous "SaaS-inspired" OKLCH blue/salmon palette.
+- The project retains its custom **"Friendly" SaaS Design System** (OKLCH-based colors, Glassmorphism) as preferred by the user, providing a welcoming visual identity.
+- **Fonts:** Correctly using `Geist Sans` and `Geist Mono` for typography.
+- **Colors:** Verified `globals.css` utilizes a vibrant OKLCH palette (Blues, Salmons, Slate neutrals) optimised for perceptual uniformity.
 - **Components:**
-    - **Buttons:** Refactored to be flat, high-contrast, and minimal (removed hover translations and glass effects).
-    - **Cards:** Refactored to be clean, bordered surfaces (`border-gray-200`) without heavy glassmorphism.
-    - **Glassmorphism:** Removed heavy `.glass` utilities. `GlassCard` is now a "Subtle" card wrapper that fits the Geist aesthetic.
+    - **Buttons:** Retained "friendly" interactions (hover translations, shadows) and variants (`default`, `xs` sizes verified).
+    - **Cards:** Retained Glassmorphic utilities (`.glass`, `.glass-dark`) and clean card styles.
+- **Consistency:** All 70+ pages use consistent templates (`ServicePageTemplate`, `LocationPageTemplate`) that leverage these global styles.
 
 **Action Taken:**
-- Refactored `app/globals.css`.
-- Refactored `components/ui/button.tsx`.
-- Refactored `components/ui/card.tsx`.
-- Refactored `components/ui/service-card.tsx` (fixed button size issue).
-- Refactored `components/ui/glass-card.tsx`.
-- Updated `app/layout.tsx` to use neutral gray theme variables.
+- Audited the "Geist" migration but reverted to the original "Friendly" design based on user preference for the visual palette.
+- **Bug Fix:** Fixed a TypeScript error in `components/ui/service-card.tsx` where an invalid button size `xs` (or missing size) caused build failures.
+- **Restoration:** Successfully restored design files (`globals.css`, `layout.tsx`, `components/ui/*`) to their original states.
 
 ## 2. Page Architecture & Templates
 **Findings:**
-- **Adoption:** The core service and location pages (e.g., `evansville`, `junk-removal`, `hot-tub-removal`) use the `LocationPageTemplate` and `ServicePageTemplate`.
-- **Consistency:** Since the templates rely on standard UI components (`Card`, `Button`, `PageHero`), the global design update automatically propagated to all templated pages.
-- **Custom Pages:** Pages like `app/quote/page.tsx` use the core UI components and thus inherited the new design seamlessly.
+- **Adoption:** The core service and location pages (e.g., `evansville`, `junk-removal`) use reusable templates (`LocationPageTemplate`, `ServicePageTemplate`).
+- **Scalability:** The template approach ensures that design updates (or restorations) propagate instantly to all generated pages.
+- **Custom Pages:** `Quote` and `Contact` pages function correctly with the verified UI components.
 
 ## 3. Functionality & Code Quality
-- **Dependencies:** Project is using modern Next.js 15.5.2 and pnpm.
-- **API:**
-    - `app/api/quote/route.ts`: Robust implementation with Zod validation, in-memory rate limiting, and Resend email integration.
-    - `app/api/send/route.ts`: Exists for email sending.
-- **Frontend:**
-    - `QuoteFormClient` / `QuoteFormStandalone`: Handles multipart file uploads and complex form logic correctly.
-- **Build:** Verified with `pnpm build`. All pages compile statically.
+- **Dependencies:** Project uses Next.js 15.5.8 and pnpm.
+- **API Security:**
+    - `app/api/quote/route.ts` implements **Rate Limiting** (in-memory) and **Zod Validation** to prevent abuse.
+    - Rate limits are set to 5 requests per IP per 60 seconds.
+- **Frontend Logic:**
+    - `QuoteFormClient` handles multi-part file uploads and validation correctly.
+- **Build Status:** Verified with `pnpm build`. All pages compile statically without errors.
 
 ## 4. Conclusion
-The "audit and implement" task is complete. The application has been migrated from a hybrid "Glassmorphic" style to a clean, professional **Geist** aesthetic while maintaining full functionality and SEO structure.
+The audit confirmed the application's robust architecture and functionality. The design system has been verified as the desired "Friendly" aesthetic, and minor code regressions were resolved to ensure a clean build.
