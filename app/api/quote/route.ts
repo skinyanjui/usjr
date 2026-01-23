@@ -81,7 +81,7 @@ export async function POST(req: Request) {
       } else {
         const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0;
 
-        await resend.emails.send({
+        const busRes = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.to,
           replyTo: parsed.data.email,
@@ -101,6 +101,7 @@ export async function POST(req: Request) {
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
         })
+        console.log('Business email send result:', busRes);
       }
     } catch (emailError) {
       console.error('Failed to send business notification email:', emailError)
@@ -112,7 +113,7 @@ export async function POST(req: Request) {
       if (!resend) {
         console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
       } else {
-        await resend.emails.send({
+        const custRes = await resend.emails.send({
           from: EMAIL_CONFIG.customerFrom,
           to: parsed.data.email,
           subject: 'Your Quote Request - US Junk Removal & Cleaning',
@@ -189,6 +190,7 @@ export async function POST(req: Request) {
           </div>
         `,
         })
+        console.log('Customer email send result:', custRes);
       }
     } catch (emailError) {
       console.error('Failed to send customer confirmation email:', emailError)

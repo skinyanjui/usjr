@@ -3,6 +3,6 @@ Allow: /
 Disallow: /private/
 
 Sitemap: https://unclesamjunkremoval.com/sitemap.xml
-Sitemap: https://unclesamjunkremoval.com/html-sitemap
+
 
 Host: https://unclesamjunkremoval.com

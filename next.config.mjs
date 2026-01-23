@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Allow dev origins for local network testing
+  allowedDevOrigins: ['http://192.168.1.87:3000'],
   // Keep builds strict to surface issues in CI
   eslint: {
     ignoreDuringBuilds: false,
