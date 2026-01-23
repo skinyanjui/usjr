@@ -74,14 +74,12 @@ export async function POST(req: Request) {
       })
     }
 
-    // Send email notification to business owner
-    try {
-      if (!resend) {
-        console.warn('RESEND_API_KEY not configured - skipping email notifications')
-      } else {
+    // Send email notifications concurrently
+    if (resend) {
+      try {
         const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0;
 
-        await resend.emails.send({
+        const businessEmailPromise = resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.to,
           replyTo: parsed.data.email,
@@ -100,19 +98,9 @@ export async function POST(req: Request) {
           <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
-        })
-      }
-    } catch (emailError) {
-      console.error('Failed to send business notification email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
-    }
+        });
 
-    // Send confirmation email to customer
-    try {
-      if (!resend) {
-        console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
-      } else {
-        await resend.emails.send({
+        const customerEmailPromise = resend.emails.send({
           from: EMAIL_CONFIG.customerFrom,
           to: parsed.data.email,
           subject: 'Your Quote Request - US Junk Removal & Cleaning',
@@ -188,11 +176,22 @@ export async function POST(req: Request) {
             </p>
           </div>
         `,
-        })
+        });
+
+        const results = await Promise.allSettled([businessEmailPromise, customerEmailPromise]);
+
+        results.forEach((result, index) => {
+          if (result.status === 'rejected') {
+            const emailType = index === 0 ? 'business notification' : 'customer confirmation';
+            console.error(`Failed to send ${emailType} email:`, result.reason);
+          }
+        });
+      } catch (emailError) {
+        console.error('Failed to send emails:', emailError);
+        // Continue processing even if email fails - don't block the quote submission
       }
-    } catch (emailError) {
-      console.error('Failed to send customer confirmation email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
+    } else {
+      console.warn('RESEND_API_KEY not configured - skipping email notifications');
     }
 
     // Avoid logging PII in production
