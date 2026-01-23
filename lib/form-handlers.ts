@@ -67,10 +67,21 @@ export async function submitQuoteForm({
       body,
     })
 
-    const result = await res.json()
+    let result: any = null
 
-    if (!res.ok || !result.ok) {
-      const errorMsg = extractErrorMessage(result, 'Failed to submit')
+    try {
+      result = await res.json()
+    } catch (parseError) {
+      // If parsing fails, check if the response status was bad
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`)
+      }
+      // If status was OK but parsing failed (e.g. empty body), throw the parse error
+      throw parseError
+    }
+
+    if (!res.ok || (result && !result.ok)) {
+      const errorMsg = extractErrorMessage(result, `HTTP error! status: ${res.status}`)
       throw new Error(errorMsg)
     }
 
