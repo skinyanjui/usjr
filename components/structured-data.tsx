@@ -67,11 +67,16 @@ export function StructuredData({ type, data }: StructuredDataProps) {
       const activeServices = getActiveServices()
       const priceRange = (() => {
         const prices = activeServices
-          .map(s => s.price.match(/\$?\d+/g))
-          .filter(Boolean)
-          .flat()
-          .map(p => Number(String(p).replace(/[^\d]/g, '')))
-          .filter(n => !Number.isNaN(n))
+          .reduce((acc, s) => {
+            const matches = s.price.match(/\$?\d+/g)
+            if (matches) {
+              matches.forEach(m => {
+                const num = Number(m.replace(/[^\d]/g, ''))
+                if (!Number.isNaN(num)) acc.push(num)
+              })
+            }
+            return acc
+          }, [] as number[])
           .sort((a, b) => a - b)
         if (prices.length === 0) return undefined
         const min = prices[0]
