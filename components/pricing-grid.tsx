@@ -193,7 +193,7 @@ export function PricingGrid() {
                 href={`tel:${settings.phoneE164}`}
                 className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-gray-900/45 sm:flex-initial"
               >
-                <Phone className="h-4 w-4" /> Call {settings.phone}
+                <Phone className="h-4 w-4" aria-hidden="true" /> Call {settings.phone}
               </a>
               <a
                 href={`sms:${settings.phoneE164}`}

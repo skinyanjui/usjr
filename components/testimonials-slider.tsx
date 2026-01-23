@@ -77,7 +77,7 @@ export function TestimonialsSlider({
               <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
               <span className="text-muted-foreground">•</span>
               <div className="text-muted-foreground flex items-center gap-1">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm">{currentTestimonial.location}</span>
               </div>
             </div>
@@ -107,7 +107,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </Button>
 
           {/* Dots Indicator */}
@@ -133,7 +133,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>
       )}
