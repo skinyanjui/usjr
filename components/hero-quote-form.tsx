@@ -52,7 +52,7 @@ export function HeroQuoteForm() {
         return (
             <div className="rounded-lg border border-border bg-card p-6 text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                    <CheckCircle className="h-6 w-6 text-primary" />
+                    <CheckCircle className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-foreground">Request Received!</h3>
                 <p className="mb-4 text-sm text-muted-foreground">
@@ -62,7 +62,7 @@ export function HeroQuoteForm() {
                     href={`tel:${settings.phoneE164}`}
                     className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
                 >
-                    <Phone className="h-4 w-4" />
+                    <Phone className="h-4 w-4" aria-hidden="true" />
                     Call {settings.phone} for immediate service
                 </a>
             </div>
