@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import Link from 'next/link'
 import { Trash2, Sparkles, Hammer, ArrowRight } from 'lucide-react'
 
@@ -24,7 +25,7 @@ const services = [
   },
 ]
 
-export function HomeServiceCards() {
+export const HomeServiceCards = memo(function HomeServiceCards() {
   return (
     <section className="border-b border-border px-4 py-16">
       <div className="mx-auto max-w-5xl">
@@ -61,4 +62,4 @@ export function HomeServiceCards() {
       </div>
     </section>
   )
-}
+})

@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { NAV } from '@/lib/nav'
@@ -10,7 +11,7 @@ interface ServicesDropdownProps {
   onMouseLeave: () => void
 }
 
-export default function ServicesDropdown({
+const ServicesDropdown = memo(function ServicesDropdown({
   servicesMenuId,
   onMouseEnter,
   onMouseLeave,
@@ -104,4 +105,6 @@ export default function ServicesDropdown({
       </div>
     </div>
   )
-}
+})
+
+export default ServicesDropdown
