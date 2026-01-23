@@ -27,9 +27,9 @@ export function HeroSection() {
           {/* Left: Story-focused content */}
           <div className="p-6">
             {/* Eyebrow */}
-            <div className="text-primary mb-4 text-sm font-medium tracking-wide uppercase flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-2">
+            <div className="text-primary mb-4 text-sm font-medium tracking-wide uppercase flex flex-row items-center gap-2">
               <span>Veteran-Owned</span>
-              <span className="hidden sm:inline">·</span>
+              <span>·</span>
               <span>Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span></span>
             </div>
 
@@ -42,13 +42,13 @@ export function HeroSection() {
             </h1>
 
             {/* Supporting copy */}
-            <p className="text-muted-foreground mb-8 text-lg font-medium">
+            <p className="text-foreground mb-8 text-lg font-medium">
               From cluttered garages to full estate cleanouts, we handle the heavy lifting
               so you can reclaim your space. Same-day service available.
             </p>
 
             {/* Trust indicators */}
-            <div className="flex items-center gap-3 sm:gap-6 text-muted-foreground">
+            <div className="flex items-center gap-3 sm:gap-6 text-foreground">
               <div className="flex items-center gap-2 rounded-lg bg-background/50 px-2.5 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm shrink-0">
                 <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" aria-hidden="true" />
                 <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">Licensed & Insured</span>
