@@ -95,12 +95,18 @@ export default function RootLayout({
           scaling="100%"
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded"
+            >
+              Skip to main content
+            </a>
             <EmergencyBanner />
             <Header />
             <BreadcrumbsAuto />
             <RoutePrefetcher />
             <ScrollToTopOnRouteChange />
-            <main>{children}</main>
+            <main id="main-content">{children}</main>
             <Footer />
           </ThemeProvider>
         </Theme>
