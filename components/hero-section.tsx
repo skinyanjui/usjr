@@ -48,14 +48,14 @@ export function HeroSection() {
             </p>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
-              <div className="flex items-center gap-2 rounded-full bg-background/50 px-3 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm">
-                <Shield className="h-5 w-5 text-primary" aria-hidden="true" />
-                <span className="text-sm font-semibold">Licensed & Insured</span>
+            <div className="flex items-center gap-3 sm:gap-6 text-muted-foreground">
+              <div className="flex items-center gap-2 rounded-lg bg-background/50 px-2.5 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm shrink-0">
+                <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" aria-hidden="true" />
+                <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">Licensed & Insured</span>
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-background/50 px-3 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm">
-                <Clock className="h-5 w-5 text-primary" aria-hidden="true" />
-                <span className="text-sm font-semibold">Same-Day Service</span>
+              <div className="flex items-center gap-2 rounded-lg bg-background/50 px-2.5 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm shrink-0">
+                <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary" aria-hidden="true" />
+                <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">Same-Day Service</span>
               </div>
             </div>
           </div>
