@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
     },
     sitemap: [
       `${process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'}/sitemap.xml`,
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'}/html-sitemap`,
     ],
     host: process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com',
   }

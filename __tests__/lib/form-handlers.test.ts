@@ -91,7 +91,7 @@ describe('submitQuoteForm', () => {
     expect(onError).toHaveBeenCalledWith('Network error')
   })
 
-  it('should send correct data to API', async () => {
+  it('should send correct data to API as FormData', async () => {
     const mockResponse = {
       ok: true,
       json: async () => ({ ok: true }),
@@ -108,13 +108,50 @@ describe('submitQuoteForm', () => {
       onError: jest.fn(),
     })
 
-    expect(global.fetch).toHaveBeenCalledWith(
-      '/api/quote',
-      expect.objectContaining({
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source }),
-      })
-    )
+    const fetchCalls = (global.fetch as jest.Mock).mock.calls
+    expect(fetchCalls.length).toBe(1)
+
+    const [url, options] = fetchCalls[0]
+    expect(url).toBe('/api/quote')
+    expect(options.method).toBe('POST')
+
+    const body = options.body
+    expect(body).toBeInstanceOf(FormData)
+
+    expect(body.get('name')).toBe('Test User')
+    expect(body.get('email')).toBe('test@example.com')
+    expect(body.get('source')).toBe('test-form')
+
+    if (options.headers) {
+      expect(options.headers['Content-Type']).toBeUndefined()
+    }
+  })
+
+  it('should handle attachments in FormData', async () => {
+    const mockResponse = {
+      ok: true,
+      json: async () => ({ ok: true }),
+    }
+    ;(global.fetch as jest.Mock).mockResolvedValue(mockResponse)
+
+    const file = new File(['content'], 'test.txt', { type: 'text/plain' })
+    const formData = {
+      name: 'Test User',
+      attachments: [file],
+    }
+    const source = 'test-form'
+
+    await submitQuoteForm({
+      formData,
+      source,
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    })
+
+    const [url, options] = (global.fetch as jest.Mock).mock.calls[0]
+    const body = options.body as FormData
+
+    expect(body.get('attachments')).toBeInstanceOf(File)
+    expect((body.get('attachments') as File).name).toBe('test.txt')
   })
 })

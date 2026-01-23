@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { resend, EMAIL_CONFIG } from '@/lib/resend';
+import { z } from 'zod'
+import { resend, EMAIL_CONFIG } from '@/lib/resend'
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
@@ -18,10 +18,14 @@ const QuoteSchema = z.object({
   timestamp: z.string().optional(),
   // Honeypot field (should remain empty)
   website: z.string().optional().default(''),
-  attachments: z.array(z.object({
-    filename: z.string(),
-    content: z.string(), // Base64 content
-  })).optional(),
+  attachments: z
+    .array(
+      z.object({
+        filename: z.string(),
+        content: z.union([z.string(), z.instanceof(Buffer)]), // Accept Buffer or Base64 string
+      })
+    )
+    .optional(),
 })
 
 function normalize(body: any) {
@@ -36,12 +40,44 @@ function normalize(body: any) {
     source: body?.source ?? 'website',
     timestamp: new Date().toISOString(),
     attachments: body?.attachments ?? [],
+    website: body?.website ?? '',
   }
 }
 
 export async function POST(req: Request) {
   try {
-    const raw = await req.json()
+    let raw: any = {}
+
+    // Check Content-Type to decide how to parse
+    const contentType = req.headers.get('content-type') || ''
+
+    if (contentType.includes('multipart/form-data')) {
+      const formData = await req.formData()
+      const attachments: { filename: string; content: Buffer }[] = []
+
+      for (const [key, value] of formData.entries()) {
+        if (key === 'attachments' && value instanceof File) {
+          const arrayBuffer = await value.arrayBuffer()
+          attachments.push({
+            filename: value.name,
+            content: Buffer.from(arrayBuffer),
+          })
+        } else if (typeof value === 'string') {
+          raw[key] = value
+        }
+      }
+
+      if (attachments.length > 0) {
+        raw.attachments = attachments
+      }
+    } else {
+      // Fallback to JSON
+      try {
+        raw = await req.json()
+      } catch (e) {
+        // ignore JSON parse error
+      }
+    }
 
     // Honeypot check: if filled, treat as success without processing
     if (typeof raw?.website === 'string' && raw.website.trim().length > 0) {
@@ -74,12 +110,14 @@ export async function POST(req: Request) {
       })
     }
 
-    // Send email notifications concurrently
-    if (resend) {
-      try {
-        const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0;
+    // Send email notification to business owner
+    try {
+      if (!resend) {
+        console.warn('RESEND_API_KEY not configured - skipping email notifications')
+      } else {
+        const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0
 
-        const businessEmailPromise = resend.emails.send({
+        const busRes = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.to,
           replyTo: parsed.data.email,
@@ -98,9 +136,20 @@ export async function POST(req: Request) {
           <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
-        });
+        })
+        console.log('Business email send result:', busRes)
+      }
+    } catch (emailError) {
+      console.error('Failed to send business notification email:', emailError)
+      // Continue processing even if email fails - don't block the quote submission
+    }
 
-        const customerEmailPromise = resend.emails.send({
+    // Send confirmation email to customer
+    try {
+      if (!resend) {
+        console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
+      } else {
+        const custRes = await resend.emails.send({
           from: EMAIL_CONFIG.customerFrom,
           to: parsed.data.email,
           subject: 'Your Quote Request - US Junk Removal & Cleaning',
@@ -124,37 +173,40 @@ export async function POST(req: Request) {
                 <td style="padding: 10px 0; font-weight: bold;">Email:</td>
                 <td style="padding: 10px 0;">${parsed.data.email}</td>
               </tr>
-              ${parsed.data.address
-              ? `
+              ${
+                parsed.data.address
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Property Address:</td>
                 <td style="padding: 10px 0;">${parsed.data.address}</td>
               </tr>
               `
-              : ''
-            }
+                  : ''
+              }
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Service Requested:</td>
                 <td style="padding: 10px 0;">${parsed.data.service}</td>
               </tr>
-              ${parsed.data.projectSize
-              ? `
+              ${
+                parsed.data.projectSize
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold;">Project Size:</td>
                 <td style="padding: 10px 0;">${parsed.data.projectSize}</td>
               </tr>
               `
-              : ''
-            }
-              ${parsed.data.details
-              ? `
+                  : ''
+              }
+              ${
+                parsed.data.details
+                  ? `
               <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 10px 0; font-weight: bold; vertical-align: top;">Additional Details:</td>
                 <td style="padding: 10px 0;">${parsed.data.details}</td>
               </tr>
               `
-              : ''
-            }
+                  : ''
+              }
             </table>
 
             <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-left: 4px solid #16a34a;">
@@ -176,19 +228,8 @@ export async function POST(req: Request) {
             </p>
           </div>
         `,
-        });
-
-        const results = await Promise.allSettled([businessEmailPromise, customerEmailPromise]);
-
-        results.forEach((result, index) => {
-          if (result.status === 'rejected') {
-            const emailType = index === 0 ? 'business notification' : 'customer confirmation';
-            console.error(`Failed to send ${emailType} email:`, result.reason);
-          }
-        });
-      } catch (emailError) {
-        console.error('Failed to send emails:', emailError);
-        // Continue processing even if email fails - don't block the quote submission
+        })
+        console.log('Customer email send result:', custRes)
       }
     } else {
       console.warn('RESEND_API_KEY not configured - skipping email notifications');

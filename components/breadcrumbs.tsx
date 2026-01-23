@@ -32,7 +32,7 @@ function labelForPath(path: string, defaultLabel: string): string {
   if (path === '/quote') return 'Get Free Quote'
   if (path === '/privacy') return 'Privacy Policy'
   if (path === '/terms') return 'Terms of Service'
-  if (path === '/html-sitemap') return 'html-sitemap'
+
 
   // If the last segment matches a NAV child, use its label
   const last = path.split('/').filter(Boolean).pop() || defaultLabel
