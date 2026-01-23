@@ -1,10 +1,45 @@
 'use client'
 
-import { Star } from 'lucide-react'
+import { Star, Loader2, AlertCircle } from 'lucide-react'
+import { useRef, useState, useEffect } from 'react'
+import { useLazyLoad } from '@/lib/hooks/useLazyLoad'
 
 const STAR_ICONS = [0, 1, 2, 3, 4]
 
 export function GoogleReviews() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isVisible = useLazyLoad(containerRef, '100px')
+  const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (isVisible && !error) {
+      // Check if script already exists to avoid duplicate loading
+      const existingScript = document.querySelector('script[src="https://static.elfsight.com/platform/platform.js"]')
+
+      if (existingScript) {
+        return
+      }
+
+      setIsLoading(true)
+      const script = document.createElement('script')
+      script.src = 'https://static.elfsight.com/platform/platform.js'
+      script.setAttribute('data-use-service-core', '')
+      script.defer = true
+
+      script.onload = () => {
+        setIsLoading(false)
+      }
+
+      script.onerror = () => {
+        setError(true)
+        setIsLoading(false)
+      }
+
+      document.body.appendChild(script)
+    }
+  }, [isVisible, error])
+
   return (
     <section className="bg-card px-4 py-12">
       <div className="mx-auto max-w-6xl">
@@ -17,16 +52,32 @@ export function GoogleReviews() {
 
         <div className="border-border bg-muted/30 overflow-hidden rounded-lg border shadow-sm">
           {/* Elfsight Google Reviews Widget */}
-          <div className="mx-auto max-w-4xl p-6">
-            <script
-              src="https://static.elfsight.com/platform/platform.js"
-              data-use-service-core
-              defer
-            ></script>
-            <div
-              className="elfsight-app-ae6bd45d-9f5a-4ad3-95e7-f4f8c3b6d2a1"
-              data-elfsight-app-lazy
-            ></div>
+          <div ref={containerRef} className="mx-auto min-h-[400px] max-w-4xl p-6">
+            {isVisible ? (
+              error ? (
+                 <div className="flex h-64 flex-col items-center justify-center text-center text-red-500">
+                    <AlertCircle className="mb-2 h-10 w-10" />
+                    <p>Failed to load reviews. Please try refreshing the page.</p>
+                 </div>
+              ) : (
+                <>
+                  {isLoading && (
+                     <div className="flex h-64 flex-col items-center justify-center text-muted-foreground">
+                        <Loader2 className="mb-2 h-10 w-10 animate-spin" />
+                        <p>Loading reviews...</p>
+                     </div>
+                  )}
+                  <div
+                    className="elfsight-app-ae6bd45d-9f5a-4ad3-95e7-f4f8c3b6d2a1"
+                    data-elfsight-app-lazy
+                  ></div>
+                </>
+              )
+            ) : (
+               <div className="flex h-64 flex-col items-center justify-center text-muted-foreground">
+                  <p>Scroll to load reviews...</p>
+               </div>
+            )}
           </div>
 
           <div className="border-t border-border bg-card px-6 py-4 text-center">
