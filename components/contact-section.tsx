@@ -215,6 +215,8 @@ export default function ContactSection() {
                           id="service"
                           name="service"
                           required
+                          aria-required="true"
+                          aria-describedby="service-required-hint"
                           value={formData.service}
                           onChange={handleChange}
                           className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-gray-400 focus:outline-none"
@@ -226,6 +228,9 @@ export default function ContactSection() {
                             </option>
                           ))}
                         </select>
+                        <span id="service-required-hint" className="sr-only">
+                          Required field
+                        </span>
                       </div>
                       <div>
                         <label
