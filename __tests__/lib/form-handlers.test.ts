@@ -154,4 +154,30 @@ describe('submitQuoteForm', () => {
     expect(body.get('attachments')).toBeInstanceOf(File)
     expect((body.get('attachments') as File).name).toBe('test.txt')
   })
+
+  it('should handle non-JSON error responses robustly', async () => {
+    // Simulate a 500 error with HTML content (e.g. from Vercel/Next.js error page)
+    const mockResponse = {
+      ok: false,
+      status: 500,
+      statusText: 'Internal Server Error',
+      json: async () => {
+        throw new Error('Unexpected token < in JSON at position 0')
+      },
+    }
+    ;(global.fetch as jest.Mock).mockResolvedValue(mockResponse)
+
+    const onError = jest.fn()
+
+    await submitQuoteForm({
+      formData: { name: 'Test User' },
+      source: 'test-form',
+      onSuccess: jest.fn(),
+      onError,
+    })
+
+    // Current implementation would catch the JSON parse error and pass it to onError.
+    // We want the robust implementation to detect the 500 status and report that instead.
+    expect(onError).toHaveBeenCalledWith('HTTP error! status: 500')
+  })
 })
