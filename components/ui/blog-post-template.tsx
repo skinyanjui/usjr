@@ -36,7 +36,9 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           url: window.location.href,
         })
       } catch (err) {
-        console.log('Share cancelled')
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Share cancelled')
+        }
       }
     }
   }
