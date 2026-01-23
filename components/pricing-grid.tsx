@@ -1,4 +1,5 @@
-import { Star, Phone } from 'lucide-react'
+import { Phone } from 'lucide-react'
+import { StarRating } from '@/components/ui/star-rating'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { GlassCard } from '@/components/ui/glass-card'
 import { IconContainer } from '@/components/ui/icon-container'

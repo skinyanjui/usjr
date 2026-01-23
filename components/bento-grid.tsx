@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Star } from 'lucide-react'
+import { StarRating } from '@/components/ui/star-rating'
 import { getServiceOptions } from '@/lib/service-options'
 import Link from 'next/link'
 

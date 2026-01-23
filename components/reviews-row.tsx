@@ -137,15 +137,11 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
               className="glass border-border flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
-              <div className="flex">
-                {STAR_INDICES.map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
+              <StarRating
+                rating={item.rating}
+                starClassName="h-3 w-3 sm:h-3.5 sm:w-3.5"
+                className="gap-0"
+              />
               <div className="text-sm sm:text-base">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
                 <span className="font-semibold">{item.source}</span>
@@ -169,15 +165,11 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
                 key={t.id}
                 className="border-border bg-card/90 w-64 shrink-0 snap-start rounded-lg border p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
               >
-                <div className="mb-1 flex items-center gap-1 sm:mb-2 sm:gap-1.5">
-                  {STAR_INDICES.map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
+                <StarRating
+                  rating={t.rating}
+                  starClassName="h-3 w-3 sm:h-3.5 sm:w-3.5"
+                  className="mb-1 items-center gap-1 sm:mb-2 sm:gap-1.5"
+                />
                 <p className="text-muted-foreground text-sm sm:text-base">"{t.text}"</p>
                 <div className="text-muted-foreground mt-2 text-sm">
                   — {t.name} • {t.location}
