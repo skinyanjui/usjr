@@ -89,6 +89,17 @@ export function ServiceCard({
   const colors = getColorClasses(color)
   const sizes = getSizeClasses(size)
 
+  const getButtonSize = (cardSize: typeof size): 'xs' | 'sm' | 'default' => {
+    switch (cardSize) {
+      case 'small':
+        return 'xs'
+      case 'large':
+        return 'default'
+      default:
+        return 'sm'
+    }
+  }
+
   return (
     <Card
       className={`overflow-hidden transition-all hover:shadow-md ${sizes.card} text-sm sm:text-base`}
@@ -116,7 +127,11 @@ export function ServiceCard({
         </div>
         <p className={`${sizes.description} text-muted-foreground`}>{description}</p>
         <div className="pt-2">
-          <Button asChild size="sm" className={`${colors.button} text-primary-foreground`}>
+          <Button
+            asChild
+            size={getButtonSize(size)}
+            className={`${colors.button} text-primary-foreground`}
+          >
             <Link href={link} aria-label={`View ${title} details`} title={`View ${title} details`}>
               View {title} details
             </Link>
