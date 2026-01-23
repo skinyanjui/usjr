@@ -27,10 +27,10 @@ export function HeroSection() {
           {/* Left: Story-focused content */}
           <div className="p-6">
             {/* Eyebrow */}
-            <div className="text-primary mb-4 text-sm font-medium tracking-wide uppercase flex flex-row items-center gap-2">
-              <span>Veteran-Owned</span>
-              <span>·</span>
-              <span>Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span></span>
+            <div className="text-primary mb-4 text-xs sm:text-sm font-medium tracking-wide uppercase flex flex-row flex-nowrap items-center gap-1 sm:gap-2">
+              <span className="shrink-0">Veteran-Owned</span>
+              <span className="shrink-0">·</span>
+              <span className="shrink-0">Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span></span>
             </div>
 
             {/* Main headline - Problem → Solution */}

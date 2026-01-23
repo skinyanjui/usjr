@@ -81,7 +81,7 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
     }
 
     if ('requestIdleCallback' in window) {
-      ;(window as any).requestIdleCallback(() => detectLocation())
+      ; (window as any).requestIdleCallback(() => detectLocation())
     } else {
       setTimeout(detectLocation, 1000)
     }
@@ -99,7 +99,7 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
   }, [locations.length, interval, isInitialized])
 
   return (
-    <span className="inline-block min-w-[180px] transition-opacity duration-500">
+    <span className="inline-block sm:min-w-[180px] transition-opacity duration-500">
       {locations[currentIndex]}
     </span>
   )
