@@ -1,7 +1,8 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { StructuredData } from '@/components/structured-data'
-import { Star, Users, CheckCircle } from 'lucide-react'
+import { StarRating } from '@/components/ui/star-rating'
+import { Users, CheckCircle } from 'lucide-react'
 
 interface ReviewMentionProps {
   averageRating: number
@@ -34,21 +35,18 @@ export function ReviewMention({
   location,
 }: ReviewMentionProps) {
   const colors = themeColors[theme]
-  const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(averageRating))
 
   if (variant === 'compact') {
     return (
       <>
         <div className="inline-flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            {stars.map((filled, index) => (
-              <Star
-                key={index}
-                className={`h-3 w-3 ${filled ? `fill-current ${colors.text}` : 'text-gray-300'}`}
-                aria-hidden="true"
-              />
-            ))}
-          </div>
+          <StarRating
+            rating={Math.floor(averageRating)}
+            className="items-center gap-1"
+            starClassName="h-3 w-3"
+            fillClassName={`fill-current ${colors.text}`}
+            emptyClassName="text-gray-300"
+          />
           <Badge className={`${colors.bg} ${colors.text} border-0`}>
             {averageRating.toFixed(1)} from {reviewCount}+ customers
           </Badge>
@@ -77,14 +75,13 @@ export function ReviewMention({
         <div className={`${colors.bg} border ${colors.border} rounded-lg p-4`}>
           <div className="flex items-center justify-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                {stars.map((filled, index) => (
-                  <Star
-                    key={index}
-                    className={`h-5 w-5 ${filled ? `fill-current ${colors.text}` : 'text-gray-300'}`}
-                  />
-                ))}
-              </div>
+              <StarRating
+                rating={Math.floor(averageRating)}
+                className="items-center gap-1"
+                starClassName="h-5 w-5"
+                fillClassName={`fill-current ${colors.text}`}
+                emptyClassName="text-gray-300"
+              />
               <span className="text-lg font-semibold">{averageRating.toFixed(1)}</span>
             </div>
             <div className="text-muted-foreground">
@@ -117,14 +114,13 @@ export function ReviewMention({
     <>
       <Card className={`${colors.bg} border ${colors.border}`}>
         <CardContent className="p-6 text-center">
-          <div className="mb-4 flex items-center justify-center gap-2">
-            {stars.map((filled, index) => (
-              <Star
-                key={index}
-                className={`h-6 w-6 ${filled ? `fill-current ${colors.text}` : 'text-gray-300'}`}
-              />
-            ))}
-          </div>
+          <StarRating
+            rating={Math.floor(averageRating)}
+            className="mb-4 justify-center gap-2"
+            starClassName="h-6 w-6"
+            fillClassName={`fill-current ${colors.text}`}
+            emptyClassName="text-gray-300"
+          />
           <div className="space-y-2">
             <div className="text-foreground text-3xl font-bold">{averageRating.toFixed(1)}/5.0</div>
             <p className="text-muted-foreground">

@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Star } from 'lucide-react'
+import { StarRating } from '@/components/ui/star-rating'
 import { getServiceOptions } from '@/lib/service-options'
 import Link from 'next/link'
 
@@ -43,15 +43,10 @@ export function BentoGrid() {
                   for a free, no-obligation quote. We'll beat any written estimate!
                 </p>
                 <div className="mt-2 flex items-center gap-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 fill-yellow-400 text-yellow-400"
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
+                  <StarRating
+                    rating={5}
+                    starClassName="h-3 w-3"
+                  />
                   <span className="text-sm font-medium">4.9/5 from 200+ Evansville customers</span>
                 </div>
               </CardHeader>

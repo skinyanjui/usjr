@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
+import { StarRating } from '@/components/ui/star-rating'
+import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
 import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
 
 interface TestimonialsSliderProps {
@@ -55,17 +56,13 @@ export function TestimonialsSlider({
         <CardContent className="p-8">
           <div className="text-center">
             {/* Rating Stars */}
-            <div className="mb-4 flex justify-center">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`h-3.5 w-3.5 ${
-                    i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
-                  }`}
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
+            <StarRating
+              rating={currentTestimonial.rating}
+              className="mb-4 justify-center"
+              starClassName="h-3.5 w-3.5"
+              fillClassName="fill-current text-yellow-400"
+              emptyClassName="text-gray-500"
+            />
 
             {/* Testimonial Text */}
             <blockquote className="text-muted-foreground mb-6 text-lg italic">
