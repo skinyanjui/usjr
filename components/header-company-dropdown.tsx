@@ -5,12 +5,14 @@ import { NAV } from '@/lib/nav'
 
 interface CompanyDropdownProps {
     companyMenuId: string
+    triggerId: string
     onMouseEnter: () => void
     onMouseLeave: () => void
 }
 
 export default function CompanyDropdown({
     companyMenuId,
+    triggerId,
     onMouseEnter,
     onMouseLeave,
 }: CompanyDropdownProps) {
@@ -22,7 +24,7 @@ export default function CompanyDropdown({
         <div
             id={companyMenuId}
             role="menu"
-            aria-labelledby={companyMenuId}
+            aria-labelledby={triggerId}
             className="absolute left-1/2 top-full z-50 mt-2 w-screen max-w-3xl -translate-x-1/2 transform px-4 sm:px-0"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}

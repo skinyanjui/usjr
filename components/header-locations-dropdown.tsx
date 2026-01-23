@@ -6,12 +6,14 @@ import { NAV } from '@/lib/nav'
 
 interface LocationsDropdownProps {
   locationsMenuId: string
+  triggerId: string
   onMouseEnter: () => void
   onMouseLeave: () => void
 }
 
 export default function LocationsDropdown({
   locationsMenuId,
+  triggerId,
   onMouseEnter,
   onMouseLeave,
 }: LocationsDropdownProps) {
@@ -29,7 +31,7 @@ export default function LocationsDropdown({
     <div
       id={locationsMenuId}
       role="menu"
-      aria-labelledby={locationsMenuId}
+      aria-labelledby={triggerId}
       className="absolute left-1/2 top-full z-50 mt-2 w-screen max-w-5xl -translate-x-1/2 transform px-4 sm:px-0"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
