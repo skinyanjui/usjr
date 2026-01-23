@@ -34,18 +34,21 @@ export function HeroQuoteForm() {
 
         setIsSubmitting(true)
 
-        await submitQuoteForm({
-            formData: {
-                name: formData.name,
-                phone: formData.phone,
-                email: formData.email,
-                service: formData.service,
-            },
-            source: 'hero-quote-form',
-            onSuccess: () => setIsSubmitted(true),
-            onError: (msg) => setError(msg),
-            onFinally: () => setIsSubmitting(false),
-        })
+        try {
+            await submitQuoteForm({
+                formData: {
+                    name: formData.name,
+                    phone: formData.phone,
+                    email: formData.email,
+                    service: formData.service,
+                },
+                source: 'hero-quote-form',
+                onSuccess: () => setIsSubmitted(true),
+                onError: (msg) => setError(msg),
+            })
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     if (isSubmitted) {

@@ -33,37 +33,38 @@ export default function ContactSection() {
     setErrorMessage(null)
     setIsSubmitting(true)
 
-    // Client-side validation
-    if (!formData.service) {
-      setErrorMessage('Please select a service')
-      setIsSubmitting(false)
-      return
-    }
+    try {
+      // Client-side validation
+      if (!formData.service) {
+        setErrorMessage('Please select a service')
+        return
+      }
 
-    if (!formData.name || !formData.email || !formData.phone) {
-      setErrorMessage('Please fill in all required fields')
-      setIsSubmitting(false)
-      return
-    }
+      if (!formData.name || !formData.email || !formData.phone) {
+        setErrorMessage('Please fill in all required fields')
+        return
+      }
 
-    await submitQuoteForm({
-      formData,
-      source: 'contact-section',
-      onSuccess: () => {
-        setIsSubmitted(true)
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          address: '',
-          service: '',
-          projectSize: '',
-          message: '',
-        })
-      },
-      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
-      onFinally: () => setIsSubmitting(false),
-    })
+      await submitQuoteForm({
+        formData,
+        source: 'contact-section',
+        onSuccess: () => {
+          setIsSubmitted(true)
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            address: '',
+            service: '',
+            projectSize: '',
+            message: '',
+          })
+        },
+        onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
