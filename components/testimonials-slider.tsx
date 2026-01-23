@@ -1,29 +1,25 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { StarRating } from '@/components/ui/star-rating'
-import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
-import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
+import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
+import { type Testimonial } from '@/lib/cms-content'
+
+const STAR_ICONS = [0, 1, 2, 3, 4]
 
 interface TestimonialsSliderProps {
-  limit?: number
+  testimonials: Testimonial[]
   autoPlay?: boolean
   showNavigation?: boolean
 }
 
-export function TestimonialsSlider({
-  limit = 6,
+export const TestimonialsSlider = memo(function TestimonialsSlider({
+  testimonials,
   autoPlay = true,
   showNavigation = true,
 }: TestimonialsSliderProps) {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    setTestimonials(getActiveTestimonials(limit))
-  }, [limit])
 
   useEffect(() => {
     if (!autoPlay || testimonials.length <= 1) return
@@ -56,13 +52,17 @@ export function TestimonialsSlider({
         <CardContent className="p-8">
           <div className="text-center">
             {/* Rating Stars */}
-            <StarRating
-              rating={currentTestimonial.rating}
-              className="mb-4 justify-center"
-              starClassName="h-3.5 w-3.5"
-              fillClassName="fill-current text-yellow-400"
-              emptyClassName="text-gray-500"
-            />
+            <div className="mb-4 flex justify-center">
+              {STAR_ICONS.map(i => (
+                <Star
+                  key={i}
+                  className={`h-3.5 w-3.5 ${
+                    i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
+                  }`}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
 
             {/* Testimonial Text */}
             <blockquote className="text-muted-foreground mb-6 text-lg italic">
@@ -74,7 +74,7 @@ export function TestimonialsSlider({
               <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
               <span className="text-muted-foreground">•</span>
               <div className="text-muted-foreground flex items-center gap-1">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm">{currentTestimonial.location}</span>
               </div>
             </div>
@@ -104,7 +104,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </Button>
 
           {/* Dots Indicator */}
@@ -130,7 +130,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>
       )}
@@ -141,4 +141,4 @@ export function TestimonialsSlider({
       </div>
     </div>
   )
-}
+})

@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { StarRating } from '@/components/ui/star-rating'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
+import { useEffect, useRef, useState, memo } from 'react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { type Testimonial } from '@/lib/cms-content'
 
 type ReviewSource = {
   source: string
@@ -18,18 +17,19 @@ const SOURCES: ReviewSource[] = [
   { source: 'Thumbtack', rating: 4.8, count: 12 },
 ]
 
-export function ReviewsRow() {
+const STAR_INDICES = [0, 1, 2, 3, 4]
+
+interface ReviewsRowProps {
+  reviews: Testimonial[]
+}
+
+export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps) {
   const carouselRef = useRef<HTMLDivElement | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [reviews, setReviews] = useState<Testimonial[]>([])
   const cachedOffsetsRef = useRef<number[] | null>(null)
   const writeFrameRef = useRef<number | null>(null)
   const resizeObserverRef = useRef<ResizeObserver | null>(null)
-
-  useEffect(() => {
-    setReviews(getActiveTestimonials(12))
-  }, [])
 
   // Compute and cache card offsets using ResizeObserver to avoid forced synchronous layout
   const updateCardOffsets = () => {
@@ -185,7 +185,7 @@ export function ReviewsRow() {
             onClick={goToPrev}
             className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
           <button
             type="button"
@@ -193,10 +193,10 @@ export function ReviewsRow() {
             onClick={goToNext}
             className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
       </div>
     </section>
   )
-}
+})

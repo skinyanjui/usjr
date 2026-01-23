@@ -9,6 +9,8 @@ import { settings } from '@/lib/cms-content'
 import { PageHero } from '@/components/ui/page-hero'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
@@ -220,7 +222,7 @@ export default function CleaningHub() {
               right, at no additional cost.
             </p>
             <div className="flex items-center justify-center gap-2 text-yellow-500">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star key={i} className="h-5 w-5 fill-current" />
               ))}
               <span className="text-muted-foreground ml-2">4.9/5 from 200+ reviews</span>

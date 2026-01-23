@@ -8,6 +8,8 @@ import { PriceMatchTerms } from '@/components/price-match-terms'
 import { settings } from '@/lib/cms-content'
 import { junkRemovalTiers } from '@/lib/pricing'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export function PricingGrid() {
   const baseTiers = [
     {
@@ -104,11 +106,15 @@ export function PricingGrid() {
             All prices include labor, hauling, and dump fees
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-2">
-            <StarRating
-              rating={5}
-              starClassName="h-3.5 w-3.5"
-              fillClassName="fill-current text-yellow-400"
-            />
+            <div className="flex">
+              {STAR_ICONS.map(i => (
+                <Star
+                  key={i}
+                  className="h-3.5 w-3.5 fill-current text-yellow-400"
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
             <span className="text-muted-foreground">4.9/5 from 200+ customers</span>
             <p className="text-muted-foreground max-w-2xl text-sm">
               Prices shown are typical ranges. Photos help confirm your exact price and can save you
@@ -190,7 +196,7 @@ export function PricingGrid() {
                 href={`tel:${settings.phoneE164}`}
                 className="inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 text-center font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-gray-900/45 sm:flex-initial"
               >
-                <Phone className="h-4 w-4" /> Call {settings.phone}
+                <Phone className="h-4 w-4" aria-hidden="true" /> Call {settings.phone}
               </a>
               <a
                 href={`sms:${settings.phoneE164}`}
