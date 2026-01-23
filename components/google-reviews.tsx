@@ -1,10 +1,34 @@
 'use client'
 
 import { Star } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useLazyLoad } from '@/lib/hooks/useLazyLoad'
 
 export function GoogleReviews() {
+  const { ref, shouldLoad } = useLazyLoad({ rootMargin: '200px' })
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+
+  useEffect(() => {
+    if (!shouldLoad || scriptLoaded) return
+
+    // Check if script is already present
+    if (document.querySelector('script[src="https://static.elfsight.com/platform/platform.js"]')) {
+      setScriptLoaded(true)
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = 'https://static.elfsight.com/platform/platform.js'
+    script.setAttribute('data-use-service-core', '')
+    script.defer = true
+    script.onload = () => setScriptLoaded(true)
+    script.onerror = () => console.error('Failed to load Elfsight widget')
+
+    document.body.appendChild(script)
+  }, [shouldLoad, scriptLoaded])
+
   return (
-    <section className="bg-card px-4 py-12">
+    <section className="bg-card px-4 py-12" ref={ref}>
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center">
           <h2 className="text-foreground mb-2 text-3xl font-bold">See What Our Customers Say</h2>
@@ -15,16 +39,13 @@ export function GoogleReviews() {
 
         <div className="border-border bg-muted/30 overflow-hidden rounded-lg border shadow-sm">
           {/* Elfsight Google Reviews Widget */}
-          <div className="mx-auto max-w-4xl p-6">
-            <script
-              src="https://static.elfsight.com/platform/platform.js"
-              data-use-service-core
-              defer
-            ></script>
-            <div
-              className="elfsight-app-ae6bd45d-9f5a-4ad3-95e7-f4f8c3b6d2a1"
-              data-elfsight-app-lazy
-            ></div>
+          <div className="mx-auto max-w-4xl p-6 min-h-[200px]">
+            {shouldLoad && (
+              <div
+                className="elfsight-app-ae6bd45d-9f5a-4ad3-95e7-f4f8c3b6d2a1"
+                data-elfsight-app-lazy
+              ></div>
+            )}
           </div>
 
           <div className="border-t border-border bg-card px-6 py-4 text-center">
