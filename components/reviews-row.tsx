@@ -129,26 +129,26 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
   const currentReview = reviews[currentIndex]
 
   return (
-    <section className="px-4 py-6">
+    <section className="px-4 py-4">
       <div className="mx-auto max-w-7xl">
         <div className="no-scrollbar flex flex-nowrap items-center gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4">
           {/* Ratings summary badges */}
           {SOURCES.map(item => (
             <div
               key={item.source}
-              className="glass border-border flex min-w-[160px] shrink-0 items-center justify-center gap-2 rounded-lg border px-3 py-2 sm:min-w-[180px] sm:gap-2.5 sm:px-3.5 sm:py-2.5 md:min-w-[200px] md:px-4 md:py-3"
+              className="glass border-border flex min-w-[140px] shrink-0 items-center justify-center gap-1.5 rounded-md border px-2.5 py-1.5 sm:min-w-[150px] sm:gap-2 sm:px-3 sm:py-2"
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
               <div className="flex">
                 {STAR_INDICES.map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                    className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
                     aria-hidden="true"
                   />
                 ))}
               </div>
-              <div className="text-sm sm:text-base">
+              <div className="text-xs sm:text-sm">
                 <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
                 <span className="font-semibold">{item.source}</span>
                 <span className="text-muted-foreground"> ({item.count}+)</span>
@@ -159,7 +159,7 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
 
         {/* Review cards carousel */}
         <div
-          className="relative mt-4"
+          className="relative mt-3"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocus={() => setIsPaused(true)}
@@ -173,19 +173,19 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
             {reviews.map(t => (
               <div
                 key={t.id}
-                className="border-border bg-card/90 w-64 shrink-0 snap-start rounded-lg border p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
+                className="border-border bg-card/90 w-56 shrink-0 snap-start rounded-md border p-2.5 shadow-sm backdrop-blur-sm sm:w-64 sm:p-3 md:w-72 md:p-4"
               >
-                <div className="mb-1 flex items-center gap-1 sm:mb-2 sm:gap-1.5">
+                <div className="mb-1 flex items-center gap-0.5 sm:gap-1">
                   {STAR_INDICES.map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
+                      className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
                       aria-hidden="true"
                     />
                   ))}
                 </div>
-                <p className="text-muted-foreground text-sm sm:text-base">"{t.text}"</p>
-                <div className="text-muted-foreground mt-2 text-sm">
+                <p className="text-muted-foreground line-clamp-3 text-xs sm:text-sm">"{t.text}"</p>
+                <div className="text-muted-foreground mt-1.5 text-xs">
                   — {t.name} • {t.location}
                 </div>
               </div>
@@ -197,17 +197,17 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
             type="button"
             aria-label="Previous review"
             onClick={goToPrev}
-            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 left-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
+            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 left-0 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
-            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </button>
           <button
             type="button"
             aria-label="Next review"
             onClick={goToNext}
-            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 right-0 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
+            className="border-border bg-card/90 text-muted-foreground hover:bg-card absolute top-1/2 right-0 hidden h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm md:flex"
           >
-            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 

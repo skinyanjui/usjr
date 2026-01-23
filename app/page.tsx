@@ -1,7 +1,7 @@
 import { HeroSection } from '@/components/hero-section'
 import { HomeServiceCards } from '@/components/home-service-cards'
 import { ReviewsRow } from '@/components/reviews-row'
-import { GoogleReviews } from '@/components/google-reviews'
+import { ReviewsAndBlog } from '@/components/reviews-and-blog'
 import { StructuredData } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* Reviews summary */}
 
 
-      <GoogleReviews />
+      <ReviewsAndBlog />
 
       <ReviewsRow reviews={reviews} />
 
