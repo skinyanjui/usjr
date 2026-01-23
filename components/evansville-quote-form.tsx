@@ -37,45 +37,46 @@ export function EvansvilleQuoteForm() {
     setErrorMessage(null)
     setIsSubmitting(true)
 
-    // Client-side validation
-    if (!formData.service) {
-      setErrorMessage('Please select a service')
-      setIsSubmitting(false)
-      return
-    }
+    try {
+      // Client-side validation
+      if (!formData.service) {
+        setErrorMessage('Please select a service')
+        return
+      }
 
-    if (!formData.name || !formData.email || !formData.phone) {
-      setErrorMessage('Please fill in all required fields')
-      setIsSubmitting(false)
-      return
-    }
+      if (!formData.name || !formData.email || !formData.phone) {
+        setErrorMessage('Please fill in all required fields')
+        return
+      }
 
-    await submitQuoteForm({
-      formData: {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        address: formData.address,
-        service: formData.service,
-        projectSize: formData.projectSize,
-        details: formData.details,
-      },
-      source: 'evansville-quote-form',
-      onSuccess: () => {
-        setIsSubmitted(true)
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          address: '',
-          service: '',
-          projectSize: '',
-          details: '',
-        })
-      },
-      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
-      onFinally: () => setIsSubmitting(false),
-    })
+      await submitQuoteForm({
+        formData: {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          address: formData.address,
+          service: formData.service,
+          projectSize: formData.projectSize,
+          details: formData.details,
+        },
+        source: 'evansville-quote-form',
+        onSuccess: () => {
+          setIsSubmitted(true)
+          setFormData({
+            name: '',
+            phone: '',
+            email: '',
+            address: '',
+            service: '',
+            projectSize: '',
+            details: '',
+          })
+        },
+        onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {

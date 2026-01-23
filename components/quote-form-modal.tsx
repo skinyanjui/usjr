@@ -83,26 +83,31 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     setIsSubmitting(true)
     setSubmitError(null)
 
-    const details = [
-      `Segment: ${segment}`,
-      `SQFT: ${formData.sqft}`,
-      `Bedrooms: ${formData.bedrooms}`,
-      `Bathrooms: ${formData.bathrooms}`,
-      `Eco-Friendly: ${formData.ecoFriendly}`,
-      `Message: ${formData.message}`
-    ].filter(line => !line.endsWith(': ')).join('\n')
+    try {
+      const details = [
+        `Segment: ${segment}`,
+        `SQFT: ${formData.sqft}`,
+        `Bedrooms: ${formData.bedrooms}`,
+        `Bathrooms: ${formData.bathrooms}`,
+        `Eco-Friendly: ${formData.ecoFriendly}`,
+        `Message: ${formData.message}`,
+      ]
+        .filter((line) => !line.endsWith(': '))
+        .join('\n')
 
-    await submitQuoteForm({
-      formData: {
-        ...formData,
-        details,
-        attachments: uploadedFiles.map(f => f.file),
-      },
-      source: `quote-modal-${segment}`,
-      onSuccess: () => setIsSubmitted(true),
-      onError: (msg) => setSubmitError(msg),
-      onFinally: () => setIsSubmitting(false),
-    })
+      await submitQuoteForm({
+        formData: {
+          ...formData,
+          details,
+          attachments: uploadedFiles.map((f) => f.file),
+        },
+        source: `quote-modal-${segment}`,
+        onSuccess: () => setIsSubmitted(true),
+        onError: (msg) => setSubmitError(msg),
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {

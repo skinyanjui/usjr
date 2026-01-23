@@ -112,39 +112,40 @@ export function QuoteFormStandalone() {
     setIsSubmitting(true)
     setSubmitError(null)
 
-    // Client-side validation
-    if (!formData.service) {
-      setSubmitError('Please select a service')
+    try {
+      // Client-side validation
+      if (!formData.service) {
+        setSubmitError('Please select a service')
+        return
+      }
+
+      if (!formData.name || !formData.email || !formData.phone || !formData.address) {
+        setSubmitError('Please fill in all required fields')
+        return
+      }
+
+      // Prepare the data to send to the API
+      const quoteData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        service: formData.service,
+        details: buildDetailsString(),
+      }
+
+      await submitQuoteForm({
+        formData: {
+          ...quoteData,
+          attachments: uploadedFiles.map((f) => f.file),
+        },
+        source: 'quote-form',
+        onSuccess: () => setIsSubmitted(true),
+        onError: (errorMessage) => setSubmitError(errorMessage),
+      })
+    } finally {
       setIsSubmitting(false)
-      return
     }
-
-    if (!formData.name || !formData.email || !formData.phone || !formData.address) {
-      setSubmitError('Please fill in all required fields')
-      setIsSubmitting(false)
-      return
-    }
-
-    // Prepare the data to send to the API
-    const quoteData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      address: formData.address,
-      service: formData.service,
-      details: buildDetailsString(),
-    }
-
-    await submitQuoteForm({
-      formData: {
-        ...quoteData,
-        attachments: uploadedFiles.map(f => f.file),
-      },
-      source: 'quote-form',
-      onSuccess: () => setIsSubmitted(true),
-      onError: errorMessage => setSubmitError(errorMessage),
-      onFinally: () => setIsSubmitting(false),
-    })
   }
 
   // Build a comprehensive details string from all form fields

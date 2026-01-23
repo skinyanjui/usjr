@@ -120,29 +120,30 @@ export function TwoStepQuoteForm() {
     setIsSubmitting(true)
     setError(null)
 
-    const formData = {
-      name: 'User (Two-Step Form)',
-      email: contactInfo.email,
-      phone: contactInfo.phone,
-      service: 'Junk Removal (Custom Items)',
-      projectSize: loadSize,
-      details: `Selected Items: ${selectedItems.join(', ')}\nZIP Code: ${zipCode}`,
-      attachments: contactInfo.photos,
-    }
-
-    await submitQuoteForm({
-      formData,
-      source: 'two-step-quote-form',
-      onSuccess: () => {
-        setIsSubmitted(true)
-      },
-      onError: (msg) => {
-        setError(msg)
-      },
-      onFinally: () => {
-        setIsSubmitting(false)
+    try {
+      const formData = {
+        name: 'User (Two-Step Form)',
+        email: contactInfo.email,
+        phone: contactInfo.phone,
+        service: 'Junk Removal (Custom Items)',
+        projectSize: loadSize,
+        details: `Selected Items: ${selectedItems.join(', ')}\nZIP Code: ${zipCode}`,
+        attachments: contactInfo.photos,
       }
-    })
+
+      await submitQuoteForm({
+        formData,
+        source: 'two-step-quote-form',
+        onSuccess: () => {
+          setIsSubmitted(true)
+        },
+        onError: (msg) => {
+          setError(msg)
+        },
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {

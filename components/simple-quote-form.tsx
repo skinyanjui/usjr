@@ -105,32 +105,35 @@ export function SimpleQuoteForm() {
 
     setIsSubmitting(true)
 
-    await submitQuoteForm({
-      formData: {
-        fullName: formData.fullName,
-        phoneNumber: formData.phoneNumber,
-        emailAddress: formData.emailAddress,
-        serviceAddress: formData.serviceAddress,
-        serviceNeeded: formData.serviceNeeded,
-        projectSize: formData.projectSize,
-        projectDetails: formData.projectDetails,
-      },
-      source: 'simple-quote-form',
-      onSuccess: () => {
-        setIsSubmitted(true)
-        setFormData({
-          fullName: '',
-          phoneNumber: '',
-          emailAddress: '',
-          serviceAddress: '',
-          serviceNeeded: '',
-          projectSize: '',
-          projectDetails: '',
-        })
-      },
-      onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
-      onFinally: () => setIsSubmitting(false),
-    })
+    try {
+      await submitQuoteForm({
+        formData: {
+          fullName: formData.fullName,
+          phoneNumber: formData.phoneNumber,
+          emailAddress: formData.emailAddress,
+          serviceAddress: formData.serviceAddress,
+          serviceNeeded: formData.serviceNeeded,
+          projectSize: formData.projectSize,
+          projectDetails: formData.projectDetails,
+        },
+        source: 'simple-quote-form',
+        onSuccess: () => {
+          setIsSubmitted(true)
+          setFormData({
+            fullName: '',
+            phoneNumber: '',
+            emailAddress: '',
+            serviceAddress: '',
+            serviceNeeded: '',
+            projectSize: '',
+            projectDetails: '',
+          })
+        },
+        onError: () => setErrorMessage('Something went wrong. Please try again or call us.'),
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (field: string, value: string) => {
