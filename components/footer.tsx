@@ -22,16 +22,16 @@ export function Footer() {
           <p className="mb-6 text-sm text-background/80">
             Same-day service available. Locally owned and insured.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-nowrap items-center justify-center gap-3">
             <Link
               href="/quote"
-              className="rounded-lg border border-foreground/30 bg-background px-6 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90"
+              className="rounded-lg border border-foreground/30 bg-background px-4 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 sm:px-6"
             >
               Get Free Quote
             </Link>
             <a
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-6 py-2.5 text-sm font-semibold transition-colors hover:bg-background/10"
+              className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-background/10 sm:px-6"
             >
               <Phone className="h-4 w-4" />
               {settings.phone}
