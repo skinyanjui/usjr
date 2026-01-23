@@ -24,6 +24,10 @@ export function Header() {
   const locationsMenuId = 'locations-menu'
   const companyMenuId = 'company-menu'
 
+  const servicesButtonId = 'services-button'
+  const locationsButtonId = 'locations-button'
+  const companyButtonId = 'company-button'
+
   const handleDropdownEnter = (dropdown: string) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
@@ -84,6 +88,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                id={servicesButtonId}
                 type="button"
                 className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
@@ -97,6 +102,7 @@ export function Header() {
               {activeDropdown === 'services' && (
                 <ServicesDropdown
                   servicesMenuId={servicesMenuId}
+                  triggerId={servicesButtonId}
                   onMouseEnter={() => handleDropdownEnter('services')}
                   onMouseLeave={handleDropdownLeave}
                 />
@@ -111,6 +117,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                id={locationsButtonId}
                 type="button"
                 className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
@@ -124,6 +131,7 @@ export function Header() {
               {activeDropdown === 'locations' && (
                 <LocationsDropdown
                   locationsMenuId={locationsMenuId}
+                  triggerId={locationsButtonId}
                   onMouseEnter={() => handleDropdownEnter('locations')}
                   onMouseLeave={handleDropdownLeave}
                 />
@@ -138,6 +146,7 @@ export function Header() {
               onMouseLeave={handleDropdownLeave}
             >
               <button
+                id={companyButtonId}
                 type="button"
                 className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
@@ -151,6 +160,7 @@ export function Header() {
               {activeDropdown === 'company' && (
                 <CompanyDropdown
                   companyMenuId={companyMenuId}
+                  triggerId={companyButtonId}
                   onMouseEnter={() => handleDropdownEnter('company')}
                   onMouseLeave={handleDropdownLeave}
                 />
