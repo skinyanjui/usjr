@@ -8,6 +8,26 @@ const limiter = new RateLimiter({
   maxRequests: 5,
 })
 
+interface RawQuoteData {
+  name?: string
+  fullName?: string
+  phone?: string
+  phoneNumber?: string
+  email?: string
+  emailAddress?: string
+  address?: string
+  serviceAddress?: string
+  service?: string
+  serviceNeeded?: string
+  projectSize?: string
+  message?: string
+  details?: string
+  projectDetails?: string
+  source?: string
+  website?: string
+  attachments?: any[]
+}
+
 const QuoteSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   phone: z.string().min(7, 'Phone is required'),
@@ -30,7 +50,7 @@ const QuoteSchema = z.object({
     .optional(),
 })
 
-function normalize(body: any) {
+function normalize(body: RawQuoteData) {
   return {
     name: body?.name ?? body?.fullName ?? '',
     phone: body?.phone ?? body?.phoneNumber ?? '',
@@ -100,7 +120,7 @@ export async function POST(req: Request) {
       })
     }
 
-    const normalized = normalize(raw)
+    const normalized = normalize(raw as RawQuoteData)
     const parsed = QuoteSchema.safeParse(normalized)
     if (!parsed.success) {
       return new Response(JSON.stringify({ ok: false, errors: parsed.error.flatten() }), {
