@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
 import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 interface TestimonialsSliderProps {
   limit?: number
   autoPlay?: boolean
@@ -56,7 +58,7 @@ export function TestimonialsSlider({
           <div className="text-center">
             {/* Rating Stars */}
             <div className="mb-4 flex justify-center">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star
                   key={i}
                   className={`h-3.5 w-3.5 ${

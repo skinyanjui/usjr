@@ -2,6 +2,8 @@
 
 import { Star } from 'lucide-react'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export function GoogleReviews() {
   return (
     <section className="bg-card px-4 py-12">
@@ -31,7 +33,7 @@ export function GoogleReviews() {
             <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-6">
               <div className="flex items-center gap-2 font-semibold">
                 <span className="flex">
-                  {[...Array(5)].map((_, i) => (
+                  {STAR_ICONS.map(i => (
                     <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                   ))}
                 </span>

@@ -11,6 +11,8 @@ import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
 import { submitQuoteForm } from '@/lib/form-handlers'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -87,7 +89,7 @@ export default function ContactSection() {
           </p>
           <div className="mt-4 flex items-center justify-center gap-2">
             <div className="flex">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star
                   key={i}
                   className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400"
