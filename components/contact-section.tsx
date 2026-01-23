@@ -11,6 +11,8 @@ import { settings } from '@/lib/cms-content'
 import { getServiceOptions } from '@/lib/service-options'
 import { submitQuoteForm } from '@/lib/form-handlers'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -87,7 +89,7 @@ export default function ContactSection() {
           </p>
           <div className="mt-4 flex items-center justify-center gap-2">
             <div className="flex">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star
                   key={i}
                   className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400"
@@ -117,7 +119,7 @@ export default function ContactSection() {
               <CardContent>
                 {isSubmitted ? (
                   <div className="py-8 text-center">
-                    <CheckCircle className="mx-auto mb-4 h-12 w-12 text-gray-900 sm:h-16 sm:w-16" />
+                    <CheckCircle className="mx-auto mb-4 h-12 w-12 text-gray-900 sm:h-16 sm:w-16" aria-hidden="true" />
                     <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">Thank You!</h3>
                     <p className="text-muted-foreground">
                       {"We'll contact you within 30 minutes with your free quote."}
@@ -213,6 +215,8 @@ export default function ContactSection() {
                           id="service"
                           name="service"
                           required
+                          aria-required="true"
+                          aria-describedby="service-required-hint"
                           value={formData.service}
                           onChange={handleChange}
                           className="border-border w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-gray-400 focus:outline-none"
@@ -224,6 +228,9 @@ export default function ContactSection() {
                             </option>
                           ))}
                         </select>
+                        <span id="service-required-hint" className="sr-only">
+                          Required field
+                        </span>
                       </div>
                       <div>
                         <label
@@ -297,7 +304,7 @@ export default function ContactSection() {
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <Phone className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
+                      <Phone className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
                       <div>
                         <h4 className="text-foreground font-semibold">Phone</h4>
                         <p className="text-muted-foreground text-base font-semibold sm:text-lg">
@@ -309,7 +316,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Mail className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
+                      <Mail className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
                       <div>
                         <h4 className="text-foreground font-semibold">Email</h4>
                         <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
@@ -317,7 +324,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <MapPin className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
+                      <MapPin className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
                       <div>
                         <h4 className="text-foreground font-semibold">Service Area</h4>
                         <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
@@ -330,7 +337,7 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Clock className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" />
+                      <Clock className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
                       <div>
                         <h4 className="text-foreground font-semibold">Hours</h4>
                         <p className="text-muted-foreground">Monday - Sunday</p>
@@ -357,7 +364,7 @@ export default function ContactSection() {
                     href={`tel:${settings.phoneE164}`}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gray-900 px-6 py-2 font-semibold ring-1 ring-white/30 transition-colors hover:bg-gray-900/45 sm:w-auto sm:px-8"
                   >
-                    <Phone className="h-4 w-4" /> Call Now: {settings.phone}
+                    <Phone className="h-4 w-4" aria-hidden="true" /> Call Now: {settings.phone}
                   </a>
                   <div className="flex items-center justify-center gap-3 text-xs text-white sm:text-sm">
                     <span>✓ Licensed & Insured</span>

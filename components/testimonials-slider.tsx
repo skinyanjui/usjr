@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
 import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 interface TestimonialsSliderProps {
   limit?: number
   autoPlay?: boolean
@@ -56,7 +58,7 @@ export function TestimonialsSlider({
           <div className="text-center">
             {/* Rating Stars */}
             <div className="mb-4 flex justify-center">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star
                   key={i}
                   className={`h-3.5 w-3.5 ${
@@ -77,7 +79,7 @@ export function TestimonialsSlider({
               <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
               <span className="text-muted-foreground">•</span>
               <div className="text-muted-foreground flex items-center gap-1">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm">{currentTestimonial.location}</span>
               </div>
             </div>
@@ -107,7 +109,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </Button>
 
           {/* Dots Indicator */}
@@ -133,7 +135,7 @@ export function TestimonialsSlider({
             className="bg-card/80"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </Button>
         </div>
       )}
