@@ -89,9 +89,9 @@ export default function RootLayout({
       <body className="font-sans">
         <Theme
           appearance="light"
-          accentColor="blue"
-          grayColor="slate"
-          radius="small"
+          accentColor="gray"
+          grayColor="gray"
+          radius="medium"
           scaling="100%"
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
