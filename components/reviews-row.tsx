@@ -17,6 +17,8 @@ const SOURCES: ReviewSource[] = [
   { source: 'Thumbtack', rating: 4.8, count: 12 },
 ]
 
+const STAR_INDICES = [0, 1, 2, 3, 4]
+
 export function ReviewsRow() {
   const carouselRef = useRef<HTMLDivElement | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -137,7 +139,7 @@ export function ReviewsRow() {
               aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
             >
               <div className="flex">
-                {Array.from({ length: 5 }).map((_, i) => (
+                {STAR_INDICES.map((_, i) => (
                   <Star
                     key={i}
                     className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
@@ -169,7 +171,7 @@ export function ReviewsRow() {
                 className="border-border bg-card/90 w-64 shrink-0 snap-start rounded-lg border p-3 shadow-sm backdrop-blur-sm sm:w-72 sm:p-4 md:w-80 md:p-5 lg:w-96"
               >
                 <div className="mb-1 flex items-center gap-1 sm:mb-2 sm:gap-1.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {STAR_INDICES.map((_, i) => (
                     <Star
                       key={i}
                       className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
