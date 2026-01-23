@@ -142,10 +142,6 @@ export async function POST(req: Request) {
           console.log('Business email send result:', busRes)
         }
       }
-    } catch (emailError) {
-      console.error('Failed to send business notification email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
-    }
 
     // Send confirmation email to customer
     try {
@@ -238,9 +234,8 @@ export async function POST(req: Request) {
           console.log('Customer email send result:', custRes)
         }
       }
-    } catch (emailError) {
-      console.error('Failed to send customer confirmation email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
+
+      await Promise.allSettled([sendBusinessEmail(), sendCustomerEmail()])
     }
 
     // Avoid logging PII in production
