@@ -7,6 +7,8 @@ import { PriceMatchTerms } from '@/components/price-match-terms'
 import { settings } from '@/lib/cms-content'
 import { junkRemovalTiers } from '@/lib/pricing'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export function PricingGrid() {
   const baseTiers = [
     {
@@ -104,7 +106,7 @@ export function PricingGrid() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-2">
             <div className="flex">
-              {[...Array(5)].map((_, i) => (
+              {STAR_ICONS.map(i => (
                 <Star
                   key={i}
                   className="h-3.5 w-3.5 fill-current text-yellow-400"

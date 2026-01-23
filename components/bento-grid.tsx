@@ -16,6 +16,8 @@ import { Star } from 'lucide-react'
 import { getServiceOptions } from '@/lib/service-options'
 import Link from 'next/link'
 
+const STAR_ICONS = [0, 1, 2, 3, 4]
+
 export function BentoGrid() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -44,7 +46,7 @@ export function BentoGrid() {
                 </p>
                 <div className="mt-2 flex items-center gap-2">
                   <div className="flex">
-                    {[...Array(5)].map((_, i) => (
+                    {STAR_ICONS.map(i => (
                       <Star
                         key={i}
                         className="h-3 w-3 fill-yellow-400 text-yellow-400"
