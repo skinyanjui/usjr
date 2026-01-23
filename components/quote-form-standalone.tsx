@@ -138,7 +138,7 @@ export function QuoteFormStandalone() {
     await submitQuoteForm({
       formData: {
         ...quoteData,
-        attachments: uploadedFiles,
+        attachments: uploadedFiles.map(f => f.file),
       },
       source: 'quote-form',
       onSuccess: () => setIsSubmitted(true),
@@ -503,12 +503,12 @@ export function QuoteFormStandalone() {
                   <span className="mt-1 text-[10px] text-muted-foreground">Upload</span>
                   <input type="file" className="hidden" multiple accept="image/*" onChange={handleFileUpload} />
                 </label>
-                {uploadedFiles.map((_, i) => (
-                  <div key={i} className="relative aspect-square rounded-md border bg-muted/30 p-1">
+                {uploadedFiles.map((fileWrapper) => (
+                  <div key={fileWrapper.id} className="relative aspect-square rounded-md border bg-muted/30 p-1">
                     <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-sm">
                       <Camera className="h-4 w-4 text-muted-foreground/50" />
                     </div>
-                    <button type="button" onClick={() => removeFile(i)} className="absolute -top-1 -right-1 rounded-full bg-destructive text-destructive-foreground p-0.5"><X className="h-2.5 w-2.5" /></button>
+                    <button type="button" onClick={() => removeFile(fileWrapper.id)} className="absolute -top-1 -right-1 rounded-full bg-destructive text-destructive-foreground p-0.5"><X className="h-2.5 w-2.5" /></button>
                   </div>
                 ))}
               </div>

@@ -26,7 +26,8 @@ describe('useFileUpload', () => {
     })
 
     expect(result.current.files).toHaveLength(1)
-    expect(result.current.files[0]?.name).toBe('test.jpg')
+    expect(result.current.files[0]?.file.name).toBe('test.jpg')
+    expect(result.current.files[0]?.id).toBeDefined()
   })
 
   it('should not exceed max files limit', () => {
@@ -50,7 +51,7 @@ describe('useFileUpload', () => {
     expect(result.current.files).toHaveLength(0)
   })
 
-  it('should remove file by index', () => {
+  it('should remove file by id', () => {
     const { result } = renderHook(() => useFileUpload())
 
     const files = [
@@ -68,12 +69,14 @@ describe('useFileUpload', () => {
 
     expect(result.current.files).toHaveLength(2)
 
+    const fileIdToRemove = result.current.files[0].id
+
     act(() => {
-      result.current.removeFile(0)
+      result.current.removeFile(fileIdToRemove)
     })
 
     expect(result.current.files).toHaveLength(1)
-    expect(result.current.files[0]?.name).toBe('file2.jpg')
+    expect(result.current.files[0]?.file.name).toBe('file2.jpg')
   })
 
   it('should reset files', () => {
