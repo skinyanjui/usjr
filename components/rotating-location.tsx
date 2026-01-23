@@ -80,7 +80,11 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
       }
     }
 
-    detectLocation()
+    if ('requestIdleCallback' in window) {
+      ;(window as any).requestIdleCallback(() => detectLocation())
+    } else {
+      setTimeout(detectLocation, 1000)
+    }
   }, [locations])
 
   // Start rotation after initialization
