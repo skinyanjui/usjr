@@ -27,9 +27,11 @@ export function HeroSection() {
           {/* Left: Story-focused content */}
           <div className="p-6">
             {/* Eyebrow */}
-            <p className="text-primary mb-4 text-sm font-medium tracking-wide uppercase">
-              Veteran-Owned · Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span>
-            </p>
+            <div className="text-primary mb-4 text-sm font-medium tracking-wide uppercase flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-2">
+              <span>Veteran-Owned</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span></span>
+            </div>
 
             {/* Main headline - Problem → Solution */}
             <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tighter sm:text-5xl lg:text-6xl">

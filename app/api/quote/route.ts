@@ -1,14 +1,5 @@
-import { z } from 'zod'
-import { Resend } from 'resend'
-
-// Lazy initialization to handle missing API key gracefully
-let resend: Resend | null = null
-function getResendClient() {
-  if (!resend && process.env.RESEND_API_KEY) {
-    resend = new Resend(process.env.RESEND_API_KEY)
-  }
-  return resend
-}
+import { z } from 'zod';
+import { resend, EMAIL_CONFIG } from '@/lib/resend';
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
@@ -27,6 +18,10 @@ const QuoteSchema = z.object({
   timestamp: z.string().optional(),
   // Honeypot field (should remain empty)
   website: z.string().optional().default(''),
+  attachments: z.array(z.object({
+    filename: z.string(),
+    content: z.string(), // Base64 content
+  })).optional(),
 })
 
 function normalize(body: any) {
@@ -40,6 +35,7 @@ function normalize(body: any) {
     details: body?.message ?? body?.details ?? body?.projectDetails ?? '',
     source: body?.source ?? 'website',
     timestamp: new Date().toISOString(),
+    attachments: body?.attachments ?? [],
   }
 }
 
@@ -80,15 +76,17 @@ export async function POST(req: Request) {
 
     // Send email notification to business owner
     try {
-      const resendClient = getResendClient()
-      if (!resendClient) {
+      if (!resend) {
         console.warn('RESEND_API_KEY not configured - skipping email notifications')
       } else {
-        await resendClient.emails.send({
-          from: 'Quote Form <unclesamjunkremoval@gmail.com>',
-          to: 'unclesamjunkremoval@gmail.com',
+        const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0;
+
+        await resend.emails.send({
+          from: EMAIL_CONFIG.from,
+          to: EMAIL_CONFIG.to,
           replyTo: parsed.data.email,
           subject: `New Quote Request from ${parsed.data.name}`,
+          attachments: hasAttachments ? (parsed.data.attachments as any) : undefined,
           html: `
           <h2>New Quote Request</h2>
           <p><strong>Name:</strong> ${parsed.data.name}</p>
@@ -100,6 +98,7 @@ export async function POST(req: Request) {
           <p><strong>Details:</strong> ${parsed.data.details || 'No additional details provided'}</p>
           <p><strong>Source:</strong> ${parsed.data.source}</p>
           <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
+          ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
         })
       }
@@ -110,12 +109,11 @@ export async function POST(req: Request) {
 
     // Send confirmation email to customer
     try {
-      const resendClient = getResendClient()
-      if (!resendClient) {
+      if (!resend) {
         console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
       } else {
-        await resendClient.emails.send({
-          from: 'US Junk Removal <unclesamjunkremoval@gmail.com>',
+        await resend.emails.send({
+          from: EMAIL_CONFIG.customerFrom,
           to: parsed.data.email,
           subject: 'Your Quote Request - US Junk Removal & Cleaning',
           html: `

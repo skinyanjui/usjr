@@ -104,7 +104,7 @@ export function LocationPageTemplate({
             </div>
 
             {/* Right: Service Areas */}
-            <div className="rounded-xl border border-border bg-card p-6">
+            <div className="rounded-lg border border-border bg-card p-6">
               <h3 className="mb-6 text-xl font-bold text-foreground">
                 {locationName} Service Areas
               </h3>
@@ -158,7 +158,7 @@ export function LocationPageTemplate({
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {stories.map((story, index) => (
-                <div key={index} className="rounded-xl border border-border bg-card p-6">
+                <div key={index} className="rounded-lg border border-border bg-card p-6">
                   <h3 className="mb-2 font-semibold text-foreground">{story.title}</h3>
                   <p className="mb-4 text-sm text-muted-foreground">{story.description}</p>
                   <p className="text-xs text-muted-foreground">

@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { MapPin, Camera, Truck, Package, Home, Building2 } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { junkRemovalTiers } from '@/lib/pricing'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 export function TwoStepQuoteForm() {
   const [step, setStep] = useState(1)
@@ -21,6 +22,9 @@ export function TwoStepQuoteForm() {
     email: '',
     photos: null as FileList | null,
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const serviceAreas = [
     '47708',
@@ -111,13 +115,52 @@ export function TwoStepQuoteForm() {
     )
   }
 
-  const handleFinalSubmit = (e: React.FormEvent) => {
+  const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission (disabled in production)
-    if (process.env.NODE_ENV !== 'production') {
-      console.log({ zipCode, selectedItems, loadSize, contactInfo })
+    setIsSubmitting(true)
+    setError(null)
+
+    const formData = {
+      name: 'User (Two-Step Form)',
+      email: contactInfo.email,
+      phone: contactInfo.phone,
+      service: 'Junk Removal (Custom Items)',
+      projectSize: loadSize,
+      details: `Selected Items: ${selectedItems.join(', ')}\nZIP Code: ${zipCode}`,
+      attachments: contactInfo.photos,
     }
-    alert("Thank you! We'll contact you within 15 minutes with your quote.")
+
+    await submitQuoteForm({
+      formData,
+      source: 'two-step-quote-form',
+      onSuccess: () => {
+        setIsSubmitted(true)
+      },
+      onError: (msg) => {
+        setError(msg)
+      },
+      onFinally: () => {
+        setIsSubmitting(false)
+      }
+    })
+  }
+
+  if (isSubmitted) {
+    return (
+      <Card className="glass">
+        <CardContent className="py-12 text-center">
+          <CardTitle className="mb-4 text-2xl font-bold text-foreground">
+            Quote Request Received!
+          </CardTitle>
+          <p className="text-muted-foreground mb-6">
+            Thank you! We've received your information and will contact you within 15 minutes with your quote.
+          </p>
+          <Button onClick={() => window.location.reload()} className="bg-primary text-primary-foreground">
+            Send Another Request
+          </Button>
+        </CardContent>
+      </Card>
+    )
   }
 
   return (
@@ -186,11 +229,10 @@ export function TwoStepQuoteForm() {
                         key={item.id}
                         type="button"
                         onClick={() => handleItemToggle(item.id)}
-                        className={`rounded-lg border-2 p-3 text-center transition-all ${
-                          selectedItems.includes(item.id)
+                        className={`rounded-lg border-2 p-3 text-center transition-all ${selectedItems.includes(item.id)
                             ? 'border-primary bg-primary/10 text-foreground'
                             : 'border-border hover:border-primary/50'
-                        }`}
+                          }`}
                       >
                         <Icon className="mx-auto mb-1 h-5 w-5 sm:h-6 sm:w-6" />
                         <div className="text-xs font-medium">{item.label}</div>
@@ -209,11 +251,10 @@ export function TwoStepQuoteForm() {
                   {loadSizes.map(size => (
                     <label
                       key={size.id}
-                      className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${
-                        loadSize === size.id
+                      className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${loadSize === size.id
                           ? 'border-primary bg-primary/10'
                           : 'border-border hover:border-primary/50'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center">
                         <input
@@ -296,11 +337,16 @@ export function TwoStepQuoteForm() {
                 <Button
                   type="submit"
                   className="flex-1 bg-gray-900 py-2 font-semibold text-white hover:bg-gray-900 sm:py-3"
-                  disabled={!loadSize || selectedItems.length === 0}
+                  disabled={!loadSize || selectedItems.length === 0 || isSubmitting}
                 >
-                  Get My Quote
+                  {isSubmitting ? 'Sending...' : 'Get My Quote'}
                 </Button>
               </div>
+              {error && (
+                <p className="mt-2 text-center text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>

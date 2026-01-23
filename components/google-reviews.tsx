@@ -1,5 +1,7 @@
 'use client'
 
+import { Star } from 'lucide-react'
+
 export function GoogleReviews() {
   return (
     <section className="bg-card px-4 py-12">
@@ -25,40 +27,28 @@ export function GoogleReviews() {
             ></div>
           </div>
 
-          {/* Fallback: Direct link to Google Reviews */}
-          <div className="border-border bg-card border-t px-6 py-4 text-center">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 inline-flex items-center gap-2 font-semibold underline-offset-2 transition-all hover:underline"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-              </svg>
-              View All Reviews on Google
-            </a>
+          <div className="border-t border-border bg-card px-6 py-4 text-center">
+            <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-6">
+              <div className="flex items-center gap-2 font-semibold">
+                <span className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
+                  ))}
+                </span>
+                <span>4.7/5 from 6 verified reviews</span>
+              </div>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:block"></span>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold text-primary underline-offset-2 transition-all hover:text-primary/80 hover:underline"
+              >
+                View All Reviews on Google
+              </a>
+            </div>
           </div>
         </div>
-
-        {/* Alternative: Manual embed placeholder */}
-        <noscript>
-          <div className="border-border bg-card mt-8 rounded-lg border p-8 text-center">
-            <h3 className="text-foreground mb-4 text-xl font-bold">Customer Reviews</h3>
-            <p className="text-muted-foreground mb-4">
-              Please enable JavaScript to see our Google Reviews widget, or visit our Google
-              Business Profile directly.
-            </p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-foreground text-background inline-block rounded-lg px-6 py-3 font-semibold transition-all hover:brightness-110"
-            >
-              Read Reviews on Google
-            </a>
-          </div>
-        </noscript>
       </div>
     </section>
   )

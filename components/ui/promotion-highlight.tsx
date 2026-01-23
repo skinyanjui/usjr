@@ -46,7 +46,7 @@ export function PromotionHighlight({
 
   return (
     <>
-      <section className={`py-8 ${colors.bg} rounded-xl border ${colors.border}`}>
+      <section className={`py-8 ${colors.bg} rounded-lg border ${colors.border}`}>
         <div className="mx-auto max-w-4xl px-4">
           <div className="mb-6 text-center">
             <h2 className={`text-2xl font-bold ${colors.text} mb-2`}>

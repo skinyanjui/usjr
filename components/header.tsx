@@ -85,7 +85,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
@@ -112,7 +112,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
@@ -139,7 +139,7 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'company'}
                 aria-controls={companyMenuId}
@@ -162,7 +162,7 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href={`tel:${settings.phoneE164}`}
-              className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="flex items-center gap-1.5 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
             >
               <Phone className="h-4 w-4" />
               {settings.phone}
@@ -215,7 +215,7 @@ export function Header() {
               <div>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-muted hover:text-primary"
                   aria-expanded={isMobileServicesOpen}
                   onClick={() => setIsMobileServicesOpen(v => !v)}
                 >
@@ -230,7 +230,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -244,7 +244,7 @@ export function Header() {
               <div>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-muted hover:text-primary"
                   aria-expanded={isMobileLocationsOpen}
                   onClick={() => setIsMobileLocationsOpen(v => !v)}
                 >
@@ -259,7 +259,7 @@ export function Header() {
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -276,7 +276,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href!}
-                      className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
                       onClick={closeMobileMenuAndSections}
                     >
                       {item.label}

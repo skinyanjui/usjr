@@ -91,7 +91,7 @@ export default function RootLayout({
           appearance="light"
           accentColor="blue"
           grayColor="slate"
-          radius="medium"
+          radius="small"
           scaling="100%"
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>

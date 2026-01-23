@@ -123,7 +123,7 @@ export function ServicePageTemplate({
 
             {/* Right: Pricing */}
             {pricing.length > 0 && (
-              <div className="rounded-xl border border-border bg-card p-6">
+              <div className="rounded-lg border border-border bg-card p-6">
                 <h3 className="mb-6 text-xl font-bold text-foreground">{pricingTitle}</h3>
                 <div className="space-y-4">
                   {pricing.map((tier, index) => (
@@ -167,7 +167,7 @@ export function ServicePageTemplate({
               {steps.map((step, index) => {
                 const IconComponent = step.icon
                 return (
-                  <div key={index} className="rounded-xl border border-border bg-card p-6 text-center">
+                  <div key={index} className="rounded-lg border border-border bg-card p-6 text-center">
                     <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
                       <IconComponent className="h-6 w-6 text-foreground" />
                     </div>
@@ -207,7 +207,7 @@ export function ServicePageTemplate({
             </h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="rounded-xl border border-border bg-card p-6">
+                <div key={index} className="rounded-lg border border-border bg-card p-6">
                   <h3 className="mb-2 font-semibold text-foreground">{faq.question}</h3>
                   <p className="text-sm text-muted-foreground">{faq.answer}</p>
                 </div>

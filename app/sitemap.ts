@@ -328,12 +328,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ===== Utility Pages (Priority: 0.5-0.6) =====
     {
-      url: `${baseUrl}/html-sitemap`,
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
       url: `${baseUrl}/privacy`,
       lastModified: now,
       changeFrequency: 'yearly' as const,

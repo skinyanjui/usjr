@@ -43,6 +43,12 @@ export const NAV: NavItem[] = [
   },
   {
     label: 'Locations',
+    promo: {
+      title: 'Full Tri-State Coverage',
+      description: 'Serving Evansville, Henderson, Owensboro, and surrounding communities with same-day service.',
+      href: '/locations/evansville',
+      ctaLabel: 'View All Locations',
+    },
     children: [
       { label: 'Evansville, IN', href: '/locations/evansville' },
       { label: 'Newburgh, IN', href: '/locations/newburgh' },
@@ -57,6 +63,12 @@ export const NAV: NavItem[] = [
   },
   {
     label: 'Company',
+    promo: {
+      title: 'Award Winning Service',
+      description: 'Veteran-owned and operated. We pride ourselves on honest, transparent service and eco-friendly disposal.',
+      href: '/about',
+      ctaLabel: 'Learn More',
+    },
     children: [
       { label: 'About Us', href: '/about' },
       { label: 'Blog', href: '/blog' },

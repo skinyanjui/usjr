@@ -40,7 +40,7 @@ export function HomeServiceCards() {
             <Link
               key={service.title}
               href={service.link}
-              className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:bg-muted/50"
+              className="group rounded-lg border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:bg-muted/50"
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
                 <service.icon className="h-6 w-6 text-foreground" />

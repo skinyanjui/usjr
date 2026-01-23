@@ -136,7 +136,10 @@ export function QuoteFormStandalone() {
     }
 
     await submitQuoteForm({
-      formData: quoteData,
+      formData: {
+        ...quoteData,
+        attachments: uploadedFiles,
+      },
       source: 'quote-form',
       onSuccess: () => setIsSubmitted(true),
       onError: errorMessage => setSubmitError(errorMessage),

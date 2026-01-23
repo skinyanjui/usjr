@@ -25,6 +25,7 @@ import {
 import { X, Upload, Camera, CheckCircle } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { useFileUpload } from '@/lib/hooks/useFileUpload'
+import { submitQuoteForm } from '@/lib/form-handlers'
 
 interface QuoteFormModalProps {
   isOpen: boolean
@@ -51,6 +52,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
   })
   const { files: uploadedFiles, handleUpload: handleFileUpload, removeFile } = useFileUpload(6)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const residentialServices = [
     'Deep Cleaning',
@@ -75,13 +78,31 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
     'After-Hours Cleaning',
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Form submitted:', { formData, uploadedFiles, segment })
-    }
-    setIsSubmitted(true)
+    setIsSubmitting(true)
+    setSubmitError(null)
+
+    const details = [
+      `Segment: ${segment}`,
+      `SQFT: ${formData.sqft}`,
+      `Bedrooms: ${formData.bedrooms}`,
+      `Bathrooms: ${formData.bathrooms}`,
+      `Eco-Friendly: ${formData.ecoFriendly}`,
+      `Message: ${formData.message}`
+    ].filter(line => !line.endsWith(': ')).join('\n')
+
+    await submitQuoteForm({
+      formData: {
+        ...formData,
+        details,
+        attachments: uploadedFiles,
+      },
+      source: `quote-modal-${segment}`,
+      onSuccess: () => setIsSubmitted(true),
+      onError: (msg) => setSubmitError(msg),
+      onFinally: () => setIsSubmitting(false),
+    })
   }
 
   if (isSubmitted) {
@@ -136,8 +157,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               type="button"
               onClick={() => setSegment('residential')}
               className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'residential'
-                  ? 'bg-card text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-card text-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               Residential
@@ -146,8 +167,8 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
               type="button"
               onClick={() => setSegment('commercial')}
               className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'commercial'
-                  ? 'bg-card text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-card text-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               Commercial
@@ -417,14 +438,18 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               type="submit"
+              disabled={isSubmitting}
               className="w-full bg-gray-900 text-white hover:bg-gray-900 sm:w-auto"
             >
-              Submit Request
+              {isSubmitting ? 'Sending Request...' : 'Submit Request'}
             </Button>
-            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto">
+            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto" disabled={isSubmitting}>
               Cancel
             </Button>
           </div>
+          {submitError && (
+            <p className="text-sm font-medium text-destructive mt-2">{submitError}</p>
+          )}
         </form>
       </DialogContent>
     </Dialog>

@@ -351,7 +351,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                 <Link
                   key={post.href}
                   href={post.href}
-                  className="group block border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:bg-muted/30"
+                  className="group block border-border bg-card hover:border-foreground/20 rounded-lg border p-6 transition-all hover:bg-muted/30"
                 >
                   <div className="mb-2">
                     <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">

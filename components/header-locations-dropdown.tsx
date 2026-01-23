@@ -18,6 +18,8 @@ export default function LocationsDropdown({
   const locationItem = NAV.find(i => i.label === 'Locations')
   const locations = locationItem?.children ?? []
 
+  const promo = locationItem?.promo
+
   // Split into 2 columns
   const midPoint = Math.ceil(locations.length / 2)
   const col1 = locations.slice(0, midPoint)
@@ -28,41 +30,76 @@ export default function LocationsDropdown({
       id={locationsMenuId}
       role="menu"
       aria-labelledby={locationsMenuId}
-      className="absolute left-1/2 top-full z-50 mt-2 w-[500px] -translate-x-1/2 transform px-4 sm:px-0"
+      className="absolute left-1/2 top-full z-50 mt-2 w-screen max-w-5xl -translate-x-1/2 transform px-4 sm:px-0"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="overflow-hidden rounded-xl border border-border/50 bg-background/95 p-6 shadow-xl backdrop-blur-xl ring-1 ring-black/5 dark:ring-white/5">
-        <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
-          Our Service Areas
-        </h3>
-        <div className="grid grid-cols-2 gap-8">
-          <div className="space-y-1">
-            {col1.map(item => (
-              <Link
-                key={item.href}
-                href={item.href!}
-                className="group flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-muted/50 hover:text-foreground hover:pl-4"
-                role="menuitem"
-              >
-                <MapPin className="mr-2 h-4 w-4 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
-                {item.label}
-              </Link>
-            ))}
+      <div className="overflow-hidden rounded-lg border border-border/50 bg-background/95 p-6 shadow-xl backdrop-blur-xl ring-1 ring-black/5 dark:ring-white/5">
+        <div className={`grid gap-8 ${promo ? 'grid-cols-12' : 'grid-cols-3'}`}>
+          <div className={`${promo ? 'col-span-8' : 'col-span-full'}`}>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+              Our Service Areas
+            </h3>
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-1">
+                {col1.map(item => (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    className="group flex items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-muted/50 hover:text-primary hover:pl-4"
+                    role="menuitem"
+                  >
+                    <MapPin className="mr-2 h-4 w-4 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="space-y-1">
+                {col2.map(item => (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    className="group flex items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-muted/50 hover:text-primary hover:pl-4"
+                    role="menuitem"
+                  >
+                    <MapPin className="mr-2 h-4 w-4 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="space-y-1">
-            {col2.map(item => (
-              <Link
-                key={item.href}
-                href={item.href!}
-                className="group flex items-center rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-muted/50 hover:text-foreground hover:pl-4"
-                role="menuitem"
-              >
-                <MapPin className="mr-2 h-4 w-4 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
-                {item.label}
-              </Link>
-            ))}
-          </div>
+
+          {/* Promo Section */}
+          {promo && (
+            <div className="col-span-4 rounded-lg bg-muted/30 p-6">
+              <div className="flex h-full flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                    <MapPin className="h-3 w-3" />
+                    Service Area
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">
+                      {promo.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {promo.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <Link
+                    href={promo.href}
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
+                  >
+                    {promo.ctaLabel}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

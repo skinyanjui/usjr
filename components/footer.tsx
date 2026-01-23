@@ -15,7 +15,7 @@ export function Footer() {
 
 
         {/* CTA Banner */}
-        <div className="mb-12 rounded-xl bg-background/10 p-6 text-center sm:p-8">
+        <div className="mb-12 rounded-lg bg-background/10 p-6 text-center sm:p-8">
           <h3 className="mb-2 text-xl font-bold sm:text-2xl">
             Ready to reclaim your space?
           </h3>

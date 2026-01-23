@@ -15,7 +15,8 @@ export interface QuoteFormData {
   details?: string
   projectDetails?: string
   message?: string
-  [key: string]: string | undefined
+  attachments?: File[] | FileList | null
+  [key: string]: any
 }
 
 export interface SubmitQuoteOptions {
@@ -24,6 +25,26 @@ export interface SubmitQuoteOptions {
   onSuccess: () => void
   onError: (errorMessage: string) => void
   onFinally?: () => void
+}
+
+/**
+ * Converts a File object to a base64 string
+ */
+async function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      const result = reader.result
+      if (typeof result === 'string') {
+        const base64String = result.split(',')[1]
+        resolve(base64String || '')
+      } else {
+        reject(new Error('Failed to read file as data URL'))
+      }
+    }
+    reader.onerror = error => reject(error)
+  })
 }
 
 /**
@@ -38,11 +59,30 @@ export async function submitQuoteForm({
   onFinally,
 }: SubmitQuoteOptions): Promise<void> {
   try {
+    const { attachments: rawAttachments, ...otherData } = formData
+    let processedAttachments: { filename: string; content: string }[] = []
+
+    if (rawAttachments) {
+      const fileArray =
+        rawAttachments instanceof FileList ? Array.from(rawAttachments) : rawAttachments
+      processedAttachments = await Promise.all(
+        fileArray.map(async file => ({
+          filename: file.name,
+          content: await fileToBase64(file),
+        }))
+      )
+    }
+
+    const body = {
+      ...otherData,
+      source,
+      ...(processedAttachments.length ? { attachments: processedAttachments } : {}),
+    };
     const res = await fetch('/api/quote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...formData, source }),
-    })
+      body: JSON.stringify(body),
+    });
 
     const result = await res.json()
 
