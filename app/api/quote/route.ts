@@ -136,7 +136,9 @@ export async function POST(req: Request) {
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
         })
-        console.log('Business email send result:', busRes)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Business email send result:', busRes)
+        }
       }
     } catch (emailError) {
       console.error('Failed to send business notification email:', emailError)
@@ -228,7 +230,9 @@ export async function POST(req: Request) {
           </div>
         `,
         })
-        console.log('Customer email send result:', custRes)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Customer email send result:', custRes)
+        }
       }
     } catch (emailError) {
       console.error('Failed to send customer confirmation email:', emailError)
