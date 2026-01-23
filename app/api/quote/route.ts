@@ -112,7 +112,9 @@ export async function POST(req: Request) {
     // Send email notification to business owner
     try {
       if (!resend) {
-        console.warn('RESEND_API_KEY not configured - skipping email notifications')
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('RESEND_API_KEY not configured - skipping email notifications')
+        }
       } else {
         const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0
 
@@ -136,7 +138,9 @@ export async function POST(req: Request) {
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
         })
-        console.log('Business email send result:', busRes)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Business email send result:', busRes)
+        }
       }
     } catch (emailError) {
       console.error('Failed to send business notification email:', emailError)
@@ -146,7 +150,9 @@ export async function POST(req: Request) {
     // Send confirmation email to customer
     try {
       if (!resend) {
-        console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
+        }
       } else {
         const custRes = await resend.emails.send({
           from: EMAIL_CONFIG.customerFrom,
@@ -228,7 +234,9 @@ export async function POST(req: Request) {
           </div>
         `,
         })
-        console.log('Customer email send result:', custRes)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Customer email send result:', custRes)
+        }
       }
     } catch (emailError) {
       console.error('Failed to send customer confirmation email:', emailError)
