@@ -1,30 +1,25 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
-import { getActiveTestimonials, type Testimonial } from '@/lib/cms-content'
+import { type Testimonial } from '@/lib/cms-content'
 
 const STAR_ICONS = [0, 1, 2, 3, 4]
 
 interface TestimonialsSliderProps {
-  limit?: number
+  testimonials: Testimonial[]
   autoPlay?: boolean
   showNavigation?: boolean
 }
 
-export function TestimonialsSlider({
-  limit = 6,
+export const TestimonialsSlider = memo(function TestimonialsSlider({
+  testimonials,
   autoPlay = true,
   showNavigation = true,
 }: TestimonialsSliderProps) {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    setTestimonials(getActiveTestimonials(limit))
-  }, [limit])
 
   useEffect(() => {
     if (!autoPlay || testimonials.length <= 1) return
@@ -146,4 +141,4 @@ export function TestimonialsSlider({
       </div>
     </div>
   )
-}
+})
