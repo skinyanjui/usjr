@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useId } from 'react'
 import { MapPin } from 'lucide-react'
 import L from 'leaflet'
 
@@ -68,6 +68,7 @@ export default function LeafletMap() {
 
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
   const mapRef = useRef<L.Map | null>(null)
+  const mapId = useId()
 
   useEffect(() => {
     // Ensure Leaflet CSS is loaded non-blockingly when the map mounts on client
@@ -132,6 +133,26 @@ export default function LeafletMap() {
       marker.on('click', () => {
         window.location.href = location.href
       })
+
+      // Keyboard accessibility
+      const element = marker.getElement()
+      if (element) {
+        element.setAttribute('tabindex', '0')
+        element.setAttribute('role', 'button')
+        element.setAttribute('aria-label', `View details for ${location.name}`)
+
+        element.addEventListener('keydown', (e: KeyboardEvent) => {
+          if (e.key === 'Enter') {
+            window.location.href = location.href
+          }
+        })
+        element.addEventListener('focus', () => {
+          marker.openTooltip()
+        })
+        element.addEventListener('blur', () => {
+          marker.closeTooltip()
+        })
+      }
     })
 
     // Fit map to show all locations nicely
@@ -149,7 +170,13 @@ export default function LeafletMap() {
 
   return (
     <div className="relative h-full w-full">
-      <div ref={mapContainerRef} className="h-full w-full" aria-label="Service Area Map" />
+      <div
+        id={mapId}
+        ref={mapContainerRef}
+        className="h-full w-full"
+        aria-label="Interactive map of service areas. Use Tab to navigate between location markers. Press Enter to view details."
+        role="application"
+      />
 
       <div className="bg-card/90 absolute top-2 left-2 rounded-lg p-2 shadow-sm backdrop-blur-sm">
         <div className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
