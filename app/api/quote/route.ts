@@ -1,10 +1,12 @@
 import { z } from 'zod'
 import { resend, EMAIL_CONFIG } from '@/lib/resend'
+import { RateLimiter } from '@/lib/rate-limit'
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
-const RATE_LIMIT_MAX_REQUESTS = 5
-const ipToTimestamps = new Map<string, number[]>()
+const limiter = new RateLimiter({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  maxRequests: 5,
+})
 
 const QuoteSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -90,17 +92,14 @@ export async function POST(req: Request) {
     // Rate limit per IP
     const ipHeader = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
     const ip = (ipHeader.split(',')[0] || 'unknown').trim()
-    const now = Date.now()
-    const hits = ipToTimestamps.get(ip) || []
-    const recent = hits.filter(t => now - t < RATE_LIMIT_WINDOW_MS)
-    if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
+
+    if (!limiter.check(ip)) {
       return new Response(JSON.stringify({ ok: false, error: 'Too many requests' }), {
         status: 429,
         headers: { 'Content-Type': 'application/json' },
       })
     }
-    recent.push(now)
-    ipToTimestamps.set(ip, recent)
+
     const normalized = normalize(raw)
     const parsed = QuoteSchema.safeParse(normalized)
     if (!parsed.success) {
