@@ -1,7 +1,7 @@
 import { HeroSection } from '@/components/hero-section'
 import { HomeServiceCards } from '@/components/home-service-cards'
 import { ReviewsRow } from '@/components/reviews-row'
-import { ReviewsAndBlog } from '@/components/reviews-and-blog'
+import { HomeBlogSection } from '@/components/home-blog-section'
 import { StructuredData } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
@@ -22,10 +22,9 @@ export default function HomePage() {
 
       <HomeServiceCards />
 
-      {/* Reviews summary */}
+      {/* Reviews summary moved to ReviewsRow */}
 
-
-      <ReviewsAndBlog />
+      <HomeBlogSection />
 
       <ReviewsRow reviews={reviews} />
 

@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     category: 'Local Guide',
     featured: true,
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop',
+    image: '/images/blog/junk-removal-tips.png?v=unified',
   },
   {
     slug: 'spring-cleaning-checklist-southern-indiana',
@@ -144,7 +144,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '9 min read',
     category: 'Commercial Cleaning',
     featured: true,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
+    image: '/images/blog/office-cleaning.png?v=unified',
   },
   {
     slug: 'summer-cleanup-checklist-tri-state',
@@ -155,7 +155,7 @@ export const blogPosts: BlogPost[] = [
     date: 'October 27, 2025',
     readTime: '8 min read',
     category: 'Seasonal Guide',
-    image: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2074&auto=format&fit=crop',
+    image: '/images/blog/summer-cleanup.png?v=unified',
   },
   {
     slug: 'moving-cleanout-guide-evansville',
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
     date: 'October 27, 2025',
     readTime: '10 min read',
     category: 'Moving Guide',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop',
+    image: '/images/blog/moving-cleanout.png?v=unified',
   },
   {
     slug: 'fall-cleanup-checklist-tri-state',

@@ -2,8 +2,10 @@
 
 import type React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, User, Share2, ArrowLeft, Tag } from 'lucide-react'
 import Script from 'next/script'
+import { blogPosts } from '@/lib/blog-posts'
 
 export interface BlogPostMeta {
   title: string
@@ -104,6 +106,25 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
           </div>
         </div>
       </div>
+
+      {/* Hero Image - Looked up dynamically */}
+      {(() => {
+        const post = blogPosts.find(p => p.title === meta.title)
+        return post?.image ? (
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8">
+            <div className="relative aspect-[2/1] w-full overflow-hidden rounded-xl border border-border/50 bg-muted/30 shadow-sm">
+              <Image
+                src={post.image}
+                alt={meta.title}
+                fill
+                className="object-contain p-8"
+                priority
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+            </div>
+          </div>
+        ) : null
+      })()}
 
       {/* Main content with Linear-inspired typography */}
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

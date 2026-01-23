@@ -1,21 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState, memo } from 'react'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 import { type Testimonial } from '@/lib/cms-content'
 
-type ReviewSource = {
-  source: string
-  rating: number
-  count: number
-}
 
-const SOURCES: ReviewSource[] = [
-  { source: 'Google', rating: 4.8, count: 46 },
-  { source: 'Facebook', rating: 4.9, count: 18 },
-  { source: 'Yelp', rating: 4.6, count: 7 },
-  { source: 'Thumbtack', rating: 4.8, count: 12 },
-]
 
 const STAR_INDICES = [0, 1, 2, 3, 4]
 
@@ -131,30 +120,25 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
   return (
     <section className="px-4 py-4">
       <div className="mx-auto max-w-7xl">
-        <div className="no-scrollbar flex flex-nowrap items-center gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4">
-          {/* Ratings summary badges */}
-          {SOURCES.map(item => (
-            <div
-              key={item.source}
-              className="glass border-border flex min-w-[140px] shrink-0 items-center justify-center gap-1.5 rounded-md border px-2.5 py-1.5 sm:min-w-[150px] sm:gap-2 sm:px-3 sm:py-2"
-              aria-label={`${item.source} rating ${item.rating} out of 5 from ${item.count}+ reviews`}
-            >
-              <div className="flex">
-                {STAR_INDICES.map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${i < Math.round(item.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-              <div className="text-xs sm:text-sm">
-                <span className="font-semibold">{item.rating.toFixed(1)}</span> on{' '}
-                <span className="font-semibold">{item.source}</span>
-                <span className="text-muted-foreground"> ({item.count}+)</span>
-              </div>
-            </div>
-          ))}
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3 sm:gap-4">
+          <div className="flex items-center gap-2 font-semibold">
+            <span className="flex">
+              {STAR_INDICES.map(i => (
+                <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
+              ))}
+            </span>
+            <span className="text-sm sm:text-base">4.7/5 from 6 verified reviews</span>
+          </div>
+          <span className="hidden h-1 w-1 rounded-full bg-border sm:block"></span>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline-offset-2 transition-all hover:text-primary/80 hover:underline sm:text-base"
+          >
+            View All Reviews on Google
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         </div>
 
         {/* Review cards carousel */}

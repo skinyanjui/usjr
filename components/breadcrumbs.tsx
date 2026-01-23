@@ -6,11 +6,7 @@ import { NAV } from '@/lib/nav'
 import { useMemo } from 'react'
 
 function getBaseUrl(): string {
-  if (typeof window !== 'undefined') {
-    const env = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '')
-    return (env && env.length > 0 ? env : window.location.origin) || ''
-  }
-  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || ''
+  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://unclesamjunkremoval.com'
 }
 
 function labelForPath(path: string, defaultLabel: string): string {
