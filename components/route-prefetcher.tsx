@@ -2,27 +2,14 @@
 
 import { useEffect, useMemo } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { NAV } from '@/lib/nav'
-
-function getAllNavHrefs(): string[] {
-  const hrefs: string[] = []
-  for (const item of NAV) {
-    if (item.href) hrefs.push(item.href)
-    if (item.children) {
-      for (const child of item.children) {
-        if (child.href) hrefs.push(child.href)
-      }
-    }
-  }
-  return Array.from(new Set(hrefs))
-}
 
 export function RoutePrefetcher() {
   const router = useRouter()
   const pathname = usePathname()
 
   const targets = useMemo(() => {
-    return getAllNavHrefs().filter(href => href !== pathname)
+    // Only prefetch the most critical conversion route
+    return ['/quote'].filter((href) => href !== pathname)
   }, [pathname])
 
   useEffect(() => {
