@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   Truck,
@@ -111,61 +112,66 @@ export default function PricingPage() {
         eyebrow="Simple & Transparent"
       />
 
-      {/* 2. EDUCATIONAL - The Concept */}
-      <section className="py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <div className="border-primary/20 bg-primary/10 text-primary mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium">
-                <HelpCircle className="h-4 w-4" />
-                <span>How It Works</span>
-              </div>
-              <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Pay for Space, Not Time
-              </h2>
-              <p className="text-muted-foreground mb-6 text-lg">
-                Many companies charge hourly rates that can skyrocket if the job takes longer than
-                expected. We don't do that.
-              </p>
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                    <CheckCircle className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">All-Inclusive Rates</h3>
-                    <p className="text-muted-foreground text-sm">
-                      Labor, loading, transport, and disposal fees are all included in one price.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                    <CheckCircle className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">No Surprise Fees</h3>
-                    <p className="text-muted-foreground text-sm">
-                      The price we quote is the price you pay. No hidden fuel surcharges or booking
-                      fees.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="border-border bg-card relative overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-md">
-              <div className="from-primary/5 absolute inset-0 bg-gradient-to-br via-transparent to-transparent opacity-50" />
-              <div className="relative p-8 text-center">
-                {/* Truck Visualization */}
-                <div className="mx-auto mb-8 flex items-center justify-center">
-                  <div className="relative h-48 w-full max-w-sm overflow-hidden rounded-xl">
-                    <img
-                      src="/images/red-truck.png"
-                      alt="Our Big Red Junk Removal Truck"
-                      className="h-full w-full transform object-contain drop-shadow-xl transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
+            {/* 2. EDUCATIONAL - The Concept */}
+            <section className="py-16">
+                <div className="mx-auto max-w-6xl px-4">
+                    <div className="grid items-center gap-12 lg:grid-cols-2">
+                        <div>
+                            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                                <HelpCircle className="h-4 w-4" />
+                                <span>How It Works</span>
+                            </div>
+                            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                                Pay for Space, Not Time
+                            </h2>
+                            <p className="mb-6 text-lg text-muted-foreground">
+                                Many companies charge hourly rates that can skyrocket if the job takes longer than
+                                expected. We don't do that.
+                            </p>
+                            <div className="space-y-4">
+                                <div className="flex gap-4">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                        <CheckCircle className="h-6 w-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold">All-Inclusive Rates</h3>
+                                        <p className="text-sm text-muted-foreground">
+                                            Labor, loading, transport, and disposal fees are all included in one price.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                        <CheckCircle className="h-6 w-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold">No Surprise Fees</h3>
+                                        <p className="text-sm text-muted-foreground">
+                                            The price we quote is the price you pay. No hidden fuel surcharges or booking
+                                            fees.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:shadow-md">
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50" />
+                            <div className="relative p-8 text-center">
+                                {/* Truck Visualization */}
+                                <div className="mx-auto mb-8 flex items-center justify-center">
+                                    <div className="relative h-48 w-full max-w-sm overflow-hidden rounded-xl">
+                                        <Image
+                                            src="/images/red-truck.png"
+                                            alt="Our Big Red Junk Removal Truck"
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, 384px"
+                                            className="object-contain drop-shadow-xl transform transition-transform hover:scale-105 duration-500"
+                                        />
+                                    </div>
+                                </div>
+
+                                <h3 className="mb-2 text-xl font-bold text-foreground">Our 15-Yard Dump Truck</h3>
+                                <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-primary" />
 
                 <h3 className="text-foreground mb-2 text-xl font-bold">Our 15-Yard Dump Truck</h3>
                 <div className="bg-primary mx-auto mb-4 h-1 w-12 rounded-full" />

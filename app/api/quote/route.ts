@@ -75,19 +75,22 @@ export async function POST(req: Request) {
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData()
-      const attachments: { filename: string; content: Buffer }[] = []
+      const attachmentPromises: Promise<{ filename: string; content: Buffer }>[] = []
 
       for (const [key, value] of formData.entries()) {
         if (key === 'attachments' && value instanceof File) {
-          const arrayBuffer = await value.arrayBuffer()
-          attachments.push({
-            filename: value.name,
-            content: Buffer.from(arrayBuffer),
-          })
+          attachmentPromises.push(
+            value.arrayBuffer().then((buf) => ({
+              filename: value.name,
+              content: Buffer.from(buf),
+            }))
+          )
         } else if (typeof value === 'string') {
           raw[key] = value
         }
       }
+
+      const attachments = await Promise.all(attachmentPromises)
 
       if (attachments.length > 0) {
         raw.attachments = attachments
@@ -129,22 +132,23 @@ export async function POST(req: Request) {
       })
     }
 
-    // Send email notification to business owner
-    try {
-      if (!resend) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('RESEND_API_KEY not configured - skipping email notifications')
-        }
-      } else {
-        const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0
+    // Send email notifications in parallel
+    const sendBusinessEmail = async () => {
+      try {
+        if (!resend) {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn('RESEND_API_KEY not configured - skipping email notifications')
+          }
+        } else {
+          const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0
 
-        const busRes = await resend.emails.send({
-          from: EMAIL_CONFIG.from,
-          to: EMAIL_CONFIG.to,
-          replyTo: parsed.data.email,
-          subject: `New Quote Request from ${parsed.data.name}`,
-          attachments: hasAttachments ? (parsed.data.attachments as any) : undefined,
-          html: `
+          const busRes = await resend.emails.send({
+            from: EMAIL_CONFIG.from,
+            to: EMAIL_CONFIG.to,
+            replyTo: parsed.data.email,
+            subject: `New Quote Request from ${parsed.data.name}`,
+            attachments: hasAttachments ? (parsed.data.attachments as any) : undefined,
+            html: `
           <h2>New Quote Request</h2>
           <p><strong>Name:</strong> ${parsed.data.name}</p>
           <p><strong>Phone:</strong> ${parsed.data.phone}</p>
@@ -157,28 +161,29 @@ export async function POST(req: Request) {
           <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
           ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
         `,
-        })
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('Business email send result:', busRes)
+          })
+          if (process.env.NODE_ENV !== 'production') {
+            console.log('Business email send result:', busRes)
+          }
         }
+      } catch (emailError) {
+        console.error('Failed to send business notification email:', emailError)
+        // Continue processing even if email fails - don't block the quote submission
       }
-    } catch (emailError) {
-      console.error('Failed to send business notification email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
     }
 
-    // Send confirmation email to customer
-    try {
-      if (!resend) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
-        }
-      } else {
-        const custRes = await resend.emails.send({
-          from: EMAIL_CONFIG.customerFrom,
-          to: parsed.data.email,
-          subject: 'Your Quote Request - US Junk Removal & Cleaning',
-          html: `
+    const sendCustomerEmail = async () => {
+      try {
+        if (!resend) {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
+          }
+        } else {
+          const custRes = await resend.emails.send({
+            from: EMAIL_CONFIG.customerFrom,
+            to: parsed.data.email,
+            subject: 'Your Quote Request - US Junk Removal & Cleaning',
+            html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #16a34a;">Thank You for Your Quote Request!</h2>
             <p>Hi ${parsed.data.name},</p>
@@ -253,15 +258,19 @@ export async function POST(req: Request) {
             </p>
           </div>
         `,
-        })
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('Customer email send result:', custRes)
+          })
+          if (process.env.NODE_ENV !== 'production') {
+            console.log('Customer email send result:', custRes)
+          }
         }
+      } catch (emailError) {
+        console.error('Failed to send customer confirmation email:', emailError)
+        // Continue processing even if email fails - don't block the quote submission
       }
-    } catch (emailError) {
-      console.error('Failed to send customer confirmation email:', emailError)
-      // Continue processing even if email fails - don't block the quote submission
     }
+
+    // Execute email sending in parallel
+    await Promise.allSettled([sendBusinessEmail(), sendCustomerEmail()])
 
     // Avoid logging PII in production
     if (process.env.NODE_ENV !== 'production') {
