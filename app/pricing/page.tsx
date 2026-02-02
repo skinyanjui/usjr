@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
     Truck,
@@ -159,10 +160,12 @@ export default function PricingPage() {
                                 {/* Truck Visualization */}
                                 <div className="mx-auto mb-8 flex items-center justify-center">
                                     <div className="relative h-48 w-full max-w-sm overflow-hidden rounded-xl">
-                                        <img
+                                        <Image
                                             src="/images/red-truck.png"
                                             alt="Our Big Red Junk Removal Truck"
-                                            className="h-full w-full object-contain drop-shadow-xl transform transition-transform hover:scale-105 duration-500"
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, 384px"
+                                            className="object-contain drop-shadow-xl transform transition-transform hover:scale-105 duration-500"
                                         />
                                     </div>
                                 </div>
