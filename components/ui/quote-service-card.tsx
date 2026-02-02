@@ -24,7 +24,7 @@ export function QuoteServiceCard({
   secondaryButtonText,
 }: QuoteServiceCardProps) {
   return (
-    <Card className="glass border-border border-2 transition-all duration-300 hover:border-primary/50">
+    <Card className="glass border-border hover:border-primary/50 border-2 transition-all duration-300">
       <CardContent className="p-6 sm:p-8">
         <div className="mb-6 text-center">
           <h2 className="text-foreground mb-2 text-xl font-bold sm:text-2xl">{title}</h2>
@@ -33,10 +33,12 @@ export function QuoteServiceCard({
 
         <div className="mb-6 space-y-4">
           <div className="bg-muted/30 rounded-lg p-4">
-            <h3 className="mb-2 font-semibold text-foreground">
-              {Array.isArray(pricing) && typeof pricing[0] === 'object' ? 'Starting Prices:' : 'Service Prices:'}
+            <h3 className="text-foreground mb-2 font-semibold">
+              {Array.isArray(pricing) && typeof pricing[0] === 'object'
+                ? 'Starting Prices:'
+                : 'Service Prices:'}
             </h3>
-            <ul className="space-y-1 text-sm text-muted-foreground">
+            <ul className="text-muted-foreground space-y-1 text-sm">
               {pricing.map((item, index) => (
                 <li key={typeof item === 'object' ? item.id : index}>
                   {typeof item === 'object' ? `• ${item.name}: ${item.price}` : item}
@@ -55,13 +57,16 @@ export function QuoteServiceCard({
         </div>
 
         <div className="space-y-3">
-          <Button asChild className="w-full bg-primary text-primary-foreground hover:brightness-110">
+          <Button
+            asChild
+            className="bg-primary text-primary-foreground w-full hover:brightness-110"
+          >
             <Link href={primaryLink}>{primaryButtonText}</Link>
           </Button>
           <Link href={secondaryLink}>
             <Button
               variant="outline"
-              className="w-full border-border bg-transparent text-foreground hover:bg-accent"
+              className="border-border text-foreground hover:bg-accent w-full bg-transparent"
             >
               {secondaryButtonText}
             </Button>

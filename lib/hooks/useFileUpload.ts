@@ -16,7 +16,7 @@ export function useFileUpload(maxFiles = 6) {
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawFiles = Array.from(e.target.files || [])
     if (files.length + rawFiles.length <= maxFiles) {
-      const newFiles = rawFiles.map((file) => ({
+      const newFiles = rawFiles.map(file => ({
         id: Math.random().toString(36).substring(2, 15),
         file,
       }))
@@ -25,7 +25,7 @@ export function useFileUpload(maxFiles = 6) {
   }
 
   const removeFile = (id: string) => {
-    setFiles(files.filter((f) => f.id !== id))
+    setFiles(files.filter(f => f.id !== id))
   }
 
   const resetFiles = () => {

@@ -29,7 +29,6 @@ function labelForPath(path: string, defaultLabel: string): string {
   if (path === '/privacy') return 'Privacy Policy'
   if (path === '/terms') return 'Terms of Service'
 
-
   // If the last segment matches a NAV child, use its label
   const last = path.split('/').filter(Boolean).pop() || defaultLabel
   const humanized = last.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())

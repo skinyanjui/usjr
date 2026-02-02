@@ -9,29 +9,25 @@ export function Footer() {
   const locations = NAV.find(i => i.label === 'Locations')?.children ?? []
 
   return (
-    <footer role="contentinfo" className="border-t border-border bg-foreground text-background">
+    <footer role="contentinfo" className="border-border bg-foreground text-background border-t">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-4 py-12">
-
-
         {/* CTA Banner */}
-        <div className="mb-12 rounded-lg bg-background/10 p-6 text-center sm:p-8">
-          <h3 className="mb-2 text-xl font-bold sm:text-2xl">
-            Ready to reclaim your space?
-          </h3>
-          <p className="mb-6 text-sm text-background/80">
+        <div className="bg-background/10 mb-12 rounded-lg p-6 text-center sm:p-8">
+          <h3 className="mb-2 text-xl font-bold sm:text-2xl">Ready to reclaim your space?</h3>
+          <p className="text-background/80 mb-6 text-sm">
             Same-day service available. Locally owned and insured.
           </p>
           <div className="flex flex-nowrap items-center justify-center gap-3">
             <Link
               href="/quote"
-              className="rounded-lg border border-foreground/30 bg-background px-4 py-2.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-90 sm:px-6"
+              className="border-foreground/30 bg-background text-foreground rounded-lg border px-4 py-2.5 text-sm font-semibold transition-opacity hover:opacity-90 sm:px-6"
             >
               Get Free Quote
             </Link>
             <a
               href={`tel:${settings.phoneE164}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-background/30 px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-background/10 sm:px-6"
+              className="border-background/30 hover:bg-background/10 inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-semibold transition-colors sm:px-6"
             >
               <Phone className="h-4 w-4" />
               {settings.phone}
@@ -49,7 +45,7 @@ export function Footer() {
                 <li key={s.href}>
                   <Link
                     href={s.href!}
-                    className="text-sm text-background/70 transition-colors hover:text-background"
+                    className="text-background/70 hover:text-background text-sm transition-colors"
                   >
                     {s.label}
                   </Link>
@@ -66,7 +62,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href!}
-                    className="text-sm text-background/70 transition-colors hover:text-background"
+                    className="text-background/70 hover:text-background text-sm transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -80,27 +76,42 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold">Company</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/about"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/blog"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/pricing"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/faq"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/quote" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/quote"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Get Quote
                 </Link>
               </li>
@@ -112,17 +123,26 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/privacy" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/privacy"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-background/70 transition-colors hover:text-background">
+                <Link
+                  href="/terms"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <a href="/sitemap.xml" className="text-sm text-background/70 transition-colors hover:text-background">
+                <a
+                  href="/sitemap.xml"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
                   Sitemap
                 </a>
               </li>
@@ -134,16 +154,19 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm">
-                <Phone className="h-4 w-4 text-background/70" />
+                <Phone className="text-background/70 h-4 w-4" />
                 <span>{settings.phone}</span>
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <Mail className="h-4 w-4 text-background/70" />
-                <a href={`mailto:${settings.email}`} className="text-background/70 hover:text-background">
+                <Mail className="text-background/70 h-4 w-4" />
+                <a
+                  href={`mailto:${settings.email}`}
+                  className="text-background/70 hover:text-background"
+                >
                   {settings.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm text-background/70">
+              <li className="text-background/70 flex items-center gap-2 text-sm">
                 <MapPin className="h-4 w-4" />
                 <span>Evansville, IN</span>
               </li>
@@ -152,8 +175,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-background/20 pt-6">
-          <div className="flex flex-col items-center justify-between gap-4 text-xs text-background/60 sm:flex-row">
+        <div className="border-background/20 border-t pt-6">
+          <div className="text-background/60 flex flex-col items-center justify-between gap-4 text-xs sm:flex-row">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
             <p>Veteran-Owned · Licensed & Insured</p>
           </div>

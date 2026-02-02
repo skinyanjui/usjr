@@ -58,11 +58,7 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
     >
       <Card className="bg-card/80 backdrop-blur-sm">
         <CardContent className="p-8">
-          <div
-            className="text-center testimonial-content"
-            aria-live="polite"
-            aria-atomic="true"
-          >
+          <div className="testimonial-content text-center" aria-live="polite" aria-atomic="true">
             {/* Rating Stars */}
             <div className="mb-4 flex justify-center">
               {STAR_ICONS.map(i => (
@@ -70,9 +66,7 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
                   key={i}
                   className={cn(
                     'h-3.5 w-3.5',
-                    i < currentTestimonial.rating
-                      ? 'fill-current text-yellow-400'
-                      : 'text-gray-500'
+                    i < currentTestimonial.rating ? 'fill-current text-yellow-400' : 'text-gray-500'
                   )}
                   aria-hidden="true"
                 />
@@ -86,9 +80,7 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
 
             {/* Customer Info */}
             <div className="mb-2 flex items-center justify-center gap-2">
-              <span className="text-foreground font-semibold">
-                {currentTestimonial.name}
-              </span>
+              <span className="text-foreground font-semibold">{currentTestimonial.name}</span>
               <span className="text-muted-foreground">•</span>
               <div className="text-muted-foreground flex items-center gap-1">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -97,9 +89,7 @@ export const TestimonialsSlider = memo(function TestimonialsSlider({
             </div>
 
             {/* Service Type */}
-            <div className="text-sm font-medium text-gray-900">
-              {currentTestimonial.service}
-            </div>
+            <div className="text-sm font-medium text-gray-900">{currentTestimonial.service}</div>
 
             {/* Date */}
             <div className="text-muted-foreground mt-2 text-xs">

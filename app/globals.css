@@ -51,8 +51,8 @@
 
   /* Charts */
   --chart-1: oklch(0.55 0.2 250);
-  --chart-2: oklch(0.50 0.15 250);
-  --chart-3: oklch(0.30 0.1 285);
+  --chart-2: oklch(0.5 0.15 250);
+  --chart-3: oklch(0.3 0.1 285);
   --chart-4: oklch(0.7 0.12 80);
   --chart-5: oklch(0.8 0.12 40);
 
@@ -66,7 +66,7 @@
   --sidebar-accent: oklch(0.96 0.003 285);
   --sidebar-accent-foreground: oklch(0.14 0.005 285);
   --sidebar-border: oklch(0.92 0.004 285);
-  --sidebar-ring: oklch(0.60 0.14 250);
+  --sidebar-ring: oklch(0.6 0.14 250);
 }
 
 .dark {
@@ -84,7 +84,7 @@
   --popover-foreground: oklch(0.98 0.002 285);
 
   /* Primary - Lighter SaaS Blue in Dark Mode */
-  --primary: oklch(0.60 0.2 250);
+  --primary: oklch(0.6 0.2 250);
   --primary-foreground: oklch(0.98 0 0);
 
   /* Secondary */

@@ -322,8 +322,6 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
-
-
       </div>
     </main>
   )

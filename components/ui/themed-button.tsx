@@ -14,8 +14,10 @@ export const ThemedButton = forwardRef<HTMLButtonElement, ThemedButtonProps>(
 
       if (variant === 'outline') {
         const outlineMap = {
-          primary: 'border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent',
-          neutral: 'border-foreground text-foreground hover:bg-foreground hover:text-background bg-transparent',
+          primary:
+            'border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent',
+          neutral:
+            'border-foreground text-foreground hover:bg-foreground hover:text-background bg-transparent',
         } as const
         return `${baseClasses} ${outlineMap[theme]}`
       }

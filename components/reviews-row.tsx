@@ -4,8 +4,6 @@ import { useEffect, useRef, useState, memo } from 'react'
 import { Star, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 import { type Testimonial } from '@/lib/cms-content'
 
-
-
 const STAR_INDICES = [0, 1, 2, 3, 4]
 
 interface ReviewsRowProps {
@@ -120,7 +118,7 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
   return (
     <section className="px-4 py-4">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3 sm:gap-4">
+        <div className="border-border bg-muted/30 mb-6 flex flex-wrap items-center justify-center gap-3 rounded-lg border px-4 py-3 sm:gap-4">
           <div className="flex items-center gap-2 font-semibold">
             <span className="flex">
               {STAR_INDICES.map(i => (
@@ -129,12 +127,12 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
             </span>
             <span className="text-sm sm:text-base">4.7/5 from 6 verified reviews</span>
           </div>
-          <span className="hidden h-1 w-1 rounded-full bg-border sm:block"></span>
+          <span className="bg-border hidden h-1 w-1 rounded-full sm:block"></span>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline-offset-2 transition-all hover:text-primary/80 hover:underline sm:text-base"
+            className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-2 transition-all hover:underline sm:text-base"
           >
             View All Reviews on Google
             <ExternalLink className="h-3.5 w-3.5" />

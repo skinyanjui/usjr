@@ -137,11 +137,11 @@ export function QuoteFormStandalone() {
       await submitQuoteForm({
         formData: {
           ...quoteData,
-          attachments: uploadedFiles.map((f) => f.file),
+          attachments: uploadedFiles.map(f => f.file),
         },
         source: 'quote-form',
         onSuccess: () => setIsSubmitted(true),
-        onError: (errorMessage) => setSubmitError(errorMessage),
+        onError: errorMessage => setSubmitError(errorMessage),
       })
     } finally {
       setIsSubmitting(false)
@@ -222,12 +222,15 @@ export function QuoteFormStandalone() {
     return (
       <Card className="mx-auto flex max-w-2xl flex-col shadow-sm">
         <CardContent className="p-8 text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-            <CheckCircle className="h-8 w-8 text-primary" />
+          <div className="bg-primary/10 mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
+            <CheckCircle className="text-primary h-8 w-8" />
           </div>
-          <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground">Quote Request Received!</h2>
-          <p className="mx-auto mb-8 max-w-md text-muted-foreground">
-            Thank you for your detailed request. We'll review your information and get back to you within 2 hours.
+          <h2 className="text-foreground mb-3 text-2xl font-bold tracking-tight">
+            Quote Request Received!
+          </h2>
+          <p className="text-muted-foreground mx-auto mb-8 max-w-md">
+            Thank you for your detailed request. We'll review your information and get back to you
+            within 2 hours.
           </p>
 
           <div className="mb-8 space-y-3">
@@ -237,12 +240,12 @@ export function QuoteFormStandalone() {
               </a>
             </Button>
             <div className="text-center">
-              <p className="mb-1 text-sm text-muted-foreground">Need immediate assistance?</p>
-              <p className="font-semibold text-foreground">Text {settings.phone}</p>
+              <p className="text-muted-foreground mb-1 text-sm">Need immediate assistance?</p>
+              <p className="text-foreground font-semibold">Text {settings.phone}</p>
             </div>
           </div>
 
-          <div className="flex justify-center gap-6 text-xs text-muted-foreground">
+          <div className="text-muted-foreground flex justify-center gap-6 text-xs">
             <div className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5" />
               <span>2-hour response</span>
@@ -267,11 +270,9 @@ export function QuoteFormStandalone() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <CardTitle className="text-xl font-bold">Request Quote</CardTitle>
-            <CardDescription className="text-sm">
-              We'll respond within 2 hours
-            </CardDescription>
+            <CardDescription className="text-sm">We'll respond within 2 hours</CardDescription>
           </div>
-          <Badge variant="outline" className="w-fit border-primary/50 text-primary">
+          <Badge variant="outline" className="border-primary/50 text-primary w-fit">
             Free Estimate
           </Badge>
         </div>
@@ -292,24 +293,26 @@ export function QuoteFormStandalone() {
             </Select>
           </div>
 
-          <div className="flex w-full sm:w-1/2 rounded-md bg-muted/50 p-1">
+          <div className="bg-muted/50 flex w-full rounded-md p-1 sm:w-1/2">
             <button
               type="button"
               onClick={() => setSegment('residential')}
-              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'residential'
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${
+                segment === 'residential'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               Residential
             </button>
             <button
               type="button"
               onClick={() => setSegment('commercial')}
-              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${segment === 'commercial'
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`flex-1 rounded-sm px-3 py-1 text-xs font-medium transition-colors ${
+                segment === 'commercial'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               Commercial
             </button>
@@ -323,10 +326,14 @@ export function QuoteFormStandalone() {
           <div className="grid gap-x-6 gap-y-4 md:grid-cols-2">
             {/* Contact Info Group */}
             <div className="space-y-4 md:col-span-2">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Contact</h3>
+              <h3 className="text-muted-foreground text-sm font-semibold tracking-wide uppercase">
+                Contact
+              </h3>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-1.5">
-                  <Label htmlFor="name" className="text-xs">Full Name *</Label>
+                  <Label htmlFor="name" className="text-xs">
+                    Full Name *
+                  </Label>
                   <Input
                     id="name"
                     value={formData.name}
@@ -336,7 +343,9 @@ export function QuoteFormStandalone() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="email" className="text-xs">Email *</Label>
+                  <Label htmlFor="email" className="text-xs">
+                    Email *
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -347,7 +356,9 @@ export function QuoteFormStandalone() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="phone" className="text-xs">Phone *</Label>
+                  <Label htmlFor="phone" className="text-xs">
+                    Phone *
+                  </Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -358,7 +369,9 @@ export function QuoteFormStandalone() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="address" className="text-xs">Address *</Label>
+                  <Label htmlFor="address" className="text-xs">
+                    Address *
+                  </Label>
                   <Input
                     id="address"
                     value={formData.address}
@@ -371,11 +384,13 @@ export function QuoteFormStandalone() {
               </div>
             </div>
 
-            <div className="my-2 h-px bg-border md:col-span-2" />
+            <div className="bg-border my-2 h-px md:col-span-2" />
 
             {/* Service Selection */}
             <div className="space-y-1.5 md:col-span-2">
-              <Label htmlFor="qfs-service" className="text-xs">Service Type *</Label>
+              <Label htmlFor="qfs-service" className="text-xs">
+                Service Type *
+              </Label>
               <Select
                 value={formData.service}
                 onValueChange={value => setFormData({ ...formData, service: value })}
@@ -396,7 +411,9 @@ export function QuoteFormStandalone() {
 
             {/* Date/Time */}
             <div className="space-y-1.5">
-              <Label htmlFor="preferredDate" className="text-xs">Preferred Date</Label>
+              <Label htmlFor="preferredDate" className="text-xs">
+                Preferred Date
+              </Label>
               <Input
                 id="preferredDate"
                 type="date"
@@ -406,7 +423,9 @@ export function QuoteFormStandalone() {
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="qfs-preferred-time" className="text-xs">Time Window</Label>
+              <Label htmlFor="qfs-preferred-time" className="text-xs">
+                Time Window
+              </Label>
               <Select
                 value={formData.preferredTime}
                 onValueChange={value => setFormData({ ...formData, preferredTime: value })}
@@ -427,9 +446,16 @@ export function QuoteFormStandalone() {
             {sector === 'junk-removal' && (
               <>
                 <div className="space-y-1.5">
-                  <Label htmlFor="jr-load-size" className="text-xs">Est. Load Size</Label>
-                  <Select value={formData.loadSize} onValueChange={value => setFormData({ ...formData, loadSize: value })}>
-                    <SelectTrigger id="jr-load-size" className="h-9"><SelectValue placeholder="Select size" /></SelectTrigger>
+                  <Label htmlFor="jr-load-size" className="text-xs">
+                    Est. Load Size
+                  </Label>
+                  <Select
+                    value={formData.loadSize}
+                    onValueChange={value => setFormData({ ...formData, loadSize: value })}
+                  >
+                    <SelectTrigger id="jr-load-size" className="h-9">
+                      <SelectValue placeholder="Select size" />
+                    </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="single">Single Item</SelectItem>
                       <SelectItem value="quarter">¼ Truck</SelectItem>
@@ -439,7 +465,9 @@ export function QuoteFormStandalone() {
                   </Select>
                 </div>
                 <div className="space-y-1.5 md:col-span-2">
-                  <Label htmlFor="jr-items" className="text-xs">Items Description</Label>
+                  <Label htmlFor="jr-items" className="text-xs">
+                    Items Description
+                  </Label>
                   <Textarea
                     id="jr-items"
                     rows={2}
@@ -455,9 +483,16 @@ export function QuoteFormStandalone() {
             {sector === 'light-demolition' && (
               <>
                 <div className="space-y-1.5">
-                  <Label htmlFor="ld-structure" className="text-xs">Structure</Label>
-                  <Select value={formData.structureType} onValueChange={value => setFormData({ ...formData, structureType: value })}>
-                    <SelectTrigger id="ld-structure" className="h-9"><SelectValue placeholder="Type" /></SelectTrigger>
+                  <Label htmlFor="ld-structure" className="text-xs">
+                    Structure
+                  </Label>
+                  <Select
+                    value={formData.structureType}
+                    onValueChange={value => setFormData({ ...formData, structureType: value })}
+                  >
+                    <SelectTrigger id="ld-structure" className="h-9">
+                      <SelectValue placeholder="Type" />
+                    </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="shed">Shed</SelectItem>
                       <SelectItem value="deck">Deck</SelectItem>
@@ -466,8 +501,16 @@ export function QuoteFormStandalone() {
                   </Select>
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="ld-size" className="text-xs">Approx Size</Label>
-                  <Input id="ld-size" className="h-9" placeholder="e.g. 10x12" value={formData.approxSize} onChange={e => setFormData({ ...formData, approxSize: e.target.value })} />
+                  <Label htmlFor="ld-size" className="text-xs">
+                    Approx Size
+                  </Label>
+                  <Input
+                    id="ld-size"
+                    className="h-9"
+                    placeholder="e.g. 10x12"
+                    value={formData.approxSize}
+                    onChange={e => setFormData({ ...formData, approxSize: e.target.value })}
+                  />
                 </div>
               </>
             )}
@@ -475,20 +518,44 @@ export function QuoteFormStandalone() {
             {sector === 'cleaning' && segment === 'residential' && (
               <>
                 <div className="space-y-1.5">
-                  <Label htmlFor="qfs-bedrooms" className="text-xs">Bedrooms</Label>
-                  <Select value={formData.bedrooms} onValueChange={v => setFormData({ ...formData, bedrooms: v })}>
-                    <SelectTrigger id="qfs-bedrooms" className="h-9"><SelectValue placeholder="#" /></SelectTrigger>
+                  <Label htmlFor="qfs-bedrooms" className="text-xs">
+                    Bedrooms
+                  </Label>
+                  <Select
+                    value={formData.bedrooms}
+                    onValueChange={v => setFormData({ ...formData, bedrooms: v })}
+                  >
+                    <SelectTrigger id="qfs-bedrooms" className="h-9">
+                      <SelectValue placeholder="#" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {[1, 2, 3, 4, 5].map(n => <SelectItem key={n} value={n.toString()}>{n}{n === 5 && '+'}</SelectItem>)}
+                      {[1, 2, 3, 4, 5].map(n => (
+                        <SelectItem key={n} value={n.toString()}>
+                          {n}
+                          {n === 5 && '+'}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="qfs-bathrooms" className="text-xs">Bathrooms</Label>
-                  <Select value={formData.bathrooms} onValueChange={v => setFormData({ ...formData, bathrooms: v })}>
-                    <SelectTrigger id="qfs-bathrooms" className="h-9"><SelectValue placeholder="#" /></SelectTrigger>
+                  <Label htmlFor="qfs-bathrooms" className="text-xs">
+                    Bathrooms
+                  </Label>
+                  <Select
+                    value={formData.bathrooms}
+                    onValueChange={v => setFormData({ ...formData, bathrooms: v })}
+                  >
+                    <SelectTrigger id="qfs-bathrooms" className="h-9">
+                      <SelectValue placeholder="#" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {[1, 1.5, 2, 2.5, 3].map(n => <SelectItem key={n} value={n.toString()}>{n}{n === 3 && '+'}</SelectItem>)}
+                      {[1, 1.5, 2, 2.5, 3].map(n => (
+                        <SelectItem key={n} value={n.toString()}>
+                          {n}
+                          {n === 3 && '+'}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
@@ -496,28 +563,45 @@ export function QuoteFormStandalone() {
             )}
 
             {/* Photos */}
-            <div className="md:col-span-2 space-y-2">
+            <div className="space-y-2 md:col-span-2">
               <Label className="text-xs">Photos (Optional)</Label>
               <div className="grid grid-cols-4 gap-2">
                 <label className="border-border hover:bg-muted/50 flex aspect-square cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed transition-colors">
-                  <Upload className="h-4 w-4 text-muted-foreground" />
-                  <span className="mt-1 text-[10px] text-muted-foreground">Upload</span>
-                  <input type="file" className="hidden" multiple accept="image/*" onChange={handleFileUpload} />
+                  <Upload className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground mt-1 text-[10px]">Upload</span>
+                  <input
+                    type="file"
+                    className="hidden"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                  />
                 </label>
-                {uploadedFiles.map((fileWrapper) => (
-                  <div key={fileWrapper.id} className="relative aspect-square rounded-md border bg-muted/30 p-1">
+                {uploadedFiles.map(fileWrapper => (
+                  <div
+                    key={fileWrapper.id}
+                    className="bg-muted/30 relative aspect-square rounded-md border p-1"
+                  >
                     <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-sm">
-                      <Camera className="h-4 w-4 text-muted-foreground/50" />
+                      <Camera className="text-muted-foreground/50 h-4 w-4" />
                     </div>
-                    <button type="button" onClick={() => removeFile(fileWrapper.id)} className="absolute -top-1 -right-1 rounded-full bg-destructive text-destructive-foreground p-0.5"><X className="h-2.5 w-2.5" /></button>
+                    <button
+                      type="button"
+                      onClick={() => removeFile(fileWrapper.id)}
+                      className="bg-destructive text-destructive-foreground absolute -top-1 -right-1 rounded-full p-0.5"
+                    >
+                      <X className="h-2.5 w-2.5" />
+                    </button>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Notes */}
-            <div className="md:col-span-2 space-y-1.5">
-              <Label htmlFor="message" className="text-xs">Notes</Label>
+            <div className="space-y-1.5 md:col-span-2">
+              <Label htmlFor="message" className="text-xs">
+                Notes
+              </Label>
               <Textarea
                 id="message"
                 className="min-h-[60px] resize-none"
@@ -530,14 +614,14 @@ export function QuoteFormStandalone() {
 
           <div className="pt-2">
             {submitError && (
-              <div className="mb-4 rounded-md border border-destructive/20 bg-destructive/10 p-3 text-xs text-destructive">
+              <div className="border-destructive/20 bg-destructive/10 text-destructive mb-4 rounded-md border p-3 text-xs">
                 {submitError}
               </div>
             )}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-11 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 h-11 w-full text-base font-semibold"
             >
               {isSubmitting ? 'Sending Request...' : 'Get Free Quote'}
             </Button>

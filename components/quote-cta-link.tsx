@@ -29,7 +29,7 @@ export function QuoteCtaLink({
       role="button"
       onClick={() => trackQuoteClick({ location, label, destination: href })}
       className={cn(
-        "inline-flex items-center justify-center rounded-lg border border-primary/30 bg-primary px-4 py-2 font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[.98]",
+        'border-primary/30 bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-primary/50 inline-flex items-center justify-center rounded-lg border px-4 py-2 font-medium shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[.98]',
         className
       )}
     >

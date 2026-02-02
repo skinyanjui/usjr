@@ -137,7 +137,7 @@ export function TwoStepQuoteForm() {
         onSuccess: () => {
           setIsSubmitted(true)
         },
-        onError: (msg) => {
+        onError: msg => {
           setError(msg)
         },
       })
@@ -150,13 +150,17 @@ export function TwoStepQuoteForm() {
     return (
       <Card className="glass">
         <CardContent className="py-12 text-center">
-          <CardTitle className="mb-4 text-2xl font-bold text-foreground">
+          <CardTitle className="text-foreground mb-4 text-2xl font-bold">
             Quote Request Received!
           </CardTitle>
           <p className="text-muted-foreground mb-6">
-            Thank you! We've received your information and will contact you within 15 minutes with your quote.
+            Thank you! We've received your information and will contact you within 15 minutes with
+            your quote.
           </p>
-          <Button onClick={() => window.location.reload()} className="bg-primary text-primary-foreground">
+          <Button
+            onClick={() => window.location.reload()}
+            className="bg-primary text-primary-foreground"
+          >
             Send Another Request
           </Button>
         </CardContent>
@@ -169,8 +173,8 @@ export function TwoStepQuoteForm() {
       {step === 1 ? (
         <Card className="glass">
           <CardHeader className="text-center">
-            <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-foreground sm:text-2xl">
-              <MapPin className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
+            <CardTitle className="text-foreground flex items-center justify-center gap-2 text-xl font-bold sm:text-2xl">
+              <MapPin className="text-primary h-5 w-5 sm:h-6 sm:w-6" />
               Get Your Free Quote
             </CardTitle>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -197,7 +201,7 @@ export function TwoStepQuoteForm() {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-primary py-3 font-semibold text-primary-foreground hover:brightness-110"
+                className="bg-primary text-primary-foreground w-full py-3 font-semibold hover:brightness-110"
               >
                 Check Service Area
               </Button>
@@ -207,8 +211,8 @@ export function TwoStepQuoteForm() {
       ) : (
         <Card className="glass">
           <CardHeader className="text-center">
-            <CardTitle className="flex items-center justify-center gap-2 text-xl font-bold text-foreground sm:text-2xl">
-              <Truck className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
+            <CardTitle className="text-foreground flex items-center justify-center gap-2 text-xl font-bold sm:text-2xl">
+              <Truck className="text-primary h-5 w-5 sm:h-6 sm:w-6" />
               What needs to be removed?
             </CardTitle>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -230,10 +234,11 @@ export function TwoStepQuoteForm() {
                         key={item.id}
                         type="button"
                         onClick={() => handleItemToggle(item.id)}
-                        className={`rounded-lg border-2 p-3 text-center transition-all ${selectedItems.includes(item.id)
+                        className={`rounded-lg border-2 p-3 text-center transition-all ${
+                          selectedItems.includes(item.id)
                             ? 'border-primary bg-primary/10 text-foreground'
                             : 'border-border hover:border-primary/50'
-                          }`}
+                        }`}
                       >
                         <Icon className="mx-auto mb-1 h-5 w-5 sm:h-6 sm:w-6" />
                         <div className="text-xs font-medium">{item.label}</div>
@@ -252,10 +257,11 @@ export function TwoStepQuoteForm() {
                   {loadSizes.map(size => (
                     <label
                       key={size.id}
-                      className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${loadSize === size.id
+                      className={`flex cursor-pointer items-center justify-between rounded-lg border-2 p-2 transition-all sm:p-3 ${
+                        loadSize === size.id
                           ? 'border-primary bg-primary/10'
                           : 'border-border hover:border-primary/50'
-                        }`}
+                      }`}
                     >
                       <div className="flex items-center">
                         <input
@@ -267,11 +273,11 @@ export function TwoStepQuoteForm() {
                           className="sr-only"
                         />
                         <div>
-                          <div className="font-medium text-foreground">{size.label}</div>
+                          <div className="text-foreground font-medium">{size.label}</div>
                           <div className="text-muted-foreground text-sm">{size.description}</div>
                         </div>
                       </div>
-                      <div className="font-bold text-foreground">{size.price}</div>
+                      <div className="text-foreground font-bold">{size.price}</div>
                     </label>
                   ))}
                 </div>
@@ -319,7 +325,7 @@ export function TwoStepQuoteForm() {
                   multiple
                   capture="environment"
                   onChange={e => setContactInfo(prev => ({ ...prev, photos: e.target.files }))}
-                  className="file:mr-4 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary-foreground hover:file:brightness-110"
+                  className="file:bg-primary file:text-primary-foreground file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold hover:file:brightness-110"
                 />
                 <p className="text-muted-foreground mt-1 text-xs">
                   Photos help us provide more accurate quotes
@@ -344,9 +350,7 @@ export function TwoStepQuoteForm() {
                 </Button>
               </div>
               {error && (
-                <p className="mt-2 text-center text-sm font-medium text-destructive">
-                  {error}
-                </p>
+                <p className="text-destructive mt-2 text-center text-sm font-medium">{error}</p>
               )}
             </form>
           </CardContent>

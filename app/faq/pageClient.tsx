@@ -30,12 +30,18 @@ export default function FAQClient() {
 
   const getIcon = (name: string) => {
     switch (name) {
-      case 'HelpCircle': return HelpCircle
-      case 'Truck': return Truck
-      case 'Container': return Container
-      case 'Sparkles': return Sparkles
-      case 'DollarSign': return DollarSign
-      default: return HelpCircle
+      case 'HelpCircle':
+        return HelpCircle
+      case 'Truck':
+        return Truck
+      case 'Container':
+        return Container
+      case 'Sparkles':
+        return Sparkles
+      case 'DollarSign':
+        return DollarSign
+      default:
+        return HelpCircle
     }
   }
 
@@ -53,7 +59,7 @@ export default function FAQClient() {
             aria-label="Search FAQs"
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="pl-10 h-12 text-base"
+            className="h-12 pl-10 text-base"
           />
         </div>
       </div>
@@ -63,14 +69,20 @@ export default function FAQClient() {
         {filteredFAQs.map(category => {
           const Icon = getIcon(category.icon)
           return (
-            <div key={category.id} id={category.id === 'pricing' ? 'price-match' : undefined} className="rounded-xl border border-border bg-card overflow-hidden">
-              <div className="border-b border-border bg-muted/30 px-6 py-4">
+            <div
+              key={category.id}
+              id={category.id === 'pricing' ? 'price-match' : undefined}
+              className="border-border bg-card overflow-hidden rounded-xl border"
+            >
+              <div className="border-border bg-muted/30 border-b px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-background border border-border">
-                    <Icon className="h-4 w-4 text-foreground" />
+                  <div className="bg-background border-border flex h-8 w-8 items-center justify-center rounded-lg border">
+                    <Icon className="text-foreground h-4 w-4" />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground flex-1">{category.name}</h3>
-                  <Badge variant="outline" className="bg-background">{category.faqs.length}</Badge>
+                  <h3 className="text-foreground flex-1 text-lg font-bold">{category.name}</h3>
+                  <Badge variant="outline" className="bg-background">
+                    {category.faqs.length}
+                  </Badge>
                 </div>
               </div>
               <div className="px-6">
@@ -82,7 +94,7 @@ export default function FAQClient() {
                       id={faq.question.includes('Price Match') ? 'price-match' : undefined}
                       className="border-border last:border-0"
                     >
-                      <AccordionTrigger className="text-left py-4 hover:text-primary transition-colors text-foreground font-medium">
+                      <AccordionTrigger className="hover:text-primary text-foreground py-4 text-left font-medium transition-colors">
                         {faq.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
@@ -96,8 +108,6 @@ export default function FAQClient() {
           )
         })}
       </div>
-
-
     </div>
   )
 }

@@ -47,7 +47,7 @@ describe('GoogleReviews', () => {
 
     // Trigger intersection
     act(() => {
-       callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)
+      callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)
     })
 
     expect(screen.queryByText('Scroll to load reviews...')).not.toBeInTheDocument()

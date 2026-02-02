@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Check, X, Truck, Wrench, Sparkles, Clock, DollarSign, Users } from 'lucide-react'
 
-
 const services = [
   {
     id: 'junk-removal',
@@ -108,8 +107,9 @@ export default function CompareClient() {
           return (
             <Card
               key={service.id}
-              className={`relative transition-all duration-300 hover:shadow-lg ${isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
-                }`}
+              className={`relative transition-all duration-300 hover:shadow-lg ${
+                isSelected ? 'shadow-lg ring-2 ring-gray-400' : ''
+              }`}
             >
               <CardHeader className="pb-4 text-center">
                 <div
@@ -180,14 +180,15 @@ export default function CompareClient() {
                   <Button
                     asChild
                     variant="outline"
-                    className={`w-full bg-transparent ${service.color === 'red'
-                      ? 'border-gray-300 text-gray-900'
-                      : service.color === 'orange'
+                    className={`w-full bg-transparent ${
+                      service.color === 'red'
                         ? 'border-gray-300 text-gray-900'
-                        : service.color === 'green'
+                        : service.color === 'orange'
                           ? 'border-gray-300 text-gray-900'
-                          : ''
-                      }`}
+                          : service.color === 'green'
+                            ? 'border-gray-300 text-gray-900'
+                            : ''
+                    }`}
                   >
                     <Link
                       href={service.id === 'cleaning' ? '/cleaning' : `/services/${service.id}`}
@@ -203,8 +204,6 @@ export default function CompareClient() {
           )
         })}
       </div>
-
-
     </>
   )
 }

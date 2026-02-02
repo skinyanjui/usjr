@@ -19,7 +19,7 @@ export const NAV: NavItem[] = [
       description: 'Get $50 off your first whole-home deep cleaning service. Limited time offer!',
       href: '/quote',
       ctaLabel: 'Claim Offer',
-      image: '/promo-image.jpg' // Placeholder, in real app we'd use a real image or omit
+      image: '/promo-image.jpg', // Placeholder, in real app we'd use a real image or omit
     },
     children: [
       { label: 'Junk Removal', href: '/services/junk-removal' },
@@ -45,7 +45,8 @@ export const NAV: NavItem[] = [
     label: 'Locations',
     promo: {
       title: 'Full Tri-State Coverage',
-      description: 'Serving Evansville, Henderson, Owensboro, and surrounding communities with same-day service.',
+      description:
+        'Serving Evansville, Henderson, Owensboro, and surrounding communities with same-day service.',
       href: '/locations/evansville',
       ctaLabel: 'View All Locations',
     },
@@ -65,7 +66,8 @@ export const NAV: NavItem[] = [
     label: 'Company',
     promo: {
       title: 'Award Winning Service',
-      description: 'Veteran-owned and operated. We pride ourselves on honest, transparent service and eco-friendly disposal.',
+      description:
+        'Veteran-owned and operated. We pride ourselves on honest, transparent service and eco-friendly disposal.',
       href: '/about',
       ctaLabel: 'Learn More',
     },
