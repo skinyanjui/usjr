@@ -2,13 +2,13 @@
 
 import Link from 'next/link'
 import { X, AlertTriangle, Megaphone, Info, Sparkles } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { cn } from '@/lib/utils'
 
 // Banner types with different visual treatments
 type BannerType = 'emergency' | 'promo' | 'info' | 'announcement'
 
-interface BannerConfig {
+export interface BannerConfig {
   type: BannerType
   title: string
   message: string
@@ -19,43 +19,8 @@ interface BannerConfig {
   dismissDuration?: number // in hours, defaults to 24
 }
 
-// Safe localStorage wrapper with error handling
-function getStorageItem(key: string): string | null {
-  if (typeof window === 'undefined') return null
-  try {
-    return localStorage.getItem(key)
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('localStorage access failed:', error)
-    }
-    return null
-  }
-}
-
-function setStorageItem(key: string, value: string): void {
-  if (typeof window === 'undefined') return
-  try {
-    localStorage.setItem(key, value)
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('localStorage write failed:', error)
-    }
-  }
-}
-
-function removeStorageItem(key: string): void {
-  if (typeof window === 'undefined') return
-  try {
-    localStorage.removeItem(key)
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('localStorage remove failed:', error)
-    }
-  }
-}
-
 // Default configuration - easily customizable
-const DEFAULT_CONFIG: BannerConfig = {
+export const DEFAULT_CONFIG: BannerConfig = {
   type: 'emergency',
   title: 'Emergency Service Available',
   message: 'Storm cleanup, urgent junk removal & same-day response available now',
@@ -98,58 +63,32 @@ const BANNER_STYLES = {
   },
 }
 
-export function EmergencyBanner({ config = DEFAULT_CONFIG }: { config?: Partial<BannerConfig> }) {
-  const [isVisible, setIsVisible] = useState(false) // Start as false to avoid hydration mismatch
-  const [isClient, setIsClient] = useState(false)
+interface EmergencyBannerProps {
+  config?: Partial<BannerConfig>
+  initialIsVisible?: boolean
+}
+
+export function EmergencyBanner({ config = DEFAULT_CONFIG, initialIsVisible = true }: EmergencyBannerProps) {
+  const [isVisible, setIsVisible] = useState(initialIsVisible)
 
   // Merge with defaults
   const fullConfig: BannerConfig = { ...DEFAULT_CONFIG, ...config }
   const styles = BANNER_STYLES[fullConfig.type]
   const Icon = styles.icon
 
-  useEffect(() => {
-    setIsClient(true)
-
-    // Check if banner should be visible based on environment variable
-    const bannerEnabled = process.env.NEXT_PUBLIC_EMERGENCY_BANNER_ENABLED !== 'false'
-
-    if (!bannerEnabled) {
-      setIsVisible(false)
-      return
-    }
-
-    // Check localStorage for dismissal (with error handling)
-    const dismissedUntil = getStorageItem('emergency-banner-dismissed')
-
-    if (dismissedUntil) {
-      const dismissTime = parseInt(dismissedUntil, 10)
-      const now = Date.now()
-
-      // If dismissal hasn't expired, keep it hidden
-      if (now < dismissTime) {
-        setIsVisible(false)
-        return
-      } else {
-        // Clear expired dismissal
-        removeStorageItem('emergency-banner-dismissed')
-      }
-    }
-
-    // Show the banner
-    setIsVisible(true)
-  }, [])
-
   const handleClose = () => {
     setIsVisible(false)
 
-    // Store dismissal timestamp
-    const dismissDurationMs = (fullConfig.dismissDuration || 24) * 60 * 60 * 1000
-    const dismissUntil = Date.now() + dismissDurationMs
-    setStorageItem('emergency-banner-dismissed', dismissUntil.toString())
+    // Store dismissal in cookie
+    const dismissDurationHours = fullConfig.dismissDuration || 24
+    const maxAge = dismissDurationHours * 60 * 60
+
+    // Set cookie with max-age
+    document.cookie = `emergency-banner-dismissed=true; path=/; max-age=${maxAge}; SameSite=Lax`
   }
 
-  // Don't render on server or if not visible
-  if (!isClient || !isVisible) return null
+  // Don't render if not visible
+  if (!isVisible) return null
 
   return (
     <div className={cn('relative z-50 px-4 py-2', styles.background)}>
