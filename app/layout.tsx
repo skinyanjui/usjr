@@ -15,6 +15,7 @@ import { RoutePrefetcher } from '@/components/route-prefetcher'
 import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
 import { Theme } from '@radix-ui/themes'
+import { cookies } from 'next/headers'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -60,11 +61,16 @@ export const metadata: Metadata = {
   generator: 'v0.app',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const isDismissed = cookieStore.has('emergency-banner-dismissed')
+  const bannerEnabled = process.env.NEXT_PUBLIC_EMERGENCY_BANNER_ENABLED !== 'false'
+  const showBanner = bannerEnabled && !isDismissed
+
   return (
     <html
       lang="en"
@@ -112,7 +118,7 @@ export default function RootLayout({
             >
               Skip to main content
             </a>
-            <EmergencyBanner />
+            <EmergencyBanner initialIsVisible={showBanner} />
             <Header />
             <BreadcrumbsAuto />
             <RoutePrefetcher />
