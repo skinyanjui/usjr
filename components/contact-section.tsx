@@ -120,7 +120,10 @@ export default function ContactSection() {
               <CardContent>
                 {isSubmitted ? (
                   <div className="py-8 text-center">
-                    <CheckCircle className="mx-auto mb-4 h-12 w-12 text-gray-900 sm:h-16 sm:w-16" aria-hidden="true" />
+                    <CheckCircle
+                      className="mx-auto mb-4 h-12 w-12 text-gray-900 sm:h-16 sm:w-16"
+                      aria-hidden="true"
+                    />
                     <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl">Thank You!</h3>
                     <p className="text-muted-foreground">
                       {"We'll contact you within 30 minutes with your free quote."}
@@ -305,7 +308,10 @@ export default function ContactSection() {
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <Phone className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <Phone
+                        className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6"
+                        aria-hidden="true"
+                      />
                       <div>
                         <h4 className="text-foreground font-semibold">Phone</h4>
                         <p className="text-muted-foreground text-base font-semibold sm:text-lg">
@@ -317,7 +323,10 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Mail className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <Mail
+                        className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6"
+                        aria-hidden="true"
+                      />
                       <div>
                         <h4 className="text-foreground font-semibold">Email</h4>
                         <p className="text-muted-foreground">info@unclesamjunkremoval.com</p>
@@ -325,7 +334,10 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <MapPin className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <MapPin
+                        className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6"
+                        aria-hidden="true"
+                      />
                       <div>
                         <h4 className="text-foreground font-semibold">Service Area</h4>
                         <p className="text-muted-foreground">Evansville, IN & Southern Indiana</p>
@@ -338,7 +350,10 @@ export default function ContactSection() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <Clock className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6" aria-hidden="true" />
+                      <Clock
+                        className="mt-1 h-5 w-5 text-gray-900 sm:h-6 sm:w-6"
+                        aria-hidden="true"
+                      />
                       <div>
                         <h4 className="text-foreground font-semibold">Hours</h4>
                         <p className="text-muted-foreground">Monday - Sunday</p>

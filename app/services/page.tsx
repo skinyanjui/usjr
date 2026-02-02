@@ -135,11 +135,13 @@ export default function ServicesPage() {
       />
 
       {/* Junk Removal Services */}
-      <section className="border-b border-border py-16">
+      <section className="border-border border-b py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-foreground">Junk Removal Services</h2>
-            <p className="text-muted-foreground">Professional removal services for homes and businesses</p>
+            <h2 className="text-foreground text-2xl font-bold">Junk Removal Services</h2>
+            <p className="text-muted-foreground">
+              Professional removal services for homes and businesses
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -147,21 +149,21 @@ export default function ServicesPage() {
               <Link
                 key={index}
                 href={service.link}
-                className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+                className="group border-border bg-card hover:border-foreground/20 relative overflow-hidden rounded-xl border p-6 transition-all hover:shadow-sm"
               >
                 <div className="mb-4 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-foreground">
+                  <div className="bg-muted text-foreground flex h-12 w-12 items-center justify-center rounded-lg">
                     <service.icon className="h-6 w-6" />
                   </div>
-                  <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                  <span className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs font-medium">
                     {service.price}
                   </span>
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-foreground group-hover:text-primary mb-2 text-lg font-bold transition-colors">
                   {service.title}
                 </h3>
-                <p className="mb-4 text-sm text-muted-foreground">{service.description}</p>
-                <div className="flex items-center text-sm font-medium text-foreground group-hover:gap-2 transition-all">
+                <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
+                <div className="text-foreground flex items-center text-sm font-medium transition-all group-hover:gap-2">
                   View Details <ArrowRight className="ml-1 h-4 w-4" />
                 </div>
               </Link>
@@ -171,11 +173,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Project Services */}
-      <section className="border-b border-border bg-muted/30 py-16">
+      <section className="border-border bg-muted/30 border-b py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-foreground">Project Services</h2>
-            <p className="text-muted-foreground">Demolition, debris removal, and seasonal cleanup support</p>
+            <h2 className="text-foreground text-2xl font-bold">Project Services</h2>
+            <p className="text-muted-foreground">
+              Demolition, debris removal, and seasonal cleanup support
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -183,14 +187,14 @@ export default function ServicesPage() {
               <Link
                 key={index}
                 href={service.link}
-                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+                className="group border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:shadow-sm"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-foreground">
+                <div className="bg-muted text-foreground mb-4 flex h-10 w-10 items-center justify-center rounded-lg">
                   <service.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mb-2 font-bold text-foreground">{service.title}</h3>
-                <p className="mb-3 text-sm text-muted-foreground">{service.description}</p>
-                <p className="text-xs font-medium text-foreground/80">{service.price}</p>
+                <h3 className="text-foreground mb-2 font-bold">{service.title}</h3>
+                <p className="text-muted-foreground mb-3 text-sm">{service.description}</p>
+                <p className="text-foreground/80 text-xs font-medium">{service.price}</p>
               </Link>
             ))}
           </div>
@@ -198,10 +202,10 @@ export default function ServicesPage() {
       </section>
 
       {/* Cleaning Services */}
-      <section className="border-b border-border py-16">
+      <section className="border-border border-b py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-foreground">Cleaning Services</h2>
+            <h2 className="text-foreground text-2xl font-bold">Cleaning Services</h2>
             <p className="text-muted-foreground">Eco-friendly cleaning with natural products</p>
           </div>
 
@@ -210,14 +214,14 @@ export default function ServicesPage() {
               <Link
                 key={index}
                 href={service.link}
-                className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-foreground/20 hover:shadow-sm"
+                className="group border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:shadow-sm"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
                   <service.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-foreground">{service.title}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">{service.description}</p>
-                <div className="flex items-center text-sm font-medium text-foreground">
+                <h3 className="text-foreground mb-2 text-lg font-bold">{service.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
+                <div className="text-foreground flex items-center text-sm font-medium">
                   View Details
                 </div>
               </Link>
@@ -227,11 +231,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Areas */}
-      <section className="border-b border-border bg-muted/30 py-16">
+      <section className="border-border bg-muted/30 border-b py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-foreground">Service Areas</h2>
-            <p className="text-muted-foreground">Proudly serving Southern Indiana and Western Kentucky</p>
+            <h2 className="text-foreground text-2xl font-bold">Service Areas</h2>
+            <p className="text-muted-foreground">
+              Proudly serving Southern Indiana and Western Kentucky
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -239,7 +245,7 @@ export default function ServicesPage() {
               <Link
                 key={index}
                 href={location.href}
-                className="flex items-center justify-center rounded-xl border border-border bg-card p-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                className="border-border bg-card text-foreground hover:bg-muted hover:text-primary flex items-center justify-center rounded-xl border p-4 text-center text-sm font-medium transition-colors"
               >
                 {location.name}
               </Link>
@@ -247,8 +253,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-
     </div>
   )
 }

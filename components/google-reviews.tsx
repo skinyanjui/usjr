@@ -15,7 +15,9 @@ export function GoogleReviews() {
   useEffect(() => {
     if (isVisible && !error) {
       // Check if script already exists to avoid duplicate loading
-      const existingScript = document.querySelector('script[src="https://static.elfsight.com/platform/platform.js"]')
+      const existingScript = document.querySelector(
+        'script[src="https://static.elfsight.com/platform/platform.js"]'
+      )
 
       if (existingScript) {
         return
@@ -55,17 +57,17 @@ export function GoogleReviews() {
           <div ref={containerRef} className="mx-auto min-h-[400px] max-w-4xl p-6">
             {isVisible ? (
               error ? (
-                 <div className="flex h-64 flex-col items-center justify-center text-center text-red-500">
-                    <AlertCircle className="mb-2 h-10 w-10" />
-                    <p>Failed to load reviews. Please try refreshing the page.</p>
-                 </div>
+                <div className="flex h-64 flex-col items-center justify-center text-center text-red-500">
+                  <AlertCircle className="mb-2 h-10 w-10" />
+                  <p>Failed to load reviews. Please try refreshing the page.</p>
+                </div>
               ) : (
                 <>
                   {isLoading && (
-                     <div className="flex h-64 flex-col items-center justify-center text-muted-foreground">
-                        <Loader2 className="mb-2 h-10 w-10 animate-spin" />
-                        <p>Loading reviews...</p>
-                     </div>
+                    <div className="text-muted-foreground flex h-64 flex-col items-center justify-center">
+                      <Loader2 className="mb-2 h-10 w-10 animate-spin" />
+                      <p>Loading reviews...</p>
+                    </div>
                   )}
                   <div
                     className="elfsight-app-ae6bd45d-9f5a-4ad3-95e7-f4f8c3b6d2a1"
@@ -74,13 +76,13 @@ export function GoogleReviews() {
                 </>
               )
             ) : (
-               <div className="flex h-64 flex-col items-center justify-center text-muted-foreground">
-                  <p>Scroll to load reviews...</p>
-               </div>
+              <div className="text-muted-foreground flex h-64 flex-col items-center justify-center">
+                <p>Scroll to load reviews...</p>
+              </div>
             )}
           </div>
 
-          <div className="border-t border-border bg-card px-6 py-4 text-center">
+          <div className="border-border bg-card border-t px-6 py-4 text-center">
             <div className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-6">
               <div className="flex items-center gap-2 font-semibold">
                 <span className="flex">
@@ -90,12 +92,12 @@ export function GoogleReviews() {
                 </span>
                 <span>4.7/5 from 6 verified reviews</span>
               </div>
-              <span className="hidden h-1 w-1 rounded-full bg-border sm:block"></span>
+              <span className="bg-border hidden h-1 w-1 rounded-full sm:block"></span>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Uncle+Sam+Junk+Removal+Evansville"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-semibold text-primary underline-offset-2 transition-all hover:text-primary/80 hover:underline"
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-2 font-semibold underline-offset-2 transition-all hover:underline"
               >
                 View All Reviews on Google
               </a>

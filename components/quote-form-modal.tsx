@@ -92,18 +92,18 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
         `Eco-Friendly: ${formData.ecoFriendly}`,
         `Message: ${formData.message}`,
       ]
-        .filter((line) => !line.endsWith(': '))
+        .filter(line => !line.endsWith(': '))
         .join('\n')
 
       await submitQuoteForm({
         formData: {
           ...formData,
           details,
-          attachments: uploadedFiles.map((f) => f.file),
+          attachments: uploadedFiles.map(f => f.file),
         },
         source: `quote-modal-${segment}`,
         onSuccess: () => setIsSubmitted(true),
-        onError: (msg) => setSubmitError(msg),
+        onError: msg => setSubmitError(msg),
       })
     } finally {
       setIsSubmitting(false)
@@ -161,20 +161,22 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             <button
               type="button"
               onClick={() => setSegment('residential')}
-              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'residential'
-                ? 'bg-card text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
+                segment === 'residential'
+                  ? 'bg-card text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               Residential
             </button>
             <button
               type="button"
               onClick={() => setSegment('commercial')}
-              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${segment === 'commercial'
-                ? 'bg-card text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
-                }`}
+              className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors sm:py-2.5 ${
+                segment === 'commercial'
+                  ? 'bg-card text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               Commercial
             </button>
@@ -391,7 +393,7 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
 
             {uploadedFiles.length > 0 && (
               <div className="mt-3 grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3">
-                {uploadedFiles.map((fileWrapper) => (
+                {uploadedFiles.map(fileWrapper => (
                   <div key={fileWrapper.id} className="relative">
                     <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-100">
                       <Camera className="h-5 w-5 text-gray-500 sm:h-6 sm:w-6" />
@@ -448,12 +450,18 @@ export function QuoteFormModal({ isOpen, onClose }: QuoteFormModalProps) {
             >
               {isSubmitting ? 'Sending Request...' : 'Submit Request'}
             </Button>
-            <Button type="button" variant="outline" onClick={onClose} className="w-full sm:w-auto" disabled={isSubmitting}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClose}
+              className="w-full sm:w-auto"
+              disabled={isSubmitting}
+            >
               Cancel
             </Button>
           </div>
           {submitError && (
-            <p className="text-sm font-medium text-destructive mt-2">{submitError}</p>
+            <p className="text-destructive mt-2 text-sm font-medium">{submitError}</p>
           )}
         </form>
       </DialogContent>

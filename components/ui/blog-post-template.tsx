@@ -65,8 +65,8 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
           {/* Category badge */}
           <div className="mb-4">
-            <span className="bg-muted/50 text-foreground border border-border/50 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium tracking-wide">
-              <Tag className="h-3 w-3 text-muted-foreground" />
+            <span className="bg-muted/50 text-foreground border-border/50 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium tracking-wide">
+              <Tag className="text-muted-foreground h-3 w-3" />
               {meta.category}
             </span>
           </div>
@@ -97,7 +97,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             </div>
             <button
               onClick={handleShare}
-              className="border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground ml-auto flex items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+              className="border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground ml-auto flex items-center gap-2 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label="Share article"
             >
               <Share2 className="h-3.5 w-3.5" />
@@ -111,8 +111,8 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
       {(() => {
         const post = blogPosts.find(p => p.title === meta.title)
         return post?.image ? (
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8">
-            <div className="relative aspect-[2/1] w-full overflow-hidden rounded-xl border border-border/50 bg-muted/30 shadow-sm">
+          <div className="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="border-border/50 bg-muted/30 relative aspect-[2/1] w-full overflow-hidden rounded-xl border shadow-sm">
               <Image
                 src={post.image}
                 alt={meta.title}
@@ -350,11 +350,13 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
         {meta.tags && meta.tags.length > 0 && (
           <div className="border-border/50 mt-12 border-t pt-8">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-foreground text-xs font-semibold uppercase tracking-wider mr-2">Tags:</span>
+              <span className="text-foreground mr-2 text-xs font-semibold tracking-wider uppercase">
+                Tags:
+              </span>
               {meta.tags.map(tag => (
                 <span
                   key={tag}
-                  className="bg-muted text-muted-foreground border border-transparent hover:border-border rounded-md px-2.5 py-1 text-xs font-medium transition-colors"
+                  className="bg-muted text-muted-foreground hover:border-border rounded-md border border-transparent px-2.5 py-1 text-xs font-medium transition-colors"
                 >
                   {tag}
                 </span>
@@ -362,8 +364,6 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             </div>
           </div>
         )}
-
-
 
         {/* Related posts with Linear-style cards */}
         {relatedPosts && relatedPosts.length > 0 && (
@@ -374,7 +374,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                 <Link
                   key={post.href}
                   href={post.href}
-                  className="group block border-border bg-card hover:border-foreground/20 rounded-lg border p-6 transition-all hover:bg-muted/30"
+                  className="group border-border bg-card hover:border-foreground/20 hover:bg-muted/30 block rounded-lg border p-6 transition-all"
                 >
                   <div className="mb-2">
                     <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
@@ -384,7 +384,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
                   <h3 className="text-foreground group-hover:text-primary mb-2 text-base leading-snug font-bold transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                  <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
                     {post.excerpt}
                   </p>
                 </Link>

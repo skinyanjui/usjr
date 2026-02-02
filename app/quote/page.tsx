@@ -42,21 +42,12 @@ export default function QuotePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary px-8 py-3 text-lg text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg"
               >
-                <a href={`tel:${settings.phoneE164}`}>
-                  Call {settings.phone}
-                </a>
+                <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="px-8 py-3 text-lg"
-              >
-                <a href={`sms:${settings.phoneE164}`}>
-                  Text Photos
-                </a>
+              <Button asChild size="lg" variant="outline" className="px-8 py-3 text-lg">
+                <a href={`sms:${settings.phoneE164}`}>Text Photos</a>
               </Button>
             </div>
           </div>
@@ -64,10 +55,12 @@ export default function QuotePage() {
           {/* Divider */}
           <div className="relative mb-12">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t-2 border-border"></div>
+              <div className="border-border w-full border-t-2"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-background px-4 text-muted-foreground font-medium">Or fill out the form</span>
+              <span className="bg-background text-muted-foreground px-4 font-medium">
+                Or fill out the form
+              </span>
             </div>
           </div>
 
@@ -82,17 +75,19 @@ export default function QuotePage() {
               Our Services
             </h2>
             <div className="grid gap-6 sm:grid-cols-3">
-              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
                 <CardContent className="p-6 text-center">
                   <h3 className="text-foreground mb-3 text-lg font-bold">Junk Removal</h3>
-                  <p className="text-foreground mb-4 text-base font-semibold">Starting at {junkRemovalTiers[0]?.price ?? '$149'}</p>
+                  <p className="text-foreground mb-4 text-base font-semibold">
+                    Starting at {junkRemovalTiers[0]?.price ?? '$149'}
+                  </p>
                   <Button asChild variant="outline" size="sm" className="w-full">
                     <a href="/services/junk-removal">View Details</a>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
                 <CardContent className="p-6 text-center">
                   <h3 className="text-foreground mb-3 text-lg font-bold">Light Demolition</h3>
                   <p className="text-foreground mb-4 text-base font-semibold">Starting at $299</p>
@@ -102,7 +97,7 @@ export default function QuotePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-border bg-card hover:border-primary/50 transition-all">
+              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
                 <CardContent className="p-6 text-center">
                   <h3 className="text-foreground mb-3 text-lg font-bold">Cleaning Services</h3>
                   <p className="text-foreground mb-4 text-base font-semibold">Starting at $80</p>
@@ -116,7 +111,7 @@ export default function QuotePage() {
 
           {/* Trust Indicators */}
           <div className="text-center">
-            <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-foreground">
+            <div className="text-foreground flex flex-wrap justify-center gap-6 text-sm font-medium">
               <span className="flex items-center gap-1">
                 <span className="text-primary">✓</span> Same-Day Service
               </span>

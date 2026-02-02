@@ -246,8 +246,6 @@ export default function SummerCleanupChecklistPage() {
         <strong>Late Summer (August):</strong> Final outdoor projects, fall preparation, lawn
         overseeding
       </p>
-
-
     </BlogPostTemplate>
   )
 }

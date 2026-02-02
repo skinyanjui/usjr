@@ -11,4 +11,4 @@ jest.mock('lucide-react', () => ({
   Leaf: () => <svg />,
   Shield: () => <svg />,
   Clock: () => <svg />,
-}));
+}))

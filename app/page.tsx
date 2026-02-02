@@ -28,8 +28,6 @@ export default function HomePage() {
 
       <ReviewsRow reviews={reviews} />
 
-
-
       <StructuredData type="LocalBusiness" />
     </main>
   )

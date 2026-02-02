@@ -42,6 +42,9 @@ export class RateLimiter {
     }
 
     recent.push(now)
+    // Optimization: Ensure the IP is moved to the end of the map (MRU)
+    // This allows cleanup to iterate from the start (LRU) and stop early
+    this.ipToTimestamps.delete(ip)
     this.ipToTimestamps.set(ip, recent)
     return true
   }
@@ -50,24 +53,18 @@ export class RateLimiter {
    * Removes entries that have no valid timestamps within the window.
    */
   private cleanup(now: number) {
+    this.lastCleanup = now
     for (const [ip, timestamps] of this.ipToTimestamps.entries()) {
       const valid = timestamps.filter(t => now - t < this.windowMs)
       if (valid.length === 0) {
         this.ipToTimestamps.delete(ip)
       } else {
-        // Optimization: only update the map if the array reference changed (i.e. we filtered something)
-        // Array.filter creates a new array, so we always update if length changed
-        // Actually, since we always filter on access (in check), the array in the map *might* contain old entries
-        // if that IP hasn't been seen in a while.
-
-        // However, here we are iterating all keys.
-        // If we filtered out items, we update.
-        if (valid.length < timestamps.length) {
-          this.ipToTimestamps.set(ip, valid)
-        }
+        // Optimization: Stop iterating once we find a valid entry.
+        // Since we maintain insertion order on access (LRU at start), if we find a valid entry,
+        // all subsequent entries must also be valid (accessed more recently).
+        return
       }
     }
-    this.lastCleanup = now
   }
 
   // Expose for monitoring/testing

@@ -6,7 +6,7 @@ import { settings } from '@/lib/cms-content'
 
 export function HeroSection() {
   return (
-    <section className="relative border-b border-border overflow-hidden bg-background">
+    <section className="border-border bg-background relative overflow-hidden border-b">
       {/* Background Image - Opacity 20% */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -18,7 +18,7 @@ export function HeroSection() {
           sizes="100vw"
         />
         {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
+        <div className="from-background via-background/50 absolute inset-0 bg-gradient-to-r to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-20">
@@ -27,10 +27,15 @@ export function HeroSection() {
           {/* Left: Story-focused content */}
           <div className="p-6">
             {/* Eyebrow */}
-            <div className="text-primary mb-4 text-xs sm:text-sm font-medium tracking-wide uppercase flex flex-row flex-nowrap items-center gap-1 sm:gap-2">
+            <div className="text-primary mb-4 flex flex-row flex-nowrap items-center gap-1 text-xs font-medium tracking-wide uppercase sm:gap-2 sm:text-sm">
               <span className="shrink-0">Veteran-Owned</span>
               <span className="shrink-0">·</span>
-              <span className="shrink-0">Serving <span className="text-foreground font-bold underline decoration-primary/30 underline-offset-4"><RotatingLocation locations={settings.serviceAreas} /></span></span>
+              <span className="shrink-0">
+                Serving{' '}
+                <span className="text-foreground decoration-primary/30 font-bold underline underline-offset-4">
+                  <RotatingLocation locations={settings.serviceAreas} />
+                </span>
+              </span>
             </div>
 
             {/* Main headline - Problem → Solution */}
@@ -43,25 +48,29 @@ export function HeroSection() {
 
             {/* Supporting copy */}
             <p className="text-foreground mb-8 text-lg font-medium">
-              From cluttered garages to full estate cleanouts, we handle the heavy lifting
-              so you can reclaim your space. Same-day service available.
+              From cluttered garages to full estate cleanouts, we handle the heavy lifting so you
+              can reclaim your space. Same-day service available.
             </p>
 
             {/* Trust indicators */}
-            <div className="flex items-center gap-3 sm:gap-6 text-foreground">
-              <div className="flex items-center gap-2 rounded-lg bg-background/50 px-2.5 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm shrink-0">
-                <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" aria-hidden="true" />
-                <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">Licensed & Insured</span>
+            <div className="text-foreground flex items-center gap-3 sm:gap-6">
+              <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
+                <Shield className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">
+                  Licensed & Insured
+                </span>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-background/50 px-2.5 py-1.5 backdrop-blur-sm border border-border/50 shadow-sm shrink-0">
-                <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary" aria-hidden="true" />
-                <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">Same-Day Service</span>
+              <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
+                <Clock className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">
+                  Same-Day Service
+                </span>
               </div>
             </div>
           </div>
 
           {/* Right: Quote Form */}
-          <div className="lg:justify-self-end lg:max-w-md w-full">
+          <div className="w-full lg:max-w-md lg:justify-self-end">
             <HeroQuoteForm />
           </div>
         </div>

@@ -10,20 +10,16 @@ interface GlassCardProps extends CardProps {
 export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
   ({ className, variant = 'default', hover = true, ...props }, ref) => {
     const baseClasses = cn(
-      variant === 'white' ? 'bg-card text-foreground' :
-      variant === 'elevated' ? 'bg-popover text-popover-foreground border-border' :
-      'glass dark:glass-dark',
+      variant === 'white'
+        ? 'bg-card text-foreground'
+        : variant === 'elevated'
+          ? 'bg-popover text-popover-foreground border-border'
+          : 'glass dark:glass-dark',
       'px-6 py-6 space-y-4 text-foreground'
     )
     const hoverClasses = hover ? 'hover:shadow-xl transition-all duration-300' : ''
 
-    return (
-      <Card
-        className={cn(baseClasses, hoverClasses, className)}
-        ref={ref}
-        {...props}
-      />
-    )
+    return <Card className={cn(baseClasses, hoverClasses, className)} ref={ref} {...props} />
   }
 )
 

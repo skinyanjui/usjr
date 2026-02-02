@@ -13,7 +13,8 @@ interface Service {
 const services: Service[] = [
   {
     title: 'Junk Removal',
-    description: 'Fast, professional removal for homes, offices, and properties. Same-day service available.',
+    description:
+      'Fast, professional removal for homes, offices, and properties. Same-day service available.',
     link: '/services/junk-removal',
   },
   {
@@ -30,23 +31,21 @@ const services: Service[] = [
 
 function ServiceCard({ service }: { service: Service }) {
   return (
-    <div
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-border shadow-sm transition-all duration-300 hover:shadow-lg hover:border-foreground/20"
-    >
+    <div className="group border-border hover:border-foreground/20 relative flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-300 hover:shadow-lg">
       {/* Content */}
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-3 text-xl font-bold text-foreground">
+        <h3 className="text-foreground mb-3 text-xl font-bold">
           <Link href={service.link} className="hover:text-primary transition-colors">
             {service.title}
           </Link>
         </h3>
-        <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed">
           {service.description}
         </p>
         <div className="mt-auto">
           <Link
             href={service.link}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-all group-hover:gap-2"
+            className="text-primary inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2"
           >
             Learn more
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -59,13 +58,11 @@ function ServiceCard({ service }: { service: Service }) {
 
 export const HomeServiceCards = memo(function HomeServiceCards() {
   return (
-    <section className="border-b border-border px-4 py-14">
+    <section className="border-border border-b px-4 py-14">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="mb-10 text-center">
-          <h2 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
-            Our Services
-          </h2>
+          <h2 className="text-foreground mb-2 text-2xl font-bold sm:text-3xl">Our Services</h2>
           <p className="text-muted-foreground">
             Professional junk removal and cleaning for homes and businesses
           </p>
@@ -73,7 +70,7 @@ export const HomeServiceCards = memo(function HomeServiceCards() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {services.map((service) => (
+          {services.map(service => (
             <ServiceCard key={service.title} service={service} />
           ))}
         </div>

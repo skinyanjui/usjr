@@ -36,12 +36,13 @@ export function Header() {
     setActiveDropdown(dropdown)
 
     const items =
-      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ?? []
+      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ??
+      []
     for (const item of items) {
       if (item.href) {
         try {
           router.prefetch(item.href)
-        } catch { }
+        } catch {}
       }
     }
   }
@@ -69,13 +70,13 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
       <nav className="mx-auto max-w-7xl px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="rounded-lg bg-foreground px-3 py-2 text-xs font-bold text-background transition-opacity hover:opacity-90 sm:text-sm"
+            className="bg-foreground text-background rounded-lg px-3 py-2 text-xs font-bold transition-opacity hover:opacity-90 sm:text-sm"
           >
             UNCLE SAM JUNK REMOVAL
           </Link>
@@ -90,7 +91,7 @@ export function Header() {
               <button
                 id={servicesButtonId}
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
+                className="hover:text-primary flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'services'}
                 aria-controls={servicesMenuId}
@@ -109,7 +110,7 @@ export function Header() {
               )}
             </div>
 
-            <div className="h-4 w-px bg-border" aria-hidden="true" />
+            <div className="bg-border h-4 w-px" aria-hidden="true" />
 
             <div
               className="relative"
@@ -119,11 +120,13 @@ export function Header() {
               <button
                 id={locationsButtonId}
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
+                className="hover:text-primary flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'locations'}
                 aria-controls={locationsMenuId}
-                onClick={() => setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))}
+                onClick={() =>
+                  setActiveDropdown(prev => (prev === 'locations' ? null : 'locations'))
+                }
               >
                 Locations
                 <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
@@ -138,7 +141,7 @@ export function Header() {
               )}
             </div>
 
-            <div className="h-4 w-px bg-border" aria-hidden="true" />
+            <div className="bg-border h-4 w-px" aria-hidden="true" />
 
             <div
               className="relative"
@@ -148,7 +151,7 @@ export function Header() {
               <button
                 id={companyButtonId}
                 type="button"
-                className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
+                className="hover:text-primary flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors"
                 aria-haspopup="menu"
                 aria-expanded={activeDropdown === 'company'}
                 aria-controls={companyMenuId}
@@ -172,7 +175,7 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href={`tel:${settings.phoneE164}`}
-              className="flex items-center gap-1.5 text-sm font-medium text-slate-700 transition-colors hover:text-primary"
+              className="hover:text-primary flex items-center gap-1.5 text-sm font-medium text-slate-700 transition-colors"
             >
               <Phone className="h-4 w-4" />
               {settings.phone}
@@ -187,7 +190,7 @@ export function Header() {
                   destination: '/quote',
                 })
               }
-              className="rounded-lg border border-primary/30 bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="border-primary/30 bg-primary text-primary-foreground rounded-lg border px-4 py-2 text-sm font-semibold transition-opacity hover:opacity-90"
             >
               Get Free Quote
             </Link>
@@ -218,14 +221,14 @@ export function Header() {
         {isMenuOpen && (
           <div
             id="mobile-nav"
-            className="mt-4 max-h-[70vh] overflow-y-auto border-t border-border pt-4 lg:hidden"
+            className="border-border mt-4 max-h-[70vh] overflow-y-auto border-t pt-4 lg:hidden"
           >
             <div className="flex flex-col space-y-1">
               {/* Services accordion */}
               <div>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-muted hover:text-primary"
+                  className="hover:bg-muted hover:text-primary flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors"
                   aria-expanded={isMobileServicesOpen}
                   onClick={() => setIsMobileServicesOpen(v => !v)}
                 >
@@ -235,12 +238,12 @@ export function Header() {
                   />
                 </button>
                 {isMobileServicesOpen && (
-                  <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
+                  <div className="border-border mt-1 ml-3 space-y-1 border-l pl-3">
                     {(NAV.find(i => i.label === 'Services')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
+                        className="hover:bg-muted hover:text-primary block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -254,7 +257,7 @@ export function Header() {
               <div>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-muted hover:text-primary"
+                  className="hover:bg-muted hover:text-primary flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors"
                   aria-expanded={isMobileLocationsOpen}
                   onClick={() => setIsMobileLocationsOpen(v => !v)}
                 >
@@ -264,12 +267,12 @@ export function Header() {
                   />
                 </button>
                 {isMobileLocationsOpen && (
-                  <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
+                  <div className="border-border mt-1 ml-3 space-y-1 border-l pl-3">
                     {(NAV.find(i => i.label === 'Locations')?.children ?? []).map(item => (
                       <Link
                         key={item.href}
                         href={item.href!}
-                        className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
+                        className="hover:bg-muted hover:text-primary block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors"
                         onClick={closeMobileMenuAndSections}
                       >
                         {item.label}
@@ -281,12 +284,12 @@ export function Header() {
 
               {/* Company accordion - simplified for mobile as direct links or accordion? Let's do accordion for consistency */}
               <div>
-                <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
+                <div className="border-border mt-1 ml-3 space-y-1 border-l pl-3">
                   {(NAV.find(i => i.label === 'Company')?.children ?? []).map(item => (
                     <Link
                       key={item.href}
                       href={item.href!}
-                      className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-muted hover:text-primary"
+                      className="hover:bg-muted hover:text-primary block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors"
                       onClick={closeMobileMenuAndSections}
                     >
                       {item.label}
@@ -307,7 +310,7 @@ export function Header() {
                     })
                     closeMobileMenuAndSections()
                   }}
-                  className="block w-full rounded-lg border border-primary/30 bg-primary py-3 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                  className="border-primary/30 bg-primary text-primary-foreground block w-full rounded-lg border py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90"
                 >
                   Get Free Quote
                 </Link>

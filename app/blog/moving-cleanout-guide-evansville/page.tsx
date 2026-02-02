@@ -306,8 +306,6 @@ export default function MovingCleanoutGuidePage() {
         <li>Document everything for security deposits/records</li>
         <li>Plan for unexpected items and last-minute disposal needs</li>
       </ul>
-
-
     </BlogPostTemplate>
   )
 }

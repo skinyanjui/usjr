@@ -195,7 +195,7 @@ export default function CleaningHub() {
                       asChild
                       size="sm"
                       variant="outline"
-                      className="border-border bg-transparent text-foreground hover:bg-accent"
+                      className="border-border text-foreground hover:bg-accent bg-transparent"
                     >
                       <Link href="/quote" prefetch>
                         Quote
@@ -213,8 +213,8 @@ export default function CleaningHub() {
       <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl text-center">
           <div className="bg-card rounded-2xl p-8 shadow-lg">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
-              <Shield className="h-8 w-8 text-primary-foreground" />
+            <div className="bg-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full">
+              <Shield className="text-primary-foreground h-8 w-8" />
             </div>
             <h2 className="text-foreground mb-4 text-2xl font-bold">48-Hour Re-Clean Guarantee</h2>
             <p className="text-muted-foreground mb-6">
@@ -230,8 +230,6 @@ export default function CleaningHub() {
           </div>
         </div>
       </section>
-
-
 
       {/* JSON-LD Schema */}
       <StructuredData type="LocalBusiness" />

@@ -27,9 +27,9 @@ function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): nu
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-    Math.cos((lat2 * Math.PI) / 180) *
-    Math.sin(dLon / 2) *
-    Math.sin(dLon / 2)
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
   return R * c
 }
@@ -81,7 +81,7 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
     }
 
     if ('requestIdleCallback' in window) {
-      ; (window as any).requestIdleCallback(() => detectLocation())
+      ;(window as any).requestIdleCallback(() => detectLocation())
     } else {
       setTimeout(detectLocation, 1000)
     }
@@ -99,7 +99,7 @@ export function RotatingLocation({ locations, interval = 3000 }: RotatingLocatio
   }, [locations.length, interval, isInitialized])
 
   return (
-    <span className="inline-block sm:min-w-[180px] transition-opacity duration-500">
+    <span className="inline-block transition-opacity duration-500 sm:min-w-[180px]">
       {locations[currentIndex]}
     </span>
   )

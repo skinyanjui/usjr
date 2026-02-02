@@ -45,10 +45,10 @@ describe('QuoteFormStandalone', () => {
     await user.upload(fileInput, file)
 
     await waitFor(() => {
-        // Look for the wrapper div of the uploaded file
-        // className="relative aspect-square rounded-md border bg-muted/30 p-1"
-        const uploadedItems = container.getElementsByClassName('bg-muted/30')
-        expect(uploadedItems.length).toBeGreaterThan(0)
+      // Look for the wrapper div of the uploaded file
+      // className="relative aspect-square rounded-md border bg-muted/30 p-1"
+      const uploadedItems = container.getElementsByClassName('bg-muted/30')
+      expect(uploadedItems.length).toBeGreaterThan(0)
     })
   })
 })
