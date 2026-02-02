@@ -75,19 +75,22 @@ export async function POST(req: Request) {
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData()
-      const attachments: { filename: string; content: Buffer }[] = []
+      const attachmentPromises: Promise<{ filename: string; content: Buffer }>[] = []
 
       for (const [key, value] of formData.entries()) {
         if (key === 'attachments' && value instanceof File) {
-          const arrayBuffer = await value.arrayBuffer()
-          attachments.push({
-            filename: value.name,
-            content: Buffer.from(arrayBuffer),
-          })
+          attachmentPromises.push(
+            value.arrayBuffer().then((buf) => ({
+              filename: value.name,
+              content: Buffer.from(buf),
+            }))
+          )
         } else if (typeof value === 'string') {
           raw[key] = value
         }
       }
+
+      const attachments = await Promise.all(attachmentPromises)
 
       if (attachments.length > 0) {
         raw.attachments = attachments
