@@ -281,6 +281,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/blog/fall-cleanup-checklist-tri-state`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/blog/winter-storm-cleanup-guide-tri-state`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
 
     // ===== Educational Blog Posts (Priority: 0.7) =====
     {
