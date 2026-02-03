@@ -17,8 +17,8 @@ import { settings } from '@/lib/cms-content'
 
 export function PricingCalculator() {
   const [service, setService] = useState('')
-  const [loadSize, setLoadSize] = useState([25])
-  const [itemCount, setItemCount] = useState([5])
+  const [loadSize, setLoadSize] = useState(25)
+  const [itemCount, setItemCount] = useState(5)
   const [location, setLocation] = useState('')
   const [urgency, setUrgency] = useState('')
 
@@ -32,19 +32,19 @@ export function PricingCalculator() {
     switch (service) {
       case 'junk-removal':
         {
-          const size = loadSize?.[0] ?? 25
+          const size = loadSize ?? 25
           basePrice = size <= 25 ? 89 : size <= 50 ? 179 : size <= 75 ? 289 : 489
         }
         break
       case 'light-demolition':
         {
-          const size = loadSize?.[0] ?? 25
+          const size = loadSize ?? 25
           basePrice = size <= 25 ? 399 : size <= 50 ? 549 : size <= 75 ? 699 : 899
         }
         break
       case 'cleaning':
         {
-          const size = loadSize?.[0] ?? 25
+          const size = loadSize ?? 25
           basePrice = size <= 25 ? 99 : size <= 50 ? 149 : size <= 75 ? 199 : 299
         }
         break
@@ -52,7 +52,7 @@ export function PricingCalculator() {
 
     // Item count adjustment
     {
-      const count = itemCount?.[0] ?? 0
+      const count = itemCount ?? 0
       if (count > 10) multiplier += 0.2
       if (count > 20) multiplier += 0.3
     }
@@ -126,7 +126,7 @@ export function PricingCalculator() {
             htmlFor="pc-project-size"
             className="text-muted-foreground mb-2 block text-sm font-medium"
           >
-            Project Size: {loadSize[0]}%
+            Project Size: {loadSize}%
           </Label>
           <input
             id="pc-project-size"
@@ -135,8 +135,8 @@ export function PricingCalculator() {
             min={10}
             max={100}
             step={5}
-            value={loadSize[0]}
-            onChange={e => setLoadSize([Number(e.target.value)])}
+            value={loadSize}
+            onChange={e => setLoadSize(Number(e.target.value))}
             className="w-full accent-gray-900"
           />
           <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
@@ -152,7 +152,7 @@ export function PricingCalculator() {
             htmlFor="pc-item-count"
             className="text-muted-foreground mb-2 block text-sm font-medium"
           >
-            Item Count: {itemCount[0]}
+            Item Count: {itemCount}
           </Label>
           <input
             id="pc-item-count"
@@ -161,8 +161,8 @@ export function PricingCalculator() {
             min={1}
             max={40}
             step={1}
-            value={itemCount[0]}
-            onChange={e => setItemCount([Number(e.target.value)])}
+            value={itemCount}
+            onChange={e => setItemCount(Number(e.target.value))}
             className="w-full accent-gray-900"
           />
           <div className="text-muted-foreground mt-1 flex justify-between text-[10px] sm:text-xs">
