@@ -1,3 +1,4 @@
+import { after } from 'next/server'
 import { z } from 'zod'
 import { resend, EMAIL_CONFIG } from '@/lib/resend'
 import { RateLimiter } from '@/lib/rate-limit'
@@ -269,8 +270,8 @@ export async function POST(req: Request) {
       }
     }
 
-    // Execute email sending in parallel
-    await Promise.allSettled([sendBusinessEmail(), sendCustomerEmail()])
+    // Execute email sending in background
+    after(() => Promise.allSettled([sendBusinessEmail(), sendCustomerEmail()]))
 
     // Avoid logging PII in production
     if (process.env.NODE_ENV !== 'production') {
