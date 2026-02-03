@@ -55,15 +55,20 @@ export class RateLimiter {
   private cleanup(now: number) {
     this.lastCleanup = now
     for (const [ip, timestamps] of this.ipToTimestamps.entries()) {
-      const valid = timestamps.filter(t => now - t < this.windowMs)
-      if (valid.length === 0) {
+      if (timestamps.length === 0) {
         this.ipToTimestamps.delete(ip)
-      } else {
+        continue
+      }
+
+      const newest = timestamps[timestamps.length - 1]
+      if (newest && now - newest < this.windowMs) {
         // Optimization: Stop iterating once we find a valid entry.
         // Since we maintain insertion order on access (LRU at start), if we find a valid entry,
         // all subsequent entries must also be valid (accessed more recently).
         return
       }
+
+      this.ipToTimestamps.delete(ip)
     }
   }
 
