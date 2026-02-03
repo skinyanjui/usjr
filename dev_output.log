@@ -7,7 +7,7 @@
    - Network:      http://192.168.0.2:3005
 
  ✓ Starting...
- ✓ Ready in 2.4s
- ○ Compiling /pricing ...
- ✓ Compiled /pricing in 23s (1536 modules)
- GET /pricing 200 in 26926ms
+ ✓ Ready in 2.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 21.3s (1959 modules)
+ GET / 200 in 26131ms

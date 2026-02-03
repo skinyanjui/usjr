@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import { Menu, X, ChevronDown, Phone } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/navigation'
 import { settings } from '@/lib/cms-content'
 import { trackQuoteClick } from '@/lib/quoteTracking'
 import { NAV } from '@/lib/nav'
@@ -14,7 +13,6 @@ const LocationsDropdown = dynamic(() => import('./header-locations-dropdown'), {
 const CompanyDropdown = dynamic(() => import('./header-company-dropdown'), { ssr: false })
 
 export function Header() {
-  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isMobileLocationsOpen, setIsMobileLocationsOpen] = useState(false)
@@ -34,17 +32,6 @@ export function Header() {
       timeoutRef.current = null
     }
     setActiveDropdown(dropdown)
-
-    const items =
-      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ??
-      []
-    for (const item of items) {
-      if (item.href) {
-        try {
-          router.prefetch(item.href)
-        } catch {}
-      }
-    }
   }
 
   const handleDropdownLeave = () => {
