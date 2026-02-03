@@ -64,7 +64,6 @@
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "4.1.0",
     "feed": "^5.1.0",
     "geist": "^1.3.1",
     "input-otp": "1.4.1",
