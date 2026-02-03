@@ -53,18 +53,36 @@ export class RateLimiter {
    * Removes entries that have no valid timestamps within the window.
    */
   private cleanup(now: number) {
-    this.lastCleanup = now
+    const DELETE_LIMIT = 1000
+    let deleted = 0
+
     for (const [ip, timestamps] of this.ipToTimestamps.entries()) {
-      const valid = timestamps.filter(t => now - t < this.windowMs)
-      if (valid.length === 0) {
-        this.ipToTimestamps.delete(ip)
-      } else {
-        // Optimization: Stop iterating once we find a valid entry.
-        // Since we maintain insertion order on access (LRU at start), if we find a valid entry,
-        // all subsequent entries must also be valid (accessed more recently).
+      // Optimization: Check the last (newest) timestamp.
+      // If the newest timestamp is expired, all are expired.
+      // Timestamps are sorted ascending (pushed on access).
+      if (timestamps.length > 0) {
+        const newest = timestamps[timestamps.length - 1]
+        if (now - newest < this.windowMs) {
+          // Found a valid entry. Since we iterate from LRU, all subsequent entries are valid.
+          // Update lastCleanup because we are effectively clean.
+          this.lastCleanup = now
+          return
+        }
+      }
+
+      // If we reach here, the entry is expired (or empty).
+      this.ipToTimestamps.delete(ip)
+      deleted++
+
+      if (deleted >= DELETE_LIMIT) {
+        // Stop early to avoid blocking.
+        // We do NOT update this.lastCleanup, so cleanup will run again on the next check.
         return
       }
     }
+
+    // If we iterated the whole map, we are done.
+    this.lastCleanup = now
   }
 
   // Expose for monitoring/testing
