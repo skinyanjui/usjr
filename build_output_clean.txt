@@ -1,0 +1,97 @@
+
+> my-v0-project@0.1.0 build /app
+> next build
+
+   ▲ Next.js 15.5.8
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 41s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/72) ...
+   Generating static pages (18/72)
+   Generating static pages (36/72)
+   Generating static pages (54/72)
+ ✓ Generating static pages (72/72)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                               Size  First Load JS
+┌ ƒ /                                                  7.04 kB         126 kB
+├ ƒ /_not-found                                          150 B         102 kB
+├ ƒ /about                                             1.76 kB         107 kB
+├ ƒ /api/quote                                           150 B         102 kB
+├ ƒ /api/send                                            150 B         102 kB
+├ ○ /apple-icon.png                                        0 B            0 B
+├ ƒ /blog                                                207 B         106 kB
+├ ƒ /blog/appliance-disposal-recycling-guide             136 B         121 kB
+├ ƒ /blog/commercial-office-cleaning-guide-evansville    136 B         121 kB
+├ ƒ /blog/estate-cleanout-guide                          135 B         121 kB
+├ ƒ /blog/evansville-garage-cleanout-48-hours            136 B         121 kB
+├ ƒ /blog/evansville-junk-removal-tips                   136 B         121 kB
+├ ƒ /blog/fall-cleanup-checklist-tri-state               136 B         121 kB
+├ ƒ /blog/hot-tub-removal-what-to-know                   136 B         121 kB
+├ ƒ /blog/junk-removal-cost-tri-state                    136 B         121 kB
+├ ƒ /blog/mattress-disposal-evansville                   135 B         121 kB
+├ ƒ /blog/moving-cleanout-guide-evansville               135 B         121 kB
+├ ƒ /blog/property-manager-turnover-playbook             136 B         121 kB
+├ ƒ /blog/shed-removal-guide-evansville                  135 B         121 kB
+├ ƒ /blog/spring-cleaning-checklist-southern-indiana     136 B         121 kB
+├ ƒ /blog/summer-cleanup-checklist-tri-state             135 B         121 kB
+├ ƒ /blog/winter-storm-cleanup-guide-tri-state           136 B         121 kB
+├ ƒ /blog/yard-waste-disposal-evansville                 135 B         121 kB
+├ ƒ /cleaning                                          1.61 kB         115 kB
+├ ƒ /cleaning/commercial                               2.01 kB         115 kB
+├ ƒ /cleaning/deep-clean                               9.14 kB         131 kB
+├ ƒ /cleaning/move-in-move-out                         2.01 kB         115 kB
+├ ƒ /cleaning/recurring                                2.01 kB         115 kB
+├ ƒ /cleaning/residential                              2.01 kB         115 kB
+├ ƒ /cleaning/specialty                                2.01 kB         115 kB
+├ ƒ /compare                                           4.79 kB         118 kB
+├ ƒ /emergency                                         1.93 kB         115 kB
+├ ƒ /faq                                               10.9 kB         127 kB
+├ ○ /icon.ico                                              0 B            0 B
+├ ○ /icon.png                                              0 B            0 B
+├ ○ /icon.svg                                              0 B            0 B
+├ ƒ /locations/boonville                                 207 B         106 kB
+├ ƒ /locations/evansville                                207 B         106 kB
+├ ƒ /locations/henderson-ky                              207 B         106 kB
+├ ƒ /locations/mount-carmel-il                           207 B         106 kB
+├ ƒ /locations/mount-vernon-in                           207 B         106 kB
+├ ƒ /locations/new-harmony-in                            207 B         106 kB
+├ ƒ /locations/newburgh                                  207 B         106 kB
+├ ƒ /locations/owensboro-ky                              207 B         106 kB
+├ ƒ /locations/princeton                                 207 B         106 kB
+├ ○ /opengraph-image                                     150 B         102 kB
+├ ƒ /pricing                                              2 kB         127 kB
+├ ƒ /privacy                                             207 B         106 kB
+├ ƒ /quote                                              2.9 kB         113 kB
+├ ○ /robots.txt                                          150 B         102 kB
+├ ƒ /services                                            207 B         106 kB
+├ ƒ /services/appliance-removal                        2.01 kB         115 kB
+├ ƒ /services/estate-cleanouts                         2.01 kB         115 kB
+├ ƒ /services/garage-cleanout                          2.01 kB         115 kB
+├ ƒ /services/holiday-tree-removal                     2.01 kB         115 kB
+├ ƒ /services/hot-tub-removal                          2.01 kB         115 kB
+├ ƒ /services/junk-removal                             2.01 kB         115 kB
+├ ƒ /services/light-demolition                         2.01 kB         115 kB
+├ ƒ /services/mattress-removal                         2.01 kB         115 kB
+├ ƒ /services/office-cleanouts                         2.01 kB         115 kB
+├ ƒ /services/property-management-turnovers            2.01 kB         115 kB
+├ ƒ /services/restaurant-equipment-removal             2.01 kB         115 kB
+├ ƒ /services/shed-removal                             2.01 kB         115 kB
+├ ƒ /services/storage-unit-cleanouts                   2.01 kB         115 kB
+├ ƒ /services/storm-debris-cleanup                     2.01 kB         115 kB
+├ ƒ /services/warehouse-fixture-removal                2.01 kB         115 kB
+├ ƒ /services/yard-waste-removal                       2.01 kB         115 kB
+├ ○ /sitemap.xml                                         150 B         102 kB
+├ ƒ /terms                                               207 B         106 kB
+└ ○ /twitter-image                                       150 B         102 kB
++ First Load JS shared by all                           102 kB
+  ├ chunks/2819-fb48da86bf19a4ec.js                    45.5 kB
+  ├ chunks/ed067e47-2787b96df72883d8.js                54.2 kB
+  └ other shared chunks (total)                        2.26 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
