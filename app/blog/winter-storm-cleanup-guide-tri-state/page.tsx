@@ -1,10 +1,14 @@
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 import type { Metadata } from 'next'
+import { buildCanonicalMetadata } from '@/components/canonical'
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
   title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
   description:
     'Expert guide to winter storm cleanup and preparation for Evansville, Henderson, and Owensboro. Ice storm recovery, snow removal, and emergency services.',
+  ...buildCanonicalMetadata('/blog/winter-storm-cleanup-guide-tri-state', baseUrl),
 }
 
 export default function WinterStormCleanupGuide() {
