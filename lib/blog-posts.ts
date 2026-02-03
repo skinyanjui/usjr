@@ -211,10 +211,13 @@ export function parsePostDate(dateString: string): Date {
   return new Date(dateString)
 }
 
+// Pre-sort posts once at module level
+const sortedPosts = blogPosts
+  .map((post) => ({ post, time: parsePostDate(post.date).getTime() }))
+  .sort((a, b) => b.time - a.time)
+  .map((item) => item.post)
+
 // Get posts sorted by date (newest first)
 export function getSortedPosts(): BlogPost[] {
-  return blogPosts
-    .map(post => ({ post, time: parsePostDate(post.date).getTime() }))
-    .sort((a, b) => b.time - a.time)
-    .map(item => item.post)
+  return sortedPosts
 }
