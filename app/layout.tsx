@@ -16,6 +16,7 @@ import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
 import { Theme } from '@radix-ui/themes'
 import { cookies } from 'next/headers'
+import { AmplitudeInit } from '@/components/amplitude-init'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -123,6 +124,7 @@ export default async function RootLayout({
             <BreadcrumbsAuto />
             <RoutePrefetcher />
             <ScrollToTopOnRouteChange />
+            <AmplitudeInit />
             <main id="main-content">{children}</main>
             <Footer />
           </ThemeProvider>
