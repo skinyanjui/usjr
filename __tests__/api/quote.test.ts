@@ -25,6 +25,18 @@ jest.mock('@/lib/rate-limit', () => {
   }
 })
 
+// Mock next/server for 'after'
+jest.mock('next/server', () => {
+  const actual = jest.requireActual('next/server')
+  return {
+    ...actual,
+    after: jest.fn((cb) => {
+      // Execute callback immediately for tests
+      cb()
+    }),
+  }
+})
+
 describe('POST /api/quote', () => {
   it('should process form data with attachments correctly', async () => {
     const formData = new FormData()
