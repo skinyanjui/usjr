@@ -4,7 +4,11 @@ import { HeroQuoteForm } from '@/components/hero-quote-form'
 import { RotatingLocation } from '@/components/rotating-location'
 import { settings } from '@/lib/cms-content'
 
-export function HeroSection() {
+interface HeroSectionProps {
+  initialIndex?: number
+}
+
+export function HeroSection({ initialIndex }: HeroSectionProps) {
   return (
     <section className="border-border bg-background relative overflow-hidden border-b">
       {/* Background Image - Opacity 20% */}
@@ -33,7 +37,7 @@ export function HeroSection() {
               <span className="shrink-0">
                 Serving{' '}
                 <span className="text-foreground decoration-primary/30 font-bold underline underline-offset-4">
-                  <RotatingLocation locations={settings.serviceAreas} />
+                  <RotatingLocation locations={settings.serviceAreas} initialIndex={initialIndex} />
                 </span>
               </span>
             </div>

@@ -5,7 +5,9 @@ import { HomeBlogSection } from '@/components/home-blog-section'
 import { StructuredData } from '@/components/structured-data'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { getActiveTestimonials } from '@/lib/cms-content'
+import { getActiveTestimonials, settings } from '@/lib/cms-content'
+import { headers } from 'next/headers'
+import { findClosestCityIndex } from '@/lib/location-utils'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -13,12 +15,25 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/', baseUrl),
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const reviews = getActiveTestimonials(12)
+  const headerList = await headers()
+  const latStr = headerList.get('x-vercel-ip-latitude')
+  const lngStr = headerList.get('x-vercel-ip-longitude')
+
+  let initialIndex = 0
+
+  if (latStr && lngStr) {
+    const lat = parseFloat(latStr)
+    const lng = parseFloat(lngStr)
+    if (!isNaN(lat) && !isNaN(lng)) {
+      initialIndex = findClosestCityIndex(lat, lng, settings.serviceAreas)
+    }
+  }
 
   return (
     <main className="min-h-screen">
-      <HeroSection />
+      <HeroSection initialIndex={initialIndex} />
 
       <HomeServiceCards />
 
