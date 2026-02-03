@@ -1,10 +1,9 @@
 // Central mapping for canonical URLs to resolve duplicate or overlapping content
 // Key: pathname (no trailing slash), Value: absolute canonical URL to index
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com').replace(
-  /\/$/,
-  ''
-)
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
+).replace(/\/$/, '')
 
 // Helper to build absolute URLs consistently
 function abs(path: string): string {

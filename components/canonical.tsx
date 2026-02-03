@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
-import { getCanonicalForPath } from '@/lib/canonicals'
+import { getCanonicalForPath, SITE_URL } from '@/lib/canonicals'
 
 // Server component exports a function to be used in route metadata
-export function buildCanonicalMetadata(pathname: string, baseUrl: string): Partial<Metadata> {
+export function buildCanonicalMetadata(
+  pathname: string,
+  baseUrl: string = SITE_URL
+): Partial<Metadata> {
   const override = getCanonicalForPath(pathname)
-  const canonicalUrl = override || `${baseUrl}${pathname}`
+  // Ensure baseUrl doesn't have a trailing slash to avoid double slashes
+  const cleanBaseUrl = baseUrl.replace(/\/$/, '')
+  const canonicalUrl = override || `${cleanBaseUrl}${pathname}`
   return {
     alternates: {
       canonical: canonicalUrl,
