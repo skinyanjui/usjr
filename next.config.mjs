@@ -51,9 +51,6 @@ const nextConfig = {
     'lucide-react': {
       transform: 'lucide-react/icons/{{member}}',
     },
-    'date-fns': {
-      transform: 'date-fns/{{member}}',
-    },
   },
 }
 
