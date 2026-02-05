@@ -31,21 +31,40 @@ export class RateLimiter {
       this.cleanup(now)
     }
 
-    const hits = this.ipToTimestamps.get(ip) || []
+    let hits = this.ipToTimestamps.get(ip)
+
+    if (!hits) {
+      hits = []
+      this.ipToTimestamps.set(ip, hits)
+    } else {
+      // Optimization: Ensure the IP is moved to the end of the map (MRU)
+      // This allows cleanup to iterate from the start (LRU) and stop early
+      this.ipToTimestamps.delete(ip)
+      this.ipToTimestamps.set(ip, hits)
+    }
+
+    const windowStart = now - this.windowMs
 
     // Filter out timestamps that are outside the window
     // We do this on access to ensure we check against the current window
-    const recent = hits.filter(t => now - t < this.windowMs)
+    // Optimized: In-place filtering to avoid allocating new arrays
+    const validStartIndex = hits.findIndex((t) => t > windowStart)
 
-    if (recent.length >= this.maxRequests) {
+    if (validStartIndex === -1) {
+      // If no valid timestamps found, clear the array
+      if (hits.length > 0) {
+        hits.length = 0
+      }
+    } else if (validStartIndex > 0) {
+      // Remove old timestamps from the beginning
+      hits.splice(0, validStartIndex)
+    }
+
+    if (hits.length >= this.maxRequests) {
       return false
     }
 
-    recent.push(now)
-    // Optimization: Ensure the IP is moved to the end of the map (MRU)
-    // This allows cleanup to iterate from the start (LRU) and stop early
-    this.ipToTimestamps.delete(ip)
-    this.ipToTimestamps.set(ip, recent)
+    hits.push(now)
     return true
   }
 
@@ -54,9 +73,15 @@ export class RateLimiter {
    */
   private cleanup(now: number) {
     this.lastCleanup = now
+    const windowStart = now - this.windowMs
+
     for (const [ip, timestamps] of this.ipToTimestamps.entries()) {
-      const valid = timestamps.filter(t => now - t < this.windowMs)
-      if (valid.length === 0) {
+      // Optimization: Check if the *last* timestamp (most recent) is expired.
+      // If it is, then ALL timestamps for this IP are expired (sorted array).
+      // This avoids allocating a new array with .filter()
+      const lastTimestamp = timestamps[timestamps.length - 1]
+
+      if (lastTimestamp === undefined || lastTimestamp <= windowStart) {
         this.ipToTimestamps.delete(ip)
       } else {
         // Optimization: Stop iterating once we find a valid entry.
