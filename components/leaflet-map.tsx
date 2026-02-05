@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useMemo, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { MapPin } from 'lucide-react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -12,6 +13,7 @@ type LocationPin = {
 }
 
 export default function LeafletMap() {
+  const router = useRouter()
   const locations: LocationPin[] = useMemo(
     () => [
       {
@@ -108,7 +110,7 @@ export default function LeafletMap() {
           'bg-card/90 px-1 py-[2px] rounded text-[10px] font-medium text-muted-foreground shadow',
       })
       marker.on('click', () => {
-        window.location.href = location.href
+        router.push(location.href)
       })
     })
 
@@ -123,7 +125,7 @@ export default function LeafletMap() {
       map.remove()
       mapRef.current = null
     }
-  }, [locations])
+  }, [locations, router])
 
   return (
     <div className="relative h-full w-full">
