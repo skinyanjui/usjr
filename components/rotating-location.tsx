@@ -36,7 +36,7 @@ export function RotatingLocation({
         }
 
         // Fetch from API
-        const response = await fetch('https://ipapi.co/json/')
+        const response = await fetch('/api/geo')
         if (!response.ok) return
 
         const data = await response.json()

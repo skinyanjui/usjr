@@ -52,7 +52,7 @@ describe('RotatingLocation', () => {
     render(<RotatingLocation locations={locations} initialIndex={0} />)
 
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith('https://ipapi.co/json/')
+      expect(global.fetch).toHaveBeenCalledWith('/api/geo')
     })
 
     // Should update to Newburgh (Index 1)
