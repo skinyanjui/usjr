@@ -4,7 +4,11 @@ export type RateLimitConfig = {
   cleanupIntervalMs?: number // How often to run cleanup (default: 1 minute)
 }
 
-export class RateLimiter {
+export interface RateLimiter {
+  check(identifier: string): Promise<boolean>
+}
+
+export class MemoryRateLimiter implements RateLimiter {
   private ipToTimestamps = new Map<string, number[]>()
   private windowMs: number
   private maxRequests: number
@@ -23,7 +27,7 @@ export class RateLimiter {
    * Checks if the IP is allowed.
    * Returns true if allowed, false if blocked.
    */
-  check(ip: string): boolean {
+  async check(ip: string): Promise<boolean> {
     const now = Date.now()
 
     // Lazy cleanup: run if enough time has passed since last cleanup
