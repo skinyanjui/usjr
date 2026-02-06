@@ -1,10 +1,10 @@
 import { after } from 'next/server'
 import { z } from 'zod'
 import { resend, EMAIL_CONFIG } from '@/lib/resend'
-import { RateLimiter } from '@/lib/rate-limit'
+import { MemoryRateLimiter } from '@/lib/rate-limit'
 
 // Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
-const limiter = new RateLimiter({
+const limiter = new MemoryRateLimiter({
   windowMs: 10 * 60 * 1000, // 10 minutes
   maxRequests: 5,
 })
@@ -69,6 +69,17 @@ function normalize(body: RawQuoteData) {
 
 export async function POST(req: Request) {
   try {
+    // Optimization: Check rate limit BEFORE parsing body to save resources
+    const ipHeader = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
+    const ip = (ipHeader.split(',')[0] || 'unknown').trim()
+
+    if (!(await limiter.check(ip))) {
+      return new Response(JSON.stringify({ ok: false, error: 'Too many requests' }), {
+        status: 429,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+
     let raw: any = {}
 
     // Check Content-Type to decide how to parse
@@ -109,17 +120,6 @@ export async function POST(req: Request) {
     if (typeof raw?.website === 'string' && raw.website.trim().length > 0) {
       return new Response(JSON.stringify({ ok: true }), {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      })
-    }
-
-    // Rate limit per IP
-    const ipHeader = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
-    const ip = (ipHeader.split(',')[0] || 'unknown').trim()
-
-    if (!limiter.check(ip)) {
-      return new Response(JSON.stringify({ ok: false, error: 'Too many requests' }), {
-        status: 429,
         headers: { 'Content-Type': 'application/json' },
       })
     }
