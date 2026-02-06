@@ -24,13 +24,16 @@ export const ReviewsRow = memo(function ReviewsRow({ reviews }: ReviewsRowProps)
       const container = carouselRef.current
       if (!container) return
       const children = Array.from(container.children) as HTMLElement[]
+      // eslint-disable-next-line no-restricted-syntax
+      const containerRect = container.getBoundingClientRect()
+      const containerLeft = containerRect.left
+      // eslint-disable-next-line no-restricted-syntax
+      const containerScrollLeft = container.scrollLeft
+
       cachedOffsetsRef.current = children.map(child => {
         // eslint-disable-next-line no-restricted-syntax
         const childRect = child.getBoundingClientRect()
-        // eslint-disable-next-line no-restricted-syntax
-        const containerRect = container.getBoundingClientRect()
-        // eslint-disable-next-line no-restricted-syntax
-        return childRect.left - containerRect.left + container.scrollLeft
+        return childRect.left - containerLeft + containerScrollLeft
       })
     })
   }
