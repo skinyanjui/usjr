@@ -2,7 +2,7 @@ import { ServicePageTemplate } from '@/components/ui/service-page-template'
 import { Zap, Wrench, Recycle, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { buildServiceMetadata } from '@/lib/seo-metadata'
+import { buildServiceMetadata, buildSocialMetadata } from '@/lib/seo-metadata'
 import { settings } from '@/lib/cms-content'
 import { StructuredData } from '@/components/structured-data'
 
@@ -25,7 +25,12 @@ const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
 export const metadata: Metadata = {
   title: seoData.title,
   description: seoData.description,
-  keywords: seoData.keywords,
+  ...buildSocialMetadata({
+    title: seoData.title,
+    description: seoData.description,
+    pathname: '/services/hot-tub-removal',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/services/hot-tub-removal', baseUrl),
 }
 

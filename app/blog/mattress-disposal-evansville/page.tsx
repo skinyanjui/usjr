@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,15 +9,21 @@ export const metadata: Metadata = {
   title: 'Mattress Disposal Evansville: Costs & Options | Uncle Sam',
   description:
     'Complete guide to mattress disposal in Evansville, IN. Professional removal costs $89-149, recycling options, city bulk pickup, and donation opportunities. Same-day service available.',
-  keywords:
-    'mattress disposal Evansville, mattress removal cost, mattress recycling Indiana, bulk waste pickup Evansville, donate mattress Evansville',
   robots: 'index, follow',
+  ...buildSocialMetadata({
+    title: 'Mattress Disposal Evansville: Costs & Options | Uncle Sam',
+    description:
+      'Complete guide to mattress disposal in Evansville, IN. Professional removal costs $89-149, recycling options, city bulk pickup, and donation opportunities. Same-day service available.',
+    pathname: '/blog/mattress-disposal-evansville',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/mattress-disposal-evansville', baseUrl),
 }
 
 export default function MattressDisposalBlog() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/mattress-disposal-evansville`}
       meta={{
         title: 'Mattress Disposal in Evansville: Recycling, Costs, and Pickup Options',
         excerpt:

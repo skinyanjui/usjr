@@ -5,14 +5,19 @@ import {
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
   title: 'Junk Removal Princeton IN | Same-Day Service | Uncle Sam Junk Removal',
   description: `Professional junk removal in Princeton, Indiana. Serving Gibson County. Same-day service available. Call ${settings.phone}`,
-  keywords:
-    'junk removal Princeton, Princeton junk removal, Gibson County junk pickup, trash removal Princeton IN',
+  ...buildSocialMetadata({
+    title: 'Junk Removal Princeton IN | Same-Day Service | Uncle Sam Junk Removal',
+    description: `Professional junk removal in Princeton, Indiana. Serving Gibson County. Same-day service available. Call ${settings.phone}`,
+    pathname: '/locations/princeton',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/locations/princeton', baseUrl),
 }
 

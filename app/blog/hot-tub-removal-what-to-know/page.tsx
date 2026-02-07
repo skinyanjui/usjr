@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Hot Tub Removal: What to Know | Uncle Sam Junk Removal',
   description:
     'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
-  keywords:
-    'hot tub removal preparation, spa removal Evansville, hot tub disposal, jacuzzi removal Indiana',
+  ...buildSocialMetadata({
+    title: 'Hot Tub Removal: What to Know | Uncle Sam Junk Removal',
+    description:
+      'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options. Make your hot tub removal smooth and safe.',
+    pathname: '/blog/hot-tub-removal-what-to-know',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/hot-tub-removal-what-to-know', baseUrl),
 }
 
 export default function HotTubRemovalPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/hot-tub-removal-what-to-know`}
       meta={{
         title: 'Hot Tub Removal: What to Know Before We Arrive',
         excerpt:

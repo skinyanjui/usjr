@@ -16,6 +16,7 @@ import { BreadcrumbsAuto } from '@/components/breadcrumbs'
 import { EmergencyBanner } from '@/components/emergency-banner'
 import { Theme } from '@radix-ui/themes'
 import { AmplitudeInit } from '@/components/amplitude-init'
+import { BRAND_ENTITY_DESCRIPTOR, BRAND_NAME } from '@/lib/brand'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -27,26 +28,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 
 export const metadata: Metadata = {
   title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
-  description:
-    'Professional junk removal, cleaning & light demolition in Evansville, IN. Same-day service, eco-friendly disposal. Serving Southern Indiana.',
+  description: BRAND_ENTITY_DESCRIPTOR,
   keywords:
     'junk removal, trash removal, light demolition, haul away service, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal, Vanderburgh County, get rid of junk, remove old furniture, appliance removal',
-  authors: [{ name: 'Uncle Sam Junk Removal' }],
+  authors: [{ name: BRAND_NAME }],
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
-    description:
-      'Locally owned in Evansville, Indiana. Professional junk removal, cleaning, and light demolition services throughout Southern Indiana.',
+    description: BRAND_ENTITY_DESCRIPTOR,
     type: 'website',
     url: siteUrl,
-    siteName: 'Uncle Sam Junk Removal',
+    siteName: BRAND_NAME,
     images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Uncle Sam Junk Removal - Professional Junk Removal & Cleaning in Evansville',
-    description:
-      'Locally owned in Evansville, Indiana. Professional junk removal, cleaning, and light demolition services throughout Southern Indiana.',
+    description: BRAND_ENTITY_DESCRIPTOR,
     images: ['/twitter-image'],
   },
   icons: {

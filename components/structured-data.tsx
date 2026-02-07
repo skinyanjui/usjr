@@ -1,5 +1,6 @@
 import { settings, getActiveServices, getAggregateTestimonialStats } from '@/lib/cms-content'
 import { UNIFORM_OFFERS, PRICING_LANGUAGE } from '@/lib/uniform-offers'
+import { BRAND_ENTITY_DESCRIPTOR, BRAND_NAME } from '@/lib/brand'
 
 type FaqItem = { question: string; answer: string }
 
@@ -31,6 +32,8 @@ interface LocationSpecificData {
     worstRating?: number
   }
 }
+
+const STABLE_VALID_FROM = '2025-01-01T00:00:00.000Z'
 
 interface StructuredDataProps {
   type: 'LocalBusiness' | 'Service' | 'FAQPage' | 'BreadcrumbList' | 'Offer' | 'Review'
@@ -90,9 +93,8 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         '@id': 'https://unclesamjunkremoval.com/#organization',
-        name: 'Uncle Sam Junk Removal',
-        description:
-          'Professional residential and commercial cleaning services in Evansville, IN using natural, eco-friendly products. Veteran-owned business.',
+        name: BRAND_NAME,
+        description: BRAND_ENTITY_DESCRIPTOR,
         url: 'https://unclesamjunkremoval.com',
         telephone: settings.phoneE164,
         email: settings.email,
@@ -136,7 +138,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             },
             priceCurrency: 'USD',
             availability: 'https://schema.org/InStock',
-            validFrom: new Date().toISOString(),
+            validFrom: STABLE_VALID_FROM,
             businessFunction: 'https://schema.org/Sell',
             offeredBy: {
               '@type': 'LocalBusiness',
@@ -194,7 +196,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         provider: {
           '@type': 'LocalBusiness',
           '@id': 'https://unclesamjunkremoval.com/#organization',
-          name: 'Uncle Sam Junk Removal',
+          name: BRAND_NAME,
           telephone: settings.phoneE164,
           address: {
             '@type': 'PostalAddress',
@@ -211,7 +213,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
             priceRange: svc.price || 'Contact for pricing',
             priceCurrency: 'USD',
             availability: 'https://schema.org/InStock',
-            validFrom: new Date().toISOString(),
+            validFrom: STABLE_VALID_FROM,
             description: PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR,
             businessFunction: 'https://schema.org/Sell',
             seller: {
@@ -298,9 +300,8 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           price: offer.discount,
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
-          validFrom: offer.validFrom || new Date().toISOString(),
-          validThrough:
-            offer.validThrough || new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days
+          validFrom: offer.validFrom || STABLE_VALID_FROM,
+          validThrough: offer.validThrough || undefined,
           businessFunction: 'https://schema.org/Sell',
           seller: {
             '@type': 'LocalBusiness',
@@ -333,7 +334,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         itemReviewed: {
           '@type': 'LocalBusiness',
           '@id': 'https://unclesamjunkremoval.com/#organization',
-          name: 'Uncle Sam Junk Removal',
+          name: BRAND_NAME,
         },
       }
       break

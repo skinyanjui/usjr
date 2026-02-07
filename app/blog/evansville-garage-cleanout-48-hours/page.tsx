@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Garage Cleanout in 48 Hours Evansville | Uncle Sam',
   description:
     'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips for Evansville residents.',
-  keywords:
-    'garage cleanout Evansville, garage organization, 48 hour cleanout, garage cleanup guide',
+  ...buildSocialMetadata({
+    title: 'Garage Cleanout in 48 Hours Evansville | Uncle Sam',
+    description:
+      'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips for Evansville residents.',
+    pathname: '/blog/evansville-garage-cleanout-48-hours',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/evansville-garage-cleanout-48-hours', baseUrl),
 }
 
 export default function GarageCleanoutPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/evansville-garage-cleanout-48-hours`}
       meta={{
         title: 'Evansville Garage Cleanout in 48 Hours: Checklist & Timeline',
         excerpt:

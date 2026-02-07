@@ -5,6 +5,10 @@ import {
   LocationStory,
 } from '@/components/ui/location-page-template'
 
+const OFFER_VALID_FROM = '2025-01-01T00:00:00.000Z'
+const OFFER_VALID_THROUGH_LONG = '2026-01-01T00:00:00.000Z'
+const OFFER_VALID_THROUGH_SHORT = '2025-04-01T00:00:00.000Z'
+
 export interface LocationData {
   locationName: string
   state: string
@@ -81,22 +85,22 @@ export const locationData: Record<string, LocationData> = {
         title: 'University Discount',
         discount: '15% Off',
         description: 'Students, faculty, and UE staff with valid ID',
-        validFrom: new Date().toISOString(),
-        validThrough: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year
+        validFrom: OFFER_VALID_FROM,
+        validThrough: OFFER_VALID_THROUGH_LONG,
       },
       {
         title: 'Curbside Special',
         discount: 'Save $35',
         description: 'Items staged at curb for easy pickup',
-        validFrom: new Date().toISOString(),
-        validThrough: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days
+        validFrom: OFFER_VALID_FROM,
+        validThrough: OFFER_VALID_THROUGH_SHORT,
       },
       {
         title: 'Neighbor Referral',
         discount: '$25 Credit',
         description: 'For each Evansville neighbor you refer',
-        validFrom: new Date().toISOString(),
-        validThrough: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year
+        validFrom: OFFER_VALID_FROM,
+        validThrough: OFFER_VALID_THROUGH_LONG,
       },
     ],
     stories: [

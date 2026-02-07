@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Summer Cleanup Checklist Tri-State | Uncle Sam',
   description:
     'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
-  keywords:
-    'summer cleanup, outdoor maintenance, garage organization, yard cleanup, Tri-State area, Evansville',
+  ...buildSocialMetadata({
+    title: 'Summer Cleanup Checklist Tri-State | Uncle Sam',
+    description:
+      'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
+    pathname: '/blog/summer-cleanup-checklist-tri-state',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/summer-cleanup-checklist-tri-state', baseUrl),
 }
 
 export default function SummerCleanupChecklistPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/summer-cleanup-checklist-tri-state`}
       meta={{
         title: 'Summer Cleanup Checklist for Tri-State Homes & Yards',
         excerpt:

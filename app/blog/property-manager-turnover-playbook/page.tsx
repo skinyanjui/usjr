@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Property Manager Turnover Playbook | Uncle Sam Removal',
   description:
     'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.',
-  keywords:
-    'property manager turnover, trash-out service, broom clean, tenant turnover Evansville, property management',
+  ...buildSocialMetadata({
+    title: 'Property Manager Turnover Playbook | Uncle Sam Removal',
+    description:
+      'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process and reduce vacancy time.',
+    pathname: '/blog/property-manager-turnover-playbook',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/property-manager-turnover-playbook', baseUrl),
 }
 
 export default function PropertyManagerPlaybookPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/property-manager-turnover-playbook`}
       meta={{
         title: 'Property Manager Turnover Playbook: Trash-Out to Broom Clean',
         excerpt:

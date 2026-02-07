@@ -5,15 +5,20 @@ import {
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
   title: 'Junk Removal Owensboro KY | Same-Day Service | Uncle Sam Junk Removal',
   description: `Professional junk removal in Owensboro, Kentucky. Extended service area from Indiana. Same-day pickup when possible. Call ${settings.phone}`,
-  keywords:
-    'junk removal Owensboro KY, Owensboro Kentucky junk removal, Daviess County junk pickup',
   robots: 'index, follow',
+  ...buildSocialMetadata({
+    title: 'Junk Removal Owensboro KY | Same-Day Service | Uncle Sam Junk Removal',
+    description: `Professional junk removal in Owensboro, Kentucky. Extended service area from Indiana. Same-day pickup when possible. Call ${settings.phone}`,
+    pathname: '/locations/owensboro-ky',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/locations/owensboro-ky', baseUrl),
 }
 

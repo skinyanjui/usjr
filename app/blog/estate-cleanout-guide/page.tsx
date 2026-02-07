@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Estate Cleanout Guide: Planning & Donation | Uncle Sam',
   description:
     'Comprehensive estate cleanout guide with 8+ years of experience. Step-by-step planning, local donation options, legal considerations, and emotional support strategies for Southern Indiana families.',
-  keywords:
-    'estate cleanout, estate planning, donation options Evansville, family estate cleanup, compassionate cleanout service, probate cleanout',
+  ...buildSocialMetadata({
+    title: 'Estate Cleanout Guide: Planning & Donation | Uncle Sam',
+    description:
+      'Comprehensive estate cleanout guide with 8+ years of experience. Step-by-step planning, local donation options, legal considerations, and emotional support strategies for Southern Indiana families.',
+    pathname: '/blog/estate-cleanout-guide',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/estate-cleanout-guide', baseUrl),
 }
 
 export default function EstateCleanoutGuideBlog() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/estate-cleanout-guide`}
       meta={{
         title: 'Estate Cleanout Guide: Compassionate Planning and Donation Options',
         excerpt:

@@ -1,5 +1,100 @@
 // Location-specific metadata generation for SEO optimization
 import { settings } from './cms-content'
+import { blogPosts } from './blog-posts'
+import { BRAND_NAME } from './brand'
+
+const DEFAULT_SITE_URL = 'https://unclesamjunkremoval.com'
+const DEFAULT_OG_IMAGE = '/opengraph-image'
+
+type SocialType = 'website' | 'article'
+
+const SERVICE_IMAGE_BY_SLUG: Record<string, string> = {
+  'junk-removal': '/images/services/junk-removal.png',
+  'appliance-removal': '/images/services/junk-removal.png',
+  'estate-cleanouts': '/images/services/junk-removal.png',
+  'garage-cleanout': '/images/services/junk-removal.png',
+  'mattress-removal': '/images/services/junk-removal.png',
+  'yard-waste-removal': '/images/services/cleaning.png',
+  'office-cleanouts': '/images/services/cleaning.png',
+  'storage-unit-cleanouts': '/images/services/cleaning.png',
+  'property-management-turnovers': '/images/services/cleaning.png',
+  'light-demolition': '/images/services/demolition.png',
+  'shed-removal': '/images/services/demolition.png',
+  'hot-tub-removal': '/images/services/demolition.png',
+  'storm-debris-cleanup': '/images/services/demolition.png',
+  'warehouse-fixture-removal': '/images/services/demolition.png',
+  'restaurant-equipment-removal': '/images/services/demolition.png',
+  'holiday-tree-removal': '/images/services/cleaning.png',
+}
+
+function resolveContextualOgImage(pathname: string): string {
+  if (pathname.startsWith('/blog/')) {
+    const slug = pathname.replace('/blog/', '')
+    const post = blogPosts.find(item => item.slug === slug)
+    if (post?.image) return post.image
+  }
+
+  if (pathname.startsWith('/services/')) {
+    const slug = pathname.replace('/services/', '')
+    return SERVICE_IMAGE_BY_SLUG[slug] || '/images/services/junk-removal.png'
+  }
+
+  if (pathname.startsWith('/locations/')) {
+    return '/hero-junk-v3.png'
+  }
+
+  if (pathname.startsWith('/cleaning/')) {
+    return '/images/services/cleaning.png'
+  }
+
+  return DEFAULT_OG_IMAGE
+}
+
+interface SocialMetadataInput {
+  title: string
+  description: string
+  pathname: string
+  imagePath?: string
+  type?: SocialType
+}
+
+function getSiteUrl() {
+  return (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, '')
+}
+
+export function toAbsoluteUrl(pathOrUrl: string): string {
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl
+  const normalizedPath = pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`
+  return `${getSiteUrl()}${normalizedPath}`
+}
+
+export function buildSocialMetadata({
+  title,
+  description,
+  pathname,
+  imagePath,
+  type = 'website',
+}: SocialMetadataInput) {
+  const url = toAbsoluteUrl(pathname)
+  const imageUrl = toAbsoluteUrl(imagePath || resolveContextualOgImage(pathname))
+
+  return {
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: BRAND_NAME,
+      type,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title,
+      description,
+      images: [imageUrl],
+    },
+  }
+}
 
 interface LocationMetadata {
   locationName: string
@@ -54,12 +149,14 @@ export function buildLocationMetadata(location: LocationMetadata, service?: stri
     .slice(0, 5)
     .map(neighborhood => `junk removal ${neighborhood} ${locationName}`)
 
-  const keywords = [...baseKeywords, ...landmarkKeywords, ...neighborhoodKeywords].join(', ')
+  const keywords = [...baseKeywords, ...landmarkKeywords, ...neighborhoodKeywords]
+    .slice(0, 4)
+    .join(', ')
 
   return {
     title: title.length > 60 ? title.substring(0, 57) + '...' : title,
     description: description.length > 160 ? description.substring(0, 157) + '...' : description,
-    keywords,
+    keywords: keywords || undefined,
   }
 }
 
@@ -91,12 +188,12 @@ export function buildServiceMetadata(service: ServiceMetadata, location?: string
       ]
     : []
 
-  const keywords = [...baseKeywords, ...locationKeywords].join(', ')
+  const keywords = [...baseKeywords, ...locationKeywords].slice(0, 4).join(', ')
 
   return {
     title: title.length > 60 ? title.substring(0, 57) + '...' : title,
     description: description.length > 160 ? description.substring(0, 157) + '...' : description,
-    keywords,
+    keywords: keywords || undefined,
   }
 }
 
@@ -126,11 +223,11 @@ export function buildBlogMetadata(blog: BlogMetadata) {
       ]
     : []
 
-  const keywords = [...baseKeywords, ...locationKeywords].join(', ')
+  const keywords = [...baseKeywords, ...locationKeywords].slice(0, 4).join(', ')
 
   return {
     title: title.length > 60 ? title.substring(0, 57) + '...' : title,
     description: description.length > 160 ? description.substring(0, 157) + '...' : description,
-    keywords,
+    keywords: keywords || undefined,
   }
 }

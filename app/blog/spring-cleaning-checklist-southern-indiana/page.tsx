@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Spring Cleaning Checklist Southern Indiana | Uncle Sam',
   description:
     'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
-  keywords:
-    'spring cleaning Southern Indiana, home cleaning checklist, eco-friendly cleaning, professional cleaning Evansville',
+  ...buildSocialMetadata({
+    title: 'Spring Cleaning Checklist Southern Indiana | Uncle Sam',
+    description:
+      'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
+    pathname: '/blog/spring-cleaning-checklist-southern-indiana',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/spring-cleaning-checklist-southern-indiana', baseUrl),
 }
 
 export default function SpringCleaningChecklistPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/spring-cleaning-checklist-southern-indiana`}
       meta={{
         title: 'Ultimate Spring Cleaning Checklist for Southern Indiana Homes',
         excerpt:
