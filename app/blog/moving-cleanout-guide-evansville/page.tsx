@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Moving & Relocation Cleanout Guide Evansville | Uncle Sam',
   description:
     'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
-  keywords:
-    'moving cleanout, relocation services, move-out cleaning, junk removal moving, Evansville movers, decluttering',
+  ...buildSocialMetadata({
+    title: 'Moving & Relocation Cleanout Guide Evansville | Uncle Sam',
+    description:
+      'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
+    pathname: '/blog/moving-cleanout-guide-evansville',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/moving-cleanout-guide-evansville', baseUrl),
 }
 
 export default function MovingCleanoutGuidePage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/moving-cleanout-guide-evansville`}
       meta={{
         title: 'Moving & Relocation Cleanout Guide for Evansville Residents',
         excerpt:

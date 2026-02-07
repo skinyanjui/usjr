@@ -26,9 +26,15 @@ export interface BlogPostTemplateProps {
     excerpt: string
     category: string
   }>
+  canonicalUrl?: string
 }
 
-export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTemplateProps) {
+export function BlogPostTemplate({
+  meta,
+  children,
+  relatedPosts,
+  canonicalUrl,
+}: BlogPostTemplateProps) {
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -420,7 +426,7 @@ export function BlogPostTemplate({ meta, children, relatedPosts }: BlogPostTempl
             dateModified: new Date(meta.date).toISOString(),
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': typeof window !== 'undefined' ? window.location.href : '',
+              '@id': canonicalUrl || '',
             },
             keywords: meta.tags?.join(', ') || meta.category,
             articleSection: meta.category,

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide',
   description:
     'Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.',
-  keywords:
-    'junk removal cost Evansville, Henderson junk removal prices, Tri-State cleanup costs, junk removal pricing guide',
+  ...buildSocialMetadata({
+    title: 'Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide',
+    description:
+      'Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.',
+    pathname: '/blog/junk-removal-cost-tri-state',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/junk-removal-cost-tri-state', baseUrl),
 }
 
 export default function JunkRemovalCostPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/junk-removal-cost-tri-state`}
       meta={{
         title: 'How Much Does Junk Removal Cost in the Tri-State? (Full Breakdown)',
         excerpt:

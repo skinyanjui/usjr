@@ -1,6 +1,7 @@
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -8,12 +9,20 @@ export const metadata: Metadata = {
   title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
   description:
     'Expert guide to winter storm cleanup and preparation for Evansville, Henderson, and Owensboro. Ice storm recovery, snow removal, and emergency services.',
+  ...buildSocialMetadata({
+    title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
+    description:
+      'Expert guide to winter storm cleanup and preparation for Evansville, Henderson, and Owensboro. Ice storm recovery, snow removal, and emergency services.',
+    pathname: '/blog/winter-storm-cleanup-guide-tri-state',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/winter-storm-cleanup-guide-tri-state', baseUrl),
 }
 
 export default function WinterStormCleanupGuide() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/winter-storm-cleanup-guide-tri-state`}
       meta={{
         title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
         excerpt:

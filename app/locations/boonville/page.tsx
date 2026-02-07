@@ -5,14 +5,19 @@ import {
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
   title: 'Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal',
   description: `Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call ${settings.phone}`,
-  keywords:
-    'junk removal Boonville, Boonville junk removal, Warrick County junk pickup, trash removal Boonville IN',
+  ...buildSocialMetadata({
+    title: 'Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal',
+    description: `Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call ${settings.phone}`,
+    pathname: '/locations/boonville',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/locations/boonville', baseUrl),
 }
 

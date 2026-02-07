@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
-import { buildBlogMetadata } from '@/lib/seo-metadata'
+import { buildBlogMetadata, buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -17,13 +17,19 @@ const seoData = buildBlogMetadata(blogInfo)
 export const metadata: Metadata = {
   title: seoData.title,
   description: seoData.description,
-  keywords: seoData.keywords,
+  ...buildSocialMetadata({
+    title: seoData.title,
+    description: seoData.description,
+    pathname: '/blog/evansville-junk-removal-tips',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/evansville-junk-removal-tips', baseUrl),
 }
 
 export default function EvansvilleJunkRemovalTipsPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/evansville-junk-removal-tips`}
       meta={{
         title: 'Essential Junk Removal Tips for Evansville Residents',
         excerpt:

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Commercial Office Cleaning Evansville | Uncle Sam',
   description:
     'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
-  keywords:
-    'commercial cleaning Evansville, office cleaning services, business cleaning, janitorial services Evansville, professional cleaning',
+  ...buildSocialMetadata({
+    title: 'Commercial Office Cleaning Evansville | Uncle Sam',
+    description:
+      'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
+    pathname: '/blog/commercial-office-cleaning-guide-evansville',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/commercial-office-cleaning-guide-evansville', baseUrl),
 }
 
 export default function CommercialOfficeCleaningPage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/commercial-office-cleaning-guide-evansville`}
       meta={{
         title: 'Commercial Office Cleaning in Evansville: Complete Business Guide',
         excerpt:

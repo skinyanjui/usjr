@@ -12,7 +12,9 @@ function abs(path: string): string {
   return `${SITE_URL}${path}`
 }
 
-// Note: Include the canonical page itself in the group, pointing to itself
+// Canonical strategy:
+// - Keep core service/location pages self-canonical.
+// - Canonicalize service-adjacent blog posts that are primarily transactional/overlapping.
 export const CANONICAL_OVERRIDES: Record<string, string> = {
   // Service pages - self-referential canonicals
   '/services/mattress-removal': abs('/services/mattress-removal'),
@@ -24,12 +26,14 @@ export const CANONICAL_OVERRIDES: Record<string, string> = {
   '/services/estate-cleanouts': abs('/services/estate-cleanouts'),
   '/services/garage-cleanout': abs('/services/garage-cleanout'),
 
-  // Only canonicalize blog posts that are very similar/duplicate to service pages
-  // Keep valuable informational blog posts with unique content indexable
-
-  // These blog posts are too similar to service pages and should be canonicalized
+  // Blog posts with high overlap to service pages
   '/blog/hot-tub-removal-what-to-know': abs('/services/hot-tub-removal'),
   '/blog/evansville-garage-cleanout-48-hours': abs('/services/garage-cleanout'),
+  '/blog/mattress-disposal-evansville': abs('/services/mattress-removal'),
+  '/blog/shed-removal-guide-evansville': abs('/services/shed-removal'),
+  '/blog/yard-waste-disposal-evansville': abs('/services/yard-waste-removal'),
+  '/blog/appliance-disposal-recycling-guide': abs('/services/appliance-removal'),
+  '/blog/estate-cleanout-guide': abs('/services/estate-cleanouts'),
 }
 
 export function getCanonicalForPath(pathname: string): string | undefined {

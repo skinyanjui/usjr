@@ -5,14 +5,19 @@ import {
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata = {
   title: 'Junk Removal New Harmony IN | Same-Day | Uncle Sam',
   description: `Professional junk removal in New Harmony, Indiana. Friendly local team, transparent pricing, eco-friendly disposal. Call ${settings.phone}`,
-  keywords:
-    'junk removal New Harmony, New Harmony junk removal, Posey County junk removal, trash removal New Harmony IN',
+  ...buildSocialMetadata({
+    title: 'Junk Removal New Harmony IN | Same-Day | Uncle Sam',
+    description: `Professional junk removal in New Harmony, Indiana. Friendly local team, transparent pricing, eco-friendly disposal. Call ${settings.phone}`,
+    pathname: '/locations/new-harmony-in',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/locations/new-harmony-in', baseUrl),
 }
 

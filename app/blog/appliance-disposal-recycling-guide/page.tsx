@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -8,14 +9,20 @@ export const metadata: Metadata = {
   title: 'Appliance Disposal & Recycling Evansville | Uncle Sam',
   description:
     'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
-  keywords:
-    'appliance disposal Evansville, appliance recycling, refrigerator removal, washer dryer disposal, eco-friendly appliance removal',
+  ...buildSocialMetadata({
+    title: 'Appliance Disposal & Recycling Evansville | Uncle Sam',
+    description:
+      'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
+    pathname: '/blog/appliance-disposal-recycling-guide',
+    type: 'article',
+  }),
   ...buildCanonicalMetadata('/blog/appliance-disposal-recycling-guide', baseUrl),
 }
 
 export default function ApplianceDisposalGuidePage() {
   return (
     <BlogPostTemplate
+      canonicalUrl={`${baseUrl}/blog/appliance-disposal-recycling-guide`}
       meta={{
         title: 'Appliance Disposal & Recycling Guide for Evansville Residents',
         excerpt:

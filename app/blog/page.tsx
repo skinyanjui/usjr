@@ -3,6 +3,7 @@ import { Calendar, Clock, User, ArrowRight } from 'lucide-react'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import type { Metadata } from 'next'
 import { blogPosts } from '@/lib/blog-posts'
+import { buildSocialMetadata } from '@/lib/seo-metadata'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
@@ -10,22 +11,14 @@ export const metadata: Metadata = {
   title: 'Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal',
   description:
     'Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners. Natural cleaning solutions and professional insights.',
-  keywords:
-    'cleaning tips, junk removal guides, natural cleaning, Evansville home improvement, eco-friendly cleaning, decluttering advice',
-  openGraph: {
-    title: 'Cleaning & Junk Removal Blog | Uncle Sam Junk Removal',
+  ...buildSocialMetadata({
+    title: 'Cleaning & Junk Removal Blog | Tips & Guides | Uncle Sam Junk Removal',
     description:
-      'Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.',
-    url: `${baseUrl}/blog`,
-    siteName: 'Uncle Sam Junk Removal',
+      'Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners. Natural cleaning solutions and professional insights.',
+    pathname: '/blog',
     type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Cleaning & Junk Removal Blog | Uncle Sam Junk Removal',
-    description:
-      'Expert cleaning tips, junk removal guides, and home improvement advice for Evansville homeowners.',
-  },
+    imagePath: '/opengraph-image',
+  }),
   ...buildCanonicalMetadata('/blog', baseUrl),
 }
 
@@ -33,6 +26,13 @@ export default function BlogPage() {
   const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
   const featuredPost = featuredPosts[0]
+  const sortedPosts = [...featuredPosts, ...regularPosts]
+  const itemList = sortedPosts.map((post, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${baseUrl}/blog/${post.slug}`,
+    name: post.title,
+  }))
 
   // Structured data for SEO
   const structuredData = {
@@ -51,6 +51,24 @@ export default function BlogPage() {
         url: `${baseUrl}/icon-512.png`,
       },
     },
+    image: {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
+    mainEntityOfPage: `${baseUrl}/blog`,
+    blogPost: itemList.slice(0, 10).map(item => ({
+      '@type': 'BlogPosting',
+      headline: item.name,
+      url: item.url,
+    })),
+  }
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: itemList,
   }
 
   return (
@@ -59,6 +77,11 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        id="item-list-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
       {/* Featured Header - Compact */}

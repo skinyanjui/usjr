@@ -5,7 +5,7 @@ import {
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
-import { buildLocationMetadata } from '@/lib/seo-metadata'
+import { buildLocationMetadata, buildSocialMetadata } from '@/lib/seo-metadata'
 import { PromotionHighlight } from '@/components/ui/promotion-highlight'
 import { ReviewMention } from '@/components/ui/review-mention'
 import { StructuredData } from '@/components/structured-data'
@@ -25,7 +25,12 @@ const seoData = buildLocationMetadata(locationInfo)
 export const metadata = {
   title: seoData.title,
   description: seoData.description,
-  keywords: seoData.keywords,
+  ...buildSocialMetadata({
+    title: seoData.title,
+    description: seoData.description,
+    pathname: '/locations/newburgh',
+    type: 'website',
+  }),
   ...buildCanonicalMetadata('/locations/newburgh', baseUrl),
 }
 
