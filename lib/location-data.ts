@@ -6,8 +6,8 @@ import {
 } from '@/components/ui/location-page-template'
 
 const OFFER_VALID_FROM = '2025-01-01T00:00:00.000Z'
-const OFFER_VALID_THROUGH_LONG = '2026-01-01T00:00:00.000Z'
-const OFFER_VALID_THROUGH_SHORT = '2025-04-01T00:00:00.000Z'
+const OFFER_VALID_THROUGH_LONG = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
+const OFFER_VALID_THROUGH_SHORT = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
 
 export interface LocationData {
   locationName: string
