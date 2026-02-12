@@ -455,42 +455,55 @@ export const settings: Settings = {
   },
 }
 
+// Pre-filtered constants for optimized access
+const ACTIVE_SERVICES = services.filter(service => service.active)
+const ACTIVE_FAQS = faqs.filter(faq => faq.active)
+const ACTIVE_LOCATIONS = locations.filter(location => location.active)
+const ACTIVE_TESTIMONIALS = testimonials.filter(testimonial => testimonial.active && testimonial.verified)
+const ACTIVE_GALLERY_IMAGES = galleryImages.filter(image => image.active)
+
+// Pre-calculate aggregate stats
+const AGGREGATE_TESTIMONIAL_STATS = (() => {
+  const reviewCount = ACTIVE_TESTIMONIALS.length
+  if (reviewCount === 0) return { averageRating: 0, reviewCount }
+  const sum = ACTIVE_TESTIMONIALS.reduce((total, t) => total + t.rating, 0)
+  const average = sum / reviewCount
+  return { averageRating: Number(average.toFixed(1)), reviewCount }
+})()
+
 // Helper functions for CMS operations
 export function getActiveServices(category?: 'residential' | 'commercial'): Service[] {
-  return services.filter(service => service.active && (!category || service.category === category))
+  if (!category) return ACTIVE_SERVICES
+  return ACTIVE_SERVICES.filter(service => service.category === category)
 }
 
 export function getActiveFAQs(category?: string): FAQ[] {
-  return faqs.filter(faq => faq.active && (!category || faq.category === category))
+  if (!category) return ACTIVE_FAQS
+  return ACTIVE_FAQS.filter(faq => faq.category === category)
 }
 
 export function getActiveLocations(): Location[] {
-  return locations.filter(location => location.active)
+  return ACTIVE_LOCATIONS
 }
 
 export function getActiveTestimonials(limit?: number): Testimonial[] {
-  const active = testimonials.filter(testimonial => testimonial.active && testimonial.verified)
-  return limit ? active.slice(0, limit) : active
+  if (!limit) return ACTIVE_TESTIMONIALS
+  return ACTIVE_TESTIMONIALS.slice(0, limit)
 }
 
 export function getAggregateTestimonialStats(): { averageRating: number; reviewCount: number } {
-  const active = testimonials.filter(testimonial => testimonial.active && testimonial.verified)
-  const reviewCount = active.length
-  if (reviewCount === 0) return { averageRating: 0, reviewCount }
-  const sum = active.reduce((total, t) => total + t.rating, 0)
-  const average = sum / reviewCount
-  return { averageRating: Number(average.toFixed(1)), reviewCount }
+  return AGGREGATE_TESTIMONIAL_STATS
 }
 
 export function getActiveGalleryImages(limit?: number): GalleryImage[] {
-  const active = galleryImages.filter(image => image.active)
-  return limit ? active.slice(0, limit) : active
+  if (!limit) return ACTIVE_GALLERY_IMAGES
+  return ACTIVE_GALLERY_IMAGES.slice(0, limit)
 }
 
 export function getServiceById(id: string): Service | undefined {
-  return services.find(service => service.id === id && service.active)
+  return ACTIVE_SERVICES.find(service => service.id === id)
 }
 
 export function getLocationById(id: string): Location | undefined {
-  return locations.find(location => location.id === id && location.active)
+  return ACTIVE_LOCATIONS.find(location => location.id === id)
 }
