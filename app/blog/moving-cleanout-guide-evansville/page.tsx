@@ -21,7 +21,7 @@ export default function MovingCleanoutGuidePage() {
         excerpt:
           'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
         author: 'Uncle Sam Team',
-        date: 'October 27, 2025',
+        date: 'February 6, 2026',
         readTime: '10 min read',
         category: 'Moving Guide',
         tags: ['Moving', 'Relocation', 'Cleanout', 'Evansville', 'Decluttering'],
@@ -212,7 +212,7 @@ export default function MovingCleanoutGuidePage() {
 
       <h2>Professional Services That Make Moving Easier</h2>
 
-      <h3>Junk Removal Services</h3>
+      <h3><a href="/services/junk-removal">Junk Removal Services</a></h3>
       <p>
         <strong>Cost:</strong> $89-649 depending on volume
       </p>
@@ -224,7 +224,7 @@ export default function MovingCleanoutGuidePage() {
         <strong>Best For:</strong> Large furniture, appliances, bulk items, last-minute cleanouts
       </p>
 
-      <h3>Move-Out Cleaning Services</h3>
+      <h3><a href="/cleaning/move-in-move-out">Move-Out Cleaning Services</a></h3>
       <p>
         <strong>Cost:</strong> $200-500 for standard home
       </p>
@@ -247,7 +247,7 @@ export default function MovingCleanoutGuidePage() {
         <strong>Best For:</strong> Major relocations, downsizing, estate situations
       </p>
 
-      <h2>Evansville-Specific Moving Tips</h2>
+      <h2><a href="/locations/evansville">Evansville</a>-Specific Moving Tips</h2>
 
       <h3>Best Times to Move</h3>
       <ul>

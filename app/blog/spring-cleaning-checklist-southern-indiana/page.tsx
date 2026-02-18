@@ -21,7 +21,7 @@ export default function SpringCleaningChecklistPage() {
         excerpt:
           'Complete spring cleaning guide for Southern Indiana residents with room-by-room checklist and eco-friendly tips.',
         author: 'Sarah Johnson',
-        date: 'March 1, 2024',
+        date: 'February 14, 2026',
         readTime: '12 min read',
         category: 'Spring Cleaning',
         tags: ['Spring Cleaning', 'Checklist', 'Southern Indiana', 'Eco-Friendly'],
@@ -148,10 +148,12 @@ export default function SpringCleaningChecklistPage() {
       </p>
 
       <h2>When to Call for Help</h2>
+
+      <p>From deep <a href="/cleaning/residential">residential cleaning</a> to full <a href="/services/junk-removal">junk removal</a>, our team serves all of Southern Indiana including <a href="/locations/evansville">Evansville</a>, <a href="/locations/newburgh">Newburgh</a>, and <a href="/locations/henderson-ky">Henderson, KY</a>.</p>
       <p>Professional services can assist with:</p>
       <ul>
         <li>
-          <strong>Junk removal:</strong> Clear out unwanted items during spring decluttering
+          <strong><a href="/services/junk-removal">Junk removal</a>:</strong> Clear out unwanted items during spring decluttering
         </li>
         <li>
           <strong>Carpet cleaning:</strong> Professional deep clean for carpets and upholstery
@@ -163,7 +165,7 @@ export default function SpringCleaningChecklistPage() {
           <strong>Gutter cleaning:</strong> Prepare for spring rains
         </li>
         <li>
-          <strong>Garage cleanouts:</strong> Major decluttering projects
+          <strong><a href="/services/garage-cleanout">Garage cleanouts</a>:</strong> Major decluttering projects
         </li>
       </ul>
 

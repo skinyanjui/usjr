@@ -21,7 +21,7 @@ export default function HotTubRemovalPage() {
         excerpt:
           'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options.',
         author: 'Uncle Sam Team',
-        date: 'January 8, 2025',
+        date: 'January 10, 2026',
         readTime: '5 min read',
         category: 'Service Guide',
         tags: ['Hot Tub Removal', 'Preparation', 'Evansville', 'Service Guide'],
@@ -42,7 +42,7 @@ export default function HotTubRemovalPage() {
       ]}
     >
       <p>
-        Hot tub removal requires careful preparation to ensure safety and efficiency. Whether your
+        Our <a href="/services/hot-tub-removal">hot tub removal</a> service requires careful preparation to ensure safety and efficiency. Whether your
         hot tub is broken, outdated, or you're simply ready for a change, proper preparation makes
         the removal process smooth and quick.
       </p>

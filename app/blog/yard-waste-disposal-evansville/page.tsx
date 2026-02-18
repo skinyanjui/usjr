@@ -19,7 +19,7 @@ export default function YardWasteDisposalBlog() {
         excerpt:
           'Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.',
         author: 'Uncle Sam Team',
-        date: 'January 26, 2025',
+        date: 'February 12, 2026',
         readTime: '6 min read',
         category: 'Yard Waste',
         tags: ['Yard Waste', 'Composting', 'Recycling', 'Evansville'],
@@ -85,7 +85,7 @@ export default function YardWasteDisposalBlog() {
       <ul>
         <li>Brush and branch removal (up to 6 inches in diameter)</li>
         <li>Leaf and grass clipping hauling</li>
-        <li>Storm debris cleanup</li>
+        <li><a href="/services/storm-debris-cleanup">Storm debris cleanup</a></li>
         <li>Seasonal cleanups (spring and fall)</li>
         <li>Tree trimming debris removal</li>
       </ul>

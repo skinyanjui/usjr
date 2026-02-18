@@ -5,7 +5,7 @@ import { BlogPostTemplate } from '@/components/ui/blog-post-template'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Junk Removal Cost in Tri-State Area 2025 | Complete Pricing Guide',
+  title: 'Junk Removal Cost in Tri-State Area 2026 | Complete Pricing Guide',
   description:
     'Complete breakdown of junk removal costs in Evansville, Henderson, and Tri-State area. Learn pricing factors, get estimates, and save money on your cleanup project.',
   keywords:
@@ -21,7 +21,7 @@ export default function JunkRemovalCostPage() {
         excerpt:
           'Complete pricing guide for junk removal services in Evansville, Henderson, and surrounding areas.',
         author: 'Uncle Sam Team',
-        date: 'January 15, 2025',
+        date: 'February 3, 2026',
         readTime: '8 min read',
         category: 'Pricing Guide',
         tags: ['Pricing', 'Tri-State', 'Evansville', 'Cost Guide'],
@@ -93,7 +93,7 @@ export default function JunkRemovalCostPage() {
       <h2>Common Item Pricing</h2>
       <ul>
         <li>
-          <strong>Single mattress:</strong> $89-119
+          <strong><a href="/services/mattress-removal">Single mattress removal</a>:</strong> $89-119
         </li>
         <li>
           <strong>Appliance removal:</strong> $89-149 per item
@@ -102,10 +102,10 @@ export default function JunkRemovalCostPage() {
           <strong>Couch or sofa:</strong> $89-149
         </li>
         <li>
-          <strong>Hot tub removal:</strong> $229-449
+          <strong><a href="/services/hot-tub-removal">Hot tub removal</a>:</strong> $229-449
         </li>
         <li>
-          <strong>Shed removal:</strong> $289-649
+          <strong><a href="/services/shed-removal">Shed removal</a>:</strong> $289-649
         </li>
       </ul>
 

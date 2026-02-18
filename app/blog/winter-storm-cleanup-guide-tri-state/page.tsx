@@ -18,12 +18,26 @@ export default function WinterStormCleanupGuide() {
         title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
         excerpt:
           'Complete guide to winter storm preparation, cleanup, and recovery in the Tri-State area. From ice storm damage to snow removal, learn how to protect your property and respond to winter emergencies.',
-        date: '2024-11-01',
+        date: 'November 15, 2025',
         author: 'Uncle Sam Team',
         category: 'Emergency Services',
         tags: ['winter cleanup', 'storm damage', 'emergency services', 'ice storms', 'tri-state'],
         readTime: '14 min read',
       }}
+      relatedPosts={[
+        {
+          title: 'Fall Cleanup Checklist for Tri-State Homeowners',
+          href: '/blog/fall-cleanup-checklist-tri-state',
+          excerpt: 'Comprehensive guide to preparing your Tri-State home for fall and winter.',
+          category: 'Seasonal Tips',
+        },
+        {
+          title: 'Essential Junk Removal Tips for Evansville Residents',
+          href: '/blog/evansville-junk-removal-tips',
+          excerpt: 'Local expert tips for efficient, cost-effective junk removal in Evansville, IN.',
+          category: 'Local Guide',
+        },
+      ]}
     >
       <div className="prose prose-lg max-w-none">
         <p className="lead">
@@ -504,7 +518,7 @@ export default function WinterStormCleanupGuide() {
             <strong>Tree and branch removal:</strong> Safe, efficient removal of storm-damaged trees
           </li>
           <li>
-            <strong>Debris hauling:</strong> Complete removal of storm debris of any size
+            <strong><a href="/services/storm-debris-cleanup">Storm debris hauling</a>:</strong> Complete removal of storm debris of any size
           </li>
           <li>
             <strong>Property clearing:</strong> Restore full access to your property
@@ -523,7 +537,7 @@ export default function WinterStormCleanupGuide() {
           <li>Experience with major Tri-State ice storms and severe weather</li>
           <li>Professional equipment for safe, efficient cleanup</li>
           <li>Licensed and insured for your protection</li>
-          <li>Serving Evansville, Henderson, Owensboro, and all Tri-State communities</li>
+          <li>Serving <a href="/locations/evansville">Evansville</a>, <a href="/locations/henderson-ky">Henderson</a>, <a href="/locations/owensboro-ky">Owensboro</a>, and all Tri-State communities</li>
           <li>Transparent pricing—no hidden fees during emergencies</li>
         </ul>
 

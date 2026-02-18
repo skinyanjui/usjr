@@ -18,12 +18,26 @@ export default function FallCleanupGuide() {
         title: 'Fall Cleanup Checklist for Tri-State Homeowners',
         excerpt:
           'Comprehensive guide to preparing your Tri-State home for fall and winter. From leaf removal to storm preparation, get your property ready for the cold months ahead.',
-        date: '2024-09-15',
+        date: 'September 10, 2025',
         author: 'Uncle Sam Team',
         category: 'Seasonal Tips',
         tags: ['fall cleanup', 'yard waste', 'seasonal tips', 'home maintenance', 'tri-state'],
         readTime: '12 min read',
       }}
+      relatedPosts={[
+        {
+          title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
+          href: '/blog/winter-storm-cleanup-guide-tri-state',
+          excerpt: 'Complete guide to winter storm preparation, cleanup, and recovery in the Tri-State area.',
+          category: 'Emergency Services',
+        },
+        {
+          title: 'Yard Waste Disposal in Evansville',
+          href: '/blog/yard-waste-disposal-evansville',
+          excerpt: 'Eco-friendly ways to handle yard waste in Evansville, from composting to professional pickup.',
+          category: 'Yard Waste',
+        },
+      ]}
     >
       <div className="prose prose-lg max-w-none">
         <p className="lead">
@@ -92,7 +106,7 @@ export default function FallCleanupGuide() {
           </li>
           <li>
             <strong>Consider professional removal:</strong> For properties with mature trees or
-            large yards, professional yard waste removal saves time and ensures thorough cleanup
+            large yards, professional <a href="/services/yard-waste-removal">yard waste removal</a> saves time and ensures thorough cleanup
           </li>
         </ul>
         <p>
@@ -399,7 +413,7 @@ export default function FallCleanupGuide() {
             away
           </li>
           <li>
-            <strong>Storm debris cleanup:</strong> Emergency response after severe weather events
+            <strong><a href="/services/storm-debris-cleanup">Storm debris cleanup</a>:</strong> Emergency response after severe weather events
           </li>
           <li>
             <strong>Eco-friendly disposal:</strong> We recycle, donate, and properly dispose of all

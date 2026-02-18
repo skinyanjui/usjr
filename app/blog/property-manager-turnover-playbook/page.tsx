@@ -21,7 +21,7 @@ export default function PropertyManagerPlaybookPage() {
         excerpt:
           'Complete guide for property managers handling tenant turnovers, from initial assessment to final cleanup.',
         author: 'Uncle Sam Team',
-        date: 'January 6, 2025',
+        date: 'January 8, 2026',
         readTime: '10 min read',
         category: 'Property Management',
         tags: ['Property Management', 'Turnover', 'Trash-Out', 'Evansville'],
@@ -68,7 +68,7 @@ export default function PropertyManagerPlaybookPage() {
       </ul>
 
       <h2>Phase 2: Trash-Out Service (Days 2-3)</h2>
-      <p>Professional junk removal is essential for efficient turnovers:</p>
+      <p>Our <a href="/services/property-management-turnovers">property management turnover</a> service is essential for efficient turnovers, covering everything from trash-out to broom clean:</p>
       <ul>
         <li>
           <strong>Full-service removal:</strong> All furniture, trash, and debris
@@ -110,6 +110,7 @@ export default function PropertyManagerPlaybookPage() {
       </ul>
 
       <h2>Phase 4: Deep Cleaning (Day 8)</h2>
+      <p>Our <a href="/cleaning/commercial">commercial cleaning services</a> can handle the full deep clean after trash-out, covering everything from kitchen sanitization to carpet care.</p>
       <ul>
         <li>Professional carpet cleaning or replacement</li>
         <li>Kitchen deep clean (cabinets, appliances)</li>

@@ -21,7 +21,7 @@ export default function EstateCleanoutGuideBlog() {
         excerpt:
           'A step-by-step guide to planning an estate cleanout with sensitivity, including donation and recycling strategies.',
         author: 'Uncle Sam Team',
-        date: 'January 24, 2025',
+        date: 'January 28, 2026',
         readTime: '9 min read',
         category: 'Estate Cleanouts',
         tags: ['Estate Cleanout', 'Donation', 'Planning', 'Southern Indiana'],
@@ -147,6 +147,9 @@ export default function EstateCleanoutGuideBlog() {
       </ul>
 
       <h2>When to Call Professionals</h2>
+      <p>
+        Our <a href="/services/estate-cleanouts">estate cleanout service</a> provides full support for families in the <a href="/locations/evansville">Evansville</a> area—from sorting and donation coordination to heavy item removal and final cleanup.
+      </p>
       <p>Professional help becomes valuable when:</p>
       <ul>
         <li>The volume is overwhelming (40+ years of accumulation)</li>

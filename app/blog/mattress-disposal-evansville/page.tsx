@@ -22,7 +22,7 @@ export default function MattressDisposalBlog() {
         excerpt:
           'What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.',
         author: 'Uncle Sam Team',
-        date: 'January 20, 2025',
+        date: 'January 15, 2026',
         readTime: '6 min read',
         category: 'Mattress Removal',
         tags: ['Mattress Disposal', 'Recycling', 'Evansville', 'Bulk Pickup'],
@@ -59,7 +59,7 @@ export default function MattressDisposalBlog() {
       <h2>Professional Mattress Removal Services</h2>
 
       <p>
-        Professional mattress removal offers the most convenient solution for Evansville residents.
+        Our <a href="/services/mattress-removal">professional mattress removal</a> service offers the most convenient solution for <a href="/locations/evansville">Evansville</a> residents.
         These services handle every aspect of the process, from pickup at any location in your home
         to proper disposal or recycling at certified facilities.
       </p>

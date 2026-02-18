@@ -21,7 +21,7 @@ export default function SummerCleanupChecklistPage() {
         excerpt:
           'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
         author: 'Sarah Johnson',
-        date: 'October 27, 2025',
+        date: 'June 15, 2025',
         readTime: '8 min read',
         category: 'Seasonal Guide',
         tags: ['Summer Cleanup', 'Outdoor Maintenance', 'Garage', 'Tri-State Area'],
@@ -214,7 +214,7 @@ export default function SummerCleanupChecklistPage() {
       <p>Some tasks are best left to experts:</p>
       <ul>
         <li>
-          <strong>Large tree removal or major trimming:</strong> Requires proper equipment and
+          <strong><a href="/services/yard-waste-removal">Large yard waste and tree debris removal</a> or major trimming:</strong> Requires proper equipment and
           safety measures
         </li>
         <li>
@@ -230,7 +230,7 @@ export default function SummerCleanupChecklistPage() {
           proper disposal
         </li>
         <li>
-          <strong>Storm debris cleanup:</strong> Especially after severe weather events
+          <strong><a href="/services/storm-debris-cleanup">Storm debris cleanup</a>:</strong> Especially after severe weather events
         </li>
       </ul>
 

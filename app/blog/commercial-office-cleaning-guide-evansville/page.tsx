@@ -21,7 +21,7 @@ export default function CommercialOfficeCleaningPage() {
         excerpt:
           'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
         author: 'Uncle Sam Team',
-        date: 'October 27, 2025',
+        date: 'February 17, 2026',
         readTime: '9 min read',
         category: 'Commercial Cleaning',
         tags: ['Commercial Cleaning', 'Office Cleaning', 'Business Services', 'Evansville'],

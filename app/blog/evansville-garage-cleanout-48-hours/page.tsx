@@ -21,7 +21,7 @@ export default function GarageCleanoutPage() {
         excerpt:
           'Step-by-step guide to completely clean out your garage in just 48 hours with sorting strategies and disposal options.',
         author: 'Uncle Sam Team',
-        date: 'January 12, 2025',
+        date: 'January 22, 2026',
         readTime: '6 min read',
         category: 'How-To Guide',
         tags: ['Garage Cleanout', 'Organization', 'Evansville', '48 Hours'],
@@ -102,7 +102,7 @@ export default function GarageCleanoutPage() {
       <h3>Morning (Hours 17-24): Removal Day</h3>
       <ul>
         <li>
-          <strong>Professional junk removal:</strong> Have unwanted items hauled away (2-3 hours)
+          <strong><a href="/services/garage-cleanout">Professional junk removal</a>:</strong> Have unwanted items hauled away (2-3 hours)
         </li>
         <li>
           <strong>Drop off donations:</strong> Visit Goodwill or Habitat ReStore
@@ -155,7 +155,7 @@ export default function GarageCleanoutPage() {
       </ul>
 
       <p>
-        <strong>Typical garage cleanout cost:</strong> $149-389 depending on volume. We handle
+        <strong>Typical <a href="/services/garage-cleanout">garage cleanout</a> cost:</strong> $149-389 depending on volume. We handle
         loading, hauling, and proper disposal of everything.
       </p>
 

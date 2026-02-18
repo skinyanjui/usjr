@@ -29,7 +29,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
         excerpt:
           'Local expert tips for efficient, cost-effective junk removal in Evansville, IN. From preparation to disposal, make your cleanout a success.',
         author: 'Uncle Sam Team',
-        date: 'January 28, 2025',
+        date: 'February 10, 2026',
         readTime: '8 min read',
         category: 'Local Guide',
         tags: ['Junk Removal', 'Evansville', 'Local Tips', 'Cost Savings'],
@@ -42,16 +42,16 @@ export default function EvansvilleJunkRemovalTipsPage() {
           category: 'Pricing Guide',
         },
         {
-          title: 'Garage Cleanout in 48 Hours',
-          href: '/blog/evansville-garage-cleanout-48-hours',
-          excerpt: 'Step-by-step guide to completely clean out your garage in just 48 hours.',
-          category: 'How-To Guide',
+          title: 'Estate Cleanout Guide: Compassionate Planning',
+          href: '/blog/estate-cleanout-guide',
+          excerpt: 'Step-by-step guide to planning an estate cleanout with sensitivity and donation options.',
+          category: 'Estate Cleanouts',
         },
       ]}
     >
       <p>
         Whether you're decluttering, moving, or handling an estate cleanout, knowing local
-        Evansville resources and best practices can save you time and money. These expert tips help
+        <a href="/locations/evansville">Evansville</a> resources and best practices can save you time and money. These expert tips help
         you navigate junk removal efficiently.
       </p>
 
@@ -158,7 +158,7 @@ export default function EvansvilleJunkRemovalTipsPage() {
         <li>Electronics (TVs, computers, printers)</li>
         <li>Construction debris (within reason)</li>
         <li>Yard waste and brush</li>
-        <li>Hot tubs and sheds (special pricing)</li>
+        <li><a href="/services/hot-tub-removal">Hot tubs</a> and <a href="/services/shed-removal">sheds</a> (special pricing)</li>
       </ul>
 
       <h3>We Cannot Accept:</h3>
@@ -179,6 +179,10 @@ export default function EvansvilleJunkRemovalTipsPage() {
         <li>Are there items you won't take?</li>
         <li>Do you clean up the area after removal?</li>
       </ol>
+
+      <p>
+        Need professional <a href="/services/junk-removal">junk removal in Evansville</a>? Our veteran-owned team offers same-day service, transparent pricing, and eco-friendly disposal throughout the <a href="/locations/evansville">Evansville</a> metro and Tri-State area.
+      </p>
 
       <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-900 p-6">
         <p className="text-foreground text-lg font-medium">

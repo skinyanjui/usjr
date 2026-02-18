@@ -19,7 +19,7 @@ export default function ShedRemovalGuideBlog() {
         excerpt:
           "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
         author: 'Uncle Sam Team',
-        date: 'January 22, 2025',
+        date: 'February 5, 2026',
         readTime: '7 min read',
         category: 'Light Demolition',
         tags: ['Shed Removal', 'Permits', 'Demolition', 'Evansville'],
@@ -42,7 +42,7 @@ export default function ShedRemovalGuideBlog() {
     >
       <p>
         Most small sheds under 200 sq ft don't require permits in many jurisdictions, but always
-        check local rules. Expect $289–649 for removal depending on size, materials, access, and
+        check local rules. Expect $289–649 for <a href="/services/shed-removal">shed removal</a> depending on size, materials, access, and
         whether concrete pads need demo.
       </p>
 
@@ -85,6 +85,10 @@ export default function ShedRemovalGuideBlog() {
         Most shed removals can be completed in a single day. The process typically involves
         dismantling the structure, loading materials, and hauling away debris. Larger sheds or those
         with concrete foundations may take longer.
+      </p>
+
+      <p>
+        For structures requiring concrete pad removal or more complex demolition, see our <a href="/services/light-demolition">light demolition services</a>. We serve <a href="/locations/evansville">Evansville</a> and the surrounding Tri-State area.
       </p>
 
       <div className="my-8 rounded-lg border-l-4 border-gray-300 bg-gray-800 p-6">

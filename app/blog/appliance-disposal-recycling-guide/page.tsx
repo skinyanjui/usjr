@@ -21,7 +21,7 @@ export default function ApplianceDisposalGuidePage() {
         excerpt:
           'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
         author: 'Mike Thompson',
-        date: 'November 20, 2024',
+        date: 'January 20, 2026',
         readTime: '10 min read',
         category: 'Appliance Disposal',
         tags: ['Appliance Removal', 'Recycling', 'Evansville', 'Environmental'],
@@ -88,8 +88,8 @@ export default function ApplianceDisposalGuidePage() {
 
       <h2>Appliance Recycling Options in Evansville</h2>
 
-      <h3>1. Professional Appliance Removal Services</h3>
-      <p>The most convenient option for most homeowners:</p>
+      <h3>1. <a href="/services/appliance-removal">Professional Appliance Removal Services</a></h3>
+      <p>The most convenient option for most <a href="/locations/evansville">Evansville</a> homeowners:</p>
       <ul>
         <li>We handle all lifting, loading, and transportation</li>
         <li>EPA-certified refrigerant removal included</li>

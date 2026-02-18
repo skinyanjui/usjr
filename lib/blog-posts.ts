@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Local expert tips for efficient, cost-effective junk removal in Evansville, IN. From preparation to disposal, make your cleanout a success.',
     author: 'Uncle Sam Team',
-    date: 'January 28, 2025',
+    date: 'February 10, 2026',
     readTime: '8 min read',
     category: 'Local Guide',
     featured: true,
@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Complete spring cleaning guide for Southern Indiana residents. Room-by-room checklist, eco-friendly tips, and professional cleaning services.',
     author: 'Sarah Johnson',
-    date: 'March 1, 2024',
+    date: 'February 14, 2026',
     readTime: '12 min read',
     category: 'Spring Cleaning',
     featured: true,
@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Learn how to properly dispose of old appliances in Evansville, IN. Recycling options, environmental benefits, and professional removal services.',
     author: 'Mike Thompson',
-    date: 'November 20, 2024',
+    date: 'January 20, 2026',
     readTime: '10 min read',
     category: 'Appliance Disposal',
     image:
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Complete pricing guide for junk removal services in Evansville, Henderson, and surrounding areas. Learn what factors affect cost and how to get the best value.',
     author: 'Uncle Sam Team',
-    date: 'January 15, 2025',
+    date: 'February 3, 2026',
     readTime: '8 min read',
     category: 'Pricing Guide',
     image:
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'A step-by-step guide to planning an estate cleanout with sensitivity, including donation and recycling strategies.',
     author: 'Uncle Sam Team',
-    date: 'January 24, 2025',
+    date: 'January 28, 2026',
     readTime: '9 min read',
     category: 'Estate Cleanouts',
     image:
@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'What to do with an old mattress in Evansville. Recycling programs, professional pickup, and cost ranges to expect.',
     author: 'Uncle Sam Team',
-    date: 'January 20, 2025',
+    date: 'January 15, 2026',
     readTime: '6 min read',
     category: 'Mattress Removal',
     image:
@@ -90,7 +90,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "From permits to pricing, here's how to plan a smooth shed removal in Evansville, including timeline expectations.",
     author: 'Uncle Sam Team',
-    date: 'January 22, 2025',
+    date: 'February 5, 2026',
     readTime: '7 min read',
     category: 'Light Demolition',
     image:
@@ -102,7 +102,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Brush, leaves, and limbs: the simplest, most eco-friendly ways to handle yard waste in Evansville.',
     author: 'Uncle Sam Team',
-    date: 'January 26, 2025',
+    date: 'February 12, 2026',
     readTime: '6 min read',
     category: 'Yard Waste',
     image:
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Step-by-step guide to completely clean out your garage in just 48 hours. Includes sorting strategies, disposal options, and organization tips.',
     author: 'Uncle Sam Team',
-    date: 'January 12, 2025',
+    date: 'January 22, 2026',
     readTime: '6 min read',
     category: 'How-To Guide',
     image:
@@ -126,7 +126,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Essential preparation steps for hot tub removal including electrical disconnection, access requirements, and disposal options.',
     author: 'Uncle Sam Team',
-    date: 'January 8, 2025',
+    date: 'January 10, 2026',
     readTime: '5 min read',
     category: 'Service Guide',
     image:
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Complete guide for property managers handling tenant turnovers. From initial assessment to final cleanup, streamline your process.',
     author: 'Uncle Sam Team',
-    date: 'January 6, 2025',
+    date: 'January 8, 2026',
     readTime: '10 min read',
     category: 'Property Management',
     image:
@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Comprehensive guide to commercial cleaning for Evansville businesses. Scheduling, costs, eco-friendly options, and maintaining a professional workplace.',
     author: 'Uncle Sam Team',
-    date: 'October 27, 2025',
+    date: 'February 17, 2026',
     readTime: '9 min read',
     category: 'Commercial Cleaning',
     featured: true,
@@ -162,7 +162,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Beat the heat with this complete summer cleanup guide. Outdoor maintenance, garage organization, and preparing your property for fall.',
     author: 'Sarah Johnson',
-    date: 'October 27, 2025',
+    date: 'June 15, 2025',
     readTime: '8 min read',
     category: 'Seasonal Guide',
     image: '/images/blog/summer-cleanup.png?v=unified',
@@ -173,7 +173,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Complete moving cleanout checklist from decluttering to final walkthrough. Make your move easier with professional junk removal and cleaning services.',
     author: 'Uncle Sam Team',
-    date: 'October 27, 2025',
+    date: 'February 6, 2026',
     readTime: '10 min read',
     category: 'Moving Guide',
     image: '/images/blog/moving-cleanout.png?v=unified',
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Comprehensive guide to preparing your Tri-State home for fall and winter. From leaf removal to storm preparation, get your property ready for the cold months ahead.',
     author: 'Uncle Sam Team',
-    date: 'September 15, 2024',
+    date: 'September 10, 2025',
     readTime: '12 min read',
     category: 'Seasonal Tips',
     featured: true,
@@ -197,7 +197,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       'Complete guide to winter storm preparation, cleanup, and recovery in the Tri-State area. From ice storm damage to snow removal, learn how to protect your property and respond to winter emergencies.',
     author: 'Uncle Sam Team',
-    date: 'November 1, 2024',
+    date: 'November 15, 2025',
     readTime: '13 min read',
     category: 'Emergency Services',
     featured: true,
