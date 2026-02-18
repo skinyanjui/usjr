@@ -15,12 +15,25 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 const locationInfo = {
   locationName: 'Evansville',
   state: 'IN',
-  neighborhoods: ["Haynie's Corner", 'Jacobsville', 'Lincolnshire', 'McCutchanville'],
+  neighborhoods: [
+    "Haynie's Corner",
+    'Jacobsville',
+    'Lincolnshire',
+    'McCutchanville',
+    'North Park',
+    'Riverside',
+    'Stringtown',
+    'West Side',
+  ],
   landmarks: [
     'Downtown Evansville',
     'University of Evansville',
     'Eastland Mall',
     'Wesselman Woods',
+    'Angel Mounds',
+    'Ford Center',
+    'Mesker Park Zoo',
+    'Tropicana Evansville',
   ],
   specialOffers: ['15% University Discount', '$35 Curbside Special', '$25 Referral Credit'],
 }
@@ -31,6 +44,8 @@ export const metadata = {
   title: seoData.title,
   description: seoData.description,
   keywords: seoData.keywords,
+  openGraph: seoData.openGraph,
+  twitter: seoData.twitter,
   ...buildCanonicalMetadata('/locations/evansville', baseUrl),
 }
 

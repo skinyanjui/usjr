@@ -15,9 +15,27 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval
 const locationInfo = {
   locationName: 'Newburgh',
   state: 'IN',
-  neighborhoods: ['Historic Newburgh', 'Lynnville', 'Chandler'],
-  landmarks: ['Newburgh Historic District', 'Ohio River', 'Angel Mounds State Historic Site'],
-  specialOffers: ['Waterfront discount', 'Historic district service', 'Advanced booking savings'],
+  neighborhoods: [
+    'Historic Downtown Newburgh',
+    'Chandler',
+    'Lynnville',
+    'Tennyson',
+    'Yankeetown',
+    'Elberfeld',
+  ],
+  landmarks: [
+    'Historic Downtown Newburgh',
+    'Newburgh Riverfront',
+    'Castle High School',
+    'Newburgh Lock and Dam',
+    'Ohio River Scenic Byway',
+    'Friedman Park',
+  ],
+  specialOffers: [
+    'Save $20 Historic District Special',
+    'No Extra Fees Riverfront Pickup',
+    'Same-Day Service Available',
+  ],
 }
 
 const seoData = buildLocationMetadata(locationInfo)
@@ -26,6 +44,8 @@ export const metadata = {
   title: seoData.title,
   description: seoData.description,
   keywords: seoData.keywords,
+  openGraph: seoData.openGraph,
+  twitter: seoData.twitter,
   ...buildCanonicalMetadata('/locations/newburgh', baseUrl),
 }
 
