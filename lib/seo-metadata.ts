@@ -56,10 +56,25 @@ export function buildLocationMetadata(location: LocationMetadata, service?: stri
 
   const keywords = [...baseKeywords, ...landmarkKeywords, ...neighborhoodKeywords].join(', ')
 
+  const finalTitle = title.length > 70 ? title.substring(0, 67) + '...' : title
+  const finalDescription =
+    description.length > 160 ? description.substring(0, 157) + '...' : description
+
   return {
-    title: title.length > 60 ? title.substring(0, 57) + '...' : title,
-    description: description.length > 160 ? description.substring(0, 157) + '...' : description,
+    title: finalTitle,
+    description: finalDescription,
     keywords,
+    openGraph: {
+      title: finalTitle,
+      description: finalDescription,
+      type: 'website' as const,
+      siteName: 'Uncle Sam Junk Removal',
+    },
+    twitter: {
+      card: 'summary' as const,
+      title: finalTitle,
+      description: finalDescription,
+    },
   }
 }
 

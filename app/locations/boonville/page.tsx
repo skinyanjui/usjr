@@ -1,23 +1,48 @@
-import { settings } from '@/lib/cms-content'
+import { settings, getAggregateTestimonialStats } from '@/lib/cms-content'
 import {
   LocationPageTemplate,
   LocationPageTemplateProps,
 } from '@/components/ui/location-page-template'
 import { locationData, LocationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
+import { buildLocationMetadata } from '@/lib/seo-metadata'
+import { PromotionHighlight } from '@/components/ui/promotion-highlight'
+import { ReviewMention } from '@/components/ui/review-mention'
+import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
+const locationInfo = {
+  locationName: 'Boonville',
+  state: 'IN',
+  neighborhoods: ['Downtown Boonville', 'Scales Lake Area', 'Yankeetown', 'Elberfeld', 'Tennyson'],
+  landmarks: [
+    'Warrick County Courthouse',
+    'Scales Lake Park',
+    'Historic Downtown Boonville',
+    'Warrick County Museum',
+  ],
+  specialOffers: [
+    'Save $50 Rural Property Discount',
+    'Specialized Farm Equipment Removal',
+    'Save $25 Multi-Building Special',
+  ],
+}
+
+const seoData = buildLocationMetadata(locationInfo)
+
 export const metadata = {
-  title: 'Junk Removal Boonville IN | Same-Day Service | Uncle Sam Junk Removal',
-  description: `Professional junk removal in Boonville, Indiana. Serving Warrick County. Same-day service available. Call ${settings.phone}`,
-  keywords:
-    'junk removal Boonville, Boonville junk removal, Warrick County junk pickup, trash removal Boonville IN',
+  title: seoData.title,
+  description: seoData.description,
+  keywords: seoData.keywords,
+  openGraph: seoData.openGraph,
+  twitter: seoData.twitter,
   ...buildCanonicalMetadata('/locations/boonville', baseUrl),
 }
 
 export default function BoonvillePage() {
   const data = locationData['boonville'] as LocationData
+  const testimonialStats = getAggregateTestimonialStats()
 
   const templateProps: LocationPageTemplateProps = {
     locationName: data.locationName,
@@ -30,7 +55,7 @@ export default function BoonvillePage() {
     stories: data.stories,
     serviceGuarantee: data.serviceGuarantee,
     ctaPrimary: `📞 Call ${settings.phone}`,
-    ctaSecondary: 'Get Free Quote',
+    ctaSecondary: 'Get Free Boonville Quote',
   }
 
   if (data.neighborhoods) {
@@ -41,5 +66,48 @@ export default function BoonvillePage() {
     templateProps.disposalNote = data.disposalNote
   }
 
-  return <LocationPageTemplate {...templateProps} />
+  return (
+    <>
+      <LocationPageTemplate {...templateProps}>
+        <PromotionHighlight
+          location="Boonville"
+          offers={data.offers.map(offer => ({
+            title: offer.title,
+            discount: offer.discount,
+            description: offer.description,
+            validFrom: offer.validFrom,
+            validThrough: offer.validThrough,
+            locationSpecific: true,
+          }))}
+          theme={data.theme}
+          showStructuredData={true}
+        />
+
+        <div className="py-8">
+          <ReviewMention
+            averageRating={testimonialStats.averageRating}
+            reviewCount={testimonialStats.reviewCount}
+            variant="banner"
+            theme={data.theme}
+            location="Boonville"
+            showStructuredData={true}
+          />
+        </div>
+      </LocationPageTemplate>
+
+      <StructuredData
+        type="LocalBusiness"
+        data={{
+          locationName: data.locationName,
+          locationOffers: data.offers,
+          reviews: {
+            averageRating: testimonialStats.averageRating,
+            reviewCount: testimonialStats.reviewCount,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }}
+      />
+    </>
+  )
 }

@@ -136,6 +136,14 @@ export const locationData: Record<string, LocationData> = {
       "Expert junk removal for Newburgh's historic charm with careful handling and prompt service",
     theme: 'primary',
     driveTime: '15-minute drive from Evansville',
+    neighborhoods: [
+      'Historic Downtown Newburgh',
+      'Chandler',
+      'Lynnville',
+      'Tennyson',
+      'Yankeetown',
+      'Elberfeld',
+    ],
     features: [
       {
         icon: Clock,
@@ -227,6 +235,13 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       "Respectful junk removal for New Harmony's historic preservation with careful handling and community focus",
     theme: 'primary',
+    neighborhoods: [
+      'Historic District',
+      'Near Harmonie State Park',
+      'Poseyville',
+      'Crossville',
+      'Solitude',
+    ],
     features: [
       {
         icon: Clock,
@@ -319,6 +334,13 @@ export const locationData: Record<string, LocationData> = {
       'Reliable junk removal for Boonville and rural Warrick County with specialized farm and large property service',
     theme: 'primary',
     driveTime: '25-minute drive from Evansville',
+    neighborhoods: [
+      'Downtown Boonville',
+      'Scales Lake Area',
+      'Yankeetown',
+      'Elberfeld',
+      'Tennyson',
+    ],
     features: [
       {
         icon: Clock,
@@ -410,6 +432,14 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       'Cross-state professional junk removal from Indiana to Henderson, KY with licensed Kentucky service',
     theme: 'primary',
+    neighborhoods: [
+      'Downtown Henderson',
+      'North Henderson',
+      'East Henderson',
+      'Geneva',
+      'Alves',
+      'Five Points Area',
+    ],
     features: [
       {
         icon: Clock,
@@ -501,6 +531,13 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       'Illinois junk removal service with Wabash Valley expertise and agricultural property specialization',
     theme: 'primary',
+    neighborhoods: [
+      'Downtown Mount Carmel',
+      'Grayville',
+      'Keensburg',
+      'Carmi Area',
+      'Norris City',
+    ],
     features: [
       {
         icon: Clock,
@@ -592,6 +629,13 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       'Posey County junk removal headquarters with local expertise and comprehensive rural service',
     theme: 'primary',
+    neighborhoods: [
+      'Downtown Mount Vernon',
+      'Poseyville',
+      'Griffin',
+      'Wadesville',
+      'Hovey Lake Area',
+    ],
     features: [
       {
         icon: Clock,
@@ -683,6 +727,14 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       'Western Kentucky junk removal with Daviess County expertise and cross-state professional service',
     theme: 'primary',
+    neighborhoods: [
+      'Downtown Owensboro',
+      'South Owensboro',
+      'East Owensboro',
+      'Hillcrest',
+      'Deer Valley',
+      'Audubon Area',
+    ],
     features: [
       {
         icon: Clock,
@@ -774,6 +826,13 @@ export const locationData: Record<string, LocationData> = {
     tagline:
       'Gibson County junk removal with rural expertise and agricultural property specialization',
     theme: 'primary',
+    neighborhoods: [
+      'Downtown Princeton',
+      'Oakland City',
+      'Haubstadt',
+      'Fort Branch',
+      'Patoka',
+    ],
     features: [
       {
         icon: Clock,

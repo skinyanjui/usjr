@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { MapPin, Phone, ArrowRight, type LucideIcon } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
@@ -41,6 +42,7 @@ export interface LocationPageTemplateProps {
   disposalNote?: string
   ctaPrimary?: string
   ctaSecondary?: string
+  children?: ReactNode
 }
 
 export function LocationPageTemplate({
@@ -53,6 +55,7 @@ export function LocationPageTemplate({
   stories = [],
   serviceGuarantee,
   disposalNote,
+  children,
 }: LocationPageTemplateProps) {
   return (
     <main className="min-h-screen">
@@ -168,6 +171,13 @@ export function LocationPageTemplate({
               ))}
             </div>
           </div>
+        </section>
+      )}
+
+      {/* Location-specific promotions, reviews, and other content */}
+      {children && (
+        <section className="border-border border-b py-10">
+          <div className="mx-auto max-w-6xl space-y-6 px-4">{children}</div>
         </section>
       )}
     </main>
