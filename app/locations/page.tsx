@@ -99,7 +99,7 @@ export default function LocationsPage() {
                           </div>
                         ))}
                       </div>
-                      {data.offers.length > 0 && (
+                      {data.offers[0] && (
                         <div className="bg-muted mt-4 rounded px-3 py-1.5 text-xs font-medium">
                           {data.offers[0].title}: {data.offers[0].discount}
                         </div>
