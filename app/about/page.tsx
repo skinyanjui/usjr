@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Veteran-owned junk removal & cleaning in Evansville, IN. Licensed, insured, eco-friendly. Serving Southern Indiana & Kentucky tri-state area.',
   keywords:
-    'evansville junk removal, trash removal evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, karcher cleaners, haul away service, get rid of junk, remove old furniture',
+    'evansville junk removal, trash removal evansville, junk removal henderson ky, newburgh in junk removal, owensboro junk hauling, veteran owned junk removal evansville, women owned cleaning evansville, haul away service, get rid of junk, remove old furniture',
   robots: 'index, follow',
   ...buildCanonicalMetadata('/about', baseUrl),
 }
@@ -30,12 +30,8 @@ export default function AboutPage() {
           url: 'https://unclesamjunkremoval.com',
           telephone: settings.phoneE164,
           description:
-            'Veteran-owned junk removal in Evansville, IN. Professional cleaning by women-owned Karcher Cleaners.',
+            'Veteran-owned junk removal in Evansville, IN. Professional cleaning by a women-owned cleaning partner.',
           foundingDate: '2025',
-          founder: {
-            '@type': 'Person',
-            name: 'Samuel Kinyanjui',
-          },
           areaServed: settings.serviceAreas,
           sameAs: Object.values(settings.socialMedia || {}),
           knowsAbout: [
@@ -66,9 +62,8 @@ export default function AboutPage() {
               </h2>
               <div className="text-muted-foreground space-y-4 text-lg leading-relaxed">
                 <p>
-                  Founded in 2025 by{' '}
-                  <strong className="text-foreground font-semibold">Samuel Kinyanjui</strong> — a
-                  United States Marine Corps veteran — Uncle Sam Junk Removal was built to serve{' '}
+                  Founded in 2025 by a United States Marine Corps veteran, Uncle Sam Junk Removal
+                  was built to serve{' '}
                   <strong className="text-foreground font-semibold">Evansville, IN</strong> and the
                   Tri-State area with dependable, military-grade precision. We apply the same values
                   of integrity, respect, and service to every job.
@@ -83,10 +78,9 @@ export default function AboutPage() {
                   >
                     Karcher Cleaners
                   </a>
-                  , a women-owned company led by{' '}
-                  <strong className="text-foreground font-semibold">Chelsey Karcher</strong>. This
-                  partnership allows us to offer a complete solution: junk removal coupled with deep
-                  cleaning, delivering spotless spaces for homes and businesses.
+                  , a women-owned cleaning company. This partnership allows us to offer a complete
+                  solution: junk removal coupled with deep cleaning, delivering spotless spaces for
+                  homes and businesses.
                 </p>
               </div>
 
@@ -246,30 +240,30 @@ export default function AboutPage() {
           </div>
 
           <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
-            {/* Samuel */}
+            {/* Founder */}
             <div className="border-border bg-card overflow-hidden rounded-xl border">
               <div className="p-8 text-center">
                 <div className="bg-primary/10 text-primary ring-background mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full text-3xl font-bold ring-4">
-                  SK
+                  <Shield className="h-10 w-10" />
                 </div>
-                <h3 className="text-foreground mb-1 text-xl font-bold">Samuel Kinyanjui</h3>
+                <h3 className="text-foreground mb-1 text-xl font-bold">Founder & Owner</h3>
                 <p className="text-primary mb-4 text-sm font-medium tracking-wide uppercase">
-                  Founder & Owner
+                  USMC Veteran
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  USMC Veteran responsible for operations, logistics, and ensuring the "Uncle Sam
-                  Standard" is met on every junk removal project.
+                  Responsible for operations, logistics, and ensuring the "Uncle Sam Standard" is
+                  met on every junk removal project.
                 </p>
               </div>
             </div>
 
-            {/* Chelsey */}
+            {/* Cleaning Partner */}
             <div className="border-border bg-card overflow-hidden rounded-xl border">
               <div className="p-8 text-center">
                 <div className="ring-background mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-purple-500/10 text-3xl font-bold text-purple-600 ring-4">
-                  CK
+                  <Users className="h-10 w-10" />
                 </div>
-                <h3 className="text-foreground mb-1 text-xl font-bold">Chelsey Karcher</h3>
+                <h3 className="text-foreground mb-1 text-xl font-bold">Cleaning Partner</h3>
                 <p className="mb-4 text-sm font-medium tracking-wide text-purple-600 uppercase">
                   Owner, Karcher Cleaners
                 </p>

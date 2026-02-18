@@ -20,10 +20,7 @@ const serviceInfo = {
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
 
 export const metadata: Metadata = {
-  title: seoData.title,
-  description: seoData.description,
-  keywords: seoData.keywords,
-  robots: 'index, follow',
+  ...seoData,
   ...buildCanonicalMetadata('/services/appliance-removal', baseUrl),
 }
 
