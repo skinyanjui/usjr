@@ -166,6 +166,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     },
 
+    // ===== Locations Hub (Priority: 0.82) =====
+    {
+      url: `${baseUrl}/locations`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.82,
+    },
+
     // ===== Primary Locations (Priority: 0.78) =====
     {
       url: `${baseUrl}/locations/evansville`,

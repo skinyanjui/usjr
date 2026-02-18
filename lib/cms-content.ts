@@ -292,6 +292,45 @@ export const locations: Location[] = [
     ],
     active: true,
   },
+  {
+    id: 'boonville',
+    name: 'Boonville',
+    state: 'IN',
+    zipCodes: ['47601'],
+    landmarks: [
+      'Warrick County Courthouse',
+      'Scales Lake Park',
+      'Warrick County Museum',
+      'Historic Downtown Boonville',
+    ],
+    active: true,
+  },
+  {
+    id: 'princeton',
+    name: 'Princeton',
+    state: 'IN',
+    zipCodes: ['47670'],
+    landmarks: [
+      'Gibson County Courthouse',
+      'Toyota Manufacturing',
+      'Princeton Community Park',
+      'Patoka River Access',
+    ],
+    active: true,
+  },
+  {
+    id: 'owensboro-ky',
+    name: 'Owensboro',
+    state: 'KY',
+    zipCodes: ['42301', '42302', '42303'],
+    landmarks: [
+      'Smothers Park',
+      'Bluegrass Music Hall of Fame',
+      'Owensboro Museum of Fine Art',
+      'Daviess County Courthouse',
+    ],
+    active: true,
+  },
 ]
 
 export const testimonials: Testimonial[] = [

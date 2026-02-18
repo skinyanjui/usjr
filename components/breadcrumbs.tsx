@@ -22,6 +22,7 @@ function labelForPath(path: string, defaultLabel: string): string {
 
   // Fallbacks for known sections
   if (path === '/services') return 'Services'
+  if (path === '/locations') return 'Locations'
   if (path === '/blog') return 'Blog'
   if (path === '/faq') return 'FAQ'
   if (path === '/about') return 'About'
@@ -47,22 +48,8 @@ export function BreadcrumbsAuto() {
       const segment = segments[i] ?? ''
       running += `/${segment}`
 
-      // Skip adding a non-existent index for certain sections (e.g., /locations has no index page)
-      if (segment === 'locations' && i < segments.length - 1) {
-        // Only add the final location crumb later
-        continue
-      }
-
       const name = labelForPath(running, segment)
       acc.push({ name, href: running })
-    }
-
-    // If we skipped locations parent, ensure we still add the final crumb label based on NAV
-    if ((segments[0] ?? '') === 'locations' && acc.length === 0) {
-      const full = `/${segments.join('/')}`
-      const last = segments[segments.length - 1] ?? ''
-      const name = labelForPath(full, last)
-      acc.push({ name, href: full })
     }
 
     return acc

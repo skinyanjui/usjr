@@ -47,7 +47,7 @@ export const NAV: NavItem[] = [
       title: 'Full Tri-State Coverage',
       description:
         'Serving Evansville, Henderson, Owensboro, and surrounding communities with same-day service.',
-      href: '/locations/evansville',
+      href: '/locations',
       ctaLabel: 'View All Locations',
     },
     children: [
