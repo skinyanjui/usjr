@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react'
 import Link from 'next/link'
 import { StructuredData } from '@/components/structured-data'
 import { settings } from '@/lib/cms-content'
@@ -41,7 +41,7 @@ export function Footer() {
           <nav aria-label="Services">
             <h4 className="mb-4 text-sm font-semibold">Services</h4>
             <ul className="space-y-2">
-              {services.slice(0, 8).map(s => (
+              {services.map(s => (
                 <li key={s.href}>
                   <Link
                     href={s.href!}
@@ -51,6 +51,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/services"
+                  className="text-background/50 hover:text-background text-sm transition-colors"
+                >
+                  View all services →
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -68,6 +76,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/locations"
+                  className="text-background/50 hover:text-background text-sm transition-colors"
+                >
+                  View all locations →
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -105,6 +121,14 @@ export function Footer() {
                   className="text-background/70 hover:text-background text-sm transition-colors"
                 >
                   FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/emergency"
+                  className="text-background/70 hover:text-background text-sm transition-colors"
+                >
+                  Emergency Cleanup
                 </Link>
               </li>
               <li>
@@ -154,23 +178,65 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm">
-                <Phone className="text-background/70 h-4 w-4" />
-                <span>{settings.phone}</span>
+                <Phone className="text-background/70 h-4 w-4 shrink-0" />
+                <a
+                  href={`tel:${settings.phoneE164}`}
+                  className="text-background/70 hover:text-background transition-colors"
+                >
+                  {settings.phone}
+                </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
-                <Mail className="text-background/70 h-4 w-4" />
+                <Mail className="text-background/70 h-4 w-4 shrink-0" />
                 <a
                   href={`mailto:${settings.email}`}
-                  className="text-background/70 hover:text-background"
+                  className="text-background/70 hover:text-background transition-colors"
                 >
                   {settings.email}
                 </a>
               </li>
               <li className="text-background/70 flex items-center gap-2 text-sm">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4 shrink-0" />
                 <span>Evansville, IN</span>
               </li>
             </ul>
+
+            {/* Social Media */}
+            <div className="mt-6 flex items-center gap-3">
+              {settings.socialMedia.facebook && (
+                <a
+                  href={settings.socialMedia.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="text-background/70 hover:text-background transition-colors"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              )}
+              {settings.socialMedia.instagram && (
+                <a
+                  href={settings.socialMedia.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-background/70 hover:text-background transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              )}
+              {settings.socialMedia.google && (
+                <a
+                  href={settings.socialMedia.google}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Business"
+                  className="text-background/70 hover:text-background text-sm font-medium transition-colors"
+                >
+                  Google
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
@@ -178,7 +244,7 @@ export function Footer() {
         <div className="border-background/20 border-t pt-6">
           <div className="text-background/60 flex flex-col items-center justify-between gap-4 text-xs sm:flex-row">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
-            <p>Veteran-Owned · Licensed & Insured</p>
+            <p>Veteran-Owned · Woman-Owned · Licensed & Insured</p>
           </div>
         </div>
       </div>

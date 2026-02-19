@@ -466,7 +466,7 @@ export const settings: Settings = {
   phone: '(812) 610-1657',
   phoneE164: '+18126101657',
   email: 'unclesamjunkremoval@gmail.com',
-  squareBookingUrl: 'https://square.site/book/PLACEHOLDER_BOOKING_URL',
+  squareBookingUrl: 'https://book.squareup.com/appointments/9xyz0lew6pns5p/location/L57CM7YMQV9XB/services',
   businessHours: {
     monday: '8:00 AM - 6:00 PM',
     tuesday: '8:00 AM - 6:00 PM',
