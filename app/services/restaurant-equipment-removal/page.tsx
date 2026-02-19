@@ -27,6 +27,38 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/restaurant-equipment-removal', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Commercial Office Cleaning in Evansville',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description:
+      'Guide to commercial cleaning services for Evansville businesses—applicable to restaurant and hospitality spaces.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Property Manager Turnover Playbook',
+    href: '/blog/property-manager-turnover-playbook',
+    description: 'How commercial property managers handle complete turnover and cleanout projects.',
+    type: 'blog' as const,
+    category: 'Property Management',
+  },
+  {
+    title: 'Office Cleanouts',
+    href: '/services/office-cleanouts',
+    description: 'Commercial property cleanouts for offices, retail, and hospitality spaces.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Warehouse Fixture Removal',
+    href: '/services/warehouse-fixture-removal',
+    description: 'Large-scale commercial fixture and equipment removal for industrial spaces.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function RestaurantEquipmentRemovalPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +66,7 @@ export default function RestaurantEquipmentRemovalPage() {
       title="Restaurant Equipment Removal in Evansville"
       description="Professional removal of commercial kitchen equipment including ovens, refrigerators, sinks, and complete restaurant cleanouts"
       badges={['Commercial Equipment', 'Disconnect Coordination', 'Scrap Metal Recovery']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: ChefHat,

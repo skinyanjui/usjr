@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/holiday-tree-removal', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Fall Cleanup Checklist for Tri-State Homeowners',
+    href: '/blog/fall-cleanup-checklist-tri-state',
+    description:
+      'Seasonal cleanup guide including outdoor equipment storage and winterization tips.',
+    type: 'blog' as const,
+    category: 'Seasonal Tips',
+  },
+  {
+    title: 'Yard Waste Disposal in Evansville',
+    href: '/blog/yard-waste-disposal-evansville',
+    description:
+      'Eco-friendly ways to handle yard and organic waste in Evansville, including composting options.',
+    type: 'blog' as const,
+    category: 'Yard Waste',
+  },
+  {
+    title: 'Yard Waste Removal',
+    href: '/services/yard-waste-removal',
+    description: 'Branch, brush, and organic debris removal paired with holiday tree pickup.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Junk Removal Services',
+    href: '/services/junk-removal',
+    description: 'Full-service junk removal for all post-holiday cleanup needs.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function HolidayTreeRemovalPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function HolidayTreeRemovalPage() {
       title="Holiday Tree Removal in Evansville"
       description="Convenient Christmas tree removal and seasonal landscaping cleanup services"
       badges={['Seasonal Service', 'Eco-Friendly Disposal', 'Christmas Specialists']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: TreePine,

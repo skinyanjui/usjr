@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/office-cleanouts', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Commercial Office Cleaning in Evansville',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description:
+      'Complete guide to commercial cleaning for Evansville businesses—scheduling, costs, and eco-friendly options.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Property Manager Turnover Playbook',
+    href: '/blog/property-manager-turnover-playbook',
+    description:
+      'From trash-out to broom clean: how property managers streamline commercial turnovers.',
+    type: 'blog' as const,
+    category: 'Property Management',
+  },
+  {
+    title: 'Commercial Cleaning',
+    href: '/cleaning/commercial',
+    description: 'Ongoing commercial cleaning services for offices after cleanout is complete.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Property Management Turnovers',
+    href: '/services/property-management-turnovers',
+    description: 'Full-service turnover solutions including trash-out and cleaning.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function OfficeCleanoutsPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function OfficeCleanoutsPage() {
       title="Office Cleanouts in Evansville"
       description="Professional office cleanout services for cubicles, desks, IT equipment, and complete office relocations"
       badges={['Same-Day Service', 'IT Equipment Handling', 'Secure Document Disposal']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Building,

@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/hot-tub-removal', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Hot Tub Removal: What to Know Before We Arrive',
+    href: '/blog/hot-tub-removal-what-to-know',
+    description:
+      'Essential preparation steps for hot tub removal including electrical disconnection and access requirements.',
+    type: 'blog' as const,
+    category: 'Service Guide',
+  },
+  {
+    title: 'Junk Removal Cost Guide',
+    href: '/blog/junk-removal-cost-tri-state',
+    description:
+      'Pricing breakdown for hot tub removal and other large-item services in the Tri-State area.',
+    type: 'blog' as const,
+    category: 'Pricing Guide',
+  },
+  {
+    title: 'Shed Removal',
+    href: '/services/shed-removal',
+    description: 'Remove old sheds and outbuildings—often scheduled alongside hot tub removal.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Light Demolition',
+    href: '/services/light-demolition',
+    description: 'Deck removal and teardown services paired with large outdoor item removal.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function HotTubRemovalPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function HotTubRemovalPage() {
       title="Hot Tub Removal in Evansville"
       description="Professional hot tub removal, spa removal, and jacuzzi disposal with safe disconnection and eco-friendly disposal. Whether you need to get rid of an old hot tub, remove a broken spa, or dispose of a jacuzzi, we handle it all with specialized equipment." // Changed from subtitle to description
       badges={['Same-Day Service', 'Safe Disconnection', 'Eco-Friendly']} // Added badges array
+      relatedContent={relatedContent}
       features={[
         {
           icon: Zap,

@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/storage-unit-cleanouts', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Essential Junk Removal Tips for Evansville Residents',
+    href: '/blog/evansville-junk-removal-tips',
+    description:
+      'Local tips for efficient junk removal—including how to prepare items for pickup and reduce costs.',
+    type: 'blog' as const,
+    category: 'Local Guide',
+  },
+  {
+    title: 'Junk Removal Cost Guide',
+    href: '/blog/junk-removal-cost-tri-state',
+    description:
+      'Complete pricing breakdown for storage unit cleanouts and junk removal in the Tri-State area.',
+    type: 'blog' as const,
+    category: 'Pricing Guide',
+  },
+  {
+    title: 'Junk Removal Services',
+    href: '/services/junk-removal',
+    description: 'Full-service junk removal for items removed from storage units.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Estate Cleanouts',
+    href: '/services/estate-cleanouts',
+    description: 'Comprehensive estate cleanouts often paired with storage unit cleanouts.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function StorageUnitCleanoutsPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function StorageUnitCleanoutsPage() {
       title="Storage Unit Cleanouts in Evansville"
       description="Professional storage unit cleanout services for abandoned units, estate storage, and facility turnovers"
       badges={['Same-Day Service', 'Full Unit Clearing', 'High Demand Service']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Package,

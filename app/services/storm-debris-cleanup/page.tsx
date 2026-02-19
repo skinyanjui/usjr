@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/storm-debris-cleanup', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Winter Storm Cleanup Guide for Tri-State Homeowners',
+    href: '/blog/winter-storm-cleanup-guide-tri-state',
+    description:
+      'Complete guide to winter storm preparation, cleanup, and recovery for Evansville, Henderson, and Owensboro.',
+    type: 'blog' as const,
+    category: 'Emergency Services',
+  },
+  {
+    title: 'Fall Cleanup Checklist for Tri-State Homeowners',
+    href: '/blog/fall-cleanup-checklist-tri-state',
+    description:
+      'Prepare your property for storm season with this comprehensive fall cleanup guide.',
+    type: 'blog' as const,
+    category: 'Seasonal Tips',
+  },
+  {
+    title: 'Yard Waste Removal',
+    href: '/services/yard-waste-removal',
+    description: 'Storm-related branch, brush, and debris removal after severe weather events.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Emergency Services',
+    href: '/emergency',
+    description: 'Same-day emergency cleanup response for urgent storm damage situations.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function StormDebrisCleanupPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function StormDebrisCleanupPage() {
       title="Storm Debris Cleanup in Evansville"
       description="Emergency storm debris removal including branches, fencing, shingles, and storm damage cleanup"
       badges={['Emergency Response', 'Insurance Coordination', 'Complete Cleanup']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Zap,

@@ -27,13 +27,49 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/estate-cleanouts', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Estate Cleanout Guide: Compassionate Planning',
+    href: '/blog/estate-cleanout-guide',
+    description:
+      'Step-by-step guide to planning an estate cleanout with sensitivity, including donation and recycling strategies.',
+    type: 'blog' as const,
+    category: 'Estate Cleanouts',
+  },
+  {
+    title: 'Junk Removal Cost Guide',
+    href: '/blog/junk-removal-cost-tri-state',
+    description:
+      'Understanding junk removal and cleanout pricing in the Tri-State area. Learn what factors affect costs.',
+    type: 'blog' as const,
+    category: 'Pricing Guide',
+  },
+  {
+    title: 'Junk Removal Services',
+    href: '/services/junk-removal',
+    description:
+      'Full-service junk removal for furniture, appliances, and household items during estate cleanouts.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Move-In/Move-Out Cleaning',
+    href: '/cleaning/move-in-move-out',
+    description:
+      'Professional cleaning service to restore the property after a complete estate cleanout.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function EstateCleanoutsPage() {
   return (
     <ServicePageTemplate
-      theme="primary" // Changed from "amber" to "orange" to match supported themes
+      theme="primary"
       title="Estate Cleanouts in Evansville"
       description="Compassionate estate cleanouts, house cleanouts, and property cleanout services for families during difficult times. Whether you need to clean out an inherited home, clear a deceased property, or handle a complete family home cleanout, we provide respectful and thorough service." // Changed from subtitle to description
-      badges={['Compassionate Service', 'Complete Cleanout', 'Donation Coordination']} // Added badges array
+      badges={['Compassionate Service', 'Complete Cleanout', 'Donation Coordination']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Heart,

@@ -22,6 +22,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/garage-cleanout', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Garage Cleanout in 48 Hours: Checklist & Timeline',
+    href: '/blog/evansville-garage-cleanout-48-hours',
+    description:
+      'Step-by-step guide to cleaning out your garage in just 48 hours with sorting strategies and disposal options.',
+    type: 'blog' as const,
+    category: 'How-To Guide',
+  },
+  {
+    title: 'Junk Removal Cost Guide',
+    href: '/blog/junk-removal-cost-tri-state',
+    description:
+      'Complete pricing breakdown for junk removal and cleanout services in the Tri-State area.',
+    type: 'blog' as const,
+    category: 'Pricing Guide',
+  },
+  {
+    title: 'Junk Removal Services',
+    href: '/services/junk-removal',
+    description: 'Full-service junk removal for furniture, appliances, and bulk items from your garage.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Shed Removal',
+    href: '/services/shed-removal',
+    description: 'Remove old sheds and outbuildings alongside your garage cleanout project.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function GarageCleanoutPage() {
   return (
     <ServicePageTemplate
@@ -29,6 +62,7 @@ export default function GarageCleanoutPage() {
       title="Garage Cleanout in Evansville"
       description="Complete garage cleanout services with sorting, removal, and organization" // Changed from subtitle to description
       badges={['Same-Day Service', 'Complete Cleanout', 'Donation Coordination']} // Added badges array
+      relatedContent={relatedContent}
       features={[
         {
           icon: Warehouse,

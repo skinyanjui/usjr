@@ -27,6 +27,37 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/warehouse-fixture-removal', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Property Manager Turnover Playbook',
+    href: '/blog/property-manager-turnover-playbook',
+    description: 'Complete guide for commercial property turnovers from trash-out to broom clean.',
+    type: 'blog' as const,
+    category: 'Property Management',
+  },
+  {
+    title: 'Commercial Office Cleaning in Evansville',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description: 'Guide to commercial cleaning services for businesses across the Tri-State area.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Restaurant Equipment Removal',
+    href: '/services/restaurant-equipment-removal',
+    description: 'Specialized commercial equipment removal for hospitality and food service.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Office Cleanouts',
+    href: '/services/office-cleanouts',
+    description: 'Full-service commercial cleanouts for offices and business spaces.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function WarehouseFixtureRemovalPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +65,7 @@ export default function WarehouseFixtureRemovalPage() {
       title="Warehouse & Retail Fixture Removal in Evansville"
       description="Professional removal of warehouse racks, retail shelving, and commercial fixtures for space reconfiguration"
       badges={['Commercial Fixtures', 'Heavy Equipment', 'Space Reconfiguration']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Package,

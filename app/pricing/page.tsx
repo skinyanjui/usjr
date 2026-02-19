@@ -456,6 +456,42 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Blog Posts */}
+      <section className="bg-muted/30 py-12">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Pricing & Planning Guides</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Learn more about junk removal costs and how to plan your cleanout project.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <a
+              href="/blog/junk-removal-cost-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-5 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Pricing Guide
+              </span>
+              <h3 className="mb-2 font-semibold">How Much Does Junk Removal Cost in the Tri-State?</h3>
+              <p className="text-muted-foreground text-sm">
+                Complete pricing breakdown for Evansville, Henderson, and surrounding areas.
+              </p>
+            </a>
+            <a
+              href="/blog/evansville-junk-removal-tips"
+              className="bg-card hover:border-primary/50 rounded-lg border p-5 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Local Guide
+              </span>
+              <h3 className="mb-2 font-semibold">Essential Junk Removal Tips for Evansville Residents</h3>
+              <p className="text-muted-foreground text-sm">
+                How to prepare for pickup, reduce costs, and make the most of your cleanout.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

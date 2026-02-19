@@ -27,6 +27,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/services/property-management-turnovers', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Property Manager Turnover Playbook',
+    href: '/blog/property-manager-turnover-playbook',
+    description:
+      'Complete guide for property managers: from initial assessment to trash-out to broom-clean handoff.',
+    type: 'blog' as const,
+    category: 'Property Management',
+  },
+  {
+    title: 'Junk Removal Cost Guide',
+    href: '/blog/junk-removal-cost-tri-state',
+    description:
+      'Pricing breakdown for trash-out and junk removal services in the Tri-State area.',
+    type: 'blog' as const,
+    category: 'Pricing Guide',
+  },
+  {
+    title: 'Commercial Cleaning',
+    href: '/cleaning/commercial',
+    description: 'Professional deep clean services to follow the trash-out and restore the unit.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Office Cleanouts',
+    href: '/services/office-cleanouts',
+    description: 'Commercial property cleanouts for offices, retail spaces, and multi-unit buildings.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function PropertyManagementTurnoversPage() {
   return (
     <ServicePageTemplate
@@ -34,6 +67,7 @@ export default function PropertyManagementTurnoversPage() {
       title="Property Management Turnovers in Evansville"
       description="Fast, reliable cleanout services for apartments, evictions, foreclosures, and rental property turnovers"
       badges={['Property Manager Preferred', 'Fast Turnaround', 'Eviction Specialists']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Home,
