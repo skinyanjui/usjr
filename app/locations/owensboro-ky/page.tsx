@@ -102,7 +102,50 @@ export default function OwensboroPage() {
         </div>
       </LocationPageTemplate>
 
-      <StructuredData
+
+      {/* Related Blog Resources */}
+      <section className="bg-muted/30 py-12">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Helpful Guides for Owensboro Residents</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Resources to help you plan your next junk removal or cleanup project.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/blog/fall-cleanup-checklist-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Seasonal Tips
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Fall Cleanup Checklist for Tri-State Homeowners</h3>
+              <p className="text-muted-foreground text-xs">Seasonal cleanup guide for Owensboro, Henderson, and Evansville homeowners.</p>
+            </a>
+            <a
+              href="/blog/winter-storm-cleanup-guide-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Emergency Services
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Winter Storm Cleanup Guide for Tri-State Homeowners</h3>
+              <p className="text-muted-foreground text-xs">Complete storm preparation and debris cleanup guide for Western Kentucky.</p>
+            </a>
+            <a
+              href="/blog/junk-removal-cost-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Pricing Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Cost in the Tri-State Area</h3>
+              <p className="text-muted-foreground text-xs">What to expect for pricing across junk removal services in Owensboro.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+            <StructuredData
         type="LocalBusiness"
         data={{
           locationName: data.locationName,

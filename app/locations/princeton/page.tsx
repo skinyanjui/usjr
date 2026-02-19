@@ -95,7 +95,50 @@ export default function PrincetonPage() {
         </div>
       </LocationPageTemplate>
 
-      <StructuredData
+
+      {/* Related Blog Resources */}
+      <section className="bg-muted/30 py-12">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Helpful Guides for Princeton Residents</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Resources to help you plan your next junk removal or cleanup project.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/blog/evansville-junk-removal-tips"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Local Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Tips for Southern Indiana</h3>
+              <p className="text-muted-foreground text-xs">Expert tips for efficient junk removal serving Princeton and Gibson County.</p>
+            </a>
+            <a
+              href="/blog/estate-cleanout-guide"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Estate Cleanouts
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Estate Cleanout Guide: Compassionate Planning</h3>
+              <p className="text-muted-foreground text-xs">Step-by-step estate cleanout planning with donation and recycling strategies.</p>
+            </a>
+            <a
+              href="/blog/junk-removal-cost-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Pricing Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Cost in the Tri-State Area</h3>
+              <p className="text-muted-foreground text-xs">Complete pricing breakdown for junk removal services in the Princeton area.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+            <StructuredData
         type="LocalBusiness"
         data={{
           locationName: data.locationName,

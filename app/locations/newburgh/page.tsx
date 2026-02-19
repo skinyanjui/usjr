@@ -106,7 +106,50 @@ export default function NewburghPage() {
         </div>
       </LocationPageTemplate>
 
-      {/* Enhanced structured data for location-specific business */}
+
+      {/* Related Blog Resources */}
+      <section className="bg-muted/30 py-12">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Helpful Guides for Newburgh Residents</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Resources to help you plan your next junk removal or cleanup project.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/blog/evansville-junk-removal-tips"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Local Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Tips for the Evansville Area</h3>
+              <p className="text-muted-foreground text-xs">Expert tips for efficient junk removal serving Newburgh and Evansville.</p>
+            </a>
+            <a
+              href="/blog/evansville-garage-cleanout-48-hours"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                How-To Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Garage Cleanout in 48 Hours</h3>
+              <p className="text-muted-foreground text-xs">Step-by-step timeline and checklist for a complete garage cleanout.</p>
+            </a>
+            <a
+              href="/blog/junk-removal-cost-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Pricing Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Cost in the Tri-State Area</h3>
+              <p className="text-muted-foreground text-xs">Complete pricing guide for junk removal in Newburgh and surrounding areas.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+            {/* Enhanced structured data for location-specific business */}
       <StructuredData
         type="LocalBusiness"
         data={{

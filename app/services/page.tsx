@@ -230,7 +230,49 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Areas */}
+      {/* Blog Resources */}
+      <section className="bg-muted/30 py-12">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Planning Your Project?</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Read our guides to know what to expect before you book.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/blog/junk-removal-cost-tri-state"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Pricing Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Cost in the Tri-State Area</h3>
+              <p className="text-muted-foreground text-xs">Full pricing breakdown for every service type and item category.</p>
+            </a>
+            <a
+              href="/blog/evansville-junk-removal-tips"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Local Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Junk Removal Tips for Evansville Residents</h3>
+              <p className="text-muted-foreground text-xs">How to prepare, what we take, and how to get the best value.</p>
+            </a>
+            <a
+              href="/blog/estate-cleanout-guide"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Estate Cleanouts
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Estate Cleanout Guide: Compassionate Planning</h3>
+              <p className="text-muted-foreground text-xs">Step-by-step guide with donation and recycling strategies.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+            {/* Service Areas */}
       <section className="border-border bg-muted/30 border-b py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-10 text-center">

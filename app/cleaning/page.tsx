@@ -209,7 +209,49 @@ export default function CleaningHub() {
         </div>
       </section>
 
-      {/* Guarantee Section */}
+      {/* Blog Resources */}
+      <section className="py-12">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-2xl font-bold">Cleaning Tips & Guides</h2>
+          <p className="text-muted-foreground mb-8 text-center">
+            Expert advice to help you prepare for your next cleaning service.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/blog/commercial-office-cleaning-guide-evansville"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Commercial Cleaning
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Commercial Office Cleaning in Evansville</h3>
+              <p className="text-muted-foreground text-xs">Scheduling, costs, and eco-friendly options for Evansville businesses.</p>
+            </a>
+            <a
+              href="/blog/spring-cleaning-checklist-southern-indiana"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Spring Cleaning
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Spring Cleaning Checklist for Southern Indiana</h3>
+              <p className="text-muted-foreground text-xs">Room-by-room guide with eco-friendly cleaning tips.</p>
+            </a>
+            <a
+              href="/blog/moving-cleanout-guide-evansville"
+              className="bg-card hover:border-primary/50 rounded-lg border p-4 transition-colors"
+            >
+              <span className="text-primary mb-1 block text-xs font-semibold uppercase tracking-wide">
+                Moving Guide
+              </span>
+              <h3 className="mb-1 text-sm font-semibold">Moving & Relocation Cleanout Guide</h3>
+              <p className="text-muted-foreground text-xs">Complete checklist from decluttering to move-out cleaning.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+            {/* Guarantee Section */}
       <section className="bg-card/50 px-4 py-16">
         <div className="mx-auto max-w-7xl text-center">
           <div className="bg-card rounded-2xl p-8 shadow-lg">
