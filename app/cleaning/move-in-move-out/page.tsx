@@ -14,6 +14,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/move-in-move-out', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Moving & Relocation Cleanout Guide for Evansville',
+    href: '/blog/moving-cleanout-guide-evansville',
+    description:
+      'Complete moving cleanout timeline—from 8 weeks out to moving day final walkthrough.',
+    type: 'blog' as const,
+    category: 'Moving Guide',
+  },
+  {
+    title: 'Estate Cleanout Guide: Compassionate Planning',
+    href: '/blog/estate-cleanout-guide',
+    description:
+      'Step-by-step guide to estate cleanouts, often paired with move-in/move-out cleaning.',
+    type: 'blog' as const,
+    category: 'Estate Cleanouts',
+  },
+  {
+    title: 'Estate Cleanouts',
+    href: '/services/estate-cleanouts',
+    description: 'Full-service estate cleanouts coordinated with move-in/move-out cleaning.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Deep Clean',
+    href: '/cleaning/deep-clean',
+    description: 'Thorough one-time deep cleaning for properties between occupants.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function MoveInMoveOutPage() {
   return (
     <ServicePageTemplate
@@ -21,6 +54,7 @@ export default function MoveInMoveOutPage() {
       description="Complete property cleaning for life transitions. Professional move-in and move-out cleaning services in Evansville. Deep cleaning for fresh starts and maximum deposit returns using natural, eco-friendly products."
       theme="primary"
       badges={['From $200', '4-6 Hours', 'Natural Products']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Home,

@@ -14,6 +14,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/recurring', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Commercial Office Cleaning in Evansville',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description:
+      'Guide to commercial cleaning frequency, scheduling, and cost for Evansville businesses.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Ultimate Spring Cleaning Checklist',
+    href: '/blog/spring-cleaning-checklist-southern-indiana',
+    description:
+      'Seasonal deep cleaning guide to supplement your recurring cleaning schedule.',
+    type: 'blog' as const,
+    category: 'Spring Cleaning',
+  },
+  {
+    title: 'Residential Cleaning',
+    href: '/cleaning/residential',
+    description: 'One-time residential cleaning option for flexible scheduling needs.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Commercial Cleaning',
+    href: '/cleaning/commercial',
+    description: 'Recurring commercial cleaning plans for offices and business spaces.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function RecurringCleaningPage() {
   return (
     <ServicePageTemplate
@@ -21,6 +54,7 @@ export default function RecurringCleaningPage() {
       description="Consistent, reliable home cleaning service. Weekly, bi-weekly, or monthly cleaning services with the same trusted team. Natural products, flexible scheduling, and consistent results you can count on."
       theme="primary"
       badges={['From $80', 'Same Team', 'Natural Products']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Users,

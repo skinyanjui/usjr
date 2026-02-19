@@ -14,6 +14,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/residential', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Ultimate Spring Cleaning Checklist for Southern Indiana',
+    href: '/blog/spring-cleaning-checklist-southern-indiana',
+    description:
+      'Room-by-room spring cleaning guide with eco-friendly tips for Southern Indiana homeowners.',
+    type: 'blog' as const,
+    category: 'Spring Cleaning',
+  },
+  {
+    title: 'Moving & Relocation Cleanout Guide',
+    href: '/blog/moving-cleanout-guide-evansville',
+    description:
+      'Complete moving cleanout checklist—from decluttering to the final walkthrough.',
+    type: 'blog' as const,
+    category: 'Moving Guide',
+  },
+  {
+    title: 'Deep Clean',
+    href: '/cleaning/deep-clean',
+    description: 'One-time deep clean service for homes that need a thorough top-to-bottom refresh.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Move-In/Move-Out Cleaning',
+    href: '/cleaning/move-in-move-out',
+    description: 'Specialized cleaning for properties changing hands or tenants.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function ResidentialCleaning() {
   return (
     <ServicePageTemplate
@@ -21,6 +54,7 @@ export default function ResidentialCleaning() {
       description="Veteran-led, spotless results using natural products. Professional residential cleaning services in Evansville and surrounding areas. We use only natural, eco-friendly products to keep your home spotless and your family safe."
       theme="primary"
       badges={['From $80', 'Natural Products', 'Veteran-Led']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Home,

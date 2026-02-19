@@ -14,6 +14,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/specialty', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Spring Cleaning Checklist for Southern Indiana',
+    href: '/blog/spring-cleaning-checklist-southern-indiana',
+    description:
+      'Comprehensive room-by-room checklist including specialty cleaning tasks for Southern Indiana homes.',
+    type: 'blog' as const,
+    category: 'Spring Cleaning',
+  },
+  {
+    title: 'Commercial Office Cleaning Guide',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description:
+      'Guide to eco-friendly and specialty cleaning options for Evansville businesses.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Deep Clean',
+    href: '/cleaning/deep-clean',
+    description: 'Thorough one-time deep cleaning service paired with specialty treatments.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Residential Cleaning',
+    href: '/cleaning/residential',
+    description: 'Regular residential cleaning to maintain specialty cleaning results.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function SpecialtyCleaningPage() {
   return (
     <ServicePageTemplate
@@ -21,6 +54,7 @@ export default function SpecialtyCleaningPage() {
       description="Specialized cleaning and organizing services. Professional specialty cleaning services in Evansville including refrigerator cleaning, oven deep cleaning, home organizing, and decluttering using natural, eco-friendly products."
       theme="primary"
       badges={['From $75', 'Natural Products', 'Professional Results']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Refrigerator,

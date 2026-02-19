@@ -15,6 +15,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/deep-clean', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Ultimate Spring Cleaning Checklist for Southern Indiana',
+    href: '/blog/spring-cleaning-checklist-southern-indiana',
+    description:
+      'Complete room-by-room spring cleaning guide—great companion to a professional deep clean.',
+    type: 'blog' as const,
+    category: 'Spring Cleaning',
+  },
+  {
+    title: 'Moving & Relocation Cleanout Guide',
+    href: '/blog/moving-cleanout-guide-evansville',
+    description:
+      'Full moving cleanout checklist—deep cleaning is often the final step before handoff.',
+    type: 'blog' as const,
+    category: 'Moving Guide',
+  },
+  {
+    title: 'Residential Cleaning',
+    href: '/cleaning/residential',
+    description: 'Regular residential cleaning service to maintain results after a deep clean.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Move-In/Move-Out Cleaning',
+    href: '/cleaning/move-in-move-out',
+    description: 'Specialized cleaning for properties between tenants or owners.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function DeepCleaningPage() {
   return (
     <ServicePageTemplate
@@ -22,6 +55,7 @@ export default function DeepCleaningPage() {
       description="Comprehensive deep cleaning for your entire home. Our thorough deep cleaning service covers every corner of your home using natural, eco-friendly products. Perfect for spring cleaning, move-ins, or when you need a fresh start."
       theme="primary"
       badges={['From $150', '3-5 Hours', 'Natural Products']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Sparkles,

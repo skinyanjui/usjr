@@ -14,6 +14,39 @@ export const metadata: Metadata = {
   ...buildCanonicalMetadata('/cleaning/commercial', baseUrl),
 }
 
+const relatedContent = [
+  {
+    title: 'Commercial Office Cleaning in Evansville',
+    href: '/blog/commercial-office-cleaning-guide-evansville',
+    description:
+      'Complete guide to commercial cleaning services—scheduling options, costs, and eco-friendly practices for Evansville businesses.',
+    type: 'blog' as const,
+    category: 'Commercial Cleaning',
+  },
+  {
+    title: 'Property Manager Turnover Playbook',
+    href: '/blog/property-manager-turnover-playbook',
+    description:
+      'How property managers handle full turnovers from trash-out through professional deep cleaning.',
+    type: 'blog' as const,
+    category: 'Property Management',
+  },
+  {
+    title: 'Office Cleanouts',
+    href: '/services/office-cleanouts',
+    description: 'Full-service commercial cleanouts before or after cleaning services.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+  {
+    title: 'Recurring Cleaning',
+    href: '/cleaning/recurring',
+    description: 'Ongoing scheduled cleaning plans for offices and commercial spaces.',
+    type: 'service' as const,
+    category: 'Related Service',
+  },
+]
+
 export default function CommercialCleaningPage() {
   return (
     <ServicePageTemplate
@@ -21,6 +54,7 @@ export default function CommercialCleaningPage() {
       description="Reliable, insured, after-hours business cleaning. Professional commercial cleaning services in Evansville and surrounding areas. We provide reliable, after-hours cleaning for offices, retail spaces, medical facilities, and more using eco-friendly products."
       theme="primary"
       badges={['From $120', 'After-Hours Available', 'Fully Insured']}
+      relatedContent={relatedContent}
       features={[
         {
           icon: Building,
