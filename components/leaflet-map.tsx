@@ -71,7 +71,10 @@ export default function LeafletMap() {
 
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
   const mapRef = useRef<L.Map | null>(null)
+  const tileLayerRef = useRef<L.TileLayer | null>(null)
+  const markerGroupRef = useRef<L.LayerGroup | null>(null)
 
+  // Initialize Map
   useEffect(() => {
     if (!mapContainerRef.current) return
 
@@ -88,8 +91,38 @@ export default function LeafletMap() {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
     }).addTo(map)
+    tileLayerRef.current = tileLayer
 
     const markerGroup = L.layerGroup().addTo(map)
+    markerGroupRef.current = markerGroup
+
+    return () => {
+      // Cleanup in reverse order of creation
+      if (markerGroupRef.current) {
+        markerGroupRef.current.clearLayers()
+        map.removeLayer(markerGroupRef.current)
+        markerGroupRef.current = null
+      }
+
+      if (tileLayerRef.current) {
+        tileLayerRef.current.remove()
+        tileLayerRef.current = null
+      }
+
+      map.remove()
+      mapRef.current = null
+    }
+  }, []) // Empty dependency array = run once on mount
+
+  // Update Markers
+  useEffect(() => {
+    const map = mapRef.current
+    const markerGroup = markerGroupRef.current
+
+    if (!map || !markerGroup) return
+
+    // Clear existing markers
+    markerGroup.clearLayers()
 
     locations.forEach(location => {
       const marker = L.circleMarker([location.latitude, location.longitude], {
@@ -117,15 +150,7 @@ export default function LeafletMap() {
     // Fit map to show all locations nicely
     const bounds = L.latLngBounds(locations.map(l => [l.latitude, l.longitude] as [number, number]))
     map.fitBounds(bounds, { padding: [24, 24] })
-
-    return () => {
-      markerGroup.clearLayers()
-      map.removeLayer(markerGroup)
-      tileLayer.remove()
-      map.remove()
-      mapRef.current = null
-    }
-  }, [locations, router])
+  }, [locations, router]) // Run when locations or router changes
 
   return (
     <div className="relative h-full w-full">
