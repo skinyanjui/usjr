@@ -34,17 +34,6 @@ export function Header() {
       timeoutRef.current = null
     }
     setActiveDropdown(dropdown)
-
-    const items =
-      NAV.find(i => i.label === (dropdown === 'services' ? 'Services' : 'Locations'))?.children ??
-      []
-    for (const item of items) {
-      if (item.href) {
-        try {
-          router.prefetch(item.href)
-        } catch {}
-      }
-    }
   }
 
   const handleDropdownLeave = () => {
