@@ -3,6 +3,16 @@ import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import LeafletMap from '@/components/leaflet-map'
 
+// Mock next/navigation
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => '/',
+}))
+
 // Mock Leaflet
 jest.mock('leaflet', () => {
   const mapObj = {
