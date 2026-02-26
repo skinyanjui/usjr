@@ -10,23 +10,49 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Search, HelpCircle, Truck, Container, Sparkles, DollarSign } from 'lucide-react'
-import { faqCategories } from './data'
+import { faqCategories, FaqCategory } from './data'
 
 export default function FAQClient() {
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Pre-compute searchable data structure
+  // This runs only once on mount since faqCategories is static
+  const searchableData = useMemo(() => {
+    return faqCategories.map(category => ({
+      ...category,
+      faqs: category.faqs.map(faq => ({
+        ...faq,
+        qLower: faq.question.toLowerCase(),
+        aLower: faq.answer.toLowerCase(),
+      })),
+    }))
+  }, [])
+
   const filteredFAQs = useMemo(() => {
-    return faqCategories
-      .map(category => ({
-        ...category,
-        faqs: category.faqs.filter(
-          faq =>
-            faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
-        ),
-      }))
-      .filter(category => category.faqs.length > 0)
-  }, [searchTerm])
+    if (!searchTerm) return faqCategories
+
+    const normalizedTerm = searchTerm.toLowerCase()
+
+    return searchableData
+      .map(category => {
+        // Find matching FAQs in the pre-computed data
+        const matchingFaqs = category.faqs.filter(
+          faq => faq.qLower.includes(normalizedTerm) || faq.aLower.includes(normalizedTerm)
+        )
+
+        // If no matches in this category, return null to filter it out later
+        if (matchingFaqs.length === 0) return null
+
+        // Return a new category object with ONLY the matching FAQs
+        // We do NOT map back to remove qLower/aLower to save an iteration/allocation.
+        // The extra props don't hurt the rendering components.
+        return {
+          ...category,
+          faqs: matchingFaqs,
+        }
+      })
+      .filter((category): category is (typeof searchableData)[0] => category !== null)
+  }, [searchTerm, searchableData])
 
   const getIcon = (name: string) => {
     switch (name) {
