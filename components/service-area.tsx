@@ -10,7 +10,7 @@ const ClientLeafletMap = dynamic(() => import('./leaflet-map'), {
   loading: () => <div className="h-full w-full bg-gray-100" />,
 })
 
-const SUPPORTED_ZIPS = [
+const SUPPORTED_ZIPS = new Set([
   '47708',
   '47710',
   '47711',
@@ -27,7 +27,7 @@ const SUPPORTED_ZIPS = [
   '62863', // Mount Carmel, IL
   '47620', // Mount Vernon, IN
   '47631', // New Harmony, IN
-]
+])
 
 export function ServiceArea() {
   const [zip, setZip] = useState('')
@@ -38,7 +38,7 @@ export function ServiceArea() {
       setResult(null)
       return
     }
-    if (SUPPORTED_ZIPS.includes(zip.trim())) {
+    if (SUPPORTED_ZIPS.has(zip.trim())) {
       setResult('yes')
     } else {
       // light heuristic: outside list but could still be inside 50mi radius
