@@ -4,8 +4,13 @@ export type RateLimitConfig = {
   cleanupIntervalMs?: number // How often to run cleanup (default: 1 minute)
 }
 
+type RateLimitEntry = {
+  timestamps: number[]
+  startIndex: number
+}
+
 export class RateLimiter {
-  private ipToTimestamps = new Map<string, number[]>()
+  private ipToTimestamps = new Map<string, RateLimitEntry>()
   private windowMs: number
   private maxRequests: number
   private cleanupIntervalMs: number
@@ -31,40 +36,44 @@ export class RateLimiter {
       this.cleanup(now)
     }
 
-    let hits = this.ipToTimestamps.get(ip)
+    let entry = this.ipToTimestamps.get(ip)
 
-    if (!hits) {
-      hits = []
-      this.ipToTimestamps.set(ip, hits)
+    if (!entry) {
+      entry = { timestamps: [], startIndex: 0 }
+      this.ipToTimestamps.set(ip, entry)
     } else {
       // Optimization: Ensure the IP is moved to the end of the map (MRU)
       // This allows cleanup to iterate from the start (LRU) and stop early
       this.ipToTimestamps.delete(ip)
-      this.ipToTimestamps.set(ip, hits)
+      this.ipToTimestamps.set(ip, entry)
     }
 
     const windowStart = now - this.windowMs
 
-    // Filter out timestamps that are outside the window
-    // We do this on access to ensure we check against the current window
-    // Optimized: In-place filtering to avoid allocating new arrays
-    const validStartIndex = hits.findIndex((t) => t > windowStart)
-
-    if (validStartIndex === -1) {
-      // If no valid timestamps found, clear the array
-      if (hits.length > 0) {
-        hits.length = 0
-      }
-    } else if (validStartIndex > 0) {
-      // Remove old timestamps from the beginning
-      hits.splice(0, validStartIndex)
+    // Advance startIndex to skip expired timestamps
+    // We check timestamps[startIndex] because it's the oldest one we care about
+    while (
+      entry.startIndex < entry.timestamps.length &&
+      entry.timestamps[entry.startIndex] <= windowStart
+    ) {
+      entry.startIndex++
     }
 
-    if (hits.length >= this.maxRequests) {
+    // Lazy compaction: If we have accumulated too much "garbage" at the start,
+    // we slice the array to free memory and reset startIndex.
+    // Heuristic: If garbage is > 100 items AND > 50% of the array is garbage.
+    if (entry.startIndex > 100 && entry.startIndex > entry.timestamps.length / 2) {
+      entry.timestamps = entry.timestamps.slice(entry.startIndex)
+      entry.startIndex = 0
+    }
+
+    const count = entry.timestamps.length - entry.startIndex
+
+    if (count >= this.maxRequests) {
       return false
     }
 
-    hits.push(now)
+    entry.timestamps.push(now)
     return true
   }
 
@@ -75,11 +84,10 @@ export class RateLimiter {
     this.lastCleanup = now
     const windowStart = now - this.windowMs
 
-    for (const [ip, timestamps] of this.ipToTimestamps.entries()) {
+    for (const [ip, entry] of this.ipToTimestamps.entries()) {
       // Optimization: Check if the *last* timestamp (most recent) is expired.
       // If it is, then ALL timestamps for this IP are expired (sorted array).
-      // This avoids allocating a new array with .filter()
-      const lastTimestamp = timestamps[timestamps.length - 1]
+      const lastTimestamp = entry.timestamps[entry.timestamps.length - 1]
 
       if (lastTimestamp === undefined || lastTimestamp <= windowStart) {
         this.ipToTimestamps.delete(ip)
