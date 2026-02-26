@@ -2,6 +2,12 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import LeafletMap from '@/components/leaflet-map'
+import { useRouter } from 'next/navigation'
+
+// Mock useRouter
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}))
 
 // Mock Leaflet
 jest.mock('leaflet', () => {
@@ -46,6 +52,14 @@ jest.mock('leaflet', () => {
 })
 
 describe('LeafletMap CSS Injection', () => {
+  beforeEach(() => {
+    (useRouter as jest.Mock).mockReturnValue({
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+    })
+  })
+
   it('does NOT inject external CSS link tag after optimization', () => {
     render(<LeafletMap />)
 
