@@ -1,4 +1,4 @@
-import { NAV } from './nav'
+import { serviceSlugs, servicesData } from './services-data'
 
 export type ServiceOption = {
   value: string
@@ -6,18 +6,9 @@ export type ServiceOption = {
   href: string
 }
 
-const getSlugFromHref = (href?: string): string => {
-  if (!href) return ''
-  const parts = href.split('/').filter(Boolean)
-  return parts[parts.length - 1] || ''
-}
-
-export const getServiceOptions = (): ServiceOption[] => {
-  const servicesItem = NAV.find(item => item.label === 'Services')
-  const children = servicesItem?.children ?? []
-  return children.map(child => ({
-    label: child.label,
-    value: getSlugFromHref(child.href),
-    href: child.href || '',
+export const getServiceOptions = (): ServiceOption[] =>
+  serviceSlugs.map(slug => ({
+    value: slug,
+    label: servicesData[slug]!.serviceInfo.category,
+    href: `/services/${slug}`,
   }))
-}

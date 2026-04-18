@@ -1,9 +1,11 @@
+import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import { settings, getAggregateTestimonialStats } from '@/lib/cms-content'
 import {
   LocationPageTemplate,
   LocationPageTemplateProps,
 } from '@/components/ui/location-page-template'
-import { locationData, LocationData } from '@/lib/location-data'
+import { locationData } from '@/lib/location-data'
 import { buildCanonicalMetadata } from '@/components/canonical'
 import { buildLocationMetadata } from '@/lib/seo-metadata'
 import { PromotionHighlight } from '@/components/ui/promotion-highlight'
@@ -12,30 +14,40 @@ import { StructuredData } from '@/components/structured-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
-const locationInfo = {
-  locationName: 'Evansville',
-  state: 'IN',
-  neighborhoods: ["Haynie's Corner", 'Jacobsville', 'Lincolnshire', 'McCutchanville'],
-  landmarks: [
-    'Downtown Evansville',
-    'University of Evansville',
-    'Eastland Mall',
-    'Wesselman Woods',
-  ],
-  specialOffers: ['15% University Discount', '$35 Curbside Special', '$25 Referral Credit'],
+export function generateStaticParams() {
+  return Object.keys(locationData).map(slug => ({ slug }))
 }
 
-const seoData = buildLocationMetadata(locationInfo)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const data = locationData[slug]
+  if (!data) return {}
 
-export const metadata = {
-  title: seoData.title,
-  description: seoData.description,
-  keywords: seoData.keywords,
-  ...buildCanonicalMetadata('/locations/evansville', baseUrl),
+  const seoData = buildLocationMetadata({
+    locationName: data.locationName,
+    state: data.state,
+    ...(data.neighborhoods && { neighborhoods: data.neighborhoods }),
+    landmarks: data.landmarks,
+    specialOffers: data.offers.map(o => o.title),
+  })
+
+  return {
+    title: seoData.title,
+    description: seoData.description,
+    keywords: seoData.keywords,
+    ...buildCanonicalMetadata(`/locations/${slug}`, baseUrl),
+  }
 }
 
-export default function EvansvillePage() {
-  const data = locationData['evansville'] as LocationData
+export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const data = locationData[slug]
+  if (!data) notFound()
+
   const testimonialStats = getAggregateTestimonialStats()
 
   const templateProps: LocationPageTemplateProps = {
@@ -49,49 +61,42 @@ export default function EvansvillePage() {
     stories: data.stories,
     serviceGuarantee: data.serviceGuarantee,
     ctaPrimary: `📞 Call ${settings.phone}`,
-    ctaSecondary: 'Text Photos for Instant Quote',
+    ctaSecondary: 'Get Free Quote',
   }
 
-  if (data.neighborhoods) {
-    templateProps.neighborhoods = data.neighborhoods
-  }
-
-  if (data.disposalNote) {
-    templateProps.disposalNote = data.disposalNote
-  }
+  if (data.neighborhoods) templateProps.neighborhoods = data.neighborhoods
+  if (data.disposalNote) templateProps.disposalNote = data.disposalNote
 
   return (
     <>
       <LocationPageTemplate {...templateProps}>
-        {/* Enhanced promotion highlighting with structured data */}
-        <PromotionHighlight
-          location="Evansville"
-          offers={data.offers.map(offer => ({
-            title: offer.title,
-            discount: offer.discount,
-            description: offer.description,
-            validFrom: offer.validFrom,
-            validThrough: offer.validThrough,
-            locationSpecific: true,
-          }))}
-          theme={data.theme}
-          showStructuredData={true}
-        />
-
-        {/* Review mentions with structured data */}
+        {data.offers.length > 0 && (
+          <PromotionHighlight
+            location={data.locationName}
+            offers={data.offers.map(offer => ({
+              title: offer.title,
+              discount: offer.discount,
+              description: offer.description,
+              validFrom: offer.validFrom,
+              validThrough: offer.validThrough,
+              locationSpecific: true,
+            }))}
+            theme={data.theme}
+            showStructuredData={true}
+          />
+        )}
         <div className="py-8">
           <ReviewMention
             averageRating={testimonialStats.averageRating}
             reviewCount={testimonialStats.reviewCount}
             variant="banner"
             theme={data.theme}
-            location="Evansville"
+            location={data.locationName}
             showStructuredData={true}
           />
         </div>
       </LocationPageTemplate>
 
-      {/* Enhanced structured data for location-specific business */}
       <StructuredData
         type="LocalBusiness"
         data={{

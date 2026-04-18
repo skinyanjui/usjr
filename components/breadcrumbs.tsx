@@ -13,11 +13,6 @@ function labelForPath(path: string, defaultLabel: string): string {
   // Exact match from NAV
   for (const item of NAV) {
     if (item.href === path) return item.label
-    if (item.children) {
-      for (const child of item.children) {
-        if (child.href === path) return child.label
-      }
-    }
   }
 
   // Fallbacks for known sections

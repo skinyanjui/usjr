@@ -32,7 +32,7 @@ describe('QuoteFormStandalone', () => {
 
   it('renders the form correctly', () => {
     render(<QuoteFormStandalone />)
-    expect(screen.getByText('Request Quote')).toBeInTheDocument()
+    expect(screen.getByText('Request a quote')).toBeInTheDocument()
   })
 
   it('handles file uploads correctly', async () => {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { buildCanonicalMetadata } from '@/components/canonical'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
@@ -82,7 +83,7 @@ export default function QuotePage() {
                     Starting at {junkRemovalTiers[0]?.price ?? '$149'}
                   </p>
                   <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/services/junk-removal">View Details</a>
+                    <Link href="/services/junk-removal">View Details</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -92,7 +93,7 @@ export default function QuotePage() {
                   <h3 className="text-foreground mb-3 text-lg font-bold">Light Demolition</h3>
                   <p className="text-foreground mb-4 text-base font-semibold">Starting at $299</p>
                   <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/services/light-demolition">View Details</a>
+                    <Link href="/services/light-demolition">View Details</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -102,7 +103,7 @@ export default function QuotePage() {
                   <h3 className="text-foreground mb-3 text-lg font-bold">Cleaning Services</h3>
                   <p className="text-foreground mb-4 text-base font-semibold">Starting at $80</p>
                   <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/cleaning">View Details</a>
+                    <Link href="/cleaning">View Details</Link>
                   </Button>
                 </CardContent>
               </Card>

@@ -2,11 +2,18 @@ import { Phone, Mail, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import { StructuredData } from '@/components/structured-data'
 import { settings } from '@/lib/cms-content'
-import { NAV } from '@/lib/nav'
+import { locationData } from '@/lib/location-data'
+import { serviceSlugs, servicesData } from '@/lib/services-data'
 
 export function Footer() {
-  const services = NAV.find(i => i.label === 'Services')?.children ?? []
-  const locations = NAV.find(i => i.label === 'Locations')?.children ?? []
+  const services = serviceSlugs.slice(0, 8).map(slug => ({
+    href: `/services/${slug}`,
+    label: servicesData[slug]!.serviceInfo.category,
+  }))
+  const locations = Object.entries(locationData).map(([slug, data]) => ({
+    href: `/locations/${slug}`,
+    label: `${data.locationName}, ${data.state}`,
+  }))
 
   return (
     <footer role="contentinfo" className="border-border bg-foreground text-background border-t">
@@ -41,10 +48,10 @@ export function Footer() {
           <nav aria-label="Services">
             <h4 className="mb-4 text-sm font-semibold">Services</h4>
             <ul className="space-y-2">
-              {services.slice(0, 8).map(s => (
+              {services.map(s => (
                 <li key={s.href}>
                   <Link
-                    href={s.href!}
+                    href={s.href}
                     className="text-background/70 hover:text-background text-sm transition-colors"
                   >
                     {s.label}
@@ -61,7 +68,7 @@ export function Footer() {
               {locations.map(l => (
                 <li key={l.href}>
                   <Link
-                    href={l.href!}
+                    href={l.href}
                     className="text-background/70 hover:text-background text-sm transition-colors"
                   >
                     {l.label}

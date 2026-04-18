@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { Shield, Clock } from 'lucide-react'
-import { HeroQuoteForm } from '@/components/hero-quote-form'
+import Link from 'next/link'
+import { Phone } from 'lucide-react'
 import { RotatingLocation } from '@/components/rotating-location'
 import { settings } from '@/lib/cms-content'
 
@@ -10,73 +10,50 @@ interface HeroSectionProps {
 
 export function HeroSection({ initialIndex }: HeroSectionProps) {
   return (
-    <section className="border-border bg-background relative overflow-hidden border-b">
-      {/* Background Image - Opacity 20% */}
+    <section className="bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero-junk-v3.png"
-          alt="Professional red junk removal truck"
+          alt=""
           fill
-          className="object-cover object-center opacity-80"
+          className="object-cover object-center opacity-30"
           priority
           sizes="100vw"
         />
-        {/* Gradient Overlay for Text Readability */}
-        <div className="from-background via-background/50 absolute inset-0 bg-gradient-to-r to-transparent" />
+        <div className="from-background via-background/70 to-background/30 absolute inset-0 bg-gradient-to-b" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-20">
-        {/* Split layout: Story + Quote Form */}
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left: Story-focused content */}
-          <div className="p-6">
-            {/* Eyebrow */}
-            <div className="text-primary mb-4 flex flex-row flex-nowrap items-center gap-1 text-xs font-medium tracking-wide uppercase sm:gap-2 sm:text-sm">
-              <span className="shrink-0">Veteran-Owned</span>
-              <span className="shrink-0">·</span>
-              <span className="shrink-0">
-                Serving{' '}
-                <span className="text-foreground decoration-primary/30 font-bold underline underline-offset-4">
-                  <RotatingLocation locations={settings.serviceAreas} initialIndex={initialIndex ?? 0} />
-                </span>
-              </span>
-            </div>
+      <div className="relative z-10 mx-auto flex min-h-[75vh] max-w-4xl flex-col items-center justify-center px-4 py-24 text-center sm:py-32">
+        <p className="text-muted-foreground mb-6 text-sm font-medium tracking-wide uppercase">
+          Serving{' '}
+          <span className="text-foreground font-semibold">
+            <RotatingLocation locations={settings.serviceAreas} initialIndex={initialIndex ?? 0} />
+          </span>
+        </p>
 
-            {/* Main headline - Problem → Solution */}
-            <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tighter sm:text-5xl lg:text-6xl">
-              Your Space, <span className="text-primary">Cleared</span>.
-              <br />
-              <span className="text-foreground font-medium">Your Peace of Mind, </span>
-              <span className="text-primary">Restored</span>.
-            </h1>
+        <h1 className="text-foreground mb-6 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          Your space, cleared.
+        </h1>
 
-            {/* Supporting copy */}
-            <p className="text-foreground mb-8 text-lg font-medium">
-              From cluttered garages to full estate cleanouts, we handle the heavy lifting so you
-              can reclaim your space. Same-day service available.
-            </p>
+        <p className="text-muted-foreground mb-10 max-w-xl text-lg sm:text-xl">
+          Same-day junk removal across the Tri-State. Transparent pricing, zero hassle.
+        </p>
 
-            {/* Trust indicators */}
-            <div className="text-foreground flex items-center gap-3 sm:gap-6">
-              <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                <Shield className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">
-                  Licensed & Insured
-                </span>
-              </div>
-              <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                <Clock className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">
-                  Same-Day Service
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Quote Form */}
-          <div className="w-full lg:max-w-md lg:justify-self-end">
-            <HeroQuoteForm />
-          </div>
+        <div className="flex flex-col items-center gap-4 sm:flex-row">
+          <Link
+            href="/quote"
+            prefetch
+            className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-semibold transition-opacity hover:opacity-90"
+          >
+            Get a free quote
+          </Link>
+          <a
+            href={`tel:${settings.phoneE164}`}
+            className="text-foreground flex items-center gap-2 px-4 py-3 text-base font-medium transition-opacity hover:opacity-80"
+          >
+            <Phone className="h-4 w-4" />
+            {settings.phone}
+          </a>
         </div>
       </div>
     </section>
