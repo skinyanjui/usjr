@@ -72,7 +72,7 @@ export function buildServiceMetadata(service: ServiceMetadata, location?: string
   const benefitsList = benefits.length > 0 ? ` ${benefits.slice(0, 3).join(', ')}.` : ''
   const pricePart = price ? ` Starting ${price}.` : ''
 
-  const description = `Professional ${serviceName.toLowerCase()}${locationPart} with same-day service${pricePart}${benefitsList} Licensed and insured. Call ${settings.phone} for free estimates.`
+  const description = `Professional ${serviceName.toLowerCase()}${locationPart} with same-day service${pricePart}${benefitsList} Call ${settings.phone} for free estimates.`
 
   const baseKeywords = [
     serviceName.toLowerCase(),

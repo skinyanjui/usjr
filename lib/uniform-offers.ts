@@ -17,11 +17,9 @@ export const UNIFORM_OFFERS = {
   SCHEDULE_SERVICE: 'Schedule Service',
 
   // Service guarantees and benefits
-  LICENSED_INSURED: 'Licensed & Insured',
   ECO_FRIENDLY: 'Eco-Friendly Disposal',
   UPFRONT_PRICING: 'Upfront Pricing',
   NO_HIDDEN_FEES: 'No Hidden Fees',
-  VETERAN_OWNED: 'Veteran-Owned',
   LOCAL_BUSINESS: 'Local Business',
 
   // Time-based offers
@@ -52,7 +50,6 @@ export const SERVICE_DESCRIPTIONS = {
       UNIFORM_OFFERS.FREE_ESTIMATES,
       UNIFORM_OFFERS.ECO_FRIENDLY,
       UNIFORM_OFFERS.SATISFACTION_GUARANTEED,
-      UNIFORM_OFFERS.LICENSED_INSURED,
     ],
   },
 } as const

@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Warehouse & Retail Fixture Removal',
   category: 'Warehouse Fixture Removal',
   price: 'From $399-1599',
-  benefits: [
-    'Commercial fixture removal',
-    'Licensed & insured',
-    'Heavy equipment handling',
-    'Scrap metal recovery',
-  ],
+  benefits: ['Commercial fixture removal', 'Heavy equipment handling', 'Scrap metal recovery'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

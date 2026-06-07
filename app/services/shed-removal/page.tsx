@@ -13,7 +13,7 @@ const serviceInfo = {
   serviceName: 'Shed Removal Services',
   category: 'Shed Removal',
   price: 'From $289-649',
-  benefits: ['Same-day service', 'Licensed & insured', 'Complete demolition', 'Site cleanup'],
+  benefits: ['Same-day service', 'Complete demolition', 'Site cleanup'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
@@ -67,18 +67,9 @@ export default function ShedRemovalPage() {
       theme="primary"
       title="Shed Removal Services in Evansville"
       description="Professional shed and outbuilding removal, demolition, and cleanup throughout Southern Indiana. Whether you need to remove a small storage shed, large barn, or any outbuilding, we provide complete demolition service with debris removal and site cleanup."
-      badges={[
-        UNIFORM_OFFERS.SAME_DAY_SERVICE,
-        UNIFORM_OFFERS.LICENSED_INSURED,
-        'Complete Demolition',
-      ]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, 'Complete Demolition']}
       serviceCategory="Shed Removal Service"
       features={[
-        {
-          icon: CheckCircle,
-          title: UNIFORM_OFFERS.LICENSED_INSURED,
-          description: 'Fully licensed and insured for your protection',
-        },
         {
           icon: Calendar,
           title: UNIFORM_OFFERS.SAME_DAY_SERVICE,

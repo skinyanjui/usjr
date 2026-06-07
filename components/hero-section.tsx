@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Shield, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { HeroQuoteForm } from '@/components/hero-quote-form'
 import { RotatingLocation } from '@/components/rotating-location'
 import { settings } from '@/lib/cms-content'
@@ -32,12 +32,13 @@ export function HeroSection({ initialIndex }: HeroSectionProps) {
           <div className="p-6">
             {/* Eyebrow */}
             <div className="text-primary mb-4 flex flex-row flex-nowrap items-center gap-1 text-xs font-medium tracking-wide uppercase sm:gap-2 sm:text-sm">
-              <span className="shrink-0">Veteran-Owned</span>
-              <span className="shrink-0">·</span>
               <span className="shrink-0">
                 Serving{' '}
                 <span className="text-foreground decoration-primary/30 font-bold underline underline-offset-4">
-                  <RotatingLocation locations={settings.serviceAreas} initialIndex={initialIndex ?? 0} />
+                  <RotatingLocation
+                    locations={settings.serviceAreas}
+                    initialIndex={initialIndex ?? 0}
+                  />
                 </span>
               </span>
             </div>
@@ -58,12 +59,6 @@ export function HeroSection({ initialIndex }: HeroSectionProps) {
 
             {/* Trust indicators */}
             <div className="text-foreground flex items-center gap-3 sm:gap-6">
-              <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                <Shield className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">
-                  Licensed & Insured
-                </span>
-              </div>
               <div className="bg-background/50 border-border/50 flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
                 <Clock className="text-primary h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 <span className="text-xs font-semibold whitespace-nowrap sm:text-sm">

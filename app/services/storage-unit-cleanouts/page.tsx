@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Storage Unit Cleanout Services',
   category: 'Storage Unit Cleanout',
   price: 'From $149-449',
-  benefits: [
-    'Same-day service',
-    'Licensed & insured',
-    'Full unit cleanout',
-    'Donation coordination',
-  ],
+  benefits: ['Same-day service', 'Full unit cleanout', 'Donation coordination'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

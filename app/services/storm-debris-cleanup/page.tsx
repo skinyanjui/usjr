@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Storm Debris Cleanup Services',
   category: 'Storm Debris Cleanup',
   price: 'From $299-1299',
-  benefits: [
-    'Emergency response',
-    'Licensed & insured',
-    'Complete cleanup',
-    'Insurance coordination',
-  ],
+  benefits: ['Emergency response', 'Complete cleanup', 'Insurance coordination'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

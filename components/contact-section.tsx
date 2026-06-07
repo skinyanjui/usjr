@@ -383,7 +383,6 @@ export default function ContactSection() {
                     <Phone className="h-4 w-4" aria-hidden="true" /> Call Now: {settings.phone}
                   </a>
                   <div className="flex items-center justify-center gap-3 text-xs text-white sm:text-sm">
-                    <span>✓ Licensed & Insured</span>
                     <span>✓ Free Estimates</span>
                     <span>✓ Eco-Friendly</span>
                   </div>

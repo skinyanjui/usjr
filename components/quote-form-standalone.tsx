@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
-import { Upload, Camera, X, CheckCircle, Leaf, Shield, Clock } from 'lucide-react'
+import { Upload, Camera, X, CheckCircle, Leaf, Clock } from 'lucide-react'
 import { settings } from '@/lib/cms-content'
 import { useFileUpload } from '@/lib/hooks/useFileUpload'
 import { submitQuoteForm } from '@/lib/form-handlers'
@@ -253,10 +253,6 @@ export function QuoteFormStandalone() {
             <div className="flex items-center gap-1.5">
               <Leaf className="h-3.5 w-3.5" />
               <span>Eco-friendly</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Shield className="h-3.5 w-3.5" />
-              <span>Insured</span>
             </div>
           </div>
         </CardContent>

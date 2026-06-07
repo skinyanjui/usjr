@@ -14,7 +14,7 @@ const serviceInfo = {
   serviceName: 'Junk Removal Services',
   category: 'Junk Removal',
   price: 'From $89-649',
-  benefits: ['Same-day service', 'Licensed & insured', 'Eco-friendly disposal', 'No hidden fees'],
+  benefits: ['Same-day service', 'Eco-friendly disposal', 'No hidden fees'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
@@ -84,18 +84,9 @@ export default function JunkRemovalPage() {
       theme="primary"
       title="Junk Removal Services in Evansville"
       description="Fast, reliable junk removal, trash removal, and haul away services throughout Southern Indiana. Whether you need to get rid of old furniture, clean out your house, or dispose of construction debris, we provide same-day service with upfront pricing and no hidden fees." // Changed from subtitle to description
-      badges={[
-        UNIFORM_OFFERS.SAME_DAY_SERVICE,
-        UNIFORM_OFFERS.LICENSED_INSURED,
-        UNIFORM_OFFERS.ECO_FRIENDLY,
-      ]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.ECO_FRIENDLY]}
       serviceCategory="Junk Removal Service"
       features={[
-        {
-          icon: CheckCircle,
-          title: UNIFORM_OFFERS.LICENSED_INSURED,
-          description: 'Fully licensed and insured for your protection',
-        },
         {
           icon: Calendar,
           title: UNIFORM_OFFERS.SAME_DAY_SERVICE,
@@ -169,11 +160,6 @@ export default function JunkRemovalPage() {
         {
           question: 'How do you price your junk removal services?',
           answer: `${PRICING_LANGUAGE.PRICING_NOTES.VOLUME_BASED}. ${PRICING_LANGUAGE.PRICING_NOTES.INCLUDES_LABOR}. ${PRICING_LANGUAGE.PRICING_NOTES.NO_SURPRISE_FEES}.`,
-        },
-        {
-          question: 'Are you licensed and insured?',
-          answer:
-            'Yes, Uncle Sam Junk Removal is fully licensed and insured for your protection and peace of mind.',
         },
         {
           question: 'What areas do you serve?',

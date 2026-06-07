@@ -116,9 +116,6 @@ export default function QuotePage() {
                 <span className="text-primary">✓</span> Same-Day Service
               </span>
               <span className="flex items-center gap-1">
-                <span className="text-primary">✓</span> Fully Insured
-              </span>
-              <span className="flex items-center gap-1">
                 <span className="text-primary">✓</span> Eco-Friendly
               </span>
               <span className="flex items-center gap-1">

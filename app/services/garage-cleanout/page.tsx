@@ -12,7 +12,7 @@ const serviceInfo = {
   serviceName: 'Garage Cleanout Services',
   category: 'Garage Cleanout',
   price: 'From $179-649',
-  benefits: ['Same-day service', 'Licensed & insured', 'Donation coordination', 'Complete cleanup'],
+  benefits: ['Same-day service', 'Donation coordination', 'Complete cleanup'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

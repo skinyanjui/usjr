@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Hot Tub Removal Services',
   category: 'Hot Tub Removal',
   price: 'From $389-649',
-  benefits: [
-    'Same-day service',
-    'Safe disconnection',
-    'Licensed & insured',
-    'Eco-friendly disposal',
-  ],
+  benefits: ['Same-day service', 'Safe disconnection', 'Eco-friendly disposal'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

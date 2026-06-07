@@ -72,11 +72,7 @@ export default function LightDemolitionPage() {
       theme="primary"
       title="Light Demolition Services in Evansville"
       description="Professional light demolition services including interior demo, deck removal, fence removal, and selective demolition throughout Southern Indiana. Safety-first approach with complete debris removal and site cleanup."
-      badges={[
-        UNIFORM_OFFERS.SAME_DAY_SERVICE,
-        'OSHA safety compliant',
-        UNIFORM_OFFERS.LICENSED_INSURED,
-      ]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, 'OSHA safety compliant']}
       serviceCategory="Light Demolition Service"
       features={[
         {

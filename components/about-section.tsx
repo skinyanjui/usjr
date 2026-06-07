@@ -35,9 +35,8 @@ export function AboutSection() {
               About Uncle Sam Junk Removal
             </h2>
             <p className="text-muted-foreground mb-6 text-lg leading-relaxed sm:text-xl">
-              Veteran-owned and locally operated in <strong>Evansville, IN</strong>, we handle junk
-              removal, light demolition, and full cleanouts with same-day availability and honest,
-              upfront pricing.
+              Locally operated in <strong>Evansville, IN</strong>, we handle junk removal, light
+              demolition, and full cleanouts with same-day availability and honest, upfront pricing.
             </p>
             <p className="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg">
               Founded in 2025 by <strong>Samuel Kinyanjui</strong> (United States Marine Corps), our
@@ -78,7 +77,7 @@ export function AboutSection() {
             <div className="glass inline-flex items-center gap-3 rounded-2xl bg-gray-900 p-6 text-white">
               <Shield className="h-6 w-6" />
               <div>
-                <h3 className="text-2xl font-bold">Veteran-Owned</h3>
+                <h3 className="text-2xl font-bold">Locally Owned</h3>
                 <p className="text-gray-900">Founded in 2025 in Evansville</p>
               </div>
             </div>

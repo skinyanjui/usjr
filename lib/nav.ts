@@ -66,8 +66,7 @@ export const NAV: NavItem[] = [
     label: 'Company',
     promo: {
       title: 'Award Winning Service',
-      description:
-        'Veteran-owned and operated. We pride ourselves on honest, transparent service and eco-friendly disposal.',
+      description: 'We pride ourselves on honest, transparent service and eco-friendly disposal.',
       href: '/faq',
       ctaLabel: 'Learn More',
     },

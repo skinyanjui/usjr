@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Restaurant Equipment Removal',
   category: 'Restaurant Equipment Removal',
   price: 'From $299-1299',
-  benefits: [
-    'Commercial equipment handling',
-    'Licensed & insured',
-    'Disconnect coordination',
-    'Scrap metal recycling',
-  ],
+  benefits: ['Commercial equipment handling', 'Disconnect coordination', 'Scrap metal recycling'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

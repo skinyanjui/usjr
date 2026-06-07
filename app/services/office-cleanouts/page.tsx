@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Office Cleanout Services',
   category: 'Office Cleanout',
   price: 'From $199-899',
-  benefits: [
-    'Same-day service',
-    'Licensed & insured',
-    'IT equipment handling',
-    'Document disposal',
-  ],
+  benefits: ['Same-day service', 'IT equipment handling', 'Document disposal'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

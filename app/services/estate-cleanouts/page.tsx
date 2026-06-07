@@ -12,12 +12,7 @@ const serviceInfo = {
   serviceName: 'Estate Cleanout Services',
   category: 'Estate Cleanouts',
   price: 'From $389-1,899',
-  benefits: [
-    'Compassionate service',
-    'Licensed & insured',
-    'Donation coordination',
-    'Complete cleanout',
-  ],
+  benefits: ['Compassionate service', 'Donation coordination', 'Complete cleanout'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')

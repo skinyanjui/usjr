@@ -13,7 +13,7 @@ const serviceInfo = {
   serviceName: 'Mattress Removal Services',
   category: 'Mattress Removal',
   price: 'From $89-229',
-  benefits: ['Same-day service', 'Licensed & insured', 'Eco-friendly disposal', 'No hidden fees'],
+  benefits: ['Same-day service', 'Eco-friendly disposal', 'No hidden fees'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
@@ -68,18 +68,9 @@ export default function MattressRemovalPage() {
       theme="primary"
       title="Mattress Removal Services in Evansville"
       description="Fast, reliable mattress removal, bed disposal, and old mattress pickup throughout Southern Indiana. Whether you need to get rid of an old mattress, dispose of box springs, or remove an entire bedroom set, we provide same-day service with upfront pricing and eco-friendly disposal methods."
-      badges={[
-        UNIFORM_OFFERS.SAME_DAY_SERVICE,
-        UNIFORM_OFFERS.LICENSED_INSURED,
-        UNIFORM_OFFERS.ECO_FRIENDLY,
-      ]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.ECO_FRIENDLY]}
       serviceCategory="Mattress Removal Service"
       features={[
-        {
-          icon: CheckCircle,
-          title: UNIFORM_OFFERS.LICENSED_INSURED,
-          description: 'Fully licensed and insured for your protection',
-        },
         {
           icon: Calendar,
           title: UNIFORM_OFFERS.SAME_DAY_SERVICE,

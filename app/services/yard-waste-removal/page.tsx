@@ -13,7 +13,7 @@ const serviceInfo = {
   serviceName: 'Yard Waste Removal Services',
   category: 'Yard Waste Removal',
   price: 'From $179-489',
-  benefits: ['Same-day service', 'Licensed & insured', 'Eco-friendly disposal', 'No hidden fees'],
+  benefits: ['Same-day service', 'Eco-friendly disposal', 'No hidden fees'],
 }
 
 const seoData = buildServiceMetadata(serviceInfo, 'Evansville, IN')
@@ -66,18 +66,9 @@ export default function YardWasteRemovalPage() {
       theme="primary"
       title="Yard Waste Removal Services in Evansville"
       description="Fast, reliable yard waste removal, brush pickup, and landscaping debris removal throughout Southern Indiana. Whether you need leaves removed, tree limbs hauled away, or complete yard cleanup, we provide same-day service with 100% eco-friendly composting."
-      badges={[
-        UNIFORM_OFFERS.SAME_DAY_SERVICE,
-        UNIFORM_OFFERS.LICENSED_INSURED,
-        UNIFORM_OFFERS.ECO_FRIENDLY,
-      ]}
+      badges={[UNIFORM_OFFERS.SAME_DAY_SERVICE, UNIFORM_OFFERS.ECO_FRIENDLY]}
       serviceCategory="Yard Waste Removal Service"
       features={[
-        {
-          icon: CheckCircle,
-          title: UNIFORM_OFFERS.LICENSED_INSURED,
-          description: 'Fully licensed and insured for your protection',
-        },
         {
           icon: Calendar,
           title: UNIFORM_OFFERS.SAME_DAY_SERVICE,

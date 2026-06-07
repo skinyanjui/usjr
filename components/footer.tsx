@@ -15,9 +15,7 @@ export function Footer() {
         {/* CTA Banner */}
         <div className="bg-background/10 mb-12 rounded-lg p-6 text-center sm:p-8">
           <h3 className="mb-2 text-xl font-bold sm:text-2xl">Ready to reclaim your space?</h3>
-          <p className="text-background/80 mb-6 text-sm">
-            Same-day service available. Locally owned and insured.
-          </p>
+          <p className="text-background/80 mb-6 text-sm">Same-day service available.</p>
           <div className="flex flex-nowrap items-center justify-center gap-3">
             <Link
               href="/quote"
@@ -170,7 +168,6 @@ export function Footer() {
         <div className="border-background/20 border-t pt-6">
           <div className="text-background/60 flex flex-col items-center justify-between gap-4 text-xs sm:flex-row">
             <p>&copy; {new Date().getFullYear()} Uncle Sam Junk Removal. All rights reserved.</p>
-            <p>Veteran-Owned · Licensed & Insured</p>
           </div>
         </div>
       </div>

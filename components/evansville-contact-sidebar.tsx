@@ -74,7 +74,6 @@ export function EvansvilleContactSidebar() {
             <a href={`tel:${settings.phoneE164}`}>Call Now: {settings.phone}</a>
           </Button>
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-white sm:text-sm">
-            <span>✓ Licensed & Insured</span>
             <span>✓ Free Estimates</span>
             <span>✓ Eco-Friendly</span>
           </div>
