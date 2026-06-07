@@ -24,7 +24,6 @@ function labelForPath(path: string, defaultLabel: string): string {
   if (path === '/services') return 'Services'
   if (path === '/blog') return 'Blog'
   if (path === '/faq') return 'FAQ'
-  if (path === '/about') return 'About'
   if (path === '/quote') return 'Get Free Quote'
   if (path === '/privacy') return 'Privacy Policy'
   if (path === '/terms') return 'Terms of Service'

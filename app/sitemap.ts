@@ -226,12 +226,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ===== Information Pages (Priority: 0.8) =====
     {
-      url: `${baseUrl}/about`,
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/compare`,
       lastModified: now,
       changeFrequency: 'monthly' as const,

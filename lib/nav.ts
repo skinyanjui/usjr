@@ -68,11 +68,10 @@ export const NAV: NavItem[] = [
       title: 'Award Winning Service',
       description:
         'Veteran-owned and operated. We pride ourselves on honest, transparent service and eco-friendly disposal.',
-      href: '/about',
+      href: '/faq',
       ctaLabel: 'Learn More',
     },
     children: [
-      { label: 'About Us', href: '/about' },
       { label: 'Blog', href: '/blog' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Pricing', href: '/pricing' },

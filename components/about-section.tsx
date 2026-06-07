@@ -67,8 +67,8 @@ export function AboutSection() {
                 variant="outline"
                 className="w-full rounded-full border-gray-300 bg-transparent px-6 py-3 font-semibold text-gray-900 hover:bg-gray-900 sm:w-auto sm:px-8"
               >
-                <a href="/about" title="About Uncle Sam Junk Removal in Evansville">
-                  About our company
+                <a href="/faq" title="Frequently asked questions about Uncle Sam Junk Removal">
+                  Learn more
                 </a>
               </Button>
             </div>
