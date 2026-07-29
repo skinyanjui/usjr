@@ -613,6 +613,36 @@ test("publishes complete sitemap and robots directives", async () => {
   );
 });
 
+test("permanently redirects the legacy URL set into the redesign", async () => {
+  const worker = await loadWorker();
+  const redirects = new Map([
+    ["/about", "/"],
+    ["/pricing", "/#pricing"],
+    ["/quote", "/#quote"],
+    ["/faq", "/#faq"],
+    ["/cleaning/deep-clean", "/services/cleaning"],
+    ["/locations/evansville", "/locations/evansville-in"],
+    [
+      "/blog/shed-removal-guide-evansville",
+      "/services/shed-removal",
+    ],
+    [
+      "/blog/winter-storm-cleanup-guide-tri-state",
+      "/services/storm-debris-cleanup",
+    ],
+  ]);
+
+  for (const [source, destination] of redirects) {
+    const response = await render(worker, source);
+    assert.equal(response.status, 308, `${source} should redirect permanently`);
+    assert.equal(
+      response.headers.get("location"),
+      `http://localhost${destination}`,
+      `${source} should redirect to ${destination}`,
+    );
+  }
+});
+
 test("publishes concise and full AI-readable site indexes", async () => {
   const worker = await loadWorker();
   const summaryResponse = await render(worker, "/llms.txt", "text/plain");

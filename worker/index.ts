@@ -11,6 +11,14 @@ import {
   handleResendWebhook,
   type QuoteEnvironment,
 } from "../lib/quote-server";
+import { legacyRedirects } from "../lib/legacy-redirects";
+
+const legacyRedirectMap = new Map(
+  legacyRedirects.map((redirect) => [
+    redirect.source,
+    redirect.destination,
+  ]),
+);
 
 interface Env extends QuoteEnvironment {
   ASSETS: Fetcher;
@@ -79,6 +87,21 @@ const worker = {
     ctx: ExecutionContext,
   ): Promise<Response> {
     const url = new URL(request.url);
+    const legacyDestination = legacyRedirectMap.get(
+      url.pathname.replace(/\/+$/, "") || "/",
+    );
+
+    if (legacyDestination) {
+      return withSecurityHeaders(
+        new Response(null, {
+          status: 308,
+          headers: {
+            Location: new URL(legacyDestination, request.url).toString(),
+          },
+        }),
+        url,
+      );
+    }
 
     if (url.pathname === "/api/quote") {
       return withSecurityHeaders(await handleQuoteRequest(request, env), url);
