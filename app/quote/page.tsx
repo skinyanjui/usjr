@@ -1,133 +1,79 @@
 import type { Metadata } from 'next'
 import { buildCanonicalMetadata } from '@/components/canonical'
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 import QuoteFormClient from './QuoteFormClient'
 import { settings } from '@/lib/cms-content'
-import { junkRemovalTiers } from '@/lib/pricing'
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
 
 export const metadata: Metadata = {
-  title: 'Free Quote | Uncle Sam Junk Removal - Tri-State Area',
+  title: 'Free Junk Removal Quote | Uncle Sam Junk Removal',
   description:
-    'Get free quotes for junk removal, light demolition, and cleaning services in Evansville. Professional, eco-friendly services with transparent pricing and same-day availability.',
-  keywords:
-    'free quote Evansville, junk removal quote, light demolition quote, cleaning quote, Uncle Sam Junk Removal pricing',
+    'Request a free junk removal quote in Evansville and the Tri-State. Add pickup timing, access details, load size, and optional photos for faster planning.',
   robots: 'index, follow',
   ...buildCanonicalMetadata('/quote', baseUrl),
 }
 
 export default function QuotePage() {
   return (
-    <div className="bg-background min-h-screen">
-      <div className="px-4 py-16">
-        <div className="mx-auto max-w-4xl">
-          {/* Page Title */}
-          <div className="mb-12 text-center">
-            <h1 className="text-foreground mb-3 text-3xl font-bold sm:text-4xl md:text-5xl">
-              Get Your Free Quote
+    <main className="bg-background min-h-screen">
+      <section className="px-4 py-10 sm:py-14">
+        <div className="mx-auto max-w-5xl">
+          <header className="mx-auto mb-7 max-w-3xl text-center">
+            <p className="text-primary mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+              Free estimate
+            </p>
+            <h1 className="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
+              Tell us what needs to go
             </h1>
-            <p className="text-muted-foreground text-base sm:text-lg">
-              Call us or fill out the form below for pricing
+            <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-6 sm:text-base">
+              Share the service, timing, access, and approximate load. Optional photos usually help
+              us price and plan faster.
             </p>
-          </div>
-
-          {/* Primary CTA - Phone */}
-          <div className="mb-12 text-center">
-            <p className="text-foreground mb-4 text-base font-medium">
-              For fastest service, call or text us now
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg"
+            <div className="mt-5 flex flex-wrap justify-center gap-2">
+              <a
+                href={`tel:${settings.phoneE164}`}
+                className="bg-primary text-primary-foreground inline-flex min-h-10 items-center justify-center rounded-md px-4 text-sm font-bold"
               >
-                <a href={`tel:${settings.phoneE164}`}>Call {settings.phone}</a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="px-8 py-3 text-lg">
-                <a href={`sms:${settings.phoneE164}`}>Text Photos</a>
-              </Button>
+                Call {settings.phone}
+              </a>
+              <a
+                href={`sms:${settings.phoneE164}`}
+                className="border-border text-foreground inline-flex min-h-10 items-center justify-center rounded-md border px-4 text-sm font-bold"
+              >
+                Text photos instead
+              </a>
             </div>
-          </div>
+          </header>
 
-          {/* Divider */}
-          <div className="relative mb-12">
-            <div className="absolute inset-0 flex items-center">
-              <div className="border-border w-full border-t-2"></div>
+          <QuoteFormClient />
+
+          <aside className="border-border mx-auto mt-7 max-w-3xl border-t pt-6">
+            <h2 className="text-foreground text-sm font-bold">Planning ranges</h2>
+            <div className="text-muted-foreground mt-3 grid gap-3 text-xs leading-5 sm:grid-cols-2">
+              <p>
+                <span className="text-foreground font-semibold">Single item:</span> typically
+                $75–$150.
+              </p>
+              <p>
+                <span className="text-foreground font-semibold">¼ truck load:</span> typically
+                $200–$300.
+              </p>
+              <p>
+                <span className="text-foreground font-semibold">½ truck load:</span> typically
+                $350–$450.
+              </p>
+              <p>
+                <span className="text-foreground font-semibold">Full truck load:</span> typically
+                $500–$650.
+              </p>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-background text-muted-foreground px-4 font-medium">
-                Or fill out the form
-              </span>
-            </div>
-          </div>
-
-          {/* Quote Form Section */}
-          <div className="mb-16">
-            <QuoteFormClient />
-          </div>
-
-          {/* Service Reference Cards - Simplified */}
-          <div className="mb-12">
-            <h2 className="text-foreground mb-6 text-center text-xl font-bold sm:text-2xl">
-              Our Services
-            </h2>
-            <div className="grid gap-6 sm:grid-cols-3">
-              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-foreground mb-3 text-lg font-bold">Junk Removal</h3>
-                  <p className="text-foreground mb-4 text-base font-semibold">
-                    Starting at {junkRemovalTiers[0]?.price ?? '$149'}
-                  </p>
-                  <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/services/junk-removal">View Details</a>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-foreground mb-3 text-lg font-bold">Light Demolition</h3>
-                  <p className="text-foreground mb-4 text-base font-semibold">Starting at $299</p>
-                  <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/services/light-demolition">View Details</a>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border bg-card hover:border-primary/50 border-2 transition-all">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-foreground mb-3 text-lg font-bold">Cleaning Services</h3>
-                  <p className="text-foreground mb-4 text-base font-semibold">Starting at $80</p>
-                  <Button asChild variant="outline" size="sm" className="w-full">
-                    <a href="/cleaning">View Details</a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="text-center">
-            <div className="text-foreground flex flex-wrap justify-center gap-6 text-sm font-medium">
-              <span className="flex items-center gap-1">
-                <span className="text-primary">✓</span> Same-Day Service
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="text-primary">✓</span> Fully Insured
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="text-primary">✓</span> Eco-Friendly
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="text-primary">✓</span> No Hidden Fees
-              </span>
-            </div>
-          </div>
+            <p className="text-muted-foreground mt-3 text-[11px] leading-5">
+              These are planning ranges, not final quotes. Final onsite pricing depends on the
+              actual volume, materials, labor, and access.
+            </p>
+          </aside>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
