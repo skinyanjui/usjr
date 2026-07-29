@@ -1,328 +1,313 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { buildCanonicalMetadata } from '@/components/canonical'
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-import { settings } from '@/lib/cms-content'
-import { PageHero } from '@/components/ui/page-hero'
+import type { Metadata } from "next";
+import { LegalPage } from "../components/legal-layout";
+import {
+  emailAddress,
+  phoneDisplay,
+  phoneHref,
+  siteUrl,
+} from "../site-data";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Uncle Sam Junk Removal',
+  title: "Privacy Policy",
   description:
-    "Read Uncle Sam Junk Removal's privacy policy. Learn how we collect, use, and protect your information when using our junk removal and cleaning services in Evansville, IN.",
-  keywords:
-    'privacy policy, data protection, Uncle Sam Junk Removal privacy, Evansville junk removal privacy',
-  ...buildCanonicalMetadata('/privacy', baseUrl),
-}
+    "How Uncle Sam Junk Removal handles quote, scheduling, service, payment, website, text, email, and customer information.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Uncle Sam Junk Removal",
+    description:
+      "How customer information is collected, used, protected, retained, and shared.",
+    url: `${siteUrl}/privacy`,
+  },
+};
 
-export default function PrivacyPolicyPage() {
+const sections = [
+  { href: "#scope", label: "Scope" },
+  { href: "#information", label: "Information we collect" },
+  { href: "#quote-flow", label: "Quote form and photos" },
+  { href: "#use", label: "How we use information" },
+  { href: "#communications", label: "Calls, texts, and email" },
+  { href: "#technology", label: "Website technology" },
+  { href: "#sharing", label: "How we share information" },
+  { href: "#retention", label: "Retention and security" },
+  { href: "#choices", label: "Your choices and rights" },
+  { href: "#other", label: "Other disclosures" },
+  { href: "#contact", label: "Contact us" },
+];
+
+export default function PrivacyPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Privacy Policy",
+    description:
+      "Privacy practices for Uncle Sam Junk Removal website and services.",
+    url: `${siteUrl}/privacy`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Uncle Sam Junk Removal",
+      url: siteUrl,
+    },
+    dateModified: "2026-07-29",
+  };
+
   return (
-    <main className="bg-background min-h-screen">
-      <PageHero
-        title="Privacy Policy"
-        description="How we collect, use, and protect your information"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="border-border bg-card mb-8 flex flex-wrap gap-4 rounded-lg border p-4 shadow-sm">
-          <Link
-            href="/"
-            className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-900"
-          >
-            Home
-          </Link>
-          <Link
-            href="/quote"
-            className="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
-          >
-            Get a Quote
-          </Link>
-          <Link
-            href="/services"
-            className="border-border text-foreground hover:bg-muted rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            Our Services
-          </Link>
-          <Link
-            href="/terms"
-            className="border-border text-foreground hover:bg-muted rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            Terms of Service
-          </Link>
+      <LegalPage
+        title="Privacy Policy"
+        eyebrow="Your information"
+        description="This policy explains what information Uncle Sam Junk Removal receives through this website and during quotes, scheduling, payment, and service—and what we do with it."
+        effectiveDate="January 1, 2025"
+        updatedDate="July 29, 2026"
+        currentPath="/privacy"
+        sections={sections}
+      >
+        <div className="legal-summary">
+          <span>Plain-language summary</span>
+          <p>
+            We collect the information needed to quote, schedule, and complete
+            requested work. When you submit the website quote form, its contents
+            are securely emailed to our local team through Resend. This website
+            does not sell personal information, create customer accounts, or
+            collect payment through the quote form.
+          </p>
         </div>
 
-        <h2 className="text-foreground mb-2 text-3xl font-bold">Privacy Policy</h2>
-        <p className="text-muted-foreground mb-8">Effective: January 1, 2025</p>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Overview</h2>
-          <p className="text-muted-foreground">
-            This Privacy Policy explains how Uncle Sam Junk Removal ("Company", "we", "us", or
-            "our") collects, uses, discloses, and safeguards information when you visit our website,
-            request a quote, schedule service, or otherwise interact with us (collectively, the
-            "Services"). By using the Services, you agree to the practices described here. If you do
-            not agree, please do not use the Services.
+        <section id="scope">
+          <h2>1. Scope</h2>
+          <p>
+            This Privacy Policy applies when you visit this website, request a
+            quote, call, text, email, schedule service, make a payment, or
+            interact with Uncle Sam Junk Removal in connection with junk
+            removal, cleaning, cleanouts, appliance hauling, debris cleanup,
+            light demolition, and related services.
+          </p>
+          <p>
+            It covers online and offline interactions in the United States. It
+            does not control the independent privacy practices of your phone
+            carrier, email provider, payment processor, or a third-party site
+            you choose to visit.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Scope & Applicability</h2>
-          <p className="text-muted-foreground">
-            This policy applies to information collected online via our website and offline via
-            phone, text, and on-site service interactions in the United States. Additional
-            disclosures for certain jurisdictions (e.g., California) are included below.
+        <section id="information">
+          <h2>2. Information we collect</h2>
+          <p>Depending on how you interact with us, we may receive:</p>
+          <ul>
+            <li>
+              Contact details such as your name, phone number, email address,
+              service address, city, ZIP code, and company name.
+            </li>
+            <li>
+              Project details such as the requested service, item descriptions,
+              estimated volume, access notes, preferred dates, and safety
+              information.
+            </li>
+            <li>
+              Content you provide, including messages, photos, videos, reviews,
+              and before-and-after documentation.
+            </li>
+            <li>
+              Service and transaction records, including appointments, work
+              completed, invoices, payment status, and customer-support history.
+            </li>
+            <li>
+              Basic technical information processed by hosting and security
+              providers, such as IP address, browser or device type, requested
+              pages, timestamps, and security events.
+            </li>
+          </ul>
+          <p>
+            Please do not send Social Security numbers, account passwords,
+            full payment-card numbers, medical records, or other highly
+            sensitive information through the quote form, text, or ordinary
+            email.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Information We Collect</h2>
-          <p className="text-muted-foreground mb-2">
-            We collect information in the following categories:
+        <section id="quote-flow">
+          <h2>3. How this website’s quote flow works</h2>
+          <p>
+            When you select “Get my free quote,” the contact details, pickup
+            area, requested service, timing, estimated quantity, access details,
+            preferred contact method, project notes, and consent selection you
+            entered are sent through our website host and email-delivery
+            provider, Resend, to our business inbox. The website does not create
+            a customer account, charge a card, or place the request in a public
+            directory.
           </p>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
-            <li>
-              Identifiers and contact information (name, email, phone, address, service location,
-              company name if applicable)
-            </li>
-            <li>
-              Service details (items to remove, volume/weight estimates, access notes, requested
-              dates/times)
-            </li>
-            <li>
-              Content you provide (messages, reviews, before/after or quote photos and videos)
-            </li>
-            <li>
-              Transaction information (service records, invoices, payment status). We do not store
-              full credit card numbers; payments are processed by third-party providers
-            </li>
-            <li>
-              Device and usage data (browser and device type, pages viewed, referring/exit pages,
-              approximate location derived from IP, time/date stamps)
-            </li>
-            <li>Cookies and similar technologies data (see Cookies & Tracking below)</li>
-            <li>
-              Communications preferences and engagement (calls, emails, text/SMS interactions)
-            </li>
+          <p>
+            Photos are optional. If you add photos, the form accepts three to
+            eight JPG, PNG, HEIC, or HEIF files, prepares compatible images in
+            your browser, and sends each file through the website host and
+            Resend to our business inbox. You may instead send photos by text or
+            email. Information sent by text or email is also handled by the
+            applicable carrier or email provider and becomes part of our
+            business communications.
+          </p>
+          <p>
+            Each submitted request receives a reference number. Replies sent to
+            the unique reply address may be processed by Resend and forwarded
+            between the customer and our local team so additional details and
+            photos stay associated with that request.
+          </p>
+        </section>
+
+        <section id="use">
+          <h2>4. How we use information</h2>
+          <p>We may use information to:</p>
+          <ul>
+            <li>Respond to questions and prepare or confirm quotes.</li>
+            <li>Schedule, route, provide, document, and support services.</li>
+            <li>Communicate about arrival windows, access, changes, and follow-up.</li>
+            <li>Process payments and maintain invoices and service records.</li>
+            <li>Protect customers, crews, property, and business operations.</li>
+            <li>Prevent fraud, misuse, security incidents, and unlawful activity.</li>
+            <li>Improve our website, service quality, and customer experience.</li>
+            <li>Meet tax, accounting, insurance, disposal, and legal obligations.</li>
           </ul>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Sources of Information</h2>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
+        <section id="communications">
+          <h2>5. Calls, texts, and email</h2>
+          <p>
+            When you call, text, or email us, we use the contact information you
+            provide to respond to your request and communicate about quotes,
+            scheduling, arrival, service, payment, and support. Message and data
+            rates may apply, and carriers are not responsible for delayed or
+            undelivered messages.
+          </p>
+          <p>
+            Customer-initiated quote and scheduling messages are service
+            communications. We do not treat a quote request as permission for
+            unrelated automated marketing. You may ask us to stop nonessential
+            texts at any time, including by replying STOP. Reply HELP or contact
+            us directly for assistance.
+          </p>
+        </section>
+
+        <section id="technology">
+          <h2>6. Website technology, logs, and cookies</h2>
+          <p>
+            This version of the website does not intentionally run advertising
+            pixels or personalized-ad tracking. Hosting, security, and network
+            providers may process standard connection logs and use technologies
+            needed to deliver, protect, and troubleshoot the site.
+          </p>
+          <p>
+            Your browser may also store ordinary cache, preferences, or similar
+            technical data. If we later add material analytics, advertising, or
+            session-replay tools, we will update this policy and provide any
+            choices required by applicable law.
+          </p>
+        </section>
+
+        <section id="sharing">
+          <h2>7. How we disclose information</h2>
+          <p>We may disclose information only as reasonably needed:</p>
+          <ul>
             <li>
-              Directly from you when you submit a form, call, email, text, or speak with our team
+              To service providers supporting hosting and email delivery,
+              including Resend, and providers supporting communications,
+              scheduling, payments, accounting, insurance, analytics, or
+              business operations.
             </li>
             <li>
-              Automatically through cookies, pixels, and similar technologies when you use our
-              website
+              To contractors, disposal facilities, recyclers, or other partners
+              involved in completing an approved service.
             </li>
             <li>
-              From service providers and partners that support scheduling, communications,
-              analytics, advertising, and payment processing
+              To comply with law, legal process, safety duties, or requests from
+              authorized public officials.
             </li>
+            <li>
+              To protect rights, property, safety, customers, crews, or the
+              public, or to investigate fraud and misuse.
+            </li>
+            <li>
+              In connection with a merger, financing, reorganization, sale, or
+              transfer of all or part of the business.
+            </li>
+            <li>With your consent or at your direction.</li>
           </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">How We Use Your Information</h2>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
-            <li>Provide quotes, schedule appointments, and deliver Services</li>
-            <li>Communicate with you about appointments, updates, and customer support</li>
-            <li>Process payments and send invoices/receipts</li>
-            <li>Verify identity and prevent fraud, abuse, and security incidents</li>
-            <li>Improve the website, Services, and customer experience</li>
-            <li>Conduct analytics and measure marketing effectiveness</li>
-            <li>Comply with legal obligations and enforce our terms and policies</li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">SMS/Text Messaging</h2>
-          <p className="text-muted-foreground">
-            By providing your phone number, you consent to receive text messages related to quotes,
-            scheduling, reminders, and customer service. Message and data rates may apply. Message
-            frequency varies. You can opt out at any time by replying STOP. Reply HELP for help.
-            Carriers are not liable for delayed or undelivered messages.
+          <p>
+            We do not sell personal information for money. We may use or share
+            aggregated information that does not reasonably identify an
+            individual.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">
-            Cookies & Tracking Technologies
-          </h2>
-          <p className="text-muted-foreground mb-2">
-            We use cookies, pixels, and similar technologies to operate the site, understand usage,
-            and improve our marketing. Types of cookies include:
+        <section id="retention">
+          <h2>8. Retention and security</h2>
+          <p>
+            We keep information only as long as reasonably necessary for the
+            purposes described in this policy, including service records,
+            customer support, accounting, tax, insurance, dispute resolution,
+            safety, and legal compliance. Retention periods vary by record type.
           </p>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
-            <li>Essential: required for core site functionality</li>
-            <li>Analytics: help us understand traffic and usage</li>
-            <li>Advertising: measure and improve our marketing</li>
-          </ul>
-          <p className="text-muted-foreground mt-2">
-            You can manage cookie preferences via your browser settings. If you block certain
-            cookies, parts of the site may not function properly. We respond to Global Privacy
-            Control signals where required by law.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Analytics & Advertising</h2>
-          <p className="text-muted-foreground">
-            We may use analytics (e.g., Google Analytics) and advertising tools (e.g.,
-            Meta/Facebook) to understand site usage and improve our marketing. These tools may set
-            cookies or read device identifiers. You can opt out of certain analytics/ads cookies in
-            your browser and through platform-specific settings.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Microsoft Clarity</h2>
-          <p className="text-muted-foreground mb-2">
-            We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and
-            interact with our website through behavioral metrics, heatmaps, and session replay to
-            improve and market our products/services. Website usage data is captured using first and
-            third-party cookies and other tracking technologies to determine the popularity of
-            products/services and online activity. Additionally, we use this information for site
-            optimization, fraud/security purposes, and advertising.
-          </p>
-          <p className="text-muted-foreground">
-            For more information about how Microsoft collects and uses your data, visit the{' '}
-            <a
-              href="https://privacy.microsoft.com/privacystatement"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-900 underline hover:text-gray-900"
-            >
-              Microsoft Privacy Statement
-            </a>
-            .
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">How We Share Information</h2>
-          <p className="text-muted-foreground mb-2">
-            We do not sell your personal information. We may share information in the following
-            circumstances:
-          </p>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
-            <li>
-              Service providers who perform services on our behalf (hosting, scheduling, payment
-              processing, communications, analytics, marketing). These providers are bound by
-              obligations to protect your information and use it only for our purposes
-            </li>
-            <li>Business transfers (merger, acquisition, or asset sale)</li>
-            <li>Legal compliance, safety, and security purposes</li>
-            <li>With your consent or at your direction</li>
-            <li>
-              Aggregated/de-identified information that does not identify you reasonably is shared
-              for analytics and business purposes
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Data Retention</h2>
-          <p className="text-muted-foreground">
-            We retain information for as long as reasonably necessary to provide Services, comply
-            with legal obligations, resolve disputes, and enforce our agreements. Retention periods
-            vary by record type (e.g., quote requests, service records, invoices, and
-            communications).
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Data Security</h2>
-          <p className="text-muted-foreground">
-            We use reasonable administrative, technical, and physical safeguards to protect
-            information. However, no method of transmission or storage is 100% secure, and we cannot
+          <p>
+            We use reasonable administrative, technical, and physical
+            safeguards appropriate to the information we maintain. No
+            transmission or storage system is completely secure, so we cannot
             guarantee absolute security.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Your Privacy Choices & Rights</h2>
-          <p className="text-muted-foreground mb-2">
-            Depending on where you live, you may have rights to access, correct, delete, or receive
-            a copy of your information, and to opt out of certain processing (such as targeted
-            advertising). To exercise a right or make a request, contact us using the information
-            below. We may need to verify your identity before acting on your request. You may
-            designate an authorized agent to submit requests on your behalf as allowed by law.
+        <section id="choices">
+          <h2>9. Your choices and privacy requests</h2>
+          <p>
+            Depending on where you live and subject to legal exceptions, you
+            may ask to access, correct, delete, or receive a copy of certain
+            personal information. You may also ask about how information was
+            used or disclosed.
           </p>
-          <ul className="text-muted-foreground list-disc space-y-1 pl-6">
-            <li>Access and portability: request a copy of certain information</li>
-            <li>Correction: request we fix inaccurate information</li>
-            <li>Deletion: request we delete certain information, subject to legal exceptions</li>
-            <li>
-              Opt-out: where applicable, opt out of targeted advertising or sharing for
-              cross-context behavioral advertising
-            </li>
-            <li>Appeal: if we deny your request, you may appeal by replying to our response</li>
-            <li>Non-discrimination: we will not discriminate for exercising your rights</li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">California Privacy Notice</h2>
-          <p className="text-muted-foreground mb-2">
-            If you are a California resident, the California Consumer Privacy Act (CCPA), as amended
-            by the CPRA, provides additional rights. In the last 12 months, we may have collected
-            the following categories of personal information for business purposes: identifiers;
-            commercial information; internet/usage information; geolocation (approximate);
-            audio/electronic communications (e.g., calls, texts); and inferences from the above. We
-            do not intentionally collect or use sensitive personal information. We do not sell
-            personal information, but we may "share" information for cross-context behavioral
-            advertising as defined under California law when analytics or advertising tools are
-            active. You can submit requests using the Contact details below. We honor Global Privacy
-            Control signals where required.
+          <p>
+            Send a request to{" "}
+            <a href={`mailto:${emailAddress}`}>{emailAddress}</a> or call{" "}
+            <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>. We may need to
+            verify your identity and authority before completing a request.
+            We will not discriminate against you for exercising an applicable
+            privacy right.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Children's Privacy</h2>
-          <p className="text-muted-foreground">
-            Our Services are not directed to children under 13, and we do not knowingly collect
-            personal information from children under 13. If you believe a child has provided us
-            information, please contact us so we can delete it.
+        <section id="other">
+          <h2>10. Children, third-party links, and policy changes</h2>
+          <h3>Children</h3>
+          <p>
+            Our website and services are not directed to children under 13, and
+            we do not knowingly collect personal information from children
+            under 13. Contact us if you believe a child provided information.
+          </p>
+          <h3>Third-party services</h3>
+          <p>
+            Links and actions that open a phone, text, email, map, payment, or
+            other third-party service are governed by that provider’s terms and
+            privacy practices.
+          </p>
+          <h3>Changes to this policy</h3>
+          <p>
+            We may update this policy to reflect changes in our website,
+            operations, service providers, or legal obligations. The updated
+            date at the top will show when the policy changed.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">International Users</h2>
-          <p className="text-muted-foreground">
-            We operate in the United States. If you access the Services from outside the U.S., you
-            understand that your information may be transferred to and processed in the U.S., which
-            may have different data protection laws than your country of residence.
+        <section id="contact">
+          <h2>11. Contact us</h2>
+          <p>
+            Privacy questions and requests may be directed to Uncle Sam Junk
+            Removal at <a href={`mailto:${emailAddress}`}>{emailAddress}</a>,{" "}
+            <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>, or by mail to
+            Uncle Sam Junk Removal, Evansville, Indiana.
           </p>
         </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Third-Party Links</h2>
-          <p className="text-muted-foreground">
-            Our website may contain links to third-party websites or services we do not control. We
-            are not responsible for the privacy practices of those third parties. We encourage you
-            to review their policies.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Changes to This Policy</h2>
-          <p className="text-muted-foreground">
-            We may update this Privacy Policy from time to time to reflect operational, legal, or
-            regulatory changes. We will update the "Last updated" date below when changes are made.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Contact</h2>
-          <p className="text-muted-foreground">
-            Questions or requests? Email info@unclesamjunkremoval.com or call {settings.phone}.
-            Mail: Uncle Sam Junk Removal, Evansville, IN.
-          </p>
-        </section>
-
-        <p className="text-muted-foreground text-sm">Last updated: January 1, 2025</p>
-      </div>
-    </main>
-  )
+      </LegalPage>
+    </>
+  );
 }
