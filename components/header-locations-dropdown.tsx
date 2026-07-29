@@ -32,7 +32,7 @@ export default function LocationsDropdown({
       id={locationsMenuId}
       role="menu"
       aria-labelledby={triggerId}
-      className="absolute top-full left-1/2 z-50 mt-2 w-screen max-w-5xl -translate-x-1/2 transform px-4 sm:px-0"
+      className="absolute top-full left-1/2 z-50 w-screen pt-3 max-w-5xl -translate-x-1/2 transform px-4 sm:px-0"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
