@@ -1,292 +1,430 @@
-import { after } from 'next/server'
+import { createHash, randomUUID } from 'node:crypto'
 import { z } from 'zod'
-import { resend, EMAIL_CONFIG } from '@/lib/resend'
 import { RateLimiter } from '@/lib/rate-limit'
+import {
+  EMAIL_CONFIG,
+  SITE_URL,
+  emailDocument,
+  escapeHtml,
+  quoteReplyAddress,
+  resend,
+} from '@/lib/resend'
 
-// Basic in-memory rate limiting (best-effort; for production use a durable store like Upstash)
+export const runtime = 'nodejs'
+
 const limiter = new RateLimiter({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  maxRequests: 5,
+  windowMs: 10 * 60 * 1000,
+  maxRequests: 6,
 })
 
-interface RawQuoteData {
-  name?: string
-  fullName?: string
-  phone?: string
-  phoneNumber?: string
-  email?: string
-  emailAddress?: string
-  address?: string
-  serviceAddress?: string
-  service?: string
-  serviceNeeded?: string
-  projectSize?: string
-  message?: string
-  details?: string
-  projectDetails?: string
-  source?: string
-  website?: string
-  attachments?: any[]
+const QuoteSchema = z
+  .object({
+    submissionId: z.string().uuid(),
+    name: z.string().trim().min(2).max(100),
+    phone: z.string().trim().min(10).max(30),
+    email: z.string().trim().email().max(254),
+    address: z.string().trim().min(2).max(180),
+    service: z.string().trim().min(1).max(80),
+    urgency: z.enum(['today', 'within-2-3-days', 'choose-date', 'flexible']),
+    preferredDate: z.string().trim().max(20).default(''),
+    quantity: z.string().trim().max(80).default(''),
+    placement: z.enum(['indoor', 'outdoor', 'both', 'unsure']),
+    access: z.array(z.string().trim().max(40)).max(6).default([]),
+    heavyMaterials: z.boolean().default(false),
+    dismantling: z.boolean().default(false),
+    heavyDetails: z.string().trim().max(500).default(''),
+    preferredContact: z.enum(['call', 'text', 'email']),
+    conditionalDetails: z.record(z.string()).default({}),
+    notes: z.string().trim().max(1500).default(''),
+    consent: z.boolean().default(false),
+    source: z.string().trim().max(80).default('website'),
+    company: z.string().trim().max(100).default(''),
+    startedAt: z.number().int().nonnegative().optional(),
+  })
+  .superRefine((data, context) => {
+    if (data.urgency === 'choose-date' && !data.preferredDate) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['preferredDate'],
+        message: 'Choose a preferred date',
+      })
+    }
+
+    if (data.source === 'quote-form-v2' && !data.consent) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['consent'],
+        message: 'Service-contact consent is required',
+      })
+    }
+  })
+
+type QuoteData = z.infer<typeof QuoteSchema>
+
+type LegacyAttachment = {
+  filename: string
+  content: string
 }
 
-const QuoteSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  phone: z.string().min(7, 'Phone is required'),
-  email: z.string().email('Valid email required'),
-  address: z.string().optional().default(''),
-  service: z.string().min(1, 'Service is required'),
-  projectSize: z.string().optional().default(''),
-  details: z.string().optional().default(''),
-  source: z.string().optional().default('website'),
-  timestamp: z.string().optional(),
-  // Honeypot field (should remain empty)
-  website: z.string().optional().default(''),
-  attachments: z
-    .array(
-      z.object({
-        filename: z.string(),
-        content: z.union([z.string(), z.instanceof(Buffer)]), // Accept Buffer or Base64 string
-      })
-    )
-    .optional(),
-})
+function clientIp(request: Request): string {
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  )
+}
 
-function normalize(body: RawQuoteData) {
+function stringValue(value: unknown): string {
+  return typeof value === 'string' ? value : ''
+}
+
+function booleanValue(value: unknown): boolean {
+  return value === true || value === 'true' || value === 'on' || value === 'yes'
+}
+
+function normalizeStringRecord(value: unknown): Record<string, string> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter((entry): entry is [string, string] => typeof entry[1] === 'string')
+      .slice(0, 12)
+  )
+}
+
+function normalizeAccess(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.filter((item): item is string => typeof item === 'string').slice(0, 6)
+  }
+
+  return stringValue(value)
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean)
+    .slice(0, 6)
+}
+
+async function parseRequest(
+  request: Request
+): Promise<{ raw: Record<string, unknown>; attachments: LegacyAttachment[] }> {
+  const contentType = request.headers.get('content-type') || ''
+
+  if (!contentType.includes('multipart/form-data')) {
+    const body: unknown = await request.json()
+    return {
+      raw:
+        body && typeof body === 'object' && !Array.isArray(body)
+          ? (body as Record<string, unknown>)
+          : {},
+      attachments: [],
+    }
+  }
+
+  const formData = await request.formData()
+  const raw: Record<string, unknown> = {}
+  const attachments: LegacyAttachment[] = []
+
+  for (const [key, value] of formData.entries()) {
+    if (value instanceof File) {
+      if (
+        key === 'attachments' &&
+        value.size > 0 &&
+        value.size <= 3_500_000 &&
+        attachments.length < 8
+      ) {
+        attachments.push({
+          filename: value.name.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 120),
+          content: Buffer.from(await value.arrayBuffer()).toString('base64'),
+        })
+      }
+      continue
+    }
+
+    raw[key] = value
+  }
+
+  return { raw, attachments }
+}
+
+function normalizeQuote(raw: Record<string, unknown>): QuoteData {
+  const source = stringValue(raw.source) || 'website'
+  const legacy = source !== 'quote-form-v2'
+  const conditionalDetails = normalizeStringRecord(raw.conditionalDetails)
+
   return {
-    name: body?.name ?? body?.fullName ?? '',
-    phone: body?.phone ?? body?.phoneNumber ?? '',
-    email: body?.email ?? body?.emailAddress ?? '',
-    address: body?.address ?? body?.serviceAddress ?? '',
-    service: body?.service ?? body?.serviceNeeded ?? '',
-    projectSize: body?.projectSize ?? '',
-    details: body?.message ?? body?.details ?? body?.projectDetails ?? '',
-    source: body?.source ?? 'website',
-    timestamp: new Date().toISOString(),
-    attachments: body?.attachments ?? [],
-    website: body?.website ?? '',
+    submissionId: stringValue(raw.submissionId) || randomUUID(),
+    name: stringValue(raw.name) || stringValue(raw.fullName),
+    phone: stringValue(raw.phone) || stringValue(raw.phoneNumber),
+    email: stringValue(raw.email) || stringValue(raw.emailAddress),
+    address:
+      stringValue(raw.address) ||
+      stringValue(raw.serviceAddress) ||
+      stringValue(raw.location) ||
+      'Not provided',
+    service:
+      stringValue(raw.service) || stringValue(raw.serviceNeeded) || stringValue(raw.projectSize),
+    urgency:
+      raw.urgency === 'today' ||
+      raw.urgency === 'within-2-3-days' ||
+      raw.urgency === 'choose-date' ||
+      raw.urgency === 'flexible'
+        ? raw.urgency
+        : 'flexible',
+    preferredDate: stringValue(raw.preferredDate),
+    quantity: stringValue(raw.quantity) || stringValue(raw.projectSize),
+    placement:
+      raw.placement === 'indoor' ||
+      raw.placement === 'outdoor' ||
+      raw.placement === 'both' ||
+      raw.placement === 'unsure'
+        ? raw.placement
+        : 'unsure',
+    access: normalizeAccess(raw.access),
+    heavyMaterials: booleanValue(raw.heavyMaterials),
+    dismantling: booleanValue(raw.dismantling),
+    heavyDetails: stringValue(raw.heavyDetails),
+    preferredContact:
+      raw.preferredContact === 'call' ||
+      raw.preferredContact === 'text' ||
+      raw.preferredContact === 'email'
+        ? raw.preferredContact
+        : 'call',
+    conditionalDetails,
+    notes:
+      stringValue(raw.notes) ||
+      stringValue(raw.details) ||
+      stringValue(raw.projectDetails) ||
+      stringValue(raw.message),
+    consent: legacy || booleanValue(raw.consent),
+    source,
+    company: stringValue(raw.company) || stringValue(raw.website),
+    ...(typeof raw.startedAt === 'number' ? { startedAt: raw.startedAt } : {}),
   }
 }
 
-export async function POST(req: Request) {
+function createReference(submissionId: string): string {
+  const digest = createHash('sha256').update(submissionId).digest('hex').slice(0, 8)
+  return `USJR-${digest.toUpperCase()}`
+}
+
+function label(value: string): string {
+  const labels: Record<string, string> = {
+    today: 'Today',
+    'within-2-3-days': 'Within 2–3 days',
+    'choose-date': 'Choose a date',
+    flexible: 'Flexible',
+    indoor: 'Indoor',
+    outdoor: 'Outdoor',
+    both: 'Indoor and outdoor',
+    unsure: 'Not sure',
+    call: 'Call',
+    text: 'Text',
+    email: 'Email',
+  }
+
+  return labels[value] || value
+}
+
+function detailRows(data: QuoteData): string {
+  const rows: Array<[string, string]> = [
+    ['Name', data.name],
+    ['Phone', data.phone],
+    ['Email', data.email],
+    ['Service address', data.address],
+    ['Service', data.service],
+    [
+      'Timing',
+      data.urgency === 'choose-date' && data.preferredDate
+        ? `${label(data.urgency)}: ${data.preferredDate}`
+        : label(data.urgency),
+    ],
+    ['Quantity / load', data.quantity || 'Not sure'],
+    ['Location', label(data.placement)],
+    ['Access', data.access.length > 0 ? data.access.map(label).join(', ') : 'No issue noted'],
+    [
+      'Heavy work',
+      [
+        data.heavyMaterials ? 'Heavy materials' : '',
+        data.dismantling ? 'Dismantling needed' : '',
+        data.heavyDetails,
+      ]
+        .filter(Boolean)
+        .join(' — ') || 'None noted',
+    ],
+    ['Preferred contact', label(data.preferredContact)],
+  ]
+
+  for (const [key, value] of Object.entries(data.conditionalDetails)) {
+    if (value) rows.push([key, value])
+  }
+
+  if (data.notes) rows.push(['Additional notes', data.notes])
+
+  return rows
+    .map(
+      ([rowLabel, value]) => `<tr>
+        <td style="padding-top:9px;padding-right:12px;padding-bottom:9px;padding-left:0;border-bottom:1px solid #ece7df;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;font-weight:700;color:#102f49;vertical-align:top;">${escapeHtml(rowLabel)}</td>
+        <td style="padding-top:9px;padding-right:0;padding-bottom:9px;padding-left:12px;border-bottom:1px solid #ece7df;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:19px;color:#344054;vertical-align:top;">${escapeHtml(value)}</td>
+      </tr>`
+    )
+    .join('')
+}
+
+function customerEmail(data: QuoteData, reference: string): string {
+  return emailDocument(
+    `<p style="margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:22px;line-height:30px;font-weight:700;color:#102f49;">Request ${escapeHtml(reference)} received</p>
+     <p style="margin-top:0;margin-right:0;margin-bottom:20px;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:23px;color:#475467;">Hi ${escapeHtml(data.name)}, we have your request. We normally respond as soon as possible during business hours.</p>
+     <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%;margin-bottom:22px;">${detailRows(data)}</table>
+     <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+       <tr>
+         <td bgcolor="#a92723" style="background-color:#a92723;border-radius:999px;">
+           <a href="${SITE_URL}/quote" style="display:inline-block;padding-top:11px;padding-right:18px;padding-bottom:11px;padding-left:18px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:18px;font-weight:700;color:#ffffff;text-decoration:none;">View quote information</a>
+         </td>
+       </tr>
+     </table>
+     <p style="margin-top:22px;margin-right:0;margin-bottom:0;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#667085;">Urgent? Call <a href="tel:+18126101657" style="color:#102f49;text-decoration:underline;">(812) 610-1657</a>. Reply to this email to add information or photos.</p>`,
+    `${reference} quote request received`
+  )
+}
+
+function businessEmail(data: QuoteData, reference: string, attachmentCount: number): string {
+  const phoneHref = data.phone.replace(/[^\d+]/g, '')
+  const attachmentNote =
+    attachmentCount > 0
+      ? `<p style="margin-top:0;margin-right:0;margin-bottom:18px;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#475467;">${attachmentCount} legacy form photo${attachmentCount === 1 ? '' : 's'} attached.</p>`
+      : ''
+
+  return emailDocument(
+    `<p style="margin-top:0;margin-right:0;margin-bottom:8px;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:22px;line-height:30px;font-weight:700;color:#102f49;">New quote ${escapeHtml(reference)}</p>
+     <p style="margin-top:0;margin-right:0;margin-bottom:18px;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#475467;">Source: ${escapeHtml(data.source)}</p>
+     ${attachmentNote}
+     <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%;margin-bottom:22px;">${detailRows(data)}</table>
+     <table cellpadding="0" cellspacing="0" border="0" role="presentation">
+       <tr>
+         <td bgcolor="#a92723" style="background-color:#a92723;border-radius:999px;">
+           <a href="tel:${escapeHtml(phoneHref)}" style="display:inline-block;padding-top:11px;padding-right:18px;padding-bottom:11px;padding-left:18px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:18px;font-weight:700;color:#ffffff;text-decoration:none;">Call customer</a>
+         </td>
+       </tr>
+     </table>
+     <p style="margin-top:20px;margin-right:0;margin-bottom:0;margin-left:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#667085;">Reply to this message to continue the ${escapeHtml(reference)} email thread.</p>`,
+    `${reference} new quote request`
+  )
+}
+
+export async function POST(request: Request): Promise<Response> {
+  if (!limiter.check(clientIp(request))) {
+    return Response.json(
+      {
+        ok: false,
+        error: 'Too many requests. Please wait a few minutes or call us.',
+      },
+      { status: 429 }
+    )
+  }
+
+  if (!resend) {
+    return Response.json(
+      {
+        ok: false,
+        error: 'Online requests are temporarily unavailable. Please call us.',
+      },
+      { status: 503 }
+    )
+  }
+
   try {
-    let raw: any = {}
+    const { raw, attachments } = await parseRequest(request)
 
-    // Check Content-Type to decide how to parse
-    const contentType = req.headers.get('content-type') || ''
-
-    if (contentType.includes('multipart/form-data')) {
-      const formData = await req.formData()
-      const attachmentPromises: Promise<{ filename: string; content: Buffer }>[] = []
-
-      for (const [key, value] of formData.entries()) {
-        if (key === 'attachments' && value instanceof File) {
-          attachmentPromises.push(
-            value.arrayBuffer().then((buf) => ({
-              filename: value.name,
-              content: Buffer.from(buf),
-            }))
-          )
-        } else if (typeof value === 'string') {
-          raw[key] = value
-        }
-      }
-
-      const attachments = await Promise.all(attachmentPromises)
-
-      if (attachments.length > 0) {
-        raw.attachments = attachments
-      }
-    } else {
-      // Fallback to JSON
-      try {
-        raw = await req.json()
-      } catch (e) {
-        // ignore JSON parse error
-      }
+    if (stringValue(raw.company).trim() || stringValue(raw.website).trim()) {
+      return Response.json({ ok: true })
     }
 
-    // Honeypot check: if filled, treat as success without processing
-    if (typeof raw?.website === 'string' && raw.website.trim().length > 0) {
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      })
+    if (
+      typeof raw.startedAt === 'number' &&
+      raw.startedAt > 0 &&
+      Date.now() - raw.startedAt < 1_500
+    ) {
+      return Response.json({ ok: true })
     }
 
-    // Rate limit per IP
-    const ipHeader = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
-    const ip = (ipHeader.split(',')[0] || 'unknown').trim()
+    const parsed = QuoteSchema.safeParse(normalizeQuote(raw))
 
-    if (!limiter.check(ip)) {
-      return new Response(JSON.stringify({ ok: false, error: 'Too many requests' }), {
-        status: 429,
-        headers: { 'Content-Type': 'application/json' },
-      })
-    }
-
-    const normalized = normalize(raw as RawQuoteData)
-    const parsed = QuoteSchema.safeParse(normalized)
     if (!parsed.success) {
-      return new Response(JSON.stringify({ ok: false, errors: parsed.error.flatten() }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      })
+      return Response.json(
+        {
+          ok: false,
+          error: 'Please check the highlighted quote details and try again.',
+          fields: parsed.error.flatten().fieldErrors,
+        },
+        { status: 400 }
+      )
     }
 
-    // Send email notifications in parallel
-    const sendBusinessEmail = async () => {
-      try {
-        if (!resend) {
-          if (process.env.NODE_ENV !== 'production') {
-            console.warn('RESEND_API_KEY not configured - skipping email notifications')
-          }
-        } else {
-          const hasAttachments = parsed.data.attachments && parsed.data.attachments.length > 0
+    const data = parsed.data
+    const reference = createReference(data.submissionId)
+    const replyTo = quoteReplyAddress(reference)
+    const commonHeaders = {
+      'X-Entity-Ref-ID': reference,
+      'X-USJR-Reference': reference,
+    }
+    const tags = [
+      {
+        name: 'quote_ref',
+        value: reference.toLowerCase().replaceAll('-', '_'),
+      },
+    ]
 
-          const busRes = await resend.emails.send({
-            from: EMAIL_CONFIG.from,
-            to: EMAIL_CONFIG.to,
-            replyTo: parsed.data.email,
-            subject: `New Quote Request from ${parsed.data.name}`,
-            attachments: hasAttachments ? (parsed.data.attachments as any) : undefined,
-            html: `
-          <h2>New Quote Request</h2>
-          <p><strong>Name:</strong> ${parsed.data.name}</p>
-          <p><strong>Phone:</strong> ${parsed.data.phone}</p>
-          <p><strong>Email:</strong> ${parsed.data.email}</p>
-          <p><strong>Address:</strong> ${parsed.data.address || 'Not provided'}</p>
-          <p><strong>Service:</strong> ${parsed.data.service}</p>
-          <p><strong>Project Size:</strong> ${parsed.data.projectSize || 'Not specified'}</p>
-          <p><strong>Details:</strong> ${parsed.data.details || 'No additional details provided'}</p>
-          <p><strong>Source:</strong> ${parsed.data.source}</p>
-          <p><strong>Timestamp:</strong> ${parsed.data.timestamp || new Date().toISOString()}</p>
-          ${hasAttachments ? `<p><strong>Attachments:</strong> ${parsed.data.attachments!.length} file(s) included</p>` : ''}
-        `,
-          })
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('Business email send result:', busRes)
-          }
-        }
-      } catch (emailError) {
-        console.error('Failed to send business notification email:', emailError)
-        // Continue processing even if email fails - don't block the quote submission
-      }
+    const [businessResult, customerResult] = await Promise.all([
+      resend.emails.send(
+        {
+          from: EMAIL_CONFIG.from,
+          to: EMAIL_CONFIG.to,
+          replyTo,
+          subject: `[${reference}] New quote: ${data.name}`,
+          html: businessEmail(data, reference, attachments.length),
+          headers: commonHeaders,
+          tags,
+          ...(attachments.length > 0 ? { attachments } : {}),
+        },
+        { idempotencyKey: `quote-business/${data.submissionId}` }
+      ),
+      resend.emails.send(
+        {
+          from: EMAIL_CONFIG.from,
+          to: data.email,
+          replyTo,
+          subject: `[${reference}] Request received`,
+          html: customerEmail(data, reference),
+          headers: commonHeaders,
+          tags,
+        },
+        { idempotencyKey: `quote-customer/${data.submissionId}` }
+      ),
+    ])
+
+    if (businessResult.error || !businessResult.data?.id) {
+      return Response.json(
+        {
+          ok: false,
+          error: 'We could not deliver the request. Please call or text us instead.',
+        },
+        { status: 502 }
+      )
     }
 
-    const sendCustomerEmail = async () => {
-      try {
-        if (!resend) {
-          if (process.env.NODE_ENV !== 'production') {
-            console.warn('RESEND_API_KEY not configured - skipping customer confirmation email')
-          }
-        } else {
-          const custRes = await resend.emails.send({
-            from: EMAIL_CONFIG.customerFrom,
-            to: parsed.data.email,
-            subject: 'Your Quote Request - US Junk Removal & Cleaning',
-            html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #16a34a;">Thank You for Your Quote Request!</h2>
-            <p>Hi ${parsed.data.name},</p>
-            <p>We've received your quote request and will get back to you within 2 hours with a detailed estimate.</p>
-
-            <h3 style="color: #333; margin-top: 30px;">Your Quote Details:</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Name:</td>
-                <td style="padding: 10px 0;">${parsed.data.name}</td>
-              </tr>
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Phone:</td>
-                <td style="padding: 10px 0;">${parsed.data.phone}</td>
-              </tr>
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Email:</td>
-                <td style="padding: 10px 0;">${parsed.data.email}</td>
-              </tr>
-              ${
-                parsed.data.address
-                  ? `
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Property Address:</td>
-                <td style="padding: 10px 0;">${parsed.data.address}</td>
-              </tr>
-              `
-                  : ''
-              }
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Service Requested:</td>
-                <td style="padding: 10px 0;">${parsed.data.service}</td>
-              </tr>
-              ${
-                parsed.data.projectSize
-                  ? `
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold;">Project Size:</td>
-                <td style="padding: 10px 0;">${parsed.data.projectSize}</td>
-              </tr>
-              `
-                  : ''
-              }
-              ${
-                parsed.data.details
-                  ? `
-              <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px 0; font-weight: bold; vertical-align: top;">Additional Details:</td>
-                <td style="padding: 10px 0;">${parsed.data.details}</td>
-              </tr>
-              `
-                  : ''
-              }
-            </table>
-
-            <div style="margin-top: 30px; padding: 20px; background-color: #f0fdf4; border-left: 4px solid #16a34a;">
-              <h3 style="margin-top: 0; color: #16a34a;">What Happens Next?</h3>
-              <ul style="margin: 10px 0;">
-                <li>We'll review your request carefully</li>
-                <li>You'll receive a detailed quote within 2 hours</li>
-                <li>Our team will answer any questions you have</li>
-              </ul>
-            </div>
-
-            <div style="margin-top: 30px; padding: 20px; background-color: #f9fafb; text-align: center;">
-              <p style="margin: 0;"><strong>Need immediate assistance?</strong></p>
-              <p style="margin: 10px 0; font-size: 18px; color: #16a34a;">Call or text: (812) 401-9022</p>
-            </div>
-
-            <p style="margin-top: 30px; color: #666; font-size: 14px;">
-              Thank you for choosing US Junk Removal & Cleaning. We look forward to serving you!
-            </p>
-          </div>
-        `,
-          })
-          if (process.env.NODE_ENV !== 'production') {
-            console.log('Customer email send result:', custRes)
-          }
-        }
-      } catch (emailError) {
-        console.error('Failed to send customer confirmation email:', emailError)
-        // Continue processing even if email fails - don't block the quote submission
-      }
-    }
-
-    // Execute email sending in background
-    after(() => Promise.allSettled([sendBusinessEmail(), sendCustomerEmail()]))
-
-    // Avoid logging PII in production
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('New quote request:', parsed.data)
-    }
-
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
+    return Response.json({
+      ok: true,
+      reference,
+      replyTo,
+      confirmationSent: Boolean(customerResult.data?.id && !customerResult.error),
     })
-  } catch (err) {
-    console.error('Quote API error:', err)
-    return new Response(JSON.stringify({ ok: false, error: 'Internal Server Error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    })
+  } catch {
+    return Response.json(
+      {
+        ok: false,
+        error: 'Something went wrong. Please try again or call us.',
+      },
+      { status: 500 }
+    )
   }
 }
