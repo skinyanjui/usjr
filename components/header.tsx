@@ -50,7 +50,7 @@ export function Header() {
   const handleDropdownLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null)
-    }, 150)
+    }, 350)
   }
 
   useEffect(() => {
@@ -60,7 +60,10 @@ export function Header() {
       }
     }
     window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [])
 
   const closeMobileMenuAndSections = () => {
