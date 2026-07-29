@@ -1,258 +1,128 @@
-import type { Metadata } from 'next'
-import { Truck, Recycle, Home, Building2, Trash2, Wrench, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-
-import { PageHero } from '@/components/ui/page-hero'
-import { buildCanonicalMetadata } from '@/components/canonical'
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "../components/site-chrome";
+import {
+  genericSmsHref,
+  phoneDisplay,
+  phoneHref,
+  services,
+  siteUrl,
+} from "../site-data";
 
 export const metadata: Metadata = {
-  title: 'Professional Junk Removal & Cleaning Services | Uncle Sam Junk Removal',
+  title: "Junk & Furniture Removal Services",
   description:
-    'Junk removal, light demolition & cleaning in Evansville, IN. Eco-friendly disposal, free estimates. Serving Southern Indiana.',
-  keywords:
-    'junk removal services, light demolition, cleaning services, Evansville Indiana, Southern Indiana, waste management, eco-friendly disposal',
-  ...buildCanonicalMetadata('/services', baseUrl),
-}
+    `Explore ${services.length} local services for junk, furniture, cleanouts, appliances, debris, cleaning, and light demolition in the Evansville Tri-State.`,
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Removal and Cleanout Services | Uncle Sam Junk Removal",
+    description:
+      "One friendly local crew for furniture, household junk, estates, rentals, offices, appliances, debris, and light demolition.",
+    url: `${siteUrl}/services`,
+  },
+};
 
 export default function ServicesPage() {
-  const junkRemovalServices = [
-    {
-      title: 'General Junk Removal',
-      description: 'Complete household and office junk removal with eco-friendly disposal',
-      price: 'From $89',
-      link: '/services/junk-removal',
-      icon: Truck,
-    },
-    {
-      title: 'Hot Tub Removal',
-      description: 'Professional hot tub dismantling and removal service',
-      price: 'From $389',
-      link: '/services/hot-tub-removal',
-      icon: Home,
-    },
-    {
-      title: 'Appliance Removal',
-      description: 'Safe removal and recycling of old appliances',
-      price: 'From $89',
-      link: '/services/appliance-removal',
-      icon: Wrench,
-    },
-    {
-      title: 'Garage Cleanouts',
-      description: 'Complete garage cleaning and organization service',
-      price: 'From $199',
-      link: '/services/garage-cleanout',
-      icon: Building2,
-    },
-    {
-      title: 'Estate Cleanouts',
-      description: 'Compassionate and thorough estate cleanout services',
-      price: 'From $399',
-      link: '/services/estate-cleanouts',
-      icon: Home,
-    },
-    {
-      title: 'Mattress Removal',
-      description: 'Eco-friendly mattress disposal and recycling',
-      price: 'From $89',
-      link: '/services/mattress-removal',
-      icon: Trash2,
-    },
-  ]
-
-  const projectServices = [
-    {
-      title: 'Light Demolition',
-      description: 'Safe dismantling for sheds, decks, and small structures',
-      price: 'From $389',
-      link: '/services/light-demolition',
-      icon: Wrench,
-    },
-    {
-      title: 'Shed Removal',
-      description: 'Complete shed tear-down and debris hauling',
-      price: 'From $289',
-      link: '/services/shed-removal',
-      icon: Building2,
-    },
-    {
-      title: 'Storm Debris Cleanup',
-      description: 'Rapid response for branches, limbs, and exterior debris',
-      price: 'Emergency ready',
-      link: '/services/storm-debris-cleanup',
-      icon: Truck,
-    },
-    {
-      title: 'Yard Waste Removal',
-      description: 'Seasonal yard cleanup and debris removal',
-      price: 'From $149',
-      link: '/services/yard-waste-removal',
-      icon: Recycle,
-    },
-  ]
-
-  const cleaningServices = [
-    {
-      title: 'Residential Cleaning',
-      description: 'Professional home cleaning with natural products',
-      price: 'From $89',
-      link: '/cleaning/residential',
-      icon: Home,
-    },
-    {
-      title: 'Commercial Cleaning',
-      description: 'After-hours business cleaning services',
-      price: 'From $149',
-      link: '/cleaning/commercial',
-      icon: Building2,
-    },
-    {
-      title: 'Deep Cleaning',
-      description: 'Comprehensive deep cleaning for homes and offices',
-      price: 'From $199',
-      link: '/cleaning/deep-clean',
-      icon: Recycle,
-    },
-  ]
-
-  const serviceAreas = [
-    { name: 'Evansville', href: '/locations/evansville' },
-    { name: 'Newburgh', href: '/locations/newburgh' },
-    { name: 'Henderson, KY', href: '/locations/henderson-ky' },
-    { name: 'Owensboro, KY', href: '/locations/owensboro-ky' },
-    { name: 'Boonville', href: '/locations/boonville' },
-    { name: 'Princeton', href: '/locations/princeton' },
-  ]
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Uncle Sam Junk Removal services",
+    itemListElement: services.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: service.name,
+      url: `${siteUrl}/services/${service.slug}`,
+    })),
+  };
 
   return (
-    <div className="min-h-screen">
-      <PageHero
-        title="Professional Services"
-        description="Comprehensive junk removal, light demolition, and cleaning services for Southern Indiana"
-        eyebrow="What We Do"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <SiteHeader />
 
-      {/* Junk Removal Services */}
-      <section className="border-border border-b py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-10">
-            <h2 className="text-foreground text-2xl font-bold">Junk Removal Services</h2>
-            <p className="text-muted-foreground">
-              Professional removal services for homes and businesses
-            </p>
+      <main id="main-content">
+        <section className="interior-hero">
+          <div className="shell interior-hero__grid">
+            <div>
+              <nav className="breadcrumbs" aria-label="Breadcrumb">
+                <Link href="/">Home</Link>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">Services</span>
+              </nav>
+              <p className="eyebrow">{services.length} ways we can help</p>
+              <h1>Removal, cleanout, and cleaning services.</h1>
+              <p>
+                Pick the option that sounds closest to your project. If you’re
+                not sure, send a few photos and we’ll help you choose before
+                sharing an upfront quote.
+              </p>
+            </div>
+            <div className="interior-hero__actions">
+              <a className="button" href={genericSmsHref}>
+                Text photos for a quote
+              </a>
+              <a className="button button--ghost" href={`tel:${phoneHref}`}>
+                Call {phoneDisplay}
+              </a>
+            </div>
           </div>
+        </section>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {junkRemovalServices.map((service, index) => (
-              <Link
-                key={index}
-                href={service.link}
-                className="group border-border bg-card hover:border-foreground/20 relative overflow-hidden rounded-xl border p-6 transition-all hover:shadow-sm"
-              >
-                <div className="mb-4 flex items-start justify-between">
-                  <div className="bg-muted text-foreground flex h-12 w-12 items-center justify-center rounded-lg">
-                    <service.icon className="h-6 w-6" />
+        <section className="section section--directory">
+          <div className="shell">
+            <div className="service-index-grid">
+              {services.map((service, index) => (
+                <Link
+                  className={`service-index-card ${
+                    service.popular ? "service-index-card--popular" : ""
+                  }`}
+                  href={`/services/${service.slug}`}
+                  key={service.slug}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    {service.popular && (
+                      <small className="popular-label">Popular service</small>
+                    )}
+                    <h2>{service.name}</h2>
+                    <p>{service.summary}</p>
                   </div>
-                  <span className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs font-medium">
-                    {service.price}
-                  </span>
-                </div>
-                <h3 className="text-foreground group-hover:text-primary mb-2 text-lg font-bold transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
-                <div className="text-foreground flex items-center text-sm font-medium transition-all group-hover:gap-2">
-                  View Details <ArrowRight className="ml-1 h-4 w-4" />
-                </div>
+                  <strong aria-hidden="true">View service</strong>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section compact-explainer">
+          <div className="shell compact-explainer__grid">
+            <div>
+              <p className="eyebrow">Not sure which service fits?</p>
+              <h2>Send the photos. We’ll sort out the category.</h2>
+            </div>
+            <div>
+              <p>
+                A short description, a few photos, and your city are usually
+                enough to start. We’ll let you know what we can take, whether
+                anything needs special handling, and which route may work.
+              </p>
+              <Link className="inline-link" href="/#quote">
+                Start a quote request
               </Link>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Project Services */}
-      <section className="border-border bg-muted/30 border-b py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-10">
-            <h2 className="text-foreground text-2xl font-bold">Project Services</h2>
-            <p className="text-muted-foreground">
-              Demolition, debris removal, and seasonal cleanup support
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {projectServices.map((service, index) => (
-              <Link
-                key={index}
-                href={service.link}
-                className="group border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:shadow-sm"
-              >
-                <div className="bg-muted text-foreground mb-4 flex h-10 w-10 items-center justify-center rounded-lg">
-                  <service.icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-foreground mb-2 font-bold">{service.title}</h3>
-                <p className="text-muted-foreground mb-3 text-sm">{service.description}</p>
-                <p className="text-foreground/80 text-xs font-medium">{service.price}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cleaning Services */}
-      <section className="border-border border-b py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-10">
-            <h2 className="text-foreground text-2xl font-bold">Cleaning Services</h2>
-            <p className="text-muted-foreground">Eco-friendly cleaning with natural products</p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {cleaningServices.map((service, index) => (
-              <Link
-                key={index}
-                href={service.link}
-                className="group border-border bg-card hover:border-foreground/20 rounded-xl border p-6 transition-all hover:shadow-sm"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                  <service.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-foreground mb-2 text-lg font-bold">{service.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
-                <div className="text-foreground flex items-center text-sm font-medium">
-                  View Details
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Service Areas */}
-      <section className="border-border bg-muted/30 border-b py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-10 text-center">
-            <h2 className="text-foreground text-2xl font-bold">Service Areas</h2>
-            <p className="text-muted-foreground">
-              Proudly serving Southern Indiana and Western Kentucky
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-            {serviceAreas.map((location, index) => (
-              <Link
-                key={index}
-                href={location.href}
-                className="border-border bg-card text-foreground hover:bg-muted hover:text-primary flex items-center justify-center rounded-xl border p-4 text-center text-sm font-medium transition-colors"
-              >
-                {location.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  )
+      <SiteFooter />
+    </>
+  );
 }

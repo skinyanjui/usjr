@@ -1,34 +1,99 @@
-import { HeroSection } from '@/components/hero-section'
-import { HomeServiceCards } from '@/components/home-service-cards'
-import { ReviewsRow } from '@/components/reviews-row'
-import { HomeBlogSection } from '@/components/home-blog-section'
-import { StructuredData } from '@/components/structured-data'
-import type { Metadata } from 'next'
-import { buildCanonicalMetadata } from '@/components/canonical'
-import { getActiveTestimonials } from '@/lib/cms-content'
+import {
+  CommercialSection,
+  FaqSection,
+  FinalCtaSection,
+  HeroSection,
+  PopularServicesSection,
+  PricingSection,
+  ProcessSection,
+  ServiceAreasSection,
+} from "./components/home-sections";
+import { QuoteSection } from "./components/quote-section";
+import { SiteFooter, SiteHeader } from "./components/site-chrome";
+import { homeFaqs } from "./home-data";
+import {
+  emailAddress,
+  locations,
+  phoneHref,
+  services,
+  siteUrl,
+} from "./site-data";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://unclesamjunkremoval.com'
-
-export const metadata: Metadata = {
-  ...buildCanonicalMetadata('/', baseUrl),
-}
-
-export default function HomePage() {
-  const reviews = getActiveTestimonials(12)
+export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    name: "Uncle Sam Junk Removal",
+    url: siteUrl,
+    telephone: phoneHref,
+    email: emailAddress,
+    description:
+      "Veteran-owned junk and furniture removal, cleaning, property cleanouts, appliance hauling, debris cleanup, and light demolition serving Evansville and the Tri-State.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Evansville",
+      addressRegion: "IN",
+      addressCountry: "US",
+    },
+    areaServed: locations.map((location) => ({
+      "@type": "City",
+      name: location.name,
+    })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Removal, cleanout, cleaning, and light demolition services",
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.name,
+          url: `${siteUrl}/services/${service.slug}`,
+        },
+      })),
+    },
+    priceRange: "$$",
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: homeFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
-    <main className="min-h-screen">
-      <HeroSection />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([localBusinessSchema, faqSchema]),
+        }}
+      />
 
-      <HomeServiceCards />
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
 
-      {/* Reviews summary moved to ReviewsRow */}
+      <SiteHeader />
 
-      <HomeBlogSection />
+      <main id="main-content">
+        <HeroSection />
+        <PopularServicesSection />
+        <QuoteSection />
+        <ProcessSection />
+        <PricingSection />
+        <ServiceAreasSection />
+        <CommercialSection />
+        <FaqSection />
+        <FinalCtaSection />
+      </main>
 
-      <ReviewsRow reviews={reviews} />
-
-      <StructuredData type="LocalBusiness" />
-    </main>
-  )
+      <SiteFooter />
+    </>
+  );
 }
