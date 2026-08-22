@@ -42,7 +42,10 @@ async function json(response: Response) {
 }
 
 export async function GET() {
-  if (process.env.VERCEL_ENV === "production") {
+  if (
+    process.env.NODE_ENV === "production" &&
+    process.env.VERCEL_ENV !== "preview"
+  ) {
     return new Response("Not Found", { status: 404 });
   }
 
