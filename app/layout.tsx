@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { RouteScrollManager } from "./components/route-scroll-manager";
 import { WebMcpTools } from "./components/webmcp-tools";
+import { WebMcpAdvancedTools } from "./components/webmcp-advanced-tools";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -82,6 +83,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
         <WebMcpTools />
+        <WebMcpAdvancedTools />
         <RouteScrollManager />
         {children}
       </body>
