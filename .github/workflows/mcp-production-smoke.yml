@@ -1,9 +1,9 @@
 name: MCP production smoke
 
 on:
-  push:
+  pull_request:
     branches:
-      - test/mcp-production-smoke
+      - main
   workflow_dispatch:
 
 permissions:
@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   production-smoke:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'test/mcp-production-smoke'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
