@@ -1,29 +1,11 @@
-export const pricingTiers = [
-  {
-    label: "Single item",
-    description: "1–2 bulky items",
-    range: "$89–149",
-    fillClass: "load-visual--single",
-  },
-  {
-    label: "¼ load",
-    description: "Small room cleanout",
-    range: "$179–249",
-    fillClass: "load-visual--quarter",
-  },
-  {
-    label: "½ load",
-    description: "Large room or garage",
-    range: "$289–389",
-    fillClass: "load-visual--half",
-  },
-  {
-    label: "Full load",
-    description: "Home or office cleanout",
-    range: "$489–649",
-    fillClass: "load-visual--full",
-  },
-];
+import { formatPriceRange, PUBLIC_PRICING } from "./pricing-data";
+
+export const pricingTiers = PUBLIC_PRICING.map((tier) => ({
+  label: tier.label,
+  description: tier.description,
+  range: formatPriceRange(tier.low, tier.high),
+  fillClass: tier.fillClass,
+}));
 
 export const popularServiceSlugs = [
   "junk-removal",
