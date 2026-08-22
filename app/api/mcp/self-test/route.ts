@@ -1,4 +1,4 @@
-import { handleMcpPost } from "../../../../lib/mcp-server";
+import { handleCompatibleMcpPost } from "../../../../lib/mcp-request-compat";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -52,7 +52,7 @@ export async function GET() {
   const checks: Check[] = [];
 
   const discover = await json(
-    await handleMcpPost(modernRequest("server/discover")),
+    await handleCompatibleMcpPost(modernRequest("server/discover")),
   );
   checks.push({
     name: "modern discovery",
@@ -64,7 +64,9 @@ export async function GET() {
         "uncle-sam-junk-removal",
   });
 
-  const listed = await json(await handleMcpPost(modernRequest("tools/list")));
+  const listed = await json(
+    await handleCompatibleMcpPost(modernRequest("tools/list")),
+  );
   checks.push({
     name: "six read-only tools",
     pass:
@@ -78,7 +80,7 @@ export async function GET() {
   });
 
   const covered = await json(
-    await handleMcpPost(
+    await handleCompatibleMcpPost(
       modernRequest(
         "tools/call",
         { name: "checkServiceArea", arguments: { location: "47715" } },
@@ -94,7 +96,7 @@ export async function GET() {
   });
 
   const unknown = await json(
-    await handleMcpPost(
+    await handleCompatibleMcpPost(
       modernRequest(
         "tools/call",
         { name: "checkServiceArea", arguments: { location: "99999" } },
@@ -108,7 +110,7 @@ export async function GET() {
   });
 
   const quoteLink = await json(
-    await handleMcpPost(
+    await handleCompatibleMcpPost(
       modernRequest(
         "tools/call",
         {
@@ -140,7 +142,7 @@ export async function GET() {
   const mismatchHeaders = new Headers(mismatchRequest.headers);
   mismatchHeaders.set("Mcp-Name", "listServices");
   const mismatch = await json(
-    await handleMcpPost(
+    await handleCompatibleMcpPost(
       new Request(mismatchRequest.url, {
         method: "POST",
         headers: mismatchHeaders,
@@ -153,8 +155,50 @@ export async function GET() {
     pass: mismatch.error?.code === -32020,
   });
 
+  const versionMismatchRequest = modernRequest("tools/list");
+  const versionMismatchHeaders = new Headers(versionMismatchRequest.headers);
+  versionMismatchHeaders.set("MCP-Protocol-Version", "2025-11-25");
+  const versionMismatch = await json(
+    await handleCompatibleMcpPost(
+      new Request(versionMismatchRequest.url, {
+        method: "POST",
+        headers: versionMismatchHeaders,
+        body: await versionMismatchRequest.text(),
+      }),
+    ),
+  );
+  checks.push({
+    name: "protocol header/meta mismatch rejected",
+    pass: versionMismatch.error?.code === -32020,
+  });
+
+  const unsupported = await json(
+    await handleCompatibleMcpPost(
+      new Request("https://unclesamjunkremoval.com/api/mcp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "MCP-Protocol-Version": "2099-01-01",
+          "Mcp-Method": "tools/list",
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "tools/list",
+          params: {},
+        }),
+      }),
+    ),
+  );
+  checks.push({
+    name: "unsupported protocol reports requested version",
+    pass:
+      unsupported.error?.code === -32022 &&
+      unsupported.error?.data?.requested === "2099-01-01",
+  });
+
   const legacy = await json(
-    await handleMcpPost(
+    await handleCompatibleMcpPost(
       new Request("https://unclesamjunkremoval.com/api/mcp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
