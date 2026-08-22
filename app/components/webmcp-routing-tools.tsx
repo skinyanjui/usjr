@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { locations, services } from "../site-data";
+import {
+  matchAgentArea,
+  matchAgentService,
+  quantityForLoadSize,
+} from "../agent-catalog";
 import { WEBMCP_QUOTE_DRAFT_EVENT } from "./webmcp-tools";
 
 type ToolExecuteOptions = { signal: AbortSignal };
@@ -25,96 +29,13 @@ type ModelContext = {
 
 const BUSINESS_TIME_ZONE = "America/Chicago";
 
-const LOCATION_ALIASES: Record<string, string[]> = {
-  "mount-carmel-il": ["mt carmel"],
-  "mount-vernon-in": ["mt vernon"],
-};
-
-// Operational hints only. Keep in sync with the core service-area tool until
-// these are moved into a shared routing data source.
-const ZIP_HINTS: Record<string, string[]> = {
-  "evansville-in": [
-    "47708",
-    "47710",
-    "47711",
-    "47712",
-    "47713",
-    "47714",
-    "47715",
-    "47716",
-    "47720",
-    "47725",
-  ],
-  "newburgh-in": ["47629", "47630"],
-  "henderson-ky": ["42419", "42420"],
-  "owensboro-ky": ["42301", "42303"],
-  "boonville-in": ["47601"],
-  "princeton-in": ["47670"],
-  "mount-carmel-il": ["62863"],
-  "mount-vernon-in": ["47620"],
-  "new-harmony-in": ["47631"],
-};
-
-const LOAD_LABELS: Record<string, string> = {
-  single_item: "Single item",
-  quarter_load: "¼ trailer load",
-  half_load: "½ trailer load",
-  three_quarter_load: "¾ trailer load",
-  full_load: "Full trailer load",
-  unsure: "Not sure",
-};
-
 function getModelContext(): ModelContext | undefined {
   return (document as Document & { modelContext?: ModelContext }).modelContext;
 }
 
-const norm = (value: unknown) =>
-  String(value || "")
-    .toLowerCase()
-    .replace(/[.,]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
 function asString(input: Record<string, unknown>, key: string, max = 500) {
   const value = input[key];
   return typeof value === "string" ? value.trim().slice(0, max) : "";
-}
-
-function matchLocation(input: unknown) {
-  const query = norm(input);
-  if (!query) return null;
-
-  const zip = query.match(/\b(\d{5})\b/)?.[1];
-  if (zip) {
-    const byZip = locations.find((location) =>
-      (ZIP_HINTS[location.slug] || []).includes(zip),
-    );
-    if (byZip) return byZip;
-  }
-
-  return (
-    locations.find((location) => query.includes(norm(location.city))) ||
-    locations.find((location) =>
-      (LOCATION_ALIASES[location.slug] || []).some((alias) =>
-        query.includes(norm(alias)),
-      ),
-    ) ||
-    null
-  );
-}
-
-function matchService(input: unknown) {
-  const query = norm(input);
-  if (!query) return null;
-  return (
-    services.find((service) => service.slug === query) ||
-    services.find((service) => norm(service.name) === query) ||
-    services.find(
-      (service) =>
-        norm(service.name).includes(query) || query.includes(norm(service.name)),
-    ) ||
-    null
-  );
 }
 
 function businessDateString(date = new Date()) {
@@ -164,7 +85,11 @@ function resourcePlan(
     crewMax = 3;
     reasons.push("larger load size");
   }
-  if (["shed-removal", "hot-tub-removal", "light-demolition"].includes(serviceSlug)) {
+  if (
+    ["shed-removal", "hot-tub-removal", "light-demolition"].includes(
+      serviceSlug,
+    )
+  ) {
     crewMax = Math.max(crewMax, 3);
     reasons.push("dismantling / demolition scope");
   }
@@ -240,8 +165,8 @@ function makeTools(): WebMcpTool[] {
       },
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
-        const location = matchLocation(asString(input, "location", 160));
-        const service = matchService(asString(input, "service", 120));
+        const location = matchAgentArea(asString(input, "location", 160));
+        const service = matchAgentService(asString(input, "service", 120));
         if (!service) {
           return {
             status: "needs_service_resolution",
@@ -335,11 +260,11 @@ function makeTools(): WebMcpTool[] {
       },
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
-        const service = matchService(asString(input, "service", 120));
+        const service = matchAgentService(asString(input, "service", 120));
         if (!service) return { status: "unknown_service" };
         return {
           service: service.name,
-          loadSize: LOAD_LABELS[asString(input, "loadSize", 40)] || "Not sure",
+          loadSize: quantityForLoadSize(asString(input, "loadSize", 40)),
           ...resourcePlan(
             asString(input, "loadSize", 40),
             service.slug,
@@ -384,7 +309,7 @@ function makeTools(): WebMcpTool[] {
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute: async (input, { signal }) => {
         if (signal.aborted) throw signal.reason;
-        const service = matchService(asString(input, "service", 120));
+        const service = matchAgentService(asString(input, "service", 120));
         if (!service) {
           return {
             prepared: false,
@@ -404,7 +329,7 @@ function makeTools(): WebMcpTool[] {
           };
         }
 
-        const location = matchLocation(asString(input, "location", 160));
+        const location = matchAgentArea(asString(input, "location", 160));
         const resources = resourcePlan(
           asString(input, "loadSize", 40),
           service.slug,
@@ -435,7 +360,7 @@ function makeTools(): WebMcpTool[] {
           service: service.quoteValue,
           urgency: "choose-date",
           preferredDate: requestedDate,
-          quantity: LOAD_LABELS[asString(input, "loadSize", 40)] || "Not sure",
+          quantity: quantityForLoadSize(asString(input, "loadSize", 40)),
           notes: [
             `Requested pickup date: ${requestedDate}.`,
             routingNote,
