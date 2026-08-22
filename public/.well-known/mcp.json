@@ -1,0 +1,52 @@
+{
+  "name": "uncle-sam-junk-removal",
+  "title": "Uncle Sam Junk Removal",
+  "description": "Read-only service discovery, service-area checks, planning prices, hauling policy, business information, and customer-review quote links for Uncle Sam Junk Removal in the Evansville Tri-State.",
+  "version": "1.0.0",
+  "endpoint": "https://unclesamjunkremoval.com/api/mcp",
+  "transport": "streamable-http",
+  "protocolVersions": [
+    "2026-07-28",
+    "2025-11-25",
+    "2025-06-18",
+    "2025-03-26"
+  ],
+  "authentication": "none",
+  "readOnly": true,
+  "note": "Informational discovery metadata. The authoritative runtime discovery mechanism is the MCP server/discover RPC at the endpoint above.",
+  "tools": [
+    {
+      "name": "listServices",
+      "description": "List services and match a plain-language junk-removal job description."
+    },
+    {
+      "name": "checkServiceArea",
+      "description": "Check a city, ZIP code, or address against listed service communities without rejecting unknown nearby leads."
+    },
+    {
+      "name": "estimatePrice",
+      "description": "Return current public planning price ranges; never a binding quote."
+    },
+    {
+      "name": "getHaulingPolicy",
+      "description": "Check special handling, assessment, advance-notice, and exclusion rules for unusual items and materials."
+    },
+    {
+      "name": "getBusinessInfo",
+      "description": "Return public business, contact, region, service promises, and pricing-approach information."
+    },
+    {
+      "name": "getQuoteLink",
+      "description": "Create a customer-review link to the quote form; never submits, consents, reserves, or books anything."
+    }
+  ],
+  "webmcp": {
+    "available": true,
+    "api": "document.modelContext",
+    "note": "Additional browser-local tools are registered in supported browsers when the customer has the site open."
+  },
+  "contact": {
+    "phone": "(812) 610-1657",
+    "email": "unclesamjunkremoval@gmail.com"
+  }
+}
