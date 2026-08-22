@@ -6,6 +6,7 @@ import {
   services,
   siteUrl,
 } from "./site-data";
+import { PUBLIC_PRICING } from "./pricing-data";
 
 export const BUSINESS = {
   name: "Uncle Sam Junk Removal",
@@ -26,43 +27,7 @@ export const BUSINESS = {
   ],
 } as const;
 
-export const PRICING = [
-  {
-    size: "single_item",
-    label: "Single item / a few items",
-    describes: "One or a few bulky items",
-    low: 75,
-    high: 150,
-  },
-  {
-    size: "quarter_load",
-    label: "¼ trailer load",
-    describes: "Small room or partial cleanout",
-    low: 200,
-    high: 300,
-  },
-  {
-    size: "half_load",
-    label: "½ trailer load",
-    describes: "Large room or garage cleanout",
-    low: 350,
-    high: 450,
-  },
-  {
-    size: "three_quarter_load",
-    label: "¾ trailer load",
-    describes: "Large multi-room cleanout",
-    low: 425,
-    high: 550,
-  },
-  {
-    size: "full_load",
-    label: "Full trailer load",
-    describes: "Large home, office, or property cleanout",
-    low: 500,
-    high: 650,
-  },
-] as const;
+export const PRICING = PUBLIC_PRICING;
 
 export const PRICE_INCLUDES = [
   "Labor and heavy lifting",
