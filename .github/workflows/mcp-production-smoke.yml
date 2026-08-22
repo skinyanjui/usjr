@@ -33,7 +33,30 @@ jobs:
         run: |
           set -euo pipefail
 
-          quote_args='{"name":"MCP Production Smoke Test","phone":"(812) 610-1657","email":"unclesamjunkremoval@gmail.com","address":"Evansville, IN 47715","items":["old couch"],"service":"Furniture Removal","timing":"flexible","loadSize":"single_item","placement":"indoor","access":[],"heavyMaterials":false,"dismantling":false,"preferredContact":"email","notes":"AUTOMATED PRODUCTION MCP SMOKE TEST — DO NOT SCHEDULE OR DISPATCH."}'
+          smoke_nonce="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          smoke_note="AUTOMATED PRODUCTION MCP SMOKE TEST — DO NOT SCHEDULE OR DISPATCH. Smoke nonce: ${smoke_nonce}."
+          quote_args=$(jq -nc \
+            --arg notes "$smoke_note" \
+            '{
+              name:"MCP Production Smoke Test",
+              phone:"(812) 610-1657",
+              email:"unclesamjunkremoval@gmail.com",
+              address:"Evansville, IN 47715",
+              items:["old couch"],
+              service:"Furniture Removal",
+              timing:"flexible",
+              loadSize:"single_item",
+              placement:"indoor",
+              access:[],
+              heavyMaterials:false,
+              dismantling:false,
+              preferredContact:"email",
+              notes:$notes
+            }')
+
+          # Validate the generated payload before any request leaves the runner.
+          jq -e --arg nonce "$smoke_nonce" \
+            '.notes | contains($nonce)' <<<"$quote_args" >/dev/null
 
           rpc() {
             local id="$1"
@@ -42,6 +65,9 @@ jobs:
             local arguments='{}'
             local body
 
+            # Do not use `${4:-{}}`: Bash parses the closing brace ambiguously and
+            # can append a literal `}` to supplied JSON. Assign the fourth
+            # argument explicitly instead.
             if [[ $# -ge 4 ]]; then
               arguments="$4"
             fi
@@ -83,7 +109,7 @@ jobs:
           jq -e '.result.tools | any(.name == "prepareQuoteRequest")' <<<"$tools_response" >/dev/null
           jq -e '.result.tools | any(.name == "submitQuoteRequest" and .annotations.readOnlyHint == false)' <<<"$tools_response" >/dev/null
 
-          echo '2. Preparing test quote without side effects...'
+          echo '2. Preparing unique test quote without side effects...'
           prepare_response=$(rpc 2 tools/call prepareQuoteRequest "$quote_args")
           jq -e '.result.structuredContent.readyToSubmit == true' <<<"$prepare_response" >/dev/null
           jq -e '.result.structuredContent.submitted == false' <<<"$prepare_response" >/dev/null
@@ -104,10 +130,11 @@ jobs:
             echo 'PR validation mode: live submit intentionally skipped.'
             echo 'reference=not-submitted' >> "$GITHUB_OUTPUT"
             echo 'mode=guard-only' >> "$GITHUB_OUTPUT"
+            echo "smoke_nonce=$smoke_nonce" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          echo '4. Submitting one explicitly confirmed production smoke-test lead...'
+          echo "4. Submitting fresh production smoke-test lead for nonce $smoke_nonce..."
           submit_args=$(jq -c \
             --arg confirmation "$confirmation_id" \
             '. + {confirmationId:$confirmation,confirmedByCustomer:true,consentToContact:true}' \
@@ -117,9 +144,10 @@ jobs:
           reference=$(jq -r '.result.structuredContent.reference' <<<"$submit_response")
           [[ "$reference" == USJR-* ]]
 
-          echo "Production MCP smoke test passed with reference: $reference"
+          echo "Production MCP smoke test passed with fresh reference: $reference"
           echo "reference=$reference" >> "$GITHUB_OUTPUT"
           echo 'mode=live-submit' >> "$GITHUB_OUTPUT"
+          echo "smoke_nonce=$smoke_nonce" >> "$GITHUB_OUTPUT"
 
           {
             echo '### Production MCP smoke test passed'
@@ -129,6 +157,8 @@ jobs:
             echo '- Unconfirmed write guard: passed'
             echo '- `submitQuoteRequest`: passed'
             echo "- Quote reference: \`$reference\`"
+            echo "- Unique smoke nonce: \`$smoke_nonce\`"
+            echo '- This run used a unique quote payload, so the successful submit verifies a fresh production delivery rather than an idempotent replay.'
             echo '- Test lead was sent only to the business contact and is labeled DO NOT SCHEDULE OR DISPATCH.'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -140,10 +170,11 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
           REFERENCE: ${{ steps.smoke.outputs.reference }}
+          SMOKE_NONCE: ${{ steps.smoke.outputs.smoke_nonce }}
         run: |
           set -euo pipefail
           if [[ "$SMOKE_OUTCOME" == "success" ]]; then
-            body=$(printf '✅ **Production MCP smoke test passed.**\n\n- `tools/list`: passed\n- `prepareQuoteRequest`: passed\n- unconfirmed write guard: passed\n- `submitQuoteRequest`: passed\n- quote reference: `%s`\n\nThe test lead is labeled **DO NOT SCHEDULE OR DISPATCH**.' "$REFERENCE")
+            body=$(printf '✅ **Production MCP smoke test passed.**\n\n- `tools/list`: passed\n- `prepareQuoteRequest`: passed\n- unconfirmed write guard: passed\n- `submitQuoteRequest`: passed\n- quote reference: `%s`\n- unique smoke nonce: `%s`\n\nThis run used a fresh payload, so it verified a new production delivery rather than replaying a prior idempotent submission. The test lead is labeled **DO NOT SCHEDULE OR DISPATCH**.' "$REFERENCE" "$SMOKE_NONCE")
           else
             body=$(printf '❌ **Production MCP smoke test failed.**\n\nInspect the Actions run: https://github.com/%s/actions/runs/%s' "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
           fi
