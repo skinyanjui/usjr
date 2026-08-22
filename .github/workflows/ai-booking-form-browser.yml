@@ -4,20 +4,22 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   browser-smoke:
-    if: github.head_ref == 'test/ai-booking-form-browser'
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'test/ai-booking-form-browser'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Exercise WebMCP booking preparation and submit the visible website form
+      - name: Exercise WebMCP booking preparation and visible website form
         shell: bash
         env:
           SITE_URL: https://unclesamjunkremoval.com/
+          LIVE_SUBMIT: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           set -euo pipefail
 
@@ -40,6 +42,7 @@ jobs:
           import { chromium } from 'playwright-core';
 
           const siteUrl = process.env.SITE_URL;
+          const liveSubmit = process.env.LIVE_SUBMIT === 'true';
           const smokeNonce = `${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}`;
           const requestedDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
             .toISOString()
@@ -156,14 +159,73 @@ jobs:
             assert.equal(await consent.isChecked(), false, 'AI preparation must not check consent');
             assert.equal(quotePosts.length, 0, 'AI preparation must not submit /api/quote');
 
-            console.log('4. Completing the customer-only portion of the visible form...');
+            const preparedPath = `${process.env.GITHUB_WORKSPACE}/ai-booking-prepared.png`;
+            await page.screenshot({ path: preparedPath, fullPage: true });
+
+            if (!liveSubmit) {
+              console.log('PR guard mode passed; customer consent and live submission intentionally skipped.');
+              const summary = [
+                '### AI booking browser guard passed',
+                '',
+                `- Registered WebMCP tools: ${registeredTools.join(', ')}`,
+                '- `prepareBookingRequest`: populated the visible form',
+                '- AI preparation left consent unchecked',
+                '- AI preparation made zero `/api/quote` POSTs',
+                '- Live form submission intentionally skipped on PR synchronization',
+                '',
+              ].join('\n');
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+              process.exitCode = 0;
+              return;
+            }
+
+            console.log('4. Verifying the visible quote-form planning range matches MCP...');
+            const mcpPayload = await page.evaluate(async () => {
+              const method = 'tools/call';
+              const name = 'estimatePrice';
+              const response = await fetch('/api/mcp', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'MCP-Protocol-Version': '2026-07-28',
+                  'Mcp-Method': method,
+                  'Mcp-Name': name,
+                },
+                body: JSON.stringify({
+                  jsonrpc: '2.0',
+                  id: 1,
+                  method,
+                  params: {
+                    name,
+                    arguments: { loadSize: 'single_item' },
+                    _meta: {
+                      'io.modelcontextprotocol/protocolVersion': '2026-07-28',
+                      'io.modelcontextprotocol/clientInfo': {
+                        name: 'USJR browser pricing parity smoke',
+                        version: '1.0.0',
+                      },
+                      'io.modelcontextprotocol/clientCapabilities': {},
+                    },
+                  },
+                }),
+              });
+              return await response.json();
+            });
+            const mcpRange = mcpPayload?.result?.structuredContent?.range;
+            assert.equal(typeof mcpRange, 'string', 'MCP single-item range was unavailable');
+            const planningRangeText = (await page.locator('.planning-range span').textContent()) || '';
+            assert.ok(
+              planningRangeText.includes(mcpRange),
+              `Quote-form range ${planningRangeText} did not match MCP range ${mcpRange}`,
+            );
+
+            console.log('5. Completing the customer-only portion of the visible form...');
             await page.getByRole('button', { name: 'Indoor', exact: true }).click();
             await page.getByRole('button', { name: 'Email', exact: true }).click();
             await page.getByLabel('Item type', { exact: true }).fill('Old couch');
             await page.getByLabel('Quantity', { exact: true }).fill('1 piece');
             await page.getByLabel('Floor and stairs', { exact: true }).fill('First floor, no stairs');
 
-            // Ensure the anti-bot elapsed-time check sees a human-like form session.
             await page.waitForTimeout(2_000);
             await consent.check();
             assert.equal(await consent.isChecked(), true);
@@ -171,7 +233,7 @@ jobs:
             const beforePath = `${process.env.GITHUB_WORKSPACE}/ai-booking-before-submit.png`;
             await page.screenshot({ path: beforePath, fullPage: true });
 
-            console.log('5. Clicking the real website form submit button...');
+            console.log('6. Clicking the real website form submit button...');
             await page.getByRole('button', { name: 'Get my free quote', exact: true }).click();
 
             const successHeading = page.locator('.quote-success h3');
@@ -194,6 +256,7 @@ jobs:
             console.log(`AI booking + website form smoke test passed. Reference: ${reference}`);
             console.log(`Requested date: ${requestedDate}`);
             console.log(`Browser nonce: ${smokeNonce}`);
+            console.log(`Canonical planning range: ${mcpRange}`);
 
             const summary = [
               '### AI booking + website form browser smoke passed',
@@ -202,6 +265,7 @@ jobs:
               '- `prepareBookingRequest`: populated the visible form',
               '- AI preparation left consent unchecked',
               '- AI preparation made zero `/api/quote` POSTs',
+              `- Quote-form planning range matched MCP: \`${mcpRange}\``,
               '- Customer step explicitly checked consent',
               '- Browser clicked `Get my free quote`',
               `- Production quote reference: \`${reference}\``,
@@ -222,6 +286,7 @@ jobs:
         with:
           name: ai-booking-form-browser-evidence
           path: |
+            ai-booking-prepared.png
             ai-booking-before-submit.png
             ai-booking-after-submit.png
           if-no-files-found: ignore
