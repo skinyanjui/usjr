@@ -26,3 +26,6 @@ timeout \
   "${vinext}" build
 
 "${script_dir}/validate-artifact.sh"
+
+echo "Verifying website/MCP pricing parity..."
+node --test tests/pricing-source.test.mjs
