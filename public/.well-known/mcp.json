@@ -1,8 +1,8 @@
 {
   "name": "uncle-sam-junk-removal",
   "title": "Uncle Sam Junk Removal",
-  "description": "Read-only service discovery, service-area checks, planning prices, hauling policy, business information, and customer-review quote links for Uncle Sam Junk Removal in the Evansville Tri-State.",
-  "version": "1.0.0",
+  "description": "Service discovery, service-area checks, planning prices, hauling policy, business information, customer-review quote links, and guarded quote-request submission for Uncle Sam Junk Removal in the Evansville Tri-State.",
+  "version": "1.2.0",
   "endpoint": "https://unclesamjunkremoval.com/api/mcp",
   "transport": "streamable-http",
   "protocolVersions": [
@@ -12,8 +12,8 @@
     "2025-03-26"
   ],
   "authentication": "none",
-  "readOnly": true,
-  "note": "Informational discovery metadata. The authoritative runtime discovery mechanism is the MCP server/discover RPC at the endpoint above.",
+  "readOnly": false,
+  "note": "Informational discovery metadata. The authoritative runtime discovery mechanism is the MCP server/discover RPC and tools/list at the endpoint above. submitQuoteRequest is a guarded write action and requires a matching preparation confirmation plus explicit customer confirmation/contact consent.",
   "tools": [
     {
       "name": "listServices",
@@ -37,7 +37,15 @@
     },
     {
       "name": "getQuoteLink",
-      "description": "Create a customer-review link to the quote form; never submits, consents, reserves, or books anything."
+      "description": "Create a customer-review link to the quote form without submitting it."
+    },
+    {
+      "name": "prepareQuoteRequest",
+      "description": "Validate and normalize a quote request without sending it; returns the confirmationId that binds the reviewed payload."
+    },
+    {
+      "name": "submitQuoteRequest",
+      "description": "Submit the exact prepared quote request only after explicit customer confirmation and contact consent. Creates a real lead and sends confirmation emails."
     }
   ],
   "webmcp": {
