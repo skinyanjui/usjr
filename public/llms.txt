@@ -4,22 +4,32 @@
 
 ## For AI agents
 
-This site exposes structured in-browser tools through WebMCP when supported by the browser.
+This site exposes structured tools in two ways:
 
-Available tools:
-- `listServices` — match a customer's plain-language job description to a service.
-- `checkServiceArea` — check listed service communities and ZIP hints. An `unknown` result means confirm coverage; it does not mean unavailable.
-- `estimatePrice` — return planning price ranges only, never a binding quote.
-- `getHaulingPolicy` — check unusual, hazardous, heavy, pressurized, refrigerant-containing, or utility-connected items before promising pickup.
-- `getBusinessInfo` — return business/contact information and pricing approach.
-- `getQuoteLink` — create a prefilled quote-form link for customer review.
+1. **Remote MCP** — read-only Streamable HTTP endpoint at `https://unclesamjunkremoval.com/api/mcp`. Current protocol: MCP `2026-07-28`, with legacy initialize compatibility for `2025-11-25`, `2025-06-18`, and `2025-03-26` clients.
+2. **WebMCP** — additional browser-local tools through `document.modelContext` when the customer has the site open in a supported browser.
+
+Informational discovery metadata is published at `https://unclesamjunkremoval.com/.well-known/mcp.json`. Runtime capability discovery is authoritative through the MCP `server/discover` RPC.
+
+### Remote read-only MCP tools
+
+- `listServices` — list services and match a customer's plain-language job description.
+- `checkServiceArea` — check listed service communities and ZIP hints. `unknown` means confirm coverage; it does not mean unavailable.
+- `estimatePrice` — return public planning price ranges only, never a binding quote.
+- `getHaulingPolicy` — classify unusual, hazardous, heavy, pressurized, refrigerant-containing, utility-connected, or potentially asbestos-containing items.
+- `getBusinessInfo` — return public business/contact information, region, promises, and pricing approach.
+- `getQuoteLink` — create a prefilled quote-form link for customer review. It never submits, consents, reserves, or books anything.
+
+### Additional browser-local WebMCP tools
+
 - `prepareQuoteRequest` — prepare the visible quote form after human approval. It never checks consent and never submits.
 - `planPickupRoute` — classify a listed route community and return planning resources. Travel charges remain manual review.
 - `getPickupRequestWindows` — return requestable dates, not confirmed live availability.
 - `estimateJobResources` — estimate crew/trailer needs for planning only.
 - `prepareBookingRequest` — prepare a requested date after human approval. It does not reserve a slot or confirm a booking.
 
-Agent rules:
+## Agent rules
+
 1. Never submit a quote or booking request on the customer's behalf.
 2. Never check the contact-consent box for the customer.
 3. Never call an unlisted location unavailable; return `unknown` and confirm with the team.
