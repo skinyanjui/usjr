@@ -2,7 +2,7 @@ import { formatPriceRange, PUBLIC_PRICING } from "./pricing-data";
 
 export const pricingTiers = PUBLIC_PRICING.map((tier) => ({
   label: tier.label,
-  description: tier.description,
+  description: tier.describes,
   range: formatPriceRange(tier.low, tier.high),
   fillClass: tier.fillClass,
 }));
