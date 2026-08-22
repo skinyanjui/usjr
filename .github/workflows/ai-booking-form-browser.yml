@@ -175,106 +175,104 @@ jobs:
                 '',
               ].join('\n');
               fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-              process.exitCode = 0;
-              return;
-            }
-
-            console.log('4. Verifying the visible quote-form planning range matches MCP...');
-            const mcpPayload = await page.evaluate(async () => {
-              const method = 'tools/call';
-              const name = 'estimatePrice';
-              const response = await fetch('/api/mcp', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'MCP-Protocol-Version': '2026-07-28',
-                  'Mcp-Method': method,
-                  'Mcp-Name': name,
-                },
-                body: JSON.stringify({
-                  jsonrpc: '2.0',
-                  id: 1,
-                  method,
-                  params: {
-                    name,
-                    arguments: { loadSize: 'single_item' },
-                    _meta: {
-                      'io.modelcontextprotocol/protocolVersion': '2026-07-28',
-                      'io.modelcontextprotocol/clientInfo': {
-                        name: 'USJR browser pricing parity smoke',
-                        version: '1.0.0',
-                      },
-                      'io.modelcontextprotocol/clientCapabilities': {},
-                    },
+            } else {
+              console.log('4. Verifying the visible quote-form planning range matches MCP...');
+              const mcpPayload = await page.evaluate(async () => {
+                const method = 'tools/call';
+                const name = 'estimatePrice';
+                const response = await fetch('/api/mcp', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'MCP-Protocol-Version': '2026-07-28',
+                    'Mcp-Method': method,
+                    'Mcp-Name': name,
                   },
-                }),
+                  body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: 1,
+                    method,
+                    params: {
+                      name,
+                      arguments: { loadSize: 'single_item' },
+                      _meta: {
+                        'io.modelcontextprotocol/protocolVersion': '2026-07-28',
+                        'io.modelcontextprotocol/clientInfo': {
+                          name: 'USJR browser pricing parity smoke',
+                          version: '1.0.0',
+                        },
+                        'io.modelcontextprotocol/clientCapabilities': {},
+                      },
+                    },
+                  }),
+                });
+                return await response.json();
               });
-              return await response.json();
-            });
-            const mcpRange = mcpPayload?.result?.structuredContent?.range;
-            assert.equal(typeof mcpRange, 'string', 'MCP single-item range was unavailable');
-            const planningRangeText = (await page.locator('.planning-range span').textContent()) || '';
-            assert.ok(
-              planningRangeText.includes(mcpRange),
-              `Quote-form range ${planningRangeText} did not match MCP range ${mcpRange}`,
-            );
+              const mcpRange = mcpPayload?.result?.structuredContent?.range;
+              assert.equal(typeof mcpRange, 'string', 'MCP single-item range was unavailable');
+              const planningRangeText = (await page.locator('.planning-range span').textContent()) || '';
+              assert.ok(
+                planningRangeText.includes(mcpRange),
+                `Quote-form range ${planningRangeText} did not match MCP range ${mcpRange}`,
+              );
 
-            console.log('5. Completing the customer-only portion of the visible form...');
-            await page.getByRole('button', { name: 'Indoor', exact: true }).click();
-            await page.getByRole('button', { name: 'Email', exact: true }).click();
-            await page.getByLabel('Item type', { exact: true }).fill('Old couch');
-            await page.getByLabel('Quantity', { exact: true }).fill('1 piece');
-            await page.getByLabel('Floor and stairs', { exact: true }).fill('First floor, no stairs');
+              console.log('5. Completing the customer-only portion of the visible form...');
+              await page.getByRole('button', { name: 'Indoor', exact: true }).click();
+              await page.getByRole('button', { name: 'Email', exact: true }).click();
+              await page.getByLabel('Item type', { exact: true }).fill('Old couch');
+              await page.getByLabel('Quantity', { exact: true }).fill('1 piece');
+              await page.getByLabel('Floor and stairs', { exact: true }).fill('First floor, no stairs');
 
-            await page.waitForTimeout(2_000);
-            await consent.check();
-            assert.equal(await consent.isChecked(), true);
+              await page.waitForTimeout(2_000);
+              await consent.check();
+              assert.equal(await consent.isChecked(), true);
 
-            const beforePath = `${process.env.GITHUB_WORKSPACE}/ai-booking-before-submit.png`;
-            await page.screenshot({ path: beforePath, fullPage: true });
+              const beforePath = `${process.env.GITHUB_WORKSPACE}/ai-booking-before-submit.png`;
+              await page.screenshot({ path: beforePath, fullPage: true });
 
-            console.log('6. Clicking the real website form submit button...');
-            await page.getByRole('button', { name: 'Get my free quote', exact: true }).click();
+              console.log('6. Clicking the real website form submit button...');
+              await page.getByRole('button', { name: 'Get my free quote', exact: true }).click();
 
-            const successHeading = page.locator('.quote-success h3');
-            await successHeading.waitFor({ state: 'visible', timeout: 30_000 });
-            const successText = (await successHeading.textContent()) || '';
-            const match = successText.match(/USJR-[A-F0-9]{8}/i);
-            assert.ok(match, `No quote reference found in success heading: ${successText}`);
-            const reference = match[0].toUpperCase();
+              const successHeading = page.locator('.quote-success h3');
+              await successHeading.waitFor({ state: 'visible', timeout: 30_000 });
+              const successText = (await successHeading.textContent()) || '';
+              const match = successText.match(/USJR-[A-F0-9]{8}/i);
+              assert.ok(match, `No quote reference found in success heading: ${successText}`);
+              const reference = match[0].toUpperCase();
 
-            assert.equal(quotePosts.length, 1, `Expected one browser form POST to /api/quote, got ${quotePosts.length}`);
-            assert.equal(
-              await page.locator('.quote-success__notice').count(),
-              0,
-              'Customer confirmation email reported delivery failure',
-            );
+              assert.equal(quotePosts.length, 1, `Expected one browser form POST to /api/quote, got ${quotePosts.length}`);
+              assert.equal(
+                await page.locator('.quote-success__notice').count(),
+                0,
+                'Customer confirmation email reported delivery failure',
+              );
 
-            const afterPath = `${process.env.GITHUB_WORKSPACE}/ai-booking-after-submit.png`;
-            await page.screenshot({ path: afterPath, fullPage: true });
+              const afterPath = `${process.env.GITHUB_WORKSPACE}/ai-booking-after-submit.png`;
+              await page.screenshot({ path: afterPath, fullPage: true });
 
-            console.log(`AI booking + website form smoke test passed. Reference: ${reference}`);
-            console.log(`Requested date: ${requestedDate}`);
-            console.log(`Browser nonce: ${smokeNonce}`);
-            console.log(`Canonical planning range: ${mcpRange}`);
+              console.log(`AI booking + website form smoke test passed. Reference: ${reference}`);
+              console.log(`Requested date: ${requestedDate}`);
+              console.log(`Browser nonce: ${smokeNonce}`);
+              console.log(`Canonical planning range: ${mcpRange}`);
 
-            const summary = [
-              '### AI booking + website form browser smoke passed',
-              '',
-              `- Registered WebMCP tools: ${registeredTools.join(', ')}`,
-              '- `prepareBookingRequest`: populated the visible form',
-              '- AI preparation left consent unchecked',
-              '- AI preparation made zero `/api/quote` POSTs',
-              `- Quote-form planning range matched MCP: \`${mcpRange}\``,
-              '- Customer step explicitly checked consent',
-              '- Browser clicked `Get my free quote`',
-              `- Production quote reference: \`${reference}\``,
-              `- Requested date: \`${requestedDate}\``,
-              `- Unique browser nonce: \`${smokeNonce}\``,
-              '- Test request is labeled **DO NOT SCHEDULE OR DISPATCH**.',
-              '',
-            ].join('\n');
-            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+              const summary = [
+                '### AI booking + website form browser smoke passed',
+                '',
+                `- Registered WebMCP tools: ${registeredTools.join(', ')}`,
+                '- `prepareBookingRequest`: populated the visible form',
+                '- AI preparation left consent unchecked',
+                '- AI preparation made zero `/api/quote` POSTs',
+                `- Quote-form planning range matched MCP: \`${mcpRange}\``,
+                '- Customer step explicitly checked consent',
+                '- Browser clicked `Get my free quote`',
+                `- Production quote reference: \`${reference}\``,
+                `- Requested date: \`${requestedDate}\``,
+                `- Unique browser nonce: \`${smokeNonce}\``,
+                '- Test request is labeled **DO NOT SCHEDULE OR DISPATCH**.',
+                '',
+              ].join('\n');
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+            }
           } finally {
             await browser.close();
           }
