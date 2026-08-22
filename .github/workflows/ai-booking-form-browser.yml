@@ -1,0 +1,228 @@
+name: AI booking + quote form browser smoke
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  browser-smoke:
+    if: github.head_ref == 'test/ai-booking-form-browser'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Exercise WebMCP booking preparation and submit the visible website form
+        shell: bash
+        env:
+          SITE_URL: https://unclesamjunkremoval.com/
+        run: |
+          set -euo pipefail
+
+          workdir="$RUNNER_TEMP/usjr-browser-smoke"
+          mkdir -p "$workdir"
+          cd "$workdir"
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright-core@latest >/dev/null 2>&1
+
+          chrome_bin="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [[ -z "$chrome_bin" ]]; then
+            echo 'No system Chrome/Chromium found on the runner.' >&2
+            exit 1
+          fi
+          export CHROME_BIN="$chrome_bin"
+
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import { chromium } from 'playwright-core';
+
+          const siteUrl = process.env.SITE_URL;
+          const smokeNonce = `${process.env.GITHUB_RUN_ID}-${process.env.GITHUB_RUN_ATTEMPT}`;
+          const requestedDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
+            .toISOString()
+            .slice(0, 10);
+
+          const browser = await chromium.launch({
+            headless: true,
+            executablePath: process.env.CHROME_BIN,
+            args: ['--no-sandbox', '--disable-dev-shm-usage'],
+          });
+
+          try {
+            const context = await browser.newContext({
+              viewport: { width: 1440, height: 1200 },
+            });
+
+            await context.addInitScript(() => {
+              window.__usjrWebMcpTools = {};
+              Object.defineProperty(document, 'modelContext', {
+                configurable: true,
+                value: {
+                  registerTool: async (tool) => {
+                    window.__usjrWebMcpTools[tool.name] = tool;
+                    return { registered: true };
+                  },
+                },
+              });
+              window.confirm = () => true;
+            });
+
+            const page = await context.newPage();
+            const quotePosts = [];
+            page.on('request', (request) => {
+              try {
+                const url = new URL(request.url());
+                if (request.method() === 'POST' && url.pathname === '/api/quote') {
+                  quotePosts.push({ url: request.url(), postData: request.postData() });
+                }
+              } catch {
+                // Ignore non-URL requests.
+              }
+            });
+
+            console.log('1. Opening the production website in a real headless browser...');
+            await page.goto(`${siteUrl}#quote`, {
+              waitUntil: 'domcontentloaded',
+              timeout: 30_000,
+            });
+            await page.locator('#quote').waitFor({ state: 'visible', timeout: 20_000 });
+
+            console.log('2. Waiting for browser-local WebMCP tools to register...');
+            await page.waitForFunction(
+              () => Boolean(window.__usjrWebMcpTools?.prepareBookingRequest),
+              undefined,
+              { timeout: 20_000 },
+            );
+
+            const registeredTools = await page.evaluate(() =>
+              Object.keys(window.__usjrWebMcpTools || {}).sort(),
+            );
+            assert.ok(
+              registeredTools.includes('prepareBookingRequest'),
+              `prepareBookingRequest was not registered; tools=${registeredTools.join(',')}`,
+            );
+
+            console.log('3. Running the AI booking preparation flow...');
+            const preparation = await page.evaluate(
+              async ({ requestedDate, smokeNonce }) => {
+                const tool = window.__usjrWebMcpTools.prepareBookingRequest;
+                return await tool.execute(
+                  {
+                    name: 'AI Booking Browser Test',
+                    phone: '(812) 610-1657',
+                    email: 'unclesamjunkremoval@gmail.com',
+                    location: 'Evansville, IN 47715',
+                    service: 'Furniture Removal',
+                    requestedDate,
+                    loadSize: 'single_item',
+                    heavyMaterials: false,
+                    dismantling: false,
+                    notes: `AUTOMATED AI BOOKING + WEBSITE FORM TEST — DO NOT SCHEDULE OR DISPATCH. Browser nonce: ${smokeNonce}.`,
+                  },
+                  { signal: new AbortController().signal },
+                );
+              },
+              { requestedDate, smokeNonce },
+            );
+
+            assert.equal(preparation.prepared, true);
+            assert.equal(preparation.submitted, false);
+            assert.equal(preparation.bookingConfirmed, false);
+            assert.equal(preparation.consentChecked, false);
+
+            await page.waitForFunction(
+              ({ requestedDate, smokeNonce }) => {
+                const value = (selector) => document.querySelector(selector)?.value || '';
+                const notes = document.querySelector('#quote textarea')?.value || '';
+                return (
+                  value('[data-quote-field="name"]') === 'AI Booking Browser Test' &&
+                  value('[data-quote-field="phone"]') === '(812) 610-1657' &&
+                  value('[data-quote-field="email"]') === 'unclesamjunkremoval@gmail.com' &&
+                  value('[data-quote-field="address"]') === 'Evansville, IN 47715' &&
+                  value('[data-quote-field="service"]') === 'Furniture Removal' &&
+                  value('[data-quote-field="preferredDate"]') === requestedDate &&
+                  value('[data-quote-field="quantity"]') === 'Single item' &&
+                  notes.includes(smokeNonce)
+                );
+              },
+              { requestedDate, smokeNonce },
+              { timeout: 15_000 },
+            );
+
+            const consent = page.locator('[data-quote-field="consent"]');
+            assert.equal(await consent.isChecked(), false, 'AI preparation must not check consent');
+            assert.equal(quotePosts.length, 0, 'AI preparation must not submit /api/quote');
+
+            console.log('4. Completing the customer-only portion of the visible form...');
+            await page.getByRole('button', { name: 'Indoor', exact: true }).click();
+            await page.getByRole('button', { name: 'Email', exact: true }).click();
+            await page.getByLabel('Item type', { exact: true }).fill('Old couch');
+            await page.getByLabel('Quantity', { exact: true }).fill('1 piece');
+            await page.getByLabel('Floor and stairs', { exact: true }).fill('First floor, no stairs');
+
+            // Ensure the anti-bot elapsed-time check sees a human-like form session.
+            await page.waitForTimeout(2_000);
+            await consent.check();
+            assert.equal(await consent.isChecked(), true);
+
+            const beforePath = `${process.env.GITHUB_WORKSPACE}/ai-booking-before-submit.png`;
+            await page.screenshot({ path: beforePath, fullPage: true });
+
+            console.log('5. Clicking the real website form submit button...');
+            await page.getByRole('button', { name: 'Get my free quote', exact: true }).click();
+
+            const successHeading = page.locator('.quote-success h3');
+            await successHeading.waitFor({ state: 'visible', timeout: 30_000 });
+            const successText = (await successHeading.textContent()) || '';
+            const match = successText.match(/USJR-[A-F0-9]{8}/i);
+            assert.ok(match, `No quote reference found in success heading: ${successText}`);
+            const reference = match[0].toUpperCase();
+
+            assert.equal(quotePosts.length, 1, `Expected one browser form POST to /api/quote, got ${quotePosts.length}`);
+            assert.equal(
+              await page.locator('.quote-success__notice').count(),
+              0,
+              'Customer confirmation email reported delivery failure',
+            );
+
+            const afterPath = `${process.env.GITHUB_WORKSPACE}/ai-booking-after-submit.png`;
+            await page.screenshot({ path: afterPath, fullPage: true });
+
+            console.log(`AI booking + website form smoke test passed. Reference: ${reference}`);
+            console.log(`Requested date: ${requestedDate}`);
+            console.log(`Browser nonce: ${smokeNonce}`);
+
+            const summary = [
+              '### AI booking + website form browser smoke passed',
+              '',
+              `- Registered WebMCP tools: ${registeredTools.join(', ')}`,
+              '- `prepareBookingRequest`: populated the visible form',
+              '- AI preparation left consent unchecked',
+              '- AI preparation made zero `/api/quote` POSTs',
+              '- Customer step explicitly checked consent',
+              '- Browser clicked `Get my free quote`',
+              `- Production quote reference: \`${reference}\``,
+              `- Requested date: \`${requestedDate}\``,
+              `- Unique browser nonce: \`${smokeNonce}\``,
+              '- Test request is labeled **DO NOT SCHEDULE OR DISPATCH**.',
+              '',
+            ].join('\n');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+          } finally {
+            await browser.close();
+          }
+          NODE
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-booking-form-browser-evidence
+          path: |
+            ai-booking-before-submit.png
+            ai-booking-after-submit.png
+          if-no-files-found: ignore
+          retention-days: 7
