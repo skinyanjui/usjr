@@ -8,7 +8,7 @@ export const PUBLIC_PRICING = [
   {
     size: "single_item",
     label: "Single item",
-    description: "1–2 bulky items",
+    describes: "1–2 bulky items",
     low: 89,
     high: 149,
     fillClass: "load-visual--single",
@@ -16,7 +16,7 @@ export const PUBLIC_PRICING = [
   {
     size: "quarter_load",
     label: "¼ load",
-    description: "Small room cleanout",
+    describes: "Small room cleanout",
     low: 179,
     high: 249,
     fillClass: "load-visual--quarter",
@@ -24,7 +24,7 @@ export const PUBLIC_PRICING = [
   {
     size: "half_load",
     label: "½ load",
-    description: "Large room or garage",
+    describes: "Large room or garage",
     low: 289,
     high: 389,
     fillClass: "load-visual--half",
@@ -32,7 +32,7 @@ export const PUBLIC_PRICING = [
   {
     size: "full_load",
     label: "Full load",
-    description: "Home or office cleanout",
+    describes: "Home or office cleanout",
     low: 489,
     high: 649,
     fillClass: "load-visual--full",
@@ -40,7 +40,7 @@ export const PUBLIC_PRICING = [
 ] as const satisfies ReadonlyArray<{
   size: PublicLoadSize;
   label: string;
-  description: string;
+  describes: string;
   low: number;
   high: number;
   fillClass: string;
