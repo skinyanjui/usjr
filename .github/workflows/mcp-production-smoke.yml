@@ -1,0 +1,199 @@
+name: MCP production smoke
+
+on:
+  pull_request:
+    branches:
+      - main
+  issue_comment:
+    types:
+      - created
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  production-smoke:
+    if: >-
+      (github.event_name == 'pull_request' && github.head_ref == 'test/mcp-production-smoke') ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.user.login == github.repository_owner && github.event.comment.body == '/mcp-production-smoke')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Exercise live MCP discovery and quote guards
+        id: smoke
+        continue-on-error: true
+        shell: bash
+        env:
+          MCP_ENDPOINT: https://unclesamjunkremoval.com/api/mcp
+          LIVE_SUBMIT: ${{ github.event_name != 'pull_request' }}
+        run: |
+          set -euo pipefail
+
+          smoke_nonce="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          smoke_note="AUTOMATED PRODUCTION MCP SMOKE TEST — DO NOT SCHEDULE OR DISPATCH. Smoke nonce: ${smoke_nonce}."
+          quote_args=$(jq -nc \
+            --arg notes "$smoke_note" \
+            '{
+              name:"MCP Production Smoke Test",
+              phone:"(812) 610-1657",
+              email:"unclesamjunkremoval@gmail.com",
+              address:"Evansville, IN 47715",
+              items:["old couch"],
+              service:"Furniture Removal",
+              timing:"flexible",
+              loadSize:"single_item",
+              placement:"indoor",
+              access:[],
+              heavyMaterials:false,
+              dismantling:false,
+              preferredContact:"email",
+              notes:$notes
+            }')
+
+          # Validate the generated payload before any request leaves the runner.
+          jq -e --arg nonce "$smoke_nonce" \
+            '.notes | contains($nonce)' <<<"$quote_args" >/dev/null
+
+          rpc() {
+            local id="$1"
+            local method="$2"
+            local name="${3:-}"
+            local arguments='{}'
+            local body
+
+            # Do not use `${4:-{}}`: Bash parses the closing brace ambiguously and
+            # can append a literal `}` to supplied JSON. Assign the fourth
+            # argument explicitly instead.
+            if [[ $# -ge 4 ]]; then
+              arguments="$4"
+            fi
+
+            if [[ "$method" == "tools/call" ]]; then
+              body=$(jq -nc \
+                --arg id "$id" \
+                --arg method "$method" \
+                --arg name "$name" \
+                --arg arguments "$arguments" \
+                '{jsonrpc:"2.0",id:($id|tonumber),method:$method,params:{name:$name,arguments:($arguments|fromjson),_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+
+              curl --fail-with-body --silent --show-error \
+                -X POST "$MCP_ENDPOINT" \
+                -H 'Content-Type: application/json' \
+                -H 'MCP-Protocol-Version: 2026-07-28' \
+                -H 'Mcp-Method: tools/call' \
+                -H "Mcp-Name: $name" \
+                --data "$body"
+            else
+              body=$(jq -nc \
+                --arg id "$id" \
+                --arg method "$method" \
+                '{jsonrpc:"2.0",id:($id|tonumber),method:$method,params:{_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+
+              curl --fail-with-body --silent --show-error \
+                -X POST "$MCP_ENDPOINT" \
+                -H 'Content-Type: application/json' \
+                -H 'MCP-Protocol-Version: 2026-07-28' \
+                -H "Mcp-Method: $method" \
+                --data "$body"
+            fi
+          }
+
+          echo '1. Checking tool discovery...'
+          tools_response=$(rpc 1 tools/list)
+          tool_count=$(jq '.result.tools | length' <<<"$tools_response")
+          test "$tool_count" -eq 8
+          jq -e '.result.tools | any(.name == "prepareQuoteRequest")' <<<"$tools_response" >/dev/null
+          jq -e '.result.tools | any(.name == "submitQuoteRequest" and .annotations.readOnlyHint == false)' <<<"$tools_response" >/dev/null
+
+          echo '2. Preparing unique test quote without side effects...'
+          prepare_response=$(rpc 2 tools/call prepareQuoteRequest "$quote_args")
+          jq -e '.result.structuredContent.readyToSubmit == true' <<<"$prepare_response" >/dev/null
+          jq -e '.result.structuredContent.submitted == false' <<<"$prepare_response" >/dev/null
+          jq -e '.result.structuredContent.serviceArea.status == "covered"' <<<"$prepare_response" >/dev/null
+          confirmation_id=$(jq -r '.result.structuredContent.confirmationId' <<<"$prepare_response")
+          test -n "$confirmation_id"
+          test "$confirmation_id" != "null"
+
+          echo '2b. Verifying a different nonce produces a different confirmation identity...'
+          comparison_args=$(jq -c \
+            --arg notes "${smoke_note} Identity-control suffix." \
+            '.notes = $notes' <<<"$quote_args")
+          comparison_response=$(rpc 21 tools/call prepareQuoteRequest "$comparison_args")
+          comparison_confirmation_id=$(jq -r '.result.structuredContent.confirmationId' <<<"$comparison_response")
+          test -n "$comparison_confirmation_id"
+          test "$comparison_confirmation_id" != "null"
+          test "$comparison_confirmation_id" != "$confirmation_id"
+
+          echo '3. Verifying the write guard rejects an unconfirmed submit...'
+          guarded_args=$(jq -c \
+            --arg confirmation "$confirmation_id" \
+            '. + {confirmationId:$confirmation,confirmedByCustomer:false,consentToContact:true}' \
+            <<<"$quote_args")
+          guarded_response=$(rpc 3 tools/call submitQuoteRequest "$guarded_args")
+          jq -e '.result.structuredContent.submitted == false and .result.structuredContent.code == "customer_confirmation_required"' <<<"$guarded_response" >/dev/null
+
+          if [[ "$LIVE_SUBMIT" != "true" ]]; then
+            echo 'PR validation mode: live submit intentionally skipped.'
+            echo 'reference=not-submitted' >> "$GITHUB_OUTPUT"
+            echo 'mode=guard-only' >> "$GITHUB_OUTPUT"
+            echo "smoke_nonce=$smoke_nonce" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "4. Submitting fresh production smoke-test lead for nonce $smoke_nonce..."
+          submit_args=$(jq -c \
+            --arg confirmation "$confirmation_id" \
+            '. + {confirmationId:$confirmation,confirmedByCustomer:true,consentToContact:true}' \
+            <<<"$quote_args")
+          submit_response=$(rpc 4 tools/call submitQuoteRequest "$submit_args")
+          jq -e '.result.structuredContent.submitted == true' <<<"$submit_response" >/dev/null
+          reference=$(jq -r '.result.structuredContent.reference' <<<"$submit_response")
+          [[ "$reference" == USJR-* ]]
+
+          echo "Production MCP smoke test passed with fresh reference: $reference"
+          echo "reference=$reference" >> "$GITHUB_OUTPUT"
+          echo 'mode=live-submit' >> "$GITHUB_OUTPUT"
+          echo "smoke_nonce=$smoke_nonce" >> "$GITHUB_OUTPUT"
+
+          {
+            echo '### Production MCP smoke test passed'
+            echo
+            echo "- Discovered tools: $tool_count"
+            echo '- `prepareQuoteRequest`: passed'
+            echo '- Distinct nonce → distinct `confirmationId`: passed'
+            echo '- Unconfirmed write guard: passed'
+            echo '- `submitQuoteRequest`: passed'
+            echo "- Quote reference: \`$reference\`"
+            echo "- Unique smoke nonce: \`$smoke_nonce\`"
+            echo '- This run used a unique quote payload, so the successful submit verifies a fresh production delivery rather than an idempotent replay.'
+            echo '- Test lead was sent only to the business contact and is labeled DO NOT SCHEDULE OR DISPATCH.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report comment-triggered result
+        if: github.event_name == 'issue_comment'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
+          REFERENCE: ${{ steps.smoke.outputs.reference }}
+          SMOKE_NONCE: ${{ steps.smoke.outputs.smoke_nonce }}
+        run: |
+          set -euo pipefail
+          if [[ "$SMOKE_OUTCOME" == "success" ]]; then
+            body=$(printf '✅ **Production MCP smoke test passed.**\n\n- `tools/list`: passed\n- `prepareQuoteRequest`: passed\n- distinct nonce → distinct `confirmationId`: passed\n- unconfirmed write guard: passed\n- `submitQuoteRequest`: passed\n- quote reference: `%s`\n- unique smoke nonce: `%s`\n\nThis run used a fresh payload, so it verified a new production delivery rather than replaying a prior idempotent submission. The test lead is labeled **DO NOT SCHEDULE OR DISPATCH**.' "$REFERENCE" "$SMOKE_NONCE")
+          else
+            body=$(printf '❌ **Production MCP smoke test failed.**\n\nInspect the Actions run: https://github.com/%s/actions/runs/%s' "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          fi
+          gh api \
+            --method POST \
+            "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
+            -f body="$body" >/dev/null
+
+      - name: Fail job when smoke test fails
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
