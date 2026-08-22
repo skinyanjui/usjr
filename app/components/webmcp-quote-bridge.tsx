@@ -10,6 +10,7 @@ type QuoteDraft = {
   address?: string;
   service?: string;
   urgency?: string;
+  preferredDate?: string;
   quantity?: string;
   notes?: string;
 };
@@ -51,6 +52,7 @@ function urgencyLabel(value?: string) {
   const labels: Record<string, string> = {
     today: "Today",
     "within-2-3-days": "Within 2–3 days",
+    "choose-date": "Choose a date",
     flexible: "Flexible",
   };
   return value ? labels[value] : undefined;
@@ -78,6 +80,13 @@ export function WebMcpQuoteBridge() {
 
       const timing = urgencyLabel(draft.urgency);
       if (timing) clickChoice(timing);
+
+      if (draft.preferredDate) {
+        window.requestAnimationFrame(() => {
+          const preferredDate = field('[data-quote-field="preferredDate"]');
+          if (preferredDate) setNativeValue(preferredDate, draft.preferredDate || "");
+        });
+      }
 
       if (draft.notes) {
         const notes = field("textarea");
