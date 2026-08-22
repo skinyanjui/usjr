@@ -2,66 +2,26 @@
 
 import { useEffect } from "react";
 import {
-  emailAddress,
+  BUSINESS,
+  PRICE_INCLUDES,
+  PRICING,
+  buildAgentQuoteUrl,
+  classifyHaulingItem,
+  contactBlock,
   locations,
-  phoneDisplay,
-  phoneHref,
+  matchAgentArea,
+  matchAgentService,
+  normalizeAgentText,
+  quantityForLoadSize,
   services,
-  siteUrl,
-} from "../site-data";
+} from "../agent-catalog";
 
 const WEBMCP_QUOTE_DRAFT_EVENT = "uncle-sam:webmcp-quote-draft";
 
-const PRICING = [
-  { size: "single_item", label: "Single item / a few items", describes: "One or a few bulky items", low: 75, high: 150 },
-  { size: "quarter_load", label: "¼ trailer load", describes: "Small room or partial cleanout", low: 200, high: 300 },
-  { size: "half_load", label: "½ trailer load", describes: "Large room or garage cleanout", low: 350, high: 450 },
-  { size: "three_quarter_load", label: "¾ trailer load", describes: "Large multi-room cleanout", low: 425, high: 550 },
-  { size: "full_load", label: "Full trailer load", describes: "Large home, office, or property cleanout", low: 500, high: 650 },
-] as const;
-
-const PRICE_INCLUDES = [
-  "Labor and heavy lifting",
-  "Loading and transportation",
-  "Standard disposal fees",
-  "A basic sweep-up",
-] as const;
-
-const NOT_ACCEPTED = [
-  "asbestos",
-  "biohazards",
-  "medical waste",
-  "explosives",
-  "fuels",
-  "unidentified chemicals",
-  "other hazardous materials",
-] as const;
-
-const FLAG_AHEAD = [
-  "paint",
-  "refrigerant-containing appliances",
-  "pressurized containers",
-  "unusually heavy materials such as concrete, tile, dirt, or safes",
-] as const;
-
-const LOCATION_ALIASES: Record<string, string[]> = {
-  "mount-carmel-il": ["mt carmel"],
-  "mount-vernon-in": ["mt vernon"],
+type ToolAnnotations = {
+  readOnlyHint?: boolean;
+  untrustedContentHint?: boolean;
 };
-
-const ZIP_HINTS: Record<string, string[]> = {
-  "evansville-in": ["47708", "47710", "47711", "47712", "47713", "47714", "47715", "47716", "47720", "47725"],
-  "newburgh-in": ["47629", "47630"],
-  "henderson-ky": ["42419", "42420"],
-  "owensboro-ky": ["42301", "42303"],
-  "boonville-in": ["47601"],
-  "princeton-in": ["47670"],
-  "mount-carmel-il": ["62863"],
-  "mount-vernon-in": ["47620"],
-  "new-harmony-in": ["47631"],
-};
-
-type ToolAnnotations = { readOnlyHint?: boolean; untrustedContentHint?: boolean };
 type ToolExecuteOptions = { signal: AbortSignal };
 type WebMcpTool = {
   name: string;
@@ -69,70 +29,25 @@ type WebMcpTool = {
   description: string;
   inputSchema?: Record<string, unknown>;
   annotations?: ToolAnnotations;
-  execute: (input: Record<string, unknown>, options: ToolExecuteOptions) => Promise<unknown> | unknown;
+  execute: (
+    input: Record<string, unknown>,
+    options: ToolExecuteOptions,
+  ) => Promise<unknown> | unknown;
 };
 type ModelContext = {
-  registerTool: (tool: WebMcpTool, options?: { signal?: AbortSignal; exposedTo?: string[] }) => Promise<unknown>;
+  registerTool: (
+    tool: WebMcpTool,
+    options?: { signal?: AbortSignal; exposedTo?: string[] },
+  ) => Promise<unknown>;
 };
 
 function getModelContext(): ModelContext | undefined {
   return (document as Document & { modelContext?: ModelContext }).modelContext;
 }
 
-const norm = (value: unknown) => String(value || "").toLowerCase().replace(/[.,]/g, "").replace(/\s+/g, " ").trim();
-
-function matchService(input: unknown) {
-  const query = norm(input);
-  if (!query) return null;
-  return (
-    services.find((service) => service.slug === query) ||
-    services.find((service) => norm(service.name) === query) ||
-    services.find((service) => norm(service.name).includes(query) || query.includes(norm(service.name))) ||
-    services.find((service) => norm(`${service.name} ${service.summary} ${service.includes.join(" ")} ${service.bestFor.join(" ")}`).includes(query)) ||
-    null
-  );
-}
-
-function matchArea(input: unknown) {
-  const query = norm(input);
-  if (!query) return null;
-  const zip = query.match(/\b(\d{5})\b/)?.[1];
-  if (zip) {
-    const byZip = locations.find((location) => (ZIP_HINTS[location.slug] || []).includes(zip));
-    if (byZip) return byZip;
-  }
-  return (
-    locations.find((location) => query.includes(norm(location.city))) ||
-    locations.find((location) => (LOCATION_ALIASES[location.slug] || []).some((alias) => query.includes(norm(alias)))) ||
-    null
-  );
-}
-
-function contactBlock() {
-  return {
-    phone: phoneDisplay,
-    call: `tel:${phoneHref}`,
-    text: `sms:${phoneHref}`,
-    email: emailAddress,
-    note: "Texting photos usually produces the fastest, most useful estimate.",
-  };
-}
-
 function asString(input: Record<string, unknown>, key: string, max = 500) {
   const value = input[key];
   return typeof value === "string" ? value.trim().slice(0, max) : "";
-}
-
-function quantityForLoadSize(loadSize: string) {
-  const labels: Record<string, string> = {
-    single_item: "Single item",
-    quarter_load: "¼ trailer load",
-    half_load: "½ trailer load",
-    three_quarter_load: "¾ trailer load",
-    full_load: "Full trailer load",
-    unsure: "Not sure",
-  };
-  return labels[loadSize] || "Not sure";
 }
 
 function urgencyForTiming(timing: string) {
@@ -150,33 +65,56 @@ function makeTools(): WebMcpTool[] {
     {
       name: "listServices",
       title: "List junk removal services",
-      description: "List Uncle Sam Junk Removal services in the Evansville Tri-State. Use this to identify the right service before preparing a quote request.",
+      description:
+        "List Uncle Sam Junk Removal services and match plain-language job descriptions to the closest service. Use this before preparing a quote. Do not use it for pricing or coverage questions.",
       inputSchema: {
         type: "object",
         properties: {
-          query: { type: "string", maxLength: 120, description: "Optional keyword such as couch, shed, office, or appliance." },
-          popularOnly: { type: "boolean", description: "Return only services marked popular on the website." },
+          query: {
+            type: "string",
+            maxLength: 160,
+            description:
+              "Optional plain-language job description such as old couch, shed out back, office move, or inherited house.",
+          },
+          popularOnly: {
+            type: "boolean",
+            description: "Return only services marked popular on the website.",
+          },
         },
         additionalProperties: false,
       },
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
-        const query = asString(input, "query", 120);
+        const query = asString(input, "query", 160);
         const popularOnly = input.popularOnly === true;
-        let list = popularOnly ? services.filter((service) => service.popular) : services;
+        let list = popularOnly
+          ? services.filter((service) => service.popular)
+          : services;
+
         if (query) {
-          const normalized = norm(query);
-          const hits = list.filter((service) => norm(`${service.name} ${service.summary} ${service.includes.join(" ")} ${service.bestFor.join(" ")}`).includes(normalized));
-          if (hits.length > 0) list = hits;
+          const direct = matchAgentService(query);
+          if (direct && (!popularOnly || direct.popular)) {
+            list = [direct];
+          } else {
+            const normalized = normalizeAgentText(query);
+            const hits = list.filter((service) =>
+              normalizeAgentText(
+                `${service.name} ${service.summary} ${service.includes.join(" ")} ${service.bestFor.join(" ")}`,
+              ).includes(normalized),
+            );
+            if (hits.length > 0) list = hits;
+          }
         }
+
         return {
+          matched: Boolean(query && list.length === 1),
           total: list.length,
           services: list.map((service) => ({
             name: service.name,
             slug: service.slug,
             summary: service.summary,
             includes: service.includes,
-            url: `${siteUrl}/services/${service.slug}`,
+            url: `${BUSINESS.site}/services/${service.slug}`,
           })),
         };
       },
@@ -184,28 +122,37 @@ function makeTools(): WebMcpTool[] {
     {
       name: "checkServiceArea",
       title: "Check service area",
-      description: "Check whether a city, ZIP code, or address matches a regularly listed Uncle Sam Junk Removal service community. Unmatched locations return unknown, not no, so nearby leads are not rejected automatically.",
+      description:
+        "Check whether a city, ZIP code, or address matches a regularly listed Uncle Sam Junk Removal service community. Unmatched locations return unknown, never no; nearby jobs may still be possible.",
       inputSchema: {
         type: "object",
-        properties: { location: { type: "string", minLength: 2, maxLength: 160, description: "Pickup city, ZIP code, or address." } },
+        properties: {
+          location: {
+            type: "string",
+            minLength: 2,
+            maxLength: 160,
+            description: "Pickup city, ZIP code, or address.",
+          },
+        },
         required: ["location"],
         additionalProperties: false,
       },
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
-        const hit = matchArea(asString(input, "location", 160));
+        const hit = matchAgentArea(asString(input, "location", 160));
         if (hit) {
           return {
             status: "covered",
             city: hit.name,
             county: hit.county,
-            url: `${siteUrl}/locations/${hit.slug}`,
+            url: `${BUSINESS.site}/locations/${hit.slug}`,
             message: `${hit.name} is a listed Uncle Sam Junk Removal service community.`,
           };
         }
         return {
           status: "unknown",
-          message: "That location is not one of the currently listed communities. Nearby jobs may still be possible, so call or text to confirm coverage rather than treating this as unavailable.",
+          message:
+            "That location is not one of the currently listed communities. Keep the lead and call or text to confirm coverage rather than treating this as unavailable.",
           listedCommunities: locations.map((location) => location.name),
           contact: contactBlock(),
         };
@@ -214,11 +161,22 @@ function makeTools(): WebMcpTool[] {
     {
       name: "estimatePrice",
       title: "Estimate planning price",
-      description: "Return the website's planning price range for a load size. This is not a binding quote. Final onsite pricing depends on volume, weight, item type, access, disposal needs, and project scope.",
+      description:
+        "Return the website's current planning price range for a load size. This is not a binding quote. Final onsite pricing depends on volume, weight, item type, access, disposal needs, and project scope.",
       inputSchema: {
         type: "object",
         properties: {
-          loadSize: { type: "string", enum: ["single_item", "quarter_load", "half_load", "three_quarter_load", "full_load", "unsure"] },
+          loadSize: {
+            type: "string",
+            enum: [
+              "single_item",
+              "quarter_load",
+              "half_load",
+              "three_quarter_load",
+              "full_load",
+              "unsure",
+            ],
+          },
           service: { type: "string", maxLength: 120 },
         },
         required: ["loadSize"],
@@ -227,56 +185,159 @@ function makeTools(): WebMcpTool[] {
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
         const loadSize = asString(input, "loadSize", 40);
-        const service = matchService(asString(input, "service", 120));
+        const service = matchAgentService(asString(input, "service", 120));
         const tier = PRICING.find((price) => price.size === loadSize);
         const base = {
           includes: PRICE_INCLUDES,
-          disclaimer: "Planning range only. The final onsite price is presented for customer approval before work begins.",
-          nextStep: "Send photos for a more useful estimate.",
+          disclaimer:
+            "Planning range only. The final onsite price is presented for customer approval before work begins.",
+          nextStep: BUSINESS.fastestPath,
           contact: contactBlock(),
         };
         if (!tier) {
-          return { ...base, allTiers: PRICING.map((price) => ({ ...price, range: `$${price.low}–$${price.high}` })) };
+          return {
+            ...base,
+            allTiers: PRICING.map((price) => ({
+              ...price,
+              range: `$${price.low}–$${price.high}`,
+            })),
+          };
         }
         return {
           ...base,
           loadSize: tier.label,
           describes: tier.describes,
+          low: tier.low,
+          high: tier.high,
           range: `$${tier.low}–$${tier.high}`,
           service: service?.name,
-          note: service && ["light-demolition", "hot-tub-removal", "shed-removal"].includes(service.slug)
-            ? "Demolition-type work is priced by scope, not volume alone. Photos of the project and access route are needed."
-            : undefined,
+          note:
+            service &&
+            ["light-demolition", "hot-tub-removal", "shed-removal"].includes(
+              service.slug,
+            )
+              ? "Demolition-type work is priced by scope, not volume alone. Photos of the project and access route are needed."
+              : undefined,
         };
       },
     },
     {
       name: "getHaulingPolicy",
       title: "Check hauling policy",
-      description: "Check whether an item is clearly excluded, needs advance disclosure, or is likely acceptable. Use this before promising that an unusual material or item will be hauled.",
+      description:
+        "Check whether a specific item is clearly excluded, needs assessment, needs advance disclosure, or is likely within normal hauling scope. Call this before promising any chemical, appliance, tank, construction material, or unusual item will be taken.",
       inputSchema: {
         type: "object",
-        properties: { item: { type: "string", maxLength: 200, description: "Item or material such as old paint cans, mini fridge, concrete, or couch." } },
+        properties: {
+          item: {
+            type: "string",
+            maxLength: 240,
+            description:
+              "Item or material such as half-full paint cans, mini fridge, concrete patio, old floor tile, or couch.",
+          },
+        },
         additionalProperties: false,
       },
       annotations: { readOnlyHint: true, untrustedContentHint: false },
       execute: async (input) => {
-        const item = asString(input, "item", 200);
-        const query = norm(item);
-        const blocked = NOT_ACCEPTED.find((entry) => query && (query.includes(norm(entry)) || norm(entry).includes(query)));
-        const flagged = FLAG_AHEAD.find((entry) => query && norm(entry).split(" ").some((word) => word.length > 4 && query.includes(word)));
+        const item = asString(input, "item", 240);
+        const rule = classifyHaulingItem(item);
+        if (!item) {
+          return {
+            verdict: "see_policy",
+            message:
+              "Describe the item or material. Unusual, chemical, heavy, pressurized, refrigerant-containing, or utility-connected items should be checked before promising pickup.",
+            contact: contactBlock(),
+          };
+        }
+        if (!rule) {
+          return {
+            item,
+            verdict: "likely_accepted",
+            message:
+              "This item does not match a documented special-handling rule. Most non-hazardous household and commercial items are generally within scope; send a photo when uncertain.",
+            contact: contactBlock(),
+          };
+        }
         return {
-          item: item || null,
-          verdict: blocked ? "not_accepted" : flagged ? "needs_advance_notice" : query ? "likely_accepted" : "see_lists",
-          message: blocked
-            ? `Uncle Sam Junk Removal does not list ${blocked} as accepted material. Use an appropriate licensed disposal provider.`
-            : flagged
-              ? "This item needs advance disclosure so the crew can confirm equipment and disposal options before the job."
-              : query
-                ? "Most non-hazardous household and commercial items are generally within scope. Send a photo or contact the team when uncertain."
-                : "Review the exclusion and advance-notice lists.",
-          neverAccepted: NOT_ACCEPTED,
-          mustDiscloseInAdvance: FLAG_AHEAD,
+          item,
+          verdict: rule.verdict,
+          category: rule.category,
+          message: rule.guidance,
+          contact: contactBlock(),
+        };
+      },
+    },
+    {
+      name: "getBusinessInfo",
+      title: "Get business information",
+      description:
+        "Get the business location, service region, operating promises, pricing approach, and contact methods. Use this for general company and contact questions; do not use it instead of the service, area, or price tools.",
+      inputSchema: {
+        type: "object",
+        properties: {},
+        additionalProperties: false,
+      },
+      annotations: { readOnlyHint: true, untrustedContentHint: false },
+      execute: async () => ({
+        name: BUSINESS.name,
+        ownership: BUSINESS.ownership,
+        basedIn: `${BUSINESS.city}, ${BUSINESS.state}`,
+        serviceRegion: BUSINESS.region,
+        promises: BUSINESS.promises,
+        howPricingWorks:
+          "Planning ranges are based on load size. Final pricing is adjusted for item type, weight, access, disposal needs, and project scope and is approved before work begins.",
+        contact: contactBlock(),
+        site: BUSINESS.site,
+      }),
+    },
+    {
+      name: "getQuoteLink",
+      title: "Build quote link",
+      description:
+        "Build a link to the website quote form with known details prefilled. Use this when the customer is not currently on the quote form. The customer must still review, consent, and submit it themselves; the link does not create a booking.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          service: { type: "string", minLength: 2, maxLength: 120 },
+          location: { type: "string", minLength: 2, maxLength: 160 },
+          loadSize: {
+            type: "string",
+            enum: [
+              "single_item",
+              "quarter_load",
+              "half_load",
+              "three_quarter_load",
+              "full_load",
+              "unsure",
+            ],
+          },
+          timing: {
+            type: "string",
+            enum: ["today", "2-3 days", "within-2-3-days", "flexible"],
+          },
+          notes: { type: "string", maxLength: 400 },
+        },
+        required: ["service", "location"],
+        additionalProperties: false,
+      },
+      annotations: { readOnlyHint: true, untrustedContentHint: false },
+      execute: async (input) => {
+        const service = matchAgentService(asString(input, "service", 120));
+        if (!service) {
+          return {
+            error: "unknown_service",
+            message:
+              "The service could not be matched. Use listServices first and pass an exact service name or slug.",
+          };
+        }
+        return {
+          url: buildAgentQuoteUrl(input),
+          service: service.name,
+          message:
+            "Open or send this link to prefill the quote form. The customer must review the request, check contact consent, and submit it themselves.",
+          bookingConfirmed: false,
+          submitted: false,
           contact: contactBlock(),
         };
       },
@@ -284,7 +345,8 @@ function makeTools(): WebMcpTool[] {
     {
       name: "prepareQuoteRequest",
       title: "Prepare quote request",
-      description: "Prepare the on-page free quote form for human review. This tool never checks the consent box and never submits the request. A person must explicitly approve applying the draft, then personally review, consent, and submit the form.",
+      description:
+        "Prepare the on-page free quote form for human review. This tool never checks the consent box and never submits the request. A person must explicitly approve applying the draft, then personally review, consent, and submit the form.",
       inputSchema: {
         type: "object",
         properties: {
@@ -293,8 +355,21 @@ function makeTools(): WebMcpTool[] {
           email: { type: "string", maxLength: 254 },
           location: { type: "string", minLength: 2, maxLength: 160 },
           service: { type: "string", minLength: 2, maxLength: 120 },
-          timing: { type: "string", enum: ["today", "2-3 days", "within-2-3-days", "flexible"] },
-          loadSize: { type: "string", enum: ["single_item", "quarter_load", "half_load", "three_quarter_load", "full_load", "unsure"] },
+          timing: {
+            type: "string",
+            enum: ["today", "2-3 days", "within-2-3-days", "flexible"],
+          },
+          loadSize: {
+            type: "string",
+            enum: [
+              "single_item",
+              "quarter_load",
+              "half_load",
+              "three_quarter_load",
+              "full_load",
+              "unsure",
+            ],
+          },
           notes: { type: "string", maxLength: 2000 },
         },
         required: ["location", "service"],
@@ -303,15 +378,25 @@ function makeTools(): WebMcpTool[] {
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute: async (input, { signal }) => {
         if (signal.aborted) throw signal.reason;
-        const service = matchService(asString(input, "service", 120));
+        const service = matchAgentService(asString(input, "service", 120));
         if (!service) {
-          return { prepared: false, error: "unknown_service", message: "The service could not be matched. Use listServices first and pass an exact service name or slug." };
+          return {
+            prepared: false,
+            error: "unknown_service",
+            message:
+              "The service could not be matched. Use listServices first and pass an exact service name or slug.",
+          };
         }
         const approved = window.confirm(
           `Apply the AI-prepared ${service.name} request to the quote form for your review? Nothing will be submitted, and contact consent will remain unchecked.`,
         );
         if (!approved) {
-          return { prepared: false, reason: "human_declined", submitted: false, consentChecked: false };
+          return {
+            prepared: false,
+            reason: "human_declined",
+            submitted: false,
+            consentChecked: false,
+          };
         }
         const detail = {
           name: asString(input, "name", 100),
@@ -323,15 +408,22 @@ function makeTools(): WebMcpTool[] {
           quantity: quantityForLoadSize(asString(input, "loadSize", 40)),
           notes: asString(input, "notes", 2000),
         };
-        window.dispatchEvent(new CustomEvent(WEBMCP_QUOTE_DRAFT_EVENT, { detail }));
-        document.getElementById("quote")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.dispatchEvent(
+          new CustomEvent(WEBMCP_QUOTE_DRAFT_EVENT, { detail }),
+        );
+        document
+          .getElementById("quote")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
         return {
           prepared: true,
           service: service.name,
-          fieldsPrepared: Object.entries(detail).filter(([, value]) => Boolean(value)).map(([key]) => key),
+          fieldsPrepared: Object.entries(detail)
+            .filter(([, value]) => Boolean(value))
+            .map(([key]) => key),
           submitted: false,
           consentChecked: false,
-          message: "The draft was applied to the visible quote form after human approval. The customer must review it, choose any remaining options, check the contact-consent box themselves, and press the submit button themselves.",
+          message:
+            "The draft was applied to the visible quote form after human approval. The customer must review it, choose any remaining options, check the contact-consent box themselves, and press the submit button themselves.",
           contact: contactBlock(),
         };
       },
@@ -346,9 +438,14 @@ export function WebMcpTools() {
     if (!modelContext) return;
     const controller = new AbortController();
     for (const tool of makeTools()) {
-      void modelContext.registerTool(tool, { signal: controller.signal }).catch((error) => {
-        console.warn(`[webmcp] skipped ${tool.name}:`, error instanceof Error ? error.message : error);
-      });
+      void modelContext
+        .registerTool(tool, { signal: controller.signal })
+        .catch((error) => {
+          console.warn(
+            `[webmcp] skipped ${tool.name}:`,
+            error instanceof Error ? error.message : error,
+          );
+        });
     }
     return () => controller.abort();
   }, []);
