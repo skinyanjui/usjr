@@ -1,8 +1,8 @@
 import {
   handleMcpGet,
   handleMcpOptions,
-  handleMcpPost,
 } from "../../../lib/mcp-server";
+import { handleCompatibleMcpPost } from "../../../lib/mcp-request-compat";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,5 +18,5 @@ export function GET() {
 export const DELETE = GET;
 
 export function POST(request: Request) {
-  return handleMcpPost(request);
+  return handleCompatibleMcpPost(request);
 }
