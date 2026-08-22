@@ -1,0 +1,115 @@
+name: Apply quote pricing canonicalization
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.head_ref == 'test/ai-booking-form-browser'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Replace quote-form hardcoded pricing with canonical pricing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('app/components/quote-section.tsx')
+          text = path.read_text()
+
+          import_anchor = 'import { popularServiceSlugs } from "../home-data";\n'
+          pricing_import = 'import { formatPriceRange, getPublicPricingTier } from "../pricing-data";\n'
+          if pricing_import not in text:
+              if import_anchor not in text:
+                  raise SystemExit('home-data import anchor not found')
+              text = text.replace(import_anchor, import_anchor + pricing_import, 1)
+
+          old = '''function planningRange(service: string, quantity: string) {
+            const kind = serviceKind(service);
+            if (kind === "shed" || kind === "debris") {
+              return "Photos needed for the most useful planning range.";
+            }
+            if (/Single item|A few items/.test(quantity)) {
+              return "Typical small pickups may start around $75–$150.";
+            }
+            if (quantity === "¼ trailer load") {
+              return "Planning range: about $200–$300.";
+            }
+            if (quantity === "½ trailer load") {
+              return "Planning range: about $350–$450.";
+            }
+            if (quantity === "¾ trailer load") {
+              return "Planning range: about $425–$550.";
+            }
+            if (quantity === "Full trailer load") {
+              return "Planning range: about $500–$650.";
+            }
+            return "Choose a load size or add photos for a useful planning range.";
+          }'''.replace('          ', '')
+
+          new = '''const publicPricingSizeForQuantity: Record<string, string> = {
+            "Single item": "single_item",
+            "A few items": "single_item",
+            "¼ trailer load": "quarter_load",
+            "½ trailer load": "half_load",
+            "Full trailer load": "full_load",
+          };
+
+          function planningRange(service: string, quantity: string) {
+            const kind = serviceKind(service);
+            if (kind === "shed" || kind === "debris") {
+              return "Photos needed for the most useful planning range.";
+            }
+            if (quantity === "¾ trailer load") {
+              return "Add photos for the most useful ¾-load planning range.";
+            }
+
+            const tier = getPublicPricingTier(
+              publicPricingSizeForQuantity[quantity] || "",
+            );
+            if (tier) {
+              return `Planning range: about ${formatPriceRange(tier.low, tier.high)}.`;
+            }
+            return "Choose a load size or add photos for a useful planning range.";
+          }'''.replace('          ', '')
+
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif new not in text:
+              raise SystemExit('planningRange source block not found')
+
+          stale = ['$75–$150', '$200–$300', '$350–$450', '$425–$550', '$500–$650']
+          remaining = [value for value in stale if value in text]
+          if remaining:
+              raise SystemExit(f'stale quote-form pricing remains: {remaining}')
+
+          path.write_text(text)
+          PY
+
+          git diff --check
+          git diff -- app/components/quote-section.tsx
+
+      - name: Commit pricing fix to PR branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- app/components/quote-section.tsx; then
+            echo 'Quote form already uses canonical pricing.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/components/quote-section.tsx
+          git commit -m 'Use shared pricing in quote form'
+          git push origin HEAD:${{ github.head_ref }}
