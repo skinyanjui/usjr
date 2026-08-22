@@ -2,7 +2,7 @@ import {
   handleMcpGet,
   handleMcpOptions,
 } from "../../../lib/mcp-server";
-import { handleCompatibleMcpPost } from "../../../lib/mcp-request-compat";
+import { handleMcpWithQuoteWrites } from "../../../lib/mcp-write-tools";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,5 +18,5 @@ export function GET() {
 export const DELETE = GET;
 
 export function POST(request: Request) {
-  return handleCompatibleMcpPost(request);
+  return handleMcpWithQuoteWrites(request);
 }
