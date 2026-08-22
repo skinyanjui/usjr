@@ -54,11 +54,7 @@ function getModelContext(): ModelContext | undefined {
 }
 
 function normalizeLocation(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/\./g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  return value.toLowerCase().replace(/\./g, "").replace(/\s+/g, " ").trim();
 }
 
 export function WebMcpTools() {
@@ -79,15 +75,12 @@ export function WebMcpTools() {
           properties: {},
           additionalProperties: false,
         },
-        annotations: {
-          readOnlyHint: true,
-          untrustedContentHint: false,
-        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
         execute: async () => ({
           business: "Uncle Sam Junk Removal",
           services: SERVICES,
           nextStep:
-            "Use check_junk_removal_service_area to verify coverage, then request_junk_removal_quote if the user wants a quote.",
+            "Use find_best_junk_removal_service when the customer describes items, check_junk_removal_service_area for coverage, and prepare_junk_removal_quote before any submission.",
         }),
       },
       options,
@@ -97,7 +90,7 @@ export function WebMcpTools() {
       {
         name: "check_junk_removal_service_area",
         description:
-          "Check whether Uncle Sam Junk Removal publicly lists a city as a standard service area. For nearby unlisted locations, return that the customer should call or request a quote to confirm coverage.",
+          "Check whether Uncle Sam Junk Removal publicly lists a city as a standard service area. For nearby unlisted locations, return that the customer should request a quote or call to confirm coverage.",
         inputSchema: {
           type: "object",
           properties: {
@@ -111,10 +104,7 @@ export function WebMcpTools() {
           required: ["location"],
           additionalProperties: false,
         },
-        annotations: {
-          readOnlyHint: true,
-          untrustedContentHint: false,
-        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
         execute: async ({ location }: { location: string }) => {
           const normalized = normalizeLocation(location);
           const match = SERVICE_AREAS.find((area) => {
@@ -135,7 +125,7 @@ export function WebMcpTools() {
             covered: null,
             listedAreas: SERVICE_AREAS,
             message:
-              "This location is not one of the publicly listed standard service areas. Nearby jobs may still be possible; request a quote or call (812) 610-1657 to confirm coverage.",
+              "This location is not one of the publicly listed standard service areas. Nearby jobs may still be possible; prepare a quote request or call (812) 610-1657 to confirm coverage.",
           };
         },
       },
@@ -152,10 +142,7 @@ export function WebMcpTools() {
           properties: {},
           additionalProperties: false,
         },
-        annotations: {
-          readOnlyHint: true,
-          untrustedContentHint: false,
-        },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
         execute: async () => ({
           pricing: PRICING_GUIDE,
           includes: [
@@ -166,157 +153,9 @@ export function WebMcpTools() {
           ],
           disclaimer:
             "Planning ranges only. The customer approves the final price before work begins.",
+          nextStep:
+            "Use prepare_junk_removal_quote to assemble a reviewable request. Submission requires a separate explicit approval step.",
         }),
-      },
-      options,
-    );
-
-    void modelContext.registerTool(
-      {
-        name: "request_junk_removal_quote",
-        description:
-          "Submit a free, no-obligation junk removal or cleanout quote request to Uncle Sam Junk Removal. Use only after the user has explicitly asked to submit their information and consented to being contacted about the request.",
-        inputSchema: {
-          type: "object",
-          properties: {
-            name: { type: "string", minLength: 2, maxLength: 100 },
-            phone: { type: "string", minLength: 7, maxLength: 40 },
-            email: { type: "string", format: "email", maxLength: 254 },
-            address: {
-              type: "string",
-              minLength: 2,
-              maxLength: 160,
-              description: "Pickup city, ZIP, or address.",
-            },
-            service: {
-              type: "string",
-              enum: [...SERVICES, "Something else"],
-            },
-            urgency: {
-              type: "string",
-              enum: ["today", "within-2-3-days", "choose-date", "flexible"],
-            },
-            preferredDate: {
-              type: "string",
-              format: "date",
-              description: "Required when urgency is choose-date.",
-            },
-            quantity: {
-              type: "string",
-              maxLength: 120,
-              description: "Approximate quantity, load size, or short scope description.",
-            },
-            placement: {
-              type: "string",
-              enum: ["indoor", "outdoor", "both", "unsure"],
-            },
-            access: {
-              type: "array",
-              maxItems: 8,
-              items: {
-                type: "string",
-                enum: [
-                  "Stairs",
-                  "Elevator",
-                  "Long carry",
-                  "Narrow doorway",
-                  "Limited truck access",
-                ],
-              },
-            },
-            heavyMaterials: { type: "boolean" },
-            dismantling: { type: "boolean" },
-            heavyDetails: { type: "string", maxLength: 500 },
-            preferredContact: {
-              type: "string",
-              enum: ["call", "text", "email"],
-            },
-            notes: { type: "string", maxLength: 2000 },
-            consent: {
-              type: "boolean",
-              const: true,
-              description:
-                "Must be true only after the user explicitly agrees Uncle Sam Junk Removal may call, text, or email them about this service request.",
-            },
-          },
-          required: [
-            "name",
-            "phone",
-            "email",
-            "address",
-            "service",
-            "urgency",
-            "quantity",
-            "placement",
-            "preferredContact",
-            "consent",
-          ],
-          additionalProperties: false,
-        },
-        annotations: {
-          readOnlyHint: false,
-          untrustedContentHint: true,
-        },
-        execute: async (
-          input: {
-            name: string;
-            phone: string;
-            email: string;
-            address: string;
-            service: string;
-            urgency: string;
-            preferredDate?: string;
-            quantity: string;
-            placement: string;
-            access?: string[];
-            heavyMaterials?: boolean;
-            dismantling?: boolean;
-            heavyDetails?: string;
-            preferredContact: string;
-            notes?: string;
-            consent: true;
-          },
-          { signal }: { signal: AbortSignal },
-        ) => {
-          if (input.urgency === "choose-date" && !input.preferredDate) {
-            throw new Error("preferredDate is required when urgency is choose-date.");
-          }
-
-          const response = await fetch("/api/quote", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...input,
-              access: input.access ?? [],
-              heavyMaterials: input.heavyMaterials ?? false,
-              dismantling: input.dismantling ?? false,
-              heavyDetails: input.heavyDetails ?? "",
-              notes: input.notes ?? "",
-              company: "",
-              conditionalDetails: {},
-              submissionId: crypto.randomUUID(),
-              source: "webmcp",
-              startedAt: Date.now() - 2000,
-            }),
-            signal,
-          });
-
-          const payload = await response.json().catch(() => null);
-          if (!response.ok) {
-            throw new Error(
-              payload && typeof payload === "object" && "error" in payload
-                ? String(payload.error)
-                : "Quote request could not be submitted.",
-            );
-          }
-
-          return {
-            submitted: true,
-            result: payload,
-            message:
-              "The quote request was submitted to Uncle Sam Junk Removal. The team will follow up using the customer's preferred contact method.",
-          };
-        },
       },
       options,
     );
