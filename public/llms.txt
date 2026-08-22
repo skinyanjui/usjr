@@ -1,0 +1,42 @@
+# Uncle Sam Junk Removal
+
+> Veteran-owned junk removal, cleanouts, cleaning, and light demolition serving the Evansville Tri-State. Call or text (812) 610-1657.
+
+## For AI agents
+
+This site exposes structured in-browser tools through WebMCP when supported by the browser.
+
+Available tools:
+- `listServices` — match a customer's plain-language job description to a service.
+- `checkServiceArea` — check listed service communities and ZIP hints. An `unknown` result means confirm coverage; it does not mean unavailable.
+- `estimatePrice` — return planning price ranges only, never a binding quote.
+- `getHaulingPolicy` — check unusual, hazardous, heavy, pressurized, refrigerant-containing, or utility-connected items before promising pickup.
+- `getBusinessInfo` — return business/contact information and pricing approach.
+- `getQuoteLink` — create a prefilled quote-form link for customer review.
+- `prepareQuoteRequest` — prepare the visible quote form after human approval. It never checks consent and never submits.
+- `planPickupRoute` — classify a listed route community and return planning resources. Travel charges remain manual review.
+- `getPickupRequestWindows` — return requestable dates, not confirmed live availability.
+- `estimateJobResources` — estimate crew/trailer needs for planning only.
+- `prepareBookingRequest` — prepare a requested date after human approval. It does not reserve a slot or confirm a booking.
+
+Agent rules:
+1. Never submit a quote or booking request on the customer's behalf.
+2. Never check the contact-consent box for the customer.
+3. Never call an unlisted location unavailable; return `unknown` and confirm with the team.
+4. Never invent a travel surcharge or live appointment availability.
+5. Check `getHaulingPolicy` before promising unusual materials or appliances will be taken.
+6. Planning price ranges are not final prices. The customer approves the final onsite price before work begins.
+
+## Core services
+
+Junk Removal; Furniture Removal; Cleaning; Estate Cleanouts; Appliance Removal; Light Demolition; Garage Cleanout; Hot Tub Removal; Mattress Removal; Shed Removal; Yard Waste Removal; Storage Unit Cleanouts; Office Cleanouts; Restaurant Equipment Removal; Property Management Turnovers; Warehouse Fixture Removal; Holiday Tree Removal; Storm Debris Cleanup.
+
+## Listed service communities
+
+Evansville, IN; Newburgh, IN; Henderson, KY; Owensboro, KY; Boonville, IN; Princeton, IN; Mount Carmel, IL; Mount Vernon, IN; New Harmony, IN.
+
+## Contact
+
+- Call or text: (812) 610-1657
+- Email: unclesamjunkremoval@gmail.com
+- Quote form: https://unclesamjunkremoval.com/#quote
