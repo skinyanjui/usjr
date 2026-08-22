@@ -7,6 +7,7 @@ import type {
 } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { popularServiceSlugs } from "../home-data";
+import { formatPriceRange, getPublicPricingTier } from "../pricing-data";
 import {
   emailAddress,
   phoneDisplay,
@@ -221,25 +222,28 @@ function serviceKind(service: string): ServiceKind {
   return "other";
 }
 
+const publicPricingSizeForQuantity: Record<string, string> = {
+  "Single item": "single_item",
+  "A few items": "single_item",
+  "¼ trailer load": "quarter_load",
+  "½ trailer load": "half_load",
+  "Full trailer load": "full_load",
+};
+
 function planningRange(service: string, quantity: string) {
   const kind = serviceKind(service);
   if (kind === "shed" || kind === "debris") {
     return "Photos needed for the most useful planning range.";
   }
-  if (/Single item|A few items/.test(quantity)) {
-    return "Typical small pickups may start around $75–$150.";
-  }
-  if (quantity === "¼ trailer load") {
-    return "Planning range: about $200–$300.";
-  }
-  if (quantity === "½ trailer load") {
-    return "Planning range: about $350–$450.";
-  }
   if (quantity === "¾ trailer load") {
-    return "Planning range: about $425–$550.";
+    return "Add photos for the most useful ¾-load planning range.";
   }
-  if (quantity === "Full trailer load") {
-    return "Planning range: about $500–$650.";
+
+  const tier = getPublicPricingTier(
+    publicPricingSizeForQuantity[quantity] || "",
+  );
+  if (tier) {
+    return `Planning range: about ${formatPriceRange(tier.low, tier.high)}.`;
   }
   return "Choose a load size or add photos for a useful planning range.";
 }
