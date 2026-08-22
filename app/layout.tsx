@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { McpAttributionTracker } from "./components/mcp-attribution-tracker";
 import { RouteScrollManager } from "./components/route-scroll-manager";
+import { WebMcpQuoteBridge } from "./components/webmcp-quote-bridge";
+import { WebMcpRoutingTools } from "./components/webmcp-routing-tools";
+import { WebMcpTools } from "./components/webmcp-tools";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -80,6 +84,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
+        <WebMcpTools />
+        <WebMcpRoutingTools />
+        <WebMcpQuoteBridge />
+        <McpAttributionTracker />
         <RouteScrollManager />
         {children}
       </body>
