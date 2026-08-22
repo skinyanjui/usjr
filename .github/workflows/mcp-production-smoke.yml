@@ -4,21 +4,32 @@ on:
   pull_request:
     branches:
       - main
+  issue_comment:
+    types:
+      - created
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   production-smoke:
-    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'test/mcp-production-smoke'
+    if: >-
+      (github.event_name == 'pull_request' && github.head_ref == 'test/mcp-production-smoke') ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.user.login == github.repository_owner && github.event.comment.body == '/mcp-production-smoke')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Exercise live MCP discovery, prepare, and submit
+      - name: Exercise live MCP discovery and quote guards
+        id: smoke
+        continue-on-error: true
         shell: bash
         env:
           MCP_ENDPOINT: https://unclesamjunkremoval.com/api/mcp
+          LIVE_SUBMIT: ${{ github.event_name != 'pull_request' }}
         run: |
           set -euo pipefail
 
@@ -89,6 +100,13 @@ jobs:
           guarded_response=$(rpc 3 tools/call submitQuoteRequest "$guarded_args")
           jq -e '.result.structuredContent.submitted == false and .result.structuredContent.code == "customer_confirmation_required"' <<<"$guarded_response" >/dev/null
 
+          if [[ "$LIVE_SUBMIT" != "true" ]]; then
+            echo 'PR validation mode: live submit intentionally skipped.'
+            echo 'reference=not-submitted' >> "$GITHUB_OUTPUT"
+            echo 'mode=guard-only' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           echo '4. Submitting one explicitly confirmed production smoke-test lead...'
           submit_args=$(jq -c \
             --arg confirmation "$confirmation_id" \
@@ -100,6 +118,9 @@ jobs:
           [[ "$reference" == USJR-* ]]
 
           echo "Production MCP smoke test passed with reference: $reference"
+          echo "reference=$reference" >> "$GITHUB_OUTPUT"
+          echo 'mode=live-submit' >> "$GITHUB_OUTPUT"
+
           {
             echo '### Production MCP smoke test passed'
             echo
@@ -110,3 +131,27 @@ jobs:
             echo "- Quote reference: \`$reference\`"
             echo '- Test lead was sent only to the business contact and is labeled DO NOT SCHEDULE OR DISPATCH.'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report comment-triggered result
+        if: github.event_name == 'issue_comment'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
+          REFERENCE: ${{ steps.smoke.outputs.reference }}
+        run: |
+          set -euo pipefail
+          if [[ "$SMOKE_OUTCOME" == "success" ]]; then
+            body=$(printf '✅ **Production MCP smoke test passed.**\n\n- `tools/list`: passed\n- `prepareQuoteRequest`: passed\n- unconfirmed write guard: passed\n- `submitQuoteRequest`: passed\n- quote reference: `%s`\n\nThe test lead is labeled **DO NOT SCHEDULE OR DISPATCH**.' "$REFERENCE")
+          else
+            body=$(printf '❌ **Production MCP smoke test failed.**\n\nInspect the Actions run: https://github.com/%s/actions/runs/%s' "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")
+          fi
+          gh api \
+            --method POST \
+            "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" \
+            -f body="$body" >/dev/null
+
+      - name: Fail job when smoke test fails
+        if: steps.smoke.outcome != 'success'
+        run: exit 1
