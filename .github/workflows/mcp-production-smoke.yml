@@ -28,16 +28,20 @@ jobs:
             local id="$1"
             local method="$2"
             local name="${3:-}"
-            local arguments="${4:-{}}"
+            local arguments='{}'
             local body
+
+            if [[ $# -ge 4 ]]; then
+              arguments="$4"
+            fi
 
             if [[ "$method" == "tools/call" ]]; then
               body=$(jq -nc \
-                --argjson id "$id" \
+                --arg id "$id" \
                 --arg method "$method" \
                 --arg name "$name" \
-                --argjson arguments "$arguments" \
-                '{jsonrpc:"2.0",id:$id,method:$method,params:{name:$name,arguments:$arguments,_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+                --arg arguments "$arguments" \
+                '{jsonrpc:"2.0",id:($id|tonumber),method:$method,params:{name:$name,arguments:($arguments|fromjson),_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
 
               curl --fail-with-body --silent --show-error \
                 -X POST "$MCP_ENDPOINT" \
@@ -48,9 +52,9 @@ jobs:
                 --data "$body"
             else
               body=$(jq -nc \
-                --argjson id "$id" \
+                --arg id "$id" \
                 --arg method "$method" \
-                '{jsonrpc:"2.0",id:$id,method:$method,params:{_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+                '{jsonrpc:"2.0",id:($id|tonumber),method:$method,params:{_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
 
               curl --fail-with-body --silent --show-error \
                 -X POST "$MCP_ENDPOINT" \
