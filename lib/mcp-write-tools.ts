@@ -806,10 +806,11 @@ async function handleWriteCall(request: Request, body: McpBody) {
   const startedAt = Date.now();
 
   try {
-    const result =
+    const result = (
       name === "prepareQuoteRequest"
         ? await prepareQuote(args)
-        : await submitQuote(args, context);
+        : await submitQuote(args, context)
+    ) as Record<string, any>;
     const isError = result.ok !== true;
 
     logMcpEvent("request", {
