@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function loadWorker() {
@@ -96,4 +97,40 @@ test("homepage and MCP publish the same planning-price ranges", async () => {
     !mcpTiers.some((tier) => tier.size === "three_quarter_load"),
     "MCP should not publish an unsupported 3/4-load price tier",
   );
+});
+
+test("quote form consumes the canonical pricing source", async () => {
+  const quoteForm = await readFile(
+    new URL("../app/components/quote-section.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    quoteForm,
+    /from "\.\.\/pricing-data";/,
+    "quote form should import the shared pricing module",
+  );
+  assert.match(
+    quoteForm,
+    /getPublicPricingTier\(/,
+    "quote form should resolve price tiers through the canonical pricing helper",
+  );
+  assert.match(
+    quoteForm,
+    /formatPriceRange\(/,
+    "quote form should format ranges through the canonical pricing helper",
+  );
+
+  for (const staleRange of [
+    "$75–$150",
+    "$200–$300",
+    "$350–$450",
+    "$425–$550",
+    "$500–$650",
+  ]) {
+    assert.ok(
+      !quoteForm.includes(staleRange),
+      `quote form must not retain stale hardcoded range ${staleRange}`,
+    );
+  }
 });
