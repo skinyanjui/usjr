@@ -3,6 +3,7 @@ import {
   handleQuoteRequest,
   type QuoteEnvironment,
 } from "../../../lib/quote-server";
+import { isPastBusinessDate } from "../../../lib/quote-date";
 import {
   logMcpEvent,
   sanitizeMcpSource,
@@ -39,13 +40,39 @@ function mcpAttribution(request: Request) {
   }
 }
 
+async function rejectPastDateAtApiBoundary(request: Request) {
+  if (!request.headers.get("Content-Type")?.includes("application/json")) {
+    return request;
+  }
+
+  try {
+    const raw = (await request.clone().json()) as Record<string, unknown>;
+    if (
+      raw.urgency !== "choose-date" ||
+      typeof raw.preferredDate !== "string" ||
+      !isPastBusinessDate(raw.preferredDate)
+    ) {
+      return request;
+    }
+
+    return new Request(request.url, {
+      method: request.method,
+      headers: request.headers,
+      body: JSON.stringify({ ...raw, preferredDate: "" }),
+    });
+  } catch {
+    return request;
+  }
+}
+
 export function OPTIONS(request: Request) {
   return handleQuoteOptions(request);
 }
 
 export async function POST(request: Request) {
   const attribution = mcpAttribution(request);
-  const response = await handleQuoteRequest(request, environment());
+  const validatedRequest = await rejectPastDateAtApiBoundary(request);
+  const response = await handleQuoteRequest(validatedRequest, environment());
 
   if (attribution && response.ok) {
     const payload = (await response
