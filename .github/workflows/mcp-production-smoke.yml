@@ -1,0 +1,107 @@
+name: MCP production smoke
+
+on:
+  push:
+    branches:
+      - test/mcp-production-smoke
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Exercise live MCP discovery, prepare, and submit
+        shell: bash
+        env:
+          MCP_ENDPOINT: https://unclesamjunkremoval.com/api/mcp
+        run: |
+          set -euo pipefail
+
+          quote_args='{"name":"MCP Production Smoke Test","phone":"(812) 610-1657","email":"unclesamjunkremoval@gmail.com","address":"Evansville, IN 47715","items":["old couch"],"service":"Furniture Removal","timing":"flexible","loadSize":"single_item","placement":"indoor","access":[],"heavyMaterials":false,"dismantling":false,"preferredContact":"email","notes":"AUTOMATED PRODUCTION MCP SMOKE TEST — DO NOT SCHEDULE OR DISPATCH."}'
+
+          rpc() {
+            local id="$1"
+            local method="$2"
+            local name="${3:-}"
+            local arguments="${4:-{}}"
+            local body
+
+            if [[ "$method" == "tools/call" ]]; then
+              body=$(jq -nc \
+                --argjson id "$id" \
+                --arg method "$method" \
+                --arg name "$name" \
+                --argjson arguments "$arguments" \
+                '{jsonrpc:"2.0",id:$id,method:$method,params:{name:$name,arguments:$arguments,_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+
+              curl --fail-with-body --silent --show-error \
+                -X POST "$MCP_ENDPOINT" \
+                -H 'Content-Type: application/json' \
+                -H 'MCP-Protocol-Version: 2026-07-28' \
+                -H 'Mcp-Method: tools/call' \
+                -H "Mcp-Name: $name" \
+                --data "$body"
+            else
+              body=$(jq -nc \
+                --argjson id "$id" \
+                --arg method "$method" \
+                '{jsonrpc:"2.0",id:$id,method:$method,params:{_meta:{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{name:"USJR GitHub production smoke",version:"1.0.0"},"io.modelcontextprotocol/clientCapabilities":{}}}}')
+
+              curl --fail-with-body --silent --show-error \
+                -X POST "$MCP_ENDPOINT" \
+                -H 'Content-Type: application/json' \
+                -H 'MCP-Protocol-Version: 2026-07-28' \
+                -H "Mcp-Method: $method" \
+                --data "$body"
+            fi
+          }
+
+          echo '1. Checking tool discovery...'
+          tools_response=$(rpc 1 tools/list)
+          tool_count=$(jq '.result.tools | length' <<<"$tools_response")
+          test "$tool_count" -eq 8
+          jq -e '.result.tools | any(.name == "prepareQuoteRequest")' <<<"$tools_response" >/dev/null
+          jq -e '.result.tools | any(.name == "submitQuoteRequest" and .annotations.readOnlyHint == false)' <<<"$tools_response" >/dev/null
+
+          echo '2. Preparing test quote without side effects...'
+          prepare_response=$(rpc 2 tools/call prepareQuoteRequest "$quote_args")
+          jq -e '.result.structuredContent.readyToSubmit == true' <<<"$prepare_response" >/dev/null
+          jq -e '.result.structuredContent.submitted == false' <<<"$prepare_response" >/dev/null
+          jq -e '.result.structuredContent.serviceArea.status == "covered"' <<<"$prepare_response" >/dev/null
+          confirmation_id=$(jq -r '.result.structuredContent.confirmationId' <<<"$prepare_response")
+          test -n "$confirmation_id"
+          test "$confirmation_id" != "null"
+
+          echo '3. Verifying the write guard rejects an unconfirmed submit...'
+          guarded_args=$(jq -c \
+            --arg confirmation "$confirmation_id" \
+            '. + {confirmationId:$confirmation,confirmedByCustomer:false,consentToContact:true}' \
+            <<<"$quote_args")
+          guarded_response=$(rpc 3 tools/call submitQuoteRequest "$guarded_args")
+          jq -e '.result.structuredContent.submitted == false and .result.structuredContent.code == "customer_confirmation_required"' <<<"$guarded_response" >/dev/null
+
+          echo '4. Submitting one explicitly confirmed production smoke-test lead...'
+          submit_args=$(jq -c \
+            --arg confirmation "$confirmation_id" \
+            '. + {confirmationId:$confirmation,confirmedByCustomer:true,consentToContact:true}' \
+            <<<"$quote_args")
+          submit_response=$(rpc 4 tools/call submitQuoteRequest "$submit_args")
+          jq -e '.result.structuredContent.submitted == true' <<<"$submit_response" >/dev/null
+          reference=$(jq -r '.result.structuredContent.reference' <<<"$submit_response")
+          [[ "$reference" == USJR-* ]]
+
+          echo "Production MCP smoke test passed with reference: $reference"
+          {
+            echo '### Production MCP smoke test passed'
+            echo
+            echo "- Discovered tools: $tool_count"
+            echo '- `prepareQuoteRequest`: passed'
+            echo '- Unconfirmed write guard: passed'
+            echo '- `submitQuoteRequest`: passed'
+            echo "- Quote reference: \`$reference\`"
+            echo '- Test lead was sent only to the business contact and is labeled DO NOT SCHEDULE OR DISPATCH.'
+          } >> "$GITHUB_STEP_SUMMARY"
