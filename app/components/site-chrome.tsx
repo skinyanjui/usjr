@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { quoteCtaHrefForPath } from "../quote-cta";
 import {
   emailAddress,
   phoneDisplay,
@@ -79,6 +81,8 @@ function BrandLogo({ footer = false, onClick }: BrandLogoProps) {
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const quoteHref = quoteCtaHrefForPath(pathname ?? "/");
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -312,7 +316,7 @@ export function SiteHeader() {
             <a className="text-link" href={`tel:${phoneHref}`}>
               {phoneDisplay}
             </a>
-            <Link className="button button--small" href="/#quote">
+            <Link className="button button--small" href={quoteHref}>
               Get a free quote
             </Link>
           </div>
@@ -323,6 +327,9 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  const quoteHref = quoteCtaHrefForPath(pathname ?? "/");
+
   return (
     <>
       <footer className="site-footer">
@@ -346,7 +353,7 @@ export function SiteFooter() {
             <Link href="/faq">FAQ</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/#pricing">Pricing</Link>
-            <Link href="/#quote">Free quote</Link>
+            <Link href={quoteHref}>Free quote</Link>
           </div>
           <div>
             <h3>Popular services</h3>
@@ -377,7 +384,7 @@ export function SiteFooter() {
 
       <div className="mobile-actions" aria-label="Quick contact">
         <a href={`tel:${phoneHref}`}>Call now</a>
-        <Link href="/#quote">Get quote</Link>
+        <Link href={quoteHref}>Get quote</Link>
       </div>
     </>
   );

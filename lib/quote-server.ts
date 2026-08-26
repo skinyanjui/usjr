@@ -284,6 +284,10 @@ function consumeRateLimit(
 }
 
 function validEmail(value: string) {
+  if (!value.trim()) {
+    return true;
+  }
+
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
@@ -705,17 +709,19 @@ export async function handleQuoteRequest(
     );
   }
 
-  const confirmation = await sendEmail(
-    env,
-    {
-      ...common,
-      to: [data.email],
-      subject: `[${reference}] Request received`,
-      text: `Request ${reference} received\n\nHi ${data.name}, we have your request and normally respond as soon as possible during business hours.\n\n${textRows(data)}\n\nUrgent? Call ${BUSINESS_PHONE_DISPLAY}. Reply to this email to add information or photos.\n${SITE_URL}/#quote`,
-      html: customerEmail(data, reference),
-    },
-    `quote/${reference}/customer`,
-  );
+  const confirmation = data.email.trim()
+    ? await sendEmail(
+        env,
+        {
+          ...common,
+          to: [data.email],
+          subject: `[${reference}] Request received`,
+          text: `Request ${reference} received\n\nHi ${data.name}, we have your request and normally respond as soon as possible during business hours.\n\n${textRows(data)}\n\nUrgent? Call ${BUSINESS_PHONE_DISPLAY}. Reply to this email to add information or photos.\n${SITE_URL}/#quote`,
+          html: customerEmail(data, reference),
+        },
+        `quote/${reference}/customer`,
+      )
+    : { ok: false };
 
   return jsonResponse(request, {
     ok: true,
@@ -761,13 +767,13 @@ function validatePhotoFiles(
     return options?.minimumWhenPresent ? "Add at least one photo." : "";
   }
 
-  const minimum = options?.minimumWhenPresent ?? 3;
+  const minimum = options?.minimumWhenPresent ?? 1;
   if (photos.length < minimum || photos.length > 8) {
-    return "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
+    return "Use 1–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
   }
 
   if (!photos.every(isAllowedPhotoFile)) {
-    return "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
+    return "Use 1–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
   }
 
   return "";
@@ -856,7 +862,7 @@ export async function handleQuotePhotoRequest(
         ok: false,
         error:
           photoError ||
-          "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.",
+          "Use 1–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.",
       },
       400,
     );

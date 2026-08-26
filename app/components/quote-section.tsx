@@ -16,6 +16,26 @@ import {
 } from "../site-data";
 
 const quoteServiceEvent = "uncle-sam:quote-service";
+const quoteFieldIds = {
+  name: "quote-name",
+  phone: "quote-phone",
+  email: "quote-email",
+  address: "quote-address",
+  service: "quote-service",
+  quantity: "quote-quantity",
+  preferredDate: "quote-preferredDate",
+  photos: "quote-photos",
+  consent: "quote-consent",
+} as const;
+
+type QuoteFieldKey = keyof typeof quoteFieldIds;
+
+function quoteFieldDescribedBy(
+  field: QuoteFieldKey,
+  hasError: boolean,
+): string | undefined {
+  return hasError ? `${quoteFieldIds[field]}-error` : undefined;
+}
 const maxPhotos = 8;
 const maxPhotoBytes = 3_500_000;
 const acceptedPhotoTypes = new Set([
@@ -504,10 +524,16 @@ export function QuoteSection({
   }, []);
 
   useEffect(() => {
-    if (result || formError) {
+    if (result) {
       statusRef.current?.focus();
     }
-  }, [formError, result]);
+  }, [result]);
+
+  useEffect(() => {
+    if (Object.keys(fieldErrors).length > 0 || formError) {
+      statusRef.current?.focus();
+    }
+  }, [fieldErrors, formError]);
 
   function markStarted() {
     if (startedRef.current) {
@@ -671,7 +697,10 @@ export function QuoteSection({
     if (form.phone.replace(/\D/g, "").length < 7) {
       errors.phone = "Enter a valid phone number.";
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    if (
+      form.email.trim().length > 0 &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
+    ) {
       errors.email = "Enter a valid email address.";
     }
     if (form.address.trim().length < 2) {
@@ -686,9 +715,9 @@ export function QuoteSection({
     if (form.urgency === "choose-date" && !form.preferredDate) {
       errors.preferredDate = "Choose a preferred date.";
     }
-    if (photos.length > 0 && photos.length < 3) {
+    if (photos.length > maxPhotos) {
       errors.photos =
-        "Add at least 3 photos, or remove them and submit without photos.";
+        "Use 1–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
     }
     if (!form.consent) {
       errors.consent = "Confirm that we may contact you about this request.";
@@ -875,15 +904,11 @@ export function QuoteSection({
     const errors = validate();
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
-      const firstKey = Object.keys(errors)[0];
-      setFormError(errors[firstKey]);
+      setFormError("");
       trackQuoteEvent("quote_validation_error", {
         error_count: Object.keys(errors).length,
-        first_field: firstKey,
+        first_field: Object.keys(errors)[0],
       });
-      document
-        .querySelector<HTMLElement>(`[data-quote-field="${firstKey}"]`)
-        ?.focus();
       return;
     }
 
@@ -1119,22 +1144,36 @@ export function QuoteSection({
                     <label>
                       <span>Your name</span>
                       <input
+                        id={quoteFieldIds.name}
                         data-quote-field="name"
                         type="text"
                         autoComplete="name"
                         placeholder="First and last name"
                         value={form.name}
                         aria-invalid={Boolean(fieldErrors.name)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "name",
+                          Boolean(fieldErrors.name),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("name", event.target.value)
                         }
                         required
                       />
+                      {fieldErrors.name ? (
+                        <p
+                          className="field-error"
+                          id={`${quoteFieldIds.name}-error`}
+                        >
+                          {fieldErrors.name}
+                        </p>
+                      ) : null}
                     </label>
                     <label>
                       <span>Phone number</span>
                       <input
+                        id={quoteFieldIds.phone}
                         data-quote-field="phone"
                         type="tel"
                         autoComplete="tel"
@@ -1142,46 +1181,83 @@ export function QuoteSection({
                         placeholder="(812) 555-0123"
                         value={form.phone}
                         aria-invalid={Boolean(fieldErrors.phone)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "phone",
+                          Boolean(fieldErrors.phone),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("phone", event.target.value)
                         }
                         required
                       />
+                      {fieldErrors.phone ? (
+                        <p
+                          className="field-error"
+                          id={`${quoteFieldIds.phone}-error`}
+                        >
+                          {fieldErrors.phone}
+                        </p>
+                      ) : null}
                     </label>
                   </div>
                   <div className="form-grid">
                     <label>
                       <span>Email address</span>
                       <input
+                        id={quoteFieldIds.email}
                         data-quote-field="email"
                         type="email"
                         autoComplete="email"
                         placeholder="you@example.com"
                         value={form.email}
                         aria-invalid={Boolean(fieldErrors.email)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "email",
+                          Boolean(fieldErrors.email),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("email", event.target.value)
                         }
-                        required
                       />
+                      {fieldErrors.email ? (
+                        <p
+                          className="field-error"
+                          id={`${quoteFieldIds.email}-error`}
+                        >
+                          {fieldErrors.email}
+                        </p>
+                      ) : null}
                     </label>
                     <label>
                       <span>Pickup city, ZIP, or address</span>
                       <input
+                        id={quoteFieldIds.address}
                         data-quote-field="address"
                         type="text"
                         autoComplete="street-address"
                         placeholder="Evansville, IN"
                         value={form.address}
                         aria-invalid={Boolean(fieldErrors.address)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "address",
+                          Boolean(fieldErrors.address),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("address", event.target.value)
                         }
                         required
                       />
+                      {fieldErrors.address ? (
+                        <p
+                          className="field-error"
+                          id={`${quoteFieldIds.address}-error`}
+                        >
+                          {fieldErrors.address}
+                        </p>
+                      ) : null}
                     </label>
                   </div>
                 </div>
@@ -1209,9 +1285,14 @@ export function QuoteSection({
                   <label>
                     <span>All services</span>
                     <select
+                      id={quoteFieldIds.service}
                       data-quote-field="service"
                       value={form.service}
                       aria-invalid={Boolean(fieldErrors.service)}
+                      aria-describedby={quoteFieldDescribedBy(
+                        "service",
+                        Boolean(fieldErrors.service),
+                      )}
                       disabled={disabled}
                       onChange={(event) => chooseService(event.target.value)}
                       required
@@ -1241,7 +1322,116 @@ export function QuoteSection({
                         <option value="Something else">Something else</option>
                       </optgroup>
                     </select>
+                    {fieldErrors.service ? (
+                      <p
+                        className="field-error"
+                        id={`${quoteFieldIds.service}-error`}
+                      >
+                        {fieldErrors.service}
+                      </p>
+                    ) : null}
                   </label>
+                </div>
+
+                <div className="quote-form-section">
+                  <div className="quote-form-section__heading">
+                    <span>Photos</span>
+                    <small>Optional · 1–8 if added</small>
+                  </div>
+                  <p className="photo-help">
+                    Photos usually help us price faster—but you can submit
+                    without them.
+                  </p>
+                  <label
+                    className={`photo-picker ${
+                      fieldErrors.photos ? "photo-picker--error" : ""
+                    }`}
+                  >
+                    <input
+                      id={quoteFieldIds.photos}
+                      data-quote-field="photos"
+                      type="file"
+                      accept="image/jpeg,image/png,image/heic,image/heif,.jpg,.jpeg,.png,.heic,.heif"
+                      multiple
+                      aria-invalid={Boolean(fieldErrors.photos)}
+                      aria-describedby={quoteFieldDescribedBy(
+                        "photos",
+                        Boolean(fieldErrors.photos),
+                      )}
+                      disabled={
+                        disabled ||
+                        isPreparingPhotos ||
+                        photos.length >= maxPhotos
+                      }
+                      onChange={addPhotos}
+                    />
+                    <span aria-hidden="true">＋</span>
+                    <strong>
+                      {isPreparingPhotos
+                        ? "Preparing photos…"
+                        : "Take or choose photos"}
+                    </strong>
+                    <small>JPG, PNG, or HEIC · up to 3.5 MB each</small>
+                  </label>
+                  {fieldErrors.photos ? (
+                    <p
+                      className="field-error"
+                      id={`${quoteFieldIds.photos}-error`}
+                    >
+                      {fieldErrors.photos}
+                    </p>
+                  ) : null}
+                  {photos.length > 0 && (
+                    <div className="photo-preview-grid">
+                      {photos.map((photo) => {
+                        const status = photoStatuses[photo.id];
+                        return (
+                          <div className="photo-preview" key={photo.id}>
+                            {photo.previewUrl ? (
+                              // A local blob preview cannot use next/image.
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={photo.previewUrl}
+                                alt={`Preview of ${photo.originalName}`}
+                              />
+                            ) : (
+                              <div
+                                className="photo-preview__heic"
+                                aria-label={`${photo.originalName} HEIC photo`}
+                              >
+                                HEIC
+                              </div>
+                            )}
+                            <button
+                              type="button"
+                              aria-label={`Remove ${photo.originalName}`}
+                              disabled={isSubmitting}
+                              onClick={() => removePhoto(photo.id)}
+                            >
+                              ×
+                            </button>
+                            <small>
+                              {status?.state === "uploading"
+                                ? `${status.progress}%`
+                                : status?.state === "sent"
+                                  ? "Sent"
+                                  : status?.state === "failed"
+                                    ? "Retry needed"
+                                    : "Ready"}
+                            </small>
+                            {status?.state === "uploading" && (
+                              <span
+                                className="photo-progress"
+                                style={{
+                                  "--photo-progress": `${status.progress}%`,
+                                } as React.CSSProperties}
+                              />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 <div
@@ -1275,6 +1465,7 @@ export function QuoteSection({
                       <label>
                         <span>Preferred date</span>
                         <input
+                          id={quoteFieldIds.preferredDate}
                           data-quote-field="preferredDate"
                           type="date"
                           value={form.preferredDate}
@@ -1282,20 +1473,37 @@ export function QuoteSection({
                           aria-invalid={Boolean(
                             fieldErrors.preferredDate,
                           )}
+                          aria-describedby={quoteFieldDescribedBy(
+                            "preferredDate",
+                            Boolean(fieldErrors.preferredDate),
+                          )}
                           disabled={disabled}
                           onChange={(event) =>
                             setField("preferredDate", event.target.value)
                           }
                           required
                         />
+                        {fieldErrors.preferredDate ? (
+                          <p
+                            className="field-error"
+                            id={`${quoteFieldIds.preferredDate}-error`}
+                          >
+                            {fieldErrors.preferredDate}
+                          </p>
+                        ) : null}
                       </label>
                     )}
                     <label>
                       <span>Approximate quantity or load size</span>
                       <select
+                        id={quoteFieldIds.quantity}
                         data-quote-field="quantity"
                         value={form.quantity}
                         aria-invalid={Boolean(fieldErrors.quantity)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "quantity",
+                          Boolean(fieldErrors.quantity),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("quantity", event.target.value)
@@ -1309,6 +1517,14 @@ export function QuoteSection({
                           <option key={option}>{option}</option>
                         ))}
                       </select>
+                      {fieldErrors.quantity ? (
+                        <p
+                          className="field-error"
+                          id={`${quoteFieldIds.quantity}-error`}
+                        >
+                          {fieldErrors.quantity}
+                        </p>
+                      ) : null}
                     </label>
                     <div className="planning-range" aria-live="polite">
                       <strong>Planning range</strong>
@@ -1651,94 +1867,6 @@ export function QuoteSection({
 
                   <div className="quote-form-section">
                     <div className="quote-form-section__heading">
-                      <span>Photos</span>
-                      <small>Optional · 3–8 if added</small>
-                    </div>
-                    <p className="photo-help">
-                      Photos usually help us price faster—but you can submit
-                      without them.
-                    </p>
-                    <label
-                      className={`photo-picker ${
-                        fieldErrors.photos ? "photo-picker--error" : ""
-                      }`}
-                    >
-                      <input
-                        data-quote-field="photos"
-                        type="file"
-                        accept="image/jpeg,image/png,image/heic,image/heif,.jpg,.jpeg,.png,.heic,.heif"
-                        capture="environment"
-                        multiple
-                        disabled={
-                          disabled ||
-                          isPreparingPhotos ||
-                          photos.length >= maxPhotos
-                        }
-                        onChange={addPhotos}
-                      />
-                      <span aria-hidden="true">＋</span>
-                      <strong>
-                        {isPreparingPhotos
-                          ? "Preparing photos…"
-                          : "Take or choose photos"}
-                      </strong>
-                      <small>JPG, PNG, or HEIC · up to 3.5 MB each</small>
-                    </label>
-                    {photos.length > 0 && (
-                      <div className="photo-preview-grid">
-                        {photos.map((photo) => {
-                          const status = photoStatuses[photo.id];
-                          return (
-                            <div className="photo-preview" key={photo.id}>
-                              {photo.previewUrl ? (
-                                // A local blob preview cannot use next/image.
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img
-                                  src={photo.previewUrl}
-                                  alt={`Preview of ${photo.originalName}`}
-                                />
-                              ) : (
-                                <div
-                                  className="photo-preview__heic"
-                                  aria-label={`${photo.originalName} HEIC photo`}
-                                >
-                                  HEIC
-                                </div>
-                              )}
-                              <button
-                                type="button"
-                                aria-label={`Remove ${photo.originalName}`}
-                                disabled={isSubmitting}
-                                onClick={() => removePhoto(photo.id)}
-                              >
-                                ×
-                              </button>
-                              <small>
-                                {status?.state === "uploading"
-                                  ? `${status.progress}%`
-                                  : status?.state === "sent"
-                                    ? "Sent"
-                                    : status?.state === "failed"
-                                      ? "Retry needed"
-                                      : "Ready"}
-                              </small>
-                              {status?.state === "uploading" && (
-                                <span
-                                  className="photo-progress"
-                                  style={{
-                                    "--photo-progress": `${status.progress}%`,
-                                  } as React.CSSProperties}
-                                />
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="quote-form-section">
-                    <div className="quote-form-section__heading">
                       <span>Final details</span>
                       <small>Choose how we should respond.</small>
                     </div>
@@ -1781,10 +1909,15 @@ export function QuoteSection({
                     </label>
                     <label className="consent-check">
                       <input
+                        id={quoteFieldIds.consent}
                         data-quote-field="consent"
                         type="checkbox"
                         checked={form.consent}
                         aria-invalid={Boolean(fieldErrors.consent)}
+                        aria-describedby={quoteFieldDescribedBy(
+                          "consent",
+                          Boolean(fieldErrors.consent),
+                        )}
                         disabled={disabled}
                         onChange={(event) =>
                           setField("consent", event.target.checked)
@@ -1797,10 +1930,18 @@ export function QuoteSection({
                         purchase.
                       </span>
                     </label>
+                    {fieldErrors.consent ? (
+                      <p
+                        className="field-error"
+                        id={`${quoteFieldIds.consent}-error`}
+                      >
+                        {fieldErrors.consent}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
 
-                {formError && (
+                {(Object.keys(fieldErrors).length > 0 || formError) && (
                   <div
                     className="form-alert"
                     role="alert"
@@ -1808,7 +1949,21 @@ export function QuoteSection({
                     ref={statusRef}
                   >
                     <strong>Please check the form.</strong>
-                    <span>{formError}</span>
+                    {Object.keys(fieldErrors).length > 0 ? (
+                      <ul className="form-alert__errors">
+                        {Object.entries(fieldErrors).map(([key, message]) => {
+                          const fieldId =
+                            quoteFieldIds[key as QuoteFieldKey] ?? key;
+                          return (
+                            <li key={key}>
+                              <a href={`#${fieldId}`}>{message}</a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : (
+                      <span>{formError}</span>
+                    )}
                     <div>
                       <a
                         href={`sms:${phoneHref}?body=${encodeURIComponent(
@@ -1831,7 +1986,7 @@ export function QuoteSection({
                 <button
                   className="button button--full"
                   type="submit"
-                  disabled={disabled || !form.service}
+                  disabled={disabled}
                 >
                   {isSubmitting
                     ? photos.length > 0

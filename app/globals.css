@@ -464,10 +464,15 @@ img {
 }
 
 .button:disabled {
-  border-color: #8f9ba4;
-  background: #8f9ba4;
-  cursor: wait;
+  border-color: var(--line);
+  background: var(--line);
+  color: var(--ink);
+  cursor: not-allowed;
   transform: none;
+}
+
+form[aria-busy="true"] .button[type="submit"]:disabled {
+  cursor: wait;
 }
 
 .button--small {
@@ -478,7 +483,7 @@ img {
 
 .button--ghost {
   background: transparent;
-  border-color: rgba(16, 42, 67, 0.3);
+  border-color: var(--ink-2);
   color: var(--ink);
 }
 
@@ -1362,7 +1367,7 @@ img {
 .quick-service-picker button {
   min-height: 46px;
   padding: 8px 10px;
-  border: 1px solid #cfd5d9;
+  border: 1px solid var(--muted);
   border-radius: 10px;
   background: #fbfcfc;
   color: var(--ink-2);
@@ -1464,7 +1469,7 @@ img {
 .form-choice {
   min-height: 42px;
   padding: 7px 9px;
-  border: 1px solid #cfd5d9;
+  border: 1px solid var(--muted);
   border-radius: 9px;
   background: #fbfcfc;
   color: var(--ink-2);
@@ -1535,7 +1540,7 @@ img {
 .quote-panel .check-card {
   min-height: 65px;
   padding: 11px;
-  border: 1px solid #cfd5d9;
+  border: 1px solid var(--muted);
   border-radius: 10px;
   flex-direction: row;
   align-items: flex-start;
@@ -1589,7 +1594,7 @@ img {
 .quote-panel .photo-picker {
   min-height: 112px;
   padding: 16px;
-  border: 1.5px dashed #9ba9b2;
+  border: 1.5px dashed var(--muted);
   border-radius: 12px;
   align-items: center;
   justify-content: center;
@@ -1767,6 +1772,22 @@ img {
   gap: 14px;
 }
 
+.form-alert__errors {
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+}
+
+.form-alert__errors a {
+  color: var(--ink);
+  font-size: var(--text-xs);
+  font-weight: 750;
+  text-decoration: underline;
+}
+
 .form-alert a {
   color: var(--ink);
   font-size: var(--text-xs);
@@ -1874,7 +1895,7 @@ img {
 .quote-panel select,
 .quote-panel textarea {
   width: 100%;
-  border: 1px solid #cfd5d9;
+  border: 1px solid var(--muted);
   border-radius: 10px;
   background: #fbfcfc;
   color: var(--ink);
