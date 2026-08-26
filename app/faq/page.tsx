@@ -104,7 +104,7 @@ export default function FaqPage() {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">FAQ hub</p>
               <h2>Unique questions for this page.</h2>
             </div>
@@ -151,7 +151,7 @@ export default function FaqPage() {
                 <p className="eyebrow">Ready?</p>
                 <h2>Send photos or call.</h2>
               </div>
-              <Link className="inline-link" href="/#quote">
+              <Link className="button" href="/#quote">
                 Open the quote form
               </Link>
             </div>

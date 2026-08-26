@@ -347,7 +347,7 @@ test("renders the mega menu, focused popular services, and live quote form", asy
   );
 });
 
-test("keeps veteran ownership and Evansville identity in the footer, not the hero", async () => {
+test("surfaces veteran-owned on the homepage trust strip, not Evansville in the hero", async () => {
   const worker = await loadWorker();
   const response = await render(worker, "/");
   const body = await response.text();
@@ -356,7 +356,9 @@ test("keeps veteran ownership and Evansville identity in the footer, not the her
 
   assert.ok(hero, "homepage should render a hero");
   assert.ok(footer, "homepage should render a footer");
-  assert.doesNotMatch(hero, /Veteran-owned|Evansville, Indiana/i);
+  assert.match(hero, /Veteran-owned/i);
+  assert.match(hero, /Licensed &amp; insured/i);
+  assert.doesNotMatch(hero, /Evansville, Indiana/i);
   assert.match(footer, /Veteran-owned/i);
   assert.match(footer, /Evansville, Indiana/i);
 });
@@ -1235,6 +1237,80 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
     locationsHubBody,
     /<h1[^>]*>Nine junk-removal routes dispatched from Evansville, IN\.<\/h1>/i,
   );
+});
+
+test("applies Muse visual cleanup: stacked FAQs, Reach us, CTA contrast, darker body", async () => {
+  const worker = await loadWorker();
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    css,
+    /\.faq-layout\s*\{[\s\S]*?flex-direction:\s*column;/,
+    "FAQ sections should stack headings above accordions",
+  );
+  assert.match(
+    css,
+    /\.button--outline\s*\{[\s\S]*?border-color:\s*var\(--ink\)/,
+    "secondary buttons need a visible ink outline on cream",
+  );
+  assert.match(
+    css,
+    /\.footer-grid a\[href\^="mailto:"\]\s*\{[\s\S]*?white-space:\s*nowrap;/,
+    "footer email should not break mid-address",
+  );
+
+  const homeBody = await (await render(worker, "/")).text();
+  assert.match(
+    homeBody,
+    /button button--outline[^>]*>[\s\S]*?Text photos instead/i,
+    "homepage secondary CTA should use ink outline",
+  );
+  assert.match(homeBody, /trust-list__mark/i);
+
+  const faqBody = await (await render(worker, "/faq")).text();
+  assert.match(faqBody, /faq-layout__header/i);
+  assert.match(
+    faqBody,
+    /class=["']button["'][^>]*>[\s\S]*?Open the quote form/i,
+    "/faq closer should be a primary button",
+  );
+  assert.doesNotMatch(faqBody, />\s*NAP\s*</i);
+
+  const aboutBody = await (await render(worker, "/about")).text();
+  assert.match(aboutBody, /About FAQ[\s\S]*?How this crew works/i);
+  const aboutHeroParagraph = aboutBody.match(
+    /<section class=["']detail-hero["'][\s\S]*?<\/section>/i,
+  )?.[0];
+  const aboutBodySection = aboutBody.match(
+    /About this crew[\s\S]*?Local trucks, Tri-State routes/i,
+  )?.[0];
+  assert.ok(aboutHeroParagraph && aboutBodySection);
+  const heroCopy = aboutHeroParagraph.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const bodyCopy = aboutBodySection.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const duplicateLead =
+    "Uncle Sam Junk Removal is a veteran-owned crew dispatched from Evansville";
+  assert.match(heroCopy, new RegExp(duplicateLead.slice(0, 40)));
+  assert.doesNotMatch(
+    bodyCopy,
+    new RegExp(duplicateLead.slice(0, 40)),
+    "about body should not repeat the hero paragraph",
+  );
+
+  const locationsBody = await (await render(worker, "/locations")).text();
+  assert.match(locationsBody, /interior-hero--intro-only/i);
+  assert.match(locationsBody, /section--directory-flush/i);
+  assert.doesNotMatch(
+    locationsBody,
+    /interior-hero__grid[\s\S]*?<\/section>[\s\S]*?interior-hero__actions[\s\S]*?<\/div>\s*<\/div>\s*<\/section>[\s\S]*?<section class=["']section section--directory["']/i,
+    "locations should not use a two-column cream hero beside empty space",
+  );
+
+  const contactBody = await (await render(worker, "/contact")).text();
+  assert.match(contactBody, />Reach us</i);
+  assert.doesNotMatch(contactBody, />\s*NAP\s*</i);
 });
 
 test("near-duplicate GSC URLs stay unique via first-section copy", async () => {

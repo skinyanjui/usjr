@@ -339,7 +339,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">{location.city} FAQ</p>
               <h2>Local questions, answered.</h2>
             </div>

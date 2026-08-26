@@ -326,7 +326,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">Service FAQ</p>
               <h2>A few helpful answers.</h2>
             </div>
