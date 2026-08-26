@@ -63,8 +63,8 @@ export default function LocationsPage() {
       <SiteHeader />
 
       <main id="main-content">
-        <section className="interior-hero">
-          <div className="shell interior-hero__grid">
+        <section className="interior-hero interior-hero--intro-only">
+          <div className="shell interior-hero__grid interior-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -81,14 +81,14 @@ export default function LocationsPage() {
               <a className="button" href={genericSmsHref}>
                 Text your address
               </a>
-              <a className="button button--ghost" href={`tel:${phoneHref}`}>
+              <a className="button button--outline" href={`tel:${phoneHref}`}>
                 Call {phoneDisplay}
               </a>
             </div>
           </div>
         </section>
 
-        <section className="section section--directory">
+        <section className="section section--directory section--directory-flush">
           <div className="shell location-index-grid">
             {locations.map((location, index) => (
               <Link
@@ -107,7 +107,7 @@ export default function LocationsPage() {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">Coverage FAQ</p>
               <h2>Where we go, how booking works.</h2>
             </div>

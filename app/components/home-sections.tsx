@@ -35,7 +35,7 @@ export function HeroSection() {
               <a className="button" href="#quote">
                 Get a free quote
               </a>
-              <a className="button button--ghost" href={genericSmsHref}>
+              <a className="button button--outline" href={genericSmsHref}>
                 Text photos instead
               </a>
             </div>
@@ -43,6 +43,12 @@ export function HeroSection() {
               <li>Licensed &amp; insured</li>
               <li>Upfront pricing</li>
               <li>No heavy lifting for you</li>
+              <li>
+                <span className="trust-list__mark" aria-hidden="true">
+                  ★
+                </span>
+                Veteran-owned
+              </li>
             </ul>
           </div>
 
@@ -321,7 +327,7 @@ export function FaqSection() {
   return (
     <section className="section section--faq" id="faq">
       <div className="shell faq-layout">
-        <div>
+        <div className="faq-layout__header">
           <p className="eyebrow">Good to know</p>
           <h2>Questions, answered.</h2>
           <p className="faq-intro">

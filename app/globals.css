@@ -482,13 +482,25 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 }
 
 .button--ghost {
-  background: transparent;
-  border-color: var(--ink-2);
+  background: var(--white);
+  border-color: var(--ink);
   color: var(--ink);
 }
 
 .button--ghost:hover {
+  background: var(--paper);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.button--outline {
   background: var(--white);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.button--outline:hover {
+  background: var(--paper);
   border-color: var(--ink);
   color: var(--ink);
 }
@@ -507,7 +519,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .button--outline-light {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.55);
+  border: 2px solid var(--white);
   color: var(--white);
 }
 
@@ -602,7 +614,8 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 24px;
+  align-items: center;
+  gap: 8px 0;
   list-style: none;
   color: var(--ink-2);
   font-size: var(--text-sm);
@@ -614,9 +627,19 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   align-items: center;
 }
 
-.trust-list li + li {
-  padding-left: 24px;
-  border-left: 1px solid rgba(16, 42, 67, 0.2);
+.trust-list li + li::before {
+  margin-inline: 14px;
+  color: rgba(16, 42, 67, 0.35);
+  font-weight: 400;
+  content: "·";
+}
+
+.trust-list__mark {
+  margin-right: 6px;
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
 }
 
 .hero__visual {
@@ -775,7 +798,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 .section-heading > p {
   max-width: 440px;
   margin: 0 0 5px;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-base);
   line-height: 1.65;
 }
@@ -855,7 +878,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .service-card p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-sm);
   line-height: 1.65;
 }
@@ -914,7 +937,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 .popular-services__footer p {
   max-width: 440px;
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-sm);
   line-height: 1.6;
   text-align: right;
@@ -1002,7 +1025,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .process-grid p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-sm);
   line-height: 1.65;
 }
@@ -1021,7 +1044,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .pricing-intro > p:not(.eyebrow) {
   margin: 25px 0 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-base);
   line-height: 1.7;
 }
@@ -2035,15 +2058,19 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 }
 
 .faq-layout {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
-  gap: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.faq-layout__header {
+  max-width: 720px;
 }
 
 .faq-intro {
-  max-width: 370px;
+  max-width: 560px;
   margin: 24px 0 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-base);
   line-height: 1.7;
 }
@@ -2087,7 +2114,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 .faq-list details p {
   max-width: 690px;
   margin: -4px 45px 24px 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-sm);
   line-height: 1.7;
 }
@@ -2184,6 +2211,10 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   overflow-wrap: anywhere;
 }
 
+.footer-grid a[href^="mailto:"] {
+  white-space: nowrap;
+}
+
 .footer-grid a:hover {
   color: var(--white);
 }
@@ -2226,11 +2257,26 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   border-bottom: 1px solid var(--line);
 }
 
+.interior-hero--intro-only {
+  padding-bottom: 48px;
+  border-bottom: 0;
+}
+
 .interior-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 70px;
+}
+
+.interior-hero__grid--stacked {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 28px;
+}
+
+.interior-hero__grid--stacked .interior-hero__actions {
+  justify-content: flex-start;
 }
 
 .interior-hero h1,
@@ -2283,6 +2329,10 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .section--directory {
   background: var(--white);
+}
+
+.section--directory-flush {
+  padding-top: 0;
 }
 
 .service-index-grid {
@@ -2380,7 +2430,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .compact-explainer__grid > div:last-child > p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-2);
   font-size: var(--text-base);
   line-height: 1.75;
 }
@@ -3023,8 +3073,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   }
 
   .pricing-layout,
-  .quote-layout,
-  .faq-layout {
+  .quote-layout {
     gap: 54px;
   }
 
@@ -3283,8 +3332,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
   .pricing-layout,
   .areas-layout,
-  .quote-layout,
-  .faq-layout {
+  .quote-layout {
     grid-template-columns: 1fr;
     gap: 54px;
   }
@@ -3304,10 +3352,6 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
   .quote-copy > p:not(.eyebrow) {
     max-width: 570px;
-  }
-
-  .faq-layout {
-    gap: 42px;
   }
 
   .final-cta__inner {
@@ -3374,7 +3418,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   }
 
   body {
-    padding-bottom: 64px;
+    padding-bottom: 88px;
   }
 
   .announcement {
@@ -3436,23 +3480,22 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   }
 
   .trust-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
   }
 
-  .trust-list li + li {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .trust-list li:last-child {
-    grid-column: 1 / -1;
+  .trust-list li + li::before {
+    margin-inline: 10px;
   }
 
   .hero__visual,
   .hero__visual img {
     min-height: 390px;
+  }
+
+  .hero__visual {
+    margin-bottom: 16px;
   }
 
   .hero-card--rating {
@@ -3737,7 +3780,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
     bottom: 0;
     left: 0;
     height: 64px;
-    padding: 8px;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
     border-top: 1px solid rgba(16, 42, 67, 0.16);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3789,7 +3832,6 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
     padding-inline: 11px;
   }
 
-  .trust-list,
   .location-grid,
   .quick-service-picker > div,
   .footer-grid {
@@ -3806,7 +3848,10 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
     grid-template-columns: 1fr 1fr;
   }
 
-  .trust-list li:last-child,
+  .trust-list li + li::before {
+    margin-inline: 8px;
+  }
+
   .footer-brand {
     grid-column: auto;
   }

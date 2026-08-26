@@ -104,11 +104,6 @@ export default function AboutPage() {
             <article className="detail-content">
               <p className="eyebrow">About this crew</p>
               <h2>Local trucks, Tri-State routes.</h2>
-              {aboutPageCopy.paragraphs.map((paragraph) => (
-                <p className="detail-lead" key={paragraph.slice(0, 48)}>
-                  {paragraph}
-                </p>
-              ))}
               <p className="detail-lead">
                 Email{" "}
                 <a href={`mailto:${emailAddress}`}>{emailAddress}</a> or visit{" "}
@@ -140,7 +135,7 @@ export default function AboutPage() {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">About FAQ</p>
               <h2>How this crew works.</h2>
             </div>

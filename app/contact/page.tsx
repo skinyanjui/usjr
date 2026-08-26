@@ -130,7 +130,7 @@ export default function ContactPage() {
               </div>
             </div>
             <aside className="detail-summary" aria-label="Business contact">
-              <span>NAP</span>
+              <span>Reach us</span>
               <strong>Uncle Sam Junk Removal</strong>
               <p>
                 <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>

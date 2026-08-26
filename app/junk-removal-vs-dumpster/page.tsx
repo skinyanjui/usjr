@@ -91,7 +91,7 @@ export default function JunkRemovalVsDumpsterPage() {
 
         <section className="section section--faq">
           <div className="shell faq-layout">
-            <div>
+            <div className="faq-layout__header">
               <p className="eyebrow">Compare</p>
               <h2>Questions unique to this choice.</h2>
             </div>
