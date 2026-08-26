@@ -890,11 +890,44 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   const evansvilleBody = await evansville.text();
   assert.match(
     evansvilleBody,
-    /<title>Junk Removal Evansville, IN \| East Side to Downtown Pickup<\/title>/i,
+    /<title>Junk Removal in Evansville, IN \| Uncle Sam Junk Removal<\/title>/i,
   );
   assert.match(
     evansvilleBody,
-    /<h1[^>]*>Junk removal in Evansville, from downtown to the east side\.<\/h1>/i,
+    /<h1[^>]*>Junk removal in Evansville, IN\.<\/h1>/i,
+  );
+  assert.doesNotMatch(
+    evansvilleBody,
+    /East Side to Downtown Pickup|from downtown to the east side/i,
+  );
+  assert.match(
+    evansvilleBody,
+    /Evansville is home base in Vanderburgh County\./i,
+  );
+  assert.match(
+    evansvilleBody,
+    /We clear houses, apartments, rentals, and small job sites on the east side, west side, north side, and downtown\./i,
+  );
+  assert.match(
+    evansvilleBody,
+    /City heavy trash \(Republic \/ EWSU\) is a good free option if you live in the city/,
+  );
+  assert.match(
+    evansvilleBody,
+    /We come inside, take the whole agreed pile in one stop, and check today.s Evansville route before quoting/,
+  );
+  assert.doesNotMatch(
+    evansvilleBody,
+    /including the blocks around downtown, the east-side corridors/i,
+  );
+  // Hero must not repeat the Local-service opening lede.
+  const heroChunk = evansvilleBody.match(
+    /detail-hero--location[\s\S]*?<\/section>/i,
+  )?.[0];
+  assert.ok(heroChunk, "evansville should render a location hero");
+  assert.doesNotMatch(
+    heroChunk,
+    /We clear houses, apartments, rentals, and small job sites/i,
   );
   assert.match(evansvilleBody, /Does city heavy trash stop in the fall\?/i);
   assert.match(evansvilleBody, /Do I need to be home\?/i);
@@ -903,29 +936,60 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   const hendersonBody = await henderson.text();
   assert.match(
     hendersonBody,
-    /<h1[^>]*>Henderson junk removal on a Kentucky route, not an Evansville daily loop\.<\/h1>/i,
+    /<title>Junk Removal in Henderson, KY \| Uncle Sam Junk Removal<\/title>/i,
   );
-  assert.doesNotMatch(
+  assert.match(
     hendersonBody,
     /<h1[^>]*>Junk removal in Henderson, KY\.<\/h1>/i,
+  );
+  assert.match(
+    hendersonBody,
+    /Henderson pickups mean a Kentucky crossing of the Ohio/i,
   );
 
   const owensboro = await render(worker, "/locations/owensboro-ky");
   const owensboroBody = await owensboro.text();
   assert.match(
     owensboroBody,
-    /<h1[^>]*>Owensboro junk removal farther downriver than Henderson\.<\/h1>/i,
+    /<title>Junk Removal in Owensboro, KY \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(
+    owensboroBody,
+    /<h1[^>]*>Junk removal in Owensboro, KY\.<\/h1>/i,
+  );
+  assert.match(
+    owensboroBody,
+    /Owensboro sits farther down the Ohio than Henderson/i,
   );
 
   const princeton = await render(worker, "/locations/princeton-in");
   const princetonBody = await princeton.text();
   assert.match(
     princetonBody,
-    /<h1[^>]*>Princeton junk removal when the Gibson County truck is running\.<\/h1>/i,
+    /<title>Junk Removal in Princeton, IN \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(
+    princetonBody,
+    /<h1[^>]*>Junk removal in Princeton, IN\.<\/h1>/i,
+  );
+  assert.match(
+    princetonBody,
+    /Princeton is a Gibson County run up US 41/i,
+  );
+
+  const locationsHub = await render(worker, "/locations");
+  const locationsHubBody = await locationsHub.text();
+  assert.match(
+    locationsHubBody,
+    /<title>Junk Removal Locations in the Evansville Tri-State \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(
+    locationsHubBody,
+    /<h1[^>]*>Nine junk-removal routes dispatched from Evansville, IN\.<\/h1>/i,
   );
 });
 
-test("near-duplicate GSC URLs are not city-name-swap templates", async () => {
+test("near-duplicate GSC URLs stay unique via first-section copy", async () => {
   const worker = await loadWorker();
   const cityTokens =
     /evansville|henderson|owensboro|princeton|newburgh|boonville|kentucky|indiana|\bin\b|\bky\b/gi;
@@ -939,63 +1003,47 @@ test("near-duplicate GSC URLs are not city-name-swap templates", async () => {
       .trim();
   }
 
-  async function pageBits(path) {
+  async function firstSection(path) {
     const body = await (await render(worker, path)).text();
-    const title = body.match(/<title>([^<]+)<\/title>/i)?.[1] ?? "";
-    const h1 = body.match(/<h1[^>]*>([^<]+)<\/h1>/i)?.[1] ?? "";
     const local = body.match(
-      /Local service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p class=["']detail-lead["']>([\s\S]*?)<\/p>/i,
+      /Local service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>([\s\S]*?)(?:<div class=["']local-service-grid["']|<aside class=["']detail-aside["'])/i,
     );
     const about = body.match(
-      /About this service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p class=["']detail-lead["']>([\s\S]*?)<\/p>/i,
+      /About this service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>([\s\S]*?)(?:<div class=["']detail-list-grid["']|<aside class=["']detail-aside["'])/i,
     );
-    const first = `${local?.[1] ?? about?.[1] ?? ""} ${local?.[2] ?? about?.[2] ?? ""}`;
-    return {
-      title: normalize(title),
-      h1: normalize(h1),
-      first: normalize(first),
-    };
+    const chunk = `${local?.[1] ?? about?.[1] ?? ""} ${local?.[2] ?? about?.[2] ?? ""}`;
+    return normalize(chunk.replace(/<[^>]+>/g, " "));
   }
 
-  const locationPages = await Promise.all(
-    [
-      "/locations/evansville-in",
-      "/locations/henderson-ky",
-      "/locations/owensboro-ky",
-      "/locations/princeton-in",
-    ].map(pageBits),
-  );
-  const locationH1s = new Set(locationPages.map((page) => page.h1));
-  const locationFirsts = new Set(locationPages.map((page) => page.first));
-  assert.equal(
-    locationH1s.size,
-    locationPages.length,
-    "location H1s must stay unique after stripping city tokens",
+  const locationFirsts = new Set(
+    await Promise.all(
+      [
+        "/locations/evansville-in",
+        "/locations/henderson-ky",
+        "/locations/owensboro-ky",
+        "/locations/princeton-in",
+      ].map(firstSection),
+    ),
   );
   assert.equal(
     locationFirsts.size,
-    locationPages.length,
+    4,
     "location first sections must stay unique after stripping city tokens",
   );
 
-  const servicePages = await Promise.all(
-    [
-      "/services/appliance-removal",
-      "/services/furniture-removal",
-      "/services/office-cleanouts",
-      "/services/restaurant-equipment-removal",
-    ].map(pageBits),
-  );
-  const serviceH1s = new Set(servicePages.map((page) => page.h1));
-  const serviceFirsts = new Set(servicePages.map((page) => page.first));
-  assert.equal(
-    serviceH1s.size,
-    servicePages.length,
-    "service H1s must stay unique after stripping city tokens",
+  const serviceFirsts = new Set(
+    await Promise.all(
+      [
+        "/services/appliance-removal",
+        "/services/furniture-removal",
+        "/services/office-cleanouts",
+        "/services/restaurant-equipment-removal",
+      ].map(firstSection),
+    ),
   );
   assert.equal(
     serviceFirsts.size,
-    servicePages.length,
+    4,
     "service first sections must stay unique after stripping city tokens",
   );
 });

@@ -108,7 +108,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
       (service): service is (typeof services)[number] => service !== undefined,
     );
   const h1 = override?.h1 ?? `Junk removal in ${location.name}.`;
-  const heroLead = override?.heroLead ?? location.summary;
+  const heroLead = override ? override.heroLead : location.summary;
   const localHeading =
     override?.sectionHeading ??
     `A simpler way to clear a property in ${location.city}.`;
@@ -224,7 +224,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
               </nav>
               <p className="eyebrow eyebrow--light">{location.county}</p>
               <h1>{h1}</h1>
-              <p>{heroLead}</p>
+              {heroLead ? <p>{heroLead}</p> : null}
               <div className="detail-hero__actions">
                 <a className="button button--light" href={smsHref}>
                   Text photos and your address
