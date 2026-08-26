@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
+const publicRoot = fileURLToPath(new URL("../public", import.meta.url));
 
 const serviceSlugs = [
   "junk-removal",
@@ -80,7 +83,50 @@ async function render(worker, path, accept = "text/html") {
 function workerEnv(overrides = {}) {
   return {
     ASSETS: {
-      fetch: async () => new Response("Not found", { status: 404 }),
+      fetch: async (request) => {
+        const url = new URL(
+          typeof request === "string" ? request : request.url,
+        );
+        const relativePath = decodeURIComponent(url.pathname).replace(
+          /^\/+/,
+          "",
+        );
+        if (
+          !relativePath ||
+          relativePath.includes("\0") ||
+          path.isAbsolute(relativePath) ||
+          relativePath.split(/[\\/]/).includes("..")
+        ) {
+          return new Response("Not found", { status: 404 });
+        }
+
+        const filePath = path.resolve(publicRoot, relativePath);
+        if (
+          filePath !== publicRoot &&
+          !filePath.startsWith(`${publicRoot}${path.sep}`)
+        ) {
+          return new Response("Not found", { status: 404 });
+        }
+
+        try {
+          const body = await readFile(filePath);
+          const contentType = filePath.endsWith(".txt")
+            ? "text/plain; charset=utf-8"
+            : filePath.endsWith(".json")
+              ? "application/json; charset=utf-8"
+              : filePath.endsWith(".svg")
+                ? "image/svg+xml"
+                : filePath.endsWith(".webp")
+                  ? "image/webp"
+                  : "application/octet-stream";
+          return new Response(body, {
+            status: 200,
+            headers: { "Content-Type": contentType },
+          });
+        } catch {
+          return new Response("Not found", { status: 404 });
+        }
+      },
     },
     ...overrides,
   };
@@ -695,7 +741,7 @@ test("resets internal page navigation to the top while preserving section links"
   assert.match(source, /scrollIntoView\(\{\s*block:\s*"start"/);
 });
 
-test("ships Beacon SEO contact, storm, and Newburgh garage copy", async () => {
+test("ships Beacon contact/storm and Quill location-service copy", async () => {
   const worker = await loadWorker();
 
   const contact = await render(worker, "/contact");
@@ -710,7 +756,10 @@ test("ships Beacon SEO contact, storm, and Newburgh garage copy", async () => {
     /<h1[^>]*>Contact Uncle Sam Junk Removal<\/h1>/i,
   );
   assert.match(contactBody, /"@type":"ContactPage"/i);
-  assert.match(contactBody, /"@type":\["LocalBusiness","HomeAndConstructionBusiness"\]/i);
+  assert.match(
+    contactBody,
+    /"@type":\["LocalBusiness","HomeAndConstructionBusiness"\]/i,
+  );
   assert.doesNotMatch(contactBody, /AggregateRating/i);
   assert.doesNotMatch(contactBody, /streetAddress/i);
   assert.doesNotMatch(contactBody, /postalCode/i);
@@ -758,12 +807,50 @@ test("ships Beacon SEO contact, storm, and Newburgh garage copy", async () => {
   assert.equal(newburgh.status, 200);
   assert.match(
     newburghBody,
-    /<title>Garage Cleanout &amp; Junk Removal in Newburgh, IN \| Uncle Sam Junk Removal<\/title>/i,
+    /<title>Garage Cleanout in Newburgh, IN \| Junk Removal &amp; Hauling<\/title>/i,
   );
   assert.match(
     newburghBody,
-    /<h1[^>]*>Garage cleanout and junk removal in Newburgh, IN\.<\/h1>/i,
+    /<h1[^>]*>Garage cleanouts in Newburgh, plus the rest of the house if you want it gone\.<\/h1>/i,
   );
-  assert.match(newburghBody, /href=["']\/services\/garage-cleanout["']/i);
+  assert.match(
+    newburghBody,
+    /Most Newburgh jobs we book start in the garage/i,
+  );
   assert.match(newburghBody, /Warrick County/i);
+  assert.match(newburghBody, /href=["']\/services\/garage-cleanout["']/i);
+
+  const evansville = await render(worker, "/locations/evansville-in");
+  const evansvilleBody = await evansville.text();
+  assert.match(
+    evansvilleBody,
+    /<title>Junk Removal Evansville, IN \| Local Pickup from Home Base<\/title>/i,
+  );
+  assert.match(
+    evansvilleBody,
+    /<h1[^>]*>Junk removal in Evansville, from downtown to the east side\.<\/h1>/i,
+  );
+  assert.match(evansvilleBody, /Evansville is home base, not a satellite stop/i);
+
+  const locationsIndex = await render(worker, "/locations");
+  const locationsBody = await locationsIndex.text();
+  assert.match(
+    locationsBody,
+    /<title>Junk Removal Near Evansville \| Nine Tri-State Service Cities<\/title>/i,
+  );
+  assert.match(
+    locationsBody,
+    /<h1[^>]*>Nine junk-removal routes dispatched from Evansville, IN\.<\/h1>/i,
+  );
+
+  const furniture = await render(worker, "/services/furniture-removal");
+  const furnitureBody = await furniture.text();
+  assert.match(
+    furnitureBody,
+    /<title>Furniture Removal in Evansville \| Couches, Beds, Desk Pickup<\/title>/i,
+  );
+  assert.match(
+    furnitureBody,
+    /<h1[^>]*>Furniture removal from the room, not just from the curb\.<\/h1>/i,
+  );
 });

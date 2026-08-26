@@ -109,6 +109,10 @@ export default async function LocationPage({ params }: LocationPageProps) {
     );
   const h1 = override?.h1 ?? `Junk removal in ${location.name}.`;
   const heroLead = override?.heroLead ?? location.summary;
+  const localHeading =
+    override?.sectionHeading ??
+    `A simpler way to clear a property in ${location.city}.`;
+  const localLede = override?.sectionLede ?? location.localIntro;
   const locationFaqs = [
     {
       question: `Do you serve every address in ${location.city}?`,
@@ -135,12 +139,10 @@ export default async function LocationPage({ params }: LocationPageProps) {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: override
-        ? `Garage cleanout and junk removal in ${location.name}`
+      name: override?.h1
+        ? override.h1.replace(/\.$/, "")
         : `Junk Removal in ${location.name}`,
-      serviceType: override
-        ? "Garage cleanout and junk removal"
-        : "Junk removal and property cleanout",
+      serviceType: "Junk removal and property cleanout",
       description: override?.description ?? location.summary,
       url: `${siteUrl}/locations/${location.slug}`,
       areaServed: {
@@ -243,30 +245,9 @@ export default async function LocationPage({ params }: LocationPageProps) {
         <section className="section">
           <div className="shell detail-layout">
             <article className="detail-content">
-              {override ? (
-                <>
-                  <p className="eyebrow">{override.garageSection.eyebrow}</p>
-                  <h2>{override.garageSection.heading}</h2>
-                  <p className="detail-lead">{override.garageSection.body}</p>
-                  <Link
-                    className="inline-link"
-                    href={override.garageSection.serviceHref}
-                  >
-                    {override.garageSection.serviceLabel}
-                  </Link>
-                  <section className="location-follow-up">
-                    <p className="eyebrow">Local service</p>
-                    <h2>Junk removal and cleanouts across {location.city}.</h2>
-                    <p className="detail-lead">{location.localIntro}</p>
-                  </section>
-                </>
-              ) : (
-                <>
-                  <p className="eyebrow">Local service</p>
-                  <h2>A simpler way to clear a property in {location.city}.</h2>
-                  <p className="detail-lead">{location.localIntro}</p>
-                </>
-              )}
+              <p className="eyebrow">Local service</p>
+              <h2>{localHeading}</h2>
+              <p className="detail-lead">{localLede}</p>
 
               <div className="local-service-grid">
                 {featuredLocalServices.map((service) => (

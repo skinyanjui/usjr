@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
+import { locationsIndexCopy } from "../seo-page-copy";
 import {
   genericSmsHref,
   locations,
@@ -10,16 +11,15 @@ import {
 } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Junk Removal Service Areas",
-  description:
-    "Find local junk and furniture removal in nine communities across Southern Indiana, Western Kentucky, and Southeast Illinois.",
+  title: { absolute: locationsIndexCopy.titleAbsolute },
+  description: locationsIndexCopy.first,
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "/locations",
   },
   openGraph: {
-    title: "Tri-State Junk Removal Locations | Uncle Sam Junk Removal",
-    description:
-      "See junk removal coverage in Evansville, Newburgh, Henderson, Owensboro, and five nearby Tri-State communities.",
+    title: locationsIndexCopy.titleAbsolute,
+    description: locationsIndexCopy.first,
     url: `${siteUrl}/locations`,
   },
 };
@@ -58,12 +58,8 @@ export default function LocationsPage() {
                 <span aria-current="page">Locations</span>
               </nav>
               <p className="eyebrow">Nine local service areas</p>
-              <h1>Junk removal across the Evansville Tri-State.</h1>
-              <p>
-                We run local routes throughout Southern Indiana, Western
-                Kentucky, and Southeast Illinois. Choose your city to see how
-                we can help nearby.
-              </p>
+              <h1>{locationsIndexCopy.h1}</h1>
+              <p>{locationsIndexCopy.first}</p>
             </div>
             <div className="interior-hero__actions">
               <a className="button" href={genericSmsHref}>
