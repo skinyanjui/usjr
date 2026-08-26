@@ -64,8 +64,8 @@ export default function LocationsPage() {
 
       <main id="main-content">
         <section className="interior-hero interior-hero--intro-only">
-          <div className="shell interior-hero__grid interior-hero__grid--stacked">
-            <div>
+          <div className="shell interior-hero__grid interior-hero__grid--with-directory">
+            <div className="interior-hero__intro">
               <nav className="breadcrumbs" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>
@@ -76,32 +76,29 @@ export default function LocationsPage() {
               {locationsIndexCopy.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>{paragraph}</p>
               ))}
+              <div className="interior-hero__actions">
+                <a className="button" href={genericSmsHref}>
+                  Text your address
+                </a>
+                <a className="button button--outline" href={`tel:${phoneHref}`}>
+                  Call {phoneDisplay}
+                </a>
+              </div>
             </div>
-            <div className="interior-hero__actions">
-              <a className="button" href={genericSmsHref}>
-                Text your address
-              </a>
-              <a className="button button--outline" href={`tel:${phoneHref}`}>
-                Call {phoneDisplay}
-              </a>
+            <div className="location-index-grid location-index-grid--hero">
+              {locations.map((location, index) => (
+                <Link
+                  className="location-index-card"
+                  href={`/locations/${location.slug}`}
+                  key={location.slug}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{location.county}</p>
+                  <h2>{location.name}</h2>
+                  <strong>View local service</strong>
+                </Link>
+              ))}
             </div>
-          </div>
-        </section>
-
-        <section className="section section--directory section--directory-flush">
-          <div className="shell location-index-grid">
-            {locations.map((location, index) => (
-              <Link
-                className="location-index-card"
-                href={`/locations/${location.slug}`}
-                key={location.slug}
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{location.county}</p>
-                <h2>{location.name}</h2>
-                <strong>View local service</strong>
-              </Link>
-            ))}
           </div>
         </section>
 

@@ -198,7 +198,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid">
+          <div className="shell detail-hero__grid detail-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -223,29 +223,56 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   Call {phoneDisplay}
                 </a>
               </div>
+              <aside
+                className="detail-summary detail-summary--inline"
+                aria-label="Service summary"
+              >
+                <span>What to expect</span>
+                <strong>A clear plan, an upfront price, and a respectful crew.</strong>
+                <p>
+                  Tell us what needs to go and where it is. We’ll walk through the
+                  plan, and you’ll approve the final price before work begins.
+                </p>
+              </aside>
             </div>
-            <aside className="detail-summary" aria-label="Service summary">
-              <span>What to expect</span>
-              <strong>A clear plan, an upfront price, and a respectful crew.</strong>
-              <p>
-                Tell us what needs to go and where it is. We’ll walk through the
-                plan, and you’ll approve the final price before work begins.
-              </p>
-            </aside>
           </div>
         </section>
 
         <section className="section">
-          <div className="shell detail-layout">
-            <article className="detail-content">
-              <p className="eyebrow">About this service</p>
-              <h2>{aboutHeading}</h2>
-              {aboutParagraphs.map((paragraph) => (
-                <p className="detail-lead" key={paragraph.slice(0, 64)}>
-                  {paragraph}
-                </p>
-              ))}
+          <div className="shell">
+            <div className="detail-layout detail-layout--stacked">
+              <article className="detail-content">
+                <p className="eyebrow">About this service</p>
+                <h2>{aboutHeading}</h2>
+                {aboutParagraphs.map((paragraph) => (
+                  <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                    {paragraph}
+                  </p>
+                ))}
+              </article>
 
+              <aside className="detail-aside">
+                <div className="sticky-quote-card">
+                  <span>Free quote</span>
+                  <h2>Show us the project.</h2>
+                  <p>
+                    Text photos, your city, and any access details for a faster
+                    response.
+                  </p>
+                  <a className="button button--full" href={smsHref}>
+                    Start a text
+                  </a>
+                  <Link
+                    className="button button--ghost button--full"
+                    href={quoteHref}
+                  >
+                    Use the quote form
+                  </Link>
+                </div>
+              </aside>
+            </div>
+
+            <article className="detail-content detail-content--continued">
               <div className="detail-list-grid">
                 <section>
                   <h3>What we can help with</h3>
@@ -281,26 +308,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 </ol>
               </section>
             </article>
-
-            <aside className="detail-aside">
-              <div className="sticky-quote-card">
-                <span>Free quote</span>
-                <h2>Show us the project.</h2>
-                <p>
-                  Text photos, your city, and any access details for a faster
-                  response.
-                </p>
-                <a className="button button--full" href={smsHref}>
-                  Start a text
-                </a>
-                <Link
-                  className="button button--ghost button--full"
-                  href={quoteHref}
-                >
-                  Use the quote form
-                </Link>
-              </div>
-            </aside>
           </div>
         </section>
 

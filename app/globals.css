@@ -808,6 +808,21 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   text-align: center;
 }
 
+.section-heading--tight {
+  align-items: center;
+  gap: 20px 28px;
+  flex-wrap: wrap;
+}
+
+.section-heading--tight > div:first-child {
+  flex: 1 1 280px;
+}
+
+.section-heading--tight > .button,
+.section-heading--tight > div:last-child:not(:first-child) {
+  flex: 0 0 auto;
+}
+
 .service-grid,
 .service-directory-grid {
   display: grid;
@@ -2279,6 +2294,36 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   justify-content: flex-start;
 }
 
+.interior-hero__grid--with-directory {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.82fr);
+  align-items: start;
+  gap: 48px;
+}
+
+.interior-hero__grid--with-directory .interior-hero__intro h1,
+.interior-hero__grid--with-directory .interior-hero__intro p:not(.eyebrow) {
+  max-width: none;
+}
+
+.location-index-grid--hero {
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.location-index-grid--hero .location-index-card {
+  min-height: 168px;
+  padding: 18px;
+}
+
+.location-index-grid--hero .location-index-card h2 {
+  font-size: 22px;
+  letter-spacing: -0.04em;
+}
+
+.location-index-grid--hero .location-index-card strong {
+  margin-top: 12px;
+}
+
 .interior-hero h1,
 .detail-hero h1 {
   max-width: 920px;
@@ -2452,6 +2497,39 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   gap: 90px;
 }
 
+.detail-hero__grid--stacked {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.detail-summary--inline {
+  margin-top: 32px;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+  gap: 10px 28px;
+  align-items: start;
+}
+
+.detail-summary--inline > span {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.detail-summary--inline strong {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.detail-summary--inline p {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 0;
+}
+
 .detail-hero h1 {
   max-width: 880px;
   font-size: var(--text-hero);
@@ -2506,6 +2584,24 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   grid-template-columns: minmax(0, 1fr) 340px;
   align-items: start;
   gap: 100px;
+}
+
+.detail-layout--stacked {
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+.detail-layout--stacked .sticky-quote-card {
+  position: static;
+  max-width: 420px;
+}
+
+.detail-content--continued {
+  margin-top: 64px;
+}
+
+.detail-content--continued .price-factors > p {
+  max-width: none;
 }
 
 .detail-content h2 {
@@ -3364,6 +3460,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   }
 
   .interior-hero__grid,
+  .interior-hero__grid--with-directory,
   .detail-hero__grid,
   .detail-layout,
   .service-area-links,

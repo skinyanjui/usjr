@@ -213,7 +213,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
       <main id="main-content">
         <section className="detail-hero detail-hero--location">
-          <div className="shell detail-hero__grid">
+          <div className="shell detail-hero__grid detail-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -236,29 +236,56 @@ export default async function LocationPage({ params }: LocationPageProps) {
                   Call {phoneDisplay}
                 </a>
               </div>
+              <aside
+                className="detail-summary detail-summary--inline"
+                aria-label="Location summary"
+              >
+                <span>Local route</span>
+                <strong>We’ll check your address before you book.</strong>
+                <p>
+                  Share the pickup address and project details, and we’ll help
+                  match the job to the right route and timing.
+                </p>
+              </aside>
             </div>
-            <aside className="detail-summary" aria-label="Location summary">
-              <span>Local route</span>
-              <strong>We’ll check your address before you book.</strong>
-              <p>
-                Share the pickup address and project details, and we’ll help
-                match the job to the right route and timing.
-              </p>
-            </aside>
           </div>
         </section>
 
         <section className="section">
-          <div className="shell detail-layout">
-            <article className="detail-content">
-              <p className="eyebrow">Local service</p>
-              <h2>{localHeading}</h2>
-              {localParagraphs.map((paragraph) => (
-                <p className="detail-lead" key={paragraph.slice(0, 64)}>
-                  {paragraph}
-                </p>
-              ))}
+          <div className="shell">
+            <div className="detail-layout detail-layout--stacked">
+              <article className="detail-content">
+                <p className="eyebrow">Local service</p>
+                <h2>{localHeading}</h2>
+                {localParagraphs.map((paragraph) => (
+                  <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                    {paragraph}
+                  </p>
+                ))}
+              </article>
 
+              <aside className="detail-aside">
+                <div className="sticky-quote-card">
+                  <span>{location.name}</span>
+                  <h2>Request local service.</h2>
+                  <p>
+                    Include your address, photos, and any stairs or access
+                    restrictions.
+                  </p>
+                  <a className="button button--full" href={smsHref}>
+                    Start a text
+                  </a>
+                  <Link
+                    className="button button--ghost button--full"
+                    href={quoteHref}
+                  >
+                    Use the quote form
+                  </Link>
+                </div>
+              </aside>
+            </div>
+
+            <article className="detail-content detail-content--continued">
               <div className="local-service-grid">
                 {featuredLocalServices.map((service) => (
                   <Link href={`/services/${service.slug}`} key={service.slug}>
@@ -271,26 +298,6 @@ export default async function LocationPage({ params }: LocationPageProps) {
                 View all {services.length} services
               </Link>
             </article>
-
-            <aside className="detail-aside">
-              <div className="sticky-quote-card">
-                <span>{location.name}</span>
-                <h2>Request local service.</h2>
-                <p>
-                  Include your address, photos, and any stairs or access
-                  restrictions.
-                </p>
-                <a className="button button--full" href={smsHref}>
-                  Start a text
-                </a>
-                <Link
-                  className="button button--ghost button--full"
-                  href={quoteHref}
-                >
-                  Use the quote form
-                </Link>
-              </div>
-            </aside>
           </div>
         </section>
 

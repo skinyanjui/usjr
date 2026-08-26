@@ -59,7 +59,7 @@ export default function JunkRemovalVsDumpsterPage() {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid">
+          <div className="shell detail-hero__grid detail-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -77,15 +77,18 @@ export default function JunkRemovalVsDumpsterPage() {
                   More FAQs
                 </Link>
               </div>
+              <aside
+                className="detail-summary detail-summary--inline"
+                aria-label="Quick take"
+              >
+                <span>Honest split</span>
+                <strong>Dumpster for DIY days. Crew for one visit.</strong>
+                <p>
+                  We do not rent dumpsters. We bring the truck and take the debris
+                  with us.
+                </p>
+              </aside>
             </div>
-            <aside className="detail-summary" aria-label="Quick take">
-              <span>Honest split</span>
-              <strong>Dumpster for DIY days. Crew for one visit.</strong>
-              <p>
-                We do not rent dumpsters. We bring the truck and take the debris
-                with us.
-              </p>
-            </aside>
           </div>
         </section>
 
@@ -111,7 +114,7 @@ export default function JunkRemovalVsDumpsterPage() {
 
         <section className="section">
           <div className="shell">
-            <div className="section-heading">
+            <div className="section-heading section-heading--tight">
               <div>
                 <p className="eyebrow">Related</p>
                 <h2>Keep reading or book.</h2>
