@@ -297,8 +297,14 @@ export function SiteHeader() {
             <Link href="/locations" onClick={closeNavigation}>
               Locations
             </Link>
-            <Link href="/#faq" onClick={closeNavigation}>
+            <Link href="/about" onClick={closeNavigation}>
+              About
+            </Link>
+            <Link href="/faq" onClick={closeNavigation}>
               FAQ
+            </Link>
+            <Link href="/contact" onClick={closeNavigation}>
+              Contact
             </Link>
           </nav>
 
@@ -336,8 +342,10 @@ export function SiteFooter() {
             <h3>Explore</h3>
             <Link href="/services">All services</Link>
             <Link href="/locations">All locations</Link>
+            <Link href="/about">About</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/contact">Contact</Link>
             <Link href="/#pricing">Pricing</Link>
-            <Link href="/#faq">FAQ</Link>
             <Link href="/#quote">Free quote</Link>
           </div>
           <div>
@@ -349,6 +357,7 @@ export function SiteFooter() {
           </div>
           <div>
             <h3>Contact</h3>
+            <Link href="/contact">Contact page</Link>
             <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
             <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
             <span>Evansville, Indiana</span>

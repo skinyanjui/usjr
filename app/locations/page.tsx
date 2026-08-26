@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
+import { locationsIndexCopy } from "../seo-page-copy";
 import {
   genericSmsHref,
   locations,
@@ -10,16 +11,15 @@ import {
 } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Junk Removal Service Areas",
-  description:
-    "Find local junk and furniture removal in nine communities across Southern Indiana, Western Kentucky, and Southeast Illinois.",
+  title: { absolute: locationsIndexCopy.titleAbsolute },
+  description: locationsIndexCopy.paragraphs.join(" "),
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "/locations",
   },
   openGraph: {
-    title: "Tri-State Junk Removal Locations | Uncle Sam Junk Removal",
-    description:
-      "See junk removal coverage in Evansville, Newburgh, Henderson, Owensboro, and five nearby Tri-State communities.",
+    title: locationsIndexCopy.titleAbsolute,
+    description: locationsIndexCopy.paragraphs[0],
     url: `${siteUrl}/locations`,
   },
 };
@@ -36,12 +36,26 @@ export default function LocationsPage() {
       url: `${siteUrl}/locations/${location.slug}`,
     })),
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: locationsIndexCopy.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([itemListSchema, faqSchema]),
+        }}
       />
       <a className="skip-link" href="#main-content">
         Skip to main content
@@ -58,12 +72,10 @@ export default function LocationsPage() {
                 <span aria-current="page">Locations</span>
               </nav>
               <p className="eyebrow">Nine local service areas</p>
-              <h1>Junk removal across the Evansville Tri-State.</h1>
-              <p>
-                We run local routes throughout Southern Indiana, Western
-                Kentucky, and Southeast Illinois. Choose your city to see how
-                we can help nearby.
-              </p>
+              <h1>{locationsIndexCopy.h1}</h1>
+              {locationsIndexCopy.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
             </div>
             <div className="interior-hero__actions">
               <a className="button" href={genericSmsHref}>
@@ -90,6 +102,26 @@ export default function LocationsPage() {
                 <strong>View local service</strong>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="section section--faq">
+          <div className="shell faq-layout">
+            <div>
+              <p className="eyebrow">Coverage FAQ</p>
+              <h2>Where we go, how booking works.</h2>
+            </div>
+            <div className="faq-list">
+              {locationsIndexCopy.faqs.map((faq, index) => (
+                <details key={faq.question} open={index === 0}>
+                  <summary>
+                    {faq.question}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 

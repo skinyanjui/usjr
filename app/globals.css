@@ -2453,6 +2453,12 @@ img {
   line-height: 1.75;
 }
 
+.location-follow-up {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(16, 42, 67, 0.12);
+}
+
 .detail-list-grid {
   margin-top: 52px;
   display: grid;

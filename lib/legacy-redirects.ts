@@ -1,8 +1,6 @@
 export const legacyRedirects = [
-  { source: "/about", destination: "/" },
   { source: "/pricing", destination: "/#pricing" },
   { source: "/quote", destination: "/#quote" },
-  { source: "/faq", destination: "/#faq" },
   { source: "/emergency", destination: "/#quote" },
   { source: "/compare", destination: "/#pricing" },
   { source: "/blog", destination: "/services" },

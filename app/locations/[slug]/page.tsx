@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
+import { locationPageOverrides } from "../../seo-page-copy";
 import {
   getLocation,
   locations,
@@ -31,6 +32,26 @@ export async function generateMetadata({
 
   if (!location) {
     return {};
+  }
+
+  const override = locationPageOverrides[location.slug];
+
+  if (override) {
+    return {
+      title: { absolute: override.titleAbsolute },
+      description: override.description,
+      keywords: override.keywords,
+      robots: { index: true, follow: true },
+      alternates: {
+        canonical: `/locations/${location.slug}`,
+      },
+      openGraph: {
+        title: override.titleAbsolute,
+        description: override.description,
+        url: `${siteUrl}/locations/${location.slug}`,
+        type: "website",
+      },
+    };
   }
 
   return {
@@ -63,6 +84,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
     notFound();
   }
 
+  const override = locationPageOverrides[location.slug];
   const smsHref = serviceSmsHref("junk removal or a cleanout", location.name);
   const quoteHref = quoteFormHref({ location: location.name });
   const nearbyLocations = location.nearby
@@ -85,7 +107,13 @@ export default async function LocationPage({ params }: LocationPageProps) {
     .filter(
       (service): service is (typeof services)[number] => service !== undefined,
     );
-  const locationFaqs = [
+  const h1 = override?.h1 ?? `Junk removal in ${location.name}.`;
+  const heroLead = override ? override.heroLead : location.summary;
+  const localHeading =
+    override?.sectionHeading ??
+    `A simpler way to clear a property in ${location.city}.`;
+  const localParagraphs = override?.sectionParagraphs ?? [location.localIntro];
+  const defaultFaqs = [
     {
       question: `Do you serve every address in ${location.city}?`,
       answer: `We serve ${location.city} by route, but timing can vary with distance, schedule, and project size. Send the exact address before booking, and we’ll check coverage for you.`,
@@ -106,14 +134,18 @@ export default async function LocationPage({ params }: LocationPageProps) {
         "Cleaning can be added to many move-out, estate, rental, and commercial projects. Describe the space and the result you need, and we’ll include the right cleaning scope in your quote.",
     },
   ];
+  const locationFaqs = override?.faqs ?? defaultFaqs;
+  const includeFaqSchema = Boolean(override?.faqs);
 
   const structuredData = [
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: `Junk Removal in ${location.name}`,
+      name: override?.h1
+        ? override.h1.replace(/\.$/, "")
+        : `Junk Removal in ${location.name}`,
       serviceType: "Junk removal and property cleanout",
-      description: location.summary,
+      description: override?.description ?? location.summary,
       url: `${siteUrl}/locations/${location.slug}`,
       areaServed: {
         "@type": "City",
@@ -150,18 +182,22 @@ export default async function LocationPage({ params }: LocationPageProps) {
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: locationFaqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
+    ...(includeFaqSchema
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: locationFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -187,8 +223,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
                 <span aria-current="page">{location.name}</span>
               </nav>
               <p className="eyebrow eyebrow--light">{location.county}</p>
-              <h1>Junk removal in {location.name}.</h1>
-              <p>{location.summary}</p>
+              <h1>{h1}</h1>
+              {heroLead ? <p>{heroLead}</p> : null}
               <div className="detail-hero__actions">
                 <a className="button button--light" href={smsHref}>
                   Text photos and your address
@@ -216,8 +252,12 @@ export default async function LocationPage({ params }: LocationPageProps) {
           <div className="shell detail-layout">
             <article className="detail-content">
               <p className="eyebrow">Local service</p>
-              <h2>A simpler way to clear a property in {location.city}.</h2>
-              <p className="detail-lead">{location.localIntro}</p>
+              <h2>{localHeading}</h2>
+              {localParagraphs.map((paragraph) => (
+                <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="local-service-grid">
                 {featuredLocalServices.map((service) => (

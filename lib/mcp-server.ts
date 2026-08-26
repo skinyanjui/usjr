@@ -11,6 +11,7 @@ import {
   normalizeAgentText,
   services,
 } from "../app/agent-catalog";
+import { formatPriceRange } from "../app/pricing-data";
 import {
   getMcpClientInfo,
   logMcpEvent,
@@ -260,7 +261,7 @@ const READ_TOOLS: ReadTool[] = [
             size: price.size,
             label: price.label,
             describes: price.describes,
-            range: `$${price.low}–$${price.high}`,
+            range: formatPriceRange(price.low, price.high),
           })),
         };
       }
@@ -270,7 +271,7 @@ const READ_TOOLS: ReadTool[] = [
         size: tier.size,
         label: tier.label,
         describes: tier.describes,
-        range: `$${tier.low}–$${tier.high}`,
+        range: formatPriceRange(tier.low, tier.high),
         scopeNote:
           service &&
           ["light-demolition", "hot-tub-removal", "shed-removal"].includes(

@@ -15,6 +15,7 @@ import {
   quantityForLoadSize,
   services,
 } from "../agent-catalog";
+import { formatPriceRange } from "../pricing-data";
 
 const WEBMCP_QUOTE_DRAFT_EVENT = "uncle-sam:webmcp-quote-draft";
 
@@ -199,7 +200,7 @@ function makeTools(): WebMcpTool[] {
             ...base,
             allTiers: PRICING.map((price) => ({
               ...price,
-              range: `$${price.low}–$${price.high}`,
+              range: formatPriceRange(price.low, price.high),
             })),
           };
         }
@@ -209,7 +210,7 @@ function makeTools(): WebMcpTool[] {
           describes: tier.describes,
           low: tier.low,
           high: tier.high,
-          range: `$${tier.low}–$${tier.high}`,
+          range: formatPriceRange(tier.low, tier.high),
           service: service?.name,
           note:
             service &&

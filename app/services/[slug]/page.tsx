@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteHeader } from "../../components/site-chrome";
+import { servicePageOverrides } from "../../seo-page-copy";
 import {
   getService,
   locations,
@@ -31,6 +32,26 @@ export async function generateMetadata({
 
   if (!service) {
     return {};
+  }
+
+  const override = servicePageOverrides[service.slug];
+
+  if (override) {
+    return {
+      title: { absolute: override.titleAbsolute },
+      description: override.description,
+      keywords: override.keywords,
+      robots: { index: true, follow: true },
+      alternates: {
+        canonical: `/services/${service.slug}`,
+      },
+      openGraph: {
+        title: override.titleAbsolute,
+        description: override.description,
+        url: `${siteUrl}/services/${service.slug}`,
+        type: "website",
+      },
+    };
   }
 
   return {
@@ -63,13 +84,24 @@ export default async function ServicePage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const override = servicePageOverrides[service.slug];
   const currentIndex = services.findIndex((item) => item.slug === service.slug);
   const relatedServices = [1, 2, 3].map(
     (offset) => services[(currentIndex + offset) % services.length],
   );
   const smsHref = serviceSmsHref(service.name);
   const quoteHref = quoteFormHref({ service: service.quoteValue });
-  const serviceFaqs = [
+  const includes = override?.includes ?? service.includes;
+  const bestFor = override?.bestFor ?? service.bestFor;
+  const priceFactors = override?.priceFactors ?? service.priceFactors;
+  const heroLead = override?.heroLead ?? service.summary;
+  const aboutHeading =
+    override?.aboutHeading ??
+    `An easier way to handle ${service.name.toLowerCase()}.`;
+  const aboutParagraphs = override?.aboutParagraphs ?? [service.description];
+  const h1 =
+    override?.h1 ?? `${service.name} in Evansville and the Tri-State.`;
+  const defaultFaqs = [
     {
       question: `How do I get a quote for ${service.name.toLowerCase()}?`,
       answer: `Text clear photos, your city, the approximate amount, and any stairs or access details. We’ll let you know whether photos are enough or a quick onsite look would be more helpful before sharing the final ${service.name.toLowerCase()} price.`,
@@ -90,14 +122,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
         "Often, yes. Tell us about the whole project, and we’ll see whether removal, cleanout, cleaning, or small non-structural demolition can be handled together.",
     },
   ];
-
+  const serviceFaqs = override?.faqs ?? defaultFaqs;
+  const includeFaqSchema = Boolean(override?.faqs);
   const structuredData = [
     {
       "@context": "https://schema.org",
       "@type": "Service",
       name: service.name,
       serviceType: service.name,
-      description: service.summary,
+      description: override?.description ?? service.summary,
       url: `${siteUrl}/services/${service.slug}`,
       areaServed: locations.map((location) => ({
         "@type": "City",
@@ -134,18 +167,22 @@ export default async function ServicePage({ params }: ServicePageProps) {
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: serviceFaqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
+    ...(includeFaqSchema
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: serviceFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -173,8 +210,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <p className="eyebrow eyebrow--light">
                 Veteran-owned · Free quote
               </p>
-              <h1>{service.name} in Evansville and the Tri-State.</h1>
-              <p>{service.summary}</p>
+              <h1>{h1}</h1>
+              <p>{heroLead}</p>
               <div className="detail-hero__actions">
                 <a className="button button--light" href={smsHref}>
                   Text photos for a quote
@@ -202,14 +239,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="shell detail-layout">
             <article className="detail-content">
               <p className="eyebrow">About this service</p>
-              <h2>An easier way to handle {service.name.toLowerCase()}.</h2>
-              <p className="detail-lead">{service.description}</p>
+              <h2>{aboutHeading}</h2>
+              {aboutParagraphs.map((paragraph) => (
+                <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="detail-list-grid">
                 <section>
                   <h3>What we can help with</h3>
                   <ul>
-                    {service.includes.map((item) => (
+                    {includes.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -217,7 +258,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <section>
                   <h3>Who we often help</h3>
                   <ul>
-                    {service.bestFor.map((item) => (
+                    {bestFor.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -231,7 +272,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   project, with these factors making the biggest difference:
                 </p>
                 <ol>
-                  {service.priceFactors.map((factor, index) => (
+                  {priceFactors.map((factor, index) => (
                     <li key={factor}>
                       <span>{index + 1}</span>
                       {factor}
