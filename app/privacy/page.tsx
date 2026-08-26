@@ -144,11 +144,11 @@ export default function PrivacyPage() {
           <p>
             Photos are optional. If you add photos, the form accepts three to
             eight JPG, PNG, HEIC, or HEIF files, prepares compatible images in
-            your browser, and sends each file through the website host and
-            Resend to our business inbox. You may instead send photos by text or
-            email. Information sent by text or email is also handled by the
-            applicable carrier or email provider and becomes part of our
-            business communications.
+            your browser, and sends those photos together with your quote
+            details through the website host and Resend to our business inbox.
+            You may instead send photos by text or email. Information sent by
+            text or email is also handled by the applicable carrier or email
+            provider and becomes part of our business communications.
           </p>
           <p>
             Each submitted request receives a reference number. Replies sent to

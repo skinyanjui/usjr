@@ -696,20 +696,31 @@ export function QuoteSection({
     return errors;
   }
 
-  function uploadPhoto(
-    photo: PhotoItem,
-    reference: string,
-    index: number,
-    total: number,
+  function markPhotos(
+    selectedPhotos: PhotoItem[],
+    status: PhotoStatus,
   ) {
-    return new Promise<void>((resolve, reject) => {
+    setPhotoStatuses((current) => {
+      const next = { ...current };
+      for (const photo of selectedPhotos) {
+        next[photo.id] = status;
+      }
+      return next;
+    });
+  }
+
+  function uploadPhotoBatch(
+    selectedPhotos: PhotoItem[],
+    reference: string,
+  ) {
+    return new Promise<number>((resolve, reject) => {
       const body = new FormData();
       body.append("reference", reference);
       body.append("name", form.name);
       body.append("email", form.email);
-      body.append("index", String(index));
-      body.append("total", String(total));
-      body.append("photo", photo.file, photo.file.name);
+      for (const photo of selectedPhotos) {
+        body.append("photo", photo.file, photo.file.name);
+      }
 
       const request = new XMLHttpRequest();
       request.open("POST", quoteApiUrl("/api/quote/photo"));
@@ -721,20 +732,15 @@ export function QuoteSection({
           99,
           Math.round((event.loaded / event.total) * 100),
         );
-        setPhotoStatuses((current) => ({
-          ...current,
-          [photo.id]: { progress, state: "uploading" },
-        }));
+        markPhotos(selectedPhotos, { progress, state: "uploading" });
       };
       request.onerror = () => {
-        setPhotoStatuses((current) => ({
-          ...current,
-          [photo.id]: { progress: 0, state: "failed" },
-        }));
+        markPhotos(selectedPhotos, { progress: 0, state: "failed" });
         reject(new Error("Photo upload failed."));
       };
       request.onload = () => {
-        let payload: { error?: string; ok?: boolean } = {};
+        let payload: { error?: string; ok?: boolean; photosSent?: number } =
+          {};
         try {
           payload = JSON.parse(request.responseText) as typeof payload;
         } catch {
@@ -745,23 +751,14 @@ export function QuoteSection({
           request.status < 300 &&
           payload.ok
         ) {
-          setPhotoStatuses((current) => ({
-            ...current,
-            [photo.id]: { progress: 100, state: "sent" },
-          }));
-          resolve();
+          markPhotos(selectedPhotos, { progress: 100, state: "sent" });
+          resolve(payload.photosSent ?? selectedPhotos.length);
           return;
         }
-        setPhotoStatuses((current) => ({
-          ...current,
-          [photo.id]: { progress: 0, state: "failed" },
-        }));
+        markPhotos(selectedPhotos, { progress: 0, state: "failed" });
         reject(new Error(payload.error || "Photo upload failed."));
       };
-      setPhotoStatuses((current) => ({
-        ...current,
-        [photo.id]: { progress: 1, state: "uploading" },
-      }));
+      markPhotos(selectedPhotos, { progress: 1, state: "uploading" });
       request.send(body);
     });
   }
@@ -770,17 +767,102 @@ export function QuoteSection({
     reference: string,
     selectedPhotos: PhotoItem[],
   ) {
-    let sent = 0;
-    for (const photo of selectedPhotos) {
-      const index = photos.findIndex((item) => item.id === photo.id) + 1;
-      try {
-        await uploadPhoto(photo, reference, index, photos.length);
-        sent += 1;
-      } catch {
-        // Failed photos remain retryable in the success panel.
-      }
+    if (selectedPhotos.length === 0) {
+      return 0;
     }
-    return sent;
+
+    try {
+      return await uploadPhotoBatch(selectedPhotos, reference);
+    } catch {
+      // Failed photos remain retryable in the success panel.
+      return 0;
+    }
+  }
+
+  function submitQuoteRequest(payload: Record<string, unknown>) {
+    if (photos.length === 0) {
+      return fetch(quoteApiUrl("/api/quote"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).then(async (response) => {
+        const body = (await response.json().catch(() => ({}))) as {
+          confirmationSent?: boolean;
+          error?: string;
+          ok?: boolean;
+          photosSent?: number;
+          reference?: string;
+        };
+        return { response, body };
+      });
+    }
+
+    return new Promise<{
+      response: { ok: boolean; status: number };
+      body: {
+        confirmationSent?: boolean;
+        error?: string;
+        ok?: boolean;
+        photosSent?: number;
+        reference?: string;
+      };
+    }>((resolve, reject) => {
+      const body = new FormData();
+      body.append("payload", JSON.stringify(payload));
+      for (const photo of photos) {
+        body.append("photo", photo.file, photo.file.name);
+      }
+
+      const request = new XMLHttpRequest();
+      request.open("POST", quoteApiUrl("/api/quote"));
+      request.upload.onprogress = (event) => {
+        if (!event.lengthComputable) {
+          return;
+        }
+        const progress = Math.min(
+          99,
+          Math.round((event.loaded / event.total) * 100),
+        );
+        markPhotos(photos, { progress, state: "uploading" });
+      };
+      request.onerror = () => {
+        markPhotos(photos, { progress: 0, state: "failed" });
+        reject(new Error("We could not send your request. Please call or text us."));
+      };
+      request.onload = () => {
+        let parsed: {
+          confirmationSent?: boolean;
+          error?: string;
+          ok?: boolean;
+          photosSent?: number;
+          reference?: string;
+        } = {};
+        try {
+          parsed = JSON.parse(request.responseText) as typeof parsed;
+        } catch {
+          // The status check below handles non-JSON failures.
+        }
+
+        const ok =
+          request.status >= 200 &&
+          request.status < 300 &&
+          Boolean(parsed.ok) &&
+          Boolean(parsed.reference);
+
+        if (ok) {
+          markPhotos(photos, { progress: 100, state: "sent" });
+        } else {
+          markPhotos(photos, { progress: 0, state: "failed" });
+        }
+
+        resolve({
+          response: { ok: request.status >= 200 && request.status < 300, status: request.status },
+          body: parsed,
+        });
+      };
+      markPhotos(photos, { progress: 1, state: "uploading" });
+      request.send(body);
+    });
   }
 
   async function submitQuote(event: FormEvent<HTMLFormElement>) {
@@ -816,25 +898,15 @@ export function QuoteSection({
     });
 
     try {
-      const response = await fetch(quoteApiUrl("/api/quote"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          conditionalDetails: conditionalDetails(),
-          source: window.location.hostname.endsWith(".chatgpt.site")
-            ? "openai-sites"
-            : "canonical-website",
-          startedAt: startedAtRef.current,
-          submissionId: submissionIdRef.current,
-        }),
+      const { response, body: payload } = await submitQuoteRequest({
+        ...form,
+        conditionalDetails: conditionalDetails(),
+        source: window.location.hostname.endsWith(".chatgpt.site")
+          ? "openai-sites"
+          : "canonical-website",
+        startedAt: startedAtRef.current,
+        submissionId: submissionIdRef.current,
       });
-      const payload = (await response.json().catch(() => ({}))) as {
-        confirmationSent?: boolean;
-        error?: string;
-        ok?: boolean;
-        reference?: string;
-      };
 
       if (!response.ok || !payload.ok || !payload.reference) {
         throw new Error(
@@ -844,9 +916,7 @@ export function QuoteSection({
       }
 
       const photosSent =
-        photos.length > 0
-          ? await sendPhotos(payload.reference, photos)
-          : 0;
+        photos.length > 0 ? (payload.photosSent ?? photos.length) : 0;
       setResult({
         confirmationSent: payload.confirmationSent !== false,
         photosSent,
