@@ -841,6 +841,25 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   assert.match(faqBody, /href=["']\/junk-removal-vs-dumpster["']/i);
   assert.match(faqBody, /href=["']\/locations["']/i);
 
+  const homeBody = await (await render(worker, "/")).text();
+  function faqPageQuestions(html) {
+    return [
+      ...html.matchAll(/"@type":"Question"[\s\S]*?"name":"([^"]+)"/g),
+    ].map((match) => match[1]);
+  }
+  const homeQuestions = faqPageQuestions(homeBody);
+  const hubQuestions = faqPageQuestions(faqBody);
+  assert.equal(homeQuestions.length, 8, "homepage keeps its eight FAQPage questions");
+  assert.equal(hubQuestions.length, 10, "/faq hub publishes ten unique FAQPage questions");
+  const overlap = homeQuestions.filter((question) =>
+    hubQuestions.includes(question),
+  );
+  assert.deepEqual(
+    overlap,
+    [],
+    "homepage and /faq must not emit the same FAQPage Question names",
+  );
+
   const dumpster = await render(worker, "/junk-removal-vs-dumpster");
   const dumpsterBody = await dumpster.text();
   assert.equal(dumpster.status, 200);
