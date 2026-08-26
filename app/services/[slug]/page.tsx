@@ -98,10 +98,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const aboutHeading =
     override?.aboutHeading ??
     `An easier way to handle ${service.name.toLowerCase()}.`;
-  const aboutBody = override?.aboutBody ?? service.description;
+  const aboutParagraphs = override?.aboutParagraphs ?? [service.description];
   const h1 =
     override?.h1 ?? `${service.name} in Evansville and the Tri-State.`;
-  const serviceFaqs = override?.faqs ?? [
+  const defaultFaqs = [
     {
       question: `How do I get a quote for ${service.name.toLowerCase()}?`,
       answer: `Text clear photos, your city, the approximate amount, and any stairs or access details. We’ll let you know whether photos are enough or a quick onsite look would be more helpful before sharing the final ${service.name.toLowerCase()} price.`,
@@ -122,7 +122,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
         "Often, yes. Tell us about the whole project, and we’ll see whether removal, cleanout, cleaning, or small non-structural demolition can be handled together.",
     },
   ];
-
+  const serviceFaqs = override?.faqs ?? defaultFaqs;
+  const includeFaqSchema = Boolean(override?.faqs);
   const structuredData = [
     {
       "@context": "https://schema.org",
@@ -166,18 +167,22 @@ export default async function ServicePage({ params }: ServicePageProps) {
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: serviceFaqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
+    ...(includeFaqSchema
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: serviceFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -235,7 +240,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <article className="detail-content">
               <p className="eyebrow">About this service</p>
               <h2>{aboutHeading}</h2>
-              <p className="detail-lead">{aboutBody}</p>
+              {aboutParagraphs.map((paragraph) => (
+                <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="detail-list-grid">
                 <section>

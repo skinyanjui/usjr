@@ -4,6 +4,12 @@ import { locations, services, siteUrl } from "./site-data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-08-26");
   const legalRoutes = ["privacy", "terms", "accessibility"];
+  const hubRoutes = [
+    "contact",
+    "about",
+    "faq",
+    "junk-removal-vs-dumpster",
+  ];
 
   return [
     {
@@ -12,12 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${siteUrl}/contact`,
+    ...hubRoutes.map((route) => ({
+      url: `${siteUrl}/${route}`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
+    })),
     {
       url: `${siteUrl}/services`,
       lastModified,

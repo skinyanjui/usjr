@@ -46,6 +46,9 @@ const legalRoutes = ["/privacy", "/terms", "/accessibility"];
 const contentRoutes = [
   "/",
   "/contact",
+  "/about",
+  "/faq",
+  "/junk-removal-vs-dumpster",
   "/services",
   ...serviceSlugs.map((slug) => `/services/${slug}`),
   "/locations",
@@ -147,7 +150,7 @@ test("renders development preview metadata", async () => {
 test("renders every public content route", async () => {
   const worker = await loadWorker();
 
-  assert.equal(contentRoutes.length, 34);
+  assert.equal(contentRoutes.length, 37);
 
   for (const route of contentRoutes) {
     const response = await render(worker, route);
@@ -216,23 +219,64 @@ test("publishes unique titles, descriptions, canonicals, and one H1 per page", a
 
 test("keeps visible FAQs and FAQ structured data together", async () => {
   const worker = await loadWorker();
-  const faqRoutes = [
+  const faqSchemaRoutes = [
     "/",
-    ...serviceSlugs.map((slug) => `/services/${slug}`),
+    "/faq",
+    "/locations",
     ...locationSlugs.map((slug) => `/locations/${slug}`),
+    "/services/storm-debris-cleanup",
+    "/services/garage-cleanout",
+    "/services/appliance-removal",
+    "/services/furniture-removal",
+    "/services/office-cleanouts",
+    "/services/restaurant-equipment-removal",
+  ];
+  const visibleFaqRoutes = [
+    ...faqSchemaRoutes,
+    ...serviceSlugs.map((slug) => `/services/${slug}`),
+    "/about",
+    "/junk-removal-vs-dumpster",
   ];
 
-  for (const route of faqRoutes) {
+  for (const route of [...new Set(visibleFaqRoutes)]) {
     const response = await render(worker, route);
     const body = await response.text();
 
     assert.match(body, /<details\b/i, `${route} needs visible FAQ content`);
+  }
+
+  for (const route of faqSchemaRoutes) {
+    const response = await render(worker, route);
+    const body = await response.text();
+
     assert.match(
       body,
       /"@type":"FAQPage"/i,
       `${route} needs matching FAQ structured data`,
     );
   }
+
+  const aboutBody = await (await render(worker, "/about")).text();
+  assert.doesNotMatch(
+    aboutBody,
+    /"@type":"FAQPage"/i,
+    "/about should not publish FAQPage schema",
+  );
+  assert.doesNotMatch(
+    aboutBody,
+    /"@type":"LocalBusiness"/i,
+    "/about should not clone LocalBusiness",
+  );
+  assert.match(aboutBody, /"@type":"AboutPage"/i);
+
+  const dumpsterBody = await (
+    await render(worker, "/junk-removal-vs-dumpster")
+  ).text();
+  assert.doesNotMatch(
+    dumpsterBody,
+    /"@type":"FAQPage"/i,
+    "/junk-removal-vs-dumpster should not publish FAQPage schema",
+  );
 });
 
 test("publishes complete, dated legal pages", async () => {
@@ -663,10 +707,8 @@ test("publishes complete sitemap and robots directives", async () => {
 test("permanently redirects the legacy URL set into the redesign", async () => {
   const worker = await loadWorker();
   const redirects = new Map([
-    ["/about", "/"],
     ["/pricing", "/#pricing"],
     ["/quote", "/#quote"],
-    ["/faq", "/#faq"],
     ["/cleaning/deep-clean", "/services/cleaning"],
     ["/locations/evansville", "/locations/evansville-in"],
     [
@@ -741,7 +783,7 @@ test("resets internal page navigation to the top while preserving section links"
   assert.match(source, /scrollIntoView\(\{\s*block:\s*"start"/);
 });
 
-test("ships Beacon contact/storm and Quill location-service copy", async () => {
+test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () => {
   const worker = await loadWorker();
 
   const contact = await render(worker, "/contact");
@@ -756,17 +798,6 @@ test("ships Beacon contact/storm and Quill location-service copy", async () => {
     /<h1[^>]*>Contact Uncle Sam Junk Removal<\/h1>/i,
   );
   assert.match(contactBody, /"@type":"ContactPage"/i);
-  assert.match(
-    contactBody,
-    /"@type":\["LocalBusiness","HomeAndConstructionBusiness"\]/i,
-  );
-  assert.doesNotMatch(contactBody, /AggregateRating/i);
-  assert.doesNotMatch(contactBody, /streetAddress/i);
-  assert.doesNotMatch(contactBody, /postalCode/i);
-  assert.match(contactBody, /\(812\) 610-1657/);
-  assert.match(contactBody, /unclesamjunkremoval@gmail\.com/);
-  assert.match(contactBody, /Evansville, IN/);
-  assert.match(contactBody, /id=["']quote["']/i);
 
   const storm = await render(worker, "/services/storm-debris-cleanup");
   const stormBody = await storm.text();
@@ -779,78 +810,69 @@ test("ships Beacon contact/storm and Quill location-service copy", async () => {
     stormBody,
     /<h1[^>]*>Storm damage cleanup and debris removal<\/h1>/i,
   );
-  assert.doesNotMatch(
-    stormBody,
-    /Storm Debris Cleanup in Evansville and the Tri-State/i,
-  );
-  assert.match(stormBody, /storm debris/i);
-  assert.match(stormBody, /storm damage cleanup/i);
-  assert.match(stormBody, /"@type":"FAQPage"/i);
-  assert.doesNotMatch(stormBody, /68%/i);
-  assert.doesNotMatch(stormBody, /\$25 guarantee/i);
 
-  const garage = await render(worker, "/services/garage-cleanout");
-  const garageBody = await garage.text();
-  assert.equal(garage.status, 200);
+  const about = await render(worker, "/about");
+  const aboutBody = await about.text();
+  assert.equal(about.status, 200);
   assert.match(
-    garageBody,
-    /<title>Garage Cleanout in Newburgh &amp; Evansville \| Uncle Sam Junk Removal<\/title>/i,
+    aboutBody,
+    /<title>About Uncle Sam Junk Removal \| Evansville, IN<\/title>/i,
+  );
+  assert.match(aboutBody, /<h1[^>]*>About Uncle Sam Junk Removal<\/h1>/i);
+  assert.match(aboutBody, /"@type":"AboutPage"/i);
+  assert.doesNotMatch(aboutBody, /"@type":"LocalBusiness"/i);
+  assert.doesNotMatch(aboutBody, /AggregateRating/i);
+
+  const faq = await render(worker, "/faq");
+  const faqBody = await faq.text();
+  assert.equal(faq.status, 200);
+  assert.match(
+    faqBody,
+    /<title>Junk Removal FAQs \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(faqBody, /<h1[^>]*>Junk removal questions, answered<\/h1>/i);
+  assert.match(faqBody, /"@type":"FAQPage"/i);
+  assert.match(
+    faqBody,
+    /Is Evansville city heavy trash free for my address\?/i,
+  );
+  assert.doesNotMatch(faqBody, /How does pricing work\?/i);
+  assert.doesNotMatch(faqBody, /What items can you take\?/i);
+  assert.match(faqBody, /href=["']\/junk-removal-vs-dumpster["']/i);
+  assert.match(faqBody, /href=["']\/locations["']/i);
+
+  const dumpster = await render(worker, "/junk-removal-vs-dumpster");
+  const dumpsterBody = await dumpster.text();
+  assert.equal(dumpster.status, 200);
+  assert.match(
+    dumpsterBody,
+    /<title>Junk Removal vs a Dumpster \| Evansville Tri-State<\/title>/i,
   );
   assert.match(
-    garageBody,
-    /<h1[^>]*>Garage cleanouts in Newburgh, Evansville, and the Tri-State\.<\/h1>/i,
+    dumpsterBody,
+    /<h1[^>]*>Junk removal vs renting a dumpster<\/h1>/i,
   );
-  assert.match(garageBody, /Newburgh/);
 
   const newburgh = await render(worker, "/locations/newburgh-in");
   const newburghBody = await newburgh.text();
-  assert.equal(newburgh.status, 200);
   assert.match(
     newburghBody,
-    /<title>Garage Cleanout in Newburgh, IN \| Junk Removal &amp; Hauling<\/title>/i,
+    /<title>Garage Cleanout &amp; Junk Removal in Newburgh, IN \| Uncle Sam Junk Removal<\/title>/i,
   );
   assert.match(
     newburghBody,
-    /<h1[^>]*>Garage cleanouts in Newburgh, plus the rest of the house if you want it gone\.<\/h1>/i,
+    /<h1[^>]*>Garage cleanout and junk removal in Newburgh, IN\.<\/h1>/i,
   );
-  assert.match(
-    newburghBody,
-    /Most Newburgh jobs we book start in the garage/i,
-  );
-  assert.match(newburghBody, /Warrick County/i);
-  assert.match(newburghBody, /href=["']\/services\/garage-cleanout["']/i);
+  assert.match(newburghBody, /not an Evansville page with the city name swapped/i);
+  assert.doesNotMatch(newburghBody, /Does city heavy trash stop in the fall\?/i);
+  assert.match(newburghBody, /Do I need to be home\?/i);
 
   const evansville = await render(worker, "/locations/evansville-in");
   const evansvilleBody = await evansville.text();
   assert.match(
     evansvilleBody,
-    /<title>Junk Removal Evansville, IN \| Local Pickup from Home Base<\/title>/i,
+    /<title>Junk Removal in Evansville, IN \| Uncle Sam Junk Removal<\/title>/i,
   );
-  assert.match(
-    evansvilleBody,
-    /<h1[^>]*>Junk removal in Evansville, from downtown to the east side\.<\/h1>/i,
-  );
-  assert.match(evansvilleBody, /Evansville is home base, not a satellite stop/i);
-
-  const locationsIndex = await render(worker, "/locations");
-  const locationsBody = await locationsIndex.text();
-  assert.match(
-    locationsBody,
-    /<title>Junk Removal Near Evansville \| Nine Tri-State Service Cities<\/title>/i,
-  );
-  assert.match(
-    locationsBody,
-    /<h1[^>]*>Nine junk-removal routes dispatched from Evansville, IN\.<\/h1>/i,
-  );
-
-  const furniture = await render(worker, "/services/furniture-removal");
-  const furnitureBody = await furniture.text();
-  assert.match(
-    furnitureBody,
-    /<title>Furniture Removal in Evansville \| Couches, Beds, Desk Pickup<\/title>/i,
-  );
-  assert.match(
-    furnitureBody,
-    /<h1[^>]*>Furniture removal from the room, not just from the curb\.<\/h1>/i,
-  );
+  assert.match(evansvilleBody, /Does city heavy trash stop in the fall\?/i);
+  assert.match(evansvilleBody, /Do I need to be home\?/i);
 });

@@ -225,6 +225,15 @@ export function PricingSection() {
           <a className="inline-link" href="#quote">
             Get your exact quote
           </a>
+          <p className="pricing-hub-links">
+            <Link className="inline-link" href="/faq">
+              Pricing FAQs
+            </Link>
+            {" · "}
+            <Link className="inline-link" href="/junk-removal-vs-dumpster">
+              Junk removal vs a dumpster
+            </Link>
+          </p>
         </div>
 
         <div className="price-list">

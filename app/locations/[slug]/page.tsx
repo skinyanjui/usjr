@@ -112,8 +112,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
   const localHeading =
     override?.sectionHeading ??
     `A simpler way to clear a property in ${location.city}.`;
-  const localLede = override?.sectionLede ?? location.localIntro;
-  const locationFaqs = [
+  const localParagraphs = override?.sectionParagraphs ?? [location.localIntro];
+  const defaultFaqs = [
     {
       question: `Do you serve every address in ${location.city}?`,
       answer: `We serve ${location.city} by route, but timing can vary with distance, schedule, and project size. Send the exact address before booking, and we’ll check coverage for you.`,
@@ -134,6 +134,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
         "Cleaning can be added to many move-out, estate, rental, and commercial projects. Describe the space and the result you need, and we’ll include the right cleaning scope in your quote.",
     },
   ];
+  const locationFaqs = override?.faqs ?? defaultFaqs;
+  const includeFaqSchema = Boolean(override?.faqs);
 
   const structuredData = [
     {
@@ -180,18 +182,22 @@ export default async function LocationPage({ params }: LocationPageProps) {
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: locationFaqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
+    ...(includeFaqSchema
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: locationFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -247,7 +253,11 @@ export default async function LocationPage({ params }: LocationPageProps) {
             <article className="detail-content">
               <p className="eyebrow">Local service</p>
               <h2>{localHeading}</h2>
-              <p className="detail-lead">{localLede}</p>
+              {localParagraphs.map((paragraph) => (
+                <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="local-service-grid">
                 {featuredLocalServices.map((service) => (

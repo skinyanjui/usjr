@@ -12,14 +12,14 @@ import {
 
 export const metadata: Metadata = {
   title: { absolute: locationsIndexCopy.titleAbsolute },
-  description: locationsIndexCopy.first,
+  description: locationsIndexCopy.paragraphs.join(" "),
   robots: { index: true, follow: true },
   alternates: {
     canonical: "/locations",
   },
   openGraph: {
     title: locationsIndexCopy.titleAbsolute,
-    description: locationsIndexCopy.first,
+    description: locationsIndexCopy.paragraphs[0],
     url: `${siteUrl}/locations`,
   },
 };
@@ -36,12 +36,26 @@ export default function LocationsPage() {
       url: `${siteUrl}/locations/${location.slug}`,
     })),
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: locationsIndexCopy.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([itemListSchema, faqSchema]),
+        }}
       />
       <a className="skip-link" href="#main-content">
         Skip to main content
@@ -59,7 +73,9 @@ export default function LocationsPage() {
               </nav>
               <p className="eyebrow">Nine local service areas</p>
               <h1>{locationsIndexCopy.h1}</h1>
-              <p>{locationsIndexCopy.first}</p>
+              {locationsIndexCopy.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
             </div>
             <div className="interior-hero__actions">
               <a className="button" href={genericSmsHref}>
@@ -86,6 +102,26 @@ export default function LocationsPage() {
                 <strong>View local service</strong>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="section section--faq">
+          <div className="shell faq-layout">
+            <div>
+              <p className="eyebrow">Coverage FAQ</p>
+              <h2>Where we go, how booking works.</h2>
+            </div>
+            <div className="faq-list">
+              {locationsIndexCopy.faqs.map((faq, index) => (
+                <details key={faq.question} open={index === 0}>
+                  <summary>
+                    {faq.question}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
