@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { AmplitudeInit } from "./components/amplitude-init";
 import { McpAttributionTracker } from "./components/mcp-attribution-tracker";
 import { RouteScrollManager } from "./components/route-scroll-manager";
 import { WebMcpQuoteBridge } from "./components/webmcp-quote-bridge";
@@ -87,6 +88,7 @@ export default function RootLayout({
         <WebMcpTools />
         <WebMcpRoutingTools />
         <WebMcpQuoteBridge />
+        <AmplitudeInit />
         <McpAttributionTracker />
         <RouteScrollManager />
         {children}

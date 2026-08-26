@@ -1,3 +1,4 @@
+import { trackMcpHttpRequest } from "../../../lib/amplitude-mcp";
 import {
   handleMcpGet,
   handleMcpOptions,
@@ -18,5 +19,5 @@ export function GET(request: Request) {
 export const DELETE = GET;
 
 export function POST(request: Request) {
-  return handleMcpWithQuoteWrites(request);
+  return trackMcpHttpRequest(request, () => handleMcpWithQuoteWrites(request));
 }
