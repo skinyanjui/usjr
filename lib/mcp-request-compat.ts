@@ -1,4 +1,5 @@
 import { handleMcpPost } from "./mcp-server";
+import { mcpCorsHeaders } from "./mcp-cors";
 import { getMcpClientInfo, logMcpEvent } from "./mcp-telemetry";
 
 const SUPPORTED_PROTOCOLS = [
@@ -10,6 +11,7 @@ const SUPPORTED_PROTOCOLS = [
 const PROTOCOL_META_KEY = "io.modelcontextprotocol/protocolVersion";
 
 function jsonRpcError(
+  request: Request,
   id: string | number | null,
   code: number,
   message: string,
@@ -28,9 +30,7 @@ function jsonRpcError(
     {
       status: 400,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "no-store",
-        "X-Content-Type-Options": "nosniff",
+        ...mcpCorsHeaders(request),
       },
     },
   );
@@ -67,6 +67,7 @@ export async function handleCompatibleMcpPost(request: Request) {
       protocolVersion: headerVersion,
     });
     return jsonRpcError(
+      request,
       id,
       -32020,
       "Header mismatch: MCP-Protocol-Version does not match request metadata",
@@ -89,6 +90,7 @@ export async function handleCompatibleMcpPost(request: Request) {
       protocolVersion: requested,
     });
     return jsonRpcError(
+      request,
       id,
       -32022,
       `Unsupported protocol version: ${requested}`,

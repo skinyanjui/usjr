@@ -13,6 +13,11 @@ import {
 } from "../app/agent-catalog";
 import { formatPriceRange } from "../app/pricing-data";
 import {
+  mcpCorsHeaders,
+  mcpForbiddenOriginResponse,
+  rejectDisallowedMcpOrigin,
+} from "./mcp-cors";
+import {
   getMcpClientInfo,
   logMcpEvent,
   newMcpTraceId,
@@ -39,16 +44,6 @@ const SERVER_INSTRUCTIONS =
   "Planning prices are not binding quotes. Unlisted locations return unknown, not unavailable. " +
   "Check hauling policy before promising unusual materials can be taken. " +
   "getQuoteLink creates only a customer-review link; it never submits, consents, reserves, or books anything.";
-
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers":
-    "Content-Type, Accept, MCP-Protocol-Version, Mcp-Method, Mcp-Name, Mcp-Session-Id, Authorization, Traceparent, Tracestate, Baggage",
-  "Access-Control-Max-Age": "86400",
-  "Cache-Control": "no-store",
-  "X-Content-Type-Options": "nosniff",
-} as const;
 
 type RpcId = string | number | null;
 type ToolArguments = Record<string, unknown>;
@@ -419,6 +414,7 @@ const TOOL_DESCRIPTORS = READ_TOOLS.map((tool) => ({
 const TOOLS_BY_NAME = new Map(READ_TOOLS.map((tool) => [tool.name, tool]));
 
 function responseJson(
+  request: Request,
   body: unknown,
   status = 200,
   extraHeaders?: Record<string, string>,
@@ -427,7 +423,7 @@ function responseJson(
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      ...CORS_HEADERS,
+      ...mcpCorsHeaders(request),
       ...extraHeaders,
     },
   });
@@ -448,8 +444,13 @@ function modernResult(result: Record<string, unknown>) {
   };
 }
 
-function rpcOk(id: RpcId, result: Record<string, unknown>, modern = false) {
-  return responseJson({
+function rpcOk(
+  request: Request,
+  id: RpcId,
+  result: Record<string, unknown>,
+  modern = false,
+) {
+  return responseJson(request, {
     jsonrpc: "2.0",
     id,
     result: modern ? modernResult(result) : result,
@@ -457,6 +458,7 @@ function rpcOk(id: RpcId, result: Record<string, unknown>, modern = false) {
 }
 
 function rpcError(
+  request: Request,
   id: RpcId,
   code: number,
   message: string,
@@ -464,6 +466,7 @@ function rpcError(
   data?: unknown,
 ) {
   return responseJson(
+    request,
     {
       jsonrpc: "2.0",
       id,
@@ -495,18 +498,25 @@ function durationMs(startedAt: number) {
   return Math.max(0, Date.now() - startedAt);
 }
 
-export function handleMcpOptions() {
-  return new Response(null, { status: 204, headers: CORS_HEADERS });
+export function handleMcpOptions(request: Request) {
+  if (rejectDisallowedMcpOrigin(request)) {
+    return mcpForbiddenOriginResponse();
+  }
+  return new Response(null, { status: 204, headers: mcpCorsHeaders(request) });
 }
 
-export function handleMcpGet() {
+export function handleMcpGet(request: Request) {
   return new Response("Method Not Allowed", {
     status: 405,
-    headers: { Allow: "POST, OPTIONS", ...CORS_HEADERS },
+    headers: { Allow: "POST, OPTIONS", ...mcpCorsHeaders(request) },
   });
 }
 
 export async function handleMcpPost(request: Request) {
+  if (rejectDisallowedMcpOrigin(request)) {
+    return mcpForbiddenOriginResponse();
+  }
+
   const startedAt = Date.now();
   let body: Record<string, any>;
   try {
@@ -517,17 +527,17 @@ export async function handleMcpPost(request: Request) {
       outcome: "parse_error",
       durationMs: durationMs(startedAt),
     });
-    return rpcError(null, -32700, "Parse error");
+    return rpcError(request, null, -32700, "Parse error");
   }
 
   if (!body || Array.isArray(body)) {
-    return rpcError(null, -32600, "Batch requests are not supported");
+    return rpcError(request, null, -32600, "Batch requests are not supported");
   }
 
   const id: RpcId = body.id ?? null;
   const method = body.method;
   if (typeof method !== "string") {
-    return rpcError(id, -32600, "Invalid Request: missing method");
+    return rpcError(request, id, -32600, "Invalid Request: missing method");
   }
 
   const client = getMcpClientInfo(request, body);
@@ -567,8 +577,7 @@ export async function handleMcpPost(request: Request) {
     protocolHeader !== metaProtocol
   ) {
     requestLog("protocol_mismatch");
-    return rpcError(
-      id,
+    return rpcError(request, id,
       -32022,
       "MCP protocol version header and request metadata do not match",
       400,
@@ -583,8 +592,7 @@ export async function handleMcpPost(request: Request) {
     )
   ) {
     requestLog("unsupported_protocol");
-    return rpcError(
-      id,
+    return rpcError(request, id,
       -32022,
       `Unsupported protocol version: ${protocolVersion}`,
       400,
@@ -596,12 +604,11 @@ export async function handleMcpPost(request: Request) {
     const headerMethod = request.headers.get("mcp-method");
     if (!headerMethod) {
       requestLog("header_mismatch");
-      return rpcError(id, -32020, "Header mismatch: Mcp-Method is required");
+      return rpcError(request, id, -32020, "Header mismatch: Mcp-Method is required");
     }
     if (headerMethod !== method) {
       requestLog("header_mismatch");
-      return rpcError(
-        id,
+      return rpcError(request, id,
         -32020,
         `Header mismatch: Mcp-Method '${headerMethod}' does not match body method '${method}'`,
       );
@@ -611,16 +618,14 @@ export async function handleMcpPost(request: Request) {
       const bodyName = body.params?.name;
       if (!headerName) {
         requestLog("header_mismatch", { tool: String(bodyName || "") });
-        return rpcError(
-          id,
+        return rpcError(request, id,
           -32020,
           "Header mismatch: Mcp-Name is required for tools/call",
         );
       }
       if (headerName !== bodyName) {
         requestLog("header_mismatch", { tool: String(bodyName || "") });
-        return rpcError(
-          id,
+        return rpcError(request, id,
           -32020,
           `Header mismatch: Mcp-Name '${headerName}' does not match body params.name`,
         );
@@ -635,7 +640,7 @@ export async function handleMcpPost(request: Request) {
         ? requested
         : "2025-11-25";
       requestLog("ok");
-      return rpcOk(id, {
+      return rpcOk(request, id, {
         protocolVersion: negotiated,
         capabilities: { tools: { listChanged: false } },
         serverInfo: SERVER_INFO,
@@ -645,16 +650,15 @@ export async function handleMcpPost(request: Request) {
 
     case "notifications/initialized":
       requestLog("accepted");
-      return new Response(null, { status: 202, headers: CORS_HEADERS });
+      return new Response(null, { status: 202, headers: mcpCorsHeaders(request) });
 
     case "ping":
       requestLog("ok");
-      return rpcOk(id, {}, isModern);
+      return rpcOk(request, id, {}, isModern);
 
     case "server/discover":
       requestLog("ok");
-      return rpcOk(
-        id,
+      return rpcOk(request, id,
         {
           supportedVersions: [...MODERN_PROTOCOLS],
           capabilities: { tools: {} },
@@ -667,8 +671,7 @@ export async function handleMcpPost(request: Request) {
 
     case "tools/list":
       requestLog("ok");
-      return rpcOk(
-        id,
+      return rpcOk(request, id,
         {
           tools: TOOL_DESCRIPTORS,
           ...(isModern
@@ -682,12 +685,12 @@ export async function handleMcpPost(request: Request) {
       const name = body.params?.name;
       if (typeof name !== "string") {
         requestLog("invalid_params");
-        return rpcError(id, -32602, "Invalid params: missing tool name");
+        return rpcError(request, id, -32602, "Invalid params: missing tool name");
       }
       const tool = TOOLS_BY_NAME.get(name);
       if (!tool) {
         requestLog("unknown_tool", { tool: name });
-        return rpcError(id, -32602, `Unknown tool: ${name}`);
+        return rpcError(request, id, -32602, `Unknown tool: ${name}`);
       }
 
       const conversionId = newMcpTraceId();
@@ -714,8 +717,7 @@ export async function handleMcpPost(request: Request) {
             clientVersion: client.version,
           });
         }
-        return rpcOk(
-          id,
+        return rpcOk(request, id,
           {
             content: [
               { type: "text", text: JSON.stringify(result, null, 2) },
@@ -731,8 +733,7 @@ export async function handleMcpPost(request: Request) {
           "tool_execution_failed",
         );
         requestLog("tool_error", { tool: name });
-        return rpcOk(
-          id,
+        return rpcOk(request, id,
           {
             content: [
               { type: "text", text: JSON.stringify(fallback, null, 2) },
@@ -747,6 +748,6 @@ export async function handleMcpPost(request: Request) {
 
     default:
       requestLog("method_not_found");
-      return rpcError(id, -32601, `Method not found: ${method}`, 404);
+      return rpcError(request, id, -32601, `Method not found: ${method}`, 404);
   }
 }
