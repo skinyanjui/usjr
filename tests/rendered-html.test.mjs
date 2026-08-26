@@ -871,8 +871,112 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   const evansvilleBody = await evansville.text();
   assert.match(
     evansvilleBody,
-    /<title>Junk Removal in Evansville, IN \| Uncle Sam Junk Removal<\/title>/i,
+    /<title>Junk Removal Evansville, IN \| East Side to Downtown Pickup<\/title>/i,
+  );
+  assert.match(
+    evansvilleBody,
+    /<h1[^>]*>Junk removal in Evansville, from downtown to the east side\.<\/h1>/i,
   );
   assert.match(evansvilleBody, /Does city heavy trash stop in the fall\?/i);
   assert.match(evansvilleBody, /Do I need to be home\?/i);
+
+  const henderson = await render(worker, "/locations/henderson-ky");
+  const hendersonBody = await henderson.text();
+  assert.match(
+    hendersonBody,
+    /<h1[^>]*>Henderson junk removal on a Kentucky route, not an Evansville daily loop\.<\/h1>/i,
+  );
+  assert.doesNotMatch(
+    hendersonBody,
+    /<h1[^>]*>Junk removal in Henderson, KY\.<\/h1>/i,
+  );
+
+  const owensboro = await render(worker, "/locations/owensboro-ky");
+  const owensboroBody = await owensboro.text();
+  assert.match(
+    owensboroBody,
+    /<h1[^>]*>Owensboro junk removal farther downriver than Henderson\.<\/h1>/i,
+  );
+
+  const princeton = await render(worker, "/locations/princeton-in");
+  const princetonBody = await princeton.text();
+  assert.match(
+    princetonBody,
+    /<h1[^>]*>Princeton junk removal when the Gibson County truck is running\.<\/h1>/i,
+  );
+});
+
+test("near-duplicate GSC URLs are not city-name-swap templates", async () => {
+  const worker = await loadWorker();
+  const cityTokens =
+    /evansville|henderson|owensboro|princeton|newburgh|boonville|kentucky|indiana|\bin\b|\bky\b/gi;
+
+  function normalize(text) {
+    return text
+      .toLowerCase()
+      .replace(cityTokens, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  async function pageBits(path) {
+    const body = await (await render(worker, path)).text();
+    const title = body.match(/<title>([^<]+)<\/title>/i)?.[1] ?? "";
+    const h1 = body.match(/<h1[^>]*>([^<]+)<\/h1>/i)?.[1] ?? "";
+    const local = body.match(
+      /Local service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p class=["']detail-lead["']>([\s\S]*?)<\/p>/i,
+    );
+    const about = body.match(
+      /About this service[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>[\s\S]*?<p class=["']detail-lead["']>([\s\S]*?)<\/p>/i,
+    );
+    const first = `${local?.[1] ?? about?.[1] ?? ""} ${local?.[2] ?? about?.[2] ?? ""}`;
+    return {
+      title: normalize(title),
+      h1: normalize(h1),
+      first: normalize(first),
+    };
+  }
+
+  const locationPages = await Promise.all(
+    [
+      "/locations/evansville-in",
+      "/locations/henderson-ky",
+      "/locations/owensboro-ky",
+      "/locations/princeton-in",
+    ].map(pageBits),
+  );
+  const locationH1s = new Set(locationPages.map((page) => page.h1));
+  const locationFirsts = new Set(locationPages.map((page) => page.first));
+  assert.equal(
+    locationH1s.size,
+    locationPages.length,
+    "location H1s must stay unique after stripping city tokens",
+  );
+  assert.equal(
+    locationFirsts.size,
+    locationPages.length,
+    "location first sections must stay unique after stripping city tokens",
+  );
+
+  const servicePages = await Promise.all(
+    [
+      "/services/appliance-removal",
+      "/services/furniture-removal",
+      "/services/office-cleanouts",
+      "/services/restaurant-equipment-removal",
+    ].map(pageBits),
+  );
+  const serviceH1s = new Set(servicePages.map((page) => page.h1));
+  const serviceFirsts = new Set(servicePages.map((page) => page.first));
+  assert.equal(
+    serviceH1s.size,
+    servicePages.length,
+    "service H1s must stay unique after stripping city tokens",
+  );
+  assert.equal(
+    serviceFirsts.size,
+    servicePages.length,
+    "service first sections must stay unique after stripping city tokens",
+  );
 });

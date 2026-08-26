@@ -419,20 +419,22 @@ export const locationPageOverrides: Partial<
   },
 
   "evansville-in": {
-    titleAbsolute: "Junk Removal in Evansville, IN | Uncle Sam Junk Removal",
+    titleAbsolute:
+      "Junk Removal Evansville, IN | East Side to Downtown Pickup",
     description:
-      "Junk removal in Evansville, IN. Home-base routes across Vanderburgh County. Call (812) 610-1657.",
+      "Junk removal Evansville crews clear houses, apartments, and rentals across Vanderburgh County. Home-base routes, not a satellite stop. Call (812) 610-1657.",
     keywords: [
+      "junk removal Evansville",
       "junk removal Evansville IN",
       "junk hauling Evansville",
       "Evansville heavy trash alternative",
     ],
-    h1: "Junk removal in Evansville, IN.",
+    h1: "Junk removal in Evansville, from downtown to the east side.",
     heroLead:
       "Evansville is home base in Vanderburgh County. We clear houses, apartments, rentals, and small job sites on the east side, west side, north side, and downtown.",
     sectionHeading: "Evansville is home base in Vanderburgh County.",
     sectionParagraphs: paras(
-      "We clear houses, apartments, rentals, and small job sites on the east side, west side, north side, and downtown.",
+      "We clear houses, apartments, rentals, and small job sites on the east side, west side, north side, and downtown — including the blocks around downtown, the east-side corridors, and west-side neighborhoods across the city.",
       "City heavy trash (Republic / EWSU) is a good free option if you live in the city, pay trash on your water bill, can get one item to the curb, and can wait for a scheduled pickup. It does not cover apartments, county addresses, businesses, or a whole garage.",
       "We come inside, take the whole agreed pile in one stop, and check today’s Evansville route before quoting. Send the address and photos, or call (812) 610-1657.",
     ),
@@ -477,17 +479,22 @@ export const locationPageOverrides: Partial<
   },
 
   "henderson-ky": {
-    titleAbsolute: "Junk Removal in Henderson, KY | Uncle Sam Junk Removal",
+    titleAbsolute:
+      "Junk Removal Henderson, KY | Booked Ohio River Crossing",
     description:
-      "Junk removal in Henderson, KY on a booked Kentucky route. Call (812) 610-1657.",
-    keywords: ["junk removal Henderson KY", "Henderson County junk hauling"],
-    h1: "Junk removal in Henderson, KY.",
+      "Junk removal in Henderson, KY means a scheduled Kentucky crossing of the Ohio — not an Evansville same-day loop. Call (812) 610-1657.",
+    keywords: [
+      "junk removal Henderson KY",
+      "Henderson County junk hauling",
+      "junk removal across the Ohio",
+    ],
+    h1: "Henderson junk removal on a Kentucky route, not an Evansville daily loop.",
     heroLead:
       "Henderson pickups mean a Kentucky crossing of the Ohio, not a same-day Evansville loop.",
     sectionHeading:
       "Henderson pickups mean a Kentucky crossing of the Ohio, not a same-day Evansville loop.",
     sectionParagraphs: paras(
-      "We book Henderson County houses, rentals, and shops on a scheduled run: furniture, appliances, cleanouts, and contractor debris.",
+      "We book Henderson County houses, rentals, and shops on a scheduled run: furniture, appliances, cleanouts, and contractor debris along the river-city side of the metro.",
       "Evansville city heavy trash does not apply in Kentucky. Send the address and photos. We will give you the next Henderson window. (812) 610-1657.",
     ),
     faqs: [
@@ -525,17 +532,22 @@ export const locationPageOverrides: Partial<
   },
 
   "owensboro-ky": {
-    titleAbsolute: "Junk Removal in Owensboro, KY | Uncle Sam Junk Removal",
+    titleAbsolute:
+      "Junk Removal Owensboro, KY | Daviess County Homes and Shops",
     description:
-      "Junk removal in Owensboro, KY for homes, shops, and cleanouts. Call (812) 610-1657.",
-    keywords: ["junk removal Owensboro KY", "Owensboro cleanouts"],
-    h1: "Junk removal in Owensboro, KY.",
+      "Owensboro junk removal for river-city homes, offices, and restaurant gear in Daviess County. Farther down the Ohio than Henderson. Call (812) 610-1657.",
+    keywords: [
+      "junk removal Owensboro KY",
+      "Owensboro cleanouts",
+      "Daviess County junk hauling",
+    ],
+    h1: "Owensboro junk removal farther downriver than Henderson.",
     heroLead:
       "Owensboro sits farther down the Ohio than Henderson, so we price the Daviess County haul before the truck rolls that far.",
     sectionHeading:
       "Owensboro sits farther down the Ohio than Henderson, so we price the Daviess County haul before the truck rolls that far.",
     sectionParagraphs: paras(
-      "Typical jobs: household furniture, estate cleanouts, office contents, and disconnected restaurant equipment. Photos of the pile and the path out are enough to start. Call (812) 610-1657.",
+      "Typical jobs: household furniture, estate cleanouts, office contents, and disconnected restaurant equipment in the river city. Photos of the pile and the path out are enough to start. Call (812) 610-1657.",
     ),
     faqs: [
       {
@@ -571,17 +583,22 @@ export const locationPageOverrides: Partial<
   },
 
   "princeton-in": {
-    titleAbsolute: "Junk Removal in Princeton, IN | Uncle Sam Junk Removal",
+    titleAbsolute:
+      "Junk Removal Princeton, IN | Gibson County on US 41",
     description:
-      "Junk removal in Princeton, IN on a Gibson County route. Call (812) 610-1657.",
-    keywords: ["junk removal Princeton IN", "Gibson County junk removal"],
-    h1: "Junk removal in Princeton, IN.",
+      "Princeton junk removal on a Gibson County run up US 41, north of Evansville. Houses, garages, and shop contents. Call (812) 610-1657.",
+    keywords: [
+      "junk removal Princeton IN",
+      "Gibson County junk removal",
+      "US 41 junk hauling",
+    ],
+    h1: "Princeton junk removal when the Gibson County truck is running.",
     heroLead:
       "Princeton is a Gibson County run up US 41, north of Evansville.",
     sectionHeading:
       "Princeton is a Gibson County run up US 41, north of Evansville.",
     sectionParagraphs: paras(
-      "We book household furniture, garage and estate cleanouts, and shop contents when they fit the next Princeton trip. Not a daily city loop, so the street address matters. Share it with photos. (812) 610-1657.",
+      "We book household furniture, garage and estate cleanouts, and shop contents when they fit the next Princeton trip up the US 41 corridor. Not a daily city loop, so the street address matters. Share it with photos. (812) 610-1657.",
     ),
     faqs: [
       {
@@ -770,11 +787,11 @@ export const locationPageOverrides: Partial<
 
 export const locationsIndexCopy = {
   titleAbsolute:
-    "Junk Removal Locations in the Evansville Tri-State | Uncle Sam Junk Removal",
+    "Junk Removal Locations | Nine Tri-State Routes from Evansville",
   h1: "Nine junk-removal routes dispatched from Evansville, IN.",
   paragraphs: paras(
     "We dispatch from Evansville and cover nine cities by county: Evansville (Vanderburgh), Newburgh and Boonville (Warrick), Princeton (Gibson), Mount Vernon and New Harmony (Posey), Henderson (Henderson County, KY), Owensboro (Daviess County, KY), and Mount Carmel (Wabash County, IL).",
-    "Same crew and number in every city. Open a city for local timing and typical jobs. City heavy trash in Evansville is a separate program and does not cover the other eight cities. If your town is not listed, still text the pickup address to (812) 610-1657.",
+    "Same crew and number in every city. Open a city for local timing and typical jobs — Kentucky crossings, Warrick river-bluff vs inland stops, and Gibson County’s US 41 run are not the same schedule. City heavy trash in Evansville is a separate program and does not cover the other eight cities. If your town is not listed, still text the pickup address to (812) 610-1657.",
   ),
   faqs: [
     {
