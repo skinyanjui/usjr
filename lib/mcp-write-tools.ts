@@ -9,6 +9,11 @@ import {
 } from "../app/agent-catalog";
 import { handleCompatibleMcpPost } from "./mcp-request-compat";
 import {
+  mcpCorsHeaders,
+  mcpForbiddenOriginResponse,
+  rejectDisallowedMcpOrigin,
+} from "./mcp-cors";
+import {
   getMcpClientInfo,
   logMcpEvent,
   newMcpTraceId,
@@ -43,15 +48,6 @@ const SERVER_INSTRUCTIONS =
   "Use prepareQuoteRequest first, show the normalized request to the customer, and call submitQuoteRequest only after the customer explicitly confirms the same request and consents to being contacted. " +
   "Never fabricate confirmation or contact consent. getQuoteLink remains a non-submitting customer-review link.";
 
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers":
-    "Content-Type, Accept, MCP-Protocol-Version, Mcp-Method, Mcp-Name, Mcp-Session-Id, Authorization, Traceparent, Tracestate, Baggage",
-  "Access-Control-Max-Age": "86400",
-  "Cache-Control": "no-store",
-  "X-Content-Type-Options": "nosniff",
-} as const;
 
 type RpcId = string | number | null;
 type ToolArguments = Record<string, unknown>;
@@ -664,23 +660,25 @@ async function submitQuote(input: ToolArguments, context: ToolContext) {
   };
 }
 
-function responseJson(body: unknown, status = 200) {
+function responseJson(request: Request, body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      ...CORS_HEADERS,
+      ...mcpCorsHeaders(request),
     },
   });
 }
 
 function rpcError(
+  request: Request,
   id: RpcId,
   code: number,
   message: string,
   data?: unknown,
 ) {
   return responseJson(
+    request,
     {
       jsonrpc: "2.0",
       id,
@@ -691,6 +689,7 @@ function rpcError(
 }
 
 function rpcOk(
+  request: Request,
   id: RpcId,
   result: Record<string, unknown>,
   modern: boolean,
@@ -707,7 +706,7 @@ function rpcOk(
         },
       }
     : result;
-  return responseJson({ jsonrpc: "2.0", id, result: modernResult });
+  return responseJson(request, { jsonrpc: "2.0", id, result: modernResult });
 }
 
 function protocolMeta(body: McpBody) {
@@ -728,8 +727,7 @@ function validateWriteCall(request: Request, body: McpBody, toolName: string) {
   const requestedVersion = headerVersion || metaVersion;
 
   if (headerVersion && metaVersion && headerVersion !== metaVersion) {
-    return rpcError(
-      id,
+    return rpcError(request, id,
       -32020,
       "Header mismatch: MCP-Protocol-Version does not match request metadata",
       { headerVersion, metadataVersion: metaVersion },
@@ -742,8 +740,7 @@ function validateWriteCall(request: Request, body: McpBody, toolName: string) {
       requestedVersion as (typeof SUPPORTED_PROTOCOLS)[number],
     )
   ) {
-    return rpcError(
-      id,
+    return rpcError(request, id,
       -32022,
       `Unsupported protocol version: ${requestedVersion}`,
       { requested: requestedVersion, supported: SUPPORTED_PROTOCOLS },
@@ -754,15 +751,13 @@ function validateWriteCall(request: Request, body: McpBody, toolName: string) {
     const headerMethod = request.headers.get("mcp-method");
     const headerName = request.headers.get("mcp-name");
     if (headerMethod !== "tools/call") {
-      return rpcError(
-        id,
+      return rpcError(request, id,
         -32020,
         "Header mismatch: Mcp-Method must match tools/call",
       );
     }
     if (headerName !== toolName) {
-      return rpcError(
-        id,
+      return rpcError(request, id,
         -32020,
         "Header mismatch: Mcp-Name must match the called tool",
       );
@@ -784,7 +779,7 @@ async function handleWriteCall(request: Request, body: McpBody) {
   const id: RpcId = body.id ?? null;
   const name = body.params?.name;
   if (typeof name !== "string") {
-    return rpcError(id, -32602, "Invalid params: missing tool name");
+    return rpcError(request, id, -32602, "Invalid params: missing tool name");
   }
 
   const validationResponse = validateWriteCall(request, body, name);
@@ -845,8 +840,7 @@ async function handleWriteCall(request: Request, body: McpBody) {
       });
     }
 
-    return rpcOk(
-      id,
+    return rpcOk(request, id,
       {
         content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
         structuredContent: result,
@@ -871,8 +865,7 @@ async function handleWriteCall(request: Request, body: McpBody) {
       message: `The quote tool failed. Call or text ${BUSINESS.phoneDisplay}.`,
       contact: contactBlock(),
     };
-    return rpcOk(
-      id,
+    return rpcOk(request, id,
       {
         content: [{ type: "text", text: JSON.stringify(fallback, null, 2) }],
         structuredContent: fallback,
@@ -937,6 +930,10 @@ function rewriteInstructions(payload: Record<string, any>) {
 }
 
 export async function handleMcpWithQuoteWrites(request: Request) {
+  if (rejectDisallowedMcpOrigin(request)) {
+    return mcpForbiddenOriginResponse();
+  }
+
   let body: McpBody;
   try {
     body = (await request.clone().json()) as McpBody;

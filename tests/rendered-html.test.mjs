@@ -563,6 +563,184 @@ test("allows the Sites quote client and rejects unsigned inbound email webhooks"
   assert.equal(unsignedWebhook.status, 401);
 });
 
+test("origin-gates MCP and telemetry CORS like quote APIs", async () => {
+  const worker = await loadWorker();
+  const firstParty = "https://unclesamjunkremoval.com";
+  const foreign = "https://evil.example";
+  const mcpListBody = JSON.stringify({
+    jsonrpc: "2.0",
+    id: 1,
+    method: "tools/list",
+    params: {
+      _meta: {
+        "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      },
+    },
+  });
+  const mcpHeaders = {
+    "Content-Type": "application/json",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/list",
+  };
+
+  const foreignOptions = await worker.fetch(
+    new Request("http://localhost/api/mcp", {
+      method: "OPTIONS",
+      headers: { Origin: foreign },
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(foreignOptions.status, 403);
+  assert.equal(foreignOptions.headers.get("access-control-allow-origin"), null);
+
+  const firstPartyOptions = await worker.fetch(
+    new Request("http://localhost/api/mcp", {
+      method: "OPTIONS",
+      headers: { Origin: firstParty },
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(firstPartyOptions.status, 204);
+  assert.equal(
+    firstPartyOptions.headers.get("access-control-allow-origin"),
+    firstParty,
+  );
+  assert.match(
+    firstPartyOptions.headers.get("access-control-allow-headers") ?? "",
+    /Authorization/i,
+  );
+
+  const foreignPost = await worker.fetch(
+    new Request("http://localhost/api/mcp", {
+      method: "POST",
+      headers: { ...mcpHeaders, Origin: foreign },
+      body: mcpListBody,
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(foreignPost.status, 403);
+  assert.equal(foreignPost.headers.get("access-control-allow-origin"), null);
+
+  const firstPartyPost = await worker.fetch(
+    new Request("http://localhost/api/mcp", {
+      method: "POST",
+      headers: { ...mcpHeaders, Origin: firstParty },
+      body: mcpListBody,
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(firstPartyPost.status, 200);
+  assert.equal(
+    firstPartyPost.headers.get("access-control-allow-origin"),
+    firstParty,
+  );
+  const firstPartyPayload = await firstPartyPost.json();
+  assert.ok(Array.isArray(firstPartyPayload.result?.tools));
+
+  const noOriginPost = await worker.fetch(
+    new Request("http://localhost/api/mcp", {
+      method: "POST",
+      headers: mcpHeaders,
+      body: mcpListBody,
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(noOriginPost.status, 200);
+  assert.equal(noOriginPost.headers.get("access-control-allow-origin"), null);
+
+  const foreignTelemetryOptions = await worker.fetch(
+    new Request("http://localhost/api/mcp/telemetry", {
+      method: "OPTIONS",
+      headers: { Origin: foreign },
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(foreignTelemetryOptions.status, 403);
+
+  const firstPartyTelemetryOptions = await worker.fetch(
+    new Request("http://localhost/api/mcp/telemetry", {
+      method: "OPTIONS",
+      headers: { Origin: firstParty },
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(firstPartyTelemetryOptions.status, 204);
+  assert.equal(
+    firstPartyTelemetryOptions.headers.get("access-control-allow-origin"),
+    firstParty,
+  );
+
+  const foreignTelemetryPost = await worker.fetch(
+    new Request("http://localhost/api/mcp/telemetry", {
+      method: "POST",
+      headers: {
+        Origin: foreign,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event: "quote_link_opened",
+        conversionId: "abcdef12-3456-7890-abcd-ef1234567890",
+        source: "test",
+      }),
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(foreignTelemetryPost.status, 403);
+
+  const firstPartyTelemetryPost = await worker.fetch(
+    new Request("http://localhost/api/mcp/telemetry", {
+      method: "POST",
+      headers: {
+        Origin: firstParty,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event: "quote_link_opened",
+        conversionId: "abcdef12-3456-7890-abcd-ef1234567890",
+        source: "test",
+      }),
+    }),
+    workerEnv(),
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+  assert.equal(firstPartyTelemetryPost.status, 204);
+});
+
 test("prefills the quote form from service and location detail pages", async () => {
   const worker = await loadWorker();
   const serviceResponse = await render(worker, "/services/shed-removal");

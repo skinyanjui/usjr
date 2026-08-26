@@ -7,12 +7,12 @@ import { handleMcpWithQuoteWrites } from "../../../lib/mcp-write-tools";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export function OPTIONS() {
-  return handleMcpOptions();
+export function OPTIONS(request: Request) {
+  return handleMcpOptions(request);
 }
 
-export function GET() {
-  return handleMcpGet();
+export function GET(request: Request) {
+  return handleMcpGet(request);
 }
 
 export const DELETE = GET;
