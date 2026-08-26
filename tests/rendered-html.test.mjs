@@ -567,14 +567,87 @@ test("prefills the quote form from service and location detail pages", async () 
   const worker = await loadWorker();
   const serviceResponse = await render(worker, "/services/shed-removal");
   const locationResponse = await render(worker, "/locations/evansville-in");
+  const contactResponse = await render(worker, "/contact");
   const serviceBody = await serviceResponse.text();
   const locationBody = await locationResponse.text();
+  const contactBody = await contactResponse.text();
 
   assert.match(serviceBody, /href=["']\/\?service=Shed\+Removal#quote["']/i);
   assert.match(
     locationBody,
     /href=["']\/\?location=Evansville%2C\+IN#quote["']/i,
   );
+  assert.match(contactBody, /href=["']#quote["']/i);
+  assert.match(
+    contactBody,
+    /Quick contact[\s\S]*?href=["']#quote["']/i,
+  );
+});
+
+test("accepts quote requests with a valid phone and no email", async () => {
+  const worker = await loadWorker();
+  const originalFetch = globalThis.fetch;
+  const resendPayloads = [];
+
+  globalThis.fetch = async (_input, init) => {
+    resendPayloads.push(JSON.parse(String(init?.body)));
+    return Response.json({ id: "email_test" }, { status: 200 });
+  };
+
+  try {
+    const response = await worker.fetch(
+      new Request("http://localhost/api/quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Origin: "http://localhost",
+        },
+        body: JSON.stringify({
+          submissionId: "phone-only-submission",
+          name: "Sam Tester",
+          phone: "(812) 555-0199",
+          email: "",
+          address: "Evansville, IN",
+          service: "Junk Removal",
+          urgency: "flexible",
+          preferredDate: "",
+          quantity: "A few items",
+          placement: "outdoor",
+          access: [],
+          heavyMaterials: false,
+          dismantling: false,
+          heavyDetails: "",
+          preferredContact: "text",
+          conditionalDetails: {},
+          notes: "",
+          consent: true,
+          company: "",
+          source: "test",
+          startedAt: Date.now() - 3_000,
+        }),
+      }),
+      workerEnv({
+        QUOTE_TO_EMAIL: "unclesamjunkremoval@gmail.com",
+        RESEND_API_KEY: "re_test",
+        RESEND_FROM_EMAIL:
+          "Uncle Sam Quotes <quotes@unclesamjunkremoval.com>",
+        RESEND_INBOUND_EMAIL: "karaiveluu.resend.app",
+      }),
+      {
+        waitUntil() {},
+        passThroughOnException() {},
+      },
+    );
+
+    assert.equal(response.status, 200);
+    const responseBody = await response.json();
+    assert.equal(responseBody.ok, true);
+    assert.equal(responseBody.confirmationSent, false);
+    assert.equal(resendPayloads.length, 1);
+    assert.equal(resendPayloads[0].to[0], "unclesamjunkremoval@gmail.com");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("adds browser security headers to rendered pages", async () => {
