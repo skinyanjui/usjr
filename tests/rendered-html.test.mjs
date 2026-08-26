@@ -890,16 +890,13 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   const evansvilleBody = await evansville.text();
   assert.match(
     evansvilleBody,
-    /<title>Junk Removal in Evansville, IN \| Uncle Sam Junk Removal<\/title>/i,
+    /<title>Junk Removal Evansville, IN \| East Side, West Side &amp; Downtown<\/title>/i,
   );
   assert.match(
     evansvilleBody,
-    /<h1[^>]*>Junk removal in Evansville, IN\.<\/h1>/i,
+    /<h1[^>]*>Junk removal in Evansville, from downtown to the east side\.<\/h1>/i,
   );
-  assert.doesNotMatch(
-    evansvilleBody,
-    /East Side to Downtown Pickup|from downtown to the east side/i,
-  );
+  assert.doesNotMatch(evansvilleBody, /East Side to Downtown Pickup/i);
   assert.match(
     evansvilleBody,
     /Evansville is home base in Vanderburgh County\./i,

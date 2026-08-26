@@ -419,7 +419,8 @@ export const locationPageOverrides: Partial<
   },
 
   "evansville-in": {
-    titleAbsolute: "Junk Removal in Evansville, IN | Uncle Sam Junk Removal",
+    titleAbsolute:
+      "Junk Removal Evansville, IN | East Side, West Side & Downtown",
     description:
       "Junk removal in Evansville, IN. Home-base routes across Vanderburgh County. Call (812) 610-1657.",
     keywords: [
@@ -428,7 +429,7 @@ export const locationPageOverrides: Partial<
       "junk hauling Evansville",
       "Evansville heavy trash alternative",
     ],
-    h1: "Junk removal in Evansville, IN.",
+    h1: "Junk removal in Evansville, from downtown to the east side.",
     // Quill lock: no hero lede — uniqueness lives in the Local-service block only.
     heroLead: "",
     sectionHeading: "Evansville is home base in Vanderburgh County.",
