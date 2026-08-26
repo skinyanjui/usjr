@@ -42,6 +42,7 @@ const legalRoutes = ["/privacy", "/terms", "/accessibility"];
 
 const contentRoutes = [
   "/",
+  "/contact",
   "/services",
   ...serviceSlugs.map((slug) => `/services/${slug}`),
   "/locations",
@@ -100,7 +101,7 @@ test("renders development preview metadata", async () => {
 test("renders every public content route", async () => {
   const worker = await loadWorker();
 
-  assert.equal(contentRoutes.length, 33);
+  assert.equal(contentRoutes.length, 34);
 
   for (const route of contentRoutes) {
     const response = await render(worker, route);
@@ -692,4 +693,77 @@ test("resets internal page navigation to the top while preserving section links"
   assert.match(source, /destination\.hash/);
   assert.match(source, /window\.scrollTo\(\{\s*top:\s*0/);
   assert.match(source, /scrollIntoView\(\{\s*block:\s*"start"/);
+});
+
+test("ships Beacon SEO contact, storm, and Newburgh garage copy", async () => {
+  const worker = await loadWorker();
+
+  const contact = await render(worker, "/contact");
+  const contactBody = await contact.text();
+  assert.equal(contact.status, 200);
+  assert.match(
+    contactBody,
+    /<title>Contact Uncle Sam Junk Removal \| Evansville, IN<\/title>/i,
+  );
+  assert.match(
+    contactBody,
+    /<h1[^>]*>Contact Uncle Sam Junk Removal<\/h1>/i,
+  );
+  assert.match(contactBody, /"@type":"ContactPage"/i);
+  assert.match(contactBody, /"@type":\["LocalBusiness","HomeAndConstructionBusiness"\]/i);
+  assert.doesNotMatch(contactBody, /AggregateRating/i);
+  assert.doesNotMatch(contactBody, /streetAddress/i);
+  assert.doesNotMatch(contactBody, /postalCode/i);
+  assert.match(contactBody, /\(812\) 610-1657/);
+  assert.match(contactBody, /unclesamjunkremoval@gmail\.com/);
+  assert.match(contactBody, /Evansville, IN/);
+  assert.match(contactBody, /id=["']quote["']/i);
+
+  const storm = await render(worker, "/services/storm-debris-cleanup");
+  const stormBody = await storm.text();
+  assert.equal(storm.status, 200);
+  assert.match(
+    stormBody,
+    /<title>Storm Damage Cleanup &amp; Debris Removal \| Evansville Tri-State<\/title>/i,
+  );
+  assert.match(
+    stormBody,
+    /<h1[^>]*>Storm damage cleanup and debris removal<\/h1>/i,
+  );
+  assert.doesNotMatch(
+    stormBody,
+    /Storm Debris Cleanup in Evansville and the Tri-State/i,
+  );
+  assert.match(stormBody, /storm debris/i);
+  assert.match(stormBody, /storm damage cleanup/i);
+  assert.match(stormBody, /"@type":"FAQPage"/i);
+  assert.doesNotMatch(stormBody, /68%/i);
+  assert.doesNotMatch(stormBody, /\$25 guarantee/i);
+
+  const garage = await render(worker, "/services/garage-cleanout");
+  const garageBody = await garage.text();
+  assert.equal(garage.status, 200);
+  assert.match(
+    garageBody,
+    /<title>Garage Cleanout in Newburgh &amp; Evansville \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(
+    garageBody,
+    /<h1[^>]*>Garage cleanouts in Newburgh, Evansville, and the Tri-State\.<\/h1>/i,
+  );
+  assert.match(garageBody, /Newburgh/);
+
+  const newburgh = await render(worker, "/locations/newburgh-in");
+  const newburghBody = await newburgh.text();
+  assert.equal(newburgh.status, 200);
+  assert.match(
+    newburghBody,
+    /<title>Garage Cleanout &amp; Junk Removal in Newburgh, IN \| Uncle Sam Junk Removal<\/title>/i,
+  );
+  assert.match(
+    newburghBody,
+    /<h1[^>]*>Garage cleanout and junk removal in Newburgh, IN\.<\/h1>/i,
+  );
+  assert.match(newburghBody, /href=["']\/services\/garage-cleanout["']/i);
+  assert.match(newburghBody, /Warrick County/i);
 });

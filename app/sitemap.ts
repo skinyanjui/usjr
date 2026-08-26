@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locations, services, siteUrl } from "./site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-07-29");
+  const lastModified = new Date("2026-08-26");
   const legalRoutes = ["privacy", "terms", "accessibility"];
 
   return [
@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}/contact`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${siteUrl}/services`,
