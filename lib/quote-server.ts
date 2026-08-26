@@ -413,11 +413,21 @@ function emailDocument(title: string, body: string) {
     </html>`;
 }
 
-function businessEmail(data: QuoteData, reference: string) {
+function businessEmail(
+  data: QuoteData,
+  reference: string,
+  photoCount = 0,
+) {
+  const photoLine =
+    photoCount > 0
+      ? `<p style="margin:0 0 20px;font:400 14px/21px Arial,sans-serif;color:#475a69">${photoCount} project photo${photoCount === 1 ? "" : "s"} attached to this email.</p>`
+      : "";
+
   return emailDocument(
     `${reference} new quote`,
     `<h1 style="margin:0 0 8px;font:800 26px/32px Arial,sans-serif;color:#102a43">New quote ${escapeHtml(reference)}</h1>
      <p style="margin:0 0 20px;font:400 14px/21px Arial,sans-serif;color:#657583">Submitted from ${escapeHtml(data.source)}.</p>
+     ${photoLine}
      <table role="presentation" style="width:100%;border-collapse:collapse">${htmlRows(data)}</table>
      <p style="margin:22px 0 0">
        <a href="tel:${escapeHtml(data.phone.replace(/[^\d+]/g, ""))}" style="display:inline-block;padding:11px 18px;border-radius:999px;background:#b5231f;font:700 14px/18px Arial,sans-serif;color:#fff;text-decoration:none">Call customer</a>
@@ -546,7 +556,11 @@ export async function handleQuoteRequest(
     );
   }
 
-  if (!request.headers.get("Content-Type")?.includes("application/json")) {
+  const contentType = request.headers.get("Content-Type") || "";
+  const isMultipart = contentType.includes("multipart/form-data");
+  const isJson = contentType.includes("application/json");
+
+  if (!isMultipart && !isJson) {
     return jsonResponse(
       request,
       { error: "Please submit the website quote form." },
@@ -555,14 +569,54 @@ export async function handleQuoteRequest(
   }
 
   let raw: Record<string, unknown>;
-  try {
-    raw = (await request.json()) as Record<string, unknown>;
-  } catch {
-    return jsonResponse(
-      request,
-      { error: "The quote request could not be read." },
-      400,
-    );
+  let photos: File[] = [];
+
+  if (isMultipart) {
+    let formData: FormData;
+    try {
+      formData = await request.formData();
+    } catch {
+      return jsonResponse(
+        request,
+        { error: "The quote request could not be read." },
+        400,
+      );
+    }
+
+    const payloadValue = formData.get("payload");
+    if (typeof payloadValue !== "string") {
+      return jsonResponse(
+        request,
+        { error: "Please submit the website quote form." },
+        400,
+      );
+    }
+
+    try {
+      raw = JSON.parse(payloadValue) as Record<string, unknown>;
+    } catch {
+      return jsonResponse(
+        request,
+        { error: "The quote request could not be read." },
+        400,
+      );
+    }
+
+    photos = collectPhotoFiles(formData);
+    const photoError = validatePhotoFiles(photos);
+    if (photoError) {
+      return jsonResponse(request, { ok: false, error: photoError }, 400);
+    }
+  } else {
+    try {
+      raw = (await request.json()) as Record<string, unknown>;
+    } catch {
+      return jsonResponse(
+        request,
+        { error: "The quote request could not be read." },
+        400,
+      );
+    }
   }
 
   const data = normalizeQuote(raw);
@@ -604,6 +658,8 @@ export async function handleQuoteRequest(
 
   const reference = await createReference(data.submissionId);
   const replyTo = quoteReplyAddress(reference, env);
+  const attachments =
+    photos.length > 0 ? await photoAttachments(photos) : [];
   const common = {
     from: fromAddress(env),
     reply_to: replyTo,
@@ -626,8 +682,13 @@ export async function handleQuoteRequest(
       ...common,
       to: [env.QUOTE_TO_EMAIL],
       subject: `[${reference}] New ${data.service} quote — ${data.address}`,
-      text: `New quote ${reference}\n\n${textRows(data)}\n\nCall customer: ${data.phone}`,
-      html: businessEmail(data, reference),
+      text: `New quote ${reference}\n\n${textRows(data)}\n\nCall customer: ${data.phone}${
+        attachments.length > 0
+          ? `\n\nPhotos attached: ${attachments.length}`
+          : ""
+      }`,
+      html: businessEmail(data, reference, attachments.length),
+      ...(attachments.length > 0 ? { attachments } : {}),
     },
     `quote/${reference}/business`,
   );
@@ -660,6 +721,7 @@ export async function handleQuoteRequest(
     ok: true,
     reference,
     confirmationSent: confirmation.ok,
+    photosSent: attachments.length,
   });
 }
 
@@ -674,6 +736,61 @@ function arrayBufferToBase64(buffer: ArrayBuffer) {
     binary += String.fromCharCode(...bytes.subarray(index, index + 0x8000));
   }
   return btoa(binary);
+}
+
+function isAllowedPhotoFile(photo: File) {
+  return (
+    photo.size >= 1 &&
+    photo.size <= MAX_PHOTO_BYTES &&
+    (allowedPhotoTypes.has(photo.type.toLowerCase()) ||
+      allowedPhotoExtensions.test(photo.name))
+  );
+}
+
+function collectPhotoFiles(formData: FormData) {
+  return formData
+    .getAll("photo")
+    .filter((value): value is File => value instanceof File);
+}
+
+function validatePhotoFiles(
+  photos: File[],
+  options?: { minimumWhenPresent?: number },
+) {
+  if (photos.length === 0) {
+    return options?.minimumWhenPresent ? "Add at least one photo." : "";
+  }
+
+  const minimum = options?.minimumWhenPresent ?? 3;
+  if (photos.length < minimum || photos.length > 8) {
+    return "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
+  }
+
+  if (!photos.every(isAllowedPhotoFile)) {
+    return "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.";
+  }
+
+  return "";
+}
+
+async function photoAttachments(photos: File[]) {
+  return Promise.all(
+    photos.map(async (photo) => ({
+      filename: safeFilename(photo.name),
+      content: arrayBufferToBase64(await photo.arrayBuffer()),
+    })),
+  );
+}
+
+function photoBatchIdempotencyKey(reference: string, photos: File[]) {
+  const fingerprint = photos
+    .map((photo) => `${safeFilename(photo.name)}:${photo.size}`)
+    .join("|");
+  let hash = 0;
+  for (let index = 0; index < fingerprint.length; index += 1) {
+    hash = (hash * 31 + fingerprint.charCodeAt(index)) >>> 0;
+  }
+  return `quote-photo/${reference}/batch-${photos.length}-${hash.toString(16)}`;
 }
 
 export async function handleQuotePhotoRequest(
@@ -724,57 +841,45 @@ export async function handleQuotePhotoRequest(
   const reference = stringValue(formData.get("reference"), 20).toUpperCase();
   const name = stringValue(formData.get("name"), 100);
   const email = stringValue(formData.get("email"), 254).toLowerCase();
-  const index = Number(formData.get("index"));
-  const total = Number(formData.get("total"));
-  const photo = formData.get("photo");
+  const photos = collectPhotoFiles(formData);
+  const photoError = validatePhotoFiles(photos, { minimumWhenPresent: 1 });
 
   if (
     !/^USJR-[A-F0-9]{8}$/.test(reference) ||
     name.length < 2 ||
     !validEmail(email) ||
-    !Number.isInteger(index) ||
-    index < 1 ||
-    index > 8 ||
-    !Number.isInteger(total) ||
-    total < 3 ||
-    total > 8 ||
-    !(photo instanceof File) ||
-    photo.size < 1 ||
-    photo.size > MAX_PHOTO_BYTES ||
-    (!allowedPhotoTypes.has(photo.type.toLowerCase()) &&
-      !allowedPhotoExtensions.test(photo.name))
+    photoError
   ) {
     return jsonResponse(
       request,
       {
         ok: false,
-        error: "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.",
+        error:
+          photoError ||
+          "Use 3–8 JPG, PNG, or HEIC photos smaller than 3.5 MB each.",
       },
       400,
     );
   }
 
+  const attachments = await photoAttachments(photos);
+  const photoLabel = `${photos.length} photo${photos.length === 1 ? "" : "s"}`;
   const result = await sendEmail(
     env,
     {
       from: fromAddress(env),
       to: [env.QUOTE_TO_EMAIL],
       reply_to: quoteReplyAddress(reference, env),
-      subject: `[${reference}] Photo ${index} of ${total} from ${name}`,
-      text: `Photo ${index} of ${total} for ${reference}, uploaded by ${name} (${email}).`,
+      subject: `[${reference}] ${photoLabel} from ${name}`,
+      text: `${photoLabel} for ${reference}, uploaded by ${name} (${email}).`,
       html: emailDocument(
-        `${reference} photo ${index}`,
-        `<h1 style="margin:0 0 10px;font:800 24px/30px Arial,sans-serif;color:#102a43">Photo ${index} of ${total} for ${escapeHtml(reference)}</h1>
-         <p style="margin:0;font:400 14px/21px Arial,sans-serif;color:#475a69">Uploaded by ${escapeHtml(name)} (${escapeHtml(email)}). The original photo is attached.</p>`,
+        `${reference} photos`,
+        `<h1 style="margin:0 0 10px;font:800 24px/30px Arial,sans-serif;color:#102a43">${escapeHtml(photoLabel)} for ${escapeHtml(reference)}</h1>
+         <p style="margin:0;font:400 14px/21px Arial,sans-serif;color:#475a69">Uploaded by ${escapeHtml(name)} (${escapeHtml(email)}). All photos from this upload are attached to this email.</p>`,
       ),
-      attachments: [
-        {
-          filename: safeFilename(photo.name),
-          content: arrayBufferToBase64(await photo.arrayBuffer()),
-        },
-      ],
+      attachments,
       headers: {
-        "X-Entity-Ref-ID": `${reference}-photo-${index}`,
+        "X-Entity-Ref-ID": `${reference}-photos`,
         "X-USJR-Reference": reference,
       },
       tags: [
@@ -784,7 +889,7 @@ export async function handleQuotePhotoRequest(
         },
       ],
     },
-    `quote-photo/${reference}/${index}`,
+    photoBatchIdempotencyKey(reference, photos),
   );
 
   if (!result.ok) {
@@ -793,13 +898,13 @@ export async function handleQuotePhotoRequest(
       {
         ok: false,
         error:
-          "The request arrived, but this photo did not. Please retry it.",
+          "The request arrived, but the photos did not. Please retry them.",
       },
       502,
     );
   }
 
-  return jsonResponse(request, { ok: true });
+  return jsonResponse(request, { ok: true, photosSent: photos.length });
 }
 
 function decodeBase64(value: string) {
