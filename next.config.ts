@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { legacyRedirects } from "./lib/legacy-redirects";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["@amplitude/ai"],
   async headers() {
     return [
       {
@@ -10,7 +11,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "base-uri 'self'; connect-src 'self' https://unclesamjunkremoval.com; default-src 'self'; font-src 'self' data:; form-action 'self' https://unclesamjunkremoval.com; frame-ancestors 'none'; img-src 'self' blob: data: https://unclesamjunkremoval.com; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+              "base-uri 'self'; connect-src 'self' https://unclesamjunkremoval.com https://*.amplitude.com; default-src 'self'; font-src 'self' data:; form-action 'self' https://unclesamjunkremoval.com; frame-ancestors 'none'; img-src 'self' blob: data: https://unclesamjunkremoval.com; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
           },
           {
             key: "Permissions-Policy",
