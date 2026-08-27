@@ -5,7 +5,6 @@ import { locationsIndexCopy } from "../seo-page-copy";
 import {
   genericSmsHref,
   locations,
-  phoneDisplay,
   phoneHref,
   siteUrl,
 } from "../site-data";
@@ -63,8 +62,8 @@ export default function LocationsPage() {
       <SiteHeader />
 
       <main id="main-content">
-        <section className="interior-hero interior-hero--intro-only">
-          <div className="shell interior-hero__grid interior-hero__grid--with-directory">
+        <section className="interior-hero">
+          <div className="shell interior-hero__grid">
             <div className="interior-hero__intro">
               <nav className="breadcrumbs" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -73,18 +72,29 @@ export default function LocationsPage() {
               </nav>
               <p className="eyebrow">Nine local service areas</p>
               <h1>{locationsIndexCopy.h1}</h1>
-              {locationsIndexCopy.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-              ))}
+              <p>{locationsIndexCopy.paragraphs[0]}</p>
+            </div>
+            <aside className="interior-hero__card" aria-label="Route coverage">
+              <span>Route coverage</span>
+              <h2>Nine cities. One local crew.</h2>
+              <p>{locationsIndexCopy.paragraphs[1]}</p>
               <div className="interior-hero__actions">
                 <a className="button" href={genericSmsHref}>
-                  Text your address
+                  Text address
                 </a>
                 <a className="button button--outline" href={`tel:${phoneHref}`}>
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
-            </div>
+            </aside>
+          </div>
+        </section>
+
+        <section
+          className="section section--directory section--directory-flush"
+          aria-label="Local service areas"
+        >
+          <div className="shell">
             <div className="location-index-grid location-index-grid--hero">
               {locations.map((location, index) => (
                 <Link

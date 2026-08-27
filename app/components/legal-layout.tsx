@@ -50,12 +50,16 @@ export function LegalPage({
               <span aria-hidden="true">/</span>
               <span aria-current="page">{title}</span>
             </nav>
-            <p className="eyebrow">{eyebrow}</p>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <div className="legal-dates" aria-label="Policy dates">
-              {effectiveDate && <span>Effective: {effectiveDate}</span>}
-              <span>Last updated: {updatedDate}</span>
+            <div className="legal-hero__grid">
+              <div>
+                <p className="eyebrow">{eyebrow}</p>
+                <h1>{title}</h1>
+                <p>{description}</p>
+              </div>
+              <div className="legal-dates" aria-label="Policy dates">
+                {effectiveDate && <span>Effective: {effectiveDate}</span>}
+                <span>Last updated: {updatedDate}</span>
+              </div>
             </div>
           </div>
         </section>

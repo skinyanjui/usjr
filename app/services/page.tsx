@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import {
   genericSmsHref,
-  phoneDisplay,
   phoneHref,
   services,
   siteUrl,
@@ -65,14 +64,22 @@ export default function ServicesPage() {
                 sharing an upfront quote.
               </p>
             </div>
-            <div className="interior-hero__actions">
-              <a className="button" href={genericSmsHref}>
-                Text photos for a quote
-              </a>
-              <a className="button button--ghost" href={`tel:${phoneHref}`}>
-                Call {phoneDisplay}
-              </a>
-            </div>
+            <aside className="interior-hero__card" aria-label="Fast quote">
+              <span>Fastest quote</span>
+              <h2>Start with photos.</h2>
+              <p>
+                Show us what needs to go, your city, and any stairs or access
+                notes.
+              </p>
+              <div className="interior-hero__actions">
+                <a className="button" href={genericSmsHref}>
+                  Text photos
+                </a>
+                <a className="button button--ghost" href={`tel:${phoneHref}`}>
+                  Call now
+                </a>
+              </div>
+            </aside>
           </div>
         </section>
 

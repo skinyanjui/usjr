@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { faqHubCopy } from "../seo-page-copy";
-import { phoneDisplay, phoneHref, siteUrl } from "../site-data";
+import { phoneHref, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
   title: { absolute: faqHubCopy.titleAbsolute },
@@ -64,8 +64,8 @@ export default function FaqPage() {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid detail-hero__grid--stacked">
-            <div>
+          <div className="shell detail-hero__grid">
+            <div className="detail-hero__intro">
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>
@@ -76,32 +76,29 @@ export default function FaqPage() {
               <p>{faqHubCopy.lead}</p>
               <div className="detail-hero__actions">
                 <Link className="button button--light" href="/#quote">
-                  Get a free quote
+                  Get quote
                 </Link>
                 <a
                   className="button button--outline-light"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
-              <aside
-                className="detail-summary detail-summary--inline"
-                aria-label="FAQ shortcuts"
-              >
-                <span>Also see</span>
-                <strong>Compare options and cities.</strong>
-                <p>
-                  <Link href="/junk-removal-vs-dumpster">
-                    Junk removal vs a dumpster
-                  </Link>
-                  <br />
-                  <Link href="/locations">Tri-State locations</Link>
-                  <br />
-                  <Link href="/#pricing">Homepage pricing ranges</Link>
-                </p>
-              </aside>
             </div>
+            <aside className="detail-summary" aria-label="FAQ shortcuts">
+              <span>Also see</span>
+              <strong>Compare options and cities.</strong>
+              <p>
+                <Link href="/junk-removal-vs-dumpster">
+                  Junk removal vs a dumpster
+                </Link>
+                <br />
+                <Link href="/locations">Tri-State locations</Link>
+                <br />
+                <Link href="/#pricing">Homepage pricing ranges</Link>
+              </p>
+            </aside>
           </div>
         </section>
 
@@ -109,7 +106,7 @@ export default function FaqPage() {
           <div className="shell faq-layout">
             <div className="faq-layout__header">
               <p className="eyebrow">FAQ hub</p>
-              <h2>Unique questions for this page.</h2>
+              <h2>Answers before you book.</h2>
             </div>
             <div className="faq-list">
               {faqHubCopy.faqs.map((faq, index) => (
