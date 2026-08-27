@@ -731,10 +731,7 @@ export function QuoteSection({
     if (form.phone.replace(/\D/g, "").length < 7) {
       errors.phone = "Enter a valid phone number.";
     }
-    if (
-      form.email.trim().length > 0 &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
-    ) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       errors.email = "Enter a valid email address.";
     }
     if (form.address.trim().length < 2) {
@@ -1254,6 +1251,7 @@ export function QuoteSection({
                         onChange={(event) =>
                           setField("email", event.target.value)
                         }
+                        required
                       />
                       {fieldErrors.email ? (
                         <p

@@ -30,19 +30,23 @@ test("quote form keeps submit enabled until sending", () => {
   assert.match(quoteSection, /disabled=\{disabled\}/);
 });
 
-test("quote form validates email only when filled and exposes stable field ids", () => {
+test("quote form requires email and exposes stable field ids", () => {
   assert.match(quoteSection, /id=\{quoteFieldIds\.name\}/);
   assert.match(quoteSection, /id=\{quoteFieldIds\.email\}/);
   assert.match(quoteSection, /id=\{quoteFieldIds\.service\}/);
   assert.match(quoteSection, /id=\{quoteFieldIds\.photos\}/);
   assert.match(quoteSection, /className="field-error"/);
   assert.match(quoteSection, /aria-describedby=\{quoteFieldDescribedBy\(/);
-  assert.match(quoteSection, /form\.email\.trim\(\)\.length > 0/);
+  assert.match(
+    quoteSection,
+    /if \(!\/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(form\.email\.trim\(\)\)\)/,
+  );
+  assert.doesNotMatch(quoteSection, /form\.email\.trim\(\)\.length > 0/);
   const emailInput = quoteSection.match(
     /data-quote-field="email"[\s\S]*?\/>/,
   )?.[0];
   assert.ok(emailInput);
-  assert.doesNotMatch(emailInput, /\brequired\b/);
+  assert.match(emailInput, /\brequired\b/);
 });
 
 test("quote form shows photos before service-specific fields", () => {
@@ -67,8 +71,12 @@ test("site chrome keeps contact and service quote CTAs on the current page", () 
   assert.match(siteChrome, /href=\{quoteHref\}/);
 });
 
-test("quote server accepts empty email and one photo minimum", () => {
+test("quote server requires email and allows one photo minimum", () => {
   assert.match(
+    quoteServer,
+    /function validEmail\(value: string\) \{\s*return \/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(value\);\s*\}/,
+  );
+  assert.doesNotMatch(
     quoteServer,
     /if \(!value\.trim\(\)\) \{\s*return true;\s*\}/,
   );

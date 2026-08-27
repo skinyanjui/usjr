@@ -764,7 +764,7 @@ test("prefills the quote form from service and location detail pages", async () 
   );
 });
 
-test("accepts quote requests with a valid phone and no email", async () => {
+test("rejects quote requests with a valid phone and no email", async () => {
   const worker = await loadWorker();
   const originalFetch = globalThis.fetch;
   const resendPayloads = [];
@@ -819,12 +819,11 @@ test("accepts quote requests with a valid phone and no email", async () => {
       },
     );
 
-    assert.equal(response.status, 200);
+    assert.equal(response.status, 400);
     const responseBody = await response.json();
-    assert.equal(responseBody.ok, true);
-    assert.equal(responseBody.confirmationSent, false);
-    assert.equal(resendPayloads.length, 1);
-    assert.equal(resendPayloads[0].to[0], "unclesamjunkremoval@gmail.com");
+    assert.equal(responseBody.ok, false);
+    assert.match(String(responseBody.error), /check the highlighted quote details/i);
+    assert.equal(resendPayloads.length, 0);
   } finally {
     globalThis.fetch = originalFetch;
   }
