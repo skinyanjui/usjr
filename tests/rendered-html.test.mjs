@@ -1026,10 +1026,25 @@ test("uses fluid type and mobile-friendly form controls", async () => {
   );
   assert.match(
     css,
-    /\.detail-hero__grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\) minmax\(300px, 360px\);/,
+    /\.detail-hero__grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\) minmax\(310px, 370px\);/,
   );
   assert.match(css, /\.legal-hero__grid\s*\{/);
-  assert.match(css, /\.detail-layout--stacked\s*\{/);
+  assert.match(
+    css,
+    /\.detail-layout--stacked\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\) minmax\(310px, 370px\);/,
+  );
+  assert.match(
+    css,
+    /\.sticky-quote-card\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\);/,
+  );
+  assert.match(
+    css,
+    /\.sticky-quote-card \.button\s*\{[\s\S]*?width:\s*auto;[\s\S]*?justify-self:\s*start;/,
+  );
+  assert.match(
+    css,
+    /@media\s*\(max-width:\s*860px\)[\s\S]*?\.interior-hero__grid,[\s\S]*?\.detail-hero__grid,[\s\S]*?\.legal-hero__grid,[\s\S]*?\.detail-layout,[\s\S]*?grid-template-columns:\s*1fr;/,
+  );
   assert.match(css, /\.section-heading--tight\s*\{/);
 });
 

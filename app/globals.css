@@ -2514,9 +2514,9 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .detail-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 370px);
   align-items: center;
-  gap: clamp(48px, 7vw, 90px);
+  gap: clamp(48px, 7vw, 92px);
 }
 
 .detail-hero h1 {
@@ -2628,7 +2628,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 }
 
 .detail-layout--stacked {
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 370px);
   gap: clamp(42px, 7vw, 88px);
 }
 
@@ -2755,7 +2755,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
   column-gap: 10px;
   background: var(--white);
@@ -2765,6 +2765,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 .sticky-quote-card > h2,
 .sticky-quote-card > p {
   grid-column: 1 / -1;
+  min-width: 0;
 }
 
 .sticky-quote-card > span {
@@ -2787,6 +2788,7 @@ form[aria-busy="true"] .button[type="submit"]:disabled {
 
 .sticky-quote-card .button {
   width: auto;
+  justify-self: start;
   min-height: 46px;
   padding-inline: 16px;
   font-size: var(--text-sm);
