@@ -1,11 +1,14 @@
 "use client";
 
 import * as amplitude from "@amplitude/unified";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 let hasInitialized = false;
 
 export function AmplitudeAnalytics() {
+  const pathname = usePathname();
+
   useEffect(() => {
     if (hasInitialized) return;
     hasInitialized = true;
@@ -20,8 +23,11 @@ export function AmplitudeAnalytics() {
       analytics: { autocapture: true },
       sessionReplay: { sampleRate: 1 },
     });
-    amplitude.track("Viewed Home Page", { prompt_version: "BA400.4" }); // helps improve this setup flow — safe to remove once you've verified the event lands
-  }, []);
+
+    if (pathname === "/") {
+      amplitude.track("Viewed Home Page", { prompt_version: "BA400.4" }); // helps improve this setup flow — safe to remove once you've verified the event lands
+    }
+  }, [pathname]);
 
   return null;
 }

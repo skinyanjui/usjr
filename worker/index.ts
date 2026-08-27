@@ -47,7 +47,7 @@ function withSecurityHeaders(response: Response, requestUrl: URL) {
     "Content-Security-Policy",
     [
       "base-uri 'self'",
-      "connect-src 'self' https://unclesamjunkremoval.com",
+      "connect-src 'self' https://unclesamjunkremoval.com https://*.amplitude.com",
       "default-src 'self'",
       "font-src 'self' data:",
       "form-action 'self' https://unclesamjunkremoval.com",
