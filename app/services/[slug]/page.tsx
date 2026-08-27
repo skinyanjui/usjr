@@ -6,7 +6,6 @@ import { servicePageOverrides } from "../../seo-page-copy";
 import {
   getService,
   locations,
-  phoneDisplay,
   phoneHref,
   quoteFormHref,
   services,
@@ -214,13 +213,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <p>{heroLead}</p>
               <div className="detail-hero__actions">
                 <a className="button button--light" href={smsHref}>
-                  Text photos for a quote
+                  Text photos
                 </a>
                 <a
                   className="button button--outline-light"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
               <aside
@@ -260,13 +259,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     response.
                   </p>
                   <a className="button button--full" href={smsHref}>
-                    Start a text
+                    Text photos
                   </a>
                   <Link
                     className="button button--ghost button--full"
                     href={quoteHref}
                   >
-                    Use the quote form
+                    Quote form
                   </Link>
                 </div>
               </aside>

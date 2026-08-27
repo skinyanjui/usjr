@@ -6,7 +6,6 @@ import { locationPageOverrides } from "../../seo-page-copy";
 import {
   getLocation,
   locations,
-  phoneDisplay,
   phoneHref,
   quoteFormHref,
   services,
@@ -227,13 +226,13 @@ export default async function LocationPage({ params }: LocationPageProps) {
               {heroLead ? <p>{heroLead}</p> : null}
               <div className="detail-hero__actions">
                 <a className="button button--light" href={smsHref}>
-                  Text photos and your address
+                  Text photos
                 </a>
                 <a
                   className="button button--outline-light"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
               <aside
@@ -273,13 +272,13 @@ export default async function LocationPage({ params }: LocationPageProps) {
                     restrictions.
                   </p>
                   <a className="button button--full" href={smsHref}>
-                    Start a text
+                    Text photos
                   </a>
                   <Link
                     className="button button--ghost button--full"
                     href={quoteHref}
                   >
-                    Use the quote form
+                    Quote form
                   </Link>
                 </div>
               </aside>

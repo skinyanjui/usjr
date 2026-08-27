@@ -5,7 +5,6 @@ import { locationsIndexCopy } from "../seo-page-copy";
 import {
   genericSmsHref,
   locations,
-  phoneDisplay,
   phoneHref,
   siteUrl,
 } from "../site-data";
@@ -78,10 +77,10 @@ export default function LocationsPage() {
               ))}
               <div className="interior-hero__actions">
                 <a className="button" href={genericSmsHref}>
-                  Text your address
+                  Text address
                 </a>
                 <a className="button button--outline" href={`tel:${phoneHref}`}>
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
             </div>

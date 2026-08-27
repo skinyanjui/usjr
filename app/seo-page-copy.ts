@@ -787,8 +787,8 @@ export const locationsIndexCopy = {
     "Junk Removal Locations in the Evansville Tri-State | Uncle Sam Junk Removal",
   h1: "Nine junk-removal routes dispatched from Evansville, IN.",
   paragraphs: paras(
-    "We dispatch from Evansville and cover nine cities by county: Evansville (Vanderburgh), Newburgh and Boonville (Warrick), Princeton (Gibson), Mount Vernon and New Harmony (Posey), Henderson (Henderson County, KY), Owensboro (Daviess County, KY), and Mount Carmel (Wabash County, IL).",
-    "Same crew and number in every city. Open a city for local timing and typical jobs — Kentucky crossings, Warrick river-bluff vs inland stops, and Gibson County’s US 41 run are not the same schedule. City heavy trash in Evansville is a separate program and does not cover the other eight cities. If your town is not listed, still text the pickup address to (812) 610-1657.",
+    "We serve nine cities across Southern Indiana, Western Kentucky, and Southeast Illinois: Evansville, Newburgh, Boonville, Princeton, Mount Vernon, New Harmony, Henderson, Owensboro, and Mount Carmel.",
+    "Every route uses the same local crew and phone number. Open your city for local service details, or text the pickup address to (812) 610-1657 if your town is nearby but not listed.",
   ),
   faqs: [
     {
@@ -822,7 +822,9 @@ export const aboutPageCopy = {
   titleAbsolute: "About Uncle Sam Junk Removal | Evansville, IN",
   h1: "About Uncle Sam Junk Removal",
   paragraphs: paras(
-    "Uncle Sam Junk Removal is a veteran-owned crew dispatched from Evansville. We lift, load, and haul household and commercial junk on Tri-State routes: Southern Indiana, Western Kentucky, and Southeast Illinois. Licensed and insured. You approve the price before we start. We do not publish a street address. Call or text (812) 610-1657 or email unclesamjunkremoval@gmail.com.",
+    "Uncle Sam Junk Removal is a veteran-owned, licensed, and insured local crew dispatched from Evansville across the Tri-State.",
+    "Our work is full service: you point out what needs to go, we confirm the scope and price, then the crew lifts, loads, hauls, and gives the cleared area a basic sweep. You approve the final price before work begins.",
+    "We help homeowners, renters, families, property managers, contractors, offices, restaurants, and warehouses across Southern Indiana, Western Kentucky, and Southeast Illinois. One local number follows the project from the first photos through the completed pickup.",
   ),
   faqs: [
     {
@@ -856,7 +858,7 @@ export const faqHubCopy = {
   titleAbsolute: "Junk Removal FAQs | Uncle Sam Junk Removal",
   h1: "Junk removal questions, answered",
   lead:
-    "People usually ask whether city heavy trash already covers it, whether a dumpster would be cheaper, whether a fridge is allowed, and whether they have to be home. Short answers below. Then the quote form or (812) 610-1657.",
+    "Compare city heavy trash, dumpsters, appliance rules, access, pricing, and scheduling before you request a pickup.",
   faqs: [
     {
       question: "Is Evansville city heavy trash free for my address?",
@@ -916,7 +918,7 @@ export const dumpsterCompareCopy = {
   titleAbsolute: "Junk Removal vs a Dumpster | Evansville Tri-State",
   h1: "Junk removal vs renting a dumpster",
   lead:
-    "A dumpster can cost less if you have days, a driveway, and the back to load it. A crew costs more per yard and is done in a visit, including the lifting. We do not rent dumpsters. If the pile is inside, heavy, or you need the driveway clear today, text photos to (812) 610-1657.",
+    "A dumpster can cost less when you have several days, driveway space, and can load it yourself. A removal crew handles the lifting and clears the project in one visit. We do not rent dumpsters.",
   faqs: [
     {
       question: "Which option is cheaper for a small inside job?",

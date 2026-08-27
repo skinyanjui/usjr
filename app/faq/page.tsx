@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { faqHubCopy } from "../seo-page-copy";
-import { phoneDisplay, phoneHref, siteUrl } from "../site-data";
+import { phoneHref, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
   title: { absolute: faqHubCopy.titleAbsolute },
@@ -76,13 +76,13 @@ export default function FaqPage() {
               <p>{faqHubCopy.lead}</p>
               <div className="detail-hero__actions">
                 <Link className="button button--light" href="/#quote">
-                  Get a free quote
+                  Get quote
                 </Link>
                 <a
                   className="button button--outline-light"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
               <aside
@@ -109,7 +109,7 @@ export default function FaqPage() {
           <div className="shell faq-layout">
             <div className="faq-layout__header">
               <p className="eyebrow">FAQ hub</p>
-              <h2>Unique questions for this page.</h2>
+              <h2>Answers before you book.</h2>
             </div>
             <div className="faq-list">
               {faqHubCopy.faqs.map((faq, index) => (

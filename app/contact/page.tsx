@@ -122,10 +122,10 @@ export default function ContactPage() {
                   className="button button--light"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
                 <a className="button button--outline-light" href={genericSmsHref}>
-                  Text photos for a quote
+                  Text photos
                 </a>
               </div>
             </div>
@@ -188,13 +188,13 @@ export default function ContactPage() {
                   approve the final onsite price before work begins.
                 </p>
                 <a className="button button--full" href="#quote">
-                  Jump to quote form
+                  Quote form
                 </a>
                 <a
                   className="button button--ghost button--full"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
             </aside>

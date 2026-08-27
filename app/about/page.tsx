@@ -81,10 +81,10 @@ export default function AboutPage() {
               <p>{aboutPageCopy.paragraphs[0]}</p>
               <div className="detail-hero__actions">
                 <a className="button button--light" href={`tel:${phoneHref}`}>
-                  Call {phoneDisplay}
+                  Call now
                 </a>
                 <Link className="button button--outline-light" href="/contact">
-                  Contact page
+                  Contact us
                 </Link>
               </div>
               <aside
@@ -107,11 +107,33 @@ export default function AboutPage() {
             <article className="detail-content">
               <p className="eyebrow">About this crew</p>
               <h2>Local trucks, Tri-State routes.</h2>
+              {aboutPageCopy.paragraphs.slice(1).map((paragraph) => (
+                <p className="detail-lead" key={paragraph.slice(0, 64)}>
+                  {paragraph}
+                </p>
+              ))}
+              <div className="detail-list-grid">
+                <section>
+                  <h3>Before the work</h3>
+                  <ul>
+                    <li>Photos and project details</li>
+                    <li>Route and access confirmation</li>
+                    <li>Price approval before loading</li>
+                  </ul>
+                </section>
+                <section>
+                  <h3>During the pickup</h3>
+                  <ul>
+                    <li>Lifting, loading, and hauling</li>
+                    <li>Respectful work around the property</li>
+                    <li>A basic sweep of the cleared area</li>
+                  </ul>
+                </section>
+              </div>
               <p className="detail-lead">
-                Email{" "}
+                Questions? Email{" "}
                 <a href={`mailto:${emailAddress}`}>{emailAddress}</a> or visit{" "}
-                <Link href="/contact">the contact page</Link> for phone, text,
-                and the quote form.
+                <Link href="/contact">the contact page</Link>.
               </p>
             </article>
             <aside className="detail-aside">
@@ -123,13 +145,13 @@ export default function AboutPage() {
                   form.
                 </p>
                 <Link className="button button--full" href="/#quote">
-                  Free quote form
+                  Quote form
                 </Link>
                 <a
                   className="button button--ghost button--full"
                   href={`tel:${phoneHref}`}
                 >
-                  Call {phoneDisplay}
+                  Call now
                 </a>
               </div>
             </aside>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import { dumpsterCompareCopy } from "../seo-page-copy";
-import { phoneDisplay, phoneHref, siteUrl } from "../site-data";
+import { phoneHref, siteUrl } from "../site-data";
 
 export const metadata: Metadata = {
   title: { absolute: dumpsterCompareCopy.titleAbsolute },
@@ -66,12 +66,12 @@ export default function JunkRemovalVsDumpsterPage() {
                 <span aria-hidden="true">/</span>
                 <span aria-current="page">Junk removal vs dumpster</span>
               </nav>
-              <p className="eyebrow eyebrow--light">One comparison URL</p>
+              <p className="eyebrow eyebrow--light">Crew or container?</p>
               <h1>{dumpsterCompareCopy.h1}</h1>
               <p>{dumpsterCompareCopy.lead}</p>
               <div className="detail-hero__actions">
                 <a className="button button--light" href={`tel:${phoneHref}`}>
-                  Call {phoneDisplay}
+                  Call now
                 </a>
                 <Link className="button button--outline-light" href="/faq">
                   More FAQs
@@ -96,7 +96,7 @@ export default function JunkRemovalVsDumpsterPage() {
           <div className="shell faq-layout">
             <div className="faq-layout__header">
               <p className="eyebrow">Compare</p>
-              <h2>Questions unique to this choice.</h2>
+              <h2>Which option fits the job?</h2>
             </div>
             <div className="faq-list">
               {dumpsterCompareCopy.faqs.map((faq, index) => (
@@ -117,7 +117,7 @@ export default function JunkRemovalVsDumpsterPage() {
             <div className="section-heading section-heading--tight">
               <div>
                 <p className="eyebrow">Related</p>
-                <h2>Keep reading or book.</h2>
+                <h2>Choose your next step.</h2>
               </div>
               <div>
                 <Link className="inline-link" href="/faq">

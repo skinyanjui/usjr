@@ -4,7 +4,6 @@ import { homeFaqs, popularServiceSlugs, pricingTiers } from "../home-data";
 import {
   genericSmsHref,
   locations,
-  phoneDisplay,
   phoneHref,
   services,
 } from "../site-data";
@@ -33,7 +32,7 @@ export function HeroSection() {
             </p>
             <div className="hero__actions">
               <a className="button" href="#quote">
-                Get a free quote
+                Get quote
               </a>
               <a className="button button--outline" href={genericSmsHref}>
                 Text photos instead
@@ -361,13 +360,13 @@ export function FinalCtaSection() {
         </div>
         <div>
           <a className="button button--light" href="#quote">
-            Get a free quote
+            Get quote
           </a>
           <a
             className="button button--outline-light"
             href={`tel:${phoneHref}`}
           >
-            Call {phoneDisplay}
+            Call now
           </a>
         </div>
       </div>

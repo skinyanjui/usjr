@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../components/site-chrome";
 import {
   genericSmsHref,
-  phoneDisplay,
   phoneHref,
   services,
   siteUrl,
@@ -67,10 +66,10 @@ export default function ServicesPage() {
             </div>
             <div className="interior-hero__actions">
               <a className="button" href={genericSmsHref}>
-                Text photos for a quote
+                Text photos
               </a>
               <a className="button button--ghost" href={`tel:${phoneHref}`}>
-                Call {phoneDisplay}
+                Call now
               </a>
             </div>
           </div>
