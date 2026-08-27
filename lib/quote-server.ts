@@ -284,10 +284,6 @@ function consumeRateLimit(
 }
 
 function validEmail(value: string) {
-  if (!value.trim()) {
-    return true;
-  }
-
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
