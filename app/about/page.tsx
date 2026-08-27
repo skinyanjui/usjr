@@ -69,8 +69,8 @@ export default function AboutPage() {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid detail-hero__grid--stacked">
-            <div>
+          <div className="shell detail-hero__grid">
+            <div className="detail-hero__intro">
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>
@@ -87,18 +87,15 @@ export default function AboutPage() {
                   Contact us
                 </Link>
               </div>
-              <aside
-                className="detail-summary detail-summary--inline"
-                aria-label="Company summary"
-              >
-                <span>Who we are</span>
-                <strong>Veteran-owned. Licensed and insured.</strong>
-                <p>
-                  Dispatched from Evansville. One number for every listed city:{" "}
-                  <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
-                </p>
-              </aside>
             </div>
+            <aside className="detail-summary" aria-label="Company summary">
+              <span>Who we are</span>
+              <strong>Veteran-owned. Licensed and insured.</strong>
+              <p>
+                Dispatched from Evansville. One number for every listed city:{" "}
+                <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
+              </p>
+            </aside>
           </div>
         </section>
 

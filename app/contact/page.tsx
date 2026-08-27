@@ -104,7 +104,7 @@ export default function ContactPage() {
       <main id="main-content">
         <section className="detail-hero">
           <div className="shell detail-hero__grid">
-            <div>
+            <div className="detail-hero__intro">
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>

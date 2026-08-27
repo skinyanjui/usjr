@@ -212,8 +212,8 @@ export default async function LocationPage({ params }: LocationPageProps) {
 
       <main id="main-content">
         <section className="detail-hero detail-hero--location">
-          <div className="shell detail-hero__grid detail-hero__grid--stacked">
-            <div>
+          <div className="shell detail-hero__grid">
+            <div className="detail-hero__intro">
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>
@@ -235,18 +235,15 @@ export default async function LocationPage({ params }: LocationPageProps) {
                   Call now
                 </a>
               </div>
-              <aside
-                className="detail-summary detail-summary--inline"
-                aria-label="Location summary"
-              >
-                <span>Local route</span>
-                <strong>We’ll check your address before you book.</strong>
-                <p>
-                  Share the pickup address and project details, and we’ll help
-                  match the job to the right route and timing.
-                </p>
-              </aside>
             </div>
+            <aside className="detail-summary" aria-label="Location summary">
+              <span>Local route</span>
+              <strong>We’ll check your address before you book.</strong>
+              <p>
+                Share the pickup address and project details, and we’ll help
+                match the job to the right route and timing.
+              </p>
+            </aside>
           </div>
         </section>
 

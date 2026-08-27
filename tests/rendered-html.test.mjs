@@ -1020,8 +1020,15 @@ test("uses fluid type and mobile-friendly form controls", async () => {
     css,
     /\.quick-service-picker > div\s*\{[\s\S]*?grid-template-columns:\s*1fr 1fr;/,
   );
-  assert.match(css, /\.interior-hero__grid--with-directory\s*\{/);
-  assert.match(css, /\.detail-hero__grid--stacked\s*\{/);
+  assert.match(
+    css,
+    /\.interior-hero__grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\) minmax\(310px, 370px\);/,
+  );
+  assert.match(
+    css,
+    /\.detail-hero__grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\) minmax\(300px, 360px\);/,
+  );
+  assert.match(css, /\.legal-hero__grid\s*\{/);
   assert.match(css, /\.detail-layout--stacked\s*\{/);
   assert.match(css, /\.section-heading--tight\s*\{/);
 });
@@ -1303,36 +1310,41 @@ test("applies Muse visual cleanup: stacked FAQs, Reach us, CTA contrast, darker 
   );
 
   const locationsBody = await (await render(worker, "/locations")).text();
-  assert.match(locationsBody, /interior-hero--intro-only/i);
-  assert.match(locationsBody, /interior-hero__grid--with-directory/i);
+  const locationsHero = locationsBody.match(
+    /<section class=["']interior-hero["'][\s\S]*?<\/section>/i,
+  )?.[0];
+  assert.ok(locationsHero);
+  assert.match(locationsHero, /interior-hero__card/i);
+  assert.doesNotMatch(locationsHero, /location-index-grid/i);
   assert.match(
     locationsBody,
-    /<div class=["']location-index-grid location-index-grid--hero["']/i,
-    "locations should place the city directory in the intro hero",
-  );
-  assert.doesNotMatch(
-    locationsBody,
-    /<section class=["']section section--directory/i,
-    "locations should not repeat a full-width directory section below the intro",
+    /<section class=["']section section--directory section--directory-flush["'][\s\S]*?<div class=["']location-index-grid location-index-grid--hero["']/i,
+    "locations should place the city directory directly below the concise hero",
   );
 
   const aboutLayoutBody = await (await render(worker, "/about")).text();
-  assert.match(aboutLayoutBody, /detail-hero__grid--stacked/i);
-  assert.match(aboutLayoutBody, /detail-summary--inline/i);
+  assert.match(aboutLayoutBody, /shell detail-hero__grid/i);
+  assert.match(aboutLayoutBody, /class=["']detail-summary["']/i);
+  assert.doesNotMatch(aboutLayoutBody, /detail-hero__grid--stacked/i);
+  assert.doesNotMatch(aboutLayoutBody, /detail-summary--inline/i);
   assert.match(aboutLayoutBody, /detail-layout--stacked/i);
 
   const serviceLayoutBody = await (
     await render(worker, "/services/junk-removal")
   ).text();
-  assert.match(serviceLayoutBody, /detail-hero__grid--stacked/i);
+  assert.match(serviceLayoutBody, /shell detail-hero__grid/i);
+  assert.match(serviceLayoutBody, /class=["']detail-summary["']/i);
+  assert.doesNotMatch(serviceLayoutBody, /detail-hero__grid--stacked/i);
   assert.match(serviceLayoutBody, /detail-layout--stacked/i);
   assert.match(serviceLayoutBody, /detail-content--continued/i);
 
   const cityLayoutBody = await (
     await render(worker, "/locations/newburgh-in")
   ).text();
-  assert.match(cityLayoutBody, /detail-hero__grid--stacked/i);
-  assert.match(cityLayoutBody, /detail-summary--inline/i);
+  assert.match(cityLayoutBody, /shell detail-hero__grid/i);
+  assert.match(cityLayoutBody, /class=["']detail-summary["']/i);
+  assert.doesNotMatch(cityLayoutBody, /detail-hero__grid--stacked/i);
+  assert.doesNotMatch(cityLayoutBody, /detail-summary--inline/i);
   assert.match(cityLayoutBody, /detail-layout--stacked/i);
 
   const faqLayoutBody = await (await render(worker, "/faq")).text();
@@ -1342,7 +1354,8 @@ test("applies Muse visual cleanup: stacked FAQs, Reach us, CTA contrast, darker 
     await render(worker, "/junk-removal-vs-dumpster")
   ).text();
   assert.match(dumpsterLayoutBody, /section-heading--tight/i);
-  assert.match(dumpsterLayoutBody, /detail-hero__grid--stacked/i);
+  assert.match(dumpsterLayoutBody, /shell detail-hero__grid/i);
+  assert.doesNotMatch(dumpsterLayoutBody, /detail-hero__grid--stacked/i);
 
   const contactBody = await (await render(worker, "/contact")).text();
   assert.match(contactBody, />Reach us</i);

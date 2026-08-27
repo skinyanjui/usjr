@@ -197,8 +197,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid detail-hero__grid--stacked">
-            <div>
+          <div className="shell detail-hero__grid">
+            <div className="detail-hero__intro">
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
                 <span aria-hidden="true">/</span>
@@ -222,18 +222,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   Call now
                 </a>
               </div>
-              <aside
-                className="detail-summary detail-summary--inline"
-                aria-label="Service summary"
-              >
-                <span>What to expect</span>
-                <strong>A clear plan, an upfront price, and a respectful crew.</strong>
-                <p>
-                  Tell us what needs to go and where it is. We’ll walk through the
-                  plan, and you’ll approve the final price before work begins.
-                </p>
-              </aside>
             </div>
+            <aside className="detail-summary" aria-label="Service summary">
+              <span>What to expect</span>
+              <strong>A clear plan, an upfront price, and a respectful crew.</strong>
+              <p>
+                Tell us what needs to go and where it is. We’ll walk through the
+                plan, and you’ll approve the final price before work begins.
+              </p>
+            </aside>
           </div>
         </section>
 
