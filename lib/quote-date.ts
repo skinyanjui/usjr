@@ -31,3 +31,23 @@ export function isIsoDate(value: string) {
 export function isPastBusinessDate(value: string, now = new Date()) {
   return isIsoDate(value) && value < businessDateString(now);
 }
+
+export function formatReceivedAtChicago(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: BUSINESS_TIME_ZONE,
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).formatToParts(date);
+
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? "";
+
+  const dayPeriod = get("dayPeriod").toLowerCase();
+  const period = dayPeriod.startsWith("a") ? "a.m." : "p.m.";
+
+  return `${get("month")} ${get("day")}, ${get("year")}, ${get("hour")}:${get("minute")} ${period} CT`;
+}

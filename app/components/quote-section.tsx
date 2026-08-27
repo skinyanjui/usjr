@@ -269,6 +269,25 @@ function planningRange(service: string, quantity: string) {
   return "Choose a load size or add photos for a useful planning range.";
 }
 
+function emailPlanningRange(service: string, quantity: string) {
+  const kind = serviceKind(service);
+  if (kind === "shed" || kind === "debris") {
+    return undefined;
+  }
+  if (quantity === "¾ trailer load") {
+    return undefined;
+  }
+
+  const tier = getPublicPricingTier(
+    publicPricingSizeForQuantity[quantity] || "",
+  );
+  if (!tier) {
+    return undefined;
+  }
+
+  return formatPriceRange(tier.low, tier.high);
+}
+
 function trackAmplitudeQuoteEvent(
   event: string,
   properties: Record<string, string | number | boolean | undefined>,
@@ -957,6 +976,7 @@ export function QuoteSection({
       const { response, body: payload } = await submitQuoteRequest({
         ...form,
         conditionalDetails: conditionalDetails(),
+        planningRange: emailPlanningRange(form.service, form.quantity),
         source: window.location.hostname.endsWith(".chatgpt.site")
           ? "openai-sites"
           : "canonical-website",
@@ -1066,10 +1086,11 @@ export function QuoteSection({
               ref={statusRef}
             >
               <span className="quote-success__badge">Received</span>
-              <h3>Request {result.reference} received.</h3>
+              <h3>We got your quote request</h3>
               <p>
-                We normally respond as soon as possible during business
-                hours.
+                Check your email for {result.reference}. We&rsquo;ll call or
+                text Monday&ndash;Saturday, 8&nbsp;a.m.&ndash;5&nbsp;p.m., with
+                your price.
               </p>
               <dl className="quote-summary">
                 <div>
