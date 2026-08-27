@@ -1,5 +1,6 @@
 "use client";
 
+import * as amplitude from "@amplitude/unified";
 import type {
   ChangeEvent,
   FormEvent,
@@ -268,6 +269,38 @@ function planningRange(service: string, quantity: string) {
   return "Choose a load size or add photos for a useful planning range.";
 }
 
+function trackAmplitudeQuoteEvent(
+  event: string,
+  properties: Record<string, string | number | boolean | undefined>,
+) {
+  try {
+    if (event === "quote_form_started") {
+      const props: Record<string, string> = {};
+      if (typeof properties.source === "string") {
+        props.source = properties.source;
+      }
+      amplitude.track("Started Quote", props);
+      return;
+    }
+
+    if (event === "quote_submitted") {
+      const props: Record<string, string | number> = {};
+      if (typeof properties.service === "string") {
+        props.service = properties.service;
+      }
+      if (typeof properties.photo_count === "number") {
+        props.photo_count = properties.photo_count;
+      }
+      if (typeof properties.photos_delivered === "number") {
+        props.photos_delivered = properties.photos_delivered;
+      }
+      amplitude.track("Submitted Quote", props);
+    }
+  } catch {
+    // Amplitude may be uninitialized; keep quote analytics non-blocking.
+  }
+}
+
 function trackQuoteEvent(
   event: string,
   properties: Record<string, string | number | boolean | undefined> = {},
@@ -288,6 +321,7 @@ function trackQuoteEvent(
   analyticsWindow.dataLayer?.push({ event, ...properties });
   analyticsWindow.gtag?.("event", event, properties);
   analyticsWindow.plausible?.(event, { props: properties });
+  trackAmplitudeQuoteEvent(event, properties);
 }
 
 function randomId() {
