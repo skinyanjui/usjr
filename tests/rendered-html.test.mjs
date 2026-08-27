@@ -1021,6 +1021,10 @@ test("uses fluid type and mobile-friendly form controls", async () => {
     css,
     /\.quick-service-picker > div\s*\{[\s\S]*?grid-template-columns:\s*1fr 1fr;/,
   );
+  assert.match(css, /\.interior-hero__grid--with-directory\s*\{/);
+  assert.match(css, /\.detail-hero__grid--stacked\s*\{/);
+  assert.match(css, /\.detail-layout--stacked\s*\{/);
+  assert.match(css, /\.section-heading--tight\s*\{/);
 });
 
 test("resets internal page navigation to the top while preserving section links", async () => {
@@ -1301,12 +1305,45 @@ test("applies Muse visual cleanup: stacked FAQs, Reach us, CTA contrast, darker 
 
   const locationsBody = await (await render(worker, "/locations")).text();
   assert.match(locationsBody, /interior-hero--intro-only/i);
-  assert.match(locationsBody, /section--directory-flush/i);
+  assert.match(locationsBody, /interior-hero__grid--with-directory/i);
+  assert.match(
+    locationsBody,
+    /<div class=["']location-index-grid location-index-grid--hero["']/i,
+    "locations should place the city directory in the intro hero",
+  );
   assert.doesNotMatch(
     locationsBody,
-    /interior-hero__grid[\s\S]*?<\/section>[\s\S]*?interior-hero__actions[\s\S]*?<\/div>\s*<\/div>\s*<\/section>[\s\S]*?<section class=["']section section--directory["']/i,
-    "locations should not use a two-column cream hero beside empty space",
+    /<section class=["']section section--directory/i,
+    "locations should not repeat a full-width directory section below the intro",
   );
+
+  const aboutLayoutBody = await (await render(worker, "/about")).text();
+  assert.match(aboutLayoutBody, /detail-hero__grid--stacked/i);
+  assert.match(aboutLayoutBody, /detail-summary--inline/i);
+  assert.match(aboutLayoutBody, /detail-layout--stacked/i);
+
+  const serviceLayoutBody = await (
+    await render(worker, "/services/junk-removal")
+  ).text();
+  assert.match(serviceLayoutBody, /detail-hero__grid--stacked/i);
+  assert.match(serviceLayoutBody, /detail-layout--stacked/i);
+  assert.match(serviceLayoutBody, /detail-content--continued/i);
+
+  const cityLayoutBody = await (
+    await render(worker, "/locations/newburgh-in")
+  ).text();
+  assert.match(cityLayoutBody, /detail-hero__grid--stacked/i);
+  assert.match(cityLayoutBody, /detail-summary--inline/i);
+  assert.match(cityLayoutBody, /detail-layout--stacked/i);
+
+  const faqLayoutBody = await (await render(worker, "/faq")).text();
+  assert.match(faqLayoutBody, /section-heading--tight/i);
+
+  const dumpsterLayoutBody = await (
+    await render(worker, "/junk-removal-vs-dumpster")
+  ).text();
+  assert.match(dumpsterLayoutBody, /section-heading--tight/i);
+  assert.match(dumpsterLayoutBody, /detail-hero__grid--stacked/i);
 
   const contactBody = await (await render(worker, "/contact")).text();
   assert.match(contactBody, />Reach us</i);

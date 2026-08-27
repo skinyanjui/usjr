@@ -64,7 +64,7 @@ export default function FaqPage() {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid">
+          <div className="shell detail-hero__grid detail-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -85,20 +85,23 @@ export default function FaqPage() {
                   Call {phoneDisplay}
                 </a>
               </div>
+              <aside
+                className="detail-summary detail-summary--inline"
+                aria-label="FAQ shortcuts"
+              >
+                <span>Also see</span>
+                <strong>Compare options and cities.</strong>
+                <p>
+                  <Link href="/junk-removal-vs-dumpster">
+                    Junk removal vs a dumpster
+                  </Link>
+                  <br />
+                  <Link href="/locations">Tri-State locations</Link>
+                  <br />
+                  <Link href="/#pricing">Homepage pricing ranges</Link>
+                </p>
+              </aside>
             </div>
-            <aside className="detail-summary" aria-label="FAQ shortcuts">
-              <span>Also see</span>
-              <strong>Compare options and cities.</strong>
-              <p>
-                <Link href="/junk-removal-vs-dumpster">
-                  Junk removal vs a dumpster
-                </Link>
-                <br />
-                <Link href="/locations">Tri-State locations</Link>
-                <br />
-                <Link href="/#pricing">Homepage pricing ranges</Link>
-              </p>
-            </aside>
           </div>
         </section>
 
@@ -146,7 +149,7 @@ export default function FaqPage() {
 
         <section className="section">
           <div className="shell">
-            <div className="section-heading">
+            <div className="section-heading section-heading--tight">
               <div>
                 <p className="eyebrow">Ready?</p>
                 <h2>Send photos or call.</h2>

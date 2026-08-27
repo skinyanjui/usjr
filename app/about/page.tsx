@@ -69,7 +69,7 @@ export default function AboutPage() {
 
       <main id="main-content">
         <section className="detail-hero">
-          <div className="shell detail-hero__grid">
+          <div className="shell detail-hero__grid detail-hero__grid--stacked">
             <div>
               <nav className="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
                 <Link href="/">Home</Link>
@@ -87,20 +87,23 @@ export default function AboutPage() {
                   Contact page
                 </Link>
               </div>
+              <aside
+                className="detail-summary detail-summary--inline"
+                aria-label="Company summary"
+              >
+                <span>Who we are</span>
+                <strong>Veteran-owned. Licensed and insured.</strong>
+                <p>
+                  Dispatched from Evansville. One number for every listed city:{" "}
+                  <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
+                </p>
+              </aside>
             </div>
-            <aside className="detail-summary" aria-label="Company summary">
-              <span>Who we are</span>
-              <strong>Veteran-owned. Licensed and insured.</strong>
-              <p>
-                Dispatched from Evansville. One number for every listed city:{" "}
-                <a href={`tel:${phoneHref}`}>{phoneDisplay}</a>
-              </p>
-            </aside>
           </div>
         </section>
 
         <section className="section">
-          <div className="shell detail-layout">
+          <div className="shell detail-layout detail-layout--stacked">
             <article className="detail-content">
               <p className="eyebrow">About this crew</p>
               <h2>Local trucks, Tri-State routes.</h2>
