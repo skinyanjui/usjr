@@ -16,6 +16,7 @@
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
   "dependencies": {
+    "@amplitude/unified": "^1.1.30",
     "drizzle-orm": "0.45.2",
     "next": "16.2.11",
     "react": "19.2.6",

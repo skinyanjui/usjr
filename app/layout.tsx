@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { AmplitudeAnalytics } from "./components/amplitude-analytics";
 import { McpAttributionTracker } from "./components/mcp-attribution-tracker";
 import { RouteScrollManager } from "./components/route-scroll-manager";
 import { WebMcpQuoteBridge } from "./components/webmcp-quote-bridge";
@@ -84,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
+        <AmplitudeAnalytics />
         <WebMcpTools />
         <WebMcpRoutingTools />
         <WebMcpQuoteBridge />
