@@ -1,3 +1,5 @@
+import { formatReceivedAtChicago } from "./quote-date";
+
 const SITE_URL = "https://unclesamjunkremoval.com";
 const BUSINESS_PHONE_DISPLAY = "(812) 610-1657";
 const BUSINESS_PHONE_HREF = "+18126101657";
@@ -92,6 +94,7 @@ type QuoteData = {
   company: string;
   source: string;
   startedAt: number;
+  planningRange: string;
 };
 
 type ResendEvent = {
@@ -175,7 +178,32 @@ function normalizeQuote(raw: Record<string, unknown>): QuoteData {
     source: stringValue(raw.source, 80) || "website-quote",
     startedAt:
       typeof raw.startedAt === "number" ? raw.startedAt : Number.NaN,
+    planningRange: stringValue(raw.planningRange, 24),
   };
+}
+
+function validPlanningRange(value: string) {
+  return /^\$\d+–\d+$/.test(value);
+}
+
+function customerEmailSubject(reference: string) {
+  return `Your quote request ${reference} | Uncle Sam Junk Removal`;
+}
+
+function customerPlanningCopy(planningRange: string) {
+  if (validPlanningRange(planningRange)) {
+    return `Planning range for this kind of job: ${planningRange}. You approve the final price before we load.`;
+  }
+
+  return "We'll price it from the photos and access details you sent. You approve the final price before we load.";
+}
+
+function customerFirstName(name: string) {
+  return name.split(/\s+/)[0] || name;
+}
+
+function customerPhoneDigits(phone: string) {
+  return phone.replace(/[^\d+]/g, "");
 }
 
 function escapeHtml(value: string) {
@@ -384,15 +412,22 @@ function textRows(data: QuoteData) {
     .join("\n");
 }
 
-function htmlRows(data: QuoteData) {
+function businessHtmlRows(data: QuoteData) {
   return quoteRows(data)
-    .map(
-      ([key, value]) => `
+    .map(([key, value]) => {
+      let cellHtml = escapeHtml(value);
+      if (key === "Phone") {
+        cellHtml = `<a href="tel:${escapeHtml(customerPhoneDigits(value))}" style="color:#102a43">${escapeHtml(value)}</a>`;
+      } else if (key === "Email") {
+        cellHtml = `<a href="mailto:${escapeHtml(value)}" style="color:#102a43">${escapeHtml(value)}</a>`;
+      }
+
+      return `
         <tr>
           <td style="padding:9px 12px 9px 0;border-bottom:1px solid #e8e4db;font:700 13px/19px Arial,sans-serif;color:#102a43;vertical-align:top">${escapeHtml(key)}</td>
-          <td style="padding:9px 0 9px 12px;border-bottom:1px solid #e8e4db;font:400 13px/19px Arial,sans-serif;color:#3d5263;vertical-align:top;white-space:pre-wrap">${escapeHtml(value)}</td>
-        </tr>`,
-    )
+          <td style="padding:9px 0 9px 12px;border-bottom:1px solid #e8e4db;font:400 13px/19px Arial,sans-serif;color:#3d5263;vertical-align:top;white-space:pre-wrap">${cellHtml}</td>
+        </tr>`;
+    })
     .join("");
 }
 
@@ -417,7 +452,9 @@ function businessEmail(
   data: QuoteData,
   reference: string,
   photoCount = 0,
+  receivedAt = new Date(),
 ) {
+  const receivedLabel = formatReceivedAtChicago(receivedAt);
   const photoLine =
     photoCount > 0
       ? `<p style="margin:0 0 20px;font:400 14px/21px Arial,sans-serif;color:#475a69">${photoCount} project photo${photoCount === 1 ? "" : "s"} attached to this email.</p>`
@@ -426,26 +463,53 @@ function businessEmail(
   return emailDocument(
     `${reference} new quote`,
     `<h1 style="margin:0 0 8px;font:800 26px/32px Arial,sans-serif;color:#102a43">New quote ${escapeHtml(reference)}</h1>
+     <p style="margin:0 0 8px;font:400 14px/21px Arial,sans-serif;color:#657583">Received: ${escapeHtml(receivedLabel)}</p>
      <p style="margin:0 0 20px;font:400 14px/21px Arial,sans-serif;color:#657583">Submitted from ${escapeHtml(data.source)}.</p>
      ${photoLine}
-     <table role="presentation" style="width:100%;border-collapse:collapse">${htmlRows(data)}</table>
+     <table role="presentation" style="width:100%;border-collapse:collapse">${businessHtmlRows(data)}</table>
      <p style="margin:22px 0 0">
-       <a href="tel:${escapeHtml(data.phone.replace(/[^\d+]/g, ""))}" style="display:inline-block;padding:11px 18px;border-radius:999px;background:#b5231f;font:700 14px/18px Arial,sans-serif;color:#fff;text-decoration:none">Call customer</a>
+       <a href="tel:${escapeHtml(customerPhoneDigits(data.phone))}" style="display:inline-block;padding:11px 18px;border-radius:999px;background:#b5231f;font:700 14px/18px Arial,sans-serif;color:#fff;text-decoration:none">Call customer</a>
+       <a href="mailto:${escapeHtml(data.email)}" style="display:inline-block;margin-left:10px;padding:11px 18px;border-radius:999px;border:1px solid #ddd8cd;font:700 14px/18px Arial,sans-serif;color:#102a43;text-decoration:none">Email customer</a>
      </p>
      <p style="margin:16px 0 0;font:400 13px/20px Arial,sans-serif;color:#657583">Reply to continue the ${escapeHtml(reference)} email thread.</p>`,
   );
 }
 
+function customerEmailText(data: QuoteData, reference: string) {
+  const planningCopy = customerPlanningCopy(data.planningRange);
+
+  return [
+    `Hi ${customerFirstName(data.name)},`,
+    "",
+    "We got your quote request. This message is not the final price. We'll call or text during shop hours (Monday–Saturday, 8 a.m.–5 p.m.) to confirm the job and the onsite price.",
+    "",
+    `Your reference: ${reference}`,
+    "",
+    planningCopy,
+    "",
+    `Need to add photos or change the pile? Reply to this email, or call or text ${BUSINESS_PHONE_DISPLAY}.`,
+    "",
+    "Uncle Sam Junk Removal",
+    "Evansville, IN",
+    BUSINESS_PHONE_DISPLAY,
+  ].join("\n");
+}
+
 function customerEmail(data: QuoteData, reference: string) {
+  const planningCopy = customerPlanningCopy(data.planningRange);
+
   return emailDocument(
-    `${reference} request received`,
-    `<h1 style="margin:0 0 10px;font:800 26px/32px Arial,sans-serif;color:#102a43">Request ${escapeHtml(reference)} received</h1>
-     <p style="margin:0 0 20px;font:400 15px/23px Arial,sans-serif;color:#475a69">Hi ${escapeHtml(data.name.split(/\s+/)[0] || data.name)}, we have your request and normally respond as soon as possible during business hours.</p>
-     <table role="presentation" style="width:100%;border-collapse:collapse">${htmlRows(data)}</table>
-     <p style="margin:22px 0 0">
-       <a href="${SITE_URL}/#quote" style="display:inline-block;padding:11px 18px;border-radius:999px;background:#b5231f;font:700 14px/18px Arial,sans-serif;color:#fff;text-decoration:none">View quote information</a>
-     </p>
-     <p style="margin:18px 0 0;font:400 13px/20px Arial,sans-serif;color:#657583">Urgent? Call <a href="tel:${BUSINESS_PHONE_HREF}" style="color:#102a43">${BUSINESS_PHONE_DISPLAY}</a>. Reply to this email to add information or photos.</p>`,
+    customerEmailSubject(reference),
+    `<p style="margin:0 0 16px;font:400 15px/23px Arial,sans-serif;color:#475a69">Hi ${escapeHtml(customerFirstName(data.name))},</p>
+     <p style="margin:0 0 16px;font:400 15px/23px Arial,sans-serif;color:#475a69">We got your quote request. This message is not the final price. We&rsquo;ll call or text during shop hours (Monday&ndash;Saturday, 8&nbsp;a.m.&ndash;5&nbsp;p.m.) to confirm the job and the onsite price.</p>
+     <p style="margin:0 0 16px;font:400 15px/23px Arial,sans-serif;color:#475a69"><strong>Your reference:</strong> ${escapeHtml(reference)}</p>
+     <p style="margin:0 0 16px;font:400 15px/23px Arial,sans-serif;color:#475a69">${escapeHtml(planningCopy)}</p>
+     <p style="margin:0 0 16px;font:400 15px/23px Arial,sans-serif;color:#475a69">Need to add photos or change the pile? Reply to this email, or call or text <a href="tel:${BUSINESS_PHONE_HREF}" style="color:#102a43">${BUSINESS_PHONE_DISPLAY}</a>.</p>
+     <p style="margin:24px 0 0;font:400 14px/22px Arial,sans-serif;color:#475a69">
+       Uncle Sam Junk Removal<br>
+       Evansville, IN<br>
+       <a href="tel:${BUSINESS_PHONE_HREF}" style="color:#102a43">${BUSINESS_PHONE_DISPLAY}</a>
+     </p>`,
   );
 }
 
@@ -658,6 +722,7 @@ export async function handleQuoteRequest(
 
   const reference = await createReference(data.submissionId);
   const replyTo = quoteReplyAddress(reference, env);
+  const receivedAt = new Date();
   const attachments =
     photos.length > 0 ? await photoAttachments(photos) : [];
   const common = {
@@ -682,12 +747,12 @@ export async function handleQuoteRequest(
       ...common,
       to: [env.QUOTE_TO_EMAIL],
       subject: `[${reference}] New ${data.service} quote — ${data.address}`,
-      text: `New quote ${reference}\n\n${textRows(data)}\n\nCall customer: ${data.phone}${
+      text: `New quote ${reference}\n\nReceived: ${formatReceivedAtChicago(receivedAt)}\n\n${textRows(data)}\n\nCall customer: ${data.phone}\nEmail customer: ${data.email}${
         attachments.length > 0
           ? `\n\nPhotos attached: ${attachments.length}`
           : ""
       }`,
-      html: businessEmail(data, reference, attachments.length),
+      html: businessEmail(data, reference, attachments.length, receivedAt),
       ...(attachments.length > 0 ? { attachments } : {}),
     },
     `quote/${reference}/business`,
@@ -711,8 +776,8 @@ export async function handleQuoteRequest(
         {
           ...common,
           to: [data.email],
-          subject: `[${reference}] Request received`,
-          text: `Request ${reference} received\n\nHi ${data.name}, we have your request and normally respond as soon as possible during business hours.\n\n${textRows(data)}\n\nUrgent? Call ${BUSINESS_PHONE_DISPLAY}. Reply to this email to add information or photos.\n${SITE_URL}/#quote`,
+          subject: customerEmailSubject(reference),
+          text: customerEmailText(data, reference),
           html: customerEmail(data, reference),
         },
         `quote/${reference}/customer`,
@@ -998,7 +1063,7 @@ async function findCustomerEmail(
   };
   return (
     payload.data?.find(
-      (email) => email.subject === `[${reference}] Request received`,
+      (email) => email.subject === customerEmailSubject(reference),
     )?.to?.[0] || ""
   );
 }

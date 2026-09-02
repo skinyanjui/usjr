@@ -84,6 +84,40 @@ test("quote server requires email and allows one photo minimum", () => {
   assert.match(quoteServer, /Use 1–8 JPG, PNG, or HEIC photos/);
 });
 
+test("quote form success card confirms receipt without old request headline", () => {
+  assert.match(quoteSection, /We got your quote request/);
+  assert.match(
+    quoteSection,
+    /Check your email for \{result\.reference\}/,
+  );
+  assert.match(
+    quoteSection,
+    /Monday&ndash;Saturday, 8&nbsp;a\.m\.&ndash;5&nbsp;p\.m\./,
+  );
+  assert.doesNotMatch(quoteSection, /Request \{result\.reference\} received/);
+  assert.match(quoteSection, /emailPlanningRange\(/);
+  assert.match(quoteSection, /planningRange: emailPlanningRange/);
+});
+
+test("quote server sends locked customer copy and business lead metadata", () => {
+  assert.match(quoteServer, /Your quote request \$\{reference\} \| Uncle Sam Junk Removal/);
+  assert.match(quoteServer, /We got your quote request\. This message is not the final price/);
+  assert.match(quoteServer, /Monday&ndash;Saturday, 8&nbsp;a\.m\.&ndash;5&nbsp;p\.m\./);
+  assert.match(
+    quoteServer,
+    /Planning range for this kind of job: \$\{planningRange\}/,
+  );
+  assert.match(
+    quoteServer,
+    /We'll price it from the photos and access details you sent/,
+  );
+  assert.doesNotMatch(quoteServer, /Request received/);
+  assert.match(quoteServer, /Received: \$\{formatReceivedAtChicago\(receivedAt\)\}/);
+  assert.match(quoteServer, /Email customer: \$\{data\.email\}/);
+  assert.match(quoteServer, /mailto:\$\{escapeHtml\(data\.email\)\}/);
+  assert.match(quoteServer, /planningRange: string/);
+});
+
 test("quote form styles meet disabled and border contrast requirements", () => {
   assert.match(globalsCss, /\.button:disabled \{[\s\S]*?color: var\(--ink\);/);
   assert.match(

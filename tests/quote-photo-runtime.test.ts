@@ -34,6 +34,7 @@ function quotePayload(overrides: Record<string, unknown> = {}) {
     company: "",
     source: "unit-test",
     startedAt: Date.now() - 2_000,
+    planningRange: "$289–389",
     ...overrides,
   };
 }
@@ -96,7 +97,23 @@ test("multipart quote submit sends one business email with every photo attached"
     );
     assert.match(String(business.subject), /New Junk Removal quote/);
     assert.match(String(business.text), /Photos attached: 3/);
-    assert.equal(sent[1].attachments, undefined);
+    assert.match(String(business.text), /Received: .+ CT/);
+    assert.match(String(business.text), /Email customer: customer@example.com/);
+    assert.match(String(business.html), /mailto:customer@example.com/);
+    const customer = sent[1];
+    assert.match(
+      String(customer.subject),
+      new RegExp(
+        `Your quote request ${payload.reference} \\| Uncle Sam Junk Removal`,
+      ),
+    );
+    assert.match(String(customer.text), /We got your quote request/);
+    assert.match(
+      String(customer.text),
+      /Planning range for this kind of job: \$289–389/,
+    );
+    assert.doesNotMatch(String(customer.text), /Name: Sam Tester/);
+    assert.equal(customer.attachments, undefined);
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -131,6 +148,8 @@ test("JSON quote without photos still sends one business email and no attachment
     assert.equal(payload.photosSent, 0);
     assert.equal(sent.length, 2);
     assert.equal(sent[0].attachments, undefined);
+    assert.match(String(sent[1].subject), /Your quote request USJR-/);
+    assert.match(String(sent[1].text), /We'll price it from the photos and access details you sent/);
   } finally {
     globalThis.fetch = originalFetch;
   }
