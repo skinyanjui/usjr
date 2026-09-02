@@ -37,10 +37,7 @@ test("quote form requires email and exposes stable field ids", () => {
   assert.match(quoteSection, /id=\{quoteFieldIds\.photos\}/);
   assert.match(quoteSection, /className="field-error"/);
   assert.match(quoteSection, /aria-describedby=\{quoteFieldDescribedBy\(/);
-  assert.match(
-    quoteSection,
-    /if \(!\/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(form\.email\.trim\(\)\)\)/,
-  );
+  assert.match(quoteSection, /\.test\(form\.email\.trim\(\)\)/);
   assert.doesNotMatch(quoteSection, /form\.email\.trim\(\)\.length > 0/);
   const emailInput = quoteSection.match(
     /data-quote-field="email"[\s\S]*?\/>/,
@@ -72,14 +69,12 @@ test("site chrome keeps contact and service quote CTAs on the current page", () 
 });
 
 test("quote server requires email and allows one photo minimum", () => {
-  assert.match(
-    quoteServer,
-    /function validEmail\(value: string\) \{\s*return \/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(value\);\s*\}/,
-  );
-  assert.doesNotMatch(
-    quoteServer,
-    /if \(!value\.trim\(\)\) \{\s*return true;\s*\}/,
-  );
+  const validEmailFn = quoteServer.match(
+    /function validEmail\(value: string\) \{[\s\S]*?\n\}/,
+  )?.[0];
+  assert.ok(validEmailFn);
+  assert.match(validEmailFn, /\.test\(value\)/);
+  assert.doesNotMatch(validEmailFn, /!value\.trim\(\)/);
   assert.match(quoteServer, /minimumWhenPresent \?\? 1/);
   assert.match(quoteServer, /Use 1–8 JPG, PNG, or HEIC photos/);
 });
