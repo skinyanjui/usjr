@@ -39,7 +39,7 @@ test("quote form requires email and exposes stable field ids", () => {
   assert.match(quoteSection, /aria-describedby=\{quoteFieldDescribedBy\(/);
   assert.match(
     quoteSection,
-    /if \(!\/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(form\.email\.trim\(\)\)\)/,
+    /if \(!\/\^\[\^\\s@\]\+@\[\^\\s@\]\+\\.\[\^\\s@\]\+\$\/\.test\(form\.email\.trim\(\)\)\)/,
   );
   assert.doesNotMatch(quoteSection, /form\.email\.trim\(\)\.length > 0/);
   const emailInput = quoteSection.match(
@@ -74,7 +74,7 @@ test("site chrome keeps contact and service quote CTAs on the current page", () 
 test("quote server requires email and allows one photo minimum", () => {
   assert.match(
     quoteServer,
-    /function validEmail\(value: string\) \{\s*return \/\^\[\\^\\s@\]\+@\[\\^\\s@\]\+\\.\[\\^\\s@\]\+\$\/\.test\(value\);\s*\}/,
+    /function validEmail\(value: string\) \{\s*return \/\^\[\^\\s@\]\+@\[\^\\s@\]\+\\.\[\^\\s@\]\+\$\/\.test\(value\);\s*\}/,
   );
   assert.doesNotMatch(
     quoteServer,
@@ -115,6 +115,15 @@ test("quote server sends locked customer copy and business lead metadata", () =>
   assert.match(quoteServer, /Received: \$\{formatReceivedAtChicago\(receivedAt\)\}/);
   assert.match(quoteServer, /Email customer: \$\{data\.email\}/);
   assert.match(quoteServer, /mailto:\$\{escapeHtml\(data\.email\)\}/);
+  assert.match(quoteServer, /Add callback to Calendar/);
+  assert.match(quoteServer, /buildCallbackCalendarUrl/);
+  assert.match(quoteServer, /calendar\.google\.com\/calendar\/render\?/);
+  assert.match(quoteServer, /isTestQuote/);
+  assert.match(quoteServer, /Callback hold — not a confirmed job/);
+  const customerEmailBody = quoteServer.match(
+    /function customerEmail\([\s\S]*?(?=^function |\nexport async function )/m,
+  )?.[0] ?? "";
+  assert.doesNotMatch(customerEmailBody, /Add callback to Calendar/);
   assert.match(quoteServer, /planningRange: string/);
 });
 

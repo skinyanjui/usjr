@@ -1,4 +1,8 @@
-import { formatReceivedAtChicago } from "./quote-date";
+import {
+  computeCallbackHoldWindow,
+  formatGoogleCalendarChicago,
+  formatReceivedAtChicago,
+} from "./quote-date";
 
 const SITE_URL = "https://unclesamjunkremoval.com";
 const BUSINESS_PHONE_DISPLAY = "(812) 610-1657";
@@ -448,6 +452,88 @@ function emailDocument(title: string, body: string) {
     </html>`;
 }
 
+function isTestQuote(data: QuoteData) {
+  if (/^test/i.test(data.name.trim())) {
+    return true;
+  }
+
+  const notes = data.notes.toUpperCase();
+  return notes.includes("TEST") || notes.includes("DO NOT SCHEDULE");
+}
+
+function quoteTimingLabel(data: QuoteData) {
+  return data.urgency === "choose-date" && data.preferredDate
+    ? `${label(data.urgency)}: ${data.preferredDate}`
+    : label(data.urgency);
+}
+
+function callbackCalendarDescription(data: QuoteData, reference: string) {
+  const phoneDigits = customerPhoneDigits(data.phone);
+  const lines = [
+    "Callback hold — not a confirmed job. Use this block to follow up; confirm details before scheduling removal.",
+    "",
+    `Reference: ${reference}`,
+    `Phone: ${data.phone} (tel:${phoneDigits})`,
+    `Email: ${data.email} (mailto:${data.email})`,
+    `Pickup area: ${data.address}`,
+    `Service: ${data.service}`,
+    `Size / load: ${data.quantity}`,
+    `Timing: ${quoteTimingLabel(data)}`,
+  ];
+
+  if (data.notes) {
+    lines.push(`Notes: ${data.notes}`);
+  }
+
+  return lines.join("\n");
+}
+
+export function buildCallbackCalendarUrl(
+  data: QuoteData,
+  reference: string,
+  receivedAt: Date,
+) {
+  if (isTestQuote(data)) {
+    return null;
+  }
+
+  const { start, end } = computeCallbackHoldWindow(receivedAt);
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `Call ${data.name} — ${reference}`,
+    dates: `${formatGoogleCalendarChicago(start)}/${formatGoogleCalendarChicago(end)}`,
+    details: callbackCalendarDescription(data, reference),
+    location: "Evansville IN",
+    ctz: "America/Chicago",
+  });
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function businessEmailTextExtras(
+  data: QuoteData,
+  reference: string,
+  receivedAt: Date,
+) {
+  const calendarUrl = buildCallbackCalendarUrl(data, reference, receivedAt);
+  return calendarUrl
+    ? `\n\nAdd callback to Calendar: ${calendarUrl}`
+    : "";
+}
+
+function businessEmailCalendarLink(
+  data: QuoteData,
+  reference: string,
+  receivedAt: Date,
+) {
+  const calendarUrl = buildCallbackCalendarUrl(data, reference, receivedAt);
+  if (!calendarUrl) {
+    return "";
+  }
+
+  return `<a href="${escapeHtml(calendarUrl)}" style="display:inline-block;margin-left:10px;padding:11px 18px;border-radius:999px;border:1px solid #ddd8cd;font:700 14px/18px Arial,sans-serif;color:#102a43;text-decoration:none">Add callback to Calendar</a>`;
+}
+
 function businessEmail(
   data: QuoteData,
   reference: string,
@@ -470,6 +556,7 @@ function businessEmail(
      <p style="margin:22px 0 0">
        <a href="tel:${escapeHtml(customerPhoneDigits(data.phone))}" style="display:inline-block;padding:11px 18px;border-radius:999px;background:#b5231f;font:700 14px/18px Arial,sans-serif;color:#fff;text-decoration:none">Call customer</a>
        <a href="mailto:${escapeHtml(data.email)}" style="display:inline-block;margin-left:10px;padding:11px 18px;border-radius:999px;border:1px solid #ddd8cd;font:700 14px/18px Arial,sans-serif;color:#102a43;text-decoration:none">Email customer</a>
+       ${businessEmailCalendarLink(data, reference, receivedAt)}
      </p>
      <p style="margin:16px 0 0;font:400 13px/20px Arial,sans-serif;color:#657583">Reply to continue the ${escapeHtml(reference)} email thread.</p>`,
   );
@@ -751,7 +838,7 @@ export async function handleQuoteRequest(
         attachments.length > 0
           ? `\n\nPhotos attached: ${attachments.length}`
           : ""
-      }`,
+      }${businessEmailTextExtras(data, reference, receivedAt)}`,
       html: businessEmail(data, reference, attachments.length, receivedAt),
       ...(attachments.length > 0 ? { attachments } : {}),
     },
