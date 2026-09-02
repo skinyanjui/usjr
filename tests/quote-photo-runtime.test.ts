@@ -100,7 +100,12 @@ test("multipart quote submit sends one business email with every photo attached"
     assert.match(String(business.text), /Received: .+ CT/);
     assert.match(String(business.text), /Email customer: customer@example.com/);
     assert.match(String(business.html), /mailto:customer@example.com/);
+    assert.match(String(business.text), /Add callback to Calendar: https:\/\/calendar\.google\.com/);
+    assert.match(String(business.html), /Add callback to Calendar/);
+    assert.match(String(business.html), /calendar\.google\.com\/calendar\/render\?action=TEMPLATE/);
     const customer = sent[1];
+    assert.doesNotMatch(String(customer.text), /Add callback to Calendar/);
+    assert.doesNotMatch(String(customer.html), /Add callback to Calendar/);
     assert.match(
       String(customer.subject),
       new RegExp(
@@ -130,7 +135,9 @@ test("JSON quote without photos still sends one business email and no attachment
           "Content-Type": "application/json",
           Origin: "https://unclesamjunkremoval.com",
         },
-        body: JSON.stringify(quotePayload({ submissionId: "no-photos-002" })),
+        body: JSON.stringify(
+          quotePayload({ submissionId: "no-photos-002", planningRange: "" }),
+        ),
       }),
       {
         QUOTE_TO_EMAIL: "owner@example.com",
@@ -148,6 +155,7 @@ test("JSON quote without photos still sends one business email and no attachment
     assert.equal(payload.photosSent, 0);
     assert.equal(sent.length, 2);
     assert.equal(sent[0].attachments, undefined);
+    assert.match(String(sent[0].text), /Add callback to Calendar: https:\/\/calendar\.google\.com/);
     assert.match(String(sent[1].subject), /Your quote request USJR-/);
     assert.match(String(sent[1].text), /We'll price it from the photos and access details you sent/);
   } finally {
