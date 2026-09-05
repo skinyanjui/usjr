@@ -1154,13 +1154,30 @@ test("ships Beacon contact/storm and locked about/faq/dumpster hubs", async () =
   const newburghBody = await newburgh.text();
   assert.match(
     newburghBody,
-    /<title>Garage Cleanout &amp; Junk Removal in Newburgh, IN \| Uncle Sam Junk Removal<\/title>/i,
+    /<title>Garage Cleanout Service in Newburgh, IN \| Uncle Sam Junk Removal<\/title>/i,
   );
   assert.match(
     newburghBody,
-    /<h1[^>]*>Garage cleanout and junk removal in Newburgh, IN\.<\/h1>/i,
+    /<h1[^>]*>Garage cleanout service in Newburgh, IN\.<\/h1>/i,
+  );
+  assert.match(
+    newburghBody,
+    /Garage cleanouts for Newburgh and Warrick County homes\./i,
+  );
+  assert.match(
+    newburghBody,
+    /Most Newburgh jobs we book start in the garage: holiday bins, lawn gear, broken tools/i,
   );
   assert.match(newburghBody, /not an Evansville page with the city name swapped/i);
+  assert.match(
+    newburghBody,
+    /Do you offer garage cleanout service in Newburgh, IN\?/i,
+  );
+  assert.match(
+    newburghBody,
+    /Same-day may be available when the Warrick route has space/i,
+  );
+  assert.doesNotMatch(newburghBody, /Is this the old \/locations\/newburgh page\?/i);
   assert.doesNotMatch(newburghBody, /Does city heavy trash stop in the fall\?/i);
   assert.match(newburghBody, /Do I need to be home\?/i);
 
