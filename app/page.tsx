@@ -8,7 +8,7 @@ import {
   ProcessSection,
   ServiceAreasSection,
 } from "./components/home-sections";
-import { QuoteSection } from "./components/quote-section";
+import { QuoteEngine } from "./components/quote-engine";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { homeFaqs } from "./home-data";
 import {
@@ -84,7 +84,7 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <PopularServicesSection />
-        <QuoteSection />
+        <QuoteEngine />
         <ProcessSection />
         <PricingSection />
         <ServiceAreasSection />
