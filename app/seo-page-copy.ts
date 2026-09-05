@@ -364,7 +364,7 @@ export const locationPageOverrides: Partial<
 > = {
   "newburgh-in": {
     titleAbsolute:
-      "Garage Cleanout & Junk Removal in Newburgh, IN | Uncle Sam Junk Removal",
+      "Garage Cleanout Service in Newburgh, IN | Uncle Sam Junk Removal",
     description:
       "Garage cleanout and junk removal in Newburgh, IN and Warrick County. Text photos to (812) 610-1657.",
     keywords: [
@@ -372,26 +372,24 @@ export const locationPageOverrides: Partial<
       "junk removal Newburgh IN",
       "garage cleanout Warrick County",
     ],
-    h1: "Garage cleanout and junk removal in Newburgh, IN.",
-    heroLead:
-      "Most Newburgh jobs we book start in the garage. Holiday bins, lawn gear, broken equipment, and furniture that never left the driveway.",
-    sectionHeading: "Most Newburgh jobs we book start in the garage.",
+    h1: "Garage cleanout service in Newburgh, IN.",
+    // Quill lock: uniqueness lives in the Local-service block only.
+    heroLead: "",
+    sectionHeading: "Garage cleanouts for Newburgh and Warrick County homes.",
     sectionParagraphs: paras(
-      "Holiday bins, lawn gear, broken equipment, and furniture that never left the driveway.",
-      "We empty attached and detached garages in Warrick County, then take household junk from the same house if you point us to it. Historic downtown and the Ohio River bluff streets are on this Newburgh route. This is not an Evansville page with the city name swapped.",
-      "Warrick County addresses are not on Evansville’s free heavy-trash list. If the pile is more than one curb item, or you do not want to drag it to the street, text photos to (812) 610-1657.",
+      "Most Newburgh jobs we book start in the garage: holiday bins, lawn gear, broken tools, boxes, and furniture that never left the driveway. We empty attached and detached garages in Warrick County, then haul household junk from the same house if you point us to it.",
+      "Newburgh sits in the Evansville metro on the Ohio River bluff and historic downtown streets. This is a Warrick County garage route, not an Evansville page with the city name swapped. Warrick addresses are not on Evansville’s free heavy-trash list. If the pile is more than one curb item, or you do not want to drag it to the street, text photos to (812) 610-1657.",
     ),
     faqs: [
       {
-        question:
-          "Do you do garage cleanouts in Newburgh, not just junk removal?",
+        question: "Do you offer garage cleanout service in Newburgh, IN?",
         answer:
-          "Yes. Garage cleanout is the main Newburgh job. Boxes, tools, furniture, and bulky clutter come out of the garage. We can add the rest of the house on the same stop.",
+          "Yes. Garage cleanout is the main Newburgh job. We clear boxes, tools, furniture, and bulky clutter from the garage, then can add the rest of the house on the same stop.",
       },
       {
         question: "How much is a Newburgh garage cleanout?",
         answer:
-          "Price follows how much of the truck the garage fills, plus weight, access, and any special disposal. Use the homepage ranges as a planning guide. You approve the onsite price before we load.",
+          "Price follows how much of the truck the garage fills, plus weight, access, and any special disposal. Use the homepage planning ranges as a guide. You approve the onsite price before we load.",
       },
       {
         question: "Do I have to carry everything to the driveway?",
@@ -407,12 +405,7 @@ export const locationPageOverrides: Partial<
       {
         question: "Are you in Newburgh the same day as Evansville?",
         answer:
-          "Sometimes, if that Warrick route has space. Text photos early. If not today, we will give you the next Newburgh window.",
-      },
-      {
-        question: "Is this the old /locations/newburgh page?",
-        answer:
-          "No. This is the live Newburgh page: /locations/newburgh-in. Bookmark this URL.",
+          "Same-day may be available when the Warrick route has space. Text photos early. If not today, we will give you the next Newburgh window.",
       },
       needToBeHomeFaq,
     ],
